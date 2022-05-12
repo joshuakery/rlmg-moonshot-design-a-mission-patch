@@ -1,0 +1,195 @@
+{
+    "teamsData": [
+        {
+            "teamName": "Team Zero",
+            "didRoverActivity": false,
+            "roverStepsCompleted": 2,
+            "didMapActivity": false,
+            "mapRoundsCompleted": 0,
+            "settlementShelterQuality": 1.0,
+            "settlementCommsQuality": 1.0,
+            "settlementSunQuality": 1.0,
+            "settlementWaterQuality": 1.0,
+            "didArtActivity": false,
+            "artworks": [
+                "Images/artwork_flag.png",
+                "Images/artwork_helmet.png",
+                "Images/artwork_rocket.png",
+                "Images/artwork_planet.png",
+                "Images/artwork_star.png",
+                "Images/artwork_moon.png"
+            ],
+            "artworkSprites": [
+                {
+                    "instanceID": -18656
+                },
+                {
+                    "instanceID": -18662
+                },
+                {
+                    "instanceID": -18668
+                },
+                {
+                    "instanceID": -18674
+                },
+                {
+                    "instanceID": -18680
+                },
+                {
+                    "instanceID": -18686
+                }
+            ],
+            "didCharterActivity": false,
+            "charterQsCompleted": 0,
+            "charterMeterDecisions": -1.0,
+            "charterMeterPriorities": 1.0,
+            "charterMeterStrictness": -1.0,
+            "didHuntActivity": false,
+            "huntNumFound": 9
+        },
+        {
+            "teamName": "Team One",
+            "didRoverActivity": false,
+            "roverStepsCompleted": 1,
+            "didMapActivity": false,
+            "mapRoundsCompleted": 0,
+            "settlementShelterQuality": 0.7570000290870667,
+            "settlementCommsQuality": 0.5960000157356262,
+            "settlementSunQuality": 0.8550000190734863,
+            "settlementWaterQuality": 0.0,
+            "didArtActivity": false,
+            "artworks": [
+                "Images/artwork_flag.png",
+                "Images/artwork_helmet.png",
+                "Images/artwork_rocket.png"
+            ],
+            "artworkSprites": [
+                {
+                    "instanceID": -18692
+                },
+                {
+                    "instanceID": -18698
+                },
+                {
+                    "instanceID": -18704
+                }
+            ],
+            "didCharterActivity": false,
+            "charterQsCompleted": 0,
+            "charterMeterDecisions": -0.5,
+            "charterMeterPriorities": 1.0,
+            "charterMeterStrictness": -1.0,
+            "didHuntActivity": false,
+            "huntNumFound": 9
+        },
+        {
+            "teamName": "Team Two",
+            "didRoverActivity": false,
+            "roverStepsCompleted": 0,
+            "didMapActivity": false,
+            "mapRoundsCompleted": 0,
+            "settlementShelterQuality": 0.0,
+            "settlementCommsQuality": 1.0,
+            "settlementSunQuality": 0.0,
+            "settlementWaterQuality": 1.0,
+            "didArtActivity": false,
+            "artworks": [
+                "Images/artwork_flag.png",
+                "Images/artwork_helmet.png",
+                "Images/artwork_rocket.png",
+                "Images/artwork_star.png",
+                "Images/artwork_moon.png"
+            ],
+            "artworkSprites": [
+                {
+                    "instanceID": -18692
+                },
+                {
+                    "instanceID": -18698
+                },
+                {
+                    "instanceID": -18704
+                }
+            ],
+            "didCharterActivity": false,
+            "charterQsCompleted": 0,
+            "charterMeterDecisions": 0.004999999888241291,
+            "charterMeterPriorities": 1.0,
+            "charterMeterStrictness": 1.0,
+            "didHuntActivity": false,
+            "huntNumFound": 2
+        },
+        {
+            "teamName": "Team Three",
+            "didRoverActivity": false,
+            "roverStepsCompleted": 2,
+            "didMapActivity": false,
+            "mapRoundsCompleted": 0,
+            "settlementShelterQuality": 0.0,
+            "settlementCommsQuality": 0.5350000262260437,
+            "settlementSunQuality": 1.0,
+            "settlementWaterQuality": 0.824999988079071,
+            "didArtActivity": false,
+            "artworks": [
+                "Images/artwork_planet.png",
+                "Images/artwork_star.png",
+                "Images/artwork_moon.png"
+            ],
+            "artworkSprites": [
+                {
+                    "instanceID": -18692
+                },
+                {
+                    "instanceID": -18698
+                },
+                {
+                    "instanceID": -18704
+                }
+            ],
+            "didCharterActivity": false,
+            "charterQsCompleted": 0,
+            "charterMeterDecisions": -1.0,
+            "charterMeterPriorities": -1.0,
+            "charterMeterStrictness": -1.0,
+            "didHuntActivity": false,
+            "huntNumFound": 7
+        },
+        {
+            "teamName": "Team Four",
+            "didRoverActivity": false,
+            "roverStepsCompleted": 1,
+            "didMapActivity": false,
+            "mapRoundsCompleted": 0,
+            "settlementShelterQuality": 0.6629999876022339,
+            "settlementCommsQuality": 0.5860000252723694,
+            "settlementSunQuality": 0.0,
+            "settlementWaterQuality": 0.49799999594688418,
+            "didArtActivity": false,
+            "artworks": [
+                "Images/artwork_flag.png",
+                "Images/artwork_helmet.png",
+                "Images/artwork_rocket.png",
+                "Images/artwork_planet.png",
+                "Images/artwork_moon.png"
+            ],
+            "artworkSprites": [
+                {
+                    "instanceID": -18692
+                },
+                {
+                    "instanceID": -18698
+                },
+                {
+                    "instanceID": -18704
+                }
+            ],
+            "didCharterActivity": false,
+            "charterQsCompleted": 0,
+            "charterMeterDecisions": 0.3400000035762787,
+            "charterMeterPriorities": -0.6299999952316284,
+            "charterMeterStrictness": 0.48899999260902407,
+            "didHuntActivity": false,
+            "huntNumFound": 4
+        }
+    ]
+}

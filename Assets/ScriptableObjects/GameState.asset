@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 191761e8c40ae4de1a3f56fd18f7a021, type: 3}
+  m_Name: GameState
+  m_EditorClassIdentifier: 
+  currentTeam: 0
+  teams:
+  - directory: defaultTeam
+    teamname: Default Team
+    namesake: Bahloo
+    chosenWords:
+    - Enthusiastic
+    - Dynamic
+    - Helpful
+  saveFile: spaceNowTeam.json
+  preview: {fileID: 0}
+  scanMax: 6
+  scans:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  trashHistory: []
+  lastClearedIndex: 0
+  exclude:
+  - 
+  settings: {fileID: 11400000, guid: eebe36b8bd1234f8ca3d2e070246f3b8, type: 2}

@@ -1,0 +1,62 @@
+{
+  "Johnson": {
+    "moonbaseName": "Johnson",
+    "fullName": "Katherine Johnson",
+    "description": "Katherine Johnson was an African American mathematician whose calculations played an important role in the American 1969 Moon landing.",
+    "imageFilename": "Johnson.png"
+	},
+  "Artemis": {
+    "moonbaseName": "Artemis",
+    "fullName": "First Name Last Name",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "imageFilename": "Person2.png"
+  },
+  "Hina": {
+    "moonbaseName": "Hina",
+    "fullName": "First Name Last Name",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "imageFilename": "Person3.png"
+  },
+  "Armstrong": {
+    "moonbaseName": "Armstrong",
+    "fullName": "First Name Last Name",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "imageFilename": "Person4.png"
+  },
+  "Kinzler": {
+    "moonbaseName": "Kitzler",
+    "fullName": "First Name Last Name",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "imageFilename": "Person5.png"
+  },
+  "Jade Rabbit": {
+    "moonbaseName": "Jade Rabbit",
+    "fullName": "First Name Last Name",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "imageFilename": "Person5.png"
+  },
+  "Bobokin": {
+    "moonbaseName": "Bobokin",
+    "fullName": "First Name Last Name",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "imageFilename": "Person5.png"
+  },
+  "Bahloo": {
+    "moonbaseName": "Bahloo",
+    "fullName": "First Name Last Name",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "imageFilename": "Person5.png"
+  },
+  "Jack and Jill": {
+    "moonbaseName": "Jack and Jill",
+    "fullName": "First Name Last Name",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "imageFilename": "Person5.png"
+  },
+  "Khonshu": {
+    "moonbaseName": "Khonshu",
+    "fullName": "First Name Last Name",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "imageFilename": "Person5.png"
+  }
+}
