@@ -88,3 +88,4 @@ structured_forests.yml.gz.meta
 TextMesh Pro.meta
 **/OpenCVForUnity/Plugins/**
 OpenCVForUnity/Plugins.meta
+*.mp4

@@ -12,16 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191761e8c40ae4de1a3f56fd18f7a021, type: 3}
   m_Name: GameState
   m_EditorClassIdentifier: 
-  currentTeam: 0
+  currentTeam: 1
   teams:
-  - directory: defaultTeam
-    teamname: Default Team
-    namesake: Bahloo
+  - directory: rockets
+    teamname: Rockets
+    namesake: Hina
     chosenWords:
-    - Enthusiastic
+    - Ambitious
+    - Determined
     - Dynamic
+  - directory: flyingSquirrels
+    teamname: Flying Squirrels
+    namesake: Khonshu
+    chosenWords:
+    - Ambitious
+    - Determined
+    - Fearless
+  - directory: phoenix
+    teamname: Phoenix
+    namesake: Artemis
+    chosenWords:
+    - Independent
+    - Honest
     - Helpful
-  saveFile: spaceNowTeam.json
+  saveFile: teams.json
   preview: {fileID: 0}
   scanMax: 6
   scans:

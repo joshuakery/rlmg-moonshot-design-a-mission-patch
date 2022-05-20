@@ -340,9 +340,7 @@ public class ContentLoader : MonoBehaviour
     //call via the following syntax: StartCoroutine(LoadSpriteFromFilepath(imgFilePath, result => spriteFileReference = result));
     public static IEnumerator LoadSpriteFromFilepath(string imgFilePath, Action<Sprite> spriteRef)
     {
-        //Debug.Log("LoadSpriteFromFilepath()   imgFilePath = " + imgFilePath);
-		
-		if (!string.IsNullOrEmpty(imgFilePath))
+        if (!string.IsNullOrEmpty(imgFilePath))
         {
             WWW externalImgFile = new WWW(imgFilePath);
             yield return externalImgFile;

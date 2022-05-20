@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using ArtScan;
 using ArtScan.WordSavingUtilsModule;
 
@@ -86,6 +87,15 @@ public class UIManager : MonoBehaviour
         SetCurrentWindowListeners();
     }
 
+    private void GoToConclusion()
+    {
+        ResultsDisplayManager.teamNum = gameState.currentTeam;
+
+        string finalResultsSceneName = "ResultsScene";
+
+        SceneManager.LoadScene(finalResultsSceneName);  //alternative string-based approach
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.D))
@@ -95,6 +105,11 @@ public class UIManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.E))
         {
             RemoveBackgroundDebugMenu.SetActive(!RemoveBackgroundDebugMenu.activeSelf);
+        }
+        //Shared Conclusion
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            GoToConclusion();
         }
         //Main Timer
         else if (Input.GetKeyDown(KeyCode.F))

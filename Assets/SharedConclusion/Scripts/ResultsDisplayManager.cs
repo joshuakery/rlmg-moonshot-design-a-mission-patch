@@ -4,11 +4,26 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MoonSceneManager : MonoBehaviour
+public class ResultsDisplayManager : MonoBehaviour
 {
+    public MoonshotUserData _userData;
+    private MoonshotUserData userData
+    {
+        get
+        {
+            if (_userData == null)
+            {
+                _userData = GetComponentInParent<MoonshotUserData>();
+            }
+
+            return _userData;
+        }
+    }
+    
     public bool updateConstantly = true;
     [Range(0, 4)]
-    public int teamNum = 0;
+    public static int teamNum = 0;
+    public bool loadOnEnable = true;
     public bool doLoadResultsTest = false;
     
     public Image imageTemplate;
@@ -54,7 +69,7 @@ public class MoonSceneManager : MonoBehaviour
     public Image[] artworkImages;
     public Sprite[] artworkSprites;
 
-    void Start()
+    void Awake()
     {
         //Debug.Log(Application.dataPath);
         //Debug.Log(System.Environment.SpecialFolder.Desktop);
@@ -69,7 +84,15 @@ public class MoonSceneManager : MonoBehaviour
         backgroundImages = MakeImagesForSprites(backgroundSprites);
 
         imageTemplate.gameObject.SetActive(false);
+    }
 
+    void OnEnable()
+    {
+        if (loadOnEnable)
+        {
+            LoadTeamResults();
+        }
+        
         UpdateMoonScene();
     }
 
@@ -178,10 +201,16 @@ public class MoonSceneManager : MonoBehaviour
         return imagesArray;
     }
 
+    public void LoadTeamResults(int teamNumber)
+    {
+        teamNum = teamNumber;
+        
+        LoadTeamResults();
+    }
+
     [ContextMenu("Load Team Results")]
     public void LoadTeamResults()
     {
-        MoonshotUserData userData = GetComponent<MoonshotUserData>();
         if (userData != null)
         {
             //LoadTeamResults(teamNum, userData);
@@ -223,10 +252,10 @@ public class MoonSceneManager : MonoBehaviour
 
         //artworkSprites = singleTeamData.artworkSprites;
         //StartCoroutine(LoadImagesViaFilenames(singleTeamData.artworks, artworkSprites));
-        StartCoroutine(LoadImagesViaFilenames(userData.DirectoryPath, singleTeamData.artworks));
+        StartCoroutine(LoadImagesViaFilenames(userData.DirectoryPathImages, singleTeamData.artworks));
     }
 
-    // public IEnumerator LoadImagesViaFilenames(string[] filenames, Sprite[] sprites)  //I couldn't get this passed reference to the sprite array to work
+    // public IEnumerator LoadImagesViaFilenames(string[] filenames, Sprite[] sprites)  //I couldn't get this passed sprite array reference to work
     // {
     //     sprites = new Sprite[filenames.Length];
         

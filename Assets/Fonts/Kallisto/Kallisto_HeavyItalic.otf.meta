@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: 1d54ac0603dca47d6923be2232e823ad
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Kallisto
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3cb8b45a18d3b4572b923775c55b363b, type: 3}
+  - {fileID: 12800000, guid: 6ac3b06ea42c9426885ac17da3d6fa0b, type: 3}
+  - {fileID: 12800000, guid: f704d4cca2d47427d8a220120203395c, type: 3}
+  - {fileID: 12800000, guid: 580845da719ba4f09ab83fb53e8ef31f, type: 3}
+  - {fileID: 12800000, guid: f9482cbd7b04f47b08c6d07e064dbe9a, type: 3}
+  - {fileID: 12800000, guid: 5660b3218ce29407c86a1143d2662520, type: 3}
+  - {fileID: 12800000, guid: d77fcd2ee5ce94b4f9ee8e4ad9dce3e9, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

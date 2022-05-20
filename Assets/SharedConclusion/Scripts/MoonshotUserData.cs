@@ -4,6 +4,7 @@ using System.IO;
 using System;
 //using Newtonsoft.Json;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class MoonshotUserData : MonoBehaviour
 {
@@ -15,8 +16,10 @@ public class MoonshotUserData : MonoBehaviour
         Custom
 	}
 
-	public DirectoryLocation directoryLocation = DirectoryLocation.StreamingAssets;
-    public string directoryPath;
+	public DirectoryLocation directoryLocationJson = DirectoryLocation.StreamingAssets;
+    public string directoryPathJson;
+    public DirectoryLocation directoryLocationImages = DirectoryLocation.StreamingAssets;
+    public string directoryPathImages;
 
     public string jsonFilename = "team_results_data.json";
 
@@ -39,6 +42,8 @@ public class MoonshotUserData : MonoBehaviour
     public class TeamData
     {
         public string teamName;
+
+        public string namesake;
 
         public bool didRoverActivity;
         [Range(0, 2)]
@@ -73,26 +78,49 @@ public class MoonshotUserData : MonoBehaviour
         public int huntNumFound = 0;
     }
 
-    public string DirectoryPath
+    public string DirectoryPathJson
     {
         get
         {
             string path = "";
 
-            if (directoryLocation == DirectoryLocation.StreamingAssets)
+            if (directoryLocationJson == DirectoryLocation.StreamingAssets)
             {
                 path = Application.streamingAssetsPath;
             }
-            else if (directoryLocation == DirectoryLocation.Desktop)
+            else if (directoryLocationJson == DirectoryLocation.Desktop)
             {
                 path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             }
-            else if (directoryLocation == DirectoryLocation.Application)
+            else if (directoryLocationJson == DirectoryLocation.Application)
             {
                 path = Path.Combine(Application.dataPath, "..");
             }
 
-            return Path.Combine(path, directoryPath);
+            return Path.Combine(path, directoryPathJson);
+        }
+    }
+
+    public string DirectoryPathImages
+    {
+        get
+        {
+            string path = "";
+
+            if (directoryLocationImages == DirectoryLocation.StreamingAssets)
+            {
+                path = Application.streamingAssetsPath;
+            }
+            else if (directoryLocationImages == DirectoryLocation.Desktop)
+            {
+                path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            }
+            else if (directoryLocationImages == DirectoryLocation.Application)
+            {
+                path = Path.Combine(Application.dataPath, "..");
+            }
+
+            return Path.Combine(path, directoryPathImages);
         }
     }
 
@@ -100,40 +128,40 @@ public class MoonshotUserData : MonoBehaviour
     {
         //return JsonConvert.SerializeObject(allTeamsData);
         return JsonUtility.ToJson(allTeamsData, true);
-
     }
 
     [ContextMenu("Load External Json Data")]
     public void LoadExternalJson()
     {
-        StopCoroutine(LoadContentRoutine());
-        StartCoroutine(LoadContentRoutine());
+        StopCoroutine(LoadExternalJsonRoutine());
+        StartCoroutine(LoadExternalJsonRoutine());
     }
 
-    IEnumerator LoadContentRoutine()
+    IEnumerator LoadExternalJsonRoutine()
 	{
-        WWW contentFile = new WWW(ContentLoader.fileProtocolPrefix + Path.Combine(DirectoryPath, jsonFilename));
-        yield return contentFile;
+        string url = ContentLoader.fileProtocolPrefix + Path.Combine(DirectoryPathJson, jsonFilename);
+        
+        // WWW contentFile = new WWW(url);
+        // yield return contentFile;
+        //string jsonData = contentFile.text;
 
-        if (string.IsNullOrEmpty(contentFile.text))
+        //var loaded = new UnityWebRequest(url);
+        //UnityWebRequest loaded = new UnityWebRequest(url);
+        UnityWebRequest loaded = UnityWebRequest.Get(url);
+        //loaded.downloadHandler = new DownloadHandlerBuffer();
+        yield return loaded.SendWebRequest();
+        string jsonData = loaded.downloadHandler.text;
+
+        if (string.IsNullOrEmpty(jsonData))
         {
-            Debug.LogError("External JSON data is empty.   data string = " + contentFile.text);
+            Debug.LogError("External JSON data is empty.   data string = " + jsonData);
         }
         else
         {
-            Debug.Log("Loaded from external JSON.   data string = " + contentFile.text);
+            Debug.Log("Loaded from external JSON.   data string = " + jsonData);
         }
 
-        //yield return StartCoroutine(PopulateContent(contentFile.text));
-        SetAllDataFromJson(contentFile.text);
-
-
-        // for (int i = 0; i < allTeamsData.Length; i++)
-        // {
-        //     yield return StartCoroutine(LoadImagesViaFilenames(allTeamsData[i].artworks, allTeamsData[i].artworkSprites));
-        // }
-
-        //yield return StartCoroutine(LoadImagesViaFilenames());
+        SetAllDataFromJson(jsonData);
 
         if (onLoadingComplete != null)
         {
@@ -145,62 +173,14 @@ public class MoonshotUserData : MonoBehaviour
     {
         //allTeamsData = JsonConvert.DeserializeObject<AllTeamsData>(jsonData);
         JsonUtility.FromJsonOverwrite(jsonData, allTeamsData);
-
-        //HACK FOR TESTING
-        // MoonSceneManager moonSceneManager = GetComponent<MoonSceneManager>();
-        // if (moonSceneManager != null)
-        // {
-        //     moonSceneManager.LoadTeamResults(moonSceneManager.teamNum, this);
-        // }
     }
 
     [ContextMenu("Save External Json File")]
     public void SaveExternalJson()
     {
-        //string jsonString = JsonConvert.SerializeObject(allTeamsData);
-        //string jsonString = JsonConvert.SerializeObject(allTeamsData, Formatting.Indented);
-        string jsonString = JsonUtility.ToJson(allTeamsData, true);
-        System.IO.File.WriteAllText(Path.Combine(DirectoryPath, jsonFilename), jsonString);
+        string jsonString = GetAllDataAsJson();
+        System.IO.File.WriteAllText(Path.Combine(DirectoryPathJson, jsonFilename), jsonString);
 
         Debug.Log("Saved to external JSON.   data string = " + jsonString);
     }
-
-    // public IEnumerator LoadImagesViaFilenames(string[] filenames, Sprite[] sprites)
-    // {
-    //     sprites = new Sprite[filenames.Length];
-        
-    //     for (int i = 0; i < filenames.Length; i++)
-    //     {
-    //         if (!string.IsNullOrEmpty(filenames[i]))
-    //         {
-    //             //string imgFilePath = "";
-    //             string imgFilePath = ContentLoader.fileProtocolPrefix + Path.Combine(DirectoryPath, filenames[i]);
-    //             //string imgFilePath = GetCachedFilePath(filenames[i], ContentDirectory);
-                
-    //             yield return StartCoroutine(ContentLoader.LoadSpriteFromFilepath(imgFilePath, result => sprites[i] = result));
-    //         }
-    //     }
-    // }
-
-    // public IEnumerator LoadImagesViaFilenames()
-    // {
-    //     for (int i = 0; i < allTeamsData.teamsData.Length; i++)
-    //     {
-    //         allTeamsData.teamsData[i].artworkSprites = new Sprite[allTeamsData.teamsData[i].artworks.Length];
-            
-    //         for (int j = 0; j < allTeamsData.teamsData[i].artworks.Length; j++)
-    //         {
-    //             if (!string.IsNullOrEmpty(allTeamsData.teamsData[i].artworks[j]))
-    //             {
-    //                 //string imgFilePath = "";
-    //                 string imgFilePath = ContentLoader.fileProtocolPrefix + Path.Combine(DirectoryPath, allTeamsData.teamsData[i].artworks[j]);
-    //                 //string imgFilePath = GetCachedFilePath(allTeamsData.teamsData[i].artworks[j], ContentDirectory);
-                    
-    //                 yield return StartCoroutine(ContentLoader.LoadSpriteFromFilepath(imgFilePath, result => allTeamsData.teamsData[i].artworkSprites[j] = result));
-    //             }
-    //         }
-    //     }
-
-    //     // yield break;
-    // }
 }
