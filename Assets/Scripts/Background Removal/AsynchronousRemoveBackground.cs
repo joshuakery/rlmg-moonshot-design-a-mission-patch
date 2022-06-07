@@ -86,6 +86,8 @@ namespace ArtScan.CoreModule
 
         public CamConfigLoader configLoader;
 
+        public Button beginScanButton;
+
         // for Thread
         System.Object sync = new System.Object();
 
@@ -542,6 +544,9 @@ namespace ArtScan.CoreModule
                         settings.doSizeToFit
                     );
                 }
+
+                if (beginScanButton)
+                    beginScanButton.interactable = paperFound; //TODO improve criteria for scan found
             }
             
 

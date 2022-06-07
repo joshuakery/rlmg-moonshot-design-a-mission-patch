@@ -2,36 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 [RequireComponent(typeof(Toggle))]
-[RequireComponent(typeof(Image))]
 public class FlexibleUIToggle : FlexibleUI
 {
-    Toggle toggle;
-    Image image;
+    public Toggle toggle;
+    public Image background;
+    public Image checkmark;
 
     public override void Awake()
     {
         toggle = GetComponent<Toggle>();
-        image = GetComponent<Image>();
-
+        
         base.Awake();
     }
 
     protected override void OnSkinUI()
     {
-        toggle.transition = Selectable.Transition.ColorTint;
-        toggle.targetGraphic = image;
+        if (background != null)
+            background.sprite = skinData.toggleBackground;
 
-        image.type = Image.Type.Sliced;
-        image.sprite = skinData.toggleSprite;
-        toggle.spriteState = skinData.toggleSpriteState;
-
-        Image checkmark = toggle.graphic.gameObject.GetComponent<Image>();
-        checkmark.sprite = skinData.toggleCheckmarkSprite;
-
+        if (checkmark != null)
+            checkmark.sprite = skinData.checkmark;
         
 
-
+        base.OnSkinUI();
     }
 }

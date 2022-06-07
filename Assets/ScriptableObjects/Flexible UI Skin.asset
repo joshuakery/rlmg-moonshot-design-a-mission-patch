@@ -12,22 +12,134 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6266a579c7a8b4e0ca210e55fb20f068, type: 3}
   m_Name: Flexible UI Skin
   m_EditorClassIdentifier: 
-  buttonSprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  buttonSpriteState:
+  primaryColor:
+    serializedVersion: 2
+    rgba: 4292845313
+  secondaryColor:
+    serializedVersion: 2
+    rgba: 4290410504
+  whiteColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  blackColor:
+    serializedVersion: 2
+    rgba: 4278190080
+  supportingNeutralColor:
+    serializedVersion: 2
+    rgba: 4278190335
+  accentColor:
+    serializedVersion: 2
+    rgba: 4278190335
+  primaryTextGradient: {fileID: 11400000, guid: 8f48c3ece8f854ab1967fa2450b5b670, type: 2}
+  secondaryTextGradient: {fileID: 11400000, guid: 8587dac07a7b54a0a994f0efdc6b24fb, type: 2}
+  primaryButtonSprite: {fileID: 21300000, guid: f6727efd8cac045ba967d482efdba4a6, type: 3}
+  primaryButtonSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
-  toggleSprite: {fileID: 0}
-  toggleSpriteState:
+    m_DisabledSprite: {fileID: 21300000, guid: 69944db4d7b504e8b9d21a8752fcba2d, type: 3}
+  secondaryButtonSprite: {fileID: 21300000, guid: d9236845d47934f82b41f76446fd7308, type: 3}
+  secondaryButtonSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  toggleCheckmarkSprite: {fileID: 21300000, guid: 6029e1122a04c4da0bbac8b07b83de21, type: 3}
-  regularFont: {fileID: 11400000, guid: 6bf1ead2abb944229a47d3d9bfca7253, type: 2}
-  italicFont: {fileID: 11400000, guid: 3fc345394344943ff8fe27738161a2a1, type: 2}
-  boldFont: {fileID: 11400000, guid: 925817514b3c644c49e334249c6a1e37, type: 2}
-  boldItalicFont: {fileID: 11400000, guid: 6694d2cc458ff4af4bbc6c25a8ed7345, type: 2}
-  blackFont: {fileID: 11400000, guid: 5148b8b827edf430abdb71c3f65ca520, type: 2}
-  blackItalicFont: {fileID: 11400000, guid: 7a84aed769bf54878a0521e962fcd8bf, type: 2}
+    m_DisabledSprite: {fileID: 21300000, guid: 69944db4d7b504e8b9d21a8752fcba2d, type: 3}
+  checkmark: {fileID: 21300000, guid: d743839716c2f411d8e4fe9aeb1c2748, type: 3}
+  toggleBackground: {fileID: 21300000, guid: 5e2f577599ef04f9eaf70e2295eb5488, type: 3}
+  primaryTypography:
+    h1:
+      size: 140
+      font: {fileID: 11400000, guid: 5e400f6c21b7f400e9101900edb0a5d4, type: 2}
+      weight: 700
+      spacingOptions:
+        character: 10
+        word: 0
+        line: 0
+        paragraph: 0
+    h2:
+      size: 100
+      font: {fileID: 11400000, guid: 5e400f6c21b7f400e9101900edb0a5d4, type: 2}
+      weight: 400
+      spacingOptions:
+        character: 10
+        word: 0
+        line: 0
+        paragraph: 0
+    h3:
+      size: 80
+      font: {fileID: 11400000, guid: 5e400f6c21b7f400e9101900edb0a5d4, type: 2}
+      weight: 700
+      spacingOptions:
+        character: 5
+        word: 0
+        line: 0
+        paragraph: 0
+    p:
+      size: 60
+      font: {fileID: 11400000, guid: 4a8f9468a19cb4171ab3108b1951cf7b, type: 2}
+      weight: 400
+      spacingOptions:
+        character: 0
+        word: 0
+        line: 10
+        paragraph: 55
+    caption:
+      size: 48
+      font: {fileID: 11400000, guid: 4a8f9468a19cb4171ab3108b1951cf7b, type: 2}
+      weight: 400
+      spacingOptions:
+        character: 0
+        word: 0
+        line: 0
+        paragraph: 0
+  secondaryTypography:
+    h1:
+      size: 36
+      font: {fileID: 11400000, guid: 4a8f9468a19cb4171ab3108b1951cf7b, type: 2}
+      weight: 400
+      spacingOptions:
+        character: 0
+        word: 0
+        line: 0
+        paragraph: 0
+    h2:
+      size: 36
+      font: {fileID: 11400000, guid: 4a8f9468a19cb4171ab3108b1951cf7b, type: 2}
+      weight: 400
+      spacingOptions:
+        character: 0
+        word: 0
+        line: 0
+        paragraph: 0
+    h3:
+      size: 36
+      font: {fileID: 11400000, guid: 4a8f9468a19cb4171ab3108b1951cf7b, type: 2}
+      weight: 400
+      spacingOptions:
+        character: 0
+        word: 0
+        line: 0
+        paragraph: 0
+    p:
+      size: 36
+      font: {fileID: 11400000, guid: 4a8f9468a19cb4171ab3108b1951cf7b, type: 2}
+      weight: 400
+      spacingOptions:
+        character: 0
+        word: 0
+        line: 0
+        paragraph: 0
+    caption:
+      size: 36
+      font: {fileID: 11400000, guid: 4a8f9468a19cb4171ab3108b1951cf7b, type: 2}
+      weight: 400
+      spacingOptions:
+        character: 0
+        word: 0
+        line: 0
+        paragraph: 0
+  panelBackground: {fileID: 0}
+  panelTiling: {fileID: 0}
+  panelBorder: {fileID: 0}
+  primaryLineGradient: {fileID: 21300000, guid: d090b708b967b480188f2b27b6c667cc, type: 3}
+  secondaryLineGradient: {fileID: 0}

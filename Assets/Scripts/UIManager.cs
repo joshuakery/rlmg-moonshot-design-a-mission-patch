@@ -24,6 +24,11 @@ public class UIManager : MonoBehaviour
 
     public bool started = false;
 
+    private void Awake()
+    {
+        SetCurrentWindowListeners();
+    }
+
     private void Start() 
     {
         started = false;
@@ -82,10 +87,7 @@ public class UIManager : MonoBehaviour
         StartGame();
     }
 
-    private void Awake()
-    {
-        SetCurrentWindowListeners();
-    }
+
 
     private void GoToConclusion()
     {

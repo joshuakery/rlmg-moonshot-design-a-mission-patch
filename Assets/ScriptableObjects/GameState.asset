@@ -12,22 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 191761e8c40ae4de1a3f56fd18f7a021, type: 3}
   m_Name: GameState
   m_EditorClassIdentifier: 
+  currentRound: 2
   currentTeam: 1
   teams:
   - directory: rockets
     teamname: Rockets
-    namesake: Hina
+    namesake: Bobokin
     chosenWords:
-    - Ambitious
-    - Determined
-    - Dynamic
+    - Smart
+    - Scientific
+    - Independent
   - directory: flyingSquirrels
     teamname: Flying Squirrels
-    namesake: Khonshu
+    namesake: Armstrong
     chosenWords:
     - Ambitious
-    - Determined
-    - Fearless
+    - Brave
+    - Bright
   - directory: phoenix
     teamname: Phoenix
     namesake: Artemis

@@ -38,7 +38,7 @@ public class WordChoices : MonoBehaviour
                     ToggleChoice(name,toggle);
                 });
 
-                wordChoice.transform.GetChild(1).GetComponent<TMP_Text>().text = name;
+                wordChoice.transform.GetChild(0).GetComponent<TMP_Text>().text = name;
 
                 offToggles.Add(toggle);
             }

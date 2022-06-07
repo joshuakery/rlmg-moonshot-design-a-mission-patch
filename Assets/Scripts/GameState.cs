@@ -33,6 +33,7 @@ namespace ArtScan
     [CreateAssetMenu(fileName = "GameState", menuName = "GameState", order = 0)]
     public class GameState : ScriptableObject {
 
+        public int currentRound;
         public int currentTeam;
 
         public Team[] teams;

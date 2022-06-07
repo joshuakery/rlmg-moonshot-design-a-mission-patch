@@ -10,6 +10,11 @@ public class ChosenWordsDisplay : MonoBehaviour
 
     public Transform chosenWordsContainer;
 
+    private void OnEnable()
+    {
+        UpdateChosenWords();
+    }
+
     public void UpdateChosenWords()
     {
         for (int i=0; i<chosenWordsContainer.childCount; i++)

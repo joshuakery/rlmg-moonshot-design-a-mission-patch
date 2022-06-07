@@ -62,6 +62,9 @@ public class DebugMenu : MonoBehaviour
 
     public void InitializeDebugMenu()
     {
+        if (webCamTextureToMatHelper == null)
+            webCamTextureToMatHelper = (myWebCamTextureToMatHelper)FindObjectOfType(typeof(myWebCamTextureToMatHelper));
+
         InstantiateChangeCameraButtons();
 
         ResetSettingsUI();
@@ -88,8 +91,9 @@ public class DebugMenu : MonoBehaviour
                 OnChangeToSpecificCamera(device.name, button);
             });
 
-            if (webCamTextureToMatHelper.requestedDeviceName == i.ToString() ||
-                webCamTextureToMatHelper.requestedDeviceName == device.name)
+            if (webCamTextureToMatHelper != null &&
+                (webCamTextureToMatHelper.requestedDeviceName == i.ToString() ||
+                webCamTextureToMatHelper.requestedDeviceName == device.name))
             {
                 button.interactable = false;
             }
@@ -124,9 +128,12 @@ public class DebugMenu : MonoBehaviour
 
     private void ResetSettingsUI()
     {
-        //Flip Toggles
-        flipVerticalToggle.isOn = webCamTextureToMatHelper.flipVertical;
-        flipHorizontalToggle.isOn = webCamTextureToMatHelper.flipHorizontal;
+        if (webCamTextureToMatHelper != null)
+        {
+            //Flip Toggles
+            flipVerticalToggle.isOn = webCamTextureToMatHelper.flipVertical;
+            flipHorizontalToggle.isOn = webCamTextureToMatHelper.flipHorizontal;
+        }
 
         //Brightness Contrast
         brightnessSlider.value = settings.brightness;

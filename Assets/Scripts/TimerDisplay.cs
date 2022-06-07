@@ -11,6 +11,8 @@ public class TimerDisplay : MonoBehaviour
 
     public bool displayAsMinutes;
 
+    public float mspace = 0.7f;
+
     private void Start()
     {
         if (!timer) timer = GameObject.Find("Timer").GetComponent<Timer>();
@@ -19,21 +21,17 @@ public class TimerDisplay : MonoBehaviour
     private void Update()
     {
         string display;
+        
         if (displayAsMinutes)
         {
             TimeSpan timeSpan = TimeSpan.FromSeconds(Mathf.Round(timer.time));
-            int seconds = timeSpan.Seconds;
-            string secondsDisplay = seconds < 10 ? "0" + seconds.ToString() : seconds.ToString();
-
-            float monoSpacing = 0.63f;
-            display = "<mspace="+monoSpacing+"em>" + timeSpan.Minutes.ToString() + "</mspace>" + " : " + "<mspace="+monoSpacing+"em>" + secondsDisplay + "</mspace>";
-
-            // display = timeSpan.Minutes.ToString() + ":" + secondsDisplay;
+            display = String.Format(@"<mspace={1}em>{0:%m}</mspace>:<mspace={1}em>{0:ss}</mspace>", timeSpan, mspace);
         }
         else
         {
             display = Mathf.Round(timer.time).ToString();
         }
+        
         timerDisplay.text = display;
     }
 }
