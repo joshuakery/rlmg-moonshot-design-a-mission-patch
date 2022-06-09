@@ -87,6 +87,9 @@ namespace ArtScan.CoreModule
         public CamConfigLoader configLoader;
 
         public Button beginScanButton;
+        private double runningAverageContourSize = 0.0d;
+        private int contoursAtRunningAverageSize = 0;
+        private bool beginScanButtonInteractable;
 
         // for Thread
         System.Object sync = new System.Object();
@@ -336,6 +339,9 @@ namespace ArtScan.CoreModule
 #endif
 
                     Utils.fastMatToTexture2D(resultMat, rawImageTexture, true, 0, true);
+
+                    if (beginScanButton)
+                        beginScanButton.interactable = beginScanButtonInteractable;
                 }
                 
             }
@@ -520,6 +526,26 @@ namespace ArtScan.CoreModule
                                             settings.doCropToBoundingBox, settings.doSizeToFit
                                         );
                                     }
+
+
+                                    double currentContourArea = maxAreaContour.size().area();
+
+                                    if (Math.Abs(currentContourArea - runningAverageContourSize) > 0.4d * runningAverageContourSize)
+                                    {
+                                        contoursAtRunningAverageSize = 0;
+                                        runningAverageContourSize = currentContourArea;
+                                    }
+                                    else
+                                    {
+                                        contoursAtRunningAverageSize += 1;
+                                        runningAverageContourSize = (runningAverageContourSize + currentContourArea) / 2.0d;
+                                    }
+
+                                    beginScanButtonInteractable = (
+                                        contoursAtRunningAverageSize > 3 &&
+                                        currentContourArea > 50
+                                    );
+
                                 }
                             }
                             
@@ -545,8 +571,8 @@ namespace ArtScan.CoreModule
                     );
                 }
 
-                if (beginScanButton)
-                    beginScanButton.interactable = paperFound; //TODO improve criteria for scan found
+
+                    
             }
             
 
