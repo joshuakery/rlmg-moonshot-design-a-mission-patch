@@ -17,6 +17,18 @@ public class WordChoices : MonoBehaviour
 
     public List<Toggle> offToggles;
 
+    private void OnEnable()
+    {
+        ResetToggles();
+    }
+
+    public void ResetToggles()
+    {
+        continueButton.interactable = false;
+
+        SetWords(); //not really resetting them, just reinstantiating them
+    }
+
     public void SetWords()
     {
         offToggles = new List<Toggle>();

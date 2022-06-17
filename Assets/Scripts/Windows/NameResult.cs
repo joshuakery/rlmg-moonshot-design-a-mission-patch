@@ -11,6 +11,7 @@ public class NameResult : GenericWindow
 {
     public TMP_Text fullNameDisplay;
     public TMP_Text moonbaseNameDisplay;
+    public RawImage moonbaseNameDisplayImage;
     public TMP_Text descriptionDisplay;
 
     public RawImage profileImage;
@@ -24,7 +25,6 @@ public class NameResult : GenericWindow
         }
 
         string key = gameState.teams[gameState.currentTeam].namesake;
-        Debug.Log(key);
         if (!String.IsNullOrEmpty(key))
         {
             Namesake namesake = gameState.namesakesData[key];
@@ -34,6 +34,9 @@ public class NameResult : GenericWindow
 
             if (moonbaseNameDisplay != null)
                 moonbaseNameDisplay.text = namesake.moonbaseName;
+
+            if (moonbaseNameDisplayImage != null)
+                moonbaseNameDisplayImage.texture = namesake.moonbaseNameImage;
 
             if (descriptionDisplay != null)
                 descriptionDisplay.text = namesake.description;

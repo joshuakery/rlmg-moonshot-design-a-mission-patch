@@ -14,6 +14,9 @@ namespace ArtScan.NamesakesModule
     public class Namesake
     {
         public string moonbaseName;
+
+        public string moonbaseNameImageFilename;
+        public Texture2D moonbaseNameImage;
         public string fullName;
         public string description;
 
@@ -26,6 +29,7 @@ namespace ArtScan.NamesakesModule
         public EventSystem eventSystem;
         public GameState gameState;
 
+        public string moonbaseNameImageDir = "Namesake_Texts";
         public string imageDir = "Namesake_Images";
 
         private Texture2D GetTexture2DFromPath(string path)
@@ -54,11 +58,16 @@ namespace ArtScan.NamesakesModule
                 if (gameState.namesakesData == null)
                     yield break;
 
+                string moonbaseNameImageDirPath = Path.Join(Application.streamingAssetsPath,moonbaseNameImageDir);
                 string dirPath = Path.Join(Application.streamingAssetsPath,imageDir);
+                
 
                 foreach (KeyValuePair<string,Namesake> kvp in gameState.namesakesData)
                 {
                     Namesake namesake = kvp.Value;
+
+                    string moonbaseNameImagePath = Path.Join( moonbaseNameImageDirPath, namesake.moonbaseNameImageFilename );
+                    namesake.moonbaseNameImage = GetTexture2DFromPath(moonbaseNameImagePath);
 
                     string imagePath = Path.Join(dirPath,namesake.imageFilename);
                     namesake.texture = GetTexture2DFromPath(imagePath);
