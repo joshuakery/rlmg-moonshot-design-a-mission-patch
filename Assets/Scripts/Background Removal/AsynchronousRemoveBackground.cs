@@ -214,7 +214,7 @@ namespace ArtScan.CoreModule
         {
             if (string.IsNullOrEmpty(sForests_model_filepath))
             {
-                RLMGLogger.Instance.Log("Structured forests model file is not loaded. \n Please copy to “Assets/StreamingAssets/” folder.", MESSAGETYPE.ERROR);
+                RLMGLogger.Instance.Log("Structured forests model file is not loaded. \n Please copy to “Assets/StreamingAssets/” folder.", MESSAGETYPE.INFO);
             }
             else
             {

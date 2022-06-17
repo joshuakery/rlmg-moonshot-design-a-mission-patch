@@ -148,6 +148,8 @@ public class DebugMenu : MonoBehaviour
             structuredForestsToggle.isOn = true;
         else if (settings.edgeFindingMethod == EdgeFindingMethod.Canny)
             cannyToggle.isOn = true;
+
+        // if ()
         
         //Size to Fit
         doSizeToFitToggle.isOn = settings.doSizeToFit;
