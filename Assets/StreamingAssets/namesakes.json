@@ -1,60 +1,70 @@
 {
   "Johnson": {
     "moonbaseName": "Johnson",
+    "moonbaseNameImageFilename": "Johnson.png",
     "fullName": "Katherine Johnson",
     "description": "Katherine Johnson was an African American mathematician whose calculations played an important role in the American 1969 Moon landing.",
     "imageFilename": "Johnson.png"
   },
   "Artemis": {
     "moonbaseName": "Artemis",
+    "moonbaseNameImageFilename": "Artemis.png",
     "fullName": "Artemis",
     "description": "Artemis is the Greek Goddess of the Moon, wild animals, and hunting.",
     "imageFilename": "Person2.png"
   },
   "Hina": {
     "moonbaseName": "Hina",
+    "moonbaseNameImageFilename": "Hina.png",
     "fullName": "Hina",
     "description": "A Polynesian legend states that the goddess Hina walked along a rainbow until she reached the Moon, where she still lives.",
     "imageFilename": "Person3.png"
   },
   "Armstrong": {
     "moonbaseName": "Armstrong",
+    "moonbaseNameImageFilename": "Armstrong.png",
     "fullName": "Neil Armstrong",
     "description": "U.S. astronaut Neil Armstrong was the first person to walk on the Moon in 1969. ",
     "imageFilename": "Person4.png"
   },
-  "Kitzler": {
-    "moonbaseName": "Kitzler",
+  "Kinzler": {
+    "moonbaseName": "Kinzler",
+    "moonbaseNameImageFilename": "Kinzler.png",
     "fullName": "Jack Kinzler",
-    "description": "ack Kinzler, an engineer from Pittsburgh, created an American flag for the Apollo 11 mission that appeared to fly on the Moon.",
+    "description": "Jack Kinzler, an engineer from Pittsburgh, created an American flag for the Apollo 11 mission that appeared to fly on the Moon.",
     "imageFilename": "Person5.png"
   },
   "Galileo": {
     "moonbaseName": "Galileo",
+    "moonbaseNameImageFilename": "Galileo.png",
     "fullName": "Galileo Galilei",
     "description": "16th century Italian astronomer Galileo Galilei discovered craters and mountains on the Moon.",
     "imageFilename": "Person5.png"
   },
   "Brashear": {
     "moonbaseName": "Brashear",
+    "moonbaseNameImageFilename": "Brashear.png",
     "fullName": "John and Phoebe Brashear",
     "description": "19th century Pittsburghers John and Phoebe Brashear designed and built world-renowned telescopes.",
     "imageFilename": "Person5.png"
   },
   "Tsukiyomi": {
-    "moonbaseName": "Tsukiyomi",
-    "fullName": "Tsukiyomi",
-    "description": "In Japanese Shintoism, Tsukiyomi is the proud and well-mannered Moon god. ",
+    "moonbaseName": "Tsukyomi",
+    "moonbaseNameImageFilename": "Tsukyomi.png",
+    "fullName": "Tsukyomi",
+    "description": "In Japanese Shintoism, Tsukyomi is the proud and well-mannered Moon god. ",
     "imageFilename": "Person5.png"
   },
   "Jack and Jill": {
     "moonbaseName": "Jack and Jill",
+    "moonbaseNameImageFilename": "JackandJill.png",
     "fullName": "Jack and Jill",
     "description": "In a Norse legend, siblings Jack and Jill climb up a hill to fetch a pail of water and are swept up into space to visit the Moon.",
     "imageFilename": "Person5.png"
   },
   "Al-Astrulabi": {
     "moonbaseName": "Al-Astrulabi",
+    "moonbaseNameImageFilename": "AlAstrulabi.png",
     "fullName": "Al-Astrulabi",
     "description": "In 10th century Syria, a Muslim woman designed a better astrolabe for navigating by the stars, earning her the name Al-Astrulabi.",
     "imageFilename": "Person5.png"
