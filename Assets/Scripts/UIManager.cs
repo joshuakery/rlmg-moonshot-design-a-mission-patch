@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using ArtScan;
 using ArtScan.WordSavingUtilsModule;
+using rlmg.logging;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class UIManager : MonoBehaviour
     public GameEvent closeAllWindows;
     public GameEvent startEvent;
     //debug
+    public GameEvent ConfigLoaded;
     public Timer mainTimer;
     public int currentWindow;
     public List<GameEvent> windowEvents;
@@ -72,6 +74,7 @@ public class UIManager : MonoBehaviour
     {
         started = true;
         StartCoroutine(LateStart());
+        RLMGLogger.Instance.Log("Starting game...", MESSAGETYPE.INFO);
     }
 
     public void StartGameOrReopenCurrentWindow()
@@ -85,6 +88,7 @@ public class UIManager : MonoBehaviour
         gameState.Reset();
         closeAllWindows.Raise();
         StartGame();
+        RLMGLogger.Instance.Log("Resetting game.", MESSAGETYPE.INFO);
     }
 
 
@@ -143,6 +147,18 @@ public class UIManager : MonoBehaviour
             WordSaving.DeleteFile(gameState.saveFile);
             saveScans.DeleteAllScans();
             ResetGame();
+        }
+        else if (Input.GetKeyDown(KeyCode.U))
+        {
+            closeAllWindows.Raise();
+        }
+        else if (Input.GetKeyDown(KeyCode.W))
+        {
+            startEvent.Raise();
+        }
+        else if (Input.GetKeyDown(KeyCode.T))
+        {
+            ConfigLoaded.Raise();
         }
         //Windows Events
         else if (Input.GetKeyDown(KeyCode.RightArrow))

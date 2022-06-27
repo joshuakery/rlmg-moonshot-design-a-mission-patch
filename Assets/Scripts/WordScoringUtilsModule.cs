@@ -26,6 +26,7 @@ namespace ArtScan.WordScoringUtilsModule
                     exclude.Add(team.namesake);
                 }
             }
+                                
             IEnumerable<KeyValuePair<string,int>> filtered = scores.Where(kvp => !exclude.Contains(kvp.Key));
 
             List<string> best = GetGreatest(filtered);

@@ -15,7 +15,7 @@ namespace ArtScan.WordSavingUtilsModule
         public static void SaveTeamsToFile(string saveFile, Team[] teams)
         {
             TeamsJSON teamsJSON = new TeamsJSON(teams);
-            string json = JsonUtility.ToJson(teamsJSON);
+            string json = JsonUtility.ToJson(teamsJSON, true);
             
             string filepath = Path.Join(Application.streamingAssetsPath, saveFile);
             File.WriteAllText(filepath, json);

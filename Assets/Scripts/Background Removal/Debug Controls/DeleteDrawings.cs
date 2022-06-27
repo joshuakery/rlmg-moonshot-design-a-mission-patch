@@ -40,10 +40,6 @@ public class DeleteDrawings : MonoBehaviour
 
     public void OnDeleteSelected()
     {
-        // saveScans.ClearTrash();
-
-        // Array.Clear(gameState.toTrash,0,gameState.toTrash.Length);
-
         for (int i=0; i<patchesContainer.childCount; i++)
         {
             Transform patchLogItem = patchesContainer.GetChild(i);
@@ -51,8 +47,6 @@ public class DeleteDrawings : MonoBehaviour
 
             if (gameState.scans[i] != null && toggle.isOn)
             {
-                // gameState.toTrash[i] = gameState.scans[i];
-
                 Array.Clear(gameState.scans, i, 1);
                 gameState.TrashScanFromCurrentTeam(i);
 
@@ -61,14 +55,6 @@ public class DeleteDrawings : MonoBehaviour
                 undoButton.interactable = true;
             }
         }
-
-        // for (int i=0; i<gameState.toTrash.Length; i++)
-        // {
-        //     if (gameState.toTrash[i] != null)
-        //         Array.Clear(gameState.scans, i, 1);
-        // }
-        // saveScans.TrashScans(gameState.toTrash);
-
     }
 
     public void OnUndo()

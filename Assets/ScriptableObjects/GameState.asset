@@ -17,21 +17,21 @@ MonoBehaviour:
   teams:
   - directory: rockets
     teamname: Rockets
-    namesake: Bobokin
+    namesake: 
     chosenWords:
-    - Smart
-    - Scientific
-    - Independent
+    - Sneaky
+    - Nervous
+    - Creative
   - directory: flyingSquirrels
     teamname: Flying Squirrels
-    namesake: Armstrong
+    namesake: Hina
     chosenWords:
-    - Ambitious
+    - Cranky
+    - Caring
     - Brave
-    - Bright
   - directory: phoenix
     teamname: Phoenix
-    namesake: Artemis
+    namesake: 
     chosenWords:
     - Independent
     - Honest

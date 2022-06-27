@@ -168,16 +168,19 @@ namespace ArtScan.CoreModule
         // Use this for initialization
         public void SetupRemoveBackground()
         {
+            RLMGLogger.Instance.Log("Setting up remove background...", MESSAGETYPE.INFO);
+
+
             fpsMonitor = GetComponent<FpsMonitor>();
 
             webCamTextureToMatHelper = gameObject.GetComponent<myWebCamTextureToMatHelper>();
 
 #if UNITY_WEBGL
-            getFilePath_Coroutine = GetFilePath ();
-            StartCoroutine (getFilePath_Coroutine);
+            // getFilePath_Coroutine = GetFilePath ();
+            // StartCoroutine (getFilePath_Coroutine);
 #else
-            sForests_model_filepath = Utils.getFilePath(SFORESTS_MODEL_FILENAME);
-            SetupStructuredForests();
+            // sForests_model_filepath = Utils.getFilePath(SFORESTS_MODEL_FILENAME);
+            // SetupStructuredForests();
 #endif
 
             if (configLoader.configData.defaultCamera != null)
@@ -206,7 +209,7 @@ namespace ArtScan.CoreModule
 
             getFilePath_Coroutine = null;
 
-            SetupStructuredForests();
+            // SetupStructuredForests();
         }
 #endif
 
@@ -233,7 +236,7 @@ namespace ArtScan.CoreModule
         /// </summary>
         public void OnWebCamTextureToMatHelperInitialized()
         {
-            RLMGLogger.Instance.Log("OnWebCamTextureToMatHelperInitialized", MESSAGETYPE.INFO);
+            RLMGLogger.Instance.Log("Calling OnWebCamTextureToMatHelperInitialized...", MESSAGETYPE.INFO);
 
             Mat webCamTextureMat = webCamTextureToMatHelper.GetMat();
 
@@ -272,7 +275,8 @@ namespace ArtScan.CoreModule
         /// </summary>
         public void OnWebCamTextureToMatHelperDisposed()
         {
-            Debug.Log("OnWebCamTextureToMatHelperDisposed");
+            // Debug.Log("OnWebCamTextureToMatHelperDisposed");
+            RLMGLogger.Instance.Log("OnWebCamTextureToMatHelperDisposed", MESSAGETYPE.INFO);
 
 #if !UNITY_WEBGL
             StopThread();
@@ -338,10 +342,12 @@ namespace ArtScan.CoreModule
                 Imgproc.putText (resultMat, "WebGL platform does not support multi-threading.", new Point (5, resultMat.rows () - 10), Imgproc.FONT_HERSHEY_SIMPLEX, 0.5, new Scalar (255, 255, 255, 255), 1, Imgproc.LINE_AA, false);
 #endif
 
+                    //perhaps reduce the size of this mat first
+                    
                     Utils.fastMatToTexture2D(resultMat, rawImageTexture, true, 0, true);
 
-                    if (beginScanButton)
-                        beginScanButton.interactable = beginScanButtonInteractable;
+                    // if (beginScanButton)
+                    //     beginScanButton.interactable = beginScanButtonInteractable;
                 }
                 
             }
@@ -349,7 +355,8 @@ namespace ArtScan.CoreModule
 
         private void InitThread()
         {
-            Debug.Log("initing thread");
+            // Debug.Log("initing thread");
+            RLMGLogger.Instance.Log("Initializing thread.", MESSAGETYPE.INFO);
             StopThread();
 
             rgbaMat4Thread = new Mat();
@@ -377,7 +384,8 @@ namespace ArtScan.CoreModule
             ThreadPool.QueueUserWorkItem(_ => action());
 #endif
 
-            Debug.Log("Thread Start");
+            // Debug.Log("Thread Start");
+            RLMGLogger.Instance.Log("Thread Start.", MESSAGETYPE.INFO);
         }
 
         private void StopThread()
@@ -389,10 +397,12 @@ namespace ArtScan.CoreModule
 
             while (isThreadRunning)
             {
-                Debug.Log("awaiting threading stop...");
+                // Debug.Log("awaiting threading stop...");
+                RLMGLogger.Instance.Log("Awaiting thread stop...", MESSAGETYPE.INFO);
                 //Wait threading stop
             }
-            Debug.Log("...thread stop.");
+            // Debug.Log("...thread stop.");
+            RLMGLogger.Instance.Log("...thread stopped.", MESSAGETYPE.INFO);
         }
 
 #if !UNITY_WEBGL
@@ -411,7 +421,8 @@ namespace ArtScan.CoreModule
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError(e);
+                    // Debug.LogError(e);
+                    RLMGLogger.Instance.Log(e.ToString(), MESSAGETYPE.INFO);
                     shouldStopThread = true;
                 }
                 
@@ -437,7 +448,8 @@ namespace ArtScan.CoreModule
                 }
                 catch (Exception e)
                 {
-                    Debug.Log(e);
+                    // Debug.Log(e);
+                    RLMGLogger.Instance.Log(e.ToString(), MESSAGETYPE.INFO);
                 }
 
                 shouldDetectInMultiThread = false;

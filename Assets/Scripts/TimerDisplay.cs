@@ -15,23 +15,31 @@ public class TimerDisplay : MonoBehaviour
 
     private void Start()
     {
-        if (!timer) timer = GameObject.Find("Timer").GetComponent<Timer>();
+        if (!timer)
+        {
+            GameObject timerGameObject = GameObject.Find("Timer");
+            if (timerGameObject)
+                timer = timerGameObject.GetComponent<Timer>();
+        }
     }
 
     private void Update()
     {
-        string display;
-        
-        if (displayAsMinutes)
+        if (timer)
         {
-            TimeSpan timeSpan = TimeSpan.FromSeconds(Mathf.Round(timer.time));
-            display = String.Format(@"<mspace={1}em>{0:%m}</mspace>:<mspace={1}em>{0:ss}</mspace>", timeSpan, mspace);
+            string display;
+            
+            if (displayAsMinutes)
+            {
+                TimeSpan timeSpan = TimeSpan.FromSeconds(Mathf.Round(timer.time));
+                display = String.Format(@"<mspace={1}em>{0:%m}</mspace>:<mspace={1}em>{0:ss}</mspace>", timeSpan, mspace);
+            }
+            else
+            {
+                display = Mathf.Round(timer.time).ToString();
+            }
+            
+            timerDisplay.text = display;
         }
-        else
-        {
-            display = Mathf.Round(timer.time).ToString();
-        }
-        
-        timerDisplay.text = display;
     }
 }

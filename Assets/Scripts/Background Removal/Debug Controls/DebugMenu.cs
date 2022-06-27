@@ -58,8 +58,6 @@ public class DebugMenu : MonoBehaviour
     public Color32 SUCCESS_COLOR = new Color32(40,178,52,255);
     public Color32 ERROR_COLOR = new Color32(178,40,40,255);
 
-    public TMP_Text fpsDisplay;
-
     public void InitializeDebugMenu()
     {
         if (webCamTextureToMatHelper == null)

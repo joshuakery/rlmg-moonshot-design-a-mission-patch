@@ -33,7 +33,8 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 _requestedDeviceName = value;
                 if (hasInitDone)
                 {
-                    Debug.Log("resetting requested device name");
+                    // Debug.Log("resetting requested device name");
+                    RLMGLogger.Instance.Log("resetting requested device name", MESSAGETYPE.INFO);
                     Initialize();
                 }
             }
@@ -674,7 +675,8 @@ namespace OpenCVForUnity.UnityUtils.Helper
             }
 
             // Starts the camera
-            Debug.Log("calling play");
+            // Debug.Log("calling play");
+            RLMGLogger.Instance.Log("calling play", MESSAGETYPE.INFO);
             webCamTexture.Play();
 
             int initFrameCount = 0;
