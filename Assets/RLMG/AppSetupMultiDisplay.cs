@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class AppSetupMultiDisplay : MonoBehaviour 
 {
-    // public bool setResolution = true;
-    // public int targetScreenWidth = 1920;
-    // public int targetScreenHeight = 1080;
+    public bool setResolution = true;
+    public int targetScreenWidth = 3840;
+    public int targetScreenHeight = 2160;
 
     void Start()
     {
@@ -16,8 +16,8 @@ public class AppSetupMultiDisplay : MonoBehaviour
         if (!Application.isEditor)
             Cursor.visible = false;
 
-        // if (setResolution)
-        //     Screen.SetResolution(targetScreenWidth, targetScreenHeight, true);
+        if (setResolution)
+            Screen.SetResolution(targetScreenWidth, targetScreenHeight, true);
 
         //Display.displays[0].Activate();
         //Display.displays[0].SetParams(1920, 1080, 0, 0);
@@ -47,7 +47,7 @@ public class AppSetupMultiDisplay : MonoBehaviour
         if (Display.displays.Length > 1)
         {
             Display.displays[1].Activate();
-            //Display.displays[1].SetParams(1080, 1920, 0, 0);
+            Display.displays[1].SetParams(1920, 1080, 0, 0);
 
             RLMGLogger.Instance.Log("Activated second display.   Rendering Res: " + Display.displays[1].renderingWidth + " x " + Display.displays[1].renderingHeight + "   System Res: " + Display.displays[1].systemWidth + " x " + Display.displays[1].systemHeight, MESSAGETYPE.INFO);
         }

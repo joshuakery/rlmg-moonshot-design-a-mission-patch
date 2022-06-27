@@ -1,72 +1,72 @@
 {
+  "Al-Astrulabi": {
+    "moonbaseName": "Al-Astrulabi",
+    "moonbaseNameImageFilename": "AlAstrulabi.png",
+    "fullName": "Al-Astrulabi",
+    "description": "In 10th century Syria, a Muslim woman designed a better astrolabe for navigating by the stars, earning her the name Al-Astrulabi.",
+    "imageFilename": "AlAstrulabi_image.png"
+  },
   "Johnson": {
     "moonbaseName": "Johnson",
     "moonbaseNameImageFilename": "Johnson.png",
     "fullName": "Katherine Johnson",
     "description": "Katherine Johnson was an African American mathematician whose calculations played an important role in the American 1969 Moon landing.",
-    "imageFilename": "Johnson.png"
+    "imageFilename": "Johnson_image.png"
   },
   "Artemis": {
     "moonbaseName": "Artemis",
     "moonbaseNameImageFilename": "Artemis.png",
     "fullName": "Artemis",
     "description": "Artemis is the Greek Goddess of the Moon, wild animals, and hunting.",
-    "imageFilename": "Person2.png"
+    "imageFilename": "Artemis_image.png"
   },
   "Hina": {
     "moonbaseName": "Hina",
     "moonbaseNameImageFilename": "Hina.png",
     "fullName": "Hina",
     "description": "A Polynesian legend states that the goddess Hina walked along a rainbow until she reached the Moon, where she still lives.",
-    "imageFilename": "Person3.png"
+    "imageFilename": "Hina_image.png"
   },
   "Armstrong": {
     "moonbaseName": "Armstrong",
     "moonbaseNameImageFilename": "Armstrong.png",
     "fullName": "Neil Armstrong",
     "description": "U.S. astronaut Neil Armstrong was the first person to walk on the Moon in 1969. ",
-    "imageFilename": "Person4.png"
-  },
-  "Kinzler": {
-    "moonbaseName": "Kinzler",
-    "moonbaseNameImageFilename": "Kinzler.png",
-    "fullName": "Jack Kinzler",
-    "description": "Jack Kinzler, an engineer from Pittsburgh, created an American flag for the Apollo 11 mission that appeared to fly on the Moon.",
-    "imageFilename": "Person5.png"
-  },
-  "Galileo": {
-    "moonbaseName": "Galileo",
-    "moonbaseNameImageFilename": "Galileo.png",
-    "fullName": "Galileo Galilei",
-    "description": "16th century Italian astronomer Galileo Galilei discovered craters and mountains on the Moon.",
-    "imageFilename": "Person5.png"
+    "imageFilename": "Armstrong_image.png"
   },
   "Brashear": {
     "moonbaseName": "Brashear",
     "moonbaseNameImageFilename": "Brashear.png",
     "fullName": "John and Phoebe Brashear",
     "description": "19th century Pittsburghers John and Phoebe Brashear designed and built world-renowned telescopes.",
-    "imageFilename": "Person5.png"
+    "imageFilename": "Brashears_image.png"
+  },
+  "Kinzler": {
+    "moonbaseName": "Hamilton",
+    "moonbaseNameImageFilename": "Hamilton.png",
+    "fullName": "Margaret Hamilton",
+    "description": "Margaret developed software that made the first Moon landing possible. She later founded two software companies.",
+    "imageFilename": "Hamilton_image.png"
+  },
+  "Galileo": {
+    "moonbaseName": "Galileo",
+    "moonbaseNameImageFilename": "Galileo.png",
+    "fullName": "Galileo Galilei",
+    "description": "16th century Italian astronomer Galileo Galilei discovered craters and mountains on the Moon.",
+    "imageFilename": "Galileo_image.png"
   },
   "Tsukiyomi": {
-    "moonbaseName": "Tsukyomi",
-    "moonbaseNameImageFilename": "Tsukyomi.png",
-    "fullName": "Tsukyomi",
-    "description": "In Japanese Shintoism, Tsukyomi is the proud and well-mannered Moon god. ",
-    "imageFilename": "Person5.png"
+    "moonbaseName": "Kaguya",
+    "moonbaseNameImageFilename": "Kaguya.png",
+    "fullName": "Princess Kaguya",
+    "description": "In legends, Kaguya is discovered in a mysterious glowing bamboo stalk and grows up in Japan before returning to the Moon.",
+    "imageFilename": "Kaguya_image.png"
   },
   "Jack and Jill": {
-    "moonbaseName": "Jack and Jill",
-    "moonbaseNameImageFilename": "JackandJill.png",
-    "fullName": "Jack and Jill",
-    "description": "In a Norse legend, siblings Jack and Jill climb up a hill to fetch a pail of water and are swept up into space to visit the Moon.",
-    "imageFilename": "Person5.png"
-  },
-  "Al-Astrulabi": {
-    "moonbaseName": "Al-Astrulabi",
-    "moonbaseNameImageFilename": "AlAstrulabi.png",
-    "fullName": "Al-Astrulabi",
-    "description": "In 10th century Syria, a Muslim woman designed a better astrolabe for navigating by the stars, earning her the name Al-Astrulabi.",
-    "imageFilename": "Person5.png"
+    "moonbaseName": "Melvin",
+    "moonbaseNameImageFilename": "Melvin.png",
+    "fullName": "Leland Melvin",
+    "description": "Leland overcame ear trauma to fly to space. He champions diversity in space careers because “talent is in every single zip code.”",
+    "imageFilename": "Melvin_image.png"
   }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 using Newtonsoft.Json;
 using UnityEngine.EventSystems;
 using ArtScan.CoreModule;
+using rlmg.logging;
 
 namespace ArtScan.CamConfigLoaderModule
 {
@@ -35,7 +36,10 @@ namespace ArtScan.CamConfigLoaderModule
 			configData = JsonConvert.DeserializeObject<CamConfigJSON>(contentData);
 
 			if (configData == null)
+			{
+				RLMGLogger.Instance.Log("Config data empty", MESSAGETYPE.INFO);
 				yield break;
+			}
 
 			if (settings == null)
 				settings = (RemoveBackgroundSettings)FindObjectOfType(typeof(RemoveBackgroundSettings));

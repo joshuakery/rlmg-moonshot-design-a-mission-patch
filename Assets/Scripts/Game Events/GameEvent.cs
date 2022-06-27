@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using rlmg.logging;
 
 [CreateAssetMenu(menuName = "Event/GameEvent"), System.Serializable]
 public class GameEvent : ScriptableObject
@@ -10,7 +11,8 @@ public class GameEvent : ScriptableObject
 
     public void Raise()
     {
-        Debug.Log(this.name);
+        // Debug.Log(this.name);
+        RLMGLogger.Instance.Log("GameEvent raised: " + this.name, MESSAGETYPE.INFO);
         for(int i = listeners.Count -1; i >= 0; i--) {
             listeners[i].OnEventRaised();
         }

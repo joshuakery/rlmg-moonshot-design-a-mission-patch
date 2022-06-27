@@ -89,7 +89,8 @@ namespace ArtScan.ScanSavingModule
 
             DirectoryInfo di = new DirectoryInfo(readPath);
 
-            Debug.Log("READING SCANS from " + readPath);
+            // Debug.Log("READING SCANS from " + readPath);
+            RLMGLogger.Instance.Log("Rading scans from " + readPath, MESSAGETYPE.INFO);
             
             try
             {
@@ -114,7 +115,8 @@ namespace ArtScan.ScanSavingModule
 
             DateTime after = DateTime.Now; 
             TimeSpan duration = after.Subtract(before);
-            Debug.Log("READ SCANS Duration in milliseconds: " + duration.Milliseconds);
+            // Debug.Log("READ SCANS Duration in milliseconds: " + duration.Milliseconds);
+            RLMGLogger.Instance.Log("Read scans in milliseconds: " + duration.Milliseconds, MESSAGETYPE.INFO);
 
         }
 
@@ -151,11 +153,20 @@ namespace ArtScan.ScanSavingModule
             // string teamDir = gameState.teams[gameState.currentTeam].directory;
             // string teamDirPath = Path.Combine(dirPath,teamDir);
             DirectoryInfo saveDI = new DirectoryInfo(savePath);
-
             DirectoryInfo trashDI = new DirectoryInfo(trashPath);
 
             try
             {
+                if (!saveDI.Exists)
+                {
+                    saveDI.Create();
+                    RLMGLogger.Instance.Log(String.Format("{0} directory created successfully.",savePath), MESSAGETYPE.INFO);
+                }
+                if (!trashDI.Exists)
+                {
+                    trashDI.Create();
+                    RLMGLogger.Instance.Log(String.Format("{0} directory created successfully.",trashPath), MESSAGETYPE.INFO);
+                }
                 if (saveDI.Exists && trashDI.Exists)
                 {
                     string[] pngList = Directory.GetFiles(savePath, "*.png");
@@ -428,44 +439,49 @@ public class saveScans : MonoBehaviour
         
         DateTime before = DateTime.Now;
 
-        DirectoryInfo mainDI = new DirectoryInfo(dirPath);
-
-        string teamDir = gameState.teams[gameState.currentTeam].directory;
-        string fullPath = Path.Combine(dirPath,teamDir);
-        DirectoryInfo teamDI = new DirectoryInfo(fullPath);
-
-        Debug.Log("READING SCANS from " + fullPath);
-        
-        try
+        if (!String.IsNullOrEmpty(dirPath))
         {
-            if (mainDI.Exists)
+            DirectoryInfo mainDI = new DirectoryInfo(dirPath);
+
+            string teamDir = gameState.teams[gameState.currentTeam].directory;
+            string fullPath = Path.Combine(dirPath,teamDir);
+            DirectoryInfo teamDI = new DirectoryInfo(fullPath);
+
+            RLMGLogger.Instance.Log("Reading scans from " + fullPath, MESSAGETYPE.INFO);
+             
+            try
             {
-                if (teamDI.Exists)
+                if (mainDI.Exists)
                 {
-                    string[] pngList = Directory.GetFiles(fullPath, "*.png");
-
-                    RLMGLogger.Instance.Log(String.Format("{0} png files found in directory.",pngList.Length.ToString()), MESSAGETYPE.INFO);
-
-                    foreach (string png in pngList)
+                    if (teamDI.Exists)
                     {
-                        Texture2D scanTexture = GetTexture2DFromImageFile(png);
-                        string number = Path.GetFileNameWithoutExtension(png);
-                        gameState.AddScan(scanTexture, Int32.Parse(number));
-                    }
+                        string[] pngList = Directory.GetFiles(fullPath, "*.png");
 
-                    if (callback != null)
-                        callback.Raise();
+                        RLMGLogger.Instance.Log(String.Format("{0} png files found in directory.",pngList.Length.ToString()), MESSAGETYPE.INFO);
+
+                        foreach (string png in pngList)
+                        {
+                            Texture2D scanTexture = GetTexture2DFromImageFile(png);
+                            string number = Path.GetFileNameWithoutExtension(png);
+                            gameState.AddScan(scanTexture, Int32.Parse(number));
+                        }
+
+                        if (callback != null)
+                            callback.Raise();
+                    }
                 }
             }
-        }
-        catch (Exception e)
-        {
-            RLMGLogger.Instance.Log(String.Format("The process failed: {0}.",e.ToString()), MESSAGETYPE.ERROR);
+            catch (Exception e)
+            {
+                RLMGLogger.Instance.Log(String.Format("The process failed: {0}.",e.ToString()), MESSAGETYPE.ERROR);
+            }
+
         }
 
         DateTime after = DateTime.Now; 
         TimeSpan duration = after.Subtract(before);
-        Debug.Log("READ SCANS Duration in milliseconds: " + duration.Milliseconds);
+        // Debug.Log();
+        RLMGLogger.Instance.Log("READ SCANS Duration in milliseconds: " + duration.Milliseconds, MESSAGETYPE.INFO);
 
     }
 

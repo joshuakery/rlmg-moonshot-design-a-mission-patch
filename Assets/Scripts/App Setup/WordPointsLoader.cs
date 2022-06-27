@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using ArtScan;
 using ArtScan.WordScoringUtilsModule;
+using rlmg.logging;
 
 namespace ArtScan.WordPoints
 {
@@ -56,7 +57,8 @@ namespace ArtScan.WordPoints
             }
 
             // yield return StartCoroutine(LoadImagesViaFilenames(timelineContent));
-            Debug.Log("...loaded "+wordPointsContent.wordPoints.Count+" wordpoints.");
+            // Debug.Log("...loaded "+wordPointsContent.wordPoints.Count+" wordpoints.");
+            RLMGLogger.Instance.Log("...loaded "+wordPointsContent.wordPoints.Count+" wordpoints.", MESSAGETYPE.INFO);
             gameState.wordPointsContent = wordPointsContent;
 
             // SampleOdds();

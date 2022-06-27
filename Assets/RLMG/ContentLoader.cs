@@ -7,6 +7,7 @@ using System.IO;
 using System;
 using System.Text.RegularExpressions;
 using UnityEngine.Networking;
+using rlmg.logging;
 
 public class ContentLoader : MonoBehaviour
 {
