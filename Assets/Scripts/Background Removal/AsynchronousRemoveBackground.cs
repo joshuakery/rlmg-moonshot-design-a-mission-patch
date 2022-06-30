@@ -311,27 +311,41 @@ namespace ArtScan.CoreModule
             RLMGLogger.Instance.Log("OnWebCamTextureToMatHelperErrorOccurred " + errorCode, MESSAGETYPE.ERROR);
         }
 
+        private void CopyToThreadMats()
+        {
+            Mat rgbaMat = webCamTextureToMatHelper.GetMat();
+
+            if (rgbaMat4Thread != null)
+                rgbaMat.copyTo(rgbaMat4Thread);
+
+            if (rgbaMat4RefinedThread != null)
+                rgbaMat.copyTo(rgbaMat4RefinedThread);
+            
+        }
+
+        private void ToTexture2D()
+        {
+            Utils.fastMatToTexture2D(resultMat, rawImageTexture, true, 0, true);
+        }
+
         // Update is called once per frame
         void Update()
         {
             bool webCamTextureReady = (webCamTextureToMatHelper &&
-                webCamTextureToMatHelper.IsPlaying () &&
-                webCamTextureToMatHelper.DidUpdateThisFrame ());
+                webCamTextureToMatHelper.IsPlaying ());
 
-            if (webCamTextureReady)
+            if (webCamTextureReady && !isThreadRunning)
+                InitThread();
+            
+            if (!webCamTextureReady)
+                StopThread();
+
+            if (webCamTextureReady && webCamTextureToMatHelper.DidUpdateThisFrame ())
             {
                 if (!shouldDetectInMultiThread)
                 {
-                    Mat rgbaMat = webCamTextureToMatHelper.GetMat();
-                    
-                    if (rgbaMat4Thread != null)
-                        rgbaMat.copyTo(rgbaMat4Thread);
-
-                    if (rgbaMat4RefinedThread != null)
-                        rgbaMat.copyTo(rgbaMat4RefinedThread);
-
+                    CopyToThreadMats();
                     shouldDetectInMultiThread = true;
-                    
                 }
 
                 if (didUpdateTheDetectionResult)
@@ -339,12 +353,12 @@ namespace ArtScan.CoreModule
                     didUpdateTheDetectionResult = false;
 
 #if UNITY_WEBGL
-                Imgproc.putText (resultMat, "WebGL platform does not support multi-threading.", new Point (5, resultMat.rows () - 10), Imgproc.FONT_HERSHEY_SIMPLEX, 0.5, new Scalar (255, 255, 255, 255), 1, Imgproc.LINE_AA, false);
+                    Imgproc.putText (resultMat, "WebGL platform does not support multi-threading.", new Point (5, resultMat.rows () - 10), Imgproc.FONT_HERSHEY_SIMPLEX, 0.5, new Scalar (255, 255, 255, 255), 1, Imgproc.LINE_AA, false);
 #endif
 
                     //perhaps reduce the size of this mat first
                     
-                    Utils.fastMatToTexture2D(resultMat, rawImageTexture, true, 0, true);
+                    ToTexture2D();
 
                     // if (beginScanButton)
                     //     beginScanButton.interactable = beginScanButtonInteractable;
@@ -460,6 +474,8 @@ namespace ArtScan.CoreModule
 
         private void ProcessImage()
         {
+            if ( rgbaMat4Thread.empty() ) return;
+
             //reduce size
             if (DOWNSCALE_RATIO > 0)
                 Imgproc.resize (rgbaMat4Thread, rgbaMat4Thread, new Size (), 1.0 / DOWNSCALE_RATIO, 1.0 / DOWNSCALE_RATIO, Imgproc.INTER_LINEAR);

@@ -11,10 +11,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/justRuns.unity
     guid: d00149b7507f84bab96a70dd897e5cee
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Mission1-Async.unity
     guid: 02ba6e88bf5a349f0ad1bbc7f37799f3
-  - enabled: 1
+  - enabled: 0
     path: Assets/SharedConclusion/Scenes/ResultsScene.unity
     guid: 2965bb9837ba24dfa8b71e6de0872260
+  - enabled: 1
+    path: Assets/Scenes/test2.unity
+    guid: de30df4646eeb4141b1a72e904e8738f
   m_configObjects: {}
