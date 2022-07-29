@@ -14,31 +14,18 @@ namespace ArtScan.TeamsModule
     [System.Serializable]
 	public class TeamsJSON
 	{
-		public Team[] teams;
+		public List<MoonshotTeamData> teams;
 
-        public TeamsJSON(Team[] n_teams)
+        public TeamsJSON(List<MoonshotTeamData> n_teams)
         {
             teams = n_teams;
         }
-		
 	}
 
     [System.Serializable]
     public class TeamsJSONDeserializable
     {
-        public List<Team> teams;
-    }
-
-    [Serializable]
-    public class Team
-    {
-        public string directory;
-        public string teamname;
-
-        public string namesake;
-
-        public List<string> chosenWords;
-
+        public List<MoonshotTeamData> teams;
     }
 
     public class TeamsLoader : ContentLoader
@@ -49,13 +36,11 @@ namespace ArtScan.TeamsModule
 
         private void SetupDefaultTeam()
         {
-            Team defaultTeam = new Team();
-            defaultTeam.directory = "defaultTeam";
-            defaultTeam.teamname = "Default Team";
+            MoonshotTeamData defaultTeam = new MoonshotTeamData();
+            defaultTeam.teamName = "Default Team";
             defaultTeam.chosenWords = new List<string>();
 
-            Team[] teams = new Team[] { defaultTeam };
-            gameState.teams = teams;
+            gameState.AddTeam(defaultTeam);
         }
 
         protected override IEnumerator PopulateContent(string contentData)
@@ -72,7 +57,20 @@ namespace ArtScan.TeamsModule
 
             if (gameState != null && teamsJSON != null)
             {
-                gameState.teams = teamsJSON.teams.ToArray();
+                if (gameState.teams.Count == 0)
+                {
+                    if (teamsJSON.teams.Count == 0)
+                    {
+                        SetupDefaultTeam();
+                    }
+                    else
+                    {
+                        foreach (MoonshotTeamData team in teamsJSON.teams)
+                            gameState.AddTeam(team);
+                    }
+                }
+
+                    
             }
                 
             yield break;

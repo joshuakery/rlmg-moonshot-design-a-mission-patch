@@ -168,7 +168,7 @@ namespace ArtScan.CoreModule
         // Use this for initialization
         public void SetupRemoveBackground()
         {
-            RLMGLogger.Instance.Log("Setting up remove background...", MESSAGETYPE.INFO);
+            //RLMGLogger.Instance.Log("Setting up remove background...", MESSAGETYPE.INFO);
 
 
             fpsMonitor = GetComponent<FpsMonitor>();
@@ -221,7 +221,7 @@ namespace ArtScan.CoreModule
             }
             else
             {
-                RLMGLogger.Instance.Log("Creating edge detection... " + sForests_model_filepath, MESSAGETYPE.INFO);
+                //RLMGLogger.Instance.Log("Creating edge detection... " + sForests_model_filepath, MESSAGETYPE.INFO);
 
                 edgeDetection = Ximgproc.createStructuredEdgeDetection(sForests_model_filepath);
                 
@@ -236,7 +236,7 @@ namespace ArtScan.CoreModule
         /// </summary>
         public void OnWebCamTextureToMatHelperInitialized()
         {
-            RLMGLogger.Instance.Log("Calling OnWebCamTextureToMatHelperInitialized...", MESSAGETYPE.INFO);
+            //RLMGLogger.Instance.Log("Calling OnWebCamTextureToMatHelperInitialized...", MESSAGETYPE.INFO);
 
             Mat webCamTextureMat = webCamTextureToMatHelper.GetMat();
 
@@ -334,6 +334,12 @@ namespace ArtScan.CoreModule
             bool webCamTextureReady = (webCamTextureToMatHelper &&
                 webCamTextureToMatHelper.IsPlaying ());
 
+            //if (webCamTextureToMatHelper != null)
+            //{
+            //    Debug.Log(webCamTextureToMatHelper.IsPlaying());
+            //    Debug.Log(webCamTextureToMatHelper.DidUpdateThisFrame());
+            //}
+
             if (webCamTextureReady && !isThreadRunning)
                 InitThread();
             
@@ -369,8 +375,7 @@ namespace ArtScan.CoreModule
 
         private void InitThread()
         {
-            // Debug.Log("initing thread");
-            RLMGLogger.Instance.Log("Initializing thread.", MESSAGETYPE.INFO);
+            //RLMGLogger.Instance.Log("Initializing thread.", MESSAGETYPE.INFO);
             StopThread();
 
             rgbaMat4Thread = new Mat();
@@ -398,8 +403,7 @@ namespace ArtScan.CoreModule
             ThreadPool.QueueUserWorkItem(_ => action());
 #endif
 
-            // Debug.Log("Thread Start");
-            RLMGLogger.Instance.Log("Thread Start.", MESSAGETYPE.INFO);
+            //RLMGLogger.Instance.Log("Thread Start.", MESSAGETYPE.INFO);
         }
 
         private void StopThread()
@@ -411,12 +415,11 @@ namespace ArtScan.CoreModule
 
             while (isThreadRunning)
             {
-                // Debug.Log("awaiting threading stop...");
-                RLMGLogger.Instance.Log("Awaiting thread stop...", MESSAGETYPE.INFO);
+                //RLMGLogger.Instance.Log("Awaiting thread stop...", MESSAGETYPE.INFO);
                 //Wait threading stop
             }
-            // Debug.Log("...thread stop.");
-            RLMGLogger.Instance.Log("...thread stopped.", MESSAGETYPE.INFO);
+
+            //RLMGLogger.Instance.Log("...thread stopped.", MESSAGETYPE.INFO);
         }
 
 #if !UNITY_WEBGL

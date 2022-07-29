@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2779dda1589491a900b43739f80c71, type: 3}
   m_Name: RB Settings
   m_EditorClassIdentifier: 
+  saveDir: Images
+  trashDir: Trashed Images
   targetWidth: 750
   targetHeight: 750
   brightness: 255
   contrast: 127
-  edgeFindingMethod: 1
-  doCropToBoundingBox: 0
+  edgeFindingMethod: 0
+  cannyThreshold1: 100
+  cannyThreshold2: 200
+  cannyApertureSize: 3
+  doCropToBoundingBox: 1
   doSizeToFit: 1

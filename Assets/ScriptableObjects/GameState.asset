@@ -13,29 +13,80 @@ MonoBehaviour:
   m_Name: GameState
   m_EditorClassIdentifier: 
   currentRound: 2
-  currentTeam: 1
+  currentTeamIndex: 1
   teams:
-  - directory: rockets
-    teamname: Rockets
+  - teamName: Green
     namesake: 
-    chosenWords:
-    - Sneaky
-    - Nervous
-    - Creative
-  - directory: flyingSquirrels
-    teamname: Flying Squirrels
-    namesake: Hina
-    chosenWords:
-    - Cranky
-    - Caring
-    - Brave
-  - directory: phoenix
-    teamname: Phoenix
+    chosenWords: []
+    didRoverActivity: 1
+    roverStepsCompleted: 0
+    didMapActivity: 0
+    mapRoundsCompleted: 0
+    settlementShelterQuality: 0
+    settlementCommsQuality: 0
+    settlementSunQuality: 0
+    settlementWaterQuality: 0
+    didArtActivity: 0
+    artworks:
+    - Green-0.png
+    - Green-1.png
+    - Green-2.png
+    - Green-3.png
+    - 
+    - 
+    didCharterActivity: 0
+    charterQsCompleted: 0
+    charterMeterDecisions: 0
+    charterMeterPriorities: 0
+    charterMeterStrictness: 0
+    didHuntActivity: 0
+    huntNumFound: 0
+  - teamName: Purple
     namesake: 
-    chosenWords:
-    - Independent
-    - Honest
-    - Helpful
+    chosenWords: []
+    didRoverActivity: 1
+    roverStepsCompleted: 0
+    didMapActivity: 0
+    mapRoundsCompleted: 0
+    settlementShelterQuality: 0
+    settlementCommsQuality: 0
+    settlementSunQuality: 0
+    settlementWaterQuality: 0
+    didArtActivity: 0
+    artworks:
+    - Purple-0.png
+    - Purple-1.png
+    - Purple-2.png
+    - Purple-3.png
+    - Purple-4.png
+    - Purple-5.png
+    didCharterActivity: 0
+    charterQsCompleted: 0
+    charterMeterDecisions: 0
+    charterMeterPriorities: 0
+    charterMeterStrictness: 0
+    didHuntActivity: 0
+    huntNumFound: 0
+  - teamName: Yellow
+    namesake: 
+    chosenWords: []
+    didRoverActivity: 1
+    roverStepsCompleted: 0
+    didMapActivity: 0
+    mapRoundsCompleted: 0
+    settlementShelterQuality: 0
+    settlementCommsQuality: 0
+    settlementSunQuality: 0
+    settlementWaterQuality: 0
+    didArtActivity: 0
+    artworks: []
+    didCharterActivity: 0
+    charterQsCompleted: 0
+    charterMeterDecisions: 0
+    charterMeterPriorities: 0
+    charterMeterStrictness: 0
+    didHuntActivity: 0
+    huntNumFound: 0
   saveFile: teams.json
   preview: {fileID: 0}
   scanMax: 6
@@ -46,8 +97,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  trashHistory: []
-  lastClearedIndex: 0
+  nextToReplace: 000000000100000002000000030000000400000005000000
   exclude:
   - 
   settings: {fileID: 11400000, guid: eebe36b8bd1234f8ca3d2e070246f3b8, type: 2}
+  uploadThreadController: {fileID: 11400000, guid: c37264f6532894e1a9286ee4ab8fdc7f, type: 2}

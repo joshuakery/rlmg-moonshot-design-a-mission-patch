@@ -61,18 +61,18 @@ public class WordChoices : MonoBehaviour
 
     public void ToggleChoice(string choice, Toggle toggle)
     {
-        if (gameState.teams[gameState.currentTeam].chosenWords.Contains(choice))
+        if (gameState.currentTeam.chosenWords.Contains(choice))
         {
-            gameState.teams[gameState.currentTeam].chosenWords.Remove(choice);
+            gameState.currentTeam.chosenWords.Remove(choice);
             offToggles.Add(toggle);
         }
-        else if (gameState.teams[gameState.currentTeam].chosenWords.Count <= 2)
+        else if (gameState.currentTeam.chosenWords.Count <= 2)
         {
-            gameState.teams[gameState.currentTeam].chosenWords.Add(choice);
+            gameState.currentTeam.chosenWords.Add(choice);
             offToggles.Remove(toggle);
         }
 
-        if (gameState.teams[gameState.currentTeam].chosenWords.Count == 3)
+        if (gameState.currentTeam.chosenWords.Count == 3)
         {
             continueButton.interactable = true;
             foreach(Toggle t in offToggles)

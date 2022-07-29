@@ -16,7 +16,11 @@ namespace ArtScan.ScanSavingModule
 {
     public static class ScanSaving
     {
-        private static Texture2D GetTexture2DFromImageFile(string png, RemoveBackgroundSettings settings, myWebCamTextureToMatHelper webCamTextureToMatHelper)
+        public static Texture2D GetTexture2DFromImageFile(
+            string png,
+            RemoveBackgroundSettings settings,
+            myWebCamTextureToMatHelper webCamTextureToMatHelper
+        )
         {
             using (
                 Mat src = OpenCVForUnity.ImgcodecsModule.Imgcodecs.imread(
@@ -34,164 +38,282 @@ namespace ArtScan.ScanSavingModule
             {
                 Imgproc.cvtColor(src, src, Imgproc.COLOR_BGRA2RGBA);;
 
-                PresentationUtils.MakeReadyToPresent(
-                    src, displayMat,
-                    settings.doCropToBoundingBox, settings.doSizeToFit
-                );
+                if (src.size().width > 0 && src.size().height > 0)
+                    PresentationUtils.MakeReadyToPresent(
+                        src, displayMat,
+                        settings.doCropToBoundingBox, settings.doSizeToFit
+                    );
 
                 Texture2D scanTexture = new Texture2D(displayMat.cols(), displayMat.rows(), TextureFormat.RGBA32, false);
                 Utils.fastMatToTexture2D(displayMat,scanTexture,true,0,true);
                 return scanTexture;
             }
         }
-        private static void DeleteExcessFiles(string[] pngList)
-        {
-            // //delete excess file(s)
-            // if (pngList.Length >= gameState.scanMax)
-            // {
-            //     //failsafe: delete all files after scanMax
-            //     for (int i=gameState.scanMax; i<pngList.Length; i++)
-            //     {
-            //         File.Delete(pngList[i]);
-            //     }
-            // }
-        }
 
-        private static void DeleteFilenameMatchingIndex(string[] pngList, int index)
+        private static void SaveMatToFile(Mat src, string fullPath)
         {
-            foreach (string png in pngList)
-            {
-                string number = Path.GetFileNameWithoutExtension(png);
-                if (Int32.Parse(number) == index)
-                {
-                    File.Delete(png);
-                }
-            }
-        }
-
-        private static void SaveMatToFile(Mat src, int index, string fullPath)
-        {
-            string filename = String.Format("{0}.png",index);
-            string filepath = Path.Join(fullPath,filename);
             Imgproc.cvtColor(src, src, Imgproc.COLOR_RGBA2BGRA);
-            OpenCVForUnity.ImgcodecsModule.Imgcodecs.imwrite(filepath,src);
+            OpenCVForUnity.ImgcodecsModule.Imgcodecs.imwrite(fullPath, src);
         }
 
-        public static void ReadScans(
-            Func<Texture2D,int,int> AddScan,
-            string readPath,
-            RemoveBackgroundSettings settings,
-            myWebCamTextureToMatHelper webCamTextureToMatHelper
-        )
+        public static string FormatScanFilename(string teamName, int index)
         {
-            
+            return String.Format("{0}-{1}.png", teamName, index);
+        }
+
+        public static IEnumerator DownloadScansCoroutine(string dirPath, string[] filenames, bool doOverwrite, GameEvent callbackEvent)
+        {
             DateTime before = DateTime.Now;
 
-            DirectoryInfo di = new DirectoryInfo(readPath);
-
-            // Debug.Log("READING SCANS from " + readPath);
-            RLMGLogger.Instance.Log("Rading scans from " + readPath, MESSAGETYPE.INFO);
-            
-            try
+            if (!String.IsNullOrEmpty(dirPath))
             {
-                if (di.Exists)
+                DirectoryInfo mainDI = new DirectoryInfo(dirPath);
+
+                if (!mainDI.Exists)
                 {
-                    string[] pngList = Directory.GetFiles(readPath, "*.png");
-
-                    RLMGLogger.Instance.Log(String.Format("{0} png files found in directory.",pngList.Length.ToString()), MESSAGETYPE.INFO);
-
-                    foreach (string png in pngList)
-                    {
-                        Texture2D scanTexture = GetTexture2DFromImageFile(png, settings, webCamTextureToMatHelper);
-                        string number = Path.GetFileNameWithoutExtension(png);
-                        AddScan(scanTexture, Int32.Parse(number));
-                    }
+                    mainDI.Create();
+                    RLMGLogger.Instance.Log(String.Format("The directory was created successfully at {0}.", dirPath), MESSAGETYPE.INFO);
                 }
-            }
-            catch (Exception e)
-            {
-                RLMGLogger.Instance.Log(String.Format("The process failed: {0}.",e.ToString()), MESSAGETYPE.ERROR);
-            }
 
-            DateTime after = DateTime.Now; 
-            TimeSpan duration = after.Subtract(before);
-            // Debug.Log("READ SCANS Duration in milliseconds: " + duration.Milliseconds);
-            RLMGLogger.Instance.Log("Read scans in milliseconds: " + duration.Milliseconds, MESSAGETYPE.INFO);
+                RLMGLogger.Instance.Log(String.Format("Downloading scans to {0}.", dirPath), MESSAGETYPE.INFO);
 
-        }
-
-        public static void SaveScan(Mat src, string saveDirPath, int index)
-        {
-            DirectoryInfo di = new DirectoryInfo(saveDirPath);
-            
-            try
-            {
-                if (di.Exists)
+                if (filenames != null)
                 {
-                    string[] pngList = Directory.GetFiles(saveDirPath, "*.png");
-                    DeleteExcessFiles(pngList);
-                    DeleteFilenameMatchingIndex(pngList, index);
+                    int count = 0;
+                    foreach (string filename in filenames)
+                    {
+                        if (!String.IsNullOrEmpty(filename))
+                        {
+                            if (doOverwrite || !File.Exists(Path.Join(dirPath, filename)))
+                            {
+                                DownloadThreadController.DownloadThread downloadThread = new DownloadThreadController.DownloadThread();
+                                downloadThread.filename = filename;
+                                downloadThread.dirPath = dirPath;
+
+                                downloadThread.Start();
+
+                                yield return downloadThread.WaitFor();
+
+                                count++;
+                                RLMGLogger.Instance.Log(String.Format("Downloaded {0} of {1} scans.", count, filenames.Length), MESSAGETYPE.INFO);
+                            }
+                                
+                        }
+
+                    }
                 }
                 else
                 {
-                    di.Create();
-                    RLMGLogger.Instance.Log(String.Format("{0} directory created successfully.",saveDirPath), MESSAGETYPE.INFO);
+                    RLMGLogger.Instance.Log("Current team has no artworks list. Cannot download scans.", MESSAGETYPE.ERROR);
+                }
+            }
+
+            DateTime after = DateTime.Now;
+            TimeSpan duration = after.Subtract(before);
+
+            RLMGLogger.Instance.Log(String.Format("Downloaded scans in {0} milliseconds.", duration.Milliseconds), MESSAGETYPE.INFO);
+
+            if (callbackEvent != null)
+                callbackEvent.Raise();
+        }
+
+        public static void DownloadScans(string dirPath, MoonshotTeamData currentTeam)
+        {
+            DownloadScans(dirPath, currentTeam, true);
+        }
+
+        public static void DownloadScans(string dirPath, MoonshotTeamData currentTeam, bool doOverwrite)
+        {
+            DateTime before = DateTime.Now;
+
+            if (!String.IsNullOrEmpty(dirPath))
+            {
+                DirectoryInfo mainDI = new DirectoryInfo(dirPath);
+
+                if (!mainDI.Exists)
+                {
+                    mainDI.Create();
+                    RLMGLogger.Instance.Log(String.Format("The directory was created successfully at {0}.", dirPath), MESSAGETYPE.INFO);
                 }
 
-                SaveMatToFile(src,index,saveDirPath);
+                if (currentTeam == null)
+                {
+                    RLMGLogger.Instance.Log("There is no current team. Cannot download scans.", MESSAGETYPE.ERROR);
+                    return;
+                }
 
+                RLMGLogger.Instance.Log(String.Format("Downloading scans to {0}.", dirPath), MESSAGETYPE.INFO);
+
+                if (currentTeam.artworks != null)
+                {
+                    foreach (string filename in currentTeam.artworks)
+                    {
+                        if (!String.IsNullOrEmpty(filename))
+                        {
+                            if (doOverwrite || !File.Exists( Path.Join(dirPath,filename) ) )
+                                ClientSend.GetFileFromServer(filename, dirPath);
+                        }
+
+                    }
+                }
+                else
+                {
+                    RLMGLogger.Instance.Log("Current team has no artworks list. Cannot download scans.", MESSAGETYPE.ERROR);
+                    return;
+                }
+            }
+
+            DateTime after = DateTime.Now;
+            TimeSpan duration = after.Subtract(before);
+
+            RLMGLogger.Instance.Log(String.Format("Downloaded scans in {0} milliseconds.", duration.Milliseconds), MESSAGETYPE.INFO);
+        }
+
+        //public static void ReadScans(
+        //    string dirPath,
+        //    string[] filenames,
+        //    Func<Texture2D, int, int> AddScan,
+        //    RemoveBackgroundSettings settings,
+        //    myWebCamTextureToMatHelper webCamTextureToMatHelper
+        //)
+        //{
+        //    DateTime before = DateTime.Now;
+
+        //    if (!String.IsNullOrEmpty(dirPath))
+        //    {
+        //        DirectoryInfo mainDI = new DirectoryInfo(dirPath);
+
+        //        if (!mainDI.Exists)
+        //        {
+        //            mainDI.Create();
+        //            RLMGLogger.Instance.Log(String.Format("The directory was created successfully at {0}.", dirPath), MESSAGETYPE.INFO);
+        //        }
+
+        //        if (filenames == null)
+        //        {
+        //            RLMGLogger.Instance.Log("Artworks list is null. Cannot read scans.", MESSAGETYPE.ERROR);
+        //            return;
+        //        }
+
+        //        RLMGLogger.Instance.Log(String.Format("Reading scans from {0}.", dirPath), MESSAGETYPE.INFO);
+
+        //        if (filenames != null)
+        //        {
+        //            for (int i=0; i<filenames.Length; i++)
+        //            {
+        //                string filename = filenames[i];
+        //                if (!String.IsNullOrEmpty(filename))
+        //                {
+        //                    string filepath = Path.Join(dirPath, filename);
+
+        //                    Texture2D scanTexture = GetTexture2DFromImageFile(filepath, settings, webCamTextureToMatHelper);
+
+        //                    AddScan(scanTexture,i);
+        //                }
+        //            }
+        //        }
+        //        else
+        //        {
+        //            RLMGLogger.Instance.Log("Current team has no artworks list. Cannot read scans.", MESSAGETYPE.ERROR);
+        //            return;
+        //        }
+        //    }
+
+        //    DateTime after = DateTime.Now;
+        //    TimeSpan duration = after.Subtract(before);
+
+        //    RLMGLogger.Instance.Log("READ SCANS Duration in milliseconds: " + duration.Milliseconds, MESSAGETYPE.INFO);
+
+        //}
+
+        public static void SaveScan(Mat src, string dirPath, string filename)
+        {
+            DirectoryInfo mainDI = new DirectoryInfo(dirPath);
+
+            try
+            {
+                if (!mainDI.Exists)
+                {
+                    mainDI.Create();
+                    RLMGLogger.Instance.Log(String.Format("The directory was created successfully at {0}.", dirPath), MESSAGETYPE.INFO);
+                }
+
+                string fullPath = Path.Join(dirPath, filename);
+                SaveMatToFile(src, fullPath);
             }
             catch (Exception e)
             {
-                RLMGLogger.Instance.Log(String.Format("The process failed: {0}.",e.ToString()), MESSAGETYPE.ERROR);
+                RLMGLogger.Instance.Log(String.Format("The process failed: {0}.", e.ToString()), MESSAGETYPE.ERROR);
             }
-
         }
 
-        public static void TrashScan(string savePath, string trashPath, int toTrash)
+        public static void TrashScan(string saveDirPath, string trashDirPath, string filename)
         {
-            // string teamDir = gameState.teams[gameState.currentTeam].directory;
-            // string teamDirPath = Path.Combine(dirPath,teamDir);
-            DirectoryInfo saveDI = new DirectoryInfo(savePath);
-            DirectoryInfo trashDI = new DirectoryInfo(trashPath);
+            DirectoryInfo saveDI = new DirectoryInfo(saveDirPath);
+            DirectoryInfo trashDI = new DirectoryInfo(trashDirPath);
 
             try
             {
                 if (!saveDI.Exists)
                 {
                     saveDI.Create();
-                    RLMGLogger.Instance.Log(String.Format("{0} directory created successfully.",savePath), MESSAGETYPE.INFO);
+                    RLMGLogger.Instance.Log(String.Format("Save directory created successfully at {0}.",saveDirPath), MESSAGETYPE.INFO);
                 }
+
                 if (!trashDI.Exists)
                 {
                     trashDI.Create();
-                    RLMGLogger.Instance.Log(String.Format("{0} directory created successfully.",trashPath), MESSAGETYPE.INFO);
+                    RLMGLogger.Instance.Log(String.Format("Trash directory created successfully at {0}.",trashDirPath), MESSAGETYPE.INFO);
                 }
+
                 if (saveDI.Exists && trashDI.Exists)
                 {
-                    string[] pngList = Directory.GetFiles(savePath, "*.png");
-                    for (int p = 0; p < pngList.Length; p++)
-                    {
-                        string png = pngList[p];
-                        string number = Path.GetFileNameWithoutExtension(png);
+                    string fullSavePath = Path.Join(saveDirPath, filename);
+                    string fullTrashPath = Path.Join(trashDirPath, filename);
 
-                        if (Int32.Parse(number) == toTrash)
-                        {
-                            RLMGLogger.Instance.Log(String.Format("Trashing {0}",png), MESSAGETYPE.INFO);
+                    File.Copy(fullSavePath, fullTrashPath, true);
 
-                            string filename = Path.GetFileName(png);
-                            string trashFilepath = Path.Join(trashPath,filename);
-
-                            File.Copy(png,trashFilepath,true);
-
-                            File.Delete(png);
-                        } 
-                    }
+                    File.Delete(fullSavePath);
                 }
             }
             catch (Exception e)
             {
                 RLMGLogger.Instance.Log(String.Format("The process failed: {0}.",e.ToString()), MESSAGETYPE.ERROR);
+            }
+        }
+
+        public static void UnTrashScan(string saveDirPath, string trashDirPath, string filename)
+        {
+            DirectoryInfo saveDI = new DirectoryInfo(saveDirPath);
+            DirectoryInfo trashDI = new DirectoryInfo(trashDirPath);
+
+            try
+            {
+                if (!saveDI.Exists)
+                {
+                    saveDI.Create();
+                    RLMGLogger.Instance.Log(String.Format("Save directory created successfully at {0}.", saveDirPath), MESSAGETYPE.INFO);
+                }
+
+                if (!trashDI.Exists)
+                {
+                    trashDI.Create();
+                    RLMGLogger.Instance.Log(String.Format("Trash directory created successfully at {0}.", trashDirPath), MESSAGETYPE.INFO);
+                }
+
+                if (saveDI.Exists && trashDI.Exists)
+                {
+                    string fullSavePath = Path.Join(saveDirPath, filename);
+                    string fullTrashPath = Path.Join(trashDirPath, filename);
+
+                    File.Copy(fullTrashPath, fullSavePath, true);
+
+                    File.Delete(fullTrashPath);
+                }
+            }
+            catch (Exception e)
+            {
+                RLMGLogger.Instance.Log(String.Format("The process failed: {0}.", e.ToString()), MESSAGETYPE.ERROR);
             }
         }
 
@@ -238,386 +360,31 @@ namespace ArtScan.ScanSavingModule
             }
 
         }
+
     }
 }
 
-/// <summary>
-/// Main demo of drawing background removal
-/// </summary>
-public class saveScans : MonoBehaviour
-{
-    public myWebCamTextureToMatHelper webCamTextureToMatHelper;
+// private void RenameSavedScansBasedOnOrder()
+// {
+//     DirectoryInfo di = new DirectoryInfo(dirPath);
+//     try
+//     {
+//         string[] pngList = Directory.GetFiles(dirPath, "*.png");
+//         for (int i=0; i<pngList.Length; i++)
+//         {
+//             string newFilename = String.Format("{0}.png", i);
+//             string newFilepath = Path.Join(dirPath,newFilename);
 
-    public RefinedScanController refinedScanController;
+//             if (pngList[i] != newFilepath)
+//             {
+//                 File.Copy(pngList[i],newFilepath,true);
+//                 File.Delete(pngList[i]);
+//             }
 
-    /// <summary>
-    /// Settings used to size and crop scans
-    /// </summary>
-    public RemoveBackgroundSettings settings;
-
-    /// <summary>
-    /// The Game State Scriptable Object.
-    /// </summary>
-    public GameState gameState;
-
-    public string dirName = "SavedScans";
-    public string trashName = "TrashedScans";
-
-    /// <summary>
-    /// Path where scans will be saved as a backup.
-    /// </summary>
-    private string dirPath;
-
-    /// <summary>
-    /// Path where scans will be saved as trashed.
-    /// </summary>
-    private string trashPath;
-
-    private void Start()
-    {
-        dirPath = Path.Join(Application.streamingAssetsPath,dirName);
-        trashPath = Path.Join(Application.streamingAssetsPath,trashName);
-    }
-
-    public void ClearTrash()
-    {
-        DirectoryInfo trashDI = new DirectoryInfo(trashPath);
-        try
-        {
-            if (trashDI.Exists)
-            {
-                string[] pngList = Directory.GetFiles(trashPath, "*.png");
-                for (int p = 0; p < pngList.Length; p++)
-                {
-                    File.Delete(pngList[p]);
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            RLMGLogger.Instance.Log(String.Format("The process failed: {0}.",e.ToString()), MESSAGETYPE.ERROR);
-        }
-    }
-
-    public void UnTrashAll()
-    {
-        DirectoryInfo di = new DirectoryInfo(dirPath);
-        DirectoryInfo trashDI = new DirectoryInfo(trashPath);
-        try
-        {
-            if (di.Exists && trashDI.Exists)
-            {
-                string[] pngList = Directory.GetFiles(trashPath, "*.png");
-                foreach (string png in pngList)
-                {
-                    RLMGLogger.Instance.Log(String.Format("Untrashing {0}",png), MESSAGETYPE.INFO);
-
-                    string number = Path.GetFileNameWithoutExtension(png);
-                    string filename = String.Format("{0}.png",Int32.Parse(number));
-                    string destFilepath = Path.Join(dirPath,filename);
-
-                    File.Copy(png,destFilepath,true);
-
-                    File.Delete(png);
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            RLMGLogger.Instance.Log(String.Format("The process failed: {0}.",e.ToString()), MESSAGETYPE.ERROR);
-        }
-    }
-
-    public void TrashScan(int toTrash)
-    {
-        string teamDir = gameState.teams[gameState.currentTeam].directory;
-        string fullPath = Path.Combine(dirPath,teamDir);
-        DirectoryInfo teamDI = new DirectoryInfo(fullPath);
-
-        DirectoryInfo trashDI = new DirectoryInfo(trashPath);
-
-        try
-        {
-            if (teamDI.Exists && trashDI.Exists)
-            {
-                string[] pngList = Directory.GetFiles(fullPath, "*.png");
-                for (int p = 0; p < pngList.Length; p++)
-                {
-                    string png = pngList[p];
-                    string number = Path.GetFileNameWithoutExtension(png);
-
-                    if (Int32.Parse(number) == toTrash)
-                    {
-                        RLMGLogger.Instance.Log(String.Format("Trashing {0}",png), MESSAGETYPE.INFO);
-
-                        string filename = Path.GetFileName(png);
-                        string trashFilepath = Path.Join(trashPath,filename);
-
-                        File.Copy(png,trashFilepath,true);
-
-                        File.Delete(png);
-                    } 
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            RLMGLogger.Instance.Log(String.Format("The process failed: {0}.",e.ToString()), MESSAGETYPE.ERROR);
-        }
-    }
-
-    public void TrashScans(Texture2D[] toTrash)
-    {
-        string teamDir = gameState.teams[gameState.currentTeam].directory;
-        string fullPath = Path.Combine(dirPath,teamDir);
-        DirectoryInfo teamDI = new DirectoryInfo(fullPath);
-
-        DirectoryInfo trashDI = new DirectoryInfo(trashPath);
-
-        try
-        {
-            if (teamDI.Exists && trashDI.Exists)
-            {
-                string[] pngList = Directory.GetFiles(fullPath, "*.png");
-                for (int p = 0; p < pngList.Length; p++)
-                {
-                    string png = pngList[p];
-                    string number = Path.GetFileNameWithoutExtension(png);
-
-                    if (toTrash[Int32.Parse(number)] != null)
-                    {
-                        RLMGLogger.Instance.Log(String.Format("Trashing {0}",png), MESSAGETYPE.INFO);
-
-                        string filename = Path.GetFileName(png);
-                        string trashFilepath = Path.Join(trashPath,filename);
-
-                        File.Copy(png,trashFilepath,true);
-
-                        File.Delete(png);
-                    } 
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            RLMGLogger.Instance.Log(String.Format("The process failed: {0}.",e.ToString()), MESSAGETYPE.ERROR);
-        }
-
-    }
-
-    private Texture2D GetTexture2DFromImageFile(string png)
-    {
-        using (
-            Mat src = OpenCVForUnity.ImgcodecsModule.Imgcodecs.imread(
-                    png,
-                    OpenCVForUnity.ImgcodecsModule.Imgcodecs.IMREAD_UNCHANGED
-                ),
-
-                displayMat = new Mat(
-                    settings.targetHeight,
-                    settings.targetWidth,
-                    webCamTextureToMatHelper.GetMat().type(),
-                    new Scalar(0,0,0,0)
-                )
-        )
-        {
-            Imgproc.cvtColor(src, src, Imgproc.COLOR_BGRA2RGBA);;
-
-            PresentationUtils.MakeReadyToPresent(
-                src, displayMat,
-                settings.doCropToBoundingBox, settings.doSizeToFit
-            );
-
-            Texture2D scanTexture = new Texture2D(displayMat.cols(), displayMat.rows(), TextureFormat.RGBA32, false);
-            Utils.fastMatToTexture2D(displayMat,scanTexture,true,0,true);
-            return scanTexture;
-        }
-    }
-
-    public void ReadScans(GameEvent callback)
-    {
-        
-        DateTime before = DateTime.Now;
-
-        if (!String.IsNullOrEmpty(dirPath))
-        {
-            DirectoryInfo mainDI = new DirectoryInfo(dirPath);
-
-            string teamDir = gameState.teams[gameState.currentTeam].directory;
-            string fullPath = Path.Combine(dirPath,teamDir);
-            DirectoryInfo teamDI = new DirectoryInfo(fullPath);
-
-            RLMGLogger.Instance.Log("Reading scans from " + fullPath, MESSAGETYPE.INFO);
-             
-            try
-            {
-                if (mainDI.Exists)
-                {
-                    if (teamDI.Exists)
-                    {
-                        string[] pngList = Directory.GetFiles(fullPath, "*.png");
-
-                        RLMGLogger.Instance.Log(String.Format("{0} png files found in directory.",pngList.Length.ToString()), MESSAGETYPE.INFO);
-
-                        foreach (string png in pngList)
-                        {
-                            Texture2D scanTexture = GetTexture2DFromImageFile(png);
-                            string number = Path.GetFileNameWithoutExtension(png);
-                            gameState.AddScan(scanTexture, Int32.Parse(number));
-                        }
-
-                        if (callback != null)
-                            callback.Raise();
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                RLMGLogger.Instance.Log(String.Format("The process failed: {0}.",e.ToString()), MESSAGETYPE.ERROR);
-            }
-
-        }
-
-        DateTime after = DateTime.Now; 
-        TimeSpan duration = after.Subtract(before);
-        // Debug.Log();
-        RLMGLogger.Instance.Log("READ SCANS Duration in milliseconds: " + duration.Milliseconds, MESSAGETYPE.INFO);
-
-    }
-
-    public void SavePreview()
-    {
-        if (refinedScanController.previewMat != null)
-        {
-            int index = gameState.AddScan(gameState.preview);
-            if (index >= 0)
-                SaveScan(refinedScanController.previewMat, index);
-        }
-        
-    }
-
-    private void DeleteExcessFiles(string[] pngList)
-    {
-        // //delete excess file(s)
-        // if (pngList.Length >= gameState.scanMax)
-        // {
-        //     //failsafe: delete all files after scanMax
-        //     for (int i=gameState.scanMax; i<pngList.Length; i++)
-        //     {
-        //         File.Delete(pngList[i]);
-        //     }
-        // }
-    }
-
-    private void DeleteFilenameMatchingIndex(string[] pngList, int index)
-    {
-        foreach (string png in pngList)
-        {
-            string number = Path.GetFileNameWithoutExtension(png);
-            if (Int32.Parse(number) == index)
-            {
-                File.Delete(png);
-            }
-        }
-    }
-
-    private void SaveMatToFile(Mat src, int index, string fullPath)
-    {
-        string filename = String.Format("{0}.png",index);
-        string filepath = Path.Join(fullPath,filename);
-        Imgproc.cvtColor(src, src, Imgproc.COLOR_RGBA2BGRA);
-        OpenCVForUnity.ImgcodecsModule.Imgcodecs.imwrite(filepath,src);
-    }
-
-    private void SaveScan(Mat src, int index)
-    {
-        DirectoryInfo mainDI = new DirectoryInfo(dirPath);
-
-        string teamDir = gameState.teams[gameState.currentTeam].directory;
-        string fullPath = Path.Combine(dirPath,teamDir);
-        DirectoryInfo teamDI = new DirectoryInfo(fullPath);
-        
-        try
-        {
-            if (!mainDI.Exists)
-            {
-                mainDI.Create();
-                RLMGLogger.Instance.Log("The main directory was created successfully.", MESSAGETYPE.INFO);
-            }
-
-            ClearTrash();
-
-            if (teamDI.Exists)
-            {
-                string[] pngList = Directory.GetFiles(fullPath, "*.png");
-
-                DeleteExcessFiles(pngList);
-                DeleteFilenameMatchingIndex(pngList, index);
-
-                SaveMatToFile(src,index,fullPath);
-            }
-            else
-            {
-                teamDI.Create();
-                RLMGLogger.Instance.Log(String.Format("{0} directory created successfully.",teamDir), MESSAGETYPE.INFO);
-
-                SaveMatToFile(src,index,fullPath);
-            }
-
-        }
-        catch (Exception e)
-        {
-            RLMGLogger.Instance.Log(String.Format("The process failed: {0}.",e.ToString()), MESSAGETYPE.ERROR);
-        }
-
-    }
-
-    public void DeleteAllScans()
-    {
-        DirectoryInfo di = new DirectoryInfo(dirPath);
-        try
-        {
-            if (di.Exists)
-            {
-                foreach (FileInfo file in di.GetFiles())
-                {
-                    file.Delete(); 
-                }
-                foreach (DirectoryInfo dir in di.GetDirectories())
-                {
-                    dir.Delete(true); 
-                }
-            }
-        }
-        catch (Exception e)
-        {
-            RLMGLogger.Instance.Log(String.Format("The process failed: {0}.",e.ToString()), MESSAGETYPE.ERROR);
-        }
-
-    }
-
-    // private void RenameSavedScansBasedOnOrder()
-    // {
-    //     DirectoryInfo di = new DirectoryInfo(dirPath);
-    //     try
-    //     {
-    //         string[] pngList = Directory.GetFiles(dirPath, "*.png");
-    //         for (int i=0; i<pngList.Length; i++)
-    //         {
-    //             string newFilename = String.Format("{0}.png", i);
-    //             string newFilepath = Path.Join(dirPath,newFilename);
-
-    //             if (pngList[i] != newFilepath)
-    //             {
-    //                 File.Copy(pngList[i],newFilepath,true);
-    //                 File.Delete(pngList[i]);
-    //             }
-                    
-    //         }
-    //     }
-    //     catch (Exception e)
-    //     {
-    //         RLMGLogger.Instance.Log(String.Format("The process failed: {0}.",e.ToString()), MESSAGETYPE.ERROR);
-    //     }
-    // }
-}
+//         }
+//     }
+//     catch (Exception e)
+//     {
+//         RLMGLogger.Instance.Log(String.Format("The process failed: {0}.",e.ToString()), MESSAGETYPE.ERROR);
+//     }
+// }

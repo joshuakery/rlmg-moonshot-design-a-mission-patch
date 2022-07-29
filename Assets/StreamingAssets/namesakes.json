@@ -55,14 +55,14 @@
     "description": "16th century Italian astronomer Galileo Galilei discovered craters and mountains on the Moon.",
     "imageFilename": "Galileo_image.png"
   },
-  "Tsukiyomi": {
+  "Kaguya": {
     "moonbaseName": "Kaguya",
     "moonbaseNameImageFilename": "Kaguya.png",
     "fullName": "Princess Kaguya",
     "description": "In legends, Kaguya is discovered in a mysterious glowing bamboo stalk and grows up in Japan before returning to the Moon.",
     "imageFilename": "Kaguya_image.png"
   },
-  "Jack and Jill": {
+  "Melvin": {
     "moonbaseName": "Melvin",
     "moonbaseNameImageFilename": "Melvin.png",
     "fullName": "Leland Melvin",

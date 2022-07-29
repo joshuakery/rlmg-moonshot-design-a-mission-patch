@@ -56,9 +56,7 @@ namespace ArtScan.WordPoints
                 wordPointsContent.wordPoints.Add(name,points);
             }
 
-            // yield return StartCoroutine(LoadImagesViaFilenames(timelineContent));
-            // Debug.Log("...loaded "+wordPointsContent.wordPoints.Count+" wordpoints.");
-            RLMGLogger.Instance.Log("...loaded "+wordPointsContent.wordPoints.Count+" wordpoints.", MESSAGETYPE.INFO);
+            //RLMGLogger.Instance.Log("...loaded "+wordPointsContent.wordPoints.Count+" wordpoints.", MESSAGETYPE.INFO);
             gameState.wordPointsContent = wordPointsContent;
 
             // SampleOdds();

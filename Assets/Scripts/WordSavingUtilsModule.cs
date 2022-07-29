@@ -12,7 +12,7 @@ namespace ArtScan.WordSavingUtilsModule
 
     public static class WordSaving
     {
-        public static void SaveTeamsToFile(string saveFile, Team[] teams)
+        public static void SaveTeamsToFile(string saveFile, List<MoonshotTeamData> teams)
         {
             TeamsJSON teamsJSON = new TeamsJSON(teams);
             string json = JsonUtility.ToJson(teamsJSON, true);
@@ -27,7 +27,7 @@ namespace ArtScan.WordSavingUtilsModule
                 File.Delete(filepath);
         }
 
-        public static void SetTeamsFromFile(string saveFile, Team[] teams)
+        public static void SetTeamsFromFile(string saveFile, List<MoonshotTeamData> teams)
         {
             string filepath = Path.Join(Application.streamingAssetsPath, saveFile);
             if (File.Exists(filepath))

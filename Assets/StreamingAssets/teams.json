@@ -1,34 +1,66 @@
 {
     "teams": [
         {
-            "directory": "rockets",
-            "teamname": "Rockets",
+            "teamName": "Yellow",
             "namesake": "",
-            "chosenWords": [
-                "Sneaky",
-                "Nervous",
-                "Creative"
-            ]
+            "chosenWords": [],
+            "didRoverActivity": true,
+            "roverStepsCompleted": 0,
+            "didMapActivity": false,
+            "mapRoundsCompleted": 0,
+            "settlementShelterQuality": 0.0,
+            "settlementCommsQuality": 0.0,
+            "settlementSunQuality": 0.0,
+            "settlementWaterQuality": 0.0,
+            "didArtActivity": false,
+            "artworks": [
+                "Yellow-0.png",
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "didCharterActivity": false,
+            "charterQsCompleted": 0,
+            "charterMeterDecisions": 0.0,
+            "charterMeterPriorities": 0.0,
+            "charterMeterStrictness": 0.0,
+            "didHuntActivity": false,
+            "huntNumFound": 0
         },
         {
-            "directory": "flyingSquirrels",
-            "teamname": "Flying Squirrels",
-            "namesake": "Galileo",
+            "teamName": "Green",
+            "namesake": "Melvin",
             "chosenWords": [
-                "Aspiring",
-                "Devious",
-                "Headstrong"
-            ]
-        },
-        {
-            "directory": "phoenix",
-            "teamname": "Phoenix",
-            "namesake": "",
-            "chosenWords": [
-                "Independent",
-                "Honest",
-                "Helpful"
-            ]
+                "Strong-willed",
+                "Scientific",
+                "Mighty"
+            ],
+            "didRoverActivity": true,
+            "roverStepsCompleted": 0,
+            "didMapActivity": false,
+            "mapRoundsCompleted": 0,
+            "settlementShelterQuality": 0.0,
+            "settlementCommsQuality": 0.0,
+            "settlementSunQuality": 0.0,
+            "settlementWaterQuality": 0.0,
+            "didArtActivity": false,
+            "artworks": [
+                "Green-0.png",
+                "Green-1.png",
+                "Green-2.png",
+                "",
+                "",
+                ""
+            ],
+            "didCharterActivity": false,
+            "charterQsCompleted": 0,
+            "charterMeterDecisions": 0.0,
+            "charterMeterPriorities": 0.0,
+            "charterMeterStrictness": 0.0,
+            "didHuntActivity": false,
+            "huntNumFound": 0
         }
     ]
 }

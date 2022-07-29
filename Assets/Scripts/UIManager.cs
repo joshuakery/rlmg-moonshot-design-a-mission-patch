@@ -7,11 +7,11 @@ using UnityEngine.SceneManagement;
 using ArtScan;
 using ArtScan.WordSavingUtilsModule;
 using rlmg.logging;
+using DG.Tweening;
 
 public class UIManager : MonoBehaviour
 {
     public GameState gameState;
-    public saveScans saveScans;
     public GameEvent closeAllWindows;
     public GameEvent startEvent;
     //debug
@@ -26,6 +26,9 @@ public class UIManager : MonoBehaviour
 
     public bool started = false;
 
+    public UITweener UITweener1;
+    public UITweener UITweener2;
+
     private void Awake()
     {
         SetCurrentWindowListeners();
@@ -34,6 +37,7 @@ public class UIManager : MonoBehaviour
     private void Start() 
     {
         started = false;
+        gameState.teams = new List<MoonshotTeamData>();
     }
 
     private void SetCurrentWindowListeners()
@@ -58,44 +62,51 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void CloseAndReopenCurrentWindow()
-    {
-        closeAllWindows.Raise();
-        windowEvents[currentWindow].Raise();  
-    }
-
-    private IEnumerator LateStart()
-    {
-        yield return null; //just need to wait one frame
-        startEvent.Raise();
-    }
-
-    public void StartGame()
-    {
-        started = true;
-        StartCoroutine(LateStart());
-        RLMGLogger.Instance.Log("Starting game...", MESSAGETYPE.INFO);
-    }
-
     public void StartGameOrReopenCurrentWindow()
     {
         if (!started) StartGame();
         else CloseAndReopenCurrentWindow();
     }
 
+    public void StartGame()
+    {
+        started = true;
+        //closeAllWindows.Raise();
+        //startEvent.Raise();
+        StartCoroutine(LateStart());
+        RLMGLogger.Instance.Log("Starting game...", MESSAGETYPE.INFO);
+    }
+
+    private IEnumerator LateStart()
+    {
+        yield return null; //just need to wait one frame
+        closeAllWindows.Raise();
+        startEvent.Raise();
+    }
+
+    public void CloseAndReopenCurrentWindow()
+    {
+        closeAllWindows.Raise();
+        windowEvents[currentWindow].Raise();
+    }
+
+
     public void ResetGame()
     {
         gameState.Reset();
-        closeAllWindows.Raise();
+
+        //closeAllWindows.Raise();
+
         StartGame();
+
         RLMGLogger.Instance.Log("Resetting game.", MESSAGETYPE.INFO);
     }
 
 
 
-    private void GoToConclusion()
+    public void GoToConclusion()
     {
-        ResultsDisplayManager.teamNum = gameState.currentTeam;
+        ResultsDisplayManager.teamNum = gameState.currentTeamIndex;
 
         string finalResultsSceneName = "ResultsScene";
 
@@ -104,7 +115,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             DrawingsMenu.SetActive(!DrawingsMenu.activeSelf);
         }
@@ -116,19 +127,6 @@ public class UIManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.C))
         {
             GoToConclusion();
-        }
-        //Main Timer
-        else if (Input.GetKeyDown(KeyCode.F))
-        {
-            mainTimer.time = 5;
-        }
-        else if (Input.GetKeyDown(KeyCode.P))
-        {
-            mainTimer.isCounting = !mainTimer.isCounting;
-        }
-        else if (Input.GetKeyDown(KeyCode.R))
-        {
-            mainTimer.time = mainTimer.duration;
         }
         //Switch Displays
         else if (Input.GetKeyDown(KeyCode.S))
@@ -145,7 +143,6 @@ public class UIManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.K))
         {
             WordSaving.DeleteFile(gameState.saveFile);
-            saveScans.DeleteAllScans();
             ResetGame();
         }
         else if (Input.GetKeyDown(KeyCode.U))
@@ -158,7 +155,8 @@ public class UIManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.T))
         {
-            ConfigLoaded.Raise();
+            UITweener1.AppendTweener(UITweener.TweenType.Exit);
+            UITweener2.AppendTweener(UITweener.TweenType.Entry);
         }
         //Windows Events
         else if (Input.GetKeyDown(KeyCode.RightArrow))
@@ -167,7 +165,6 @@ public class UIManager : MonoBehaviour
             {
                 currentWindow = (currentWindow + 1) % windowEvents.Count;
                 closeAllWindows.Raise();
-                mainTimer.time = mainTimer.duration;
                 windowEvents[currentWindow].Raise();  
             }
         }
@@ -178,7 +175,6 @@ public class UIManager : MonoBehaviour
                 currentWindow -= 1;
                 if (currentWindow < 0) currentWindow = windowEvents.Count - 1;
                 closeAllWindows.Raise();
-                mainTimer.time = mainTimer.duration;
                 windowEvents[currentWindow].Raise();
             }
         }

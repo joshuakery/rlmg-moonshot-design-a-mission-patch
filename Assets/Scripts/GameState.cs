@@ -16,29 +16,26 @@ using rlmg.logging;
 
 namespace ArtScan
 {
-
-    [Serializable]
-    public class TrashHistory
-    {
-        public int index;
-        public string teamDir;
-
-        public TrashHistory(int m_index, string m_teamDir)
-        {
-            index = m_index;
-            teamDir = m_teamDir;
-        }
-    }
-
     [CreateAssetMenu(fileName = "GameState", menuName = "GameState", order = 0)]
     public class GameState : ScriptableObject {
 
         public int currentRound;
-        public int currentTeam;
+        public int currentTeamIndex;
 
-        public Team[] teams;
+        public MoonshotTeamData currentTeam
+        {
+            get
+            {
+                if (currentTeamIndex < teams.Count)
+                    return teams[currentTeamIndex];
+                else
+                    return null;
+            }
+        }
+
+        public List<MoonshotTeamData> teams;
         public WordPointsContent wordPointsContent;
-        public Dictionary<string,Namesake> namesakesData = new Dictionary<string,Namesake>();
+        public Dictionary<string, Namesake> namesakesData = new Dictionary<string, Namesake>();
 
         public string saveFile;
 
@@ -46,40 +43,53 @@ namespace ArtScan
         public int scanMax;
 
         public Texture2D[] scans;
-        public List<TrashHistory> trashHistory;
-        public int lastClearedIndex;
-        
+        public List<int> nextToReplace;
+
         public List<string> exclude;
 
         public RemoveBackgroundSettings settings;
 
-        public void OnSwitchTeam(int i)
+        public UploadThreadController uploadThreadController;
+
+        public void SwitchTeam(int i)
         {
-            if (i < teams.Length)
+            if (i < teams.Count)
             {
-                currentTeam = i;
+                currentTeamIndex = i;
                 Reset();
-            }  
+            }
         }
 
         public void ClearCurrentTeamScores()
         {
-            teams[currentTeam].chosenWords = new List<string>();
-            teams[currentTeam].namesake = null;
+            currentTeam.chosenWords = new List<string>();
+            currentTeam.namesake = null;
         }
 
         public void SetNewNamesake()
         {
-            teams[currentTeam].namesake = WordScoring.GetWinner(teams[currentTeam].chosenWords, teams, wordPointsContent.wordPoints);
+            currentTeam.namesake = WordScoring.GetWinner(currentTeam.chosenWords, teams, wordPointsContent.wordPoints);
 
             WordSaving.SaveTeamsToFile(saveFile, teams);
+
+            if (Client.instance.team != null)
+                ClientSend.SendStationDataToServer();
+        }
+
+        public void UpdateTeamDidActivity()
+        {
+            if (Client.instance != null && Client.instance.team != null && Client.instance.team.MoonshotTeamData != null)
+            {
+                Client.instance.team.MoonshotTeamData.didArtActivity = true;
+                ClientSend.SendStationDataToServer();
+            }
+
         }
 
         public void ClearScans()
         {
             scans = new Texture2D[scanMax];
-
-            lastClearedIndex = 0;
+            nextToReplace.Clear();
         }
 
         public void SavePreview(RefinedScanController refinedScanController)
@@ -89,61 +99,178 @@ namespace ArtScan
                 int index = AddScan(preview);
                 if (index >= 0)
                 {
-                    string[] paths = new string[] {
-                        Application.streamingAssetsPath,
-                        settings.saveDir,
-                        teams[currentTeam].directory
-                    };
-                    string saveDirPath = Path.Combine(paths);
-                    ScanSaving.SaveScan(refinedScanController.previewMat, saveDirPath, index);
+                    string filename = ScanSaving.FormatScanFilename(currentTeam.teamName, index);
+                    string dirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
+                    ScanSaving.SaveScan(refinedScanController.previewMat, dirPath, filename);
+
+                    string fullPath = Path.Join(dirPath, filename);
+                    //ClientSend.SendFileToServer(fullPath);
+                    uploadThreadController.Upload(fullPath);
+                    UpdateTeamArtworks(index, fullPath);
                 }
             }
-            
+        }
+
+        public void UpdateTeamArtworks(int index, string filepath)
+        {
+            string filename = Path.GetFileName(filepath);
+
+            //Update GameState teams
+            if (currentTeam != null)
+            {
+                if (currentTeam.artworks == null || currentTeam.artworks.Length != scanMax)
+                    Array.Resize<string>(ref currentTeam.artworks, scanMax);
+
+                currentTeam.artworks[index] = filename;
+
+                WordSaving.SaveTeamsToFile(saveFile, teams);
+            }
+
+            //Update Server current team
+            if (Client.instance.team != null)
+            {
+                if (Client.instance.team.MoonshotTeamData.artworks == null ||
+                    Client.instance.team.MoonshotTeamData.artworks.Length != scanMax)
+                {
+                    Array.Resize<string>(ref Client.instance.team.MoonshotTeamData.artworks, scanMax);
+                }
+                    
+
+                Client.instance.team.MoonshotTeamData.artworks[index] = filename;
+
+                ClientSend.SendStationDataToServer();
+            }
+
+
+        }
+
+        public void DownloadScans()
+        {
+            string dirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
+            //synchronous
+            ScanSaving.DownloadScans(dirPath, currentTeam);
         }
 
         public void ReadScans(myWebCamTextureToMatHelper webCamTextureToMatHelper)
         {
-            string[] paths = new string[] {
-                Application.streamingAssetsPath,
-                settings.saveDir,
-                teams[currentTeam].directory
-            };
-            string readPath = Path.Combine(paths);
-            ScanSaving.ReadScans(AddScan,readPath,settings,webCamTextureToMatHelper);
+            ClearScans();
+
+            string dirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
+
+            DirectoryInfo mainDI = new DirectoryInfo(dirPath);
+
+            if (currentTeam.artworks != null && mainDI.Exists)
+            {
+                for (int i = 0; i < currentTeam.artworks.Length; i++)
+                {
+                    string filename = currentTeam.artworks[i];
+                    if (!String.IsNullOrEmpty(filename))
+                    {
+                        string filepath = Path.Join(dirPath, filename);
+
+                        Texture2D scanTexture = ScanSaving.GetTexture2DFromImageFile(filepath, settings, webCamTextureToMatHelper);
+
+                        AddScan(scanTexture, i);
+                    }
+                }
+            }
+
+            //ScanSaving.ReadScans(dirPath, AddScan, settings, webCamTextureToMatHelper);
         }
 
-        public void TrashScanFromCurrentTeam(int index)
+        public void TrashScanFromCurrentTeam(string filename, int index)
         {
-            string[] paths = new string[] {
-                Application.streamingAssetsPath,
-                settings.saveDir,
-                teams[currentTeam].directory
-            };
-            string savePath = Path.Combine(paths);
-            string trashPath = Path.Combine(Application.streamingAssetsPath,settings.trashDir);
-            ScanSaving.TrashScan(savePath,trashPath,index);
-        }     
+            //remove from list of Texture2D
+            Array.Clear(scans, index, 1);
+
+            //remove from replacement order
+            if (nextToReplace.Contains(index))
+                nextToReplace.Remove(index);
+
+            //do not remove from local artworks list - but since the image is deleted it won't matter
+            //Array.Clear(currentTeam.artworks, index, 1);
+            //WordSaving.SaveTeamsToFile(saveFile,teams);
+
+            //do not remove from server artworks list - but since the image is deleted it won't matter
+            //Array.Clear(Client.instance.team.MoonshotTeamData.artworks, index, 1);
+            //ClientSend.SendStationDataToServer();
+
+            TrashScan(filename);     
+        }
+
+        public void TrashScan(string filename)
+        {
+            string saveDirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
+            string trashDirPath = Path.Combine(Application.streamingAssetsPath, settings.trashDir);
+            ScanSaving.TrashScan(saveDirPath, trashDirPath, filename);
+
+            //ClientSend.DeleteFileFromServer(filename);
+            //DeleteThreadController.Delete(filename);
+        }
+
+        public void UnTrashScanFromCurrentTeam(string filename, int index, myWebCamTextureToMatHelper webCamTextureToMatHelper)
+        {
+            UnTrashScan(filename);
+
+            string saveDirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
+            string fullPath = Path.Join(saveDirPath, filename);
+
+            Texture2D untrashedScan = ScanSaving.GetTexture2DFromImageFile(fullPath, settings, webCamTextureToMatHelper);
+            AddScan(untrashedScan, index);
+        }
+
+        public void UnTrashScan(string filename)
+        {
+            string saveDirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
+            string trashDirPath = Path.Combine(Application.streamingAssetsPath, settings.trashDir);
+            ScanSaving.UnTrashScan(saveDirPath, trashDirPath, filename);
+
+            //string fullPath = Path.Join(saveDirPath, filename);
+            //ClientSend.SendFileToServer(fullPath);
+            //UploadThreadController.Upload(fullPath);
+        }
 
         public int AddScan(Texture2D newScan)
         {
-            for (int i=0; i<scans.Length; i++ )
+            //If there's room, just add it to the list
+            for (int i = 0; i < scans.Length; i++)
             {
                 if (scans[i] == null)
                 {
                     scans[i] = newScan;
+
+                    if (nextToReplace == null) nextToReplace = new List<int>();
+                    nextToReplace.Add(i);
+
                     return i;
-                } 
+                }
             }
 
-            lastClearedIndex = (lastClearedIndex + 1) % scans.Length;
-            scans[lastClearedIndex] = newScan;
-            return lastClearedIndex;
-            
+            //Else replace the oldest scan
+            if (nextToReplace.Count > 0)
+            {
+                int toRemove = nextToReplace[0];
+                scans[toRemove] = newScan;
+
+                nextToReplace.RemoveAt(0);
+                nextToReplace.Add(toRemove);
+                return toRemove;
+            }
+            //Should never happen
+            else
+            {
+                int arbitraryIndex = 0;
+
+                scans[arbitraryIndex] = newScan;
+                nextToReplace.Add(arbitraryIndex);
+                return arbitraryIndex;
+            }
         }
 
         public int AddScan(Texture2D newScan, int index)
         {
             scans[index] = newScan;
+            nextToReplace.Add(index);
             return index;
         }
 
@@ -152,7 +279,19 @@ namespace ArtScan
             ClearScans();
         }
 
-        //test change
+        public void AddTeam(MoonshotTeamData team)
+        {
+            Debug.Log("Adding " + team.teamName);
+
+            if (teams == null || teams.Count == 0)
+            {
+                teams = new List<MoonshotTeamData>();
+            }
+
+            teams.Add(team);
+        }
+
+
 
     }
 }

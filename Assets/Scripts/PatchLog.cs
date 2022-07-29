@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using ArtScan;
-using TMPro;
 
 public class PatchLog : MonoBehaviour
 {

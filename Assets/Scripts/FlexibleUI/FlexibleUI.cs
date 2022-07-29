@@ -20,7 +20,7 @@ public class FlexibleUI : MonoBehaviour {
 
     public virtual void Update()
     {
-        if(Application.isEditor)
+        if(Application.isEditor && !Application.isPlaying)
         {
             OnSkinUI();
         }

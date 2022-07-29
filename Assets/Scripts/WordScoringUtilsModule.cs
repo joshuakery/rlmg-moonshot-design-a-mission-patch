@@ -14,12 +14,12 @@ namespace ArtScan.WordScoringUtilsModule
             int index = UnityEngine.Random.Range(0,list.Count);
             return list[index];
         }
-        public static string GetWinner(List<string> wordChoices, Team[] teams, Dictionary<string,Dictionary<string,int>> wordPoints)
+        public static string GetWinner(List<string> wordChoices, List<MoonshotTeamData> teams, Dictionary<string,Dictionary<string,int>> wordPoints)
         {
             Dictionary<string,int> scores = GetScores(wordChoices, wordPoints);
 
             List<string> exclude = new List<string>();
-            foreach (Team team in teams)
+            foreach (MoonshotTeamData team in teams)
             {
                 if (!String.IsNullOrEmpty(team.namesake) && !exclude.Contains(team.namesake))
                 {

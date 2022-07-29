@@ -24,7 +24,7 @@ public class NameResult : GenericWindow
             return;
         }
 
-        string key = gameState.teams[gameState.currentTeam].namesake;
+        string key = gameState.currentTeam.namesake;
         if (!String.IsNullOrEmpty(key))
         {
             Namesake namesake = gameState.namesakesData[key];

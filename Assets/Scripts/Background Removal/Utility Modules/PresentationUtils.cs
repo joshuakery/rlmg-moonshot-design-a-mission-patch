@@ -30,13 +30,14 @@ namespace ArtScan.PresentationUtilsModule
             {
                 List<Mat> planes = new List<Mat>();
                 Core.split(src,planes);
+
                 Mat alpha = planes[3];
 
                 OpenCVForUnity.CoreModule.Rect roi = Imgproc.boundingRect(alpha);
 
-                using (Mat croppedMat = new Mat(src,roi))
+                using (Mat croppedMat = new Mat(src, roi))
                 {
-                    ScaleUpAndDisplayMat(croppedMat,dest,doSizeToFit);
+                    ScaleUpAndDisplayMat(croppedMat, dest, doSizeToFit);
                 }
             }
             else
@@ -86,7 +87,11 @@ namespace ArtScan.PresentationUtilsModule
 
         public static void ScaleUpAndDisplayMat(Mat src, Mat outputDisplayAreaMat, bool doSizeToFit)
         {
-            // Debug.Log(src.height() + " " + src.width());
+            //Utils.setDebugMode(true);
+            //Debug.Log(src.height() + " " + src.width());
+            if (src.height() == 0 || src.width() == 0)
+                return;
+
             int nh, nw;
             if (doSizeToFit)
             {
@@ -115,8 +120,6 @@ namespace ArtScan.PresentationUtilsModule
                 }
             }
 
-            // Debug.Log(nh + " " + nw);
-
             using (Mat resized = new Mat(nw,nh, src.type(), new Scalar(0, 0, 0, 0)))
             {
                 Imgproc.resize(src, resized, new Size(nw,nh) );
@@ -135,6 +138,7 @@ namespace ArtScan.PresentationUtilsModule
                 }
                  
             }
+            //Utils.setDebugMode(false);
         }
 
         //Convenience function to copy src to the given section of displayMat, outputDisplayAreaMat

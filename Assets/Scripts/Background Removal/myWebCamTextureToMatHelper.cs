@@ -434,7 +434,7 @@ namespace OpenCVForUnity.UnityUtils.Helper
             initCoroutine = _Initialize();
             StartCoroutine(initCoroutine);
 
-            RLMGLogger.Instance.Log("Initialized...", MESSAGETYPE.INFO);
+            //RLMGLogger.Instance.Log("Initialized...", MESSAGETYPE.INFO);
         }
 
         /// <summary>
@@ -675,8 +675,6 @@ namespace OpenCVForUnity.UnityUtils.Helper
             }
 
             // Starts the camera
-            // Debug.Log("calling play");
-            RLMGLogger.Instance.Log("calling play", MESSAGETYPE.INFO);
             webCamTexture.Play();
 
             int initFrameCount = 0;
