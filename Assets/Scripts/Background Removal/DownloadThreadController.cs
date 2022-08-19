@@ -15,7 +15,10 @@ public class DownloadThreadController : ScriptableObject
         protected override void ThreadFunction()
         {
             if (!System.String.IsNullOrEmpty(filename) && !System.String.IsNullOrEmpty(dirPath))
+            {
                 ClientSend.GetFileFromServer(filename, dirPath);
+            }
+                
         }
     }
 
@@ -25,9 +28,9 @@ public class DownloadThreadController : ScriptableObject
     {
         if (downloadThread != null && !downloadThread.IsDone)
         {
-            RLMGLogger.Instance.Log("Ending parallel download thread...", MESSAGETYPE.INFO);
+            Debug.Log("Ending parallel download thread...");
             downloadThread.Abort();
-            RLMGLogger.Instance.Log("...ended", MESSAGETYPE.INFO);
+            Debug.Log("...ended.");
         }
     }
 

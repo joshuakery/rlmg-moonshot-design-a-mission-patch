@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveDir: Images
   trashDir: Trashed Images
+  clearCacheOnQuit: 1
   targetWidth: 750
   targetHeight: 750
   brightness: 255

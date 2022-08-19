@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Mission1-Async-DOTween.unity
     guid: f4b740b05c8f44e098a33acd35963da3
   - enabled: 1
-    path: Assets/SharedConclusion/Scenes/ResultsScene.unity
+    path: Assets/Plugins/SharedConclusion/Scenes/ResultsScene.unity
     guid: 2965bb9837ba24dfa8b71e6de0872260
   - enabled: 0
     path: Assets/Scenes/test2.unity

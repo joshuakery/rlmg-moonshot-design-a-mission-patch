@@ -23,9 +23,9 @@ public class UploadThreadController : ScriptableObject
     {
         if (uploadThread != null && !uploadThread.IsDone)
         {
-            RLMGLogger.Instance.Log("Ending parallel upload thread...", MESSAGETYPE.INFO);
+            Debug.Log("Ending parallel upload thread...");
             uploadThread.Abort();
-            RLMGLogger.Instance.Log("...ended", MESSAGETYPE.INFO);
+            Debug.Log("...ended.");
         }
     }
 

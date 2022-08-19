@@ -11,6 +11,7 @@ public class NameResult : GenericWindow
 {
     public TMP_Text fullNameDisplay;
     public TMP_Text moonbaseNameDisplay;
+    public TMP_Text fullMoonbaseNameDisplay;
     public RawImage moonbaseNameDisplayImage;
     public TMP_Text descriptionDisplay;
 
@@ -34,6 +35,9 @@ public class NameResult : GenericWindow
 
             if (moonbaseNameDisplay != null)
                 moonbaseNameDisplay.text = namesake.moonbaseName;
+
+            if (fullMoonbaseNameDisplay != null)
+                fullMoonbaseNameDisplay.text = String.Format("{0} Moon Base", namesake.moonbaseName);
 
             if (moonbaseNameDisplayImage != null)
                 moonbaseNameDisplayImage.texture = namesake.moonbaseNameImage;

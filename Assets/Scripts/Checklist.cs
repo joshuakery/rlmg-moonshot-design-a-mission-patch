@@ -1,97 +1,78 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using ArtScan;
+
 public class Checklist : MonoBehaviour
 {
-    public GameState gameState;
+    public MoonshotStation moonshotStation;
 
-    //public GameObject container;
-
-    public Toggle didHuntToggle;
+    public Toggle didRoverToggle;
     public Toggle didMapToggle;
     public Toggle didArtToggle;
     public Toggle didCharterToggle;
-    public Toggle didRoverToggle;
+    public Toggle didHuntToggle;
+
+    private List<Toggle> toggles;
+
+    private void Awake()
+    {
+        toggles = new List<Toggle>()
+        {
+            didRoverToggle,
+            didMapToggle,
+            didArtToggle,
+            didCharterToggle,
+            didHuntToggle
+       };
+
+        if (Client.instance != null)
+            moonshotStation = Client.instance._moonshotStation;
+    }
 
     private void OnEnable()
     {
+        ReOrganizeToTop();
         UpdateChecklist();
+    }
+
+    public void ReOrganizeToTop()
+    {
+        //First find the first toggle with its activity done
+        int firstIndex = -1;
+        if (moonshotStation == MoonshotStation.Rover) firstIndex = 0;
+        else if (moonshotStation == MoonshotStation.Map) firstIndex = 1;
+        else if (moonshotStation == MoonshotStation.Art) firstIndex = 2;
+        else if (moonshotStation == MoonshotStation.Question) firstIndex = 3;
+        else if (moonshotStation == MoonshotStation.Hunt) firstIndex = 4;
+
+        //Then re-order, assuming the toggles are the only siblings in their parent
+        if (firstIndex > 0)
+        {
+            for (int i = 0; i < firstIndex; i++)
+            {
+                Toggle toggle = toggles[i];
+                toggle.gameObject.transform.SetAsLastSibling();
+            }
+        }
     }
 
     public void UpdateChecklist()
     {
         if (Client.instance == null || Client.instance.team == null || Client.instance.team.MoonshotTeamData == null)
-            return;
-
-        //Rover
-        if (Client.instance.team.MoonshotTeamData.didRoverActivity)
-        {
-            didRoverToggle.isOn = true;
-        }
-        else
         {
             didRoverToggle.isOn = false;
-            didRoverToggle.gameObject.transform.SetAsLastSibling();
-        }
-
-        //Map
-        if (Client.instance.team.MoonshotTeamData.didMapActivity)
-        {
-            didMapToggle.isOn = true;
-        }
-        else
-        {
             didMapToggle.isOn = false;
-            didMapToggle.gameObject.transform.SetAsLastSibling();
-        }
-
-        //Art
-        if (Client.instance.team.MoonshotTeamData.didArtActivity)
-        {
-            didArtToggle.isOn = true;
-        }
-        else
-        {
             didArtToggle.isOn = false;
-            didArtToggle.gameObject.transform.SetAsLastSibling();
-        }
-
-        //Charter
-        if (Client.instance.team.MoonshotTeamData.didCharterActivity)
-        {
-            didCharterToggle.isOn = true;
-        }
-        else
-        {
             didCharterToggle.isOn = false;
-            didCharterToggle.gameObject.transform.SetAsLastSibling();
-        }
-
-        //Hunt
-        if (Client.instance.team.MoonshotTeamData.didHuntActivity)
-        {
-            didHuntToggle.isOn = true;
-        }
-        else
-        {
             didHuntToggle.isOn = false;
-            didHuntToggle.gameObject.transform.SetAsLastSibling();
+            return;
         }
 
-        //Toggle[] toggles = container.GetComponentsInChildren<Toggle>();
-        //for (int i = 0; i < toggles.Length; i++ )
-        //{
-        //    Toggle toggle = toggles[i];
-        //    if (i <= gameState.currentRound)
-        //    {
-        //        toggle.isOn = true;
-        //    }
-        //    else
-        //    {
-        //        toggle.isOn = false;
-        //    }
-        //}
+        //assign isOn values
+        didRoverToggle.isOn = Client.instance.team.MoonshotTeamData.didRoverActivity;
+        didMapToggle.isOn = Client.instance.team.MoonshotTeamData.didMapActivity;
+        didArtToggle.isOn = Client.instance.team.MoonshotTeamData.didArtActivity;
+        didCharterToggle.isOn = Client.instance.team.MoonshotTeamData.didCharterActivity;
+        didHuntToggle.isOn = Client.instance.team.MoonshotTeamData.didHuntActivity;
     }
 }

@@ -9,6 +9,7 @@ public class RemoveBackgroundSettings : ScriptableObject
     public string saveDir = "SavedScans";
     public string trashDir = "TrashedScans";
 
+    public bool clearCacheOnQuit = false;
     
     public int targetWidth = 750;
     public int targetHeight = 750;

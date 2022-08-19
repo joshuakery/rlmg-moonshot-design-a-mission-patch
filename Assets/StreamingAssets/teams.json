@@ -2,9 +2,13 @@
     "teams": [
         {
             "teamName": "Yellow",
-            "namesake": "",
-            "chosenWords": [],
-            "didRoverActivity": true,
+            "namesake": "Galileo",
+            "chosenWords": [
+                "Independent",
+                "Roguish",
+                "Scientific"
+            ],
+            "didRoverActivity": false,
             "roverStepsCompleted": 0,
             "didMapActivity": false,
             "mapRoundsCompleted": 0,
@@ -12,15 +16,8 @@
             "settlementCommsQuality": 0.0,
             "settlementSunQuality": 0.0,
             "settlementWaterQuality": 0.0,
-            "didArtActivity": false,
-            "artworks": [
-                "Yellow-0.png",
-                "",
-                "",
-                "",
-                "",
-                ""
-            ],
+            "didArtActivity": true,
+            "artworks": [],
             "didCharterActivity": false,
             "charterQsCompleted": 0,
             "charterMeterDecisions": 0.0,
@@ -31,13 +28,35 @@
         },
         {
             "teamName": "Green",
+            "namesake": "",
+            "chosenWords": [],
+            "didRoverActivity": false,
+            "roverStepsCompleted": 0,
+            "didMapActivity": false,
+            "mapRoundsCompleted": 0,
+            "settlementShelterQuality": 0.0,
+            "settlementCommsQuality": 0.0,
+            "settlementSunQuality": 0.0,
+            "settlementWaterQuality": 0.0,
+            "didArtActivity": true,
+            "artworks": [],
+            "didCharterActivity": false,
+            "charterQsCompleted": 0,
+            "charterMeterDecisions": 0.0,
+            "charterMeterPriorities": 0.0,
+            "charterMeterStrictness": 0.0,
+            "didHuntActivity": false,
+            "huntNumFound": 0
+        },
+        {
+            "teamName": "Purple",
             "namesake": "Melvin",
             "chosenWords": [
-                "Strong-willed",
                 "Scientific",
+                "Loyal",
                 "Mighty"
             ],
-            "didRoverActivity": true,
+            "didRoverActivity": false,
             "roverStepsCompleted": 0,
             "didMapActivity": false,
             "mapRoundsCompleted": 0,
@@ -47,12 +66,12 @@
             "settlementWaterQuality": 0.0,
             "didArtActivity": false,
             "artworks": [
-                "Green-0.png",
-                "Green-1.png",
-                "Green-2.png",
-                "",
-                "",
-                ""
+                "Purple-0.png",
+                "Purple-1.png",
+                "Purple-2.png",
+                "Purple-3.png",
+                "Purple-4.png",
+                "Purple-5.png"
             ],
             "didCharterActivity": false,
             "charterQsCompleted": 0,

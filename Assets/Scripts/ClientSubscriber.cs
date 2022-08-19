@@ -9,6 +9,7 @@ public class ClientSubscriber : MonoBehaviour
     public UIManager uiManager;
     public Timer mainTimer;
     public Timer closeTimer;
+
     public GameState gameState;
 
     public bool useServer;
@@ -65,6 +66,7 @@ public class ClientSubscriber : MonoBehaviour
 
         ClientSend.RequestAllStationData();
 
+        uiManager.StartGame();
     }
 
     private void PauseMission()

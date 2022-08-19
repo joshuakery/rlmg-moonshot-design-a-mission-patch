@@ -1,0 +1,8 @@
+{
+	"serverAddress": "10.0.8.218",
+	"port": 26950,
+	"ftpsPort": 2222,
+	"ftpsUsername": "moonshot",
+	"ftpsPassword": "rollmug",
+	"stationOverride": ""
+}

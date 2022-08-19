@@ -61,7 +61,13 @@ namespace ArtScan.ScanSavingModule
             return String.Format("{0}-{1}.png", teamName, index);
         }
 
-        public static IEnumerator DownloadScansCoroutine(string dirPath, string[] filenames, bool doOverwrite, GameEvent callbackEvent)
+        public static IEnumerator DownloadScansCoroutine(
+            DownloadThreadController downloadThreadController,
+            string dirPath,
+            string[] filenames,
+            bool doOverwrite,
+            GameEvent callbackEvent
+        )
         {
             DateTime before = DateTime.Now;
 
@@ -86,16 +92,11 @@ namespace ArtScan.ScanSavingModule
                         {
                             if (doOverwrite || !File.Exists(Path.Join(dirPath, filename)))
                             {
-                                DownloadThreadController.DownloadThread downloadThread = new DownloadThreadController.DownloadThread();
-                                downloadThread.filename = filename;
-                                downloadThread.dirPath = dirPath;
+                                RLMGLogger.Instance.Log(String.Format("Downloading number {0} of {1} scans.", count, filenames.Length), MESSAGETYPE.INFO);
 
-                                downloadThread.Start();
-
-                                yield return downloadThread.WaitFor();
+                                yield return downloadThreadController.DownloadCoroutine(filename, dirPath);
 
                                 count++;
-                                RLMGLogger.Instance.Log(String.Format("Downloaded {0} of {1} scans.", count, filenames.Length), MESSAGETYPE.INFO);
                             }
                                 
                         }
@@ -168,63 +169,6 @@ namespace ArtScan.ScanSavingModule
 
             RLMGLogger.Instance.Log(String.Format("Downloaded scans in {0} milliseconds.", duration.Milliseconds), MESSAGETYPE.INFO);
         }
-
-        //public static void ReadScans(
-        //    string dirPath,
-        //    string[] filenames,
-        //    Func<Texture2D, int, int> AddScan,
-        //    RemoveBackgroundSettings settings,
-        //    myWebCamTextureToMatHelper webCamTextureToMatHelper
-        //)
-        //{
-        //    DateTime before = DateTime.Now;
-
-        //    if (!String.IsNullOrEmpty(dirPath))
-        //    {
-        //        DirectoryInfo mainDI = new DirectoryInfo(dirPath);
-
-        //        if (!mainDI.Exists)
-        //        {
-        //            mainDI.Create();
-        //            RLMGLogger.Instance.Log(String.Format("The directory was created successfully at {0}.", dirPath), MESSAGETYPE.INFO);
-        //        }
-
-        //        if (filenames == null)
-        //        {
-        //            RLMGLogger.Instance.Log("Artworks list is null. Cannot read scans.", MESSAGETYPE.ERROR);
-        //            return;
-        //        }
-
-        //        RLMGLogger.Instance.Log(String.Format("Reading scans from {0}.", dirPath), MESSAGETYPE.INFO);
-
-        //        if (filenames != null)
-        //        {
-        //            for (int i=0; i<filenames.Length; i++)
-        //            {
-        //                string filename = filenames[i];
-        //                if (!String.IsNullOrEmpty(filename))
-        //                {
-        //                    string filepath = Path.Join(dirPath, filename);
-
-        //                    Texture2D scanTexture = GetTexture2DFromImageFile(filepath, settings, webCamTextureToMatHelper);
-
-        //                    AddScan(scanTexture,i);
-        //                }
-        //            }
-        //        }
-        //        else
-        //        {
-        //            RLMGLogger.Instance.Log("Current team has no artworks list. Cannot read scans.", MESSAGETYPE.ERROR);
-        //            return;
-        //        }
-        //    }
-
-        //    DateTime after = DateTime.Now;
-        //    TimeSpan duration = after.Subtract(before);
-
-        //    RLMGLogger.Instance.Log("READ SCANS Duration in milliseconds: " + duration.Milliseconds, MESSAGETYPE.INFO);
-
-        //}
 
         public static void SaveScan(Mat src, string dirPath, string filename)
         {
@@ -317,35 +261,36 @@ namespace ArtScan.ScanSavingModule
             }
         }
 
-        public static void ClearTrash(string trashPath)
-        {
-            DirectoryInfo trashDI = new DirectoryInfo(trashPath);
-            try
-            {
-                if (trashDI.Exists)
-                {
-                    string[] pngList = Directory.GetFiles(trashPath, "*.png");
-                    for (int p = 0; p < pngList.Length; p++)
-                    {
-                        File.Delete(pngList[p]);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                RLMGLogger.Instance.Log(String.Format("The process failed: {0}.",e.ToString()), MESSAGETYPE.ERROR);
-            }
-        }
+        //public static void ClearTrash(string trashPath)
+        //{
+        //    DirectoryInfo trashDI = new DirectoryInfo(trashPath);
+        //    try
+        //    {
+        //        if (trashDI.Exists)
+        //        {
+        //            string[] pngList = Directory.GetFiles(trashPath, "*.png");
+        //            for (int p = 0; p < pngList.Length; p++)
+        //            {
+        //                File.Delete(pngList[p]);
+        //            }
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        RLMGLogger.Instance.Log(String.Format("The process failed: {0}.",e.ToString()), MESSAGETYPE.ERROR);
+        //    }
+        //}
 
-        public static void DeleteAllScans(string savePath)
+        public static void DeleteFolderContents(string fullPath)
         {
-            DirectoryInfo di = new DirectoryInfo(savePath);
+            DirectoryInfo di = new DirectoryInfo(fullPath);
             try
             {
                 if (di.Exists)
                 {
                     foreach (FileInfo file in di.GetFiles())
                     {
+                        Debug.Log(file.FullName);
                         file.Delete(); 
                     }
                     foreach (DirectoryInfo dir in di.GetDirectories())
@@ -363,28 +308,3 @@ namespace ArtScan.ScanSavingModule
 
     }
 }
-
-// private void RenameSavedScansBasedOnOrder()
-// {
-//     DirectoryInfo di = new DirectoryInfo(dirPath);
-//     try
-//     {
-//         string[] pngList = Directory.GetFiles(dirPath, "*.png");
-//         for (int i=0; i<pngList.Length; i++)
-//         {
-//             string newFilename = String.Format("{0}.png", i);
-//             string newFilepath = Path.Join(dirPath,newFilename);
-
-//             if (pngList[i] != newFilepath)
-//             {
-//                 File.Copy(pngList[i],newFilepath,true);
-//                 File.Delete(pngList[i]);
-//             }
-
-//         }
-//     }
-//     catch (Exception e)
-//     {
-//         RLMGLogger.Instance.Log(String.Format("The process failed: {0}.",e.ToString()), MESSAGETYPE.ERROR);
-//     }
-// }

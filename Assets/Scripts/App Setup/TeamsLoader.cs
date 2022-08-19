@@ -67,6 +67,8 @@ namespace ArtScan.TeamsModule
                     {
                         foreach (MoonshotTeamData team in teamsJSON.teams)
                             gameState.AddTeam(team);
+
+                        gameState.currentTeamIndex = gameState.teams.Count - 1;
                     }
                 }
 

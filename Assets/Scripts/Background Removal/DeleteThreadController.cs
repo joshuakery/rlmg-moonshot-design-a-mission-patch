@@ -23,9 +23,9 @@ public class DeleteThreadController : ScriptableObject
     {
         if (deleteThread != null && !deleteThread.IsDone)
         {
-            RLMGLogger.Instance.Log("Ending parallel delete thread...", MESSAGETYPE.INFO);
+            Debug.Log("Ending parallel delete thread...");
             deleteThread.Abort();
-            RLMGLogger.Instance.Log("...ended", MESSAGETYPE.INFO);
+            Debug.Log("...ended.");
         }
     }
 

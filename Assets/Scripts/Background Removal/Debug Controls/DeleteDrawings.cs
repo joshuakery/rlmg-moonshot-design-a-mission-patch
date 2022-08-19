@@ -22,6 +22,7 @@ public class DeleteDrawings : MonoBehaviour
         }
     }
 
+    public DownloadThreadController downloadThreadController;
     public DeleteThreadController deleteThreadController;
     public UploadThreadController uploadThreadController;
 
@@ -90,7 +91,7 @@ public class DeleteDrawings : MonoBehaviour
             //synchronous
             //ScanSaving.DownloadScans(dirPath, viewedTeam, false);
             //asynchronous
-            yield return StartCoroutine(ScanSaving.DownloadScansCoroutine(dirPath, viewedTeam.artworks, false, null));
+            yield return StartCoroutine(ScanSaving.DownloadScansCoroutine(downloadThreadController, dirPath, viewedTeam.artworks, false, null));
 
             patchesContainer.gameObject.SetActive(true);
             if (loadingFeedback != null)

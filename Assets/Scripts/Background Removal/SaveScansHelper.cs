@@ -8,6 +8,7 @@ using rlmg.logging;
 public class SaveScansHelper : MonoBehaviour
 {
     public GameState gameState;
+    public DownloadThreadController downloadThreadController;
 
     public void DownloadScans(GameEvent callbackEvent)
     {
@@ -20,7 +21,18 @@ public class SaveScansHelper : MonoBehaviour
         }
 
         //asynchronous
-        StartCoroutine(ScanSaving.DownloadScansCoroutine(dirPath, gameState.currentTeam.artworks, true, callbackEvent));
+        StartCoroutine(ScanSaving.DownloadScansCoroutine(downloadThreadController, dirPath, gameState.currentTeam.artworks, true, callbackEvent));
+    }
+
+    public void OnApplicationQuit()
+    {
+        if (gameState.settings.clearCacheOnQuit)
+        {
+            string trashPath = Path.Join(Application.streamingAssetsPath, gameState.settings.trashDir);
+            ScanSaving.DeleteFolderContents(trashPath);
+            string savePath = Path.Join(Application.streamingAssetsPath, gameState.settings.saveDir);
+            ScanSaving.DeleteFolderContents(savePath);
+        }
     }
 }
 
