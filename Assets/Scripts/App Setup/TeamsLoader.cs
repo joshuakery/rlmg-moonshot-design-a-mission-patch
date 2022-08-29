@@ -52,6 +52,7 @@ namespace ArtScan.TeamsModule
             if (teamsJSON == null)
             {
                 SetupDefaultTeam();
+                gameState.currentTeamIndex = 0;
                 yield break;
             }
 
@@ -62,6 +63,7 @@ namespace ArtScan.TeamsModule
                     if (teamsJSON.teams.Count == 0)
                     {
                         SetupDefaultTeam();
+                        gameState.currentTeamIndex = 0;
                     }
                     else
                     {

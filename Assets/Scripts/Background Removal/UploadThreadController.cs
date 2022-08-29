@@ -13,6 +13,7 @@ public class UploadThreadController : ScriptableObject
 
         protected override void ThreadFunction()
         {
+            Debug.Log(filename);
             ClientSend.SendFileToServer(filename);
         }
     }

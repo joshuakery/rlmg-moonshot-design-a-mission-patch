@@ -1,33 +1,7 @@
 {
     "teams": [
         {
-            "teamName": "Yellow",
-            "namesake": "Galileo",
-            "chosenWords": [
-                "Independent",
-                "Roguish",
-                "Scientific"
-            ],
-            "didRoverActivity": false,
-            "roverStepsCompleted": 0,
-            "didMapActivity": false,
-            "mapRoundsCompleted": 0,
-            "settlementShelterQuality": 0.0,
-            "settlementCommsQuality": 0.0,
-            "settlementSunQuality": 0.0,
-            "settlementWaterQuality": 0.0,
-            "didArtActivity": true,
-            "artworks": [],
-            "didCharterActivity": false,
-            "charterQsCompleted": 0,
-            "charterMeterDecisions": 0.0,
-            "charterMeterPriorities": 0.0,
-            "charterMeterStrictness": 0.0,
-            "didHuntActivity": false,
-            "huntNumFound": 0
-        },
-        {
-            "teamName": "Green",
+            "teamName": "Default Team",
             "namesake": "",
             "chosenWords": [],
             "didRoverActivity": false,
@@ -38,40 +12,14 @@
             "settlementCommsQuality": 0.0,
             "settlementSunQuality": 0.0,
             "settlementWaterQuality": 0.0,
-            "didArtActivity": true,
-            "artworks": [],
-            "didCharterActivity": false,
-            "charterQsCompleted": 0,
-            "charterMeterDecisions": 0.0,
-            "charterMeterPriorities": 0.0,
-            "charterMeterStrictness": 0.0,
-            "didHuntActivity": false,
-            "huntNumFound": 0
-        },
-        {
-            "teamName": "Purple",
-            "namesake": "Melvin",
-            "chosenWords": [
-                "Scientific",
-                "Loyal",
-                "Mighty"
-            ],
-            "didRoverActivity": false,
-            "roverStepsCompleted": 0,
-            "didMapActivity": false,
-            "mapRoundsCompleted": 0,
-            "settlementShelterQuality": 0.0,
-            "settlementCommsQuality": 0.0,
-            "settlementSunQuality": 0.0,
-            "settlementWaterQuality": 0.0,
             "didArtActivity": false,
             "artworks": [
-                "Purple-0.png",
-                "Purple-1.png",
-                "Purple-2.png",
-                "Purple-3.png",
-                "Purple-4.png",
-                "Purple-5.png"
+                "Default Team-0.png",
+                "Default Team-1.png",
+                "Default Team-2.png",
+                "Default Team-3.png",
+                "Default Team-4.png",
+                "Default Team-5.png"
             ],
             "didCharterActivity": false,
             "charterQsCompleted": 0,

@@ -105,7 +105,7 @@ namespace ArtScan.ScanSavingModule
                 }
                 else
                 {
-                    RLMGLogger.Instance.Log("Current team has no artworks list. Cannot download scans.", MESSAGETYPE.ERROR);
+                    RLMGLogger.Instance.Log("Current team has no artworks list. Cannot download scans.", MESSAGETYPE.INFO);
                 }
             }
 

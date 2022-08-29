@@ -92,58 +92,6 @@ namespace ArtScan
             nextToReplace.Clear();
         }
 
-        public void SavePreview(RefinedScanController refinedScanController)
-        {
-            if (refinedScanController.previewMat != null)
-            {
-                int index = AddScan(preview);
-                if (index >= 0)
-                {
-                    string filename = ScanSaving.FormatScanFilename(currentTeam.teamName, index);
-                    string dirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
-                    ScanSaving.SaveScan(refinedScanController.previewMat, dirPath, filename);
-
-                    string fullPath = Path.Join(dirPath, filename);
-                    //ClientSend.SendFileToServer(fullPath);
-                    uploadThreadController.Upload(fullPath);
-                    UpdateTeamArtworks(index, fullPath);
-                }
-            }
-        }
-
-        public void UpdateTeamArtworks(int index, string filepath)
-        {
-            string filename = Path.GetFileName(filepath);
-
-            //Update GameState teams
-            if (currentTeam != null)
-            {
-                if (currentTeam.artworks == null || currentTeam.artworks.Length != scanMax)
-                    Array.Resize<string>(ref currentTeam.artworks, scanMax);
-
-                currentTeam.artworks[index] = filename;
-
-                WordSaving.SaveTeamsToFile(saveFile, teams);
-            }
-
-            //Update Server current team
-            if (Client.instance.team != null)
-            {
-                if (Client.instance.team.MoonshotTeamData.artworks == null ||
-                    Client.instance.team.MoonshotTeamData.artworks.Length != scanMax)
-                {
-                    Array.Resize<string>(ref Client.instance.team.MoonshotTeamData.artworks, scanMax);
-                }
-                    
-
-                Client.instance.team.MoonshotTeamData.artworks[index] = filename;
-
-                ClientSend.SendStationDataToServer();
-            }
-
-
-        }
-
         public void DownloadScans()
         {
             string dirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
@@ -272,6 +220,31 @@ namespace ArtScan
             scans[index] = newScan;
             nextToReplace.Add(index);
             return index;
+        }
+
+        public int GetNextScanIndex()
+        {
+            //If there's room, just add it to the list
+            for (int i = 0; i < scans.Length; i++)
+            {
+                if (scans[i] == null)
+                {
+                    return i;
+                }
+            }
+
+            //Else replace the oldest scan
+            if (nextToReplace.Count > 0)
+            {
+                int toRemove = nextToReplace[0];
+                return toRemove;
+            }
+            //Should never happen
+            else
+            {
+                int arbitraryIndex = 0;
+                return arbitraryIndex;
+            }
         }
 
         public void Reset()

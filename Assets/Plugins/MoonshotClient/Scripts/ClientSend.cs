@@ -9,10 +9,26 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using Rebex.IO;
 
-
-
 public class ClientSend : MonoBehaviour
 {
+    public delegate void OnUploadFailed();
+    public static OnUploadFailed onUploadFailed;
+
+    public delegate void OnUploadSucceeded();
+    public static OnUploadSucceeded onUploadSucceeded;
+
+    public delegate void OnDownloadFailed();
+    public static OnDownloadFailed onDownloadFailed;
+
+    public delegate void OnDownloadSucceeded();
+    public static OnDownloadSucceeded onDownloadSucceeded;
+
+    public delegate void OnDeleteFailed();
+    public static OnDeleteFailed onDeleteFailed;
+
+    public delegate void OnDeleteSucceeded();
+    public static OnDeleteSucceeded onDeleteSucceeded;
+
     private static void SendTCPData(Packet _packet)
     {
         _packet.WriteLength();
@@ -94,7 +110,7 @@ public class ClientSend : MonoBehaviour
             {
                 // connect and log in
                 client.Connect(Client.instance.ip, Client.instance.ftpsPort);
-                client.Login(Client.instance.ftpsUsername, Client.instance.ftpsUsername);
+                client.Login(Client.instance.ftpsUsername, Client.instance.ftpsPassword);
 
                 // upload a file
                 client.Upload(filename, "/",
@@ -102,10 +118,13 @@ public class ClientSend : MonoBehaviour
                     Rebex.IO.TransferMethod.Copy,
                     Rebex.IO.ActionOnExistingFiles.OverwriteAll
                  );
+
+                UploadSucceeded();
             }
             catch (Exception ex)
             {
                 Debug.Log(ex.Message);
+                UploadFailed();
             }
         }
     }
@@ -118,16 +137,19 @@ public class ClientSend : MonoBehaviour
             {
                 // connect and log in
                 client.Connect(Client.instance.ip, Client.instance.ftpsPort);
-                client.Login(Client.instance.ftpsUsername, Client.instance.ftpsUsername);
+                client.Login(Client.instance.ftpsUsername, Client.instance.ftpsPassword);
 
                 // download a file
                 //client.Download(filename, Client.instance.imagePath + @"\download\");
                 // download a file with local overwrite privileges
                 client.Download(filename, destDir, TraversalMode.Recursive, TransferMethod.Copy, ActionOnExistingFiles.OverwriteAll);
+
+                DownloadSucceeded();
             }
             catch (Exception ex)
             {
                 Debug.Log(ex.Message);
+                DownloadFailed();
             }
 
         }
@@ -141,14 +163,17 @@ public class ClientSend : MonoBehaviour
             {
                 // connect and log in
                 client.Connect(Client.instance.ip, Client.instance.ftpsPort);
-                client.Login(Client.instance.ftpsUsername, Client.instance.ftpsUsername);
+                client.Login(Client.instance.ftpsUsername, Client.instance.ftpsPassword);
 
                 //delete file
                 client.DeleteFile(filename);
+
+                DeleteSucceeded();
             }
             catch (Exception ex)
             {
                 Debug.Log(ex.Message);
+                DeleteFailed();
             }
         }
     }
@@ -181,6 +206,42 @@ public class ClientSend : MonoBehaviour
         {
             SendTCPData(_packet);
         }
+    }
+
+    internal static void UploadFailed()
+    {
+        if (onUploadFailed != null)
+            onUploadFailed();
+    }
+
+    internal static void UploadSucceeded()
+    {
+        if (onUploadSucceeded != null)
+            onUploadSucceeded();
+    }
+
+    internal static void DownloadFailed()
+    {
+        if (onDownloadFailed != null)
+            onDownloadFailed();
+    }
+
+    internal static void DownloadSucceeded()
+    {
+        if (onDownloadSucceeded != null)
+            onDownloadSucceeded();
+    }
+
+    internal static void DeleteFailed()
+    {
+        if (onDeleteFailed != null)
+            onDeleteFailed();
+    }
+
+    internal static void DeleteSucceeded()
+    {
+        if (onDeleteSucceeded != null)
+            onDeleteSucceeded();
     }
 
 
