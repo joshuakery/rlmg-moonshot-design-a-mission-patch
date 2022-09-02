@@ -1,1 +1,21 @@
-{"attractWaitTime":0.0,"dragPixelThreshold":15,"defaultCamera":"HD Pro Webcam C920","flipVertical":true,"flipHorizontal":false,"brightness":255,"contrast":127,"edgeFindingMethod":0,"doSizeToFit":true,"doCropToBoundingBox":true}
+{
+    "attractWaitTime": 0.0,
+    "dragPixelThreshold": 15,
+    "saveDir": "Images",
+    "trashDir": "Trashed Images",
+    "clearSaveDirOnQuit": true,
+    "clearTrashDirOnQuit": true,
+    "doSaveCroppedToBoundingBox": true,
+    "defaultCamera": "HD Pro Webcam C920",
+    "flipVertical": true,
+    "flipHorizontal": false,
+    "brightness": 255,
+    "contrast": 127,
+    "edgeFindingMethod": 0,
+    "doSizeToFit": true,
+    "doCropToBoundingBox": true,
+    "postProcessingSettings": {
+        "brightness": 344,
+        "contrast": 161
+    }
+}

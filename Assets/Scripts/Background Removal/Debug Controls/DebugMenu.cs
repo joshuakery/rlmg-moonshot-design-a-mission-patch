@@ -45,6 +45,8 @@ public class DebugMenu : MonoBehaviour
     public Toggle doSizeToFillToggle;
     public Toggle doCropToBoundingBoxToggle;
 
+    public Slider pBrightnessSlider;
+    public Slider pContrastSlider;
 
     public Toggle doDrawPaperEdgeToggle;
     public Toggle doWarpToggle;
@@ -159,6 +161,10 @@ public class DebugMenu : MonoBehaviour
         doSizeToFillToggle.isOn = !settings.doSizeToFit;
         doCropToBoundingBoxToggle.isOn = settings.doCropToBoundingBox;
 
+        //Post Processing Settings
+        pBrightnessSlider.value = settings.postProcessingSettings.brightness;
+        pContrastSlider.value = settings.postProcessingSettings.contrast;
+
         resetButton.interactable = false;
     }
 
@@ -181,6 +187,8 @@ public class DebugMenu : MonoBehaviour
 
             settings.doSizeToFit = originalConfigData.doSizeToFit;
             settings.doCropToBoundingBox = originalConfigData.doCropToBoundingBox;
+
+            settings.postProcessingSettings = originalConfigData.postProcessingSettings;
 
             ResetSettingsUI();
 
@@ -216,7 +224,9 @@ public class DebugMenu : MonoBehaviour
             originalConfigData.doSizeToFit = settings.doSizeToFit;
             originalConfigData.doCropToBoundingBox = settings.doCropToBoundingBox;
 
-            string json = JsonUtility.ToJson(originalConfigData);
+            originalConfigData.postProcessingSettings = settings.postProcessingSettings;
+
+            string json = JsonUtility.ToJson(originalConfigData, true);
 
             string filename = configLoader.contentFilename;
             string filepath = Path.Join(Application.streamingAssetsPath,filename);
@@ -252,7 +262,10 @@ public class DebugMenu : MonoBehaviour
             settings.contrast != originalConfigData.contrast ||
             settings.edgeFindingMethod != (EdgeFindingMethod)originalConfigData.edgeFindingMethod ||
             settings.doCropToBoundingBox != originalConfigData.doCropToBoundingBox ||
-            settings.doSizeToFit != originalConfigData.doSizeToFit
+            settings.doSizeToFit != originalConfigData.doSizeToFit ||
+
+            settings.postProcessingSettings.brightness != originalConfigData.postProcessingSettings.brightness ||
+            settings.postProcessingSettings.contrast != originalConfigData.postProcessingSettings.contrast
         );
     }
 
@@ -337,6 +350,20 @@ public class DebugMenu : MonoBehaviour
     public void OnDoSizeToFitToggleValueChanged(bool value)
     {
         settings.doSizeToFit = value;
+
+        resetButton.interactable = AreSettingsChanged();
+    }
+
+    public void OnPBrightnessValueChanged()
+    {
+        settings.postProcessingSettings.brightness = (int)pBrightnessSlider.value;
+
+        resetButton.interactable = AreSettingsChanged();
+    }
+
+    public void OnPContrastValueChanged()
+    {
+        settings.postProcessingSettings.contrast = (int)pContrastSlider.value;
 
         resetButton.interactable = AreSettingsChanged();
     }

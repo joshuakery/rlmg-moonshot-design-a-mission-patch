@@ -8,6 +8,8 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using Rebex.IO;
+using rlmg.logging;
+
 
 public class ClientSend : MonoBehaviour
 {
@@ -102,6 +104,16 @@ public class ClientSend : MonoBehaviour
         }
     }
 
+    internal static void SendEndMissionToServer()
+    {
+        using (Packet _packet = new Packet((int)ClientPackets.sendEndMissionToServer))
+        {
+            SendTCPData(_packet);
+            // bugbug
+            //UIManager.instance.statusText.text = $"Sending end mission to server";
+        }
+    }
+
     public static void SendFileToServer(string filename)
     {
         using (var client = new Rebex.Net.Sftp())
@@ -149,6 +161,8 @@ public class ClientSend : MonoBehaviour
             catch (Exception ex)
             {
                 Debug.Log(ex.Message);
+                RLMGLogger.Instance.Log("Download failed!!!");
+                RLMGLogger.Instance.Log("Download failed!!!", MESSAGETYPE.ERROR);
                 DownloadFailed();
             }
 

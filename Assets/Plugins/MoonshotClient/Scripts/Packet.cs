@@ -27,7 +27,8 @@ public enum ClientPackets
     sendStopMissionToServer,
     sendPauseMissionToServer,
     sendUnPauseMissionToServer,
-    requestAllStationData
+    requestAllStationData,
+    sendEndMissionToServer
 }
 
 public class Packet : IDisposable

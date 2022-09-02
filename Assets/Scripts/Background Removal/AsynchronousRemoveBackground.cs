@@ -541,20 +541,25 @@ namespace ArtScan.CoreModule
 
                                         return;
                                     }
+
                                     if (displayOptions.doRemoveBackground)
                                     {
+                                        PerspectiveUtils.BrightnessContrast(removedMat, settings.postProcessingSettings.brightness, settings.postProcessingSettings.contrast, true);
+
                                         PresentationUtils.MakeReadyToPresent(
                                             removedMat, resultMat,
-                                            displayOptions.doDrawMaxAreaContour, maxAreaContour,
-                                            settings.doCropToBoundingBox, settings.doSizeToFit
+                                            maxAreaContour,
+                                            displayOptions, settings
                                         );
                                     }
                                     else
                                     {
+                                        PerspectiveUtils.BrightnessContrast(transformedMat, settings.postProcessingSettings.brightness, settings.postProcessingSettings.contrast, true);
+
                                         PresentationUtils.MakeReadyToPresent(
                                             transformedMat, resultMat,
-                                            displayOptions.doDrawMaxAreaContour, maxAreaContour,
-                                            settings.doCropToBoundingBox, settings.doSizeToFit
+                                            maxAreaContour,
+                                            displayOptions, settings
                                         );
                                     }
 

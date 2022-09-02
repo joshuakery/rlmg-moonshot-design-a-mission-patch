@@ -64,6 +64,11 @@ public class ThreadManager : MonoBehaviour
             ClientSend.SendStopMissionToServer();
         }
 
+        else if (Input.GetKeyUp(KeyCode.E))
+        {
+            ClientSend.SendEndMissionToServer();
+        }
+
         else if (Input.GetKeyUp(KeyCode.U))
         {
             ClientSend.SendFileToServer("eagle.jpg");

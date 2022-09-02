@@ -9,6 +9,8 @@ public class PrintActivityJSON : MonoBehaviour
     public TMP_Text timestamp;
     public TMP_Text display;
 
+    public bool updateConstantly = true;
+
     private void Awake()
     {
         if (display == null)
@@ -16,6 +18,19 @@ public class PrintActivityJSON : MonoBehaviour
     }
 
     private void OnEnable()
+    {
+        UpdateDisplay();
+    }
+
+    private void LateUpdate()
+    {
+        if (updateConstantly)
+        {
+            UpdateDisplay();
+        }
+    }
+
+    private void UpdateDisplay()
     {
         if (timestamp != null)
             timestamp.text = System.String.Format("As of {0}", System.DateTime.Now);

@@ -290,7 +290,6 @@ namespace ArtScan.ScanSavingModule
                 {
                     foreach (FileInfo file in di.GetFiles())
                     {
-                        Debug.Log(file.FullName);
                         file.Delete(); 
                     }
                     foreach (DirectoryInfo dir in di.GetDirectories())

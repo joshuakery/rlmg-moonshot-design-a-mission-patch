@@ -14,6 +14,9 @@ public class UIManager : MonoBehaviour
     public GameState gameState;
     public GameEvent closeAllWindows;
     public GameEvent startEvent;
+
+    public UISequenceManager primarySequenceManager;
+    public UISequenceManager namesakeSequenceManager;
     //debug
     public GameEvent ConfigLoaded;
     public Timer mainTimer;
@@ -70,6 +73,9 @@ public class UIManager : MonoBehaviour
 
     public void StartGame()
     {
+        primarySequenceManager.CompleteCurrentSequence();
+        namesakeSequenceManager.CompleteCurrentSequence();
+
         started = true;
         //closeAllWindows.Raise();
         //startEvent.Raise();
@@ -86,6 +92,9 @@ public class UIManager : MonoBehaviour
 
     public void CloseAndReopenCurrentWindow()
     {
+        primarySequenceManager.CompleteCurrentSequence();
+        namesakeSequenceManager.CompleteCurrentSequence();
+
         closeAllWindows.Raise();
         windowEvents[currentWindow].Raise();
     }

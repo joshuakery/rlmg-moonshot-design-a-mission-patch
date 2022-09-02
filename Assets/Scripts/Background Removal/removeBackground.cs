@@ -342,16 +342,16 @@ namespace ArtScan.CoreModule
                             {
                                 PresentationUtils.MakeReadyToPresent(
                                     removedMat, rawImageDisplayMat,
-                                    displayOptions.doDrawMaxAreaContour, maxAreaContour,
-                                    settings.doCropToBoundingBox, settings.doSizeToFit
+                                    maxAreaContour,
+                                    displayOptions, settings
                                 );
                             }
                             else
                             {
                                 PresentationUtils.MakeReadyToPresent(
                                     transformedMat, rawImageDisplayMat,
-                                    displayOptions.doDrawMaxAreaContour, maxAreaContour,
-                                    settings.doCropToBoundingBox, settings.doSizeToFit
+                                    maxAreaContour,
+                                    displayOptions, settings
                                 );
                             }
                         }
@@ -414,8 +414,8 @@ namespace ArtScan.CoreModule
 
                 PresentationUtils.MakeReadyToPresent(
                     removedMat, displayMat,
-                    displayOptions.doDrawMaxAreaContour, maxAreaContourDest,
-                    settings.doCropToBoundingBox, settings.doSizeToFit    
+                    maxAreaContourDest,
+                    displayOptions, settings  
                 );
 
                 Utils.fastMatToTexture2D(displayMat, scanTexture, true, 0, true);

@@ -5,6 +5,7 @@ using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.ImgprocModule;
 using OpenCVForUnity.UnityUtils.Helper;
 using OpenCVForUnity.UnityUtils;
+using ArtScan.PerspectiveUtilsModule;
 
 namespace ArtScan.PresentationUtilsModule
 {
@@ -46,43 +47,43 @@ namespace ArtScan.PresentationUtilsModule
             }
         }
 
-        public static void MakeReadyToPresent(Mat src, Mat dest, bool doDrawMaxAreaContour, MatOfPoint maxAreaContour, bool doCropToBoundingBox, bool doSizeToFit)
+        public static void MakeReadyToPresent(Mat src, Mat dest, MatOfPoint maxAreaContour, RemoveBackgroundDisplayOptions displayOptions, RemoveBackgroundSettings settings)
         {
-            dest.setTo(new Scalar(0,0,0,0));
+            dest.setTo(new Scalar(0, 0, 0, 0));
 
-
-
-            // DisplayMat(src,dest);
-            // return;
-
-            if (doDrawMaxAreaContour)
+            if (displayOptions.doDrawMaxAreaContour)
             {
                 OpenCVForUnity.CoreModule.Rect roi = Imgproc.boundingRect(maxAreaContour);
-                Imgproc.rectangle (src, new Point (roi.x,roi.y), new Point (roi.x+roi.width, roi.y+roi.height), DEBUG_CONTOUR_COLOR, 5);
-                Imgproc.drawContours(src,new List<MatOfPoint> {maxAreaContour}, -1, CONTOUR_COLOR, 2);
+                Imgproc.rectangle(src, new Point(roi.x, roi.y), new Point(roi.x + roi.width, roi.y + roi.height), DEBUG_CONTOUR_COLOR, 5);
+                Imgproc.drawContours(src, new List<MatOfPoint> { maxAreaContour }, -1, CONTOUR_COLOR, 2);
             }
-                
 
-            if (doCropToBoundingBox)
+            if (settings.doCropToBoundingBox)
             {
                 OpenCVForUnity.CoreModule.Rect roi = Imgproc.boundingRect(maxAreaContour);
                 if (roi.area() > 0)
                 {
-                    using (Mat croppedMat = new Mat(src,roi))
+                    using (Mat croppedMat = new Mat(src, roi))
                     {
-                        ScaleUpAndDisplayMat(croppedMat,dest, doSizeToFit);
+                        ScaleUpAndDisplayMat(croppedMat, dest, settings.doSizeToFit);
                     }
                 }
                 else
                 {
-                    ScaleUpAndDisplayMat(src,dest, doSizeToFit);
+                    ScaleUpAndDisplayMat(src, dest, settings.doSizeToFit);
                 }
 
             }
             else
             {
-                ScaleUpAndDisplayMat(src,dest, doSizeToFit);
+                ScaleUpAndDisplayMat(src, dest, settings.doSizeToFit);
             }
+
+            // Post Processing Effects
+            //if (settings.postProcessingSettings != null)
+            //{
+            //    PerspectiveUtils.BrightnessContrast(dest, settings.postProcessingSettings.brightness, settings.postProcessingSettings.contrast);
+            //}
         }
 
         public static void ScaleUpAndDisplayMat(Mat src, Mat outputDisplayAreaMat, bool doSizeToFit)

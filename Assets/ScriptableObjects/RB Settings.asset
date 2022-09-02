@@ -25,3 +25,4 @@ MonoBehaviour:
   cannyApertureSize: 3
   doCropToBoundingBox: 1
   doSizeToFit: 1
+  doSaveCroppedToBoundingBox: 1

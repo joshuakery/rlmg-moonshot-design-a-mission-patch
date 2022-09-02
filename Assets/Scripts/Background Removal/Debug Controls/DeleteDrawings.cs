@@ -51,7 +51,6 @@ public class DeleteDrawings : MonoBehaviour
 
     public Texture2D[] scans;
 
-    public string auxFolder = "DeleteDrawingsAux";
     public RemoveBackgroundSettings settings;
     public myWebCamTextureToMatHelper webCamTextureToMatHelper;
 
@@ -62,7 +61,6 @@ public class DeleteDrawings : MonoBehaviour
 
         scanHistories = new List<ScanHistory>();
 
-        ClearFolder(auxFolder);
         viewedTeamIndex = gameState.currentTeamIndex;
         ViewTeam();
     }
@@ -87,7 +85,7 @@ public class DeleteDrawings : MonoBehaviour
                 loadingFeedback.SetActive(true);
 
             //download images to aux folder
-            string dirPath = Path.Join(Application.streamingAssetsPath, auxFolder);
+            string dirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
             //synchronous
             //ScanSaving.DownloadScans(dirPath, viewedTeam, false);
             //asynchronous
@@ -130,7 +128,7 @@ public class DeleteDrawings : MonoBehaviour
         undoButton.interactable = false;
 
         //clear scanhistories
-        scanHistories.Clear();
+        if (scanHistories != null) { scanHistories.Clear(); }
     }
 
     public void SyncScans()
@@ -259,24 +257,6 @@ public class DeleteDrawings : MonoBehaviour
             undoButton.interactable = (scanHistories.Count > 0);
 
             UpdatePatches();
-        }
-    }
-
-    private void ClearFolder(string dirName)
-    {
-        string dirPath = Path.Join(Application.streamingAssetsPath, dirName);
-        DirectoryInfo di = new DirectoryInfo(dirPath);
-
-        if (di.Exists)
-        {
-            foreach (FileInfo file in di.GetFiles())
-            {
-                file.Delete();
-            }
-            foreach (DirectoryInfo dir in di.GetDirectories())
-            {
-                dir.Delete(true);
-            }
         }
     }
 }

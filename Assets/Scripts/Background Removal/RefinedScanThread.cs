@@ -61,9 +61,6 @@ public class RefinedScanThread: MultiThreading.ThreadedJob {
                     {
                         if (transformedMat.width() > 1 && transformedMat.height() > 1)
                         {
-                            //crop in the edges to hide them from the find largest contour later
-                            // PerspectiveUtils.CropByPercent(transformedMat, transformedMat, 1.0f);
-
                             EdgeFinding.SetEdgeMat(transformedMat,edgeMat,settings,edgeDetection);
                             
                             if (displayOptions.showEdges)
@@ -71,22 +68,45 @@ public class RefinedScanThread: MultiThreading.ThreadedJob {
 
                             using (Mat removedMat = RemoveBackgroundUtils.GrabcutMaskBackground(transformedMat,edgeMat, out MatOfPoint maxAreaContour))
                             {
-                                removedMat.copyTo(unscaledMat);
+                                //unscaledMat will later be copied to the RefinedScanController's previewMat
+                                if (settings.doSaveCroppedToBoundingBox)
+                                {
+                                    OpenCVForUnity.CoreModule.Rect roi = Imgproc.boundingRect(maxAreaContour);
+                                    if (roi.area() > 0)
+                                    {
+                                        using (Mat croppedMat = new Mat(removedMat, roi))
+                                        {
+                                            PerspectiveUtils.BrightnessContrast(croppedMat, settings.postProcessingSettings.brightness, settings.postProcessingSettings.contrast, true);
+                                            croppedMat.copyTo(unscaledMat);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        PerspectiveUtils.BrightnessContrast(removedMat, settings.postProcessingSettings.brightness, settings.postProcessingSettings.contrast, true);
+                                        removedMat.copyTo(unscaledMat);
+                                    }
+                                }
+                                else
+                                {
+                                    PerspectiveUtils.BrightnessContrast(removedMat, settings.postProcessingSettings.brightness, settings.postProcessingSettings.contrast, true);
+                                    removedMat.copyTo(unscaledMat);
+                                }
 
+                                //displayMat will be simply converted to Texture2D
                                 if (displayOptions.doRemoveBackground)
                                 {
                                     PresentationUtils.MakeReadyToPresent(
                                         removedMat, displayMat,
-                                        displayOptions.doDrawMaxAreaContour, maxAreaContour,
-                                        settings.doCropToBoundingBox, settings.doSizeToFit
+                                        maxAreaContour,
+                                        displayOptions, settings
                                     );
                                 }
                                 else
                                 {
                                     PresentationUtils.MakeReadyToPresent(
                                         transformedMat, displayMat,
-                                        displayOptions.doDrawMaxAreaContour, maxAreaContour,
-                                        settings.doCropToBoundingBox, settings.doSizeToFit
+                                        maxAreaContour,
+                                        displayOptions, settings
                                     );
                                 }
                             }

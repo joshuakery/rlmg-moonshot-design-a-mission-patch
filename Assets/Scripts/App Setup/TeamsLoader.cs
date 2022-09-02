@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Newtonsoft.Json;
 using UnityEngine.EventSystems;
@@ -10,7 +11,6 @@ using ArtScan;
 
 namespace ArtScan.TeamsModule
 {
-
     [System.Serializable]
 	public class TeamsJSON
 	{
@@ -33,6 +33,8 @@ namespace ArtScan.TeamsModule
         public EventSystem eventSystem;
 
         public GameState gameState;
+
+        public bool doLoadDefaultTeamOnly = false;
 
         private void SetupDefaultTeam()
         {
@@ -67,6 +69,24 @@ namespace ArtScan.TeamsModule
                     }
                     else
                     {
+                        if (doLoadDefaultTeamOnly)
+                        {
+                            string[] teamNames = teamsJSON.teams.Select(t => t.teamName).ToArray();
+                            if (teamNames.Contains("Default Team"))
+                            {
+                                int index = teamsJSON.teams.FindIndex(t => t.teamName == "Default Team");
+                                gameState.AddTeam(teamsJSON.teams[index]);
+                                gameState.currentTeamIndex = 0;
+                            }
+                            else
+                            {
+                                SetupDefaultTeam();
+                                gameState.currentTeamIndex = 0;
+                            }
+
+                            yield break;
+                        }
+
                         foreach (MoonshotTeamData team in teamsJSON.teams)
                             gameState.AddTeam(team);
 

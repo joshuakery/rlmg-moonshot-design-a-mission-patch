@@ -71,12 +71,12 @@ public class SaveScansHelper : MonoBehaviour
 
     private void RaiseDownloadFailed()
     {
-        doRaiseUploadFailed = true;
+        doRaiseDownloadFailed = true;
     }
 
     private void RaiseDownloadSucceeded()
     {
-        doRaiseUploadSucceeded = true;
+        doRaiseDownloadSucceeded = true;
     }
 
     private void RaiseDeleteFailed()
@@ -152,12 +152,15 @@ public class SaveScansHelper : MonoBehaviour
 
     public void OnApplicationQuit()
     {
-        if (gameState.settings.clearCacheOnQuit)
+        if (gameState.settings.clearSaveDirOnQuit)
+        {
+            string savePath = Path.Join(Application.streamingAssetsPath, gameState.settings.saveDir);
+            ScanSaving.DeleteFolderContents(savePath);
+        }
+        if (gameState.settings.clearTrashDirOnQuit)
         {
             string trashPath = Path.Join(Application.streamingAssetsPath, gameState.settings.trashDir);
             ScanSaving.DeleteFolderContents(trashPath);
-            string savePath = Path.Join(Application.streamingAssetsPath, gameState.settings.saveDir);
-            ScanSaving.DeleteFolderContents(savePath);
         }
     }
 

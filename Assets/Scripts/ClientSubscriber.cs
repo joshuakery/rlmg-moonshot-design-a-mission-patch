@@ -103,7 +103,7 @@ public class ClientSubscriber : MonoBehaviour
                 if (teamNames.Contains(teamData.teamName))
                 {
                     int index = gameState.teams.FindIndex(t => t.teamName == teamData.teamName);
-                    gameState.teams[index] = teamData;
+                    gameState.teams[index] = teamData; //overwrite that existing team's data
                 }
                 else
                     gameState.AddTeam(teamData);

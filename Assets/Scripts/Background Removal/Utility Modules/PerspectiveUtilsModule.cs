@@ -13,6 +13,28 @@ namespace ArtScan.PerspectiveUtilsModule
     {
         public static void BrightnessContrast(Mat src, int brightness, int contrast)
         {
+            _BrightnessContrast(src, brightness, contrast);
+        }
+
+        public static void BrightnessContrast(Mat src, int brightness, int contrast, bool ignoreAlpha)
+        {
+            if (ignoreAlpha)
+            {
+                using (Mat alpha = new Mat())
+                {
+                    Core.extractChannel(src, alpha, 3);
+                    _BrightnessContrast(src, brightness, contrast);
+                    Core.insertChannel(alpha, src, 3);
+                }
+            }
+            else
+            {
+                _BrightnessContrast(src, brightness, contrast);
+            }
+        }
+
+        private static void _BrightnessContrast(Mat src, int brightness, int contrast)
+        {
             brightness = (int)((brightness - 0) * (255 - (-255)) / (510 - 0) + (-255));
             contrast = (int)((contrast - 0) * (127 - (-127)) / (254 - 0) + (-127));
 

@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connectOnStart: 0
-  ip: dev2.sounddev.com
+  ip: 10.0.8.218
   port: 26950
   clientId: 1
   _moonshotStation: 2

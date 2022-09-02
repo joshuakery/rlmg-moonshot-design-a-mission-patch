@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2751979112884446843}
-  - component: {fileID: 2751979112884446842}
+  - component: {fileID: 8255089208915412494}
   m_Layer: 5
   m_Name: JSON Display
   m_TagString: Untagged
@@ -38,7 +38,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2751979112884446842
+--- !u!114 &8255089208915412494
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,12 +47,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2751979112884446840}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1890d07fa64564ac5b31f52082b418c9, type: 3}
+  m_Script: {fileID: 11500000, guid: d898b7b5e32804d62ad84a5560c62821, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   key: 9
   targetObj: {fileID: 2751979113216881921}
-  targetComponent: {fileID: 2751979113018393595}
+  targetComponent: {fileID: 0}
 --- !u!1 &2751979113018393590
 GameObject:
   m_ObjectHideFlags: 0
@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b56df7ac33c14350a2bf79b070bdcc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timestamp: {fileID: 2751979113869955369}
   display: {fileID: 0}
 --- !u!114 &2751979113018393592
 MonoBehaviour:
@@ -300,7 +301,7 @@ GameObject:
   - component: {fileID: 2751979113869955371}
   - component: {fileID: 2751979113869955369}
   m_Layer: 5
-  m_Name: Heading
+  m_Name: Timestamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -354,7 +355,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'JSON as of last key press:'
+  m_text: 'Current team JSON:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

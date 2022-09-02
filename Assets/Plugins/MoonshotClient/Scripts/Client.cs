@@ -36,7 +36,7 @@ public class Client : MonoBehaviour
     }
 
     public bool connectOnStart = true;
-
+    
     public static int dataBufferSize = 4096;
 
     //    public string ip = "10.0.0.33";
@@ -476,10 +476,10 @@ public class Client : MonoBehaviour
 
         if (forceReload || !startSceneIsActive)
         {
-
+            
             if (loadSceneByName && !System.String.IsNullOrEmpty(startMissionScene))
             {
-                Debug.Log(String.Format("Loading scene {0}", startMissionScene));
+                Debug.Log(String.Format("Loading scene {0}",startMissionScene));
                 SceneManager.LoadScene(startMissionScene);
             }
             else
@@ -487,7 +487,7 @@ public class Client : MonoBehaviour
                 Debug.Log("Loading scene 0");
                 SceneManager.LoadScene(0);
             }
-
+           
         }
         else
         {

@@ -11,6 +11,12 @@ namespace ArtScan.CamConfigLoaderModule
 	[System.Serializable]
 	public class CamConfigJSON : ConfigLoader.ConfigJSON
 	{
+		public string saveDir;
+		public string trashDir;
+		public bool clearSaveDirOnQuit;
+		public bool clearTrashDirOnQuit;
+		public bool doSaveCroppedToBoundingBox;
+
 		public string defaultCamera;
 		public bool flipVertical;
 		public bool flipHorizontal;
@@ -22,6 +28,8 @@ namespace ArtScan.CamConfigLoaderModule
 
 		public bool doSizeToFit;
 		public bool doCropToBoundingBox;
+
+		public RemoveBackgroundSettings.PostProcessingSettings postProcessingSettings;
 		
 	}
 
@@ -46,11 +54,19 @@ namespace ArtScan.CamConfigLoaderModule
 
 			if (settings != null)
 			{
+				settings.saveDir = configData.saveDir;
+				settings.trashDir = configData.trashDir;
+				settings.clearSaveDirOnQuit = configData.clearSaveDirOnQuit;
+				settings.clearTrashDirOnQuit = configData.clearTrashDirOnQuit;
+				settings.doSaveCroppedToBoundingBox = configData.doSaveCroppedToBoundingBox;
+
 				settings.brightness = configData.brightness;
 				settings.contrast = configData.contrast;
 				settings.edgeFindingMethod = (EdgeFindingMethod)configData.edgeFindingMethod;
 				settings.doSizeToFit = configData.doSizeToFit;
 				settings.doCropToBoundingBox = configData.doCropToBoundingBox;
+
+				settings.postProcessingSettings = configData.postProcessingSettings;
 			}
 
 			yield return base.PopulateContent(contentData);

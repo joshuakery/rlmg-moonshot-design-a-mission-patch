@@ -6,11 +6,25 @@ using ArtScan.CoreModule;
 [CreateAssetMenu(menuName = "Remove Background/Settings"), System.Serializable]
 public class RemoveBackgroundSettings : ScriptableObject
 {
+    [System.Serializable]
+    public class PostProcessingSettings
+    {
+        public int brightness = 255;
+        public int contrast = 127;
+    }
+
     public string saveDir = "SavedScans";
     public string trashDir = "TrashedScans";
 
-    public bool clearCacheOnQuit = false;
-    
+    public bool clearSaveDirOnQuit = false;
+    public bool clearTrashDirOnQuit = false;
+
+    /// <summary>
+    /// Whether or not to crop to bounding box before saving image
+    /// Does not affect doCropToBoundingBox
+    /// </summary>
+    public bool doSaveCroppedToBoundingBox = false;
+
     public int targetWidth = 750;
     public int targetHeight = 750;
 
@@ -25,6 +39,7 @@ public class RemoveBackgroundSettings : ScriptableObject
 
     /// <summary>
     /// Determines whether to crop to bounding box of drawing and scale up.
+    /// Does not affect doSaveCroppedToBoundingBox
     /// </summary>
     public bool doCropToBoundingBox = true;
 
@@ -32,6 +47,9 @@ public class RemoveBackgroundSettings : ScriptableObject
     /// Determines how the image is ScaleUpAndDisplay'ed.
     /// </summary>
     public bool doSizeToFit = true;
+
+    /// Post Processing
+    public PostProcessingSettings postProcessingSettings;
 
 }
 
