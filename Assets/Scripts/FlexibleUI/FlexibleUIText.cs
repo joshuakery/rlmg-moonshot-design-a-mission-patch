@@ -40,7 +40,8 @@ public class FlexibleUIText : FlexibleUI
         Secondary,
         PrimaryGradient,
         SecondaryGradient,
-        Custom
+        Custom,
+        Accent
     }
 
     public override void Awake()
@@ -140,5 +141,55 @@ public class FlexibleUIText : FlexibleUI
         
 
         base.OnSkinUI();
+    }
+
+    private void _ChangeFontColor(FontColor fontColor)
+    {
+        switch (fontColor)
+        {
+            case FontColor.White:
+                tmp_text.color = skinData.whiteColor;
+                tmp_text.enableVertexGradient = false;
+                break;
+            case FontColor.Black:
+                tmp_text.color = skinData.blackColor;
+                tmp_text.enableVertexGradient = false;
+                break;
+            case FontColor.Primary:
+                tmp_text.color = skinData.primaryColor;
+                tmp_text.enableVertexGradient = false;
+                break;
+            case FontColor.Secondary:
+                tmp_text.color = skinData.secondaryColor;
+                tmp_text.enableVertexGradient = false;
+                break;
+            case FontColor.PrimaryGradient:
+                tmp_text.color = Color.white;
+                tmp_text.enableVertexGradient = true;
+                tmp_text.colorGradientPreset = skinData.primaryTextGradient;
+                break;
+            case FontColor.SecondaryGradient:
+                tmp_text.color = Color.white;
+                tmp_text.enableVertexGradient = true;
+                tmp_text.colorGradientPreset = skinData.secondaryTextGradient;
+                break;
+            case FontColor.Custom:
+                break;
+            case FontColor.Accent:
+                tmp_text.color = skinData.accentColor;
+                tmp_text.enableVertexGradient = false;
+                break;
+        }
+    }
+
+    //Helper Methods
+    public void ChangeFontColor(FontColor fontColor)
+    {
+        _ChangeFontColor(fontColor);
+    }
+
+    public void ChangeFontColor(int i)
+    {
+        _ChangeFontColor((FontColor)i);
     }
 }

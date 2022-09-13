@@ -7,8 +7,8 @@ using rlmg.logging;
 public class ClientSubscriber : MonoBehaviour
 {
     public UIManager uiManager;
-    public Timer mainTimer;
-    public Timer closeTimer;
+    public MoonshotTimer.Timer mainTimer;
+    public MoonshotTimer.Timer closeTimer;
 
     public GameState gameState;
 

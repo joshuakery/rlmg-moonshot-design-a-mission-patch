@@ -8,18 +8,20 @@ using ArtScan;
 using ArtScan.WordSavingUtilsModule;
 using rlmg.logging;
 using DG.Tweening;
+using MoonshotTimer;
 
 public class UIManager : MonoBehaviour
 {
     public GameState gameState;
-    public GameEvent closeAllWindows;
-    public GameEvent startEvent;
+    public GameEvent CloseAllWindowsEvent;
+    public GameEvent StartEvent;
+    public GameEvent EndingEvent;
 
     public UISequenceManager primarySequenceManager;
     public UISequenceManager namesakeSequenceManager;
     //debug
     public GameEvent ConfigLoaded;
-    public Timer mainTimer;
+    public MoonshotTimer.Timer mainTimer;
     public int currentWindow;
     public List<GameEvent> windowEvents;
     public GameObject RemoveBackgroundDebugMenu;
@@ -86,8 +88,8 @@ public class UIManager : MonoBehaviour
     private IEnumerator LateStart()
     {
         yield return null; //just need to wait one frame
-        closeAllWindows.Raise();
-        startEvent.Raise();
+        CloseAllWindowsEvent.Raise();
+        StartEvent.Raise();
     }
 
     public void CloseAndReopenCurrentWindow()
@@ -95,7 +97,7 @@ public class UIManager : MonoBehaviour
         primarySequenceManager.CompleteCurrentSequence();
         namesakeSequenceManager.CompleteCurrentSequence();
 
-        closeAllWindows.Raise();
+        CloseAllWindowsEvent.Raise();
         windowEvents[currentWindow].Raise();
     }
 
@@ -109,6 +111,22 @@ public class UIManager : MonoBehaviour
         StartGame();
 
         RLMGLogger.Instance.Log("Resetting game.", MESSAGETYPE.INFO);
+    }
+
+    public void OnMainTimeout(float delay)
+    {
+        StartCoroutine(WrapUp(delay));
+    }
+
+    private IEnumerator WrapUp(float delay)
+    {
+        mainTimer.PauseCounting();
+        mainTimer.SetToZero();
+
+        yield return new WaitForSeconds(delay);
+
+        CloseAllWindowsEvent.Raise();
+        EndingEvent.Raise();
     }
 
 
@@ -144,6 +162,17 @@ public class UIManager : MonoBehaviour
             primaryCanvas.targetDisplay = secondaryCanvas.targetDisplay;
             secondaryCanvas.targetDisplay = aux;
         }
+        //Main Timer
+        else if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            mainTimer.time = 2;
+            mainTimer.StartCounting();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            mainTimer.time = 12;
+            mainTimer.StartCounting();
+        }
         //Reset Game
         else if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -156,11 +185,11 @@ public class UIManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.U))
         {
-            closeAllWindows.Raise();
+            CloseAllWindowsEvent.Raise();
         }
         else if (Input.GetKeyDown(KeyCode.W))
         {
-            startEvent.Raise();
+            StartEvent.Raise();
         }
         else if (Input.GetKeyDown(KeyCode.T))
         {
@@ -173,7 +202,7 @@ public class UIManager : MonoBehaviour
             if (windowEvents.Count > 0)
             {
                 currentWindow = (currentWindow + 1) % windowEvents.Count;
-                closeAllWindows.Raise();
+                CloseAllWindowsEvent.Raise();
                 windowEvents[currentWindow].Raise();  
             }
         }
@@ -183,7 +212,7 @@ public class UIManager : MonoBehaviour
             {
                 currentWindow -= 1;
                 if (currentWindow < 0) currentWindow = windowEvents.Count - 1;
-                closeAllWindows.Raise();
+                CloseAllWindowsEvent.Raise();
                 windowEvents[currentWindow].Raise();
             }
         }
