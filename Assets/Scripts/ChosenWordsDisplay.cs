@@ -22,7 +22,8 @@ public class ChosenWordsDisplay : MonoBehaviour
             Transform chosenWord = chosenWordsContainer.GetChild(i);
             TMP_Text tmp_text = chosenWord.gameObject.GetComponent<TMP_Text>();
 
-            if (i < gameState.currentTeam.chosenWords.Count)
+            if (gameState.currentTeam != null &&
+                i < gameState.currentTeam.chosenWords.Count)
             {
                 tmp_text.text = gameState.currentTeam.chosenWords[i];
                 chosenWord.gameObject.SetActive(true);

@@ -66,7 +66,7 @@ public class ClientSubscriber : MonoBehaviour
 
         ClientSend.RequestAllStationData();
 
-        uiManager.StartGame();
+        uiManager.ResetGame(true); //do open Welcome window
     }
 
     private void PauseMission()

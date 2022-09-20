@@ -9,12 +9,14 @@ using ArtScan.WordSavingUtilsModule;
 using rlmg.logging;
 using DG.Tweening;
 using MoonshotTimer;
+using OpenCVForUnity.UnityUtils.Helper;
 
 public class UIManager : MonoBehaviour
 {
     public GameState gameState;
     public GameEvent CloseAllWindowsEvent;
     public GameEvent StartEvent;
+    public myWebCamTextureToMatHelper myWebCamTextureToMatHelper;
     public GameEvent EndingEvent;
 
     public UISequenceManager primarySequenceManager;
@@ -39,11 +41,7 @@ public class UIManager : MonoBehaviour
         SetCurrentWindowListeners();
     }
 
-    private void Start() 
-    {
-        started = false;
-        gameState.teams = new List<MoonshotTeamData>();
-    }
+
 
     private void SetCurrentWindowListeners()
     {
@@ -67,29 +65,96 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void StartGameOrReopenCurrentWindow()
+    //public void StartGameOrReopenCurrentWindow()
+    //{
+    //    if (!started) StartGame();
+    //    else CloseAndReopenCurrentWindow();
+    //}
+
+    //public void StartGame()
+    //{
+
+
+    //    started = true;
+    //    //closeAllWindows.Raise();
+    //    //startEvent.Raise();
+    //    StartCoroutine(LateStart());
+    //    RLMGLogger.Instance.Log("Starting game...", MESSAGETYPE.INFO);
+    //}
+
+
+
+
+
+
+    //public void ResetGame()
+    //{
+    //    gameState.Reset();
+
+    //    //closeAllWindows.Raise();
+
+    //    StartGame();
+
+    //    RLMGLogger.Instance.Log("Resetting game.", MESSAGETYPE.INFO);
+    //}
+
+    private void Start()
     {
-        if (!started) StartGame();
-        else CloseAndReopenCurrentWindow();
+        started = false;
+        gameState.teams = new List<MoonshotTeamData>();
+
+        ResetGame(false); //do not open Welcome window
     }
 
-    public void StartGame()
+    public void ResetGame()
+    {
+        _ResetGame(true);
+    }
+
+    public void ResetGame(bool doRestart)
+    {
+        _ResetGame(doRestart);
+    }
+
+    private void _ResetGame(bool doRestart)
     {
         primarySequenceManager.CompleteCurrentSequence();
         namesakeSequenceManager.CompleteCurrentSequence();
 
-        started = true;
-        //closeAllWindows.Raise();
-        //startEvent.Raise();
+        gameState.Reset();
+
+        if (mainTimer.time == 0) { mainTimer.Reset(); } //only ok to reset main timer if not set by server
+
+        if (doRestart) { StartCoroutine(LateStart()); }
+        else { StartCoroutine(LateClose()); }
+
+    }
+
+    public void CallLateStartCoroutine()
+    {
         StartCoroutine(LateStart());
-        RLMGLogger.Instance.Log("Starting game...", MESSAGETYPE.INFO);
     }
 
     private IEnumerator LateStart()
     {
+        if (!started)
+        {
+            yield return null; //just need to wait one frame
+            CloseAllWindowsEvent.Raise();
+
+            if (myWebCamTextureToMatHelper != null && myWebCamTextureToMatHelper.IsInitialized())
+            {
+                StartEvent.Raise();
+                started = true;
+            }
+        }
+    }
+
+    private IEnumerator LateClose()
+    {
         yield return null; //just need to wait one frame
         CloseAllWindowsEvent.Raise();
-        StartEvent.Raise();
+        currentWindow = -1;
     }
 
     public void CloseAndReopenCurrentWindow()
@@ -98,19 +163,9 @@ public class UIManager : MonoBehaviour
         namesakeSequenceManager.CompleteCurrentSequence();
 
         CloseAllWindowsEvent.Raise();
-        windowEvents[currentWindow].Raise();
-    }
 
-
-    public void ResetGame()
-    {
-        gameState.Reset();
-
-        //closeAllWindows.Raise();
-
-        StartGame();
-
-        RLMGLogger.Instance.Log("Resetting game.", MESSAGETYPE.INFO);
+        if (currentWindow >= 0 && currentWindow < windowEvents.Count)
+        { windowEvents[currentWindow].Raise(); }
     }
 
     public void OnMainTimeout(float delay)

@@ -349,7 +349,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1402640636778642850, guid: 6fe9eb86a976d492f8472d640fb950b7, type: 3}
       propertyPath: m_text
-      value: Enterprising
+      value: Strong-Willed
       objectReference: {fileID: 0}
     - target: {fileID: 1402640636778642850, guid: 6fe9eb86a976d492f8472d640fb950b7, type: 3}
       propertyPath: m_fontSize

@@ -34,6 +34,27 @@ public class CameraDisconnectHandler : MonoBehaviour
         lastUpdateTime = 0;
     }
 
+    private void OnEnable()
+    {
+        if (webCamTextureToMatHelper != null)
+        {
+            webCamTextureToMatHelper.onInitialized.AddListener(ResetTimeoutCounter);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (webCamTextureToMatHelper != null)
+        {
+            webCamTextureToMatHelper.onInitialized.RemoveListener(ResetTimeoutCounter);
+        }
+    }
+
+    private void ResetTimeoutCounter()
+    {
+        lastUpdateTime = 0;
+    }
+
     // Update is called once per frame
     void Update()
     {
