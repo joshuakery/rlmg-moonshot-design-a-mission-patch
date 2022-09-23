@@ -1,12 +1,12 @@
 {
     "teams": [
         {
-            "teamName": "Green",
-            "namesake": "Kaguya",
+            "teamName": "TEAM GREEN",
+            "namesake": "Artemis",
             "chosenWords": [
-                "Creative",
                 "Strong-willed",
-                "Mighty"
+                "Mighty",
+                "Loyal"
             ],
             "didRoverActivity": false,
             "roverStepsCompleted": 0,
@@ -18,13 +18,35 @@
             "settlementWaterQuality": 0.0,
             "didArtActivity": false,
             "artworks": [
-                "Green-0.png",
-                "Green-1.png",
-                "Green-2.png",
-                "Green-3.png",
-                "Green-4.png",
-                "Green-5.png"
+                "TEAM GREEN-0.png",
+                "TEAM GREEN-1.png",
+                "TEAM GREEN-2.png",
+                "TEAM GREEN-3.png",
+                "",
+                ""
             ],
+            "didCharterActivity": false,
+            "charterQsCompleted": 0,
+            "charterMeterDecisions": 0.0,
+            "charterMeterPriorities": 0.0,
+            "charterMeterStrictness": 0.0,
+            "didHuntActivity": false,
+            "huntNumFound": 0
+        },
+        {
+            "teamName": "TEAM PURPLE",
+            "namesake": "",
+            "chosenWords": [],
+            "didRoverActivity": false,
+            "roverStepsCompleted": 0,
+            "didMapActivity": false,
+            "mapRoundsCompleted": 0,
+            "settlementShelterQuality": 0.0,
+            "settlementCommsQuality": 0.0,
+            "settlementSunQuality": 0.0,
+            "settlementWaterQuality": 0.0,
+            "didArtActivity": false,
+            "artworks": [],
             "didCharterActivity": false,
             "charterQsCompleted": 0,
             "charterMeterDecisions": 0.0,

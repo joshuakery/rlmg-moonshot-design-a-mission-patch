@@ -123,7 +123,7 @@ public class UIManager : MonoBehaviour
 
         gameState.Reset();
 
-        if (mainTimer.time == 0) { mainTimer.Reset(); } //only ok to reset main timer if not set by server
+        if (mainTimer != null && mainTimer.time == 0) { mainTimer.Reset(); } //only ok to reset main timer if not set by server
 
         if (doRestart) { StartCoroutine(LateStart()); }
         else { StartCoroutine(LateClose()); }

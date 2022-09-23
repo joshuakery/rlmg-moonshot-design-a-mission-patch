@@ -10624,7 +10624,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283012457}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -11717,6 +11717,7 @@ MonoBehaviour:
   gameState: {fileID: 11400000, guid: 697ff388aff8249d9b6ee08e618dfac2, type: 2}
   CloseAllWindowsEvent: {fileID: 11400000, guid: 0da4bff33b5b443a58f1d75bddbe7667, type: 2}
   StartEvent: {fileID: 11400000, guid: c0cb2c953ac2f4b419d33fba5d76f4c4, type: 2}
+  myWebCamTextureToMatHelper: {fileID: 0}
   EndingEvent: {fileID: 11400000, guid: 943381fb2f1e6468d8411173561f18a2, type: 2}
   primarySequenceManager: {fileID: 11400000, guid: 2d058e80c2bec41f1a4cb49d9ee3b36c, type: 2}
   namesakeSequenceManager: {fileID: 11400000, guid: 30c9ccaf9b15f445ab056406d1919fca, type: 2}
@@ -11826,7 +11827,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328863885}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa13b285dafa84d828b284603425a7c0, type: 3}
   m_Name: 
@@ -12810,7 +12811,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432291444}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -17247,7 +17248,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973369075}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -29183,7 +29184,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251683870}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}

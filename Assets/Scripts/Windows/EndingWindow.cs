@@ -15,8 +15,8 @@ public class EndingWindow : GenericWindow
     };
 
     public static string[] bodies = new string[2] {
-        "You didn't have time to scan in any sketches, but your ideas will still help a lot as we work toward a patch design that can show the whole Earth who we are. Thanks for your help!",
-        "Thanks for your help. You had some really great ideas! I'll put them together and we can work toward a patch design that can show the whole Earth who we are!"
+        "You didn’t have time to scan in any sketches, <nobr>but your ideas will</nobr> still help <nobr>a lot as we work</nobr> toward a patch design that can show the whole Earth who we are. Thanks for your help!",
+        "Thanks for your help. You had some really great ideas! I’ll put them together and we can work toward a patch design that can show the whole Earth who we are!"
     };
 
     public void SetTexts()
