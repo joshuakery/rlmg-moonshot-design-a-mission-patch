@@ -13,10 +13,14 @@ public class AwaitingServerScreen : MonoBehaviour
 
     private void Start()
     {
+        OpenAndCompleteAsync();
+    }
+
+    public void OpenAndCompleteAsync()
+    {
         if (genericWindow != null)
         {
-            genericWindow.Open();
-            genericWindow.uiTweener.sequenceManager.CompleteCurrentSequence();
+            genericWindow.OpenAndCompleteAsync();
         }
     }
 

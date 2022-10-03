@@ -1,12 +1,12 @@
 {
     "teams": [
         {
-            "teamName": "TEAM GREEN",
-            "namesake": "Artemis",
+            "teamName": "Default Team",
+            "namesake": "Melvin",
             "chosenWords": [
                 "Strong-willed",
-                "Mighty",
-                "Loyal"
+                "Scientific",
+                "Mighty"
             ],
             "didRoverActivity": false,
             "roverStepsCompleted": 0,
@@ -18,35 +18,13 @@
             "settlementWaterQuality": 0.0,
             "didArtActivity": false,
             "artworks": [
-                "TEAM GREEN-0.png",
-                "TEAM GREEN-1.png",
-                "TEAM GREEN-2.png",
-                "TEAM GREEN-3.png",
-                "",
-                ""
+                "Default Team-0.png",
+                "Default Team-1.png",
+                "Default Team-2.png",
+                "Default Team-3.png",
+                "Default Team-4.png",
+                "Default Team-5.png"
             ],
-            "didCharterActivity": false,
-            "charterQsCompleted": 0,
-            "charterMeterDecisions": 0.0,
-            "charterMeterPriorities": 0.0,
-            "charterMeterStrictness": 0.0,
-            "didHuntActivity": false,
-            "huntNumFound": 0
-        },
-        {
-            "teamName": "TEAM PURPLE",
-            "namesake": "",
-            "chosenWords": [],
-            "didRoverActivity": false,
-            "roverStepsCompleted": 0,
-            "didMapActivity": false,
-            "mapRoundsCompleted": 0,
-            "settlementShelterQuality": 0.0,
-            "settlementCommsQuality": 0.0,
-            "settlementSunQuality": 0.0,
-            "settlementWaterQuality": 0.0,
-            "didArtActivity": false,
-            "artworks": [],
             "didCharterActivity": false,
             "charterQsCompleted": 0,
             "charterMeterDecisions": 0.0,

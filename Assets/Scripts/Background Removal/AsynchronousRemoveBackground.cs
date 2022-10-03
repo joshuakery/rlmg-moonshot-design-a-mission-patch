@@ -275,8 +275,15 @@ namespace ArtScan.CoreModule
         /// </summary>
         public void OnWebCamTextureToMatHelperDisposed()
         {
-            // Debug.Log("OnWebCamTextureToMatHelperDisposed");
-            RLMGLogger.Instance.Log("OnWebCamTextureToMatHelperDisposed", MESSAGETYPE.INFO);
+            if (RLMGLogger.Instance != null) //always false?
+            {
+                RLMGLogger.Instance.Log("OnWebCamTextureToMatHelperDisposed", MESSAGETYPE.INFO);
+            }
+            else
+            {
+                Debug.Log("OnWebCamTextureToMatHelperDisposed");
+            }
+            
 
 #if !UNITY_WEBGL
             StopThread();

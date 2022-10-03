@@ -2,45 +2,54 @@ using UnityEngine;
 using UnityEngine.UI;
 using ArtScan;
 
-public class PatchLog : MonoBehaviour
+namespace ArtScan.MuralPositionsModule
 {
-    public Transform patchesContainer;
-
-    public GameState gameState;
-
-    private void OnEnable()
+    public class PatchLog : MonoBehaviour
     {
-        UpdatePatches();
-    }
+        public Transform patchesParent;
+        private Patch[] patches;
 
-    public void UpdatePatches()
-    {
-        for (int i=0; i<patchesContainer.childCount; i++)
+        public GameState gameState;
+
+        private void Awake()
         {
-            Transform patchLogItem = patchesContainer.GetChild(i);
-            Image img = patchLogItem.GetChild(0).GetComponent<Image>();
-            RawImage ri = patchLogItem.GetChild(1).GetComponent<RawImage>();
-
-            if (gameState.scans[i] != null) //if we have a scan, show it
-            {
-                Texture2D scan = gameState.scans[i];
-                ri.texture = scan;
-                
-                ri.gameObject.SetActive(true);
-                img.gameObject.SetActive(false);
-            }
-            else if (i == 0 || (i >= 1 && gameState.scans[i-1] != null))
-                //if not, if this is the first one, or if the last one was a scan, show the placeholder
-            {
-                ri.gameObject.SetActive(false);
-                img.gameObject.SetActive(true);
-            }
-            else
-            {
-                ri.gameObject.SetActive(false);
-                img.gameObject.SetActive(false);
-            }
+            patches = patchesParent.GetComponentsInChildren<Patch>();
         }
 
+        private void OnEnable()
+        {
+            UpdatePatches();
+        }
+
+        public void UpdatePatches()
+        {
+            for (int i = 0; i < patches.Length; i++)
+            {
+                Patch patch = patches[i];
+
+                if (gameState.scans[i] != null) //if we have a scan, show it
+                {
+                    Texture2D scan = gameState.scans[i];
+                    patch.ri.texture = scan;
+
+                    patch.drawingGenericWindow.Open();
+                    patch.defaultGenericWindow.Close();
+                }
+                else if (i == 0 || (i >= 1 && gameState.scans[i - 1] != null))
+                //if not, if this is the first one, or if the last one was a scan, show the placeholder
+                {
+                    patch.drawingGenericWindow.Close();
+                    patch.defaultGenericWindow.Open();
+                }
+                else
+                {
+                    patch.drawingGenericWindow.Close();
+                    patch.defaultGenericWindow.Close();
+                }
+            }
+
+        }
     }
 }
+
+

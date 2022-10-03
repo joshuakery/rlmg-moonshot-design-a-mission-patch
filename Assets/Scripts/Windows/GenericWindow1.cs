@@ -61,6 +61,13 @@ public class GenericWindow1 : MonoBehaviour
         }
     }
 
+    public void OpenAndCompleteAsync()
+    {
+        Tween _tween = uiTweener.GetTween(UITweener.TweenType.Entry);
+        _tween.Complete();
+        isOpen = true;
+    }
+
     public Tween GetOpen()
     {
         Sequence entrySequence = DOTween.Sequence();

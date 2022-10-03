@@ -220,7 +220,7 @@ public class SaveScansHelper : MonoBehaviour
         }
 
         //Update Server current team
-        if (Client.instance.team != null)
+        if (Client.instance != null && Client.instance.team != null)
         {
             if (Client.instance.team.MoonshotTeamData.artworks == null ||
                 Client.instance.team.MoonshotTeamData.artworks.Length != gameState.scanMax)

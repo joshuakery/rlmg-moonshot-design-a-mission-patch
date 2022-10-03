@@ -28,8 +28,12 @@ public class UIManager : MonoBehaviour
     public List<GameEvent> windowEvents;
     public GameObject RemoveBackgroundDebugMenu;
     public GameObject DrawingsMenu;
+
     public Canvas primaryCanvas;
+    private GenericWindowManager primaryWindowManager;
     public Canvas secondaryCanvas;
+    private GenericWindowManager secondaryWindowManager;
+    public GameEvent windowsRefreshedEvent;
 
     public bool started = false;
 
@@ -39,9 +43,10 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         SetCurrentWindowListeners();
+
+        primaryWindowManager = primaryCanvas.gameObject.GetComponent<GenericWindowManager>();
+        secondaryWindowManager = secondaryCanvas.gameObject.GetComponent<GenericWindowManager>();
     }
-
-
 
     private void SetCurrentWindowListeners()
     {
@@ -64,39 +69,6 @@ public class UIManager : MonoBehaviour
             empty.SetActive(true);
         }
     }
-
-    //public void StartGameOrReopenCurrentWindow()
-    //{
-    //    if (!started) StartGame();
-    //    else CloseAndReopenCurrentWindow();
-    //}
-
-    //public void StartGame()
-    //{
-
-
-    //    started = true;
-    //    //closeAllWindows.Raise();
-    //    //startEvent.Raise();
-    //    StartCoroutine(LateStart());
-    //    RLMGLogger.Instance.Log("Starting game...", MESSAGETYPE.INFO);
-    //}
-
-
-
-
-
-
-    //public void ResetGame()
-    //{
-    //    gameState.Reset();
-
-    //    //closeAllWindows.Raise();
-
-    //    StartGame();
-
-    //    RLMGLogger.Instance.Log("Resetting game.", MESSAGETYPE.INFO);
-    //}
 
     private void Start()
     {
@@ -139,7 +111,10 @@ public class UIManager : MonoBehaviour
     {
         if (!started)
         {
-            yield return null; //just need to wait one frame
+            yield return null; //just need to wait one frame for config to load
+
+            yield return StartCoroutine(RefreshWindows());
+
             CloseAllWindowsEvent.Raise();
 
             if (myWebCamTextureToMatHelper != null && myWebCamTextureToMatHelper.IsInitialized())
@@ -148,6 +123,30 @@ public class UIManager : MonoBehaviour
                 started = true;
             }
         }
+    }
+
+    private IEnumerator RefreshWindows()
+    {
+        primaryWindowManager.ResetWindows();
+        secondaryWindowManager.ResetWindows();
+        primaryWindowManager.OpenAllWindowsAndCompleteAsync();
+        secondaryWindowManager.OpenAllWindowsAndCompleteAsync();
+
+        yield return null; //wait for DOTween to complete animations
+
+        primaryCanvas.gameObject.SetActive(false);
+        secondaryCanvas.gameObject.SetActive(false);
+
+        yield return null; //wait for state change to be noticed
+
+        primaryCanvas.gameObject.SetActive(true);
+        secondaryCanvas.gameObject.SetActive(true);
+
+        //not redundant - in case we have some extras in the hierarchy
+        primaryWindowManager.CloseAllWindowsAndCompleteAsync();
+        secondaryWindowManager.CloseAllWindowsAndCompleteAsync();
+
+        if (windowsRefreshedEvent != null) { windowsRefreshedEvent.Raise(); }
     }
 
     private IEnumerator LateClose()
@@ -184,8 +183,6 @@ public class UIManager : MonoBehaviour
         EndingEvent.Raise();
     }
 
-
-
     public void GoToConclusion()
     {
         ResultsDisplayManager.teamNum = gameState.currentTeamIndex;
@@ -218,16 +215,16 @@ public class UIManager : MonoBehaviour
             secondaryCanvas.targetDisplay = aux;
         }
         //Main Timer
-        else if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            mainTimer.time = 2;
-            mainTimer.StartCounting();
-        }
-        else if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            mainTimer.time = 12;
-            mainTimer.StartCounting();
-        }
+        //else if (Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    mainTimer.time = 2;
+        //    mainTimer.StartCounting();
+        //}
+        //else if (Input.GetKeyDown(KeyCode.Alpha3))
+        //{
+        //    mainTimer.time = 185;
+        //    mainTimer.StartCounting();
+        //}
         //Reset Game
         else if (Input.GetKeyDown(KeyCode.Z))
         {
