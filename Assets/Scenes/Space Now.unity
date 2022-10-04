@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731725, g: 0.13414744, b: 0.12107873, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2123,6 +2123,7 @@ MonoBehaviour:
   patchesParent: {fileID: 609282960}
   gameState: {fileID: 11400000, guid: 697ff388aff8249d9b6ee08e618dfac2, type: 2}
   muralPositionsLoader: {fileID: 843361992}
+  targetPatch: {fileID: 0}
 --- !u!1 &620618564
 GameObject:
   m_ObjectHideFlags: 0

@@ -96,7 +96,7 @@ namespace ArtScan
         {
             string dirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
             //synchronous
-            ScanSaving.DownloadScans(dirPath, currentTeam);
+            ScanSavingModule.ScanSaving.DownloadScans(dirPath, currentTeam);
         }
 
         public void ReadScans(myWebCamTextureToMatHelper webCamTextureToMatHelper)
@@ -116,7 +116,7 @@ namespace ArtScan
                     {
                         string filepath = Path.Join(dirPath, filename);
 
-                        Texture2D scanTexture = ScanSaving.GetTexture2DFromImageFile(filepath, settings, webCamTextureToMatHelper);
+                        Texture2D scanTexture = ScanSavingModule.ScanSaving.GetTexture2DFromImageFile(filepath, settings, webCamTextureToMatHelper);
 
                         AddScan(scanTexture, i);
                     }
@@ -150,7 +150,7 @@ namespace ArtScan
         {
             string saveDirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
             string trashDirPath = Path.Combine(Application.streamingAssetsPath, settings.trashDir);
-            ScanSaving.TrashScan(saveDirPath, trashDirPath, filename);
+            ScanSavingModule.ScanSaving.TrashScan(saveDirPath, trashDirPath, filename);
 
             //ClientSend.DeleteFileFromServer(filename);
             //DeleteThreadController.Delete(filename);
@@ -163,7 +163,7 @@ namespace ArtScan
             string saveDirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
             string fullPath = Path.Join(saveDirPath, filename);
 
-            Texture2D untrashedScan = ScanSaving.GetTexture2DFromImageFile(fullPath, settings, webCamTextureToMatHelper);
+            Texture2D untrashedScan = ScanSavingModule.ScanSaving.GetTexture2DFromImageFile(fullPath, settings, webCamTextureToMatHelper);
             AddScan(untrashedScan, index);
         }
 
@@ -171,7 +171,7 @@ namespace ArtScan
         {
             string saveDirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
             string trashDirPath = Path.Combine(Application.streamingAssetsPath, settings.trashDir);
-            ScanSaving.UnTrashScan(saveDirPath, trashDirPath, filename);
+            ScanSavingModule.ScanSaving.UnTrashScan(saveDirPath, trashDirPath, filename);
 
             //string fullPath = Path.Join(saveDirPath, filename);
             //ClientSend.SendFileToServer(fullPath);

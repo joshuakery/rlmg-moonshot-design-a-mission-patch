@@ -1,17 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AbortThreads : MonoBehaviour
+namespace ArtScan.ScanSavingModule
 {
-    public UploadThreadController uploadThreadController;
-    public DownloadThreadController downloadThreadController;
-    public DeleteThreadController deleteThreadController;
-
-    private void OnDestroy()
+    public class AbortThreads : MonoBehaviour
     {
-        uploadThreadController.AbortThread();
-        downloadThreadController.AbortThread();
-        deleteThreadController.AbortThread();
+        public UploadThreadController uploadThreadController;
+        public DownloadThreadController downloadThreadController;
+        public DeleteThreadController deleteThreadController;
+
+        private void OnDestroy()
+        {
+            uploadThreadController.AbortThread();
+            downloadThreadController.AbortThread();
+            deleteThreadController.AbortThread();
+        }
     }
 }
+
+
 

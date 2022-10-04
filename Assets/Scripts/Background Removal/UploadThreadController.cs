@@ -2,60 +2,65 @@
 using System.Collections;
 using rlmg.logging;
 
-[CreateAssetMenu(menuName = "Thread Controller/Upload Thread Controller"), System.Serializable]
-public class UploadThreadController : ScriptableObject
+namespace ArtScan.ScanSavingModule
 {
-    //Thread Class
-    private class UploadThread : MultiThreading.ThreadedJob
+    [CreateAssetMenu(menuName = "Thread Controller/Upload Thread Controller"), System.Serializable]
+    public class UploadThreadController : ScriptableObject
     {
-        //parameters
-        public string filename;
-
-        protected override void ThreadFunction()
+        //Thread Class
+        private class UploadThread : MultiThreading.ThreadedJob
         {
-            Debug.Log(filename);
-            ClientSend.SendFileToServer(filename);
+            //parameters
+            public string filename;
+
+            protected override void ThreadFunction()
+            {
+                Debug.Log(filename);
+                ClientSend.SendFileToServer(filename);
+            }
         }
-    }
 
-    private UploadThread uploadThread;
+        private UploadThread uploadThread;
 
-    public void AbortThread()
-    {
-        if (uploadThread != null && !uploadThread.IsDone)
+        public void AbortThread()
         {
-            Debug.Log("Ending parallel upload thread...");
-            uploadThread.Abort();
-            Debug.Log("...ended.");
+            if (uploadThread != null && !uploadThread.IsDone)
+            {
+                Debug.Log("Ending parallel upload thread...");
+                uploadThread.Abort();
+                Debug.Log("...ended.");
+            }
         }
-    }
 
-    //Methods
-    public void Upload(string filename)
-    {
-        if (uploadThread == null || uploadThread.IsDone)
+        //Methods
+        public void Upload(string filename)
         {
-            UploadThread uploadThread = new UploadThread();
-            uploadThread.filename = filename;
+            if (uploadThread == null || uploadThread.IsDone)
+            {
+                UploadThread uploadThread = new UploadThread();
+                uploadThread.filename = filename;
 
-            uploadThread.Start();
+                uploadThread.Start();
+            }
         }
-    }
 
-    public IEnumerator UploadCoroutine(string filename)
-    {
-        if (uploadThread == null || uploadThread.IsDone)
+        public IEnumerator UploadCoroutine(string filename)
         {
-            UploadThread uploadThread = new UploadThread();
-            uploadThread.filename = filename;
+            if (uploadThread == null || uploadThread.IsDone)
+            {
+                UploadThread uploadThread = new UploadThread();
+                uploadThread.filename = filename;
 
-            uploadThread.Start();
+                uploadThread.Start();
 
-            yield return uploadThread.WaitFor();
-        }    
+                yield return uploadThread.WaitFor();
+            }
+        }
+
     }
-
 }
+
+
 
 
 

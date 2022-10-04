@@ -138,7 +138,7 @@ namespace ArtScan.MuralPositionsModule
             }
 
             int interval = 1;
-            if (Input.GetKey(KeyCode.LeftShift)) { interval = 10; }
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) { interval = 10; }
 
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
@@ -169,7 +169,7 @@ namespace ArtScan.MuralPositionsModule
                 }
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha7))
+            if (Input.GetKeyDown(KeyCode.Equals))
             {
                 
                 MuralPositionsJSON data = new MuralPositionsJSON();
@@ -186,8 +186,8 @@ namespace ArtScan.MuralPositionsModule
                 string json = JsonUtility.ToJson(data, true);
                 RLMGLogger.Instance.Log(json, MESSAGETYPE.INFO); //failsafe
 
-                string filepath = Path.Join(Application.streamingAssetsPath, muralPositionsLoader.contentFilename);
-                RLMGLogger.Instance.Log("Saving positions to " + filepath, MESSAGETYPE.INFO); //failsafe
+                string filepath = Path.Combine(Application.streamingAssetsPath, muralPositionsLoader.contentFilename);
+                RLMGLogger.Instance.Log("Saving positions to " + filepath, MESSAGETYPE.INFO);
                 File.WriteAllText(filepath, json);
 
                 for (int i = 0; i < patches.Length; i++)
@@ -196,7 +196,7 @@ namespace ArtScan.MuralPositionsModule
                     StartCoroutine(DismissSavingFeedback(patches[i]));
                 }
             }
-            else if (Input.GetKeyDown(KeyCode.Alpha8))
+            else if (Input.GetKeyDown(KeyCode.Alpha0))
             {
                 foreach (Patch patch in patches)
                 {

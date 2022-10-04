@@ -7,6 +7,7 @@ using System;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using rlmg.logging;
 
 public class Client : MonoBehaviour
 {
@@ -50,6 +51,9 @@ public class Client : MonoBehaviour
     public TCP tcp;
     public UDP udp;
 
+    public float connectionTimeoutDur = 5f;
+    private float lastConnectAttemptTime;
+
     //public StationData stationData;
     public Team team;
     public MoonshotTeamData[] allStationData;
@@ -63,6 +67,9 @@ public class Client : MonoBehaviour
 
     public bool loadSceneByName = false;
     public string startMissionScene = "ActivitySceneExample";
+
+    public delegate void OnFailedToConnect();
+    public OnFailedToConnect onDisconnect;
 
     public delegate void OnStartRound(string _teamName, float _roundDuration, float _roundBufferDuration, int _round, string _JsonTeamData);
     public OnStartRound onStartRound;
@@ -132,6 +139,16 @@ public class Client : MonoBehaviour
         //ClientSend.SendStationDataToServer();
     }
 
+    private void Update()
+    {
+        if (isConnected && tcp != null && !tcp.IsConnected && Time.time > lastConnectAttemptTime + connectionTimeoutDur)
+        {
+            RLMGLogger.Instance.Log("Connection to (tcp) server timed out after " + connectionTimeoutDur + " seconds.", MESSAGETYPE.ERROR);
+
+            Disconnect();
+        }
+    }
+
     public void ConnectToServer()
     {
         Client.instance.ConnectToServer(_moonshotStation);
@@ -155,6 +172,7 @@ public class Client : MonoBehaviour
         InitializeClientData();
 
         isConnected = true;
+        lastConnectAttemptTime = Time.time;
         tcp.Connect();
     }
 
@@ -166,8 +184,13 @@ public class Client : MonoBehaviour
         private Packet receivedData;
         private byte[] receiveBuffer;
 
+        private bool isConnected = false;
+        public bool IsConnected { get{ return isConnected; } }
+
         public void Connect()
         {
+            isConnected = false;
+            
             socket = new TcpClient
             {
                 ReceiveBufferSize = dataBufferSize,
@@ -186,6 +209,8 @@ public class Client : MonoBehaviour
             {
                 // bugbug
                 //UIManager.instance.statusText.text = ex.Message;
+
+                RLMGLogger.Instance.Log(ex.Message, MESSAGETYPE.ERROR);
             }
         }
 
@@ -197,7 +222,7 @@ public class Client : MonoBehaviour
             }
             catch (Exception ex)
             {
-                Debug.Log(ex.Message);
+                Debug.Log(ex.Message);  //While not too concerning, I was getting some null reference errors here that I was oddly struggling to check for. -JY
                 return;
             }
 
@@ -211,6 +236,8 @@ public class Client : MonoBehaviour
             receivedData = new Packet();
 
             stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
+
+            isConnected = true;
         }
 
         public void SendData(Packet _packet)
@@ -224,7 +251,8 @@ public class Client : MonoBehaviour
             }
             catch (Exception _ex)
             {
-                Debug.Log($"Error sending data to server via TCP: {_ex}");
+                //Debug.Log($"Error sending data to server via TCP: {_ex}");
+                RLMGLogger.Instance.Log($"Error sending data to server via TCP: {_ex}", MESSAGETYPE.ERROR);
             }
         }
 
@@ -305,6 +333,8 @@ public class Client : MonoBehaviour
             receivedData = null;
             receiveBuffer = null;
             socket = null;
+
+            isConnected = false;
         }
     }
 
@@ -343,7 +373,8 @@ public class Client : MonoBehaviour
             }
             catch (Exception _ex)
             {
-                Debug.Log($"Error sending data to server via UDP: {_ex}");
+                //Debug.Log($"Error sending data to server via UDP: {_ex}");
+                RLMGLogger.Instance.Log($"Error sending data to server via UDP: {_ex}", MESSAGETYPE.ERROR);
             }
         }
 
@@ -408,11 +439,12 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.sendUnPauseMissionToClient, ClientHandle.SendUnPauseToClient},
             { (int)ServerPackets.sendAllStationDataToClient, ClientHandle.SendAllStationDataToClient},
             { (int)ServerPackets.sendEndMissionToClient, ClientHandle.SendEndMissionToClient},
+            { (int)ServerPackets.sendErrorToClient, ClientHandle.SendErrorToClient},
         };
         Debug.Log("Initialized packets.");
     }
 
-    private void Disconnect()
+    public void Disconnect()
     {
         if (isConnected)
         {
@@ -426,7 +458,13 @@ public class Client : MonoBehaviour
                 udp.socket.Close();
             }
 
-            Debug.Log("Disconnected from server.");
+            //Debug.Log("Disconnected from server.");
+            RLMGLogger.Instance.Log("Disconnected from server.", MESSAGETYPE.INFO);
+
+            if (onDisconnect != null)
+            {
+                onDisconnect();
+            }
         }
     }
 
@@ -443,7 +481,8 @@ public class Client : MonoBehaviour
 
             if (webRequest.result != UnityWebRequest.Result.Success)
             {
-                Debug.Log("Error : " + webRequest.error);
+                //Debug.Log("Error : " + webRequest.error);
+                RLMGLogger.Instance.Log("Load image error : " + webRequest.error, MESSAGETYPE.ERROR);
             }
 
             else
@@ -459,7 +498,8 @@ public class Client : MonoBehaviour
 
     public void StartRound(string _teamName, float _roundDuration, float _roundBufferDuration, int _round, string _JsonTeamData)
     {
-        Debug.Log("Client.StartRound()");
+        //Debug.Log("Client.StartRound()");
+        RLMGLogger.Instance.Log("Client received 'start round' from server.", MESSAGETYPE.INFO);
 
         LoadMissionScene(false);
 
@@ -512,6 +552,8 @@ public class Client : MonoBehaviour
     {
         // todo - start mission....
 
+        RLMGLogger.Instance.Log("Client received 'start mission' from server.", MESSAGETYPE.INFO);
+
         LoadMissionScene(false);
 
         //because of the prior scene load, wait a moment for any callbacks to be initiated in OnEnable() or Start()
@@ -533,6 +575,8 @@ public class Client : MonoBehaviour
     {
         // todo - stop mission....
 
+        RLMGLogger.Instance.Log("Client received 'stop mission' from server.", MESSAGETYPE.INFO);
+
         LoadMissionScene();
 
         //because of the prior scene load, wait a moment for any callbacks to be initiated in OnEnable() or Start()
@@ -542,6 +586,8 @@ public class Client : MonoBehaviour
 
     internal void EndMission()
     {
+        RLMGLogger.Instance.Log("Client received 'end mission' from server.", MESSAGETYPE.INFO);
+        
         if (onEndMission != null)
         {
             onEndMission();
@@ -562,6 +608,8 @@ public class Client : MonoBehaviour
     {
         // todo - Pause stuff....
 
+        RLMGLogger.Instance.Log("Client received 'pause mission' from server.", MESSAGETYPE.INFO);
+
         if (onPauseMission != null)
         {
             onPauseMission();
@@ -571,6 +619,8 @@ public class Client : MonoBehaviour
     internal void UnPauseMission()
     {
         // todo - UnPause stuff...
+
+        RLMGLogger.Instance.Log("Client received 'unpause mission' from server.", MESSAGETYPE.INFO);
 
         if (onUnPauseMission != null)
         {

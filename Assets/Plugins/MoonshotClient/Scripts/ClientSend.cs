@@ -13,19 +13,19 @@ using rlmg.logging;
 
 public class ClientSend : MonoBehaviour
 {
-    public delegate void OnUploadFailed();
+    public delegate void OnUploadFailed(string msg);
     public static OnUploadFailed onUploadFailed;
 
     public delegate void OnUploadSucceeded();
     public static OnUploadSucceeded onUploadSucceeded;
 
-    public delegate void OnDownloadFailed();
+    public delegate void OnDownloadFailed(string msg);
     public static OnDownloadFailed onDownloadFailed;
 
     public delegate void OnDownloadSucceeded();
     public static OnDownloadSucceeded onDownloadSucceeded;
 
-    public delegate void OnDeleteFailed();
+    public delegate void OnDeleteFailed(string msg);
     public static OnDeleteFailed onDeleteFailed;
 
     public delegate void OnDeleteSucceeded();
@@ -135,8 +135,9 @@ public class ClientSend : MonoBehaviour
             }
             catch (Exception ex)
             {
-                Debug.Log(ex.Message);
-                UploadFailed();
+                //Debug.Log(ex.Message);
+                RLMGLogger.Instance.Log(ex.Message, MESSAGETYPE.ERROR);
+                UploadFailed(ex.Message);
             }
         }
     }
@@ -160,10 +161,9 @@ public class ClientSend : MonoBehaviour
             }
             catch (Exception ex)
             {
-                Debug.Log(ex.Message);
-                RLMGLogger.Instance.Log("Download failed!!!");
-                RLMGLogger.Instance.Log("Download failed!!!", MESSAGETYPE.ERROR);
-                DownloadFailed();
+                //Debug.Log(ex.Message);
+                RLMGLogger.Instance.Log(ex.Message, MESSAGETYPE.ERROR);
+                DownloadFailed(ex.Message);
             }
 
         }
@@ -186,8 +186,9 @@ public class ClientSend : MonoBehaviour
             }
             catch (Exception ex)
             {
-                Debug.Log(ex.Message);
-                DeleteFailed();
+                //Debug.Log(ex.Message);
+                RLMGLogger.Instance.Log(ex.Message, MESSAGETYPE.ERROR);
+                DeleteFailed(ex.Message);
             }
         }
     }
@@ -222,10 +223,10 @@ public class ClientSend : MonoBehaviour
         }
     }
 
-    internal static void UploadFailed()
+    internal static void UploadFailed(string msg)
     {
         if (onUploadFailed != null)
-            onUploadFailed();
+            onUploadFailed(msg);
     }
 
     internal static void UploadSucceeded()
@@ -234,10 +235,10 @@ public class ClientSend : MonoBehaviour
             onUploadSucceeded();
     }
 
-    internal static void DownloadFailed()
+    internal static void DownloadFailed(string msg)
     {
         if (onDownloadFailed != null)
-            onDownloadFailed();
+            onDownloadFailed(msg);
     }
 
     internal static void DownloadSucceeded()
@@ -246,10 +247,10 @@ public class ClientSend : MonoBehaviour
             onDownloadSucceeded();
     }
 
-    internal static void DeleteFailed()
+    internal static void DeleteFailed(string msg)
     {
         if (onDeleteFailed != null)
-            onDeleteFailed();
+            onDeleteFailed(msg);
     }
 
     internal static void DeleteSucceeded()

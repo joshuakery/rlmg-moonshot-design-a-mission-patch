@@ -10,18 +10,22 @@ using OpenCVForUnity.UnityUtils;
 using System;
 using ArtScan;
 
-public class GrabcutRemovalThread: MultiThreading.ThreadedJob {
-
-    public Mat converted;
-    public Mat trimap;
-    public OpenCVForUnity.CoreModule.Rect rectangle;
-    public Mat bgdModel;
-    public Mat fgdModel;
-    public int iterCount;
-
-    protected override void ThreadFunction()
+namespace ArtScan.CoreModule
+{
+    public class GrabcutRemovalThread : MultiThreading.ThreadedJob
     {
-        Imgproc.grabCut (converted, trimap, rectangle, bgdModel, fgdModel, iterCount, Imgproc.GC_INIT_WITH_MASK);
-    }
 
+        public Mat converted;
+        public Mat trimap;
+        public OpenCVForUnity.CoreModule.Rect rectangle;
+        public Mat bgdModel;
+        public Mat fgdModel;
+        public int iterCount;
+
+        protected override void ThreadFunction()
+        {
+            Imgproc.grabCut(converted, trimap, rectangle, bgdModel, fgdModel, iterCount, Imgproc.GC_INIT_WITH_MASK);
+        }
+
+    }
 }

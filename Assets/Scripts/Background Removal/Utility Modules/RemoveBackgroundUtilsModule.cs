@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.ImgprocModule;
-using OpenCVForUnity.UnityUtils.Helper;
-using OpenCVForUnity.UnityUtils;
+using ArtScan.CoreModule;
 using ArtScan.PerspectiveUtilsModule;
 
 namespace ArtScan.RemoveBackgroundUtilsModule

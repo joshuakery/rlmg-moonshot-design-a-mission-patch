@@ -2,46 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UploadFailedDisplay : MonoBehaviour
+namespace ArtScan.ScanSavingModule
 {
-    private Canvas canvas;
-
-    private bool doShowDisplay;
-
-    private void Awake()
+    public class UploadFailedDisplay : MonoBehaviour
     {
-        canvas = GetComponent<Canvas>();
-    }
+        private Canvas canvas;
 
-    private void OnEnable()
-    {
-        ClientSend.onUploadFailed += ShowDisplay;
-    }
+        private bool doShowDisplay;
 
-    private void OnDisable()
-    {
-        ClientSend.onUploadFailed -= ShowDisplay;
-    }
-
-    private void Update()
-    {
-        if (doShowDisplay)
+        private void Awake()
         {
-            if (canvas != null)
-                canvas.enabled = true;
-
-            doShowDisplay = false;
+            canvas = GetComponent<Canvas>();
         }
 
-        if (Input.GetKeyDown(KeyCode.V))
+        private void OnEnable()
         {
+            ClientSend.onUploadFailed += ShowDisplay;
+        }
+
+        private void OnDisable()
+        {
+            ClientSend.onUploadFailed -= ShowDisplay;
+        }
+
+        private void Update()
+        {
+            if (doShowDisplay)
+            {
+                if (canvas != null)
+                    canvas.enabled = true;
+
+                doShowDisplay = false;
+            }
+
+            if (Input.GetKeyDown(KeyCode.V))
+            {
+                doShowDisplay = true;
+            }
+        }
+
+        private void ShowDisplay(string msg)
+        {
+            Debug.Log("show display");
             doShowDisplay = true;
         }
     }
-
-    private void ShowDisplay()
-    {
-        Debug.Log("show display");
-        doShowDisplay = true;
-    }
 }
+
+

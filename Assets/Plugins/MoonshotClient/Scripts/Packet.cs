@@ -15,7 +15,8 @@ public enum ServerPackets
     sendPauseMissionToClient,
     sendUnPauseMissionToClient,
     sendAllStationDataToClient,
-    sendEndMissionToClient
+    sendEndMissionToClient,
+    sendErrorToClient
 }
 
 /// <summary>Sent from client to server.</summary>

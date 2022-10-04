@@ -9,6 +9,7 @@ public class ClientConfigLoader : ContentLoader
 	{
 		public string serverAddress;
 		public int port;
+        public float connectionTimeout;
         public int ftpsPort;
         public string ftpsUsername;
         public string ftpsPassword;
@@ -30,6 +31,7 @@ public class ClientConfigLoader : ContentLoader
         {
             Client.instance.ip = configData.serverAddress;
             Client.instance.port = configData.port;
+            Client.instance.connectionTimeoutDur = configData.connectionTimeout;
             Client.instance.ftpsPort = configData.ftpsPort;
             Client.instance.ftpsUsername = configData.ftpsUsername;
             Client.instance.ftpsPassword = configData.ftpsPassword;

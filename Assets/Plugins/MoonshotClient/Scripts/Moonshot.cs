@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 
+public enum ErrorCode
+{
+    duplicateStation = 1
+}
+
 public enum MoonshotStation
 {
     Controller = 0,

@@ -2,56 +2,61 @@
 using System.Collections;
 using rlmg.logging;
 
-[CreateAssetMenu(menuName = "Thread Controller/Delete Thread Controller"), System.Serializable]
-public class DeleteThreadController : ScriptableObject
+namespace ArtScan.ScanSavingModule
 {
-    //Thread Class
-    private class DeleteThread : MultiThreading.ThreadedJob
+    [CreateAssetMenu(menuName = "Thread Controller/Delete Thread Controller"), System.Serializable]
+    public class DeleteThreadController : ScriptableObject
     {
-        //parameters
-        public string filename;
-
-        protected override void ThreadFunction()
+        //Thread Class
+        private class DeleteThread : MultiThreading.ThreadedJob
         {
-            ClientSend.DeleteFileFromServer(filename);
+            //parameters
+            public string filename;
+
+            protected override void ThreadFunction()
+            {
+                ClientSend.DeleteFileFromServer(filename);
+            }
         }
-    }
 
-    private DeleteThread deleteThread;
+        private DeleteThread deleteThread;
 
-    public void AbortThread()
-    {
-        if (deleteThread != null && !deleteThread.IsDone)
+        public void AbortThread()
         {
-            Debug.Log("Ending parallel delete thread...");
-            deleteThread.Abort();
-            Debug.Log("...ended.");
+            if (deleteThread != null && !deleteThread.IsDone)
+            {
+                Debug.Log("Ending parallel delete thread...");
+                deleteThread.Abort();
+                Debug.Log("...ended.");
+            }
         }
-    }
 
-    //Methods
-    public void Delete(string filename)
-    {
-        if (deleteThread == null || deleteThread.IsDone)
+        //Methods
+        public void Delete(string filename)
         {
-            DeleteThread deleteThread = new DeleteThread();
-            deleteThread.filename = filename;
+            if (deleteThread == null || deleteThread.IsDone)
+            {
+                DeleteThread deleteThread = new DeleteThread();
+                deleteThread.filename = filename;
 
-            deleteThread.Start();
+                deleteThread.Start();
+            }
         }
-    }
 
-    public IEnumerator DeleteCoroutine(string filename)
-    {
-        if (deleteThread == null || deleteThread.IsDone)
+        public IEnumerator DeleteCoroutine(string filename)
         {
-            DeleteThread deleteThread = new DeleteThread();
-            deleteThread.filename = filename;
+            if (deleteThread == null || deleteThread.IsDone)
+            {
+                DeleteThread deleteThread = new DeleteThread();
+                deleteThread.filename = filename;
 
-            deleteThread.Start();
+                deleteThread.Start();
 
-            yield return deleteThread.WaitFor();
+                yield return deleteThread.WaitFor();
+            }
         }
     }
 }
+
+
 

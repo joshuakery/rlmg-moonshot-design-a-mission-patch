@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
 using rlmg.logging;
+//using UnityEditor.PackageManager;  //I don't think we want this, as it prevents building and didn't seem necessary for compilation. -JY
 
 public class ClientHandle : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class ClientHandle : MonoBehaviour
         string _msg = _packet.ReadString();
         int _clientId = _packet.ReadInt();
 
-        Debug.Log($"Message from server: {_msg}");
+        //Debug.Log($"Message from server: {_msg}");
+        RLMGLogger.Instance.Log($"Message from server: {_msg}", MESSAGETYPE.INFO);
         // bugbug
         //UIManager.instance.statusText.text = $"Message from server: {_msg}";
 
@@ -30,7 +32,8 @@ public class ClientHandle : MonoBehaviour
 
         JsonUtility.FromJsonOverwrite(_JsonStationData, Client.instance.team.MoonshotTeamData);
 
-        Debug.Log($"Message from server: {_msg}");
+        //Debug.Log($"Message from server: {_msg}");
+        RLMGLogger.Instance.Log($"Message from server: {_msg}", MESSAGETYPE.INFO);
         // bugbug
         //UIManager.instance.statusText.text = $"Message from server: {_msg}";
 
@@ -39,11 +42,12 @@ public class ClientHandle : MonoBehaviour
 
     internal static void SendAllStationDataToClient(Packet _packet)
     {
-        Debug.Log($"Send All Station Data To Client");
+        //Debug.Log($"Send All Station Data To Client");
+        RLMGLogger.Instance.Log($"Send All Station Data To Client", MESSAGETYPE.INFO);
 
         string team1StationData = _packet.ReadString();
         string team2StationData = _packet.ReadString();
-        Debug.Log(team2StationData);
+        //Debug.Log(team2StationData);
         string team3StationData = _packet.ReadString();
         string team4StationData = _packet.ReadString();
         string team5StationData = _packet.ReadString();
@@ -58,12 +62,12 @@ public class ClientHandle : MonoBehaviour
         };
 
         Client.instance.ReceivedAllStationData();
-
     }
 
     public static void SendStartRoundToClient(Packet _packet)
     {
-        Debug.Log($"Start Round");
+        //Debug.Log($"Start Round");
+        RLMGLogger.Instance.Log($"Start Round", MESSAGETYPE.INFO);
         // bugbug
         //UIManager.instance.statusText.text = $"Start Round";
 
@@ -94,7 +98,8 @@ public class ClientHandle : MonoBehaviour
 
         Client.instance.team.MoonshotTeamData.teamName = _teamName;
 
-        Debug.Log($"Start round with: {_teamName}");
+        //Debug.Log($"Start round with: {_teamName}");
+        RLMGLogger.Instance.Log($"Start round with: {_teamName}", MESSAGETYPE.INFO);
 
         Client.instance.StartRound(_teamName, _roundDuration, _roundBufferDuration, _round, _JsonTeamData);
 
@@ -139,5 +144,19 @@ public class ClientHandle : MonoBehaviour
     internal static void SendEndMissionToClient(Packet _packet)
     {
         Client.instance.EndMission();
+    }
+
+    public static void SendErrorToClient(Packet _packet)
+    {
+        ErrorCode errorCode = (ErrorCode)_packet.ReadInt();
+
+        //Debug.Log(errorCode.ToString());
+        RLMGLogger.Instance.Log("Client received error message: " + errorCode.ToString(), MESSAGETYPE.ERROR);
+
+        if (errorCode == ErrorCode.duplicateStation)
+        {
+            // bugbug - made Disconnect public so it could be called from here. Un-tested...
+            Client.instance.Disconnect();
+        }
     }
 }

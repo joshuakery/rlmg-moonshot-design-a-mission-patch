@@ -7,7 +7,7 @@ using System.IO;
 using System;
 using System.Text.RegularExpressions;
 using UnityEngine.Networking;
-using rlmg.logging;
+using UnityEngine.Events;
 
 public class ContentLoader : MonoBehaviour
 {
@@ -15,12 +15,12 @@ public class ContentLoader : MonoBehaviour
 	public bool loadFromExternal = true;
 	public bool useInEditor = true;
 
-    public LoadingScreen loadingScreen;
+	public LoadingScreen loadingScreen;
 
-    public string contentFolderName = "";
-    [FormerlySerializedAs("localFilename")]
-    [FormerlySerializedAs("databaseName")]
-    public string contentFilename = "config.json";
+	public string contentFolderName = "";
+	[FormerlySerializedAs("localFilename")]
+	[FormerlySerializedAs("databaseName")]
+	public string contentFilename = "config.json";
 
 	public string cmsUrl;
 	//public string cmsFilename;
@@ -42,6 +42,8 @@ public class ContentLoader : MonoBehaviour
 		}
 	}
 
+	public UnityEvent onFinishedLoadingContent;
+
 	public static string fileProtocolPrefix
 	{
 		get
@@ -51,8 +53,8 @@ public class ContentLoader : MonoBehaviour
 #else
 			return "file://";
 #endif
-        }
-    }
+		}
+	}
 
 	public enum CONTENT_LOCATION
 	{
@@ -63,31 +65,31 @@ public class ContentLoader : MonoBehaviour
 
 	public CONTENT_LOCATION contentLocation = CONTENT_LOCATION.Application;
 
-    protected string ContentDirectory
+	protected string ContentDirectory
 	{
 		get
 		{
 			string path = "";
 
-            if (contentLocation == CONTENT_LOCATION.StreamingAssets)
-            {
-                path = Application.streamingAssetsPath;
-            }
-            if (contentLocation == CONTENT_LOCATION.Desktop)
-            {
-                path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-            }
-            else if (contentLocation == CONTENT_LOCATION.Application)
-            {
-                path = Path.Combine(Application.dataPath, "..");
-            }
+			if (contentLocation == CONTENT_LOCATION.StreamingAssets)
+			{
+				path = Application.streamingAssetsPath;
+			}
+			if (contentLocation == CONTENT_LOCATION.Desktop)
+			{
+				path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+			}
+			else if (contentLocation == CONTENT_LOCATION.Application)
+			{
+				path = Path.Combine(Application.dataPath, "..");
+			}
 
-            //add parent folder to keep organized
-            if (!string.IsNullOrEmpty(contentFolderName))
-                path = Path.Combine(path, contentFolderName);
+			//add parent folder to keep organized
+			if (!string.IsNullOrEmpty(contentFolderName))
+				path = Path.Combine(path, contentFolderName);
 
-            if (contentLocation != CONTENT_LOCATION.StreamingAssets && !Directory.Exists(path))
-                Directory.CreateDirectory(path);
+			if (contentLocation != CONTENT_LOCATION.StreamingAssets && !Directory.Exists(path))
+				Directory.CreateDirectory(path);
 
 			return path;
 		}
@@ -95,12 +97,12 @@ public class ContentLoader : MonoBehaviour
 
 	protected virtual void Awake()
 	{
-		#if UNITY_EDITOR
+#if UNITY_EDITOR
 		contentLocation = CONTENT_LOCATION.StreamingAssets;
 
 		// if (!useInEditor)
-        //     return;
-		#endif
+		//     return;
+#endif
 
 		if (loadOnAwake)
 			LoadContent();
@@ -117,15 +119,15 @@ public class ContentLoader : MonoBehaviour
 	{
 		_hasLoadedContent = false;
 
-        if (loadingScreen != null)
-            loadingScreen.gameObject.SetActive(true);
+		if (loadingScreen != null)
+			loadingScreen.gameObject.SetActive(true);
 
-        //if (loadFromExternal)
-        if (loadFromExternal && (useInEditor || !Application.isEditor))
+		//if (loadFromExternal)
+		if (loadFromExternal && (useInEditor || !Application.isEditor))
 		{
 			//RLMGLogger.Instance.Log("Loading external content...", MESSAGETYPE.INFO);
 
-            WWW contentFile = null;
+			WWW contentFile = null;
 
 			if (tryDownloadFromCMS)
 			{
@@ -150,9 +152,9 @@ public class ContentLoader : MonoBehaviour
 				if (failedByTimeOut || !string.IsNullOrEmpty(contentFile.error))
 				{
 					if (failedByTimeOut)
-						Debug.Log("Download from CMS failed by time out. Duration = "+cmsTimer);
+						Debug.Log("Download from CMS failed by time out. Duration = " + cmsTimer);
 					else
-						Debug.Log("Download from CMS failed. Error = "+contentFile.error);
+						Debug.Log("Download from CMS failed. Error = " + contentFile.error);
 
 					contentFile.Dispose();
 					contentFile = null;
@@ -178,15 +180,15 @@ public class ContentLoader : MonoBehaviour
 						//File.Copy(Application.streamingAssetsPath + "/" + contentFilename, ContentDirectory + "/" + contentFilename, true);
 
 						if (!Directory.Exists(ContentDirectory))
-                			Directory.CreateDirectory(ContentDirectory);
+							Directory.CreateDirectory(ContentDirectory);
 
 						System.IO.File.WriteAllText(ContentDirectory + "/" + contentFilename, contentFile.text);
 					}
 					else
 					{
 						if (!Directory.Exists(Application.streamingAssetsPath + "/" + contentFolderName))
-                			Directory.CreateDirectory(Application.streamingAssetsPath + "/" + contentFolderName);
-						
+							Directory.CreateDirectory(Application.streamingAssetsPath + "/" + contentFolderName);
+
 						System.IO.File.WriteAllText(Application.streamingAssetsPath + "/" + contentFolderName + "/" + contentFilename, contentFile.text);
 					}
 
@@ -196,16 +198,16 @@ public class ContentLoader : MonoBehaviour
 				}
 			}
 
-            //Debug.Log("contentFile = "+contentFile);
+			//Debug.Log("contentFile = "+contentFile);
 
 			//use local or already downloaded version
-            if (contentFile == null || string.IsNullOrEmpty(contentFile.text))  
+			if (contentFile == null || string.IsNullOrEmpty(contentFile.text))
 			{
-                Debug.Log("Loading locally stored content: " + contentFilename);
+				Debug.Log("Loading locally stored content: " + contentFilename);
 
-                CopyOverIfNecessary();  //this copies the original from streaming assets to the designated folder, assuming the designated folder isn't already streaming assets
+				CopyOverIfNecessary();  //this copies the original from streaming assets to the designated folder, assuming the designated folder isn't already streaming assets
 
-                contentFile = new WWW(fileProtocolPrefix + Path.Combine(ContentDirectory, contentFilename));
+				contentFile = new WWW(fileProtocolPrefix + Path.Combine(ContentDirectory, contentFilename));
 				yield return contentFile;
 			}
 
@@ -214,31 +216,36 @@ public class ContentLoader : MonoBehaviour
 			//RLMGLogger.Instance.Log("Finished loading external content.", MESSAGETYPE.INFO);
 		}
 
-        if (loadingScreen != null)
-            loadingScreen.FadeOut();
+		if (loadingScreen != null)
+			loadingScreen.FadeOut();
 
-        _hasLoadedContent = true;
+		_hasLoadedContent = true;
+
+		if (onFinishedLoadingContent != null)
+		{
+			onFinishedLoadingContent.Invoke();
+		}
 
 		FinishedLoadingContent();
 	}
 
-    protected virtual void CopyOverIfNecessary()
-    {
-        string desiredFilePath;
-        desiredFilePath = Path.Combine(ContentDirectory, contentFilename);
+	protected virtual void CopyOverIfNecessary()
+	{
+		string desiredFilePath;
+		desiredFilePath = Path.Combine(ContentDirectory, contentFilename);
 
-        //if not there, and not already checking streaming assets, check for a backup in streaming assets
-        if (!File.Exists(desiredFilePath) && contentLocation != CONTENT_LOCATION.StreamingAssets)
-        {
-            string backupFilePath = Path.Combine(Application.streamingAssetsPath, contentFilename);
+		//if not there, and not already checking streaming assets, check for a backup in streaming assets
+		if (!File.Exists(desiredFilePath) && contentLocation != CONTENT_LOCATION.StreamingAssets)
+		{
+			string backupFilePath = Path.Combine(Application.streamingAssetsPath, contentFilename);
 
-            //if backup in streaming assets does exist, copy it to the desired external location
-            if (File.Exists(backupFilePath))
-            {
-                File.Copy(backupFilePath, desiredFilePath, true);
-            }
-        }
-    }
+			//if backup in streaming assets does exist, copy it to the desired external location
+			if (File.Exists(backupFilePath))
+			{
+				File.Copy(backupFilePath, desiredFilePath, true);
+			}
+		}
+	}
 
 	IEnumerator CacheContent(string serverResponse, string cachePath, string extensions)
 	{
@@ -276,15 +283,15 @@ public class ContentLoader : MonoBehaviour
 			}
 
 			// now clear out any local images that are NOT in json data
-			var info = new DirectoryInfo (cachePath);
-			var fileInfo = info.GetFiles ();
+			var info = new DirectoryInfo(cachePath);
+			var fileInfo = info.GetFiles();
 
 			foreach (FileInfo file in fileInfo)
 			{
-				if (serverResponse.IndexOf (file.Name) == -1 && regex.Match (file.Name).Success)
+				if (serverResponse.IndexOf(file.Name) == -1 && regex.Match(file.Name).Success)
 				{
 					// doesn't exist in data anymore, so delete
-					file.Delete ();
+					file.Delete();
 				}
 			}
 		}
@@ -312,10 +319,10 @@ public class ContentLoader : MonoBehaviour
 			return null;
 		}
 
-		string filename = remotePath.Substring (remotePath.LastIndexOf ("/") + 1);
-		string localPath = Path.Combine (cachePath, filename);
+		string filename = remotePath.Substring(remotePath.LastIndexOf("/") + 1);
+		string localPath = Path.Combine(cachePath, filename);
 
-		bool isCached = File.Exists (localPath);
+		bool isCached = File.Exists(localPath);
 
 		// set URL based on if local cached copy exists
 		string url = isCached ? fileProtocolPrefix + localPath : remotePath;
@@ -325,7 +332,7 @@ public class ContentLoader : MonoBehaviour
 		return url;
 	}
 
-    protected virtual IEnumerator PopulateContent(string contentData)
+	protected virtual IEnumerator PopulateContent(string contentData)
 	{
 		//override to do things!
 
@@ -337,29 +344,29 @@ public class ContentLoader : MonoBehaviour
 		//override to do things!
 	}
 
-    //https://forum.unity.com/threads/passing-ref-variable-to-coroutine.379640/
-    //call via the following syntax: StartCoroutine(LoadSpriteFromFilepath(imgFilePath, result => spriteFileReference = result));
-    public static IEnumerator LoadSpriteFromFilepath(string imgFilePath, Action<Sprite> spriteRef)
-    {
-        if (!string.IsNullOrEmpty(imgFilePath))
-        {
-            WWW externalImgFile = new WWW(imgFilePath);
-            yield return externalImgFile;
+	//https://forum.unity.com/threads/passing-ref-variable-to-coroutine.379640/
+	//call via the following syntax: StartCoroutine(LoadSpriteFromFilepath(imgFilePath, result => spriteFileReference = result));
+	public static IEnumerator LoadSpriteFromFilepath(string imgFilePath, Action<Sprite> spriteRef)
+	{
+		if (!string.IsNullOrEmpty(imgFilePath))
+		{
+			WWW externalImgFile = new WWW(imgFilePath);
+			yield return externalImgFile;
 
-            if (externalImgFile.error != null)
-            {
-                Debug.LogWarning(imgFilePath + " error = " + externalImgFile.error);
-            }
-            else
-            {
-                spriteRef(Utilities.TextureToMipMappedSprite(externalImgFile.texture));
-            }
-        }
-    }
+			if (externalImgFile.error != null)
+			{
+				Debug.LogWarning(imgFilePath + " error = " + externalImgFile.error);
+			}
+			else
+			{
+				spriteRef(Utilities.TextureToMipMappedSprite(externalImgFile.texture));
+			}
+		}
+	}
 
 	public IEnumerator LoadAudioFileFromFilepath(string audioFilePath, Action<AudioClip> audioClipRef)
-    {
-        if (!string.IsNullOrEmpty(audioFilePath))
+	{
+		if (!string.IsNullOrEmpty(audioFilePath))
 		{
 			WWW externalAudioFile = new WWW(audioFilePath);
 			yield return externalAudioFile;
@@ -373,17 +380,17 @@ public class ContentLoader : MonoBehaviour
 				audioClipRef(externalAudioFile.GetAudioClip(false, false, GetAudioType(audioFilePath)));
 			}
 		}
-    }
+	}
 
 	protected AudioType GetAudioType(string audioFilename)
-    {
-        AudioType audioType = AudioType.UNKNOWN;
+	{
+		AudioType audioType = AudioType.UNKNOWN;
 
-        if (Path.GetExtension(audioFilename).ToLower() == ".aiff")
-            audioType = AudioType.AIFF;
-        else if (Path.GetExtension(audioFilename).ToLower() == ".wav")
-            audioType = AudioType.WAV;
+		if (Path.GetExtension(audioFilename).ToLower() == ".aiff")
+			audioType = AudioType.AIFF;
+		else if (Path.GetExtension(audioFilename).ToLower() == ".wav")
+			audioType = AudioType.WAV;
 
-        return audioType;
-    }
+		return audioType;
+	}
 }
