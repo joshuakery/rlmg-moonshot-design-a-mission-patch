@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using rlmg.logging;
 
+
 [CreateAssetMenu(menuName = "Event/GameEvent"), System.Serializable]
 public class GameEvent : ScriptableObject
 {

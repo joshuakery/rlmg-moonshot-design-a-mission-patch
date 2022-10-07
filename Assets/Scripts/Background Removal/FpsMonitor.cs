@@ -66,7 +66,7 @@ namespace ArtScan.CoreModule
         int toast_time = -1;
 
         // Use this for initialization
-        void Start()
+        void OnEnable()
         {
             console_labelStyle = new GUIStyle();
             console_labelStyle.fontSize = fontSize;

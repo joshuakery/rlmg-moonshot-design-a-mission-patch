@@ -156,6 +156,17 @@ public class UIManager : MonoBehaviour
         currentWindow = -1;
     }
 
+    public void StartOver()
+    {
+        primarySequenceManager.CompleteCurrentSequence();
+        namesakeSequenceManager.CompleteCurrentSequence();
+
+        gameState.Reset();
+
+        CloseAllWindowsEvent.Raise();
+        StartEvent.Raise();
+    }
+
     public void CloseAndReopenCurrentWindow()
     {
         primarySequenceManager.CompleteCurrentSequence();
@@ -185,7 +196,7 @@ public class UIManager : MonoBehaviour
 
     public void GoToConclusion()
     {
-        ResultsDisplayManager.teamNum = gameState.currentTeamIndex;
+        //ResultsDisplayManager.teamNum = gameState.currentTeamIndex;
 
         string finalResultsSceneName = "ResultsScene";
 

@@ -36,6 +36,7 @@ namespace ArtScan.CoreModule
     {
 
         public RemoveBackgroundSettings settings;
+        public bool doProcessImage = true;
         public RemoveBackgroundDisplayOptions displayOptions;
 
         public StructuredEdgeDetection edgeDetection;
@@ -60,6 +61,8 @@ namespace ArtScan.CoreModule
         public Scalar PAPER_EDGE_COLOR;
 
         public RawImage rawImage;
+        public RectTransform rawImageRT;
+        public Vector2 rawImageSize;
 
         /// <summary>
         /// The webcam texture to mat helper.
@@ -100,6 +103,7 @@ namespace ArtScan.CoreModule
         Mat resultMat;
 
         public float DOWNSCALE_RATIO = 2f;
+        public bool doDownsizeToDisplay = false;
 
         bool _isThreadRunning = false;
 
@@ -162,6 +166,15 @@ namespace ArtScan.CoreModule
             {
                 lock (sync)
                     _didUpdateTheDetectionResult = value;
+            }
+        }
+
+        private void Awake()
+        {
+            if (rawImage != null)
+            {
+                rawImageRT = rawImage.gameObject.GetComponent<RectTransform>();
+                rawImageSize = new Vector2(rawImageRT.rect.width, rawImageRT.rect.height);
             }
         }
 
@@ -315,7 +328,15 @@ namespace ArtScan.CoreModule
         /// <param name="errorCode">Error code.</param>
         public void OnWebCamTextureToMatHelperErrorOccurred (myWebCamTextureToMatHelper.ErrorCode errorCode)
         {
-            RLMGLogger.Instance.Log("OnWebCamTextureToMatHelperErrorOccurred " + errorCode, MESSAGETYPE.ERROR);
+            if (RLMGLogger.Instance != null) //always false?
+            {
+                RLMGLogger.Instance.Log("OnWebCamTextureToMatHelperErrorOccurred " + errorCode, MESSAGETYPE.ERROR);
+            }
+            else
+            {
+                Debug.LogError("OnWebCamTextureToMatHelperErrorOccurred " + errorCode);
+            }
+
         }
 
         private void CopyToThreadMats()
@@ -486,6 +507,8 @@ namespace ArtScan.CoreModule
         {
             if ( rgbaMat4Thread.empty() ) return;
 
+
+
             //reduce size
             if (DOWNSCALE_RATIO > 0)
                 Imgproc.resize (rgbaMat4Thread, rgbaMat4Thread, new Size (), 1.0 / DOWNSCALE_RATIO, 1.0 / DOWNSCALE_RATIO, Imgproc.INTER_LINEAR);
@@ -494,6 +517,16 @@ namespace ArtScan.CoreModule
 
             using (Mat yMat = new Mat())
             {
+                if (!doProcessImage)
+                {
+                    resultMat.setTo(new Scalar(0, 0, 0, 0));
+                    PresentationUtils.ScaleUpAndDisplayMat(
+                        rgbaMat4Thread, resultMat,
+                        settings.doSizeToFit
+                    );
+                    return;
+                }
+
                 EdgeFinding.GetCannyEdgeMat(rgbaMat4Thread,yMat);
 
                 // find potential paper contours.
@@ -513,7 +546,16 @@ namespace ArtScan.CoreModule
                         if (transformedMat.width() > 1 && transformedMat.height() > 1)
                         {
                             //crop in the edges to hide them from the find largest contour later
-                            // PerspectiveUtils.CropByPercent(transformedMat, transformedMat, 1.0f);
+                            PerspectiveUtils.CropByPercent(transformedMat, transformedMat, 0.95f);
+
+                            if (doDownsizeToDisplay)
+                            {
+                                float ratio = rawImageSize.x / transformedMat.width();
+                                if (ratio < 1)
+                                {
+                                    Imgproc.resize(transformedMat, transformedMat, new Size(), ratio, ratio, Imgproc.INTER_LINEAR);
+                                }
+                            }
 
                             using (Mat edgeMat = new Mat())
                             {

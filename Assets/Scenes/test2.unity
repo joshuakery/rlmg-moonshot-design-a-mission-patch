@@ -332,7 +332,7 @@ GameObject:
   - component: {fileID: 519649013}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -415,9 +415,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd390593f5a747a687740ca291b2fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setResolution: 1
-  targetScreenWidth: 3840
-  targetScreenHeight: 2160
 --- !u!1 &922649884
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,6 +718,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1540859038}
   m_CullTransparentMesh: 1
+--- !u!1001 &1646722645
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7513131675301535348, guid: ae3c1b10feefd423e88cf76319d92ea5, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513131675301535348, guid: ae3c1b10feefd423e88cf76319d92ea5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1895.5989
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513131675301535348, guid: ae3c1b10feefd423e88cf76319d92ea5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1213.6727
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513131675301535348, guid: ae3c1b10feefd423e88cf76319d92ea5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.380219
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513131675301535348, guid: ae3c1b10feefd423e88cf76319d92ea5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513131675301535348, guid: ae3c1b10feefd423e88cf76319d92ea5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513131675301535348, guid: ae3c1b10feefd423e88cf76319d92ea5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513131675301535348, guid: ae3c1b10feefd423e88cf76319d92ea5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513131675301535348, guid: ae3c1b10feefd423e88cf76319d92ea5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513131675301535348, guid: ae3c1b10feefd423e88cf76319d92ea5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513131675301535348, guid: ae3c1b10feefd423e88cf76319d92ea5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7513131675301535351, guid: ae3c1b10feefd423e88cf76319d92ea5, type: 3}
+      propertyPath: m_Name
+      value: FPS Monitor
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ae3c1b10feefd423e88cf76319d92ea5, type: 3}
 --- !u!1 &2035815616
 GameObject:
   m_ObjectHideFlags: 0
