@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -98,6 +98,50 @@ namespace OpenCVForUnity.DnnModule
 
 
         //
+        // C++:  ClassificationModel cv::dnn::ClassificationModel::setEnableSoftmaxPostProcessing(bool enable)
+        //
+
+        /**
+         * Set enable/disable softmax post processing option.
+         *
+         * If this option is true, softmax is applied after forward inference within the classify() function
+         * to convert the confidences range to [0.0-1.0].
+         * This function allows you to toggle this behavior.
+         * Please turn true when not contain softmax layer in model.
+         * param enable Set enable softmax post processing within the classify() function.
+         * return automatically generated
+         */
+        public ClassificationModel setEnableSoftmaxPostProcessing(bool enable)
+        {
+            ThrowIfDisposed();
+
+            return new ClassificationModel(DisposableObject.ThrowIfNullIntPtr(dnn_ClassificationModel_setEnableSoftmaxPostProcessing_10(nativeObj, enable)));
+
+
+        }
+
+
+        //
+        // C++:  bool cv::dnn::ClassificationModel::getEnableSoftmaxPostProcessing()
+        //
+
+        /**
+         * Get enable/disable softmax post processing option.
+         *
+         * This option defaults to false, softmax post processing is not applied within the classify() function.
+         * return automatically generated
+         */
+        public bool getEnableSoftmaxPostProcessing()
+        {
+            ThrowIfDisposed();
+
+            return dnn_ClassificationModel_getEnableSoftmaxPostProcessing_10(nativeObj);
+
+
+        }
+
+
+        //
         // C++:  void cv::dnn::ClassificationModel::classify(Mat frame, int& classId, float& conf)
         //
 
@@ -131,6 +175,15 @@ namespace OpenCVForUnity.DnnModule
         // C++:   cv::dnn::ClassificationModel::ClassificationModel(Net network)
         [DllImport(LIBNAME)]
         private static extern IntPtr dnn_ClassificationModel_ClassificationModel_12(IntPtr network_nativeObj);
+
+        // C++:  ClassificationModel cv::dnn::ClassificationModel::setEnableSoftmaxPostProcessing(bool enable)
+        [DllImport(LIBNAME)]
+        private static extern IntPtr dnn_ClassificationModel_setEnableSoftmaxPostProcessing_10(IntPtr nativeObj, [MarshalAs(UnmanagedType.U1)] bool enable);
+
+        // C++:  bool cv::dnn::ClassificationModel::getEnableSoftmaxPostProcessing()
+        [DllImport(LIBNAME)]
+        [return: MarshalAs(UnmanagedType.U1)]
+        private static extern bool dnn_ClassificationModel_getEnableSoftmaxPostProcessing_10(IntPtr nativeObj);
 
         // C++:  void cv::dnn::ClassificationModel::classify(Mat frame, int& classId, float& conf)
         [DllImport(LIBNAME)]

@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -158,6 +158,22 @@ namespace OpenCVForUnity.ArucoModule
         }
 
 
+        //
+        // C++: Point3f Board::rightBottomBorder
+        //
+
+        public Point3 get_rightBottomBorder()
+        {
+            ThrowIfDisposed();
+
+            double[] tmpArray = new double[3];
+            aruco_Board_get_1rightBottomBorder_10(nativeObj, tmpArray);
+            Point3 retVal = new Point3(tmpArray);
+
+            return retVal;
+        }
+
+
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         const string LIBNAME = "__Internal";
 #else
@@ -189,6 +205,10 @@ namespace OpenCVForUnity.ArucoModule
         // C++: void Board::ids
         [DllImport(LIBNAME)]
         private static extern void aruco_Board_set_1ids_10(IntPtr nativeObj, IntPtr ids_mat_nativeObj);
+
+        // C++: Point3f Board::rightBottomBorder
+        [DllImport(LIBNAME)]
+        private static extern void aruco_Board_get_1rightBottomBorder_10(IntPtr nativeObj, double[] retVal);
 
         // native support for java finalize()
         [DllImport(LIBNAME)]

@@ -188,6 +188,13 @@ namespace ArtScan.MuralPositionsModule
 
                 string filepath = Path.Combine(Application.streamingAssetsPath, muralPositionsLoader.contentFilename);
                 RLMGLogger.Instance.Log("Saving positions to " + filepath, MESSAGETYPE.INFO);
+                if (File.Exists(filepath))
+                { RLMGLogger.Instance.Log("File exists", MESSAGETYPE.INFO); }
+                else
+                {
+                    RLMGLogger.Instance.Log("File does not exist.", MESSAGETYPE.INFO);
+                }
+                
                 File.WriteAllText(filepath, json);
 
                 for (int i = 0; i < patches.Length; i++)

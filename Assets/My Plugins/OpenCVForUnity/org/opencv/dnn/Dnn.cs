@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -22,6 +22,7 @@ namespace OpenCVForUnity.DnnModule
         public const int DNN_BACKEND_VKCOM = 0 + 4;
         public const int DNN_BACKEND_CUDA = 0 + 5;
         public const int DNN_BACKEND_WEBNN = 0 + 6;
+        public const int DNN_BACKEND_TIMVX = 0 + 7;
         // C++: enum cv.dnn.SoftNMSMethod
         public const int SoftNMSMethod_SOFTNMS_LINEAR = 1;
         public const int SoftNMSMethod_SOFTNMS_GAUSSIAN = 2;
@@ -35,6 +36,7 @@ namespace OpenCVForUnity.DnnModule
         public const int DNN_TARGET_CUDA = 0 + 6;
         public const int DNN_TARGET_CUDA_FP16 = 0 + 7;
         public const int DNN_TARGET_HDDL = 0 + 8;
+        public const int DNN_TARGET_NPU = 0 + 9;
         //
         // C++:  vector_Target cv::dnn::getAvailableTargets(dnn_Backend be)
         //
@@ -1303,9 +1305,12 @@ namespace OpenCVForUnity.DnnModule
          *
          * See values of {code CV_DNN_BACKEND_INFERENCE_ENGINE_*} macros.
          *
-         * Default value is controlled through {code OPENCV_DNN_BACKEND_INFERENCE_ENGINE_TYPE} runtime parameter (environment variable).
+         * {code OPENCV_DNN_BACKEND_INFERENCE_ENGINE_TYPE} runtime parameter (environment variable) is ignored since 4.6.0.
+         *
+         * deprecated
          * return automatically generated
          */
+        [Obsolete("This method is deprecated.")]
         public static string getInferenceEngineBackendType()
         {
 
@@ -1326,8 +1331,11 @@ namespace OpenCVForUnity.DnnModule
          * See values of {code CV_DNN_BACKEND_INFERENCE_ENGINE_*} macros.
          *
          * return previous value of internal backend API
+         *
+         * deprecated
          * param newBackendType automatically generated
          */
+        [Obsolete("This method is deprecated.")]
         public static string setInferenceEngineBackendType(string newBackendType)
         {
 

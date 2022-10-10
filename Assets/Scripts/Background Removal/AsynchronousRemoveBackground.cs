@@ -72,7 +72,7 @@ namespace ArtScan.CoreModule
         /// <summary>
         /// The FPS monitor.
         /// </summary>
-        FpsMonitor fpsMonitor;
+        //FpsMonitor fpsMonitor;
 
         /// <summary>
         /// The Game State Scriptable Object.
@@ -184,7 +184,7 @@ namespace ArtScan.CoreModule
             //RLMGLogger.Instance.Log("Setting up remove background...", MESSAGETYPE.INFO);
 
 
-            fpsMonitor = GetComponent<FpsMonitor>();
+            //fpsMonitor = GetComponent<FpsMonitor>();
 
             webCamTextureToMatHelper = gameObject.GetComponent<myWebCamTextureToMatHelper>();
 

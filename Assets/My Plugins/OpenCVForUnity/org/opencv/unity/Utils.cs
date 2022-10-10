@@ -1,4 +1,4 @@
-﻿using AOT;
+using AOT;
 using OpenCVForUnity.CoreModule;
 using System;
 using System.Collections;
@@ -23,7 +23,7 @@ namespace OpenCVForUnity.UnityUtils
         */
         public static string getVersion()
         {
-            return "2.4.7";
+            return "2.4.8";
         }
 
         /**
@@ -717,10 +717,13 @@ namespace OpenCVForUnity.UnityUtils
 
                 while (!request.isDone) {; }
 
-#if UNITY_2017_1_OR_NEWER
-                if (request.isHttpError || request.isNetworkError) {
-#else
-                if (request.isError)
+#if UNITY_2020_2_OR_NEWER
+                if (request.result == UnityEngine.Networking.UnityWebRequest.Result.ProtocolError ||
+                    request.result == UnityEngine.Networking.UnityWebRequest.Result.ConnectionError ||
+                    request.result == UnityEngine.Networking.UnityWebRequest.Result.DataProcessingError)
+                {
+#elif UNITY_2017_1_OR_NEWER
+                if (request.isHttpError || request.isNetworkError) 
                 {
 #endif
                     Debug.LogWarning(request.error);
@@ -932,11 +935,14 @@ namespace OpenCVForUnity.UnityUtils
                     if (progressChanged != null)
                         progressChanged(filepath, request.downloadProgress);
 
-#if UNITY_2017_1_OR_NEWER
-                    if (request.isHttpError || request.isNetworkError) {
-#else
-                    if (request.isError)
-                    {
+#if UNITY_2020_2_OR_NEWER
+                if (request.result == UnityEngine.Networking.UnityWebRequest.Result.ProtocolError ||
+                    request.result == UnityEngine.Networking.UnityWebRequest.Result.ConnectionError ||
+                    request.result == UnityEngine.Networking.UnityWebRequest.Result.DataProcessingError)
+                {
+#elif UNITY_2017_1_OR_NEWER
+                if (request.isHttpError || request.isNetworkError) 
+                {
 #endif
                         Debug.LogWarning(request.error);
                         Debug.LogWarning(request.responseCode);

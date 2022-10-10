@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -309,7 +309,7 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         *  Opens a camera for video capturing
+         *  Opens a video file or a capturing device or an IP video stream for video capturing with API Preference and parameters
          *
          *     
          *
@@ -385,7 +385,7 @@ namespace OpenCVForUnity.VideoioModule
         //
 
         /**
-         * Returns true if video capturing has been initialized already.
+         *  Opens a camera for video capturing with API Preference and parameters
          *
          *     
          *

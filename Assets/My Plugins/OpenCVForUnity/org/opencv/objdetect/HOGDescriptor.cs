@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -72,7 +72,7 @@ namespace OpenCVForUnity.ObjdetectModule
         //
 
         /**
-         * Creates the HOG descriptor and detector with default params.
+         * Creates the HOG descriptor and detector with default parameters.
          *
          *     aqual to HOGDescriptor(Size(64,128), Size(16,16), Size(8,8), Size(8,8), 9 )
          */
@@ -261,6 +261,8 @@ namespace OpenCVForUnity.ObjdetectModule
 
         /**
          *
+         *
+         *     Creates the HOG descriptor and detector and loads HOGDescriptor parameters and coefficients for the linear SVM classifier from a file.
          *     param filename The file name containing HOGDescriptor properties and coefficients for the linear SVM classifier.
          */
         public HOGDescriptor(string filename)
@@ -351,8 +353,8 @@ namespace OpenCVForUnity.ObjdetectModule
         //
 
         /**
-         * loads HOGDescriptor parameters and coefficients for the linear SVM classifier from a file.
-         *     param filename Path of the file to read.
+         * loads HOGDescriptor parameters and coefficients for the linear SVM classifier from a file
+         *     param filename Name of the file to read.
          *     param objname The optional name of the node to read (if empty, the first top-level node will be used).
          * return automatically generated
          */
@@ -366,8 +368,8 @@ namespace OpenCVForUnity.ObjdetectModule
         }
 
         /**
-         * loads HOGDescriptor parameters and coefficients for the linear SVM classifier from a file.
-         *     param filename Path of the file to read.
+         * loads HOGDescriptor parameters and coefficients for the linear SVM classifier from a file
+         *     param filename Name of the file to read.
          * return automatically generated
          */
         public bool load(string filename)
@@ -612,7 +614,7 @@ namespace OpenCVForUnity.ObjdetectModule
 
 
         //
-        // C++:  void cv::HOGDescriptor::detectMultiScale(Mat img, vector_Rect& foundLocations, vector_double& foundWeights, double hitThreshold = 0, Size winStride = Size(), Size padding = Size(), double scale = 1.05, double finalThreshold = 2.0, bool useMeanshiftGrouping = false)
+        // C++:  void cv::HOGDescriptor::detectMultiScale(Mat img, vector_Rect& foundLocations, vector_double& foundWeights, double hitThreshold = 0, Size winStride = Size(), Size padding = Size(), double scale = 1.05, double groupThreshold = 2.0, bool useMeanshiftGrouping = false)
         //
 
         /**
@@ -627,10 +629,11 @@ namespace OpenCVForUnity.ObjdetectModule
          *     param winStride Window stride. It must be a multiple of block stride.
          *     param padding Padding
          *     param scale Coefficient of the detection window increase.
-         *     param finalThreshold Final threshold
+         *     param groupThreshold Coefficient to regulate the similarity threshold. When detected, some objects can be covered
+         *     by many rectangles. 0 means not to perform grouping.
          *     param useMeanshiftGrouping indicates grouping algorithm
          */
-        public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold, Size winStride, Size padding, double scale, double finalThreshold, bool useMeanshiftGrouping)
+        public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold, Size winStride, Size padding, double scale, double groupThreshold, bool useMeanshiftGrouping)
         {
             ThrowIfDisposed();
             if (img != null) img.ThrowIfDisposed();
@@ -638,7 +641,7 @@ namespace OpenCVForUnity.ObjdetectModule
             if (foundWeights != null) foundWeights.ThrowIfDisposed();
             Mat foundLocations_mat = foundLocations;
             Mat foundWeights_mat = foundWeights;
-            objdetect_HOGDescriptor_detectMultiScale_10(nativeObj, img.nativeObj, foundLocations_mat.nativeObj, foundWeights_mat.nativeObj, hitThreshold, winStride.width, winStride.height, padding.width, padding.height, scale, finalThreshold, useMeanshiftGrouping);
+            objdetect_HOGDescriptor_detectMultiScale_10(nativeObj, img.nativeObj, foundLocations_mat.nativeObj, foundWeights_mat.nativeObj, hitThreshold, winStride.width, winStride.height, padding.width, padding.height, scale, groupThreshold, useMeanshiftGrouping);
 
 
         }
@@ -655,9 +658,10 @@ namespace OpenCVForUnity.ObjdetectModule
          *     param winStride Window stride. It must be a multiple of block stride.
          *     param padding Padding
          *     param scale Coefficient of the detection window increase.
-         *     param finalThreshold Final threshold
+         *     param groupThreshold Coefficient to regulate the similarity threshold. When detected, some objects can be covered
+         *     by many rectangles. 0 means not to perform grouping.
          */
-        public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold, Size winStride, Size padding, double scale, double finalThreshold)
+        public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold, Size winStride, Size padding, double scale, double groupThreshold)
         {
             ThrowIfDisposed();
             if (img != null) img.ThrowIfDisposed();
@@ -665,7 +669,7 @@ namespace OpenCVForUnity.ObjdetectModule
             if (foundWeights != null) foundWeights.ThrowIfDisposed();
             Mat foundLocations_mat = foundLocations;
             Mat foundWeights_mat = foundWeights;
-            objdetect_HOGDescriptor_detectMultiScale_11(nativeObj, img.nativeObj, foundLocations_mat.nativeObj, foundWeights_mat.nativeObj, hitThreshold, winStride.width, winStride.height, padding.width, padding.height, scale, finalThreshold);
+            objdetect_HOGDescriptor_detectMultiScale_11(nativeObj, img.nativeObj, foundLocations_mat.nativeObj, foundWeights_mat.nativeObj, hitThreshold, winStride.width, winStride.height, padding.width, padding.height, scale, groupThreshold);
 
 
         }
@@ -682,6 +686,7 @@ namespace OpenCVForUnity.ObjdetectModule
          *     param winStride Window stride. It must be a multiple of block stride.
          *     param padding Padding
          *     param scale Coefficient of the detection window increase.
+         *     by many rectangles. 0 means not to perform grouping.
          */
         public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold, Size winStride, Size padding, double scale)
         {
@@ -707,6 +712,7 @@ namespace OpenCVForUnity.ObjdetectModule
          *     But if the free coefficient is omitted (which is allowed), you can specify it manually here.
          *     param winStride Window stride. It must be a multiple of block stride.
          *     param padding Padding
+         *     by many rectangles. 0 means not to perform grouping.
          */
         public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold, Size winStride, Size padding)
         {
@@ -731,6 +737,7 @@ namespace OpenCVForUnity.ObjdetectModule
          *     Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
          *     But if the free coefficient is omitted (which is allowed), you can specify it manually here.
          *     param winStride Window stride. It must be a multiple of block stride.
+         *     by many rectangles. 0 means not to perform grouping.
          */
         public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold, Size winStride)
         {
@@ -754,6 +761,7 @@ namespace OpenCVForUnity.ObjdetectModule
          *     param hitThreshold Threshold for the distance between features and SVM classifying plane.
          *     Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
          *     But if the free coefficient is omitted (which is allowed), you can specify it manually here.
+         *     by many rectangles. 0 means not to perform grouping.
          */
         public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights, double hitThreshold)
         {
@@ -776,6 +784,7 @@ namespace OpenCVForUnity.ObjdetectModule
          *     param foundWeights Vector that will contain confidence values for each detected object.
          *     Usually it is 0 and should be specified in the detector coefficients (as the last free coefficient).
          *     But if the free coefficient is omitted (which is allowed), you can specify it manually here.
+         *     by many rectangles. 0 means not to perform grouping.
          */
         public void detectMultiScale(Mat img, MatOfRect foundLocations, MatOfDouble foundWeights)
         {
@@ -1166,11 +1175,11 @@ namespace OpenCVForUnity.ObjdetectModule
         [DllImport(LIBNAME)]
         private static extern void objdetect_HOGDescriptor_detect_14(IntPtr nativeObj, IntPtr img_nativeObj, IntPtr foundLocations_mat_nativeObj, IntPtr weights_mat_nativeObj);
 
-        // C++:  void cv::HOGDescriptor::detectMultiScale(Mat img, vector_Rect& foundLocations, vector_double& foundWeights, double hitThreshold = 0, Size winStride = Size(), Size padding = Size(), double scale = 1.05, double finalThreshold = 2.0, bool useMeanshiftGrouping = false)
+        // C++:  void cv::HOGDescriptor::detectMultiScale(Mat img, vector_Rect& foundLocations, vector_double& foundWeights, double hitThreshold = 0, Size winStride = Size(), Size padding = Size(), double scale = 1.05, double groupThreshold = 2.0, bool useMeanshiftGrouping = false)
         [DllImport(LIBNAME)]
-        private static extern void objdetect_HOGDescriptor_detectMultiScale_10(IntPtr nativeObj, IntPtr img_nativeObj, IntPtr foundLocations_mat_nativeObj, IntPtr foundWeights_mat_nativeObj, double hitThreshold, double winStride_width, double winStride_height, double padding_width, double padding_height, double scale, double finalThreshold, [MarshalAs(UnmanagedType.U1)] bool useMeanshiftGrouping);
+        private static extern void objdetect_HOGDescriptor_detectMultiScale_10(IntPtr nativeObj, IntPtr img_nativeObj, IntPtr foundLocations_mat_nativeObj, IntPtr foundWeights_mat_nativeObj, double hitThreshold, double winStride_width, double winStride_height, double padding_width, double padding_height, double scale, double groupThreshold, [MarshalAs(UnmanagedType.U1)] bool useMeanshiftGrouping);
         [DllImport(LIBNAME)]
-        private static extern void objdetect_HOGDescriptor_detectMultiScale_11(IntPtr nativeObj, IntPtr img_nativeObj, IntPtr foundLocations_mat_nativeObj, IntPtr foundWeights_mat_nativeObj, double hitThreshold, double winStride_width, double winStride_height, double padding_width, double padding_height, double scale, double finalThreshold);
+        private static extern void objdetect_HOGDescriptor_detectMultiScale_11(IntPtr nativeObj, IntPtr img_nativeObj, IntPtr foundLocations_mat_nativeObj, IntPtr foundWeights_mat_nativeObj, double hitThreshold, double winStride_width, double winStride_height, double padding_width, double padding_height, double scale, double groupThreshold);
         [DllImport(LIBNAME)]
         private static extern void objdetect_HOGDescriptor_detectMultiScale_12(IntPtr nativeObj, IntPtr img_nativeObj, IntPtr foundLocations_mat_nativeObj, IntPtr foundWeights_mat_nativeObj, double hitThreshold, double winStride_width, double winStride_height, double padding_width, double padding_height, double scale);
         [DllImport(LIBNAME)]

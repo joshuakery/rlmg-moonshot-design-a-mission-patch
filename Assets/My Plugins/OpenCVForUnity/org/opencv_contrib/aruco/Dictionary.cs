@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -128,10 +128,17 @@ namespace OpenCVForUnity.ArucoModule
 
 
         //
-        // C++: static bool cv::aruco::Dictionary::readDictionary(FileNode fn, Ptr_aruco_Dictionary dictionary)
+        // C++:  bool cv::aruco::Dictionary::readDictionary(FileNode fn)
         //
 
         // Unknown type 'FileNode' (I), skipping the function
+
+
+        //
+        // C++:  void cv::aruco::Dictionary::writeDictionary(Ptr_FileStorage fs)
+        //
+
+        // Unknown type 'Ptr_FileStorage' (I), skipping the function
 
 
         //
@@ -148,6 +155,72 @@ namespace OpenCVForUnity.ArucoModule
 
 
             return Dictionary.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(aruco_Dictionary_get_10(dict)));
+
+
+        }
+
+
+        //
+        // C++:  bool cv::aruco::Dictionary::identify(Mat onlyBits, int& idx, int& rotation, double maxCorrectionRate)
+        //
+
+        /**
+         * Given a matrix of bits. Returns whether if marker is identified or not.
+         * It returns by reference the correct id (if any) and the correct rotation
+         * param onlyBits automatically generated
+         * param idx automatically generated
+         * param rotation automatically generated
+         * param maxCorrectionRate automatically generated
+         * return automatically generated
+         */
+        public bool identify(Mat onlyBits, int[] idx, int[] rotation, double maxCorrectionRate)
+        {
+            ThrowIfDisposed();
+            if (onlyBits != null) onlyBits.ThrowIfDisposed();
+            double[] idx_out = new double[1];
+            double[] rotation_out = new double[1];
+            bool retVal = aruco_Dictionary_identify_10(nativeObj, onlyBits.nativeObj, idx_out, rotation_out, maxCorrectionRate);
+            if (idx != null) idx[0] = (int)idx_out[0];
+            if (rotation != null) rotation[0] = (int)rotation_out[0];
+            return retVal;
+        }
+
+
+        //
+        // C++:  int cv::aruco::Dictionary::getDistanceToId(Mat bits, int id, bool allRotations = true)
+        //
+
+        /**
+         * Returns the distance of the input bits to the specific id. If allRotations is true,
+         * the four posible bits rotation are considered
+         * param bits automatically generated
+         * param id automatically generated
+         * param allRotations automatically generated
+         * return automatically generated
+         */
+        public int getDistanceToId(Mat bits, int id, bool allRotations)
+        {
+            ThrowIfDisposed();
+            if (bits != null) bits.ThrowIfDisposed();
+
+            return aruco_Dictionary_getDistanceToId_10(nativeObj, bits.nativeObj, id, allRotations);
+
+
+        }
+
+        /**
+         * Returns the distance of the input bits to the specific id. If allRotations is true,
+         * the four posible bits rotation are considered
+         * param bits automatically generated
+         * param id automatically generated
+         * return automatically generated
+         */
+        public int getDistanceToId(Mat bits, int id)
+        {
+            ThrowIfDisposed();
+            if (bits != null) bits.ThrowIfDisposed();
+
+            return aruco_Dictionary_getDistanceToId_11(nativeObj, bits.nativeObj, id);
 
 
         }
@@ -338,6 +411,17 @@ namespace OpenCVForUnity.ArucoModule
         // C++: static Ptr_Dictionary cv::aruco::Dictionary::get(int dict)
         [DllImport(LIBNAME)]
         private static extern IntPtr aruco_Dictionary_get_10(int dict);
+
+        // C++:  bool cv::aruco::Dictionary::identify(Mat onlyBits, int& idx, int& rotation, double maxCorrectionRate)
+        [DllImport(LIBNAME)]
+        [return: MarshalAs(UnmanagedType.U1)]
+        private static extern bool aruco_Dictionary_identify_10(IntPtr nativeObj, IntPtr onlyBits_nativeObj, double[] idx_out, double[] rotation_out, double maxCorrectionRate);
+
+        // C++:  int cv::aruco::Dictionary::getDistanceToId(Mat bits, int id, bool allRotations = true)
+        [DllImport(LIBNAME)]
+        private static extern int aruco_Dictionary_getDistanceToId_10(IntPtr nativeObj, IntPtr bits_nativeObj, int id, [MarshalAs(UnmanagedType.U1)] bool allRotations);
+        [DllImport(LIBNAME)]
+        private static extern int aruco_Dictionary_getDistanceToId_11(IntPtr nativeObj, IntPtr bits_nativeObj, int id);
 
         // C++:  void cv::aruco::Dictionary::drawMarker(int id, int sidePixels, Mat& _img, int borderBits = 1)
         [DllImport(LIBNAME)]

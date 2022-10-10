@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -13,11 +13,11 @@ namespace OpenCVForUnity.CoreModule
     public class Core
     {
         // these constants are wrapped inside functions to prevent inlining
-        private static string getVersion() { return "4.5.5-dev"; }
+        private static string getVersion() { return "4.6.0-dev"; }
         private static string getNativeLibraryName() { return "opencvforunity"; }
         private static int getVersionMajorJ() { return 4; }
-        private static int getVersionMinorJ() { return 5; }
-        private static int getVersionRevisionJ() { return 5; }
+        private static int getVersionMinorJ() { return 6; }
+        private static int getVersionRevisionJ() { return 0; }
         private static string getVersionStatusJ() { return "-dev"; }
 
         public static readonly string VERSION = getVersion();
@@ -4114,6 +4114,31 @@ namespace OpenCVForUnity.CoreModule
 
 
         //
+        // C++:  void cv::transposeND(Mat src, vector_int order, Mat& dst)
+        //
+
+        /**
+         * Transpose for n-dimensional matrices.
+         *
+         * <b>Note:</b> Input should be continuous single-channel matrix.
+         * param src input array.
+         * param order a permutation of [0,1,..,N-1] where N is the number of axes of src.
+         * The i’th axis of dst will correspond to the axis numbered order[i] of the input.
+         * param dst output array of the same type as src.
+         */
+        public static void transposeND(Mat src, MatOfInt order, Mat dst)
+        {
+            if (src != null) src.ThrowIfDisposed();
+            if (order != null) order.ThrowIfDisposed();
+            if (dst != null) dst.ThrowIfDisposed();
+            Mat order_mat = order;
+            core_Core_transposeND_10(src.nativeObj, order_mat.nativeObj, dst.nativeObj);
+
+
+        }
+
+
+        //
         // C++:  void cv::transform(Mat src, Mat& dst, Mat m)
         //
 
@@ -7417,6 +7442,10 @@ namespace OpenCVForUnity.CoreModule
         // C++:  void cv::transpose(Mat src, Mat& dst)
         [DllImport(LIBNAME)]
         private static extern void core_Core_transpose_10(IntPtr src_nativeObj, IntPtr dst_nativeObj);
+
+        // C++:  void cv::transposeND(Mat src, vector_int order, Mat& dst)
+        [DllImport(LIBNAME)]
+        private static extern void core_Core_transposeND_10(IntPtr src_nativeObj, IntPtr order_mat_nativeObj, IntPtr dst_nativeObj);
 
         // C++:  void cv::transform(Mat src, Mat& dst, Mat m)
         [DllImport(LIBNAME)]

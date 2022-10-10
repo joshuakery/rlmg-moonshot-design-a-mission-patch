@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
-namespace ArtScan.CoreModule
+namespace OpenCVForUnityExample
 {
     // v1.0.1
     public class FpsMonitor : MonoBehaviour
@@ -27,7 +27,6 @@ namespace ArtScan.CoreModule
         const float INNER_X = 8f;
         const float INNER_Y = 5f;
         const float GUI_CONSOLE_HEIGHT = 50f;
-        const int FONT_SIZE = 32;
 
         public Vector2 offset = new Vector2(MARGIN_X, MARGIN_Y);
         public bool boxVisible = true;
@@ -35,7 +34,6 @@ namespace ArtScan.CoreModule
         public float boxHeight = GUI_HEIGHT;
         public Vector2 padding = new Vector2(INNER_X, INNER_Y);
         public float consoleHeight = GUI_CONSOLE_HEIGHT;
-        public int fontSize = FONT_SIZE;
 
         GUIStyle console_labelStyle;
 
@@ -66,10 +64,10 @@ namespace ArtScan.CoreModule
         int toast_time = -1;
 
         // Use this for initialization
-        void OnEnable()
+        void Start()
         {
             console_labelStyle = new GUIStyle();
-            console_labelStyle.fontSize = fontSize;
+            console_labelStyle.fontSize = 32;
             console_labelStyle.fontStyle = FontStyle.Normal;
             console_labelStyle.wordWrap = true;
             console_labelStyle.normal.textColor = Color.white;
@@ -114,8 +112,7 @@ namespace ArtScan.CoreModule
             GUILayout.BeginArea(inner);
             {
                 GUILayout.BeginVertical();
-                string fpsText = "fps : " + fps.ToString("F1");
-                GUILayout.Label(fpsText, console_labelStyle);
+                GUILayout.Label("fps : " + fps.ToString("F1"));
                 foreach (KeyValuePair<string, string> pair in outputDict)
                 {
                     GUILayout.Label(pair.Key + " : " + pair.Value);
@@ -126,7 +123,8 @@ namespace ArtScan.CoreModule
 
             if (!string.IsNullOrEmpty(consoleText))
             {
-                if (toast_time != 0) {
+                if (toast_time != 0)
+                {
                     if (boxVisible)
                     {
                         GUI.Box(console_outer, "");

@@ -79,7 +79,7 @@ namespace ArtScan.CoreModule
         /// <summary>
         /// The FPS monitor.
         /// </summary>
-        FpsMonitor fpsMonitor;
+        //FpsMonitor fpsMonitor;
 
         /// <summary>
         /// The Game State Scriptable Object.
@@ -120,7 +120,7 @@ namespace ArtScan.CoreModule
             // Debug.Log("SETTING UP REMOVE BACKGROUND");
             before = DateTime.Now;
         
-            fpsMonitor = GetComponent<FpsMonitor> ();
+            //fpsMonitor = GetComponent<FpsMonitor> ();
             
             webCamTextureToMatHelper = gameObject.GetComponent<myWebCamTextureToMatHelper> ();
 

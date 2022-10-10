@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -53,9 +53,9 @@ namespace OpenCVForUnity.XimgprocModule
         //
 
         /**
-         * Detects edges and prepares them to detect lines and ellipses.
+         * Detects edges in a grayscale image and prepares them to detect lines and ellipses.
          *
-         *     param src input image
+         *     param src 8-bit, single-channel, grayscale input image.
          */
         public void detectEdges(Mat src)
         {
@@ -72,6 +72,11 @@ namespace OpenCVForUnity.XimgprocModule
         // C++:  void cv::ximgproc::EdgeDrawing::getEdgeImage(Mat& dst)
         //
 
+        /**
+         * returns Edge Image prepared by detectEdges() function.
+         *
+         *     param dst returns 8-bit, single-channel output image.
+         */
         public void getEdgeImage(Mat dst)
         {
             ThrowIfDisposed();
@@ -87,6 +92,11 @@ namespace OpenCVForUnity.XimgprocModule
         // C++:  void cv::ximgproc::EdgeDrawing::getGradientImage(Mat& dst)
         //
 
+        /**
+         * returns Gradient Image prepared by detectEdges() function.
+         *
+         *     param dst returns 16-bit, single-channel output image.
+         */
         public void getGradientImage(Mat dst)
         {
             ThrowIfDisposed();
@@ -141,8 +151,8 @@ namespace OpenCVForUnity.XimgprocModule
         /**
          * Detects lines.
          *
-         *     param lines  output Vec&lt;4f&gt; contains start point and end point of detected lines.
-         *     <b>Note:</b> you should call detectEdges() method before call this.
+         *     param lines  output Vec&lt;4f&gt; contains the start point and the end point of detected lines.
+         *     <b>Note:</b> you should call detectEdges() before calling this function.
          */
         public void detectLines(Mat lines)
         {
@@ -162,8 +172,8 @@ namespace OpenCVForUnity.XimgprocModule
         /**
          * Detects circles and ellipses.
          *
-         *     param ellipses  output Vec&lt;6d&gt; contains center point and perimeter for circles.
-         *     <b>Note:</b> you should call detectEdges() method before call this.
+         *     param ellipses  output Vec&lt;6d&gt; contains center point and perimeter for circles, center point, axes and angle for ellipses.
+         *     <b>Note:</b> you should call detectEdges() before calling this function.
          */
         public void detectEllipses(Mat ellipses)
         {
@@ -183,8 +193,8 @@ namespace OpenCVForUnity.XimgprocModule
         /**
          * sets parameters.
          *
-         *     this function is meant to be used for parameter setting in other languages than c++.
-         * param parameters automatically generated
+         *     this function is meant to be used for parameter setting in other languages than c++ like python.
+         *     param parameters
          */
         public void setParams(EdgeDrawing_Params parameters)
         {

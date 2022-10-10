@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -202,7 +202,7 @@ namespace OpenCVForUnity.DnnModule
 
 
         //
-        // C++:  Ptr_Layer cv::dnn::Net::getLayer(LayerId layerId)
+        // C++:  Ptr_Layer cv::dnn::Net::getLayer(int layerId)
         //
 
         /**
@@ -210,12 +210,54 @@ namespace OpenCVForUnity.DnnModule
          * param layerId automatically generated
          * return automatically generated
          */
+        public Layer getLayer(int layerId)
+        {
+            ThrowIfDisposed();
+
+            return Layer.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getLayer_10(nativeObj, layerId)));
+
+
+        }
+
+
+        //
+        // C++:  Ptr_Layer cv::dnn::Net::getLayer(String layerName)
+        //
+
+        /**
+         *
+         * deprecated Use int getLayerId(const String &amp;layer)
+         * param layerName automatically generated
+         * return automatically generated
+         */
+        [Obsolete("This method is deprecated.")]
+        public Layer getLayer(string layerName)
+        {
+            ThrowIfDisposed();
+
+            return Layer.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getLayer_11(nativeObj, layerName)));
+
+
+        }
+
+
+        //
+        // C++:  Ptr_Layer cv::dnn::Net::getLayer(LayerId layerId)
+        //
+
+        /**
+         *
+         * deprecated to be removed
+         * param layerId automatically generated
+         * return automatically generated
+         */
+        [Obsolete("This method is deprecated.")]
         public Layer getLayer(DictValue layerId)
         {
             ThrowIfDisposed();
             if (layerId != null) layerId.ThrowIfDisposed();
 
-            return Layer.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getLayer_10(nativeObj, layerId.getNativeObjAddr())));
+            return Layer.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getLayer_12(nativeObj, layerId.getNativeObjAddr())));
 
 
         }
@@ -626,7 +668,7 @@ namespace OpenCVForUnity.DnnModule
 
 
         //
-        // C++:  void cv::dnn::Net::setParam(LayerId layer, int numParam, Mat blob)
+        // C++:  void cv::dnn::Net::setParam(int layer, int numParam, Mat blob)
         //
 
         /**
@@ -638,20 +680,34 @@ namespace OpenCVForUnity.DnnModule
          * <b>Note:</b> If shape of the new blob differs from the previous shape,
          * then the following forward pass may fail.
          */
-        public void setParam(DictValue layer, int numParam, Mat blob)
+        public void setParam(int layer, int numParam, Mat blob)
         {
             ThrowIfDisposed();
-            if (layer != null) layer.ThrowIfDisposed();
             if (blob != null) blob.ThrowIfDisposed();
 
-            dnn_Net_setParam_10(nativeObj, layer.getNativeObjAddr(), numParam, blob.nativeObj);
+            dnn_Net_setParam_10(nativeObj, layer, numParam, blob.nativeObj);
 
 
         }
 
 
         //
-        // C++:  Mat cv::dnn::Net::getParam(LayerId layer, int numParam = 0)
+        // C++:  void cv::dnn::Net::setParam(String layerName, int numParam, Mat blob)
+        //
+
+        public void setParam(string layerName, int numParam, Mat blob)
+        {
+            ThrowIfDisposed();
+            if (blob != null) blob.ThrowIfDisposed();
+
+            dnn_Net_setParam_11(nativeObj, layerName, numParam, blob.nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  Mat cv::dnn::Net::getParam(int layer, int numParam = 0)
         //
 
         /**
@@ -661,12 +717,11 @@ namespace OpenCVForUnity.DnnModule
          * SEE: Layer::blobs
          * return automatically generated
          */
-        public Mat getParam(DictValue layer, int numParam)
+        public Mat getParam(int layer, int numParam)
         {
             ThrowIfDisposed();
-            if (layer != null) layer.ThrowIfDisposed();
 
-            return new Mat(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getParam_10(nativeObj, layer.getNativeObjAddr(), numParam)));
+            return new Mat(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getParam_10(nativeObj, layer, numParam)));
 
 
         }
@@ -677,12 +732,34 @@ namespace OpenCVForUnity.DnnModule
          * SEE: Layer::blobs
          * return automatically generated
          */
-        public Mat getParam(DictValue layer)
+        public Mat getParam(int layer)
         {
             ThrowIfDisposed();
-            if (layer != null) layer.ThrowIfDisposed();
 
-            return new Mat(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getParam_11(nativeObj, layer.getNativeObjAddr())));
+            return new Mat(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getParam_11(nativeObj, layer)));
+
+
+        }
+
+
+        //
+        // C++:  Mat cv::dnn::Net::getParam(String layerName, int numParam = 0)
+        //
+
+        public Mat getParam(string layerName, int numParam)
+        {
+            ThrowIfDisposed();
+
+            return new Mat(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getParam_12(nativeObj, layerName, numParam)));
+
+
+        }
+
+        public Mat getParam(string layerName)
+        {
+            ThrowIfDisposed();
+
+            return new Mat(DisposableObject.ThrowIfNullIntPtr(dnn_Net_getParam_13(nativeObj, layerName)));
 
 
         }
@@ -694,6 +771,8 @@ namespace OpenCVForUnity.DnnModule
 
         /**
          * Returns indexes of layers with unconnected outputs.
+         *
+         * FIXIT: Rework API to registerOutput() approach, deprecate this call
          * return automatically generated
          */
         public MatOfInt getUnconnectedOutLayers()
@@ -712,6 +791,8 @@ namespace OpenCVForUnity.DnnModule
 
         /**
          * Returns names of layers with unconnected outputs.
+         *
+         * FIXIT: Rework API to registerOutput() approach, deprecate this call
          * return automatically generated
          */
         public List<string> getUnconnectedOutLayersNames()
@@ -975,9 +1056,17 @@ namespace OpenCVForUnity.DnnModule
         [DllImport(LIBNAME)]
         private static extern IntPtr dnn_Net_getLayerNames_10(IntPtr nativeObj);
 
+        // C++:  Ptr_Layer cv::dnn::Net::getLayer(int layerId)
+        [DllImport(LIBNAME)]
+        private static extern IntPtr dnn_Net_getLayer_10(IntPtr nativeObj, int layerId);
+
+        // C++:  Ptr_Layer cv::dnn::Net::getLayer(String layerName)
+        [DllImport(LIBNAME)]
+        private static extern IntPtr dnn_Net_getLayer_11(IntPtr nativeObj, string layerName);
+
         // C++:  Ptr_Layer cv::dnn::Net::getLayer(LayerId layerId)
         [DllImport(LIBNAME)]
-        private static extern IntPtr dnn_Net_getLayer_10(IntPtr nativeObj, IntPtr layerId_nativeObj);
+        private static extern IntPtr dnn_Net_getLayer_12(IntPtr nativeObj, IntPtr layerId_nativeObj);
 
         // C++:  void cv::dnn::Net::connect(String outPin, String inpPin)
         [DllImport(LIBNAME)]
@@ -1041,15 +1130,25 @@ namespace OpenCVForUnity.DnnModule
         [DllImport(LIBNAME)]
         private static extern void dnn_Net_setInput_13(IntPtr nativeObj, IntPtr blob_nativeObj);
 
-        // C++:  void cv::dnn::Net::setParam(LayerId layer, int numParam, Mat blob)
+        // C++:  void cv::dnn::Net::setParam(int layer, int numParam, Mat blob)
         [DllImport(LIBNAME)]
-        private static extern void dnn_Net_setParam_10(IntPtr nativeObj, IntPtr layer_nativeObj, int numParam, IntPtr blob_nativeObj);
+        private static extern void dnn_Net_setParam_10(IntPtr nativeObj, int layer, int numParam, IntPtr blob_nativeObj);
 
-        // C++:  Mat cv::dnn::Net::getParam(LayerId layer, int numParam = 0)
+        // C++:  void cv::dnn::Net::setParam(String layerName, int numParam, Mat blob)
         [DllImport(LIBNAME)]
-        private static extern IntPtr dnn_Net_getParam_10(IntPtr nativeObj, IntPtr layer_nativeObj, int numParam);
+        private static extern void dnn_Net_setParam_11(IntPtr nativeObj, string layerName, int numParam, IntPtr blob_nativeObj);
+
+        // C++:  Mat cv::dnn::Net::getParam(int layer, int numParam = 0)
         [DllImport(LIBNAME)]
-        private static extern IntPtr dnn_Net_getParam_11(IntPtr nativeObj, IntPtr layer_nativeObj);
+        private static extern IntPtr dnn_Net_getParam_10(IntPtr nativeObj, int layer, int numParam);
+        [DllImport(LIBNAME)]
+        private static extern IntPtr dnn_Net_getParam_11(IntPtr nativeObj, int layer);
+
+        // C++:  Mat cv::dnn::Net::getParam(String layerName, int numParam = 0)
+        [DllImport(LIBNAME)]
+        private static extern IntPtr dnn_Net_getParam_12(IntPtr nativeObj, string layerName, int numParam);
+        [DllImport(LIBNAME)]
+        private static extern IntPtr dnn_Net_getParam_13(IntPtr nativeObj, string layerName);
 
         // C++:  vector_int cv::dnn::Net::getUnconnectedOutLayers()
         [DllImport(LIBNAME)]

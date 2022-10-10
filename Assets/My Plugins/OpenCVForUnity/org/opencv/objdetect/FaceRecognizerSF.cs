@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -10,7 +10,9 @@ namespace OpenCVForUnity.ObjdetectModule
 {
     // C++: class FaceRecognizerSF
     /**
-     * DNN-based face recognizer, model download link: https://drive.google.com/file/d/1ClK9WiB492c5OZFKveF3XiHCejoOxINW/view.
+     * DNN-based face recognizer
+     *
+     * model download link: https://github.com/opencv/opencv_zoo/tree/master/models/face_recognition_sface
      */
 
     public class FaceRecognizerSF : DisposableOpenCVObject
@@ -94,40 +96,40 @@ namespace OpenCVForUnity.ObjdetectModule
 
 
         //
-        // C++:  double cv::FaceRecognizerSF::match(Mat _face_feature1, Mat _face_feature2, int dis_type = FaceRecognizerSF::FR_COSINE)
+        // C++:  double cv::FaceRecognizerSF::match(Mat face_feature1, Mat face_feature2, int dis_type = FaceRecognizerSF::FR_COSINE)
         //
 
         /**
          * Calculating the distance between two face features
-         * param _face_feature1 the first input feature
-         * param _face_feature2 the second input feature of the same size and the same type as _face_feature1
+         * param face_feature1 the first input feature
+         * param face_feature2 the second input feature of the same size and the same type as face_feature1
          * param dis_type defining the similarity with optional values "FR_OSINE" or "FR_NORM_L2"
          * return automatically generated
          */
-        public double match(Mat _face_feature1, Mat _face_feature2, int dis_type)
+        public double match(Mat face_feature1, Mat face_feature2, int dis_type)
         {
             ThrowIfDisposed();
-            if (_face_feature1 != null) _face_feature1.ThrowIfDisposed();
-            if (_face_feature2 != null) _face_feature2.ThrowIfDisposed();
+            if (face_feature1 != null) face_feature1.ThrowIfDisposed();
+            if (face_feature2 != null) face_feature2.ThrowIfDisposed();
 
-            return objdetect_FaceRecognizerSF_match_10(nativeObj, _face_feature1.nativeObj, _face_feature2.nativeObj, dis_type);
+            return objdetect_FaceRecognizerSF_match_10(nativeObj, face_feature1.nativeObj, face_feature2.nativeObj, dis_type);
 
 
         }
 
         /**
          * Calculating the distance between two face features
-         * param _face_feature1 the first input feature
-         * param _face_feature2 the second input feature of the same size and the same type as _face_feature1
+         * param face_feature1 the first input feature
+         * param face_feature2 the second input feature of the same size and the same type as face_feature1
          * return automatically generated
          */
-        public double match(Mat _face_feature1, Mat _face_feature2)
+        public double match(Mat face_feature1, Mat face_feature2)
         {
             ThrowIfDisposed();
-            if (_face_feature1 != null) _face_feature1.ThrowIfDisposed();
-            if (_face_feature2 != null) _face_feature2.ThrowIfDisposed();
+            if (face_feature1 != null) face_feature1.ThrowIfDisposed();
+            if (face_feature2 != null) face_feature2.ThrowIfDisposed();
 
-            return objdetect_FaceRecognizerSF_match_11(nativeObj, _face_feature1.nativeObj, _face_feature2.nativeObj);
+            return objdetect_FaceRecognizerSF_match_11(nativeObj, face_feature1.nativeObj, face_feature2.nativeObj);
 
 
         }
@@ -202,11 +204,11 @@ namespace OpenCVForUnity.ObjdetectModule
         [DllImport(LIBNAME)]
         private static extern void objdetect_FaceRecognizerSF_feature_10(IntPtr nativeObj, IntPtr aligned_img_nativeObj, IntPtr face_feature_nativeObj);
 
-        // C++:  double cv::FaceRecognizerSF::match(Mat _face_feature1, Mat _face_feature2, int dis_type = FaceRecognizerSF::FR_COSINE)
+        // C++:  double cv::FaceRecognizerSF::match(Mat face_feature1, Mat face_feature2, int dis_type = FaceRecognizerSF::FR_COSINE)
         [DllImport(LIBNAME)]
-        private static extern double objdetect_FaceRecognizerSF_match_10(IntPtr nativeObj, IntPtr _face_feature1_nativeObj, IntPtr _face_feature2_nativeObj, int dis_type);
+        private static extern double objdetect_FaceRecognizerSF_match_10(IntPtr nativeObj, IntPtr face_feature1_nativeObj, IntPtr face_feature2_nativeObj, int dis_type);
         [DllImport(LIBNAME)]
-        private static extern double objdetect_FaceRecognizerSF_match_11(IntPtr nativeObj, IntPtr _face_feature1_nativeObj, IntPtr _face_feature2_nativeObj);
+        private static extern double objdetect_FaceRecognizerSF_match_11(IntPtr nativeObj, IntPtr face_feature1_nativeObj, IntPtr face_feature2_nativeObj);
 
         // C++: static Ptr_FaceRecognizerSF cv::FaceRecognizerSF::create(String model, String config, int backend_id = 0, int target_id = 0)
         [DllImport(LIBNAME)]

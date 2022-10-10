@@ -1,7 +1,6 @@
-﻿#if UNITY_5 || UNITY_5_3_OR_NEWER
+#if UNITY_5 || UNITY_5_3_OR_NEWER
 using UnityEngine;
 using UnityEditor;
-
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -12,10 +11,6 @@ namespace OpenCVForUnity
 {
     public class OpenCVForUnityMenuItem : MonoBehaviour
     {
-
-
-
-
         /// <summary>
         /// Sets the plugin import settings.
         /// </summary>
@@ -31,10 +26,10 @@ namespace OpenCVForUnity
             string opencvForUnityFolderPath = AssetDatabase.GUIDToAssetPath(guids[0]).Substring(0, AssetDatabase.GUIDToAssetPath(guids[0]).LastIndexOf("Editor/OpenCVForUnityMenuItem.cs"));
 
             string pluginsFolderPath = opencvForUnityFolderPath + "Plugins";
-            //            Debug.Log ("pluginsFolderPath " + pluginsFolderPath);
+            //Debug.Log("pluginsFolderPath " + pluginsFolderPath);
 
             string extraFolderPath = opencvForUnityFolderPath + "Extra";
-            //            Debug.Log ("extraFolderPath " + extraFolderPath);
+            //Debug.Log("extraFolderPath " + extraFolderPath);
 
 
             //Disable Extra folder
@@ -217,10 +212,10 @@ namespace OpenCVForUnity
 
             //UWP
 #if UNITY_5_0 || UNITY_5_1
-            SetPlugins (GetPluginFilePaths (pluginsFolderPath + "/WSA/UWP/ARM"), null, null);
-            SetPlugins (GetPluginFilePaths (pluginsFolderPath + "/WSA/UWP/ARM64"), null, null);
-            SetPlugins (GetPluginFilePaths (pluginsFolderPath + "/WSA/UWP/x64"), null, null);
-            SetPlugins (GetPluginFilePaths (pluginsFolderPath + "/WSA/UWP/x86"), null, null);
+            SetPlugins(GetPluginFilePaths(pluginsFolderPath + "/WSA/UWP/ARM"), null, null);
+            SetPlugins(GetPluginFilePaths(pluginsFolderPath + "/WSA/UWP/ARM64"), null, null);
+            SetPlugins(GetPluginFilePaths(pluginsFolderPath + "/WSA/UWP/x64"), null, null);
+            SetPlugins(GetPluginFilePaths(pluginsFolderPath + "/WSA/UWP/x86"), null, null);
 #else
             SetPlugins(GetPluginFilePaths(pluginsFolderPath + "/WSA/UWP/ARM"), null,
                 new Dictionary<BuildTarget, Dictionary<string, string>>() { {BuildTarget.WSAPlayer,new Dictionary<string, string> () { {
@@ -283,7 +278,7 @@ namespace OpenCVForUnity
                 }
             });
 #elif UNITY_2019_1_OR_NEWER
-            SetPlugins (new string[] { pluginsFolderPath + "/WebGL/2019.1/opencvforunity.bc" }, null, new Dictionary<BuildTarget, Dictionary<string, string>> () { {
+            SetPlugins(new string[] { pluginsFolderPath + "/WebGL/2019.1/opencvforunity.bc" }, null, new Dictionary<BuildTarget, Dictionary<string, string>>() { {
                     BuildTarget.WebGL,
                     null
                 }
@@ -322,7 +317,7 @@ namespace OpenCVForUnity
             }
             catch (Exception)
             {
-                //Debug.LogWarning ("SetPluginImportSettings Faild :" + ex);
+                //Debug.LogWarning("SetPluginImportSettings Faild :" + ex);
                 return null;
             }
         }
@@ -340,12 +335,10 @@ namespace OpenCVForUnity
 
             foreach (string item in files)
             {
-
                 PluginImporter pluginImporter = PluginImporter.GetAtPath(item) as PluginImporter;
 
                 if (pluginImporter != null)
                 {
-
                     pluginImporter.SetCompatibleWithAnyPlatform(false);
                     pluginImporter.SetCompatibleWithEditor(false);
                     pluginImporter.SetCompatibleWithPlatform(BuildTarget.Android, false);
@@ -442,7 +435,7 @@ namespace OpenCVForUnity
                 }
                 else
                 {
-                    //Debug.LogWarning ("SetPluginImportSettings Faild :" + item);
+                    //Debug.LogWarning("SetPluginImportSettings Faild :" + item);
                 }
             }
         }
@@ -454,7 +447,6 @@ namespace OpenCVForUnity
         [MenuItem("Tools/OpenCV for Unity/Use Unsafe Code", validate = true, priority = 12)]
         static bool ValidateUseUnsafeCode()
         {
-
             Menu.SetChecked("Tools/OpenCV for Unity/Use Unsafe Code", EditorUserBuildSettings.activeScriptCompilationDefines.Contains(SYMBOL_OPENCV_USE_UNSAFE_CODE));
             return true;
         }
@@ -462,14 +454,11 @@ namespace OpenCVForUnity
         [MenuItem("Tools/OpenCV for Unity/Use Unsafe Code", validate = false, priority = 12)]
         public static void UseUnsafeCode()
         {
-
-
             if (Menu.GetChecked("Tools/OpenCV for Unity/Use Unsafe Code"))
             {
                 if (EditorUtility.DisplayDialog("Disable Unsafe Code",
                 "Do you want to disable Unsafe Code in OpenCV for Unity?", "Yes", "Cancel"))
                 {
-
                     Symbol.Remove(BuildTargetGroup.Standalone, Symbol.GetCurrentSymbols(BuildTargetGroup.Standalone), SYMBOL_OPENCV_USE_UNSAFE_CODE);
                     Symbol.Remove(BuildTargetGroup.Android, Symbol.GetCurrentSymbols(BuildTargetGroup.Android), SYMBOL_OPENCV_USE_UNSAFE_CODE);
                     Symbol.Remove(BuildTargetGroup.iOS, Symbol.GetCurrentSymbols(BuildTargetGroup.iOS), SYMBOL_OPENCV_USE_UNSAFE_CODE);
@@ -489,7 +478,6 @@ namespace OpenCVForUnity
                 if (EditorUtility.DisplayDialog("Enable Unsafe Code",
                 "Do you want to enable Unsafe Code in OpenCV for Unity?", "Yes", "Cancel"))
                 {
-
                     Symbol.Add(BuildTargetGroup.Standalone, Symbol.GetCurrentSymbols(BuildTargetGroup.Standalone), SYMBOL_OPENCV_USE_UNSAFE_CODE);
                     Symbol.Add(BuildTargetGroup.Android, Symbol.GetCurrentSymbols(BuildTargetGroup.Android), SYMBOL_OPENCV_USE_UNSAFE_CODE);
                     Symbol.Add(BuildTargetGroup.iOS, Symbol.GetCurrentSymbols(BuildTargetGroup.iOS), SYMBOL_OPENCV_USE_UNSAFE_CODE);
@@ -501,16 +489,13 @@ namespace OpenCVForUnity
 
                     Debug.Log("\"" + SYMBOL_OPENCV_USE_UNSAFE_CODE + "\" has been added to Scripting Define Symbols. Please set \"Allow 'unsafe' Code\" in \"Assets / OpenCVForUnity / OpenCVForUnity.asmodef\" to true.");
                     EditorUtility.DisplayDialog("success!!",
-                "\"" + SYMBOL_OPENCV_USE_UNSAFE_CODE + "\" has been added to Scripting Define Symbols. Please set \"Allow 'unsafe' Code\" in \"Assets / OpenCVForUnity / OpenCVForUnity.asmodef\" to true.", "OK");
+                        "\"" + SYMBOL_OPENCV_USE_UNSAFE_CODE + "\" has been added to Scripting Define Symbols. Please set \"Allow 'unsafe' Code\" in \"Assets / OpenCVForUnity / OpenCVForUnity.asmodef\" to true.", "OK");
                 }
             }
-
-
         }
 
         static class Symbol
         {
-
             public static IEnumerable<string> GetCurrentSymbols(BuildTargetGroup buildTargetGroup)
             {
                 return PlayerSettings.GetScriptingDefineSymbolsForGroup(buildTargetGroup).Split(';');
@@ -542,16 +527,13 @@ namespace OpenCVForUnity
             {
                 SaveSymbol(buildTargetGroup, symbols);
             }
-
         }
 #endif
 
         [MenuItem("Tools/OpenCV for Unity/Import Extra Package", false, 24)]
         public static void ImportExtraPackage()
         {
-
             AssetDatabase.ImportPackage("Assets/OpenCVForUnity/Extra.unitypackage", true);
-
         }
 
         /// <summary>
@@ -569,9 +551,8 @@ namespace OpenCVForUnity
         [MenuItem("Tools/OpenCV for Unity/Open OpenCV C++ API Reference", false, 36)]
         public static void OpenOpenCVAPIReference()
         {
-            Application.OpenURL("http://docs.opencv.org/4.5.5/index.html");
+            Application.OpenURL("http://docs.opencv.org/4.6.0/index.html");
         }
-
     }
 }
 #endif

@@ -1,4 +1,4 @@
-﻿
+
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
 using System;
@@ -40,8 +40,11 @@ namespace OpenCVForUnity.ArucoModule
         public const int DICT_APRILTAG_25h9 = 0 + 18;
         public const int DICT_APRILTAG_36h10 = 0 + 19;
         public const int DICT_APRILTAG_36h11 = 0 + 20;
+        // C++: enum cv.aruco.PatternPos
+        public const int CCW_center = 0;
+        public const int CW_top_left_corner = 1;
         //
-        // C++:  void cv::aruco::detectMarkers(Mat image, Ptr_Dictionary dictionary, vector_Mat& corners, Mat& ids, Ptr_DetectorParameters parameters = DetectorParameters::create(), vector_Mat& rejectedImgPoints = vector_Mat(), Mat cameraMatrix = Mat(), Mat distCoeff = Mat())
+        // C++:  void cv::aruco::detectMarkers(Mat image, Ptr_Dictionary dictionary, vector_Mat& corners, Mat& ids, Ptr_DetectorParameters parameters = DetectorParameters::create(), vector_Mat& rejectedImgPoints = vector_Mat())
         //
 
         /**
@@ -58,100 +61,14 @@ namespace OpenCVForUnity.ArucoModule
          * param parameters marker detection parameters
          * param rejectedImgPoints contains the imgPoints of those squares whose inner code has not a
          * correct codification. Useful for debugging purposes.
-         * param cameraMatrix optional input 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * param distCoeff optional vector of distortion coefficients
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
          *
          * Performs marker detection in the input image. Only markers included in the specific dictionary
          * are searched. For each detected marker, it returns the 2D position of its corner in the image
          * and its corresponding identifier.
          * Note that this function does not perform pose estimation.
-         * SEE: estimatePoseSingleMarkers,  estimatePoseBoard
-         *
-         */
-        public static void detectMarkers(Mat image, Dictionary dictionary, List<Mat> corners, Mat ids, DetectorParameters parameters, List<Mat> rejectedImgPoints, Mat cameraMatrix, Mat distCoeff)
-        {
-            if (image != null) image.ThrowIfDisposed();
-            if (dictionary != null) dictionary.ThrowIfDisposed();
-            if (ids != null) ids.ThrowIfDisposed();
-            if (parameters != null) parameters.ThrowIfDisposed();
-            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
-            if (distCoeff != null) distCoeff.ThrowIfDisposed();
-            Mat corners_mat = new Mat();
-            Mat rejectedImgPoints_mat = new Mat();
-            aruco_Aruco_detectMarkers_10(image.nativeObj, dictionary.getNativeObjAddr(), corners_mat.nativeObj, ids.nativeObj, parameters.getNativeObjAddr(), rejectedImgPoints_mat.nativeObj, cameraMatrix.nativeObj, distCoeff.nativeObj);
-            Converters.Mat_to_vector_Mat(corners_mat, corners);
-            corners_mat.release();
-            Converters.Mat_to_vector_Mat(rejectedImgPoints_mat, rejectedImgPoints);
-            rejectedImgPoints_mat.release();
-
-        }
-
-        /**
-         * Basic marker detection
-         *
-         * param image input image
-         * param dictionary indicates the type of markers that will be searched
-         * param corners vector of detected marker corners. For each marker, its four corners
-         * are provided, (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers,
-         * the dimensions of this array is Nx4. The order of the corners is clockwise.
-         * param ids vector of identifiers of the detected markers. The identifier is of type int
-         * (e.g. std::vector&lt;int&gt;). For N detected markers, the size of ids is also N.
-         * The identifiers have the same order than the markers in the imgPoints array.
-         * param parameters marker detection parameters
-         * param rejectedImgPoints contains the imgPoints of those squares whose inner code has not a
-         * correct codification. Useful for debugging purposes.
-         * param cameraMatrix optional input 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         *
-         * Performs marker detection in the input image. Only markers included in the specific dictionary
-         * are searched. For each detected marker, it returns the 2D position of its corner in the image
-         * and its corresponding identifier.
-         * Note that this function does not perform pose estimation.
-         * SEE: estimatePoseSingleMarkers,  estimatePoseBoard
-         *
-         */
-        public static void detectMarkers(Mat image, Dictionary dictionary, List<Mat> corners, Mat ids, DetectorParameters parameters, List<Mat> rejectedImgPoints, Mat cameraMatrix)
-        {
-            if (image != null) image.ThrowIfDisposed();
-            if (dictionary != null) dictionary.ThrowIfDisposed();
-            if (ids != null) ids.ThrowIfDisposed();
-            if (parameters != null) parameters.ThrowIfDisposed();
-            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
-            Mat corners_mat = new Mat();
-            Mat rejectedImgPoints_mat = new Mat();
-            aruco_Aruco_detectMarkers_11(image.nativeObj, dictionary.getNativeObjAddr(), corners_mat.nativeObj, ids.nativeObj, parameters.getNativeObjAddr(), rejectedImgPoints_mat.nativeObj, cameraMatrix.nativeObj);
-            Converters.Mat_to_vector_Mat(corners_mat, corners);
-            corners_mat.release();
-            Converters.Mat_to_vector_Mat(rejectedImgPoints_mat, rejectedImgPoints);
-            rejectedImgPoints_mat.release();
-
-        }
-
-        /**
-         * Basic marker detection
-         *
-         * param image input image
-         * param dictionary indicates the type of markers that will be searched
-         * param corners vector of detected marker corners. For each marker, its four corners
-         * are provided, (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers,
-         * the dimensions of this array is Nx4. The order of the corners is clockwise.
-         * param ids vector of identifiers of the detected markers. The identifier is of type int
-         * (e.g. std::vector&lt;int&gt;). For N detected markers, the size of ids is also N.
-         * The identifiers have the same order than the markers in the imgPoints array.
-         * param parameters marker detection parameters
-         * param rejectedImgPoints contains the imgPoints of those squares whose inner code has not a
-         * correct codification. Useful for debugging purposes.
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         *
-         * Performs marker detection in the input image. Only markers included in the specific dictionary
-         * are searched. For each detected marker, it returns the 2D position of its corner in the image
-         * and its corresponding identifier.
-         * Note that this function does not perform pose estimation.
-         * SEE: estimatePoseSingleMarkers,  estimatePoseBoard
+         * <b>Note:</b> The function does not correct lens distortion or takes it into account. It's recommended to undistort
+         * input image with corresponging camera model, if camera parameters are known
+         * SEE: undistort, estimatePoseSingleMarkers,  estimatePoseBoard
          *
          */
         public static void detectMarkers(Mat image, Dictionary dictionary, List<Mat> corners, Mat ids, DetectorParameters parameters, List<Mat> rejectedImgPoints)
@@ -162,7 +79,7 @@ namespace OpenCVForUnity.ArucoModule
             if (parameters != null) parameters.ThrowIfDisposed();
             Mat corners_mat = new Mat();
             Mat rejectedImgPoints_mat = new Mat();
-            aruco_Aruco_detectMarkers_12(image.nativeObj, dictionary.getNativeObjAddr(), corners_mat.nativeObj, ids.nativeObj, parameters.getNativeObjAddr(), rejectedImgPoints_mat.nativeObj);
+            aruco_Aruco_detectMarkers_10(image.nativeObj, dictionary.getNativeObjAddr(), corners_mat.nativeObj, ids.nativeObj, parameters.getNativeObjAddr(), rejectedImgPoints_mat.nativeObj);
             Converters.Mat_to_vector_Mat(corners_mat, corners);
             corners_mat.release();
             Converters.Mat_to_vector_Mat(rejectedImgPoints_mat, rejectedImgPoints);
@@ -183,14 +100,14 @@ namespace OpenCVForUnity.ArucoModule
          * The identifiers have the same order than the markers in the imgPoints array.
          * param parameters marker detection parameters
          * correct codification. Useful for debugging purposes.
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
          *
          * Performs marker detection in the input image. Only markers included in the specific dictionary
          * are searched. For each detected marker, it returns the 2D position of its corner in the image
          * and its corresponding identifier.
          * Note that this function does not perform pose estimation.
-         * SEE: estimatePoseSingleMarkers,  estimatePoseBoard
+         * <b>Note:</b> The function does not correct lens distortion or takes it into account. It's recommended to undistort
+         * input image with corresponging camera model, if camera parameters are known
+         * SEE: undistort, estimatePoseSingleMarkers,  estimatePoseBoard
          *
          */
         public static void detectMarkers(Mat image, Dictionary dictionary, List<Mat> corners, Mat ids, DetectorParameters parameters)
@@ -200,7 +117,7 @@ namespace OpenCVForUnity.ArucoModule
             if (ids != null) ids.ThrowIfDisposed();
             if (parameters != null) parameters.ThrowIfDisposed();
             Mat corners_mat = new Mat();
-            aruco_Aruco_detectMarkers_13(image.nativeObj, dictionary.getNativeObjAddr(), corners_mat.nativeObj, ids.nativeObj, parameters.getNativeObjAddr());
+            aruco_Aruco_detectMarkers_11(image.nativeObj, dictionary.getNativeObjAddr(), corners_mat.nativeObj, ids.nativeObj, parameters.getNativeObjAddr());
             Converters.Mat_to_vector_Mat(corners_mat, corners);
             corners_mat.release();
 
@@ -218,14 +135,14 @@ namespace OpenCVForUnity.ArucoModule
          * (e.g. std::vector&lt;int&gt;). For N detected markers, the size of ids is also N.
          * The identifiers have the same order than the markers in the imgPoints array.
          * correct codification. Useful for debugging purposes.
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
          *
          * Performs marker detection in the input image. Only markers included in the specific dictionary
          * are searched. For each detected marker, it returns the 2D position of its corner in the image
          * and its corresponding identifier.
          * Note that this function does not perform pose estimation.
-         * SEE: estimatePoseSingleMarkers,  estimatePoseBoard
+         * <b>Note:</b> The function does not correct lens distortion or takes it into account. It's recommended to undistort
+         * input image with corresponging camera model, if camera parameters are known
+         * SEE: undistort, estimatePoseSingleMarkers,  estimatePoseBoard
          *
          */
         public static void detectMarkers(Mat image, Dictionary dictionary, List<Mat> corners, Mat ids)
@@ -234,7 +151,7 @@ namespace OpenCVForUnity.ArucoModule
             if (dictionary != null) dictionary.ThrowIfDisposed();
             if (ids != null) ids.ThrowIfDisposed();
             Mat corners_mat = new Mat();
-            aruco_Aruco_detectMarkers_14(image.nativeObj, dictionary.getNativeObjAddr(), corners_mat.nativeObj, ids.nativeObj);
+            aruco_Aruco_detectMarkers_12(image.nativeObj, dictionary.getNativeObjAddr(), corners_mat.nativeObj, ids.nativeObj);
             Converters.Mat_to_vector_Mat(corners_mat, corners);
             corners_mat.release();
 
@@ -242,7 +159,7 @@ namespace OpenCVForUnity.ArucoModule
 
 
         //
-        // C++:  void cv::aruco::estimatePoseSingleMarkers(vector_Mat corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat& rvecs, Mat& tvecs, Mat& _objPoints = Mat())
+        // C++:  void cv::aruco::estimatePoseSingleMarkers(vector_Mat corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat& rvecs, Mat& tvecs, Mat& _objPoints = Mat(), Ptr_EstimateParameters estimateParameters = EstimateParameters::create())
         //
 
         /**
@@ -263,26 +180,34 @@ namespace OpenCVForUnity.ArucoModule
          * param tvecs array of output translation vectors (e.g. std::vector&lt;cv::Vec3d&gt;).
          * Each element in tvecs corresponds to the specific marker in imgPoints.
          * param _objPoints array of object points of all the marker corners
+         * param estimateParameters set the origin of coordinate system and the coordinates of the four corners of the marker
+         * (default estimateParameters.pattern = PatternPos::CCW_center, estimateParameters.useExtrinsicGuess = false,
+         * estimateParameters.solvePnPMethod = SOLVEPNP_ITERATIVE).
          *
          * This function receives the detected markers and returns their pose estimation respect to
          * the camera individually. So for each marker, one rotation and translation vector is returned.
          * The returned transformation is the one that transforms points from each marker coordinate system
          * to the camera coordinate system.
-         * The marker corrdinate system is centered on the middle of the marker, with the Z axis
-         * perpendicular to the marker plane.
-         * The coordinates of the four corners of the marker in its own coordinate system are:
+         * The marker coordinate system is centered on the middle (by default) or on the top-left corner of the marker,
+         * with the Z axis perpendicular to the marker plane.
+         * estimateParameters defines the coordinates of the four corners of the marker in its own coordinate system (by default) are:
          * (-markerLength/2, markerLength/2, 0), (markerLength/2, markerLength/2, 0),
          * (markerLength/2, -markerLength/2, 0), (-markerLength/2, -markerLength/2, 0)
+         * SEE: use cv::drawFrameAxes to get world coordinate system axis for object points
+         * SEE: REF: tutorial_aruco_detection
+         * SEE: EstimateParameters
+         * SEE: PatternPos
          */
-        public static void estimatePoseSingleMarkers(List<Mat> corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat rvecs, Mat tvecs, Mat _objPoints)
+        public static void estimatePoseSingleMarkers(List<Mat> corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat rvecs, Mat tvecs, Mat _objPoints, EstimateParameters estimateParameters)
         {
             if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
             if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
             if (rvecs != null) rvecs.ThrowIfDisposed();
             if (tvecs != null) tvecs.ThrowIfDisposed();
             if (_objPoints != null) _objPoints.ThrowIfDisposed();
+            if (estimateParameters != null) estimateParameters.ThrowIfDisposed();
             Mat corners_mat = Converters.vector_Mat_to_Mat(corners);
-            aruco_Aruco_estimatePoseSingleMarkers_10(corners_mat.nativeObj, markerLength, cameraMatrix.nativeObj, distCoeffs.nativeObj, rvecs.nativeObj, tvecs.nativeObj, _objPoints.nativeObj);
+            aruco_Aruco_estimatePoseSingleMarkers_10(corners_mat.nativeObj, markerLength, cameraMatrix.nativeObj, distCoeffs.nativeObj, rvecs.nativeObj, tvecs.nativeObj, _objPoints.nativeObj, estimateParameters.getNativeObjAddr());
 
 
         }
@@ -304,16 +229,70 @@ namespace OpenCVForUnity.ArucoModule
          * Each element in rvecs corresponds to the specific marker in imgPoints.
          * param tvecs array of output translation vectors (e.g. std::vector&lt;cv::Vec3d&gt;).
          * Each element in tvecs corresponds to the specific marker in imgPoints.
+         * param _objPoints array of object points of all the marker corners
+         * (default estimateParameters.pattern = PatternPos::CCW_center, estimateParameters.useExtrinsicGuess = false,
+         * estimateParameters.solvePnPMethod = SOLVEPNP_ITERATIVE).
          *
          * This function receives the detected markers and returns their pose estimation respect to
          * the camera individually. So for each marker, one rotation and translation vector is returned.
          * The returned transformation is the one that transforms points from each marker coordinate system
          * to the camera coordinate system.
-         * The marker corrdinate system is centered on the middle of the marker, with the Z axis
-         * perpendicular to the marker plane.
-         * The coordinates of the four corners of the marker in its own coordinate system are:
+         * The marker coordinate system is centered on the middle (by default) or on the top-left corner of the marker,
+         * with the Z axis perpendicular to the marker plane.
+         * estimateParameters defines the coordinates of the four corners of the marker in its own coordinate system (by default) are:
          * (-markerLength/2, markerLength/2, 0), (markerLength/2, markerLength/2, 0),
          * (markerLength/2, -markerLength/2, 0), (-markerLength/2, -markerLength/2, 0)
+         * SEE: use cv::drawFrameAxes to get world coordinate system axis for object points
+         * SEE: REF: tutorial_aruco_detection
+         * SEE: EstimateParameters
+         * SEE: PatternPos
+         */
+        public static void estimatePoseSingleMarkers(List<Mat> corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat rvecs, Mat tvecs, Mat _objPoints)
+        {
+            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
+            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
+            if (rvecs != null) rvecs.ThrowIfDisposed();
+            if (tvecs != null) tvecs.ThrowIfDisposed();
+            if (_objPoints != null) _objPoints.ThrowIfDisposed();
+            Mat corners_mat = Converters.vector_Mat_to_Mat(corners);
+            aruco_Aruco_estimatePoseSingleMarkers_11(corners_mat.nativeObj, markerLength, cameraMatrix.nativeObj, distCoeffs.nativeObj, rvecs.nativeObj, tvecs.nativeObj, _objPoints.nativeObj);
+
+
+        }
+
+        /**
+         * Pose estimation for single markers
+         *
+         * param corners vector of already detected markers corners. For each marker, its four corners
+         * are provided, (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers,
+         * the dimensions of this array should be Nx4. The order of the corners should be clockwise.
+         * SEE: detectMarkers
+         * param markerLength the length of the markers' side. The returning translation vectors will
+         * be in the same unit. Normally, unit is meters.
+         * param cameraMatrix input 3x3 floating-point camera matrix
+         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
+         * param distCoeffs vector of distortion coefficients
+         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
+         * param rvecs array of output rotation vectors (SEE: Rodrigues) (e.g. std::vector&lt;cv::Vec3d&gt;).
+         * Each element in rvecs corresponds to the specific marker in imgPoints.
+         * param tvecs array of output translation vectors (e.g. std::vector&lt;cv::Vec3d&gt;).
+         * Each element in tvecs corresponds to the specific marker in imgPoints.
+         * (default estimateParameters.pattern = PatternPos::CCW_center, estimateParameters.useExtrinsicGuess = false,
+         * estimateParameters.solvePnPMethod = SOLVEPNP_ITERATIVE).
+         *
+         * This function receives the detected markers and returns their pose estimation respect to
+         * the camera individually. So for each marker, one rotation and translation vector is returned.
+         * The returned transformation is the one that transforms points from each marker coordinate system
+         * to the camera coordinate system.
+         * The marker coordinate system is centered on the middle (by default) or on the top-left corner of the marker,
+         * with the Z axis perpendicular to the marker plane.
+         * estimateParameters defines the coordinates of the four corners of the marker in its own coordinate system (by default) are:
+         * (-markerLength/2, markerLength/2, 0), (markerLength/2, markerLength/2, 0),
+         * (markerLength/2, -markerLength/2, 0), (-markerLength/2, -markerLength/2, 0)
+         * SEE: use cv::drawFrameAxes to get world coordinate system axis for object points
+         * SEE: REF: tutorial_aruco_detection
+         * SEE: EstimateParameters
+         * SEE: PatternPos
          */
         public static void estimatePoseSingleMarkers(List<Mat> corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat rvecs, Mat tvecs)
         {
@@ -322,7 +301,7 @@ namespace OpenCVForUnity.ArucoModule
             if (rvecs != null) rvecs.ThrowIfDisposed();
             if (tvecs != null) tvecs.ThrowIfDisposed();
             Mat corners_mat = Converters.vector_Mat_to_Mat(corners);
-            aruco_Aruco_estimatePoseSingleMarkers_11(corners_mat.nativeObj, markerLength, cameraMatrix.nativeObj, distCoeffs.nativeObj, rvecs.nativeObj, tvecs.nativeObj);
+            aruco_Aruco_estimatePoseSingleMarkers_12(corners_mat.nativeObj, markerLength, cameraMatrix.nativeObj, distCoeffs.nativeObj, rvecs.nativeObj, tvecs.nativeObj);
 
 
         }
@@ -359,6 +338,7 @@ namespace OpenCVForUnity.ArucoModule
          * Input markers that are not included in the board layout are ignored.
          * The function returns the number of markers from the input employed for the board pose estimation.
          * Note that returning a 0 means the pose has not been estimated.
+         * SEE: use cv::drawFrameAxes to get world coordinate system axis for object points
          * return automatically generated
          */
         public static int estimatePoseBoard(List<Mat> corners, Mat ids, Board board, Mat cameraMatrix, Mat distCoeffs, Mat rvec, Mat tvec, bool useExtrinsicGuess)
@@ -401,6 +381,7 @@ namespace OpenCVForUnity.ArucoModule
          * Input markers that are not included in the board layout are ignored.
          * The function returns the number of markers from the input employed for the board pose estimation.
          * Note that returning a 0 means the pose has not been estimated.
+         * SEE: use cv::drawFrameAxes to get world coordinate system axis for object points
          * return automatically generated
          */
         public static int estimatePoseBoard(List<Mat> corners, Mat ids, Board board, Mat cameraMatrix, Mat distCoeffs, Mat rvec, Mat tvec)
@@ -799,6 +780,7 @@ namespace OpenCVForUnity.ArucoModule
          * Given an array of detected marker corners and its corresponding ids, this functions draws
          * the markers in the image. The marker borders are painted and the markers identifiers if provided.
          * Useful for debugging purposes.
+         *
          */
         public static void drawDetectedMarkers(Mat image, List<Mat> corners, Mat ids, Scalar borderColor)
         {
@@ -825,6 +807,7 @@ namespace OpenCVForUnity.ArucoModule
          * Given an array of detected marker corners and its corresponding ids, this functions draws
          * the markers in the image. The marker borders are painted and the markers identifiers if provided.
          * Useful for debugging purposes.
+         *
          */
         public static void drawDetectedMarkers(Mat image, List<Mat> corners, Mat ids)
         {
@@ -850,49 +833,13 @@ namespace OpenCVForUnity.ArucoModule
          * Given an array of detected marker corners and its corresponding ids, this functions draws
          * the markers in the image. The marker borders are painted and the markers identifiers if provided.
          * Useful for debugging purposes.
+         *
          */
         public static void drawDetectedMarkers(Mat image, List<Mat> corners)
         {
             if (image != null) image.ThrowIfDisposed();
             Mat corners_mat = Converters.vector_Mat_to_Mat(corners);
             aruco_Aruco_drawDetectedMarkers_12(image.nativeObj, corners_mat.nativeObj);
-
-
-        }
-
-
-        //
-        // C++:  void cv::aruco::drawAxis(Mat& image, Mat cameraMatrix, Mat distCoeffs, Mat rvec, Mat tvec, float length)
-        //
-
-        /**
-         * Draw coordinate system axis from pose estimation
-         *
-         * param image input/output image. It must have 1 or 3 channels. The number of channels is not
-         * altered.
-         * param cameraMatrix input 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * param distCoeffs vector of distortion coefficients
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         * param rvec rotation vector of the coordinate system that will be drawn. (SEE: Rodrigues).
-         * param tvec translation vector of the coordinate system that will be drawn.
-         * param length length of the painted axis in the same unit than tvec (usually in meters)
-         *
-         * Given the pose estimation of a marker or board, this function draws the axis of the world
-         * coordinate system, i.e. the system centered on the marker/board. Useful for debugging purposes.
-         *
-         * deprecated use cv::drawFrameAxes
-         */
-        [Obsolete("This method is deprecated.")]
-        public static void drawAxis(Mat image, Mat cameraMatrix, Mat distCoeffs, Mat rvec, Mat tvec, float length)
-        {
-            if (image != null) image.ThrowIfDisposed();
-            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
-            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
-            if (rvec != null) rvec.ThrowIfDisposed();
-            if (tvec != null) tvec.ThrowIfDisposed();
-
-            aruco_Aruco_drawAxis_10(image.nativeObj, cameraMatrix.nativeObj, distCoeffs.nativeObj, rvec.nativeObj, tvec.nativeObj, length);
 
 
         }
@@ -1555,6 +1502,7 @@ namespace OpenCVForUnity.ArucoModule
          * This function estimates a Charuco board pose from some detected corners.
          * The function checks if the input corners are enough and valid to perform pose estimation.
          * If pose estimation is valid, returns true, else returns false.
+         * SEE: use cv::drawFrameAxes to get world coordinate system axis for object points
          * return automatically generated
          */
         public static bool estimatePoseCharucoBoard(Mat charucoCorners, Mat charucoIds, CharucoBoard board, Mat cameraMatrix, Mat distCoeffs, Mat rvec, Mat tvec, bool useExtrinsicGuess)
@@ -1588,6 +1536,7 @@ namespace OpenCVForUnity.ArucoModule
          * This function estimates a Charuco board pose from some detected corners.
          * The function checks if the input corners are enough and valid to perform pose estimation.
          * If pose estimation is valid, returns true, else returns false.
+         * SEE: use cv::drawFrameAxes to get world coordinate system axis for object points
          * return automatically generated
          */
         public static bool estimatePoseCharucoBoard(Mat charucoCorners, Mat charucoIds, CharucoBoard board, Mat cameraMatrix, Mat distCoeffs, Mat rvec, Mat tvec)
@@ -1983,8 +1932,47 @@ namespace OpenCVForUnity.ArucoModule
 
 
         //
-        // C++:  void cv::aruco::detectCharucoDiamond(Mat image, vector_Mat markerCorners, Mat markerIds, float squareMarkerLengthRate, vector_Mat& diamondCorners, Mat& diamondIds, Mat cameraMatrix = Mat(), Mat distCoeffs = Mat())
+        // C++:  void cv::aruco::detectCharucoDiamond(Mat image, vector_Mat markerCorners, Mat markerIds, float squareMarkerLengthRate, vector_Mat& diamondCorners, Mat& diamondIds, Mat cameraMatrix = Mat(), Mat distCoeffs = Mat(), Ptr_Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::PREDEFINED_DICTIONARY_NAME::DICT_4X4_50))
         //
+
+        /**
+         * Detect ChArUco Diamond markers
+         *
+         * param image input image necessary for corner subpixel.
+         * param markerCorners list of detected marker corners from detectMarkers function.
+         * param markerIds list of marker ids in markerCorners.
+         * param squareMarkerLengthRate rate between square and marker length:
+         * squareMarkerLengthRate = squareLength/markerLength. The real units are not necessary.
+         * param diamondCorners output list of detected diamond corners (4 corners per diamond). The order
+         * is the same than in marker corners: top left, top right, bottom right and bottom left. Similar
+         * format than the corners returned by detectMarkers (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ).
+         * param diamondIds ids of the diamonds in diamondCorners. The id of each diamond is in fact of
+         * type Vec4i, so each diamond has 4 ids, which are the ids of the aruco markers composing the
+         * diamond.
+         * param cameraMatrix Optional camera calibration matrix.
+         * param distCoeffs Optional camera distortion coefficients.
+         * param dictionary dictionary of markers indicating the type of markers.
+         *
+         * This function detects Diamond markers from the previous detected ArUco markers. The diamonds
+         * are returned in the diamondCorners and diamondIds parameters. If camera calibration parameters
+         * are provided, the diamond search is based on reprojection. If not, diamond search is based on
+         * homography. Homography is faster than reprojection but can slightly reduce the detection rate.
+         */
+        public static void detectCharucoDiamond(Mat image, List<Mat> markerCorners, Mat markerIds, float squareMarkerLengthRate, List<Mat> diamondCorners, Mat diamondIds, Mat cameraMatrix, Mat distCoeffs, Dictionary dictionary)
+        {
+            if (image != null) image.ThrowIfDisposed();
+            if (markerIds != null) markerIds.ThrowIfDisposed();
+            if (diamondIds != null) diamondIds.ThrowIfDisposed();
+            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
+            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
+            if (dictionary != null) dictionary.ThrowIfDisposed();
+            Mat markerCorners_mat = Converters.vector_Mat_to_Mat(markerCorners);
+            Mat diamondCorners_mat = new Mat();
+            aruco_Aruco_detectCharucoDiamond_10(image.nativeObj, markerCorners_mat.nativeObj, markerIds.nativeObj, squareMarkerLengthRate, diamondCorners_mat.nativeObj, diamondIds.nativeObj, cameraMatrix.nativeObj, distCoeffs.nativeObj, dictionary.getNativeObjAddr());
+            Converters.Mat_to_vector_Mat(diamondCorners_mat, diamondCorners);
+            diamondCorners_mat.release();
+
+        }
 
         /**
          * Detect ChArUco Diamond markers
@@ -2017,7 +2005,7 @@ namespace OpenCVForUnity.ArucoModule
             if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
             Mat markerCorners_mat = Converters.vector_Mat_to_Mat(markerCorners);
             Mat diamondCorners_mat = new Mat();
-            aruco_Aruco_detectCharucoDiamond_10(image.nativeObj, markerCorners_mat.nativeObj, markerIds.nativeObj, squareMarkerLengthRate, diamondCorners_mat.nativeObj, diamondIds.nativeObj, cameraMatrix.nativeObj, distCoeffs.nativeObj);
+            aruco_Aruco_detectCharucoDiamond_11(image.nativeObj, markerCorners_mat.nativeObj, markerIds.nativeObj, squareMarkerLengthRate, diamondCorners_mat.nativeObj, diamondIds.nativeObj, cameraMatrix.nativeObj, distCoeffs.nativeObj);
             Converters.Mat_to_vector_Mat(diamondCorners_mat, diamondCorners);
             diamondCorners_mat.release();
 
@@ -2052,7 +2040,7 @@ namespace OpenCVForUnity.ArucoModule
             if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
             Mat markerCorners_mat = Converters.vector_Mat_to_Mat(markerCorners);
             Mat diamondCorners_mat = new Mat();
-            aruco_Aruco_detectCharucoDiamond_11(image.nativeObj, markerCorners_mat.nativeObj, markerIds.nativeObj, squareMarkerLengthRate, diamondCorners_mat.nativeObj, diamondIds.nativeObj, cameraMatrix.nativeObj);
+            aruco_Aruco_detectCharucoDiamond_12(image.nativeObj, markerCorners_mat.nativeObj, markerIds.nativeObj, squareMarkerLengthRate, diamondCorners_mat.nativeObj, diamondIds.nativeObj, cameraMatrix.nativeObj);
             Converters.Mat_to_vector_Mat(diamondCorners_mat, diamondCorners);
             diamondCorners_mat.release();
 
@@ -2085,7 +2073,7 @@ namespace OpenCVForUnity.ArucoModule
             if (diamondIds != null) diamondIds.ThrowIfDisposed();
             Mat markerCorners_mat = Converters.vector_Mat_to_Mat(markerCorners);
             Mat diamondCorners_mat = new Mat();
-            aruco_Aruco_detectCharucoDiamond_12(image.nativeObj, markerCorners_mat.nativeObj, markerIds.nativeObj, squareMarkerLengthRate, diamondCorners_mat.nativeObj, diamondIds.nativeObj);
+            aruco_Aruco_detectCharucoDiamond_13(image.nativeObj, markerCorners_mat.nativeObj, markerIds.nativeObj, squareMarkerLengthRate, diamondCorners_mat.nativeObj, diamondIds.nativeObj);
             Converters.Mat_to_vector_Mat(diamondCorners_mat, diamondCorners);
             diamondCorners_mat.release();
 
@@ -2322,23 +2310,21 @@ namespace OpenCVForUnity.ArucoModule
 
 
 
-        // C++:  void cv::aruco::detectMarkers(Mat image, Ptr_Dictionary dictionary, vector_Mat& corners, Mat& ids, Ptr_DetectorParameters parameters = DetectorParameters::create(), vector_Mat& rejectedImgPoints = vector_Mat(), Mat cameraMatrix = Mat(), Mat distCoeff = Mat())
+        // C++:  void cv::aruco::detectMarkers(Mat image, Ptr_Dictionary dictionary, vector_Mat& corners, Mat& ids, Ptr_DetectorParameters parameters = DetectorParameters::create(), vector_Mat& rejectedImgPoints = vector_Mat())
         [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_detectMarkers_10(IntPtr image_nativeObj, IntPtr dictionary_nativeObj, IntPtr corners_mat_nativeObj, IntPtr ids_nativeObj, IntPtr parameters_nativeObj, IntPtr rejectedImgPoints_mat_nativeObj, IntPtr cameraMatrix_nativeObj, IntPtr distCoeff_nativeObj);
+        private static extern void aruco_Aruco_detectMarkers_10(IntPtr image_nativeObj, IntPtr dictionary_nativeObj, IntPtr corners_mat_nativeObj, IntPtr ids_nativeObj, IntPtr parameters_nativeObj, IntPtr rejectedImgPoints_mat_nativeObj);
         [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_detectMarkers_11(IntPtr image_nativeObj, IntPtr dictionary_nativeObj, IntPtr corners_mat_nativeObj, IntPtr ids_nativeObj, IntPtr parameters_nativeObj, IntPtr rejectedImgPoints_mat_nativeObj, IntPtr cameraMatrix_nativeObj);
+        private static extern void aruco_Aruco_detectMarkers_11(IntPtr image_nativeObj, IntPtr dictionary_nativeObj, IntPtr corners_mat_nativeObj, IntPtr ids_nativeObj, IntPtr parameters_nativeObj);
         [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_detectMarkers_12(IntPtr image_nativeObj, IntPtr dictionary_nativeObj, IntPtr corners_mat_nativeObj, IntPtr ids_nativeObj, IntPtr parameters_nativeObj, IntPtr rejectedImgPoints_mat_nativeObj);
-        [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_detectMarkers_13(IntPtr image_nativeObj, IntPtr dictionary_nativeObj, IntPtr corners_mat_nativeObj, IntPtr ids_nativeObj, IntPtr parameters_nativeObj);
-        [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_detectMarkers_14(IntPtr image_nativeObj, IntPtr dictionary_nativeObj, IntPtr corners_mat_nativeObj, IntPtr ids_nativeObj);
+        private static extern void aruco_Aruco_detectMarkers_12(IntPtr image_nativeObj, IntPtr dictionary_nativeObj, IntPtr corners_mat_nativeObj, IntPtr ids_nativeObj);
 
-        // C++:  void cv::aruco::estimatePoseSingleMarkers(vector_Mat corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat& rvecs, Mat& tvecs, Mat& _objPoints = Mat())
+        // C++:  void cv::aruco::estimatePoseSingleMarkers(vector_Mat corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat& rvecs, Mat& tvecs, Mat& _objPoints = Mat(), Ptr_EstimateParameters estimateParameters = EstimateParameters::create())
         [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_estimatePoseSingleMarkers_10(IntPtr corners_mat_nativeObj, float markerLength, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvecs_nativeObj, IntPtr tvecs_nativeObj, IntPtr _objPoints_nativeObj);
+        private static extern void aruco_Aruco_estimatePoseSingleMarkers_10(IntPtr corners_mat_nativeObj, float markerLength, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvecs_nativeObj, IntPtr tvecs_nativeObj, IntPtr _objPoints_nativeObj, IntPtr estimateParameters_nativeObj);
         [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_estimatePoseSingleMarkers_11(IntPtr corners_mat_nativeObj, float markerLength, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvecs_nativeObj, IntPtr tvecs_nativeObj);
+        private static extern void aruco_Aruco_estimatePoseSingleMarkers_11(IntPtr corners_mat_nativeObj, float markerLength, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvecs_nativeObj, IntPtr tvecs_nativeObj, IntPtr _objPoints_nativeObj);
+        [DllImport(LIBNAME)]
+        private static extern void aruco_Aruco_estimatePoseSingleMarkers_12(IntPtr corners_mat_nativeObj, float markerLength, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvecs_nativeObj, IntPtr tvecs_nativeObj);
 
         // C++:  int cv::aruco::estimatePoseBoard(vector_Mat corners, Mat ids, Ptr_Board board, Mat cameraMatrix, Mat distCoeffs, Mat& rvec, Mat& tvec, bool useExtrinsicGuess = false)
         [DllImport(LIBNAME)]
@@ -2371,10 +2357,6 @@ namespace OpenCVForUnity.ArucoModule
         private static extern void aruco_Aruco_drawDetectedMarkers_11(IntPtr image_nativeObj, IntPtr corners_mat_nativeObj, IntPtr ids_nativeObj);
         [DllImport(LIBNAME)]
         private static extern void aruco_Aruco_drawDetectedMarkers_12(IntPtr image_nativeObj, IntPtr corners_mat_nativeObj);
-
-        // C++:  void cv::aruco::drawAxis(Mat& image, Mat cameraMatrix, Mat distCoeffs, Mat rvec, Mat tvec, float length)
-        [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_drawAxis_10(IntPtr image_nativeObj, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvec_nativeObj, IntPtr tvec_nativeObj, float length);
 
         // C++:  void cv::aruco::drawMarker(Ptr_Dictionary dictionary, int id, int sidePixels, Mat& img, int borderBits = 1)
         [DllImport(LIBNAME)]
@@ -2460,13 +2442,15 @@ namespace OpenCVForUnity.ArucoModule
         [DllImport(LIBNAME)]
         private static extern double aruco_Aruco_calibrateCameraCharuco_14(IntPtr charucoCorners_mat_nativeObj, IntPtr charucoIds_mat_nativeObj, IntPtr board_nativeObj, double imageSize_width, double imageSize_height, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj);
 
-        // C++:  void cv::aruco::detectCharucoDiamond(Mat image, vector_Mat markerCorners, Mat markerIds, float squareMarkerLengthRate, vector_Mat& diamondCorners, Mat& diamondIds, Mat cameraMatrix = Mat(), Mat distCoeffs = Mat())
+        // C++:  void cv::aruco::detectCharucoDiamond(Mat image, vector_Mat markerCorners, Mat markerIds, float squareMarkerLengthRate, vector_Mat& diamondCorners, Mat& diamondIds, Mat cameraMatrix = Mat(), Mat distCoeffs = Mat(), Ptr_Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::PREDEFINED_DICTIONARY_NAME::DICT_4X4_50))
         [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_detectCharucoDiamond_10(IntPtr image_nativeObj, IntPtr markerCorners_mat_nativeObj, IntPtr markerIds_nativeObj, float squareMarkerLengthRate, IntPtr diamondCorners_mat_nativeObj, IntPtr diamondIds_nativeObj, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj);
+        private static extern void aruco_Aruco_detectCharucoDiamond_10(IntPtr image_nativeObj, IntPtr markerCorners_mat_nativeObj, IntPtr markerIds_nativeObj, float squareMarkerLengthRate, IntPtr diamondCorners_mat_nativeObj, IntPtr diamondIds_nativeObj, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr dictionary_nativeObj);
         [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_detectCharucoDiamond_11(IntPtr image_nativeObj, IntPtr markerCorners_mat_nativeObj, IntPtr markerIds_nativeObj, float squareMarkerLengthRate, IntPtr diamondCorners_mat_nativeObj, IntPtr diamondIds_nativeObj, IntPtr cameraMatrix_nativeObj);
+        private static extern void aruco_Aruco_detectCharucoDiamond_11(IntPtr image_nativeObj, IntPtr markerCorners_mat_nativeObj, IntPtr markerIds_nativeObj, float squareMarkerLengthRate, IntPtr diamondCorners_mat_nativeObj, IntPtr diamondIds_nativeObj, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj);
         [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_detectCharucoDiamond_12(IntPtr image_nativeObj, IntPtr markerCorners_mat_nativeObj, IntPtr markerIds_nativeObj, float squareMarkerLengthRate, IntPtr diamondCorners_mat_nativeObj, IntPtr diamondIds_nativeObj);
+        private static extern void aruco_Aruco_detectCharucoDiamond_12(IntPtr image_nativeObj, IntPtr markerCorners_mat_nativeObj, IntPtr markerIds_nativeObj, float squareMarkerLengthRate, IntPtr diamondCorners_mat_nativeObj, IntPtr diamondIds_nativeObj, IntPtr cameraMatrix_nativeObj);
+        [DllImport(LIBNAME)]
+        private static extern void aruco_Aruco_detectCharucoDiamond_13(IntPtr image_nativeObj, IntPtr markerCorners_mat_nativeObj, IntPtr markerIds_nativeObj, float squareMarkerLengthRate, IntPtr diamondCorners_mat_nativeObj, IntPtr diamondIds_nativeObj);
 
         // C++:  void cv::aruco::drawDetectedDiamonds(Mat& image, vector_Mat diamondCorners, Mat diamondIds = Mat(), Scalar borderColor = Scalar(0, 0, 255))
         [DllImport(LIBNAME)]

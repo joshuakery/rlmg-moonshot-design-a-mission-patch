@@ -1,4 +1,4 @@
-﻿
+
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -282,7 +282,7 @@ namespace OpenCVForUnity.ImgprocModule
         //
 
         /**
-         * Specify custom features of imput image
+         * Specify custom features of input image
          *
          * Customized advanced variant of applyImage() call.
          *
@@ -306,7 +306,7 @@ namespace OpenCVForUnity.ImgprocModule
         }
 
         /**
-         * Specify custom features of imput image
+         * Specify custom features of input image
          *
          * Customized advanced variant of applyImage() call.
          *

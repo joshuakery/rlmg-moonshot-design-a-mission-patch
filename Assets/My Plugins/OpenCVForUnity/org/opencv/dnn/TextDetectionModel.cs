@@ -1,4 +1,4 @@
-﻿#if !UNITY_WSA_10_0
+#if !UNITY_WSA_10_0
 
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.UtilsModule;
@@ -59,7 +59,7 @@ namespace OpenCVForUnity.DnnModule
          * - top-right
          * - bottom-right
          *
-         * Use cv::getPerspectiveTransform function to retrive image region without perspective transformations.
+         * Use cv::getPerspectiveTransform function to retrieve image region without perspective transformations.
          *
          * <b>Note:</b> If DL model doesn't support that kind of output then result may be derived from detectTextRectangles() output.
          *
