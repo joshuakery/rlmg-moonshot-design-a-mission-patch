@@ -183,19 +183,29 @@ namespace ArtScan.MuralPositionsModule
                     data.muralPatches[i].size = rt.sizeDelta;
                 }
 
+                RLMGLogger.Instance.Log(muralPositionsLoader.GetSaveLocation());
+
                 string json = JsonUtility.ToJson(data, true);
                 RLMGLogger.Instance.Log(json, MESSAGETYPE.INFO); //failsafe
 
-                string filepath = Path.Combine(Application.streamingAssetsPath, muralPositionsLoader.contentFilename);
-                RLMGLogger.Instance.Log("Saving positions to " + filepath, MESSAGETYPE.INFO);
-                if (File.Exists(filepath))
-                { RLMGLogger.Instance.Log("File exists", MESSAGETYPE.INFO); }
-                else
+                string filepath = muralPositionsLoader.GetSaveLocation();
+                try
                 {
-                    RLMGLogger.Instance.Log("File does not exist.", MESSAGETYPE.INFO);
+                    if (File.Exists(filepath))
+                    { RLMGLogger.Instance.Log("File exists", MESSAGETYPE.INFO); }
+                    else
+                    {
+                        RLMGLogger.Instance.Log("File does not exist.", MESSAGETYPE.INFO);
+                    }
+
+                    File.WriteAllText(filepath, json);
+
+                    RLMGLogger.Instance.Log("Saving positions to " + filepath, MESSAGETYPE.INFO);
                 }
-                
-                File.WriteAllText(filepath, json);
+                catch (System.Exception e)
+                {
+                    RLMGLogger.Instance.Log(e.ToString(), MESSAGETYPE.ERROR);
+                }
 
                 for (int i = 0; i < patches.Length; i++)
                 {

@@ -19,7 +19,7 @@ namespace ArtScan.MuralPositionsModule
 		public Vector2 size;
 	}
 
-	public class MuralPositionsLoader : ConfigLoader
+	public class MuralPositionsLoader : ContentLoader
 	{
 		public GameEvent MuralPositionsLoaded;
 		public MuralPositionsJSON data;
@@ -39,6 +39,11 @@ namespace ArtScan.MuralPositionsModule
 			if (MuralPositionsLoaded != null) { MuralPositionsLoaded.Raise(); }
 
 			yield break;
+		}
+
+		public string GetSaveLocation()
+		{
+			return ContentDirectory + "/" + contentFilename;
 		}
 	}
 }
