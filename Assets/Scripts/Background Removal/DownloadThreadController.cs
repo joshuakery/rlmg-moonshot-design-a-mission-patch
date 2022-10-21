@@ -32,6 +32,7 @@ namespace ArtScan.ScanSavingModule
             {
                 Debug.Log("Ending parallel download thread...");
                 downloadThread.Abort();
+                downloadThread = null;
                 Debug.Log("...ended.");
             }
         }

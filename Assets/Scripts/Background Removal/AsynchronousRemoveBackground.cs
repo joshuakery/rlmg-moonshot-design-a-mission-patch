@@ -169,6 +169,38 @@ namespace ArtScan.CoreModule
             }
         }
 
+        bool _shouldCopyToRefinedMat = false;
+
+        public bool shouldCopyToRefinedMat
+        {
+            get
+            {
+                lock (sync)
+                    return _shouldCopyToRefinedMat;
+            }
+            set
+            {
+                lock (sync)
+                    _shouldCopyToRefinedMat = value;
+            }
+        }
+
+        bool _refinedMatReady = false;
+
+        public bool refinedMatReady
+        {
+            get
+            {
+                lock (sync)
+                    return _refinedMatReady;
+            }
+            set
+            {
+                lock (sync)
+                    _refinedMatReady = value;
+            }
+        }
+
         private void Awake()
         {
             if (rawImage != null)
@@ -339,20 +371,31 @@ namespace ArtScan.CoreModule
 
         }
 
-        private void CopyToThreadMats()
+        private void CopyToThreadMat()
         {
+            //no need for a 'using' statement here
+            //this is just a new reference to either the frameMat
+            //or rotatedFrameMat on myWebCamTextureToMatHelper
+            //which are disposed of properly
             Mat rgbaMat = webCamTextureToMatHelper.GetMat();
 
             if (rgbaMat4Thread != null)
                 rgbaMat.copyTo(rgbaMat4Thread);
+        }
+
+        private void CopyToRefinedThreadMat()
+        {
+            //slighly inefficient, because onBeginScan we call this twice in one frame
+            //but negligible
+            Mat rgbaMat = webCamTextureToMatHelper.GetMat();
 
             if (rgbaMat4RefinedThread != null)
                 rgbaMat.copyTo(rgbaMat4RefinedThread);
-            
         }
 
         private void ToTexture2D()
         {
+
             Utils.fastMatToTexture2D(resultMat, rawImageTexture, true, 0, true);
         }
 
@@ -378,7 +421,15 @@ namespace ArtScan.CoreModule
             {
                 if (!shouldDetectInMultiThread)
                 {
-                    CopyToThreadMats();
+                    CopyToThreadMat();
+
+                    if (shouldCopyToRefinedMat)
+                    {
+                        CopyToRefinedThreadMat();
+                        refinedMatReady = true;
+                        shouldCopyToRefinedMat = false;
+                    }
+
                     shouldDetectInMultiThread = true;
                 }
 

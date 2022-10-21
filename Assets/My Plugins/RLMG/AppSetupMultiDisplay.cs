@@ -19,8 +19,8 @@ public class AppSetupMultiDisplay : MonoBehaviour
         // if (setResolution)
         //     Screen.SetResolution(targetScreenWidth, targetScreenHeight, true);
 
-        //Display.displays[0].Activate();
-        //Display.displays[0].SetParams(1920, 1080, 0, 0);
+        Display.displays[0].Activate();
+        Display.displays[0].SetParams(1920, 1080, 0, 0);
 
         //string primaryDisplayDebugInfo = "Graphics Type: " + SystemInfo.graphicsDeviceType + "\n\n";
         string primaryDisplayDebugInfo = "Primary Display    App (screen dims): " + Screen.width + " x " + Screen.height + " (" + ((float)Screen.width / (float)Screen.height) + ")";

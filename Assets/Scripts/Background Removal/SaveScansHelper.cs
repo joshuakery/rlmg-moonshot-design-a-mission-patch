@@ -208,6 +208,7 @@ namespace ArtScan.ScanSavingModule
 
         public void UpdateTeamArtworks(int index, string filepath)
         {
+            Debug.Log("updating team artworks");
             string filename = Path.GetFileName(filepath);
 
             //Update GameState teams
@@ -235,8 +236,12 @@ namespace ArtScan.ScanSavingModule
 
                 ClientSend.SendStationDataToServer();
             }
+        }
 
-
+        public void AbortUpload()
+        {
+            StopAllCoroutines();
+            uploadThreadController.AbortThread();
         }
     }
 

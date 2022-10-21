@@ -38,7 +38,7 @@ namespace ArtScan.CoreModule
         {
             if (refinedScanThread != null && !refinedScanThread.IsDone)
             {
-                RLMGLogger.Instance.Log("Ending parallel thread...", MESSAGETYPE.INFO);
+                RLMGLogger.Instance.Log("Ending parallel refined scan thread...", MESSAGETYPE.INFO);
                 refinedScanThread.Abort();
                 RLMGLogger.Instance.Log("...ended", MESSAGETYPE.INFO);
             }
@@ -101,6 +101,20 @@ namespace ArtScan.CoreModule
 
         }
 
+        private IEnumerator DoRefinedScanAfterSyncing()
+        {
+            asynchronousRemoveBackground.shouldCopyToRefinedMat = true;
+            yield return StartCoroutine(WaitForRefinedMatReady());
+            asynchronousRemoveBackground.refinedMatReady = false;
+            StartCoroutine(DoRefinedScan());
+        }
+
+        private IEnumerator WaitForRefinedMatReady()
+        {
+            while (!asynchronousRemoveBackground.refinedMatReady)
+                yield return null;
+        }
+
         private bool IsAllTransparent(Mat src)
         {
             if (src.channels() == 4)
@@ -133,8 +147,20 @@ namespace ArtScan.CoreModule
             StopAllCoroutines();
             if (refinedScanThread == null || refinedScanThread.IsDone)
             {
-                StartCoroutine(DoRefinedScan());
+                StartCoroutine(DoRefinedScanAfterSyncing());
             }
+        }
+
+        public void AbortRefinedScan()
+        {
+            StopAllCoroutines();
+            if (refinedScanThread != null && !refinedScanThread.IsDone)
+            {
+                refinedScanThread.Abort(); //thread is disposed after abort or use
+                refinedScanThread = null; //clear reference so we know to create new threaded job
+            }
+            asynchronousRemoveBackground.shouldCopyToRefinedMat = false;
+            asynchronousRemoveBackground.refinedMatReady = false;
         }
     }
 }

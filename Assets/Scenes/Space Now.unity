@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414726, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2240,6 +2240,7 @@ GameObject:
   - component: {fileID: 620618566}
   - component: {fileID: 620618568}
   - component: {fileID: 620618567}
+  - component: {fileID: 620618569}
   m_Layer: 0
   m_Name: Loading Audio Player
   m_TagString: Untagged
@@ -2405,6 +2406,34 @@ MonoBehaviour:
       - m_Target: {fileID: 620618566}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &620618569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620618564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd4da8dd6f98b4323acaa3485a1317be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 0da4bff33b5b443a58f1d75bddbe7667, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 620618566}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Stop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3115,8 +3144,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   contentLocation: 2
-  attractScreens: []
-  eventSystem: {fileID: 0}
   MuralPositionsLoaded: {fileID: 11400000, guid: 43a7500a01eca42d0aaf279aaddb75bf, type: 2}
   data:
     muralPatches: []
@@ -3596,7 +3623,7 @@ Camera:
   m_GameObject: {fileID: 963194225}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -4837,6 +4864,117 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1331147897
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1331147903}
+  - component: {fileID: 1331147902}
+  - component: {fileID: 1331147901}
+  - component: {fileID: 1331147900}
+  - component: {fileID: 1331147899}
+  - component: {fileID: 1331147898}
+  m_Layer: 0
+  m_Name: Optimization Helper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1331147898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331147897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d898b7b5e32804d62ad84a5560c62821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 109
+  targetObj: {fileID: 506709549}
+  targetComponent: {fileID: 0}
+--- !u!114 &1331147899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331147897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d898b7b5e32804d62ad84a5560c62821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 110
+  targetObj: {fileID: 4078934416037438783}
+  targetComponent: {fileID: 0}
+--- !u!114 &1331147900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331147897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d898b7b5e32804d62ad84a5560c62821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 106
+  targetObj: {fileID: 185652137}
+  targetComponent: {fileID: 0}
+--- !u!114 &1331147901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331147897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d898b7b5e32804d62ad84a5560c62821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 108
+  targetObj: {fileID: 1895730606}
+  targetComponent: {fileID: 0}
+--- !u!114 &1331147902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331147897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d898b7b5e32804d62ad84a5560c62821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 107
+  targetObj: {fileID: 329972258}
+  targetComponent: {fileID: 0}
+--- !u!4 &1331147903
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331147897}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 283, y: 814, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1355997110
 GameObject:
   m_ObjectHideFlags: 0
@@ -7335,7 +7473,31 @@ MonoBehaviour:
     objectToAnimate: {fileID: 4078934416037438783}
     onStartEvent:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 5514461683746088429}
+          m_TargetAssemblyTypeName: ArtScan.CoreModule.RefinedScanController, Assembly-CSharp
+          m_MethodName: AbortRefinedScan
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 1695914135}
+          m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+          m_MethodName: set_interactable
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
     onCompleteEvent:
       m_PersistentCalls:
         m_Calls:
@@ -8423,7 +8585,7 @@ Camera:
   m_GameObject: {fileID: 1987195480}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 2
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -8503,6 +8665,34 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &2015544506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436115678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd4da8dd6f98b4323acaa3485a1317be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: d8753c9ac856442cf940da88af0b334b, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1695914135}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1001 &2024249480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12816,11 +13006,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 69944db4d7b504e8b9d21a8752fcba2d, type: 3}
     - target: {fileID: 2804936088257619338, guid: 1a839d4ce96ca4005a3fbeac80480b9c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2804936088257619338, guid: 1a839d4ce96ca4005a3fbeac80480b9c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2804936088257619338, guid: 1a839d4ce96ca4005a3fbeac80480b9c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -12833,7 +13023,7 @@ PrefabInstance:
     - target: {fileID: 2804936088257619338, guid: 1a839d4ce96ca4005a3fbeac80480b9c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 11400000, guid: ebb763a9e9644492da08872f37562c69, type: 2}
+      objectReference: {fileID: 1695914135}
     - target: {fileID: 2804936088257619338, guid: 1a839d4ce96ca4005a3fbeac80480b9c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -12852,7 +13042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2804936088257619338, guid: 1a839d4ce96ca4005a3fbeac80480b9c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Raise
+      value: set_interactable
       objectReference: {fileID: 0}
     - target: {fileID: 2804936088257619338, guid: 1a839d4ce96ca4005a3fbeac80480b9c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -12860,7 +13050,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2804936088257619338, guid: 1a839d4ce96ca4005a3fbeac80480b9c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GameEvent, Assembly-CSharp
+      value: UnityEngine.UI.Selectable, UnityEngine.UI
       objectReference: {fileID: 0}
     - target: {fileID: 2804936088257619338, guid: 1a839d4ce96ca4005a3fbeac80480b9c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -14324,6 +14514,7 @@ GameObject:
   - component: {fileID: 5514461683746088439}
   - component: {fileID: 5514461683746088440}
   - component: {fileID: 5514461683746088441}
+  - component: {fileID: 5514461683746088443}
   m_Layer: 5
   m_Name: Remove Background
   m_TagString: Untagged
@@ -14527,6 +14718,34 @@ MonoBehaviour:
   timeout: 2
   lastUpdateTime: 0
   displayError: 0
+--- !u!114 &5514461683746088443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514461683746088424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd4da8dd6f98b4323acaa3485a1317be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 0da4bff33b5b443a58f1d75bddbe7667, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5514461683746088429}
+        m_TargetAssemblyTypeName: ArtScan.CoreModule.RefinedScanController, Assembly-CSharp
+        m_MethodName: AbortRefinedScan
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &6306038879146577215
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,5 +1,5 @@
 {
-    "attractWaitTime": 10.0,
+    "attractWaitTime": 120.0,
     "dragPixelThreshold": 15,
     "saveDir": "Images",
     "trashDir": "Trashed Images",

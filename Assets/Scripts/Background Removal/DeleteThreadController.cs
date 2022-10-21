@@ -27,6 +27,7 @@ namespace ArtScan.ScanSavingModule
             {
                 Debug.Log("Ending parallel delete thread...");
                 deleteThread.Abort();
+                deleteThread = null;
                 Debug.Log("...ended.");
             }
         }
