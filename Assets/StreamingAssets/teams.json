@@ -1,0 +1,30 @@
+{
+    "teams": [
+        {
+            "teamName": "Default Team",
+            "namesake": "Melvin",
+            "chosenWords": [
+                "Scientific",
+                "Strong-willed",
+                "Mighty"
+            ],
+            "didRoverActivity": false,
+            "roverStepsCompleted": 0,
+            "didMapActivity": false,
+            "mapRoundsCompleted": 0,
+            "settlementShelterQuality": 0.0,
+            "settlementCommsQuality": 0.0,
+            "settlementSunQuality": 0.0,
+            "settlementWaterQuality": 0.0,
+            "didArtActivity": false,
+            "artworks": [],
+            "didCharterActivity": false,
+            "charterQsCompleted": 0,
+            "charterMeterDecisions": 0.0,
+            "charterMeterPriorities": 0.0,
+            "charterMeterStrictness": 0.0,
+            "didHuntActivity": false,
+            "huntNumFound": 0
+        }
+    ]
+}
