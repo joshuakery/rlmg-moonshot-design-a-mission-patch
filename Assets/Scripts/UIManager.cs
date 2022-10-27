@@ -239,7 +239,7 @@ public class UIManager : MonoBehaviour
         //Reset Game
         else if (Input.GetKeyDown(KeyCode.Z))
         {
-            ResetGame();
+            StartOver();
         }
         else if (Input.GetKeyDown(KeyCode.K))
         {
