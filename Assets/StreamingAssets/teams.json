@@ -2,11 +2,11 @@
     "teams": [
         {
             "teamName": "Default Team",
-            "namesake": "Melvin",
+            "namesake": "Galileo",
             "chosenWords": [
+                "Roguish",
                 "Scientific",
-                "Strong-willed",
-                "Mighty"
+                "Strong-willed"
             ],
             "didRoverActivity": false,
             "roverStepsCompleted": 0,

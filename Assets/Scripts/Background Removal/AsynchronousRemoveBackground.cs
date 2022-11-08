@@ -405,11 +405,11 @@ namespace ArtScan.CoreModule
         {
             if (RLMGLogger.Instance != null) //always false?
             {
-                RLMGLogger.Instance.Log("Successfully initialized correct camera.", MESSAGETYPE.INFO);
+                RLMGLogger.Instance.Log("Successfully found correct camera.", MESSAGETYPE.INFO);
             }
             else
             {
-                Debug.LogWarning("Successfully initialized correct camera.");
+                Debug.LogWarning("Successfully found correct camera.");
             }
         }
 
