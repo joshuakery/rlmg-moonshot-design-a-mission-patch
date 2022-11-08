@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using System.IO;
 using UnityEngine.Video;
 
@@ -9,12 +10,23 @@ public class AttractLoop : MonoBehaviour
 
 	public VideoPlayerManager videoPlayerManager;
 	public CanvasGroup attractUICanvasGroup;
+	public CanvasGroup blackCanvasGroup;
 
     public float fadeInDuration = 1f;
     public float fadeOutDuration = 1f;
 
     public VideoClip attractVideoClip;
     public string attractVideoPath;
+
+	public UnityEvent onBlackFadeInStarted;
+	public UnityEvent onBlackFadeInComplete;
+	public UnityEvent onBlackFadeOutStarted;
+	public UnityEvent onBlackFadeOutComplete;
+
+	public UnityEvent onFadeInStarted;
+	public UnityEvent onFadeInComplete;
+	public UnityEvent onFadeOutStarted;
+	public UnityEvent onFadeOutComplete;
 
 	void Awake()
 	{
@@ -35,6 +47,12 @@ public class AttractLoop : MonoBehaviour
 			attractUICanvasGroup.alpha = 1f;
 			attractUICanvasGroup.gameObject.SetActive(true);
 		}
+
+		if (blackCanvasGroup != null)
+        {
+			blackCanvasGroup.alpha = 0f;
+			blackCanvasGroup.gameObject.SetActive(false);
+        }
 	}
 
 	//void OnEnable()
@@ -50,6 +68,16 @@ public class AttractLoop : MonoBehaviour
 		if (attractUICanvasGroup != null)
 			attractUICanvasGroup.gameObject.SetActive(true);
 
+		blackCanvasGroup.gameObject.SetActive(false);
+
+		if (attractScreen.doFadeToBlackFirst && !videoPlayerManager.videoPlayer.isPlaying)
+        {
+			onBlackFadeInStarted.Invoke();
+			blackCanvasGroup.gameObject.SetActive(true);
+			yield return StartCoroutine(FadeIn(blackCanvasGroup));
+			onBlackFadeInComplete.Invoke();
+        }
+		
 		if (!videoPlayerManager.videoPlayer.isPlaying)
 		{
 			if (attractVideoClip != null)
@@ -62,7 +90,7 @@ public class AttractLoop : MonoBehaviour
             }
             else
             {
-                Debug.LogError("No attract video clip or url found.");
+                //Debug.LogError("No attract video clip or url found.");
             }
 
 
@@ -71,15 +99,66 @@ public class AttractLoop : MonoBehaviour
 				yield return null;
 			}
 
-            Debug.Log("Video finished preparing! Continue on.");
+            //Debug.Log("Video finished preparing! Continue on.");
         }
         else
 		{
-            Debug.Log("Video is already playing. Continue on.");
+            //Debug.Log("Video is already playing. Continue on.");
         }
 
         if (attractUICanvasGroup != null && attractUICanvasGroup.alpha < 1f)
-			StartCoroutine(FadeInUI());
+        {
+			onFadeInStarted.Invoke();
+			yield return StartCoroutine(FadeInUI());
+			onFadeInComplete.Invoke();
+		}
+			
+
+		if (attractScreen.doFadeToBlackFirst && blackCanvasGroup.gameObject.activeInHierarchy)
+		{
+			onBlackFadeOutStarted.Invoke();
+			yield return StartCoroutine(FadeOut(blackCanvasGroup));
+			blackCanvasGroup.gameObject.SetActive(false);
+			onBlackFadeOutComplete.Invoke();
+		}
+	}
+
+	private IEnumerator FadeIn(CanvasGroup cg)
+    {
+		if (cg == null)
+			yield break;
+
+		float t = 0f;
+
+		while (t < fadeInDuration)
+		{
+			cg.alpha = Mathf.Lerp(0f, 1f, t / fadeInDuration);
+
+			t += Time.deltaTime;
+
+			yield return null;
+		}
+
+		cg.alpha = 1f;
+	}
+
+	private IEnumerator FadeOut(CanvasGroup cg)
+	{
+		if (cg == null)
+			yield break;
+
+		float t = 0f;
+
+		while (t < fadeOutDuration)
+		{
+			cg.alpha = Mathf.Lerp(1f, 0f, t / fadeOutDuration);
+
+			t += Time.deltaTime;
+
+			yield return null;
+		}
+
+		cg.alpha = 0f;
 	}
 
 	private IEnumerator FadeInUI()
@@ -135,10 +214,20 @@ public class AttractLoop : MonoBehaviour
 //		{
 			StopAllCoroutines();
 
-			//reset things here
-//		}
+		//reset things here
+		//		}
 
-		StartCoroutine(FadeOutUI());
+		StartCoroutine(StopAttractLoop());
+	}
+
+	private IEnumerator StopAttractLoop()
+    {
+		StartCoroutine(FadeOut(blackCanvasGroup));
+		blackCanvasGroup.gameObject.SetActive(false);
+
+		yield return StartCoroutine(FadeOutUI());
+		
+		onFadeOutComplete.Invoke();
 	}
 
 //	private bool quitApp = false;

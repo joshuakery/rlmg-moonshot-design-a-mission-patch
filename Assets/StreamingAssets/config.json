@@ -17,5 +17,8 @@
     "postProcessingSettings": {
         "brightness": 344,
         "contrast": 161
+    },
+    "errorDisplaySettings": {
+	"cameraDisconnectTimeout": 2.5
     }
 }

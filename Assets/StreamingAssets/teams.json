@@ -17,7 +17,14 @@
             "settlementSunQuality": 0.0,
             "settlementWaterQuality": 0.0,
             "didArtActivity": false,
-            "artworks": [],
+            "artworks": [
+                "Default Team-0.png",
+                "Default Team-1.png",
+                "Default Team-2.png",
+                "Default Team-3.png",
+                "",
+                ""
+            ],
             "didCharterActivity": false,
             "charterQsCompleted": 0,
             "charterMeterDecisions": 0.0,

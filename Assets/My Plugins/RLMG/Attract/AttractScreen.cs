@@ -7,9 +7,9 @@ using UnityEngine.Video;
 
 public class AttractScreen : MonoBehaviour
 {
-	public GameObject attractScreen;  //ideally make this a child object, as this script needs to stay enabled
-    public GameObject hackyVideoCoverUp;
-    public GameObject[] objsToSetActiveOnAttract;
+	//public GameObject attractScreen;  //ideally make this a child object, as this script needs to stay enabled
+ //   public GameObject hackyVideoCoverUp;
+    //public GameObject[] objsToSetActiveOnAttract;
 	public Button attractScreenButton;
 	public bool triggerOnDown = false;
 
@@ -21,16 +21,16 @@ public class AttractScreen : MonoBehaviour
 	private bool isOpen = false;
 	public bool IsOpen { get { return isOpen; } }
 
-	private CanvasGroup attractScreenCanvasGroup;
+	//private CanvasGroup attractScreenCanvasGroup;
 
-	public bool doOpacityFadeTransition = true;
+	//public bool doOpacityFadeTransition = true;
 
-	public float transitionSpeedExpand = 1f;
-	public float transitionSpeedCollapse = 1f;
-	private float opacityPercent = 1f;
+	//public float transitionSpeedExpand = 1f;
+	//public float transitionSpeedCollapse = 1f;
+	//private float opacityPercent = 1f;
 
-	public UnityEvent onOpenEvent;
-	public UnityEvent onCloseEvent;
+	//public UnityEvent onOpenEvent;
+	//public UnityEvent onCloseEvent;
 
 	public delegate void OnOpen(AttractScreen attractScreen);
 	public OnOpen onOpen;
@@ -38,8 +38,10 @@ public class AttractScreen : MonoBehaviour
 	public delegate void OnClose(AttractScreen attractScreen);
 	public OnClose onClose;
 
-	public bool resetAppAfterOpen = true;
-	public UnityEvent onResetEvent;
+	public bool doFadeToBlackFirst = true;
+
+	//public bool resetAppAfterOpen = true;
+	//public UnityEvent onResetEvent;
 
 	private void Start()
 	{
@@ -67,10 +69,10 @@ public class AttractScreen : MonoBehaviour
 			}
 		}
 
-		if (attractScreen != null)
-		{
-			attractScreenCanvasGroup = attractScreen.GetComponent<CanvasGroup>();
-		}
+		//if (attractScreen != null)
+		//{
+		//	attractScreenCanvasGroup = attractScreen.GetComponent<CanvasGroup>();
+		//}
 
 		OpenAttractScreen();
 	}
@@ -99,58 +101,60 @@ public class AttractScreen : MonoBehaviour
 				OpenAttractScreen();
 		//}
 
-		if (doOpacityFadeTransition)
-		{
-			if (isOpen && opacityPercent < 1f)
-			{
-				opacityPercent += Time.deltaTime * transitionSpeedExpand;
-			}
-			else if (!isOpen && opacityPercent > 0f)
-			{
-				opacityPercent -= Time.deltaTime * transitionSpeedCollapse;
-			}
+		//if (doOpacityFadeTransition)
+		//{
+		//	if (isOpen && opacityPercent < 1f)
+		//	{
+		//		opacityPercent += Time.deltaTime * transitionSpeedExpand;
+		//	}
+		//	else if (!isOpen && opacityPercent > 0f)
+		//	{
+		//		opacityPercent -= Time.deltaTime * transitionSpeedCollapse;
+		//	}
 
-			if (opacityPercent < 0f)
-			{
-				opacityPercent = 0f;
+		//	if (opacityPercent < 0f)
+		//	{
+		//		opacityPercent = 0f;
 
-				OnCloseTransitionComplete();
-			}
-			else if (opacityPercent > 1f)
-			{
-				opacityPercent = 1f;
+		//		OnCloseTransitionComplete();
+		//	}
+		//	else if (opacityPercent > 1f)
+		//	{
+		//		opacityPercent = 1f;
 
-				OnOpenTransitionComplete();
-			}
+		//		OnOpenTransitionComplete();
+		//	}
 
-			if (attractScreenCanvasGroup != null)
-				attractScreenCanvasGroup.alpha = opacityPercent;
-		}
+		//	if (attractScreenCanvasGroup != null)
+		//		attractScreenCanvasGroup.alpha = opacityPercent;
+		//}
 	}
 
 	public void OpenAttractScreen()
 	{
-		Debug.Log("open attract");
+		Debug.Log("Opening attract...");
 
 		timeOfLastInput = Time.time;
 
 		if (attractScreenButton != null)
 			attractScreenButton.gameObject.SetActive(true);
 
-		if (attractScreen != null)
-			attractScreen.SetActive(true);
+		//if (attractScreen != null)
+		//	attractScreen.SetActive(true);
 
-        foreach (GameObject obj in objsToSetActiveOnAttract)
-        {
-            obj.SetActive(true);
-        }
+        //foreach (GameObject obj in objsToSetActiveOnAttract)
+        //{
+        //    obj.SetActive(true);
+        //}
 
+		//if (!doOpacityFadeTransition) { OnOpenTransitionComplete(); }
+		
         isOpen = true;
 
-		if (onOpenEvent != null)
-			onOpenEvent.Invoke();
+        //if (onOpenEvent != null)
+        //    onOpenEvent.Invoke();
 
-		if (onOpen != null)
+        if (onOpen != null)
 			onOpen(this);
 	}
 
@@ -165,57 +169,58 @@ public class AttractScreen : MonoBehaviour
 		if (attractScreenButton != null)
 			attractScreenButton.gameObject.SetActive(false);
 
-		if (!doOpacityFadeTransition)
-		{
-			if (attractScreen != null)
-				attractScreen.SetActive(false);
+		//if (!doOpacityFadeTransition)
+		//{
+		//	if (attractScreen != null)
+		//		attractScreen.SetActive(false);
 
-            foreach (GameObject obj in objsToSetActiveOnAttract)
-            {
-                obj.SetActive(false);
-            }
+  //          foreach (GameObject obj in objsToSetActiveOnAttract)
+  //          {
+  //              obj.SetActive(false);
+  //          }
 
-            OnOpenTransitionComplete();
-        }
+  //          OnCloseTransitionComplete();
+  //      }
 
-		if (onCloseEvent != null)
-			onCloseEvent.Invoke();
+		//if (onCloseEvent != null)
+		//	onCloseEvent.Invoke();
 
 		if (onClose != null)
 			onClose(this);
 	}
 
-	private void OnOpenTransitionComplete()
-	{
-		if (resetAppAfterOpen)
-			ResetApp();
+	//private void OnOpenTransitionComplete()
+	//{
+	//	Debug.Log("on open transition complete");
+	//	if (resetAppAfterOpen)
+	//		ResetApp();
 
-        if (hackyVideoCoverUp != null)
-            hackyVideoCoverUp.SetActive(true);
-    }
+ //       if (hackyVideoCoverUp != null)
+ //           hackyVideoCoverUp.SetActive(true);
+ //   }
 
-	private void OnCloseTransitionComplete()
-	{
-		if (doOpacityFadeTransition)
-		{
-			if (attractScreen != null)
-				attractScreen.SetActive(false);
+	//private void OnCloseTransitionComplete()
+	//{
+	//	if (doOpacityFadeTransition)
+	//	{
+	//		if (attractScreen != null)
+	//			attractScreen.SetActive(false);
 
-            foreach(GameObject obj in objsToSetActiveOnAttract)
-            {
-                obj.SetActive(false);
-            }
+ //           foreach(GameObject obj in objsToSetActiveOnAttract)
+ //           {
+ //               obj.SetActive(false);
+ //           }
 
-            if (hackyVideoCoverUp != null)
-                hackyVideoCoverUp.SetActive(false);
-		}
-	}
+ //           if (hackyVideoCoverUp != null)
+ //               hackyVideoCoverUp.SetActive(false);
+	//	}
+	//}
 
-	void ResetApp()
-	{
-		if (onResetEvent != null)
-		{
-			onResetEvent.Invoke();
-		}
-	}
+	//void ResetApp()
+	//{
+	//	if (onResetEvent != null)
+	//	{
+	//		onResetEvent.Invoke();
+	//	}
+	//}
 }

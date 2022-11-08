@@ -62,7 +62,14 @@ public class DebugMenu : MonoBehaviour
 
     private void OnEnable()
     {
+        RLMGLogger.Instance.Log("Opening debug menu and initializing...", MESSAGETYPE.INFO);
+
         InitializeDebugMenu();
+    }
+
+    private void OnDisable()
+    {
+        RLMGLogger.Instance.Log("Closing debug menu...", MESSAGETYPE.INFO);
     }
 
     public void InitializeDebugMenu()
@@ -274,6 +281,8 @@ public class DebugMenu : MonoBehaviour
     /// </summary>
     public void OnPlayButtonClick ()
     {
+        RLMGLogger.Instance.Log("Play Webcam", MESSAGETYPE.INFO);
+
         webCamTextureToMatHelper.Play ();
     }
 
@@ -282,7 +291,9 @@ public class DebugMenu : MonoBehaviour
     /// </summary>
     public void OnPauseButtonClick ()
     {
-       webCamTextureToMatHelper.Pause ();
+        RLMGLogger.Instance.Log("Pause Webcam", MESSAGETYPE.INFO);
+
+        webCamTextureToMatHelper.Pause ();
     }
 
     /// <summary>
@@ -290,6 +301,8 @@ public class DebugMenu : MonoBehaviour
     /// </summary>
     public void OnStopButtonClick ()
     {
+        RLMGLogger.Instance.Log("Stop Webcam", MESSAGETYPE.INFO);
+
         webCamTextureToMatHelper.Stop ();
     }
 

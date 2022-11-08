@@ -34,6 +34,7 @@ public class UIManager : MonoBehaviour
     public Canvas secondaryCanvas;
     private GenericWindowManager secondaryWindowManager;
     public GameEvent windowsRefreshedEvent;
+    public AttractScreen attractScreen;
 
     public bool started = false;
 
@@ -117,10 +118,12 @@ public class UIManager : MonoBehaviour
 
             CloseAllWindowsEvent.Raise();
 
+            StartEvent.Raise();
+            started = true;
+
             if (myWebCamTextureToMatHelper != null && myWebCamTextureToMatHelper.IsInitialized())
             {
-                StartEvent.Raise();
-                started = true;
+                
             }
         }
     }
@@ -158,10 +161,13 @@ public class UIManager : MonoBehaviour
 
     public void StartOver()
     {
+        Debug.Log("Starting over");
+
         primarySequenceManager.CompleteCurrentSequence();
         namesakeSequenceManager.CompleteCurrentSequence();
 
-        gameState.Reset();
+        //gameState.Reset(); //do NOT clear scans
+        myWebCamTextureToMatHelper.Initialize();
 
         CloseAllWindowsEvent.Raise();
         StartEvent.Raise();

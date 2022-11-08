@@ -89,10 +89,21 @@ namespace ArtScan.CoreModule
 
         public CamConfigLoader configLoader;
 
-        public Button beginScanButton;
+        public bool paperFound;
+
+        private double currentContourArea = 0.0d;
         private double runningAverageContourSize = 0.0d;
         private int contoursAtRunningAverageSize = 0;
-        private bool beginScanButtonInteractable;
+        public bool consistentRunningAverage
+        {
+            get
+            {
+                return (
+                    contoursAtRunningAverageSize > 3 &&
+                    currentContourArea > 50
+                );
+            }
+        }
 
         // for Thread
         System.Object sync = new System.Object();
@@ -355,20 +366,51 @@ namespace ArtScan.CoreModule
         }
 
         /// <summary>
-        /// Raises the web cam texture to mat helper error occurred event.
+        /// Listener for the web cam texture to mat helper error occurred event.
         /// </summary>
         /// <param name="errorCode">Error code.</param>
         public void OnWebCamTextureToMatHelperErrorOccurred (myWebCamTextureToMatHelper.ErrorCode errorCode)
         {
             if (RLMGLogger.Instance != null) //always false?
             {
-                RLMGLogger.Instance.Log("OnWebCamTextureToMatHelperErrorOccurred " + errorCode, MESSAGETYPE.ERROR);
+                RLMGLogger.Instance.Log("Error occurred while initializing camera: " + errorCode, MESSAGETYPE.ERROR);
             }
             else
             {
-                Debug.LogError("OnWebCamTextureToMatHelperErrorOccurred " + errorCode);
+                Debug.LogError("Error occurred while initializing camera: " + errorCode);
             }
 
+        }
+
+        /// <summary>
+        /// Listenener for the web cam texture to mat helper warn occurred event.
+        /// </summary>
+        /// <param name="warnCode">Warn code.</param>
+        public void OnWebCamTextureToMatHelperWarnOccurred(myWebCamTextureToMatHelper.WarnCode warnCode)
+        {
+            if (RLMGLogger.Instance != null) //always false?
+            {
+                RLMGLogger.Instance.Log("Warning occurred while initializing camera: " + warnCode, MESSAGETYPE.INFO);
+            }
+            else
+            {
+                Debug.LogWarning("Warning occurred while initializing camera: " + warnCode);
+            }
+        }
+
+        /// <summary>
+        /// Listener for the web cam texture to mat helper warn occurred event.
+        /// </summary>
+        public void OnWebCamTextureToMatHelperSuccessOccurred()
+        {
+            if (RLMGLogger.Instance != null) //always false?
+            {
+                RLMGLogger.Instance.Log("Successfully initialized correct camera.", MESSAGETYPE.INFO);
+            }
+            else
+            {
+                Debug.LogWarning("Successfully initialized correct camera.");
+            }
         }
 
         private void CopyToThreadMat()
@@ -421,13 +463,30 @@ namespace ArtScan.CoreModule
             {
                 if (!shouldDetectInMultiThread)
                 {
-                    CopyToThreadMat();
-
                     if (shouldCopyToRefinedMat)
                     {
+                        DateTime before = DateTime.Now;
+
+                        //Copy for both threads
+                        CopyToThreadMat();
                         CopyToRefinedThreadMat();
+
                         refinedMatReady = true;
                         shouldCopyToRefinedMat = false;
+
+                        DateTime after = DateTime.Now;
+
+                        TimeSpan duration = after.Subtract(before);
+
+                        RLMGLogger.Instance.Log(
+                            String.Format("Webcam texture successfuly copied for refined scan in {0} milliseconds.", duration.TotalMilliseconds),
+                            MESSAGETYPE.INFO
+                        );
+                    }
+                    else
+                    {
+                        //Copy for just the continuous feedback
+                        CopyToThreadMat();
                     }
 
                     shouldDetectInMultiThread = true;
@@ -588,7 +647,7 @@ namespace ArtScan.CoreModule
                 MatOfPoint paperMaxAreaContour = PerspectiveUtils.GetMaxAreaContour(contours);
                 paperMaxAreaContour = PerspectiveUtils.OrderCornerPoints(paperMaxAreaContour);
 
-                bool paperFound = (paperMaxAreaContour.size().area() > 0);
+                paperFound = (paperMaxAreaContour.size().area() > 0);
                 if (paperFound && displayOptions.doWarp)
                 {
                     // transform the perspective of original image.
@@ -663,24 +722,8 @@ namespace ArtScan.CoreModule
                                         );
                                     }
 
-
-                                    double currentContourArea = maxAreaContour.size().area();
-
-                                    if (Math.Abs(currentContourArea - runningAverageContourSize) > 0.4d * runningAverageContourSize)
-                                    {
-                                        contoursAtRunningAverageSize = 0;
-                                        runningAverageContourSize = currentContourArea;
-                                    }
-                                    else
-                                    {
-                                        contoursAtRunningAverageSize += 1;
-                                        runningAverageContourSize = (runningAverageContourSize + currentContourArea) / 2.0d;
-                                    }
-
-                                    beginScanButtonInteractable = (
-                                        contoursAtRunningAverageSize > 3 &&
-                                        currentContourArea > 50
-                                    );
+                                    currentContourArea = maxAreaContour.size().area();
+                                    DoContourSizeRunningAverage(currentContourArea);
 
                                 }
                             }
@@ -713,6 +756,20 @@ namespace ArtScan.CoreModule
             
 
             
+        }
+
+        private void DoContourSizeRunningAverage(double currentContourArea)
+        {
+            if (Math.Abs(currentContourArea - runningAverageContourSize) > 0.4d * runningAverageContourSize)
+            {
+                contoursAtRunningAverageSize = 0;
+                runningAverageContourSize = currentContourArea;
+            }
+            else
+            {
+                contoursAtRunningAverageSize += 1;
+                runningAverageContourSize = (runningAverageContourSize + currentContourArea) / 2.0d;
+            }
         }
 
         /// <summary>

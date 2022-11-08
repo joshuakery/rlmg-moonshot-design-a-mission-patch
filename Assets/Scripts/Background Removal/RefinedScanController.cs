@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +20,15 @@ namespace ArtScan.CoreModule
 
         public AsynchronousRemoveBackground asynchronousRemoveBackground;
 
-        private RefinedScanThread refinedScanThread;
+        public RefinedScanThread refinedScanThread;
+
+        public bool anotherScanIsUnderway
+        {
+            get
+            {
+                return (refinedScanThread != null && !refinedScanThread.IsDone);
+            }
+        }
 
         public RemoveBackgroundSettings settings;
         public RemoveBackgroundDisplayOptions displayOptions;
@@ -57,6 +66,8 @@ namespace ArtScan.CoreModule
                         unscaledMat = new Mat()
             )
             {
+                DateTime before = DateTime.Now;
+
                 Texture2D scanTexture = new Texture2D(displayMat.cols(), displayMat.rows(), TextureFormat.RGBA32, false);
 
                 MatOfPoint maxAreaContourDest = new MatOfPoint();
@@ -77,12 +88,32 @@ namespace ArtScan.CoreModule
 
                 yield return refinedScanThread.WaitFor();
 
+                DateTime after = DateTime.Now;
+
+                TimeSpan duration = after.Subtract(before);
+
+                RLMGLogger.Instance.Log(
+                    String.Format("Refined scan thread successfully created and executed in {0} milliseconds.", duration.TotalMilliseconds),
+                    MESSAGETYPE.INFO
+                );
+
+                DateTime before2 = DateTime.Now;
+
                 Utils.fastMatToTexture2D(displayMat, scanTexture, true, 0, true);
 
                 gameState.preview = scanTexture;
 
                 unscaledMat.copyTo(previewMat);
                 NewPreview.Raise();
+
+                DateTime after2 = DateTime.Now;
+
+                TimeSpan duration2 = after2.Subtract(before2);
+
+                RLMGLogger.Instance.Log(
+                    String.Format("Refined scan successfully copied to preview mats in {0} milliseconds.", duration2.TotalMilliseconds),
+                    MESSAGETYPE.INFO
+                );
 
                 // if (IsAllTransparent(displayMat))
                 // {
@@ -145,10 +176,35 @@ namespace ArtScan.CoreModule
         public void OnBeginScan()
         {
             StopAllCoroutines();
-            if (refinedScanThread == null || refinedScanThread.IsDone)
+            AbortRefinedScan();
+
+            if (!asynchronousRemoveBackground.webCamTextureToMatHelper ||
+                !asynchronousRemoveBackground.webCamTextureToMatHelper.IsPlaying()
+                )
+            {
+                RLMGLogger.Instance.Log("Cannot do refined scan because webcam is not playing.", MESSAGETYPE.ERROR);
+                StartCoroutine(RaiseScanFailed());
+                return;
+            }
+
+            if (!anotherScanIsUnderway)
             {
                 StartCoroutine(DoRefinedScanAfterSyncing());
             }
+            else
+            {
+                RLMGLogger.Instance.Log("Cannot do refined scan because another refined scan is underway.", MESSAGETYPE.ERROR);
+                //todo something to stop the audio loop from playing, or keep it from playing before passing this check
+            }
+        }
+
+        /// <summary>
+        /// Yields one frame so that the audio loop is properly turned off.
+        /// </summary>
+        public IEnumerator RaiseScanFailed()
+        {
+            yield return null;
+            ScanFailed.Raise();
         }
 
         public void AbortRefinedScan()

@@ -4,6 +4,7 @@ using UnityEngine;
 using Newtonsoft.Json;
 using UnityEngine.EventSystems;
 using ArtScan.CoreModule;
+using ArtScan.ErrorDisplayModule;
 using rlmg.logging;
 
 namespace ArtScan.CamConfigLoaderModule
@@ -30,12 +31,15 @@ namespace ArtScan.CamConfigLoaderModule
 		public bool doCropToBoundingBox;
 
 		public RemoveBackgroundSettings.PostProcessingSettings postProcessingSettings;
+
+		public ErrorDisplaySettings errorDisplaySettings;
 		
 	}
 
 	public class CamConfigLoader : ConfigLoader
 	{
 		public RemoveBackgroundSettings settings;
+		public ErrorDisplaySettingsSO errorDisplaySettingsSO;
 		public GameEvent ConfigLoaded;
 		public CamConfigJSON configData;
 
@@ -48,9 +52,6 @@ namespace ArtScan.CamConfigLoaderModule
 				RLMGLogger.Instance.Log("Config data empty", MESSAGETYPE.INFO);
 				yield break;
 			}
-
-			if (settings == null)
-				settings = (RemoveBackgroundSettings)FindObjectOfType(typeof(RemoveBackgroundSettings));
 
 			if (settings != null)
 			{
@@ -68,6 +69,9 @@ namespace ArtScan.CamConfigLoaderModule
 
 				settings.postProcessingSettings = configData.postProcessingSettings;
 			}
+
+			if (errorDisplaySettingsSO != null)
+				errorDisplaySettingsSO.errorDisplaySettings = configData.errorDisplaySettings;
 
 			yield return base.PopulateContent(contentData);
 

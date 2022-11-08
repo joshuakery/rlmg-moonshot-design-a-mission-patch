@@ -13,6 +13,7 @@ using rlmg.logging;
 
 namespace OpenCVForUnity.UnityUtils.Helper
 {
+
     /// <summary>
     /// WebcamTexture to mat helper.
     /// v 1.1.3
@@ -210,6 +211,16 @@ namespace OpenCVForUnity.UnityUtils.Helper
         public ErrorUnityEvent onErrorOccurred;
 
         /// <summary>
+        /// UnityEvent that is triggered when this instance has triggered a warning.
+        /// </summary>
+        public WarnUnityEvent onWarnOccurred;
+
+        /// <summary>
+        /// UnityEvent that is triggered when this instance has successfully loaded the requested device.
+        /// </summary>
+        public UnityEvent onSuccessOccurred;
+
+        /// <summary>
         /// The active WebcamTexture.
         /// </summary>
         protected WebCamTexture webCamTexture;
@@ -301,6 +312,19 @@ namespace OpenCVForUnity.UnityUtils.Helper
 
         [Serializable]
         public class ErrorUnityEvent : UnityEvent<ErrorCode>
+        {
+
+        }
+
+        public enum WarnCode : int
+        {
+            UNKNOWN = 0,
+            WRONG_CAMERA_FRONTFACING_SELECTED,
+            WRONG_CAMERA_FIRST_SELECTED
+        }
+
+        [Serializable]
+        public class WarnUnityEvent : UnityEvent<WarnCode>
         {
 
         }
@@ -430,6 +454,10 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 onDisposed = new UnityEvent();
             if (onErrorOccurred == null)
                 onErrorOccurred = new ErrorUnityEvent();
+            if (onWarnOccurred == null)
+                onWarnOccurred = new WarnUnityEvent();
+            if (onSuccessOccurred == null)
+                onSuccessOccurred = new UnityEvent();
 
             initCoroutine = _Initialize();
             StartCoroutine(initCoroutine);
@@ -458,6 +486,10 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 onDisposed = new UnityEvent();
             if (onErrorOccurred == null)
                 onErrorOccurred = new ErrorUnityEvent();
+            if (onWarnOccurred == null)
+                onWarnOccurred = new WarnUnityEvent();
+            if (onSuccessOccurred == null)
+                onSuccessOccurred = new UnityEvent();
 
             initCoroutine = _Initialize();
             StartCoroutine(initCoroutine);
@@ -487,6 +519,10 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 onDisposed = new UnityEvent();
             if (onErrorOccurred == null)
                 onErrorOccurred = new ErrorUnityEvent();
+            if (onWarnOccurred == null)
+                onWarnOccurred = new WarnUnityEvent();
+            if (onSuccessOccurred == null)
+                onSuccessOccurred = new UnityEvent();
 
             initCoroutine = _Initialize();
             StartCoroutine(initCoroutine);
@@ -521,6 +557,10 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 onDisposed = new UnityEvent();
             if (onErrorOccurred == null)
                 onErrorOccurred = new ErrorUnityEvent();
+            if (onWarnOccurred == null)
+                onWarnOccurred = new WarnUnityEvent();
+            if (onSuccessOccurred == null)
+                onSuccessOccurred = new UnityEvent();
 
             initCoroutine = _Initialize();
             StartCoroutine(initCoroutine);
@@ -610,7 +650,9 @@ namespace OpenCVForUnity.UnityUtils.Helper
                     }
                 }
                 if (webCamTexture == null)
-                    RLMGLogger.Instance.Log("Cannot find camera device " + requestedDeviceName + ".", MESSAGETYPE.INFO);
+                    RLMGLogger.Instance.Log("Cannot find camera device " + requestedDeviceName + ".", MESSAGETYPE.ERROR);
+                else if (onSuccessOccurred != null)
+                    onSuccessOccurred.Invoke();
             }
 
             if (webCamTexture == null)
@@ -638,6 +680,10 @@ namespace OpenCVForUnity.UnityUtils.Helper
                         {
                             webCamTexture = new WebCamTexture(webCamDevice.name, requestedWidth, requestedHeight, (int)requestedFPS);
                         }
+
+                        if (onWarnOccurred != null)
+                            onWarnOccurred.Invoke(WarnCode.WRONG_CAMERA_FRONTFACING_SELECTED);
+
                         break;
                     }
                 }
@@ -661,6 +707,9 @@ namespace OpenCVForUnity.UnityUtils.Helper
                     {
                         webCamTexture = new WebCamTexture(webCamDevice.name, requestedWidth, requestedHeight, (int)requestedFPS);
                     }
+
+                    if (onWarnOccurred != null)
+                        onWarnOccurred.Invoke(WarnCode.WRONG_CAMERA_FIRST_SELECTED);
                 }
                 else
                 {
@@ -687,7 +736,13 @@ namespace OpenCVForUnity.UnityUtils.Helper
                     isTimeout = true;
                     break;
                 }
-                else if (webCamTexture.didUpdateThisFrame)
+
+                //initFrameCount++;
+                //yield return null;
+                //continue;
+
+                else
+                if (webCamTexture.didUpdateThisFrame)
                 {
                     string deviceInfo = "WebCamTextureToMatHelper: " + "Devicename:" + webCamTexture.deviceName + " name:" + webCamTexture.name + " width:" + webCamTexture.width + " height:" + webCamTexture.height + " fps:" + webCamTexture.requestedFPS
                     + " videoRotationAngle:" + webCamTexture.videoRotationAngle + " videoVerticallyMirrored:" + webCamTexture.videoVerticallyMirrored + " isFrongFacing:" + webCamDevice.isFrontFacing;
@@ -843,6 +898,7 @@ namespace OpenCVForUnity.UnityUtils.Helper
         {
             if (hasInitDone)
                 webCamTexture.Play();
+            //throw a warning here if this is not working
         }
 
         /// <summary>

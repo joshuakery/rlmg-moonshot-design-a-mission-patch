@@ -112,7 +112,7 @@ namespace ArtScan.ScanSavingModule
             DateTime after = DateTime.Now;
             TimeSpan duration = after.Subtract(before);
 
-            RLMGLogger.Instance.Log(String.Format("Downloaded scans in {0} milliseconds.", duration.Milliseconds), MESSAGETYPE.INFO);
+            RLMGLogger.Instance.Log(String.Format("Downloaded scans in {0} milliseconds.", duration.TotalMilliseconds), MESSAGETYPE.INFO);
 
             if (callbackEvent != null)
                 callbackEvent.Raise();
