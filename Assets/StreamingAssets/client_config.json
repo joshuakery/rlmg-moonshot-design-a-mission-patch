@@ -4,5 +4,6 @@
 	"ftpsPort": 2222,
 	"ftpsUsername": "moonshot",
 	"ftpsPassword": "rollmug",
-	"stationOverride": ""
+	"stationOverride": "",
+	"connectionTimeout": 5
 }
