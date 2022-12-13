@@ -23,6 +23,8 @@ public class ClientHandle : MonoBehaviour
         ClientSend.JoinReceived();
 
         //Client.instance.udp.Connect(((IPEndPoint)Client.instance.tcp.socket.Client.LocalEndPoint).Port);
+
+        Client.instance.ConnectCallback();
     }
 
     public static void SendStationDataToClient(Packet _packet)
@@ -115,6 +117,42 @@ public class ClientHandle : MonoBehaviour
         // //UIManager.instance.statusText.text = $"Team {Client.instance.team.Name} started round.";
 
         // ClientSend.SendStationDataToServer();
+    }
+
+    public static void SendResumeRoundToClient(Packet _packet)
+    {
+        RLMGLogger.Instance.Log($"Resume Round", MESSAGETYPE.INFO);
+        // bugbug
+        //UIManager.instance.statusText.text = $"Resume Round";
+
+        string _teamName = _packet.ReadString();
+        float _roundDurationRemaining = _packet.ReadFloat();
+        float _roundBufferDurationRemaining = _packet.ReadFloat();
+        MissionState _missionState = (MissionState)_packet.ReadInt();
+        int _round = _packet.ReadInt();
+        string _JsonTeamData = _packet.ReadString();
+        
+        if (Client.instance.team == null)
+        {
+            Client.instance.CreateNewTeam();
+        }
+
+        if (!string.IsNullOrEmpty(_JsonTeamData))  //I think this is only normal for the first round?
+        {
+            JsonUtility.FromJsonOverwrite(_JsonTeamData, Client.instance.team.MoonshotTeamData);
+        }
+        else
+        {
+            RLMGLogger.Instance.Log("Team JSON data received on 'resume round' from server is null or empty, so new one is being created locally. team name = " + _teamName, MESSAGETYPE.INFO);
+            
+            Client.instance.team.MoonshotTeamData = new MoonshotTeamData();
+        }
+
+        Client.instance.team.MoonshotTeamData.teamName = _teamName;
+
+        RLMGLogger.Instance.Log($"Resume round with: {_teamName}", MESSAGETYPE.INFO);
+
+        Client.instance.ResumeRound(_teamName, _roundDurationRemaining, _roundBufferDurationRemaining, _missionState, _round, _JsonTeamData);
     }
 
     public static void SendPauseToClient(Packet _packet)

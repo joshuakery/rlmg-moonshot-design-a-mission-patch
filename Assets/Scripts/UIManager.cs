@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
     //debug
     public GameEvent ConfigLoaded;
     public MoonshotTimer.Timer mainTimer;
+    public MoonshotTimer.Timer bufferTimer;
     public int currentWindow;
     public List<GameEvent> windowEvents;
     public GameObject RemoveBackgroundDebugMenu;
@@ -198,6 +199,13 @@ public class UIManager : MonoBehaviour
 
         CloseAllWindowsEvent.Raise();
         EndingEvent.Raise();
+
+        if (bufferTimer != null)
+        {
+            bufferTimer.Reset();
+            bufferTimer.StartCounting();
+        }
+
     }
 
     public void GoToConclusion()

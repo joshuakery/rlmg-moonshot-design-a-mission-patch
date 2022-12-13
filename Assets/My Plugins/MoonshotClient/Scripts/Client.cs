@@ -53,6 +53,8 @@ public class Client : MonoBehaviour
 
     public float connectionTimeoutDur = 5f;
     private float lastConnectAttemptTime;
+    private float lastDisconnectTime;
+    public float reconnectDelay = 1f;
 
     //public StationData stationData;
     public Team team;
@@ -67,12 +69,19 @@ public class Client : MonoBehaviour
 
     public bool loadSceneByName = false;
     public string startMissionScene = "ActivitySceneExample";
+    public string sharedConclusionScene = "ResultsScene";
 
-    public delegate void OnFailedToConnect();
-    public OnFailedToConnect onDisconnect;
+    public delegate void OnConnect();
+    public OnConnect onConnect;
+    
+    public delegate void OnDisconnect();
+    public OnDisconnect onDisconnect;
 
     public delegate void OnStartRound(string _teamName, float _roundDuration, float _roundBufferDuration, int _round, string _JsonTeamData);
     public OnStartRound onStartRound;
+
+    public delegate void OnResumeRound(string _teamName, float _roundDurationRemaining, float _roundBufferDurationRemaining, MissionState _missionState, int _round, string _JsonTeamData);
+    public OnResumeRound onResumeRound;
 
     public delegate void OnPauseMission();
     public OnPauseMission onPauseMission;
@@ -92,6 +101,11 @@ public class Client : MonoBehaviour
     public delegate void OnEndMission();
     public OnEndMission onEndMission;
 
+    private IEnumerator delayedCallbackCoroutine;
+
+    private bool didInitialSetup = false;
+    private bool didApplicationQuit = false;
+
     private void Awake()
     {
         // if (Instance == null)
@@ -110,12 +124,7 @@ public class Client : MonoBehaviour
 
     private void Start()
     {
-        Rebex.Licensing.Key = "==FkkUSiRcotfNUNeU8Kj6ljpRThAac6UXzZNxAvu4zzy+Ig2smsV/3eZJFZL8XKLXjVRSb==";
-
-        imagePath = @"C:\Projects\rlmg\git\rlmg_moonshotsharedconclusion\Assets\StreamingAssets\Images";
-
-        tcp = new TCP();
-        //udp = new UDP();
+        DoInitialSetupIfNecessary();
 
         //bugbug this will be moved to where the workstation is initialized.
         //CreateNewTeam();
@@ -139,6 +148,23 @@ public class Client : MonoBehaviour
         //ClientSend.SendStationDataToServer();
     }
 
+    private void DoInitialSetupIfNecessary()
+    {
+        if (didInitialSetup)
+        {
+            return;
+        }
+        
+        Rebex.Licensing.Key = "==FkkUSiRcotfNUNeU8Kj6ljpRThAac6UXzZNxAvu4zzy+Ig2smsV/3eZJFZL8XKLXjVRSb==";
+
+        imagePath = @"C:\Projects\rlmg\git\rlmg_moonshotsharedconclusion\Assets\StreamingAssets\Images";
+
+        tcp = new TCP();
+        //udp = new UDP();
+
+        didInitialSetup = true;
+    }
+
     private void Update()
     {
         if (isConnected && tcp != null && !tcp.IsConnected && Time.time > lastConnectAttemptTime + connectionTimeoutDur)
@@ -146,6 +172,13 @@ public class Client : MonoBehaviour
             RLMGLogger.Instance.Log("Connection to (tcp) server timed out after " + connectionTimeoutDur + " seconds.", MESSAGETYPE.ERROR);
 
             Disconnect();
+        }
+
+        if (!isConnected && !didApplicationQuit && Time.time > lastDisconnectTime + reconnectDelay)
+        {
+            RLMGLogger.Instance.Log("Attempting reconnect (after being disconnected for " + reconnectDelay + " seconds)...", MESSAGETYPE.INFO);
+
+            ConnectToServer();
         }
     }
 
@@ -162,11 +195,15 @@ public class Client : MonoBehaviour
 
     private void OnApplicationQuit()
     {
+        didApplicationQuit = true;
+        
         Disconnect();
     }
 
     public void ConnectToServer(MoonshotStation moonshotStation)
     {
+        DoInitialSetupIfNecessary();
+        
         _moonshotStation = moonshotStation;
 
         InitializeClientData();
@@ -174,6 +211,16 @@ public class Client : MonoBehaviour
         isConnected = true;
         lastConnectAttemptTime = Time.time;
         tcp.Connect();
+    }
+
+    public void ConnectCallback()
+    {
+        //Debug.Log("Client.instance.ConnectCallback()");
+        
+        if (onConnect != null)
+        {
+            onConnect();
+        }
     }
 
     public class TCP
@@ -216,6 +263,8 @@ public class Client : MonoBehaviour
 
         private void ConnectCallback(IAsyncResult _result)
         {
+            Debug.Log("TCP.ConnectCallback()");
+            
             try
             {
                 socket.EndConnect(_result);
@@ -235,9 +284,12 @@ public class Client : MonoBehaviour
 
             receivedData = new Packet();
 
+            Debug.Log("BeginRead of receiveBuffer with ReceiveCallback in ConnectCallback");
             stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
 
             isConnected = true;
+
+            //instance.ConnectCallback();  //I was having weird problems with the delegate function called from this, so I instead tied it to ClientHandle.Join()
         }
 
         public void SendData(Packet _packet)
@@ -246,7 +298,7 @@ public class Client : MonoBehaviour
             {
                 if (socket != null)
                 {
-                    stream.BeginWrite(_packet.ToArray(), 0, _packet.Length(), null, null);
+                    stream.BeginWrite(_packet.ToArray(), 0, _packet.Length(), BeginWriteComplete, null);
                 }
             }
             catch (Exception _ex)
@@ -256,13 +308,28 @@ public class Client : MonoBehaviour
             }
         }
 
+        private void BeginWriteComplete(IAsyncResult _result)
+        {
+            Debug.Log("Begin Write Complete");
+            try
+            {
+                stream.EndWrite(_result);
+            }
+            catch (Exception _ex)
+            {
+                RLMGLogger.Instance.Log($"Error sending data to server via UDP: {_ex}", MESSAGETYPE.ERROR);
+            }
+        }
+
         private void ReceiveCallback(IAsyncResult _result)
         {
+            Debug.Log("Calling TCP Receive Callback");
             try
             {
                 int _byteLength = stream.EndRead(_result);
                 if (_byteLength <= 0)
                 {
+                    Debug.Log("Byte length was 0 so Disconnecting instance.");
                     instance.Disconnect();
                     return;
                 }
@@ -271,6 +338,7 @@ public class Client : MonoBehaviour
                 Array.Copy(receiveBuffer, _data, _byteLength);
 
                 receivedData.Reset(HandleData(_data));
+                Debug.Log("BeginRead of receiveBuffer with ReceiveCallback in ReceiveCallback");
                 stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
             }
             catch
@@ -327,6 +395,7 @@ public class Client : MonoBehaviour
 
         private void Disconnect()
         {
+            Debug.Log("Calling TCP Disconnect");
             instance.Disconnect();
 
             stream = null;
@@ -440,12 +509,14 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.sendAllStationDataToClient, ClientHandle.SendAllStationDataToClient},
             { (int)ServerPackets.sendEndMissionToClient, ClientHandle.SendEndMissionToClient},
             { (int)ServerPackets.sendErrorToClient, ClientHandle.SendErrorToClient},
+            { (int)ServerPackets.sendResumeRoundToClient, ClientHandle.SendResumeRoundToClient}
         };
         Debug.Log("Initialized packets.");
     }
 
     public void Disconnect()
     {
+        Debug.Log("Calling Client Disconnect");
         if (isConnected)
         {
             isConnected = false;
@@ -457,6 +528,8 @@ public class Client : MonoBehaviour
             {
                 udp.socket.Close();
             }
+
+            lastDisconnectTime = Time.time;
 
             //Debug.Log("Disconnected from server.");
             RLMGLogger.Instance.Log("Disconnected from server.", MESSAGETYPE.INFO);
@@ -504,8 +577,35 @@ public class Client : MonoBehaviour
         LoadMissionScene(false);
 
         //because of the prior scene load, wait a moment for any callbacks to be initiated in OnEnable() or Start()
-        StopCoroutine(SendStartRoundCallbackOnSlightDelay(_teamName, _roundDuration, _roundBufferDuration, _round, _JsonTeamData));
-        StartCoroutine(SendStartRoundCallbackOnSlightDelay(_teamName, _roundDuration, _roundBufferDuration, _round, _JsonTeamData));
+        //StopCoroutine(SendStartRoundCallbackOnSlightDelay(_teamName, _roundDuration, _roundBufferDuration, _round, _JsonTeamData));
+        if (delayedCallbackCoroutine != null)
+        {
+            StopCoroutine(delayedCallbackCoroutine);
+        }
+        delayedCallbackCoroutine = SendStartRoundCallbackOnSlightDelay(_teamName, _roundDuration, _roundBufferDuration, _round, _JsonTeamData);
+        StartCoroutine(delayedCallbackCoroutine);
+    }
+
+    public void ResumeRound(string _teamName, float _roundDurationRemaining, float _roundBufferDurationRemaining, MissionState _missionState, int _round, string _JsonTeamData)
+    {
+        RLMGLogger.Instance.Log("Client received 'resume round' from server.   missionState = " + _missionState.ToString(), MESSAGETYPE.INFO);
+
+        if (_roundDurationRemaining > 0 || _roundBufferDurationRemaining > 0)  //is still in activity or activity conclusion with "buffer" timer
+        {
+            LoadMissionScene(false);
+        }
+        else
+        {
+            LoadSharedConclusionScene(false);
+        }
+
+        //because of the prior scene load, wait a moment for any callbacks to be initiated in OnEnable() or Start()
+        if (delayedCallbackCoroutine != null)
+        {
+            StopCoroutine(delayedCallbackCoroutine);
+        }
+        delayedCallbackCoroutine = SendResumeRoundCallbackOnSlightDelay(_teamName, _roundDurationRemaining, _roundBufferDurationRemaining, _missionState, _round, _JsonTeamData);
+        StartCoroutine(delayedCallbackCoroutine);
     }
 
     private void LoadMissionScene(bool forceReload = true)
@@ -531,7 +631,33 @@ public class Client : MonoBehaviour
         }
         else
         {
-            Debug.Log("didn't load new scene because scene 0 is already the active scene and 'force reload' was false.   active scene = " + SceneManager.GetActiveScene().name + "   scene 0 = " + SceneManager.GetSceneByBuildIndex(0).name);
+            Debug.Log("didn't load new 'activity' scene because it is already the active scene and 'force reload' was false.   active scene = " + SceneManager.GetActiveScene().name);
+        }
+    }
+
+    private void LoadSharedConclusionScene(bool forceReload = true)
+    {
+        bool sceneIsAlreadyActive = loadSceneByName && !String.IsNullOrEmpty(sharedConclusionScene) ?
+            (SceneManager.GetActiveScene() == SceneManager.GetSceneByName(sharedConclusionScene)) :
+            (SceneManager.GetActiveScene() == SceneManager.GetSceneByBuildIndex(0));
+
+        if (forceReload || !sceneIsAlreadyActive)
+        {
+            
+            if (loadSceneByName && !System.String.IsNullOrEmpty(sharedConclusionScene))
+            {
+                Debug.Log(String.Format("Loading scene {0}",sharedConclusionScene));
+                SceneManager.LoadScene(sharedConclusionScene);
+            }
+            else
+            {
+                Debug.Log("Loading scene 1");
+                SceneManager.LoadScene(1);
+            }
+        }
+        else
+        {
+            Debug.Log("didn't load new 'shared conclusion' scene because it is already the active scene and 'force reload' was false.   active scene = " + SceneManager.GetActiveScene().name);
         }
     }
 
@@ -548,6 +674,19 @@ public class Client : MonoBehaviour
         ClientSend.SendStationDataToServer();
     }
 
+    IEnumerator SendResumeRoundCallbackOnSlightDelay(string _teamName, float _roundDurationRemaining, float _roundBufferDurationRemaining, MissionState _missionState, int _round, string _JsonTeamData)
+    {
+        yield return null;  //wait one frame
+
+        if (onResumeRound != null)
+        {
+            onResumeRound(_teamName, _roundDurationRemaining, _roundBufferDurationRemaining, _missionState, _round, _JsonTeamData);
+        }
+
+        // bugbug testing
+        //ClientSend.SendStationDataToServer();  //do we want this?
+    }
+
     internal void StartMission()
     {
         // todo - start mission....
@@ -557,8 +696,13 @@ public class Client : MonoBehaviour
         LoadMissionScene(false);
 
         //because of the prior scene load, wait a moment for any callbacks to be initiated in OnEnable() or Start()
-        StopCoroutine(SendStartMissionCallbackOnSlightDelay());
-        StartCoroutine(SendStartMissionCallbackOnSlightDelay());
+        //StopCoroutine(SendStartMissionCallbackOnSlightDelay());
+        if (delayedCallbackCoroutine != null)
+        {
+            StopCoroutine(delayedCallbackCoroutine);
+        }
+        delayedCallbackCoroutine = SendStartMissionCallbackOnSlightDelay();
+        StartCoroutine(delayedCallbackCoroutine);
     }
 
     IEnumerator SendStartMissionCallbackOnSlightDelay()
@@ -580,8 +724,13 @@ public class Client : MonoBehaviour
         LoadMissionScene();
 
         //because of the prior scene load, wait a moment for any callbacks to be initiated in OnEnable() or Start()
-        StopCoroutine(SendStopMissionCallbackOnSlightDelay());
-        StartCoroutine(SendStopMissionCallbackOnSlightDelay());
+        //StopCoroutine(SendStopMissionCallbackOnSlightDelay());
+        if (delayedCallbackCoroutine != null)
+        {
+            StopCoroutine(delayedCallbackCoroutine);
+        }
+        delayedCallbackCoroutine = SendStopMissionCallbackOnSlightDelay();
+        StartCoroutine(delayedCallbackCoroutine);
     }
 
     internal void EndMission()
@@ -606,8 +755,6 @@ public class Client : MonoBehaviour
 
     internal void PauseMission()
     {
-        // todo - Pause stuff....
-
         RLMGLogger.Instance.Log("Client received 'pause mission' from server.", MESSAGETYPE.INFO);
 
         if (onPauseMission != null)
@@ -618,8 +765,6 @@ public class Client : MonoBehaviour
 
     internal void UnPauseMission()
     {
-        // todo - UnPause stuff...
-
         RLMGLogger.Instance.Log("Client received 'unpause mission' from server.", MESSAGETYPE.INFO);
 
         if (onUnPauseMission != null)
@@ -631,6 +776,8 @@ public class Client : MonoBehaviour
     public void ReceivedAllStationData()
     {
         if (onReceivedAllStationData != null)
+        {
             onReceivedAllStationData();
+        }
     }
 }

@@ -596,6 +596,7 @@ Transform:
   - {fileID: 960209904}
   - {fileID: 301422064}
   - {fileID: 2105977602}
+  - {fileID: 1814425971}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5607,6 +5608,10 @@ PrefabInstance:
       propertyPath: timer
       value: 
       objectReference: {fileID: 301422062}
+    - target: {fileID: 5337720711339589673, guid: 7802213c7efde4619af1334c01d12e8e, type: 3}
+      propertyPath: secondaryTimer
+      value: 
+      objectReference: {fileID: 1814425970}
     - target: {fileID: 6441355343394225544, guid: 7802213c7efde4619af1334c01d12e8e, type: 3}
       propertyPath: m_text
       value: <mspace=0.73em>10</mspace>:<mspace=0.73em>00</mspace>
@@ -10005,7 +10010,7 @@ GameObject:
   - component: {fileID: 963194226}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12886,6 +12891,7 @@ MonoBehaviour:
   namesakeSequenceManager: {fileID: 11400000, guid: 30c9ccaf9b15f445ab056406d1919fca, type: 2}
   ConfigLoaded: {fileID: 11400000, guid: a81920f527d7f449a8f975afca5fd8fc, type: 2}
   mainTimer: {fileID: 301422062}
+  bufferTimer: {fileID: 1814425970}
   currentWindow: 0
   windowEvents:
   - {fileID: 11400000, guid: 20f88eafcbe9c4119983ec03af53569a, type: 2}
@@ -13009,6 +13015,7 @@ MonoBehaviour:
   uiManager: {fileID: 1328863887}
   mainTimer: {fileID: 301422062}
   closeTimer: {fileID: 2105977603}
+  bufferTimer: {fileID: 1814425970}
   gameState: {fileID: 11400000, guid: 697ff388aff8249d9b6ee08e618dfac2, type: 2}
   useServer: 1
 --- !u!114 &1328863892
@@ -17878,6 +17885,59 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &1814425969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1814425971}
+  - component: {fileID: 1814425970}
+  m_Layer: 0
+  m_Name: Buffer Timer (Just for visual display)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1814425970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814425969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b34dab55b684972be804f0d24a222e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 0
+  duration: 0
+  elapsed: 0
+  isCounting: 0
+  timeOutEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  LessThanOrEqualToThisTimer: {fileID: 0}
+  timeWarnings: []
+--- !u!4 &1814425971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1814425969}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 108907679}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1816626763
 GameObject:
   m_ObjectHideFlags: 0
@@ -23943,7 +24003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8919446495433222605, guid: 3e4be8107d0864848918695eed6b9dca, type: 3}
       propertyPath: m_text
-      value: 'Cargo Bay: Hunt Activity'
+      value: Lunar Lost and Found
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e4be8107d0864848918695eed6b9dca, type: 3}
@@ -26522,7 +26582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8919446495433222605, guid: 3e4be8107d0864848918695eed6b9dca, type: 3}
       propertyPath: m_text
-      value: 'Moon Area 2: Art Station'
+      value: Design a Mission Patch
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e4be8107d0864848918695eed6b9dca, type: 3}
@@ -26675,7 +26735,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8919446495433222605, guid: 3e4be8107d0864848918695eed6b9dca, type: 3}
       propertyPath: m_text
-      value: 'Moon Area 1: Map Table'
+      value: Place Your Moon Base
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e4be8107d0864848918695eed6b9dca, type: 3}
@@ -27445,7 +27505,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4078934416037438783}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -29875,7 +29935,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251683870}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -30454,7 +30514,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8919446495433222605, guid: 3e4be8107d0864848918695eed6b9dca, type: 3}
       propertyPath: m_text
-      value: 'Living Room: Charter Table'
+      value: Space Debates
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e4be8107d0864848918695eed6b9dca, type: 3}
@@ -33554,7 +33614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8919446495433222605, guid: 3e4be8107d0864848918695eed6b9dca, type: 3}
       propertyPath: m_text
-      value: 'Lab: Rover Activity'
+      value: Engineer a Rover
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e4be8107d0864848918695eed6b9dca, type: 3}

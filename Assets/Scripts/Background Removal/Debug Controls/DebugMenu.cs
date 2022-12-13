@@ -70,6 +70,11 @@ public class DebugMenu : MonoBehaviour
     private void OnDisable()
     {
         RLMGLogger.Instance.Log("Closing debug menu...", MESSAGETYPE.INFO);
+
+        OnResetToConfig();
+        ResetSettingsUI();
+        ResetDisplayOptions();
+        ResetDisplayOptionsUIToCurrentState();
     }
 
     public void InitializeDebugMenu()
@@ -119,6 +124,15 @@ public class DebugMenu : MonoBehaviour
             child.gameObject.GetComponent<Button>().interactable = true;
         }
         button.interactable = false;
+    }
+
+    private void ResetDisplayOptions()
+    {
+        displayOptions.doDrawPaperEdge = false;
+        displayOptions.doWarp = true;
+        displayOptions.showEdges = false;
+        displayOptions.doRemoveBackground = true;
+        displayOptions.doDrawMaxAreaContour = false;
     }
 
     private void ResetDisplayOptionsUIToCurrentState()

@@ -9,6 +9,7 @@ public class ClientSubscriber : MonoBehaviour
     public UIManager uiManager;
     public MoonshotTimer.Timer mainTimer;
     public MoonshotTimer.Timer closeTimer;
+    public MoonshotTimer.Timer bufferTimer;
 
     public GameState gameState;
 
@@ -23,6 +24,7 @@ public class ClientSubscriber : MonoBehaviour
             Client.instance.onUnPauseMission += UnPauseMission;
             Client.instance.onReceivedAllStationData += HandleAllStationData;
             Client.instance.onEndMission += EndMission;
+            Client.instance.onResumeRound += ResumeRound;
         }
     }
 
@@ -35,6 +37,7 @@ public class ClientSubscriber : MonoBehaviour
             Client.instance.onUnPauseMission -= UnPauseMission;
             Client.instance.onReceivedAllStationData -= HandleAllStationData;
             Client.instance.onEndMission -= EndMission;
+            Client.instance.onResumeRound -= ResumeRound;
         }
     }
 
@@ -50,7 +53,21 @@ public class ClientSubscriber : MonoBehaviour
         closeTimer.Reset();
         closeTimer.StartCounting();
 
+        //Buffer Timer - just for visual display
+        bufferTimer.duration = _roundBufferDuration;
+        bufferTimer.Reset();
+
+
         //Update Existing Team data or Add Team to gameState
+        UpdateExistingTeamOrAddNewTeam();
+
+        ClientSend.RequestAllStationData();
+
+        uiManager.StartOver(); //do open Welcome window
+    }
+
+    private void UpdateExistingTeamOrAddNewTeam()
+    {
         string[] teamNames = gameState.teams.Select(t => t.teamName).ToArray();
         if (teamNames.Contains(Client.instance.team.MoonshotTeamData.teamName))
         {
@@ -63,22 +80,45 @@ public class ClientSubscriber : MonoBehaviour
             gameState.AddTeam(Client.instance.team.MoonshotTeamData);
             gameState.SwitchTeam(gameState.teams.Count - 1);
         }
+    }
 
-        ClientSend.RequestAllStationData();
+    public void ResumeRound(string _teamName, float _roundDurationRemaining, float _roundBufferDurationRemaining, MissionState _missionState, int _round, string _JsonTeamData)
+    {
+        //Reset Timer
+        mainTimer.duration = _roundDurationRemaining;
+        mainTimer.Reset();
+        if (_missionState == MissionState.Running) mainTimer.StartCounting();
 
-        uiManager.StartOver(); //do open Welcome window
+        //Close Timer - just for animating the station to a close
+        closeTimer.duration = _roundDurationRemaining + _roundBufferDurationRemaining - 1; //close 1 second before next round
+        closeTimer.Reset();
+        if (_missionState == MissionState.Running) closeTimer.StartCounting();
+
+        //Buffer Timer - just for visual display
+        bufferTimer.duration = _roundBufferDurationRemaining;
+        bufferTimer.Reset();
+
+        UpdateExistingTeamOrAddNewTeam();
+
+        uiManager.ResetGame();
     }
 
     private void PauseMission()
     {
         mainTimer.PauseCounting();
         closeTimer.PauseCounting();
+        bufferTimer.PauseCounting();
     }
 
     private void UnPauseMission()
     {
-        mainTimer.StartCounting();
         closeTimer.StartCounting();
+
+        if (mainTimer.time > 0)
+            mainTimer.StartCounting();
+
+        if (mainTimer.time <= 0)
+            bufferTimer.StartCounting();
     }
 
     private void HandleAllStationData()

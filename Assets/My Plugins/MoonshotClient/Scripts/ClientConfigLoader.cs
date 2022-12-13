@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using rlmg.logging;
 
 public class ClientConfigLoader : ContentLoader
 {
@@ -48,8 +47,6 @@ public class ClientConfigLoader : ContentLoader
 
     protected override void FinishedLoadingContent()
     {
-        RLMGLogger.Instance.Log("Finished loading content by client config loader", MESSAGETYPE.INFO);
-
         base.FinishedLoadingContent();
 
         if (Client.instance != null)

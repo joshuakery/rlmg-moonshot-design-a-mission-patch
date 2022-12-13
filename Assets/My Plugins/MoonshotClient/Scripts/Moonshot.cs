@@ -22,8 +22,8 @@ public enum MissionType
 
 public enum MissionState
 {
-    Stopped = 0,
-    Running,
+    Running = 0,
+    Stopped,
     Paused
 }
 
