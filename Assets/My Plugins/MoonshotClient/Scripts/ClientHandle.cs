@@ -103,6 +103,8 @@ public class ClientHandle : MonoBehaviour
         //Debug.Log($"Start round with: {_teamName}");
         RLMGLogger.Instance.Log($"Start round with: {_teamName}", MESSAGETYPE.INFO);
 
+        Client.instance.missionState = MissionState.Running;
+
         Client.instance.StartRound(_teamName, _roundDuration, _roundBufferDuration, _round, _JsonTeamData);
 
 
@@ -150,6 +152,8 @@ public class ClientHandle : MonoBehaviour
 
         Client.instance.team.MoonshotTeamData.teamName = _teamName;
 
+        Client.instance.missionState = _missionState;
+
         RLMGLogger.Instance.Log($"Resume round with: {_teamName}", MESSAGETYPE.INFO);
 
         Client.instance.ResumeRound(_teamName, _roundDurationRemaining, _roundBufferDurationRemaining, _missionState, _round, _JsonTeamData);
@@ -157,11 +161,13 @@ public class ClientHandle : MonoBehaviour
 
     public static void SendPauseToClient(Packet _packet)
     {
+        Client.instance.missionState = MissionState.Paused;
         Client.instance.PauseMission();
     }
 
     public static void SendUnPauseToClient(Packet _packet)
     {
+        Client.instance.missionState = MissionState.Running;
         Client.instance.UnPauseMission();
     }
 
@@ -171,16 +177,19 @@ public class ClientHandle : MonoBehaviour
         int _missionTypeInt = _packet.ReadInt();
         MissionType _missionType = (MissionType)_missionTypeInt;
 
+        Client.instance.missionState = MissionState.Running;
         Client.instance.StartMission();
     }
 
     internal static void SendStopMissionToClient(Packet _packet)
     {
+        Client.instance.missionState = MissionState.Stopped;
         Client.instance.StopMission();
     }
 
     internal static void SendEndMissionToClient(Packet _packet)
     {
+        Client.instance.missionState = MissionState.Stopped;
         Client.instance.EndMission();
     }
 

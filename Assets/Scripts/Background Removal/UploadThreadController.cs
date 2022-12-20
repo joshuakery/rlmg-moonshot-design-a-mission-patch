@@ -15,7 +15,11 @@ namespace ArtScan.ScanSavingModule
 
             protected override void ThreadFunction()
             {
-                Debug.Log(filename);
+                if (RLMGLogger.Instance != null)
+                    RLMGLogger.Instance.Log(string.Format("Uploading {0}", filename), MESSAGETYPE.INFO);
+                else
+                    Debug.Log(string.Format("Uploading {0}", filename));
+
                 ClientSend.SendFileToServer(filename);
             }
         }
@@ -38,7 +42,7 @@ namespace ArtScan.ScanSavingModule
         {
             if (uploadThread == null || uploadThread.IsDone)
             {
-                UploadThread uploadThread = new UploadThread();
+                uploadThread = new UploadThread();
                 uploadThread.filename = filename;
 
                 uploadThread.Start();
@@ -49,7 +53,7 @@ namespace ArtScan.ScanSavingModule
         {
             if (uploadThread == null || uploadThread.IsDone)
             {
-                UploadThread uploadThread = new UploadThread();
+                uploadThread = new UploadThread();
                 uploadThread.filename = filename;
 
                 uploadThread.Start();

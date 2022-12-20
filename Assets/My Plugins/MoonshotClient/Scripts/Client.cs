@@ -59,6 +59,7 @@ public class Client : MonoBehaviour
     //public StationData stationData;
     public Team team;
     public MoonshotTeamData[] allStationData;
+    public MissionState missionState;
 
     private bool isConnected = false;
     private delegate void PacketHandler(Packet _packet);
@@ -263,7 +264,7 @@ public class Client : MonoBehaviour
 
         private void ConnectCallback(IAsyncResult _result)
         {
-            Debug.Log("TCP.ConnectCallback()");
+            //Debug.Log("TCP.ConnectCallback()");
             
             try
             {
@@ -284,7 +285,7 @@ public class Client : MonoBehaviour
 
             receivedData = new Packet();
 
-            Debug.Log("BeginRead of receiveBuffer with ReceiveCallback in ConnectCallback");
+            //Debug.Log("BeginRead of receiveBuffer with ReceiveCallback in ConnectCallback");
             stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
 
             isConnected = true;
@@ -310,7 +311,7 @@ public class Client : MonoBehaviour
 
         private void BeginWriteComplete(IAsyncResult _result)
         {
-            Debug.Log("Begin Write Complete");
+            //Debug.Log("Begin Write Complete");
             try
             {
                 stream.EndWrite(_result);
@@ -323,7 +324,7 @@ public class Client : MonoBehaviour
 
         private void ReceiveCallback(IAsyncResult _result)
         {
-            Debug.Log("Calling TCP Receive Callback");
+            //Debug.Log("Calling TCP Receive Callback");
             try
             {
                 int _byteLength = stream.EndRead(_result);
@@ -338,7 +339,7 @@ public class Client : MonoBehaviour
                 Array.Copy(receiveBuffer, _data, _byteLength);
 
                 receivedData.Reset(HandleData(_data));
-                Debug.Log("BeginRead of receiveBuffer with ReceiveCallback in ReceiveCallback");
+                //Debug.Log("BeginRead of receiveBuffer with ReceiveCallback in ReceiveCallback");
                 stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
             }
             catch
@@ -395,7 +396,7 @@ public class Client : MonoBehaviour
 
         private void Disconnect()
         {
-            Debug.Log("Calling TCP Disconnect");
+            //Debug.Log("Calling TCP Disconnect");
             instance.Disconnect();
 
             stream = null;
@@ -511,12 +512,12 @@ public class Client : MonoBehaviour
             { (int)ServerPackets.sendErrorToClient, ClientHandle.SendErrorToClient},
             { (int)ServerPackets.sendResumeRoundToClient, ClientHandle.SendResumeRoundToClient}
         };
-        Debug.Log("Initialized packets.");
+        //Debug.Log("Initialized packets.");
     }
 
     public void Disconnect()
     {
-        Debug.Log("Calling Client Disconnect");
+        //Debug.Log("Calling Client Disconnect");
         if (isConnected)
         {
             isConnected = false;

@@ -25,6 +25,8 @@ public class UIManager : MonoBehaviour
     public GameEvent ConfigLoaded;
     public MoonshotTimer.Timer mainTimer;
     public MoonshotTimer.Timer bufferTimer;
+    public MoonshotTimer.TimerDisplay timerDisplay;
+
     public int currentWindow;
     public List<GameEvent> windowEvents;
     public GameObject RemoveBackgroundDebugMenu;
@@ -97,7 +99,10 @@ public class UIManager : MonoBehaviour
 
         gameState.Reset();
 
-        if (mainTimer != null && mainTimer.time == 0) { mainTimer.Reset(); } //only ok to reset main timer if not set by server
+        if (mainTimer.time > 0)
+            timerDisplay.timer = mainTimer;
+        else
+            timerDisplay.timer = bufferTimer;
 
         if (doRestart) { StartCoroutine(LateStart()); }
         else { StartCoroutine(LateClose()); }
@@ -162,13 +167,20 @@ public class UIManager : MonoBehaviour
 
     public void StartOver()
     {
-        Debug.Log("Starting over");
-
         primarySequenceManager.CompleteCurrentSequence();
         namesakeSequenceManager.CompleteCurrentSequence();
 
         //gameState.Reset(); //do NOT clear scans
         myWebCamTextureToMatHelper.Initialize();
+
+        if (mainTimer != null && bufferTimer != null && timerDisplay != null)
+        {
+            if (mainTimer.time > 0)
+                timerDisplay.timer = mainTimer;
+            else
+                timerDisplay.timer = bufferTimer;
+        }
+
 
         CloseAllWindowsEvent.Raise();
         StartEvent.Raise();
@@ -187,6 +199,12 @@ public class UIManager : MonoBehaviour
 
     public void OnMainTimeout(float delay)
     {
+        if (bufferTimer != null)
+        {
+            bufferTimer.Reset();
+            bufferTimer.StartCounting();
+        }
+
         StartCoroutine(WrapUp(delay));
     }
 
@@ -199,13 +217,6 @@ public class UIManager : MonoBehaviour
 
         CloseAllWindowsEvent.Raise();
         EndingEvent.Raise();
-
-        if (bufferTimer != null)
-        {
-            bufferTimer.Reset();
-            bufferTimer.StartCounting();
-        }
-
     }
 
     public void GoToConclusion()
@@ -222,9 +233,6 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             DrawingsMenu.SetActive(!DrawingsMenu.activeSelf);
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
             RemoveBackgroundDebugMenu.SetActive(!RemoveBackgroundDebugMenu.activeSelf);
         }
         //Shared Conclusion

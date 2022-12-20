@@ -92,7 +92,6 @@ GameObject:
   - component: {fileID: 1741262326176587930}
   - component: {fileID: 7997430308759174595}
   - component: {fileID: 1462876555718352409}
-  - component: {fileID: 1346466249005182348}
   m_Layer: 5
   m_Name: Awaiting Server Response
   m_TagString: Untagged
@@ -225,34 +224,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiTweener: {fileID: 0}
   isOpen: 0
---- !u!114 &1346466249005182348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5155938794958862831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd4da8dd6f98b4323acaa3485a1317be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 430993b41919a4ada8bb8167c40df2c3, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2818177748678373196}
-        m_TargetAssemblyTypeName: AwaitingServerScreen, Assembly-CSharp
-        m_MethodName: OpenAndCompleteAsync
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &5224147356382403932
 GameObject:
   m_ObjectHideFlags: 0

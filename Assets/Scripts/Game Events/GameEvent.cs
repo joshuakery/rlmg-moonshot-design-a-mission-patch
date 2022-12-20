@@ -12,7 +12,7 @@ public class GameEvent : ScriptableObject
 
     public void Raise()
     {
-        RLMGLogger.Instance.Log("GameEvent raised: " + this.name, MESSAGETYPE.INFO);
+        //RLMGLogger.Instance.Log("GameEvent raised: " + this.name, MESSAGETYPE.INFO);
         for (int i = listeners.Count -1; i >= 0; i--) {
             listeners[i].OnEventRaised();
         }

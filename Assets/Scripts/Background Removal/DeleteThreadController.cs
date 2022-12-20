@@ -37,7 +37,7 @@ namespace ArtScan.ScanSavingModule
         {
             if (deleteThread == null || deleteThread.IsDone)
             {
-                DeleteThread deleteThread = new DeleteThread();
+                deleteThread = new DeleteThread();
                 deleteThread.filename = filename;
 
                 deleteThread.Start();
@@ -48,7 +48,7 @@ namespace ArtScan.ScanSavingModule
         {
             if (deleteThread == null || deleteThread.IsDone)
             {
-                DeleteThread deleteThread = new DeleteThread();
+                deleteThread = new DeleteThread();
                 deleteThread.filename = filename;
 
                 deleteThread.Start();

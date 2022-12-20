@@ -31,7 +31,7 @@ public class Checklist : MonoBehaviour
 
     private void OnEnable()
     {
-        ReOrganizeToTop();
+        //ReOrganizeToTop();
         UpdateChecklist();
     }
 

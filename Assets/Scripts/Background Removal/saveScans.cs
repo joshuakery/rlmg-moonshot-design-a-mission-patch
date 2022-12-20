@@ -92,7 +92,7 @@ namespace ArtScan.ScanSavingModule
                         {
                             if (doOverwrite || !File.Exists(Path.Join(dirPath, filename)))
                             {
-                                RLMGLogger.Instance.Log(String.Format("Downloading number {0} of {1} scans.", count, filenames.Length), MESSAGETYPE.INFO);
+                                RLMGLogger.Instance.Log(String.Format("Downloading number {0} of {1} scans: {2}", count, filenames.Length, filename), MESSAGETYPE.INFO);
 
                                 yield return downloadThreadController.DownloadCoroutine(filename, dirPath);
 

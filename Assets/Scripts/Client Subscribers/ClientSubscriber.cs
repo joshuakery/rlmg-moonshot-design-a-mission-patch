@@ -113,9 +113,7 @@ public class ClientSubscriber : MonoBehaviour
     private void UnPauseMission()
     {
         closeTimer.StartCounting();
-
-        if (mainTimer.time > 0)
-            mainTimer.StartCounting();
+        mainTimer.StartCounting();
 
         if (mainTimer.time <= 0)
             bufferTimer.StartCounting();

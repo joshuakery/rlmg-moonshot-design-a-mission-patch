@@ -393,4 +393,9 @@ public class ContentLoader : MonoBehaviour
 
 		return audioType;
 	}
+
+	public string GetSaveLocation()
+	{
+		return ContentDirectory + "/" + contentFilename;
+	}
 }

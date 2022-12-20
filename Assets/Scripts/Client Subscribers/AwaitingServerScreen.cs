@@ -13,14 +13,11 @@ public class AwaitingServerScreen : MonoBehaviour
 
     private void Start()
     {
-        OpenAndCompleteAsync();
-    }
-
-    public void OpenAndCompleteAsync()
-    {
         if (genericWindow != null)
         {
-            genericWindow.OpenAndCompleteAsync();
+            Debug.Log("opening...");
+            genericWindow.Open();
+            genericWindow.uiTweener.sequenceManager.CompleteCurrentSequence();
         }
     }
 
@@ -38,7 +35,8 @@ public class AwaitingServerScreen : MonoBehaviour
         if (Client.instance != null)
         {
             Client.instance.onStartRound += StartRound;
-            Client.instance.onEndMission += EndMission;
+            Client.instance.onResumeRound += ResumeRound;
+            Client.instance.onStopMission += StopMission;
         }
     }
 
@@ -47,7 +45,8 @@ public class AwaitingServerScreen : MonoBehaviour
         if (Client.instance != null)
         {
             Client.instance.onStartRound -= StartRound;
-            Client.instance.onEndMission -= EndMission;
+            Client.instance.onResumeRound -= ResumeRound;
+            Client.instance.onStopMission -= StopMission;
         }
     }
 
@@ -56,7 +55,12 @@ public class AwaitingServerScreen : MonoBehaviour
         if (genericWindow != null) { genericWindow.Close(); }
     }
 
-    private void EndMission()
+    private void ResumeRound(string _teamName, float _roundDurationRemaining, float _roundBufferDurationRemaining, MissionState _missionState, int _round, string _JsonTeamData)
+    {
+        if (genericWindow != null) { genericWindow.Close(); }
+    }
+
+    private void StopMission()
     {
         if (genericWindow != null) { genericWindow.Open(); }
     }

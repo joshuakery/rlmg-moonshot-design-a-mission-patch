@@ -1,5 +1,5 @@
 {
-	"serverAddress": "10.0.8.218",
+	"serverAddress": "dev3.sounddev.com",
 	"port": 26950,
 	"ftpsPort": 2222,
 	"ftpsUsername": "moonshot",

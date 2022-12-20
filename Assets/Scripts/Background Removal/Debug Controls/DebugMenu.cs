@@ -249,17 +249,30 @@ public class DebugMenu : MonoBehaviour
 
             string json = JsonUtility.ToJson(originalConfigData, true);
 
-            string filename = configLoader.contentFilename;
-            string filepath = Path.Join(Application.streamingAssetsPath,filename);
-            File.WriteAllText(filepath, json);
+            string filepath = configLoader.GetSaveLocation();
+            try
+            {
+                File.WriteAllText(filepath, json);
+                RLMGLogger.Instance.Log("Saving cam config to " + filepath, MESSAGETYPE.INFO);
 
-            resetButton.interactable = false;
+                resetButton.interactable = false;
 
-            RLMGLogger.Instance.Log("Camera settings saved to JSON.", MESSAGETYPE.INFO);
+                if (feedback != null)
+                {
+                    feedback.GetComponent<Image>().color = SUCCESS_COLOR;
+                    feedback.transform.GetChild(0).GetComponent<TMP_Text>().text = "Camera settings saved at " + DateTime.Now.ToString();
+                }
+            }
+            catch (System.Exception e)
+            {
+                RLMGLogger.Instance.Log(e.ToString(), MESSAGETYPE.ERROR);
 
-            if (feedback != null)
-                feedback.GetComponent<Image>().color = SUCCESS_COLOR;
-                feedback.transform.GetChild(0).GetComponent<TMP_Text>().text = "Camera settings saved at " + DateTime.Now.ToString();
+                if (feedback != null)
+                {
+                    feedback.GetComponent<Image>().color = ERROR_COLOR;
+                    feedback.transform.GetChild(0).GetComponent<TMP_Text>().text = "Camera settings not saved! " + DateTime.Now.ToString();
+                }
+            }
         }
         else
         {

@@ -19,6 +19,6 @@
         "contrast": 161
     },
     "errorDisplaySettings": {
-	"cameraDisconnectTimeout": 2.5
+        "cameraDisconnectTimeout": 2.5
     }
 }

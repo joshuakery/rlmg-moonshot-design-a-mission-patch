@@ -14,10 +14,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/DEPRECATED Mission1-Async.unity
     guid: 02ba6e88bf5a349f0ad1bbc7f37799f3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Mission1.unity
     guid: f4b740b05c8f44e098a33acd35963da3
-  - enabled: 1
+  - enabled: 0
     path: Assets/My Plugins/SharedConclusion/Scenes/ResultsScene.unity
     guid: 2965bb9837ba24dfa8b71e6de0872260
   - enabled: 0
@@ -26,7 +26,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/DEPRECATED_Space Now.unity
     guid: 78a02207216e147348b1267b4fae0dfe
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Space Now.unity
     guid: 43f4f198309b841868492dfba7b55a15
   - enabled: 0

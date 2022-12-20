@@ -41,10 +41,7 @@ namespace ArtScan.MuralPositionsModule
 			yield break;
 		}
 
-		public string GetSaveLocation()
-		{
-			return ContentDirectory + "/" + contentFilename;
-		}
+		
 	}
 }
 
