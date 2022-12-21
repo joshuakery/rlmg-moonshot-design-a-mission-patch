@@ -92,14 +92,17 @@ namespace ArtScan.ErrorDisplayModule
             {
                 case myWebCamTextureToMatHelper.ErrorCode.CAMERA_DEVICE_NOT_EXIST:
                     errorText.text = "No camera devices detected.";
+                    RLMGLogger.Instance.Log("CAMERA ERROR: No camera devices detected", MESSAGETYPE.ERROR);
                     break;
 
                 case myWebCamTextureToMatHelper.ErrorCode.TIMEOUT:
                     errorText.text = "Camera has timed out.\n\nThis might be because the camera is not sending any frame data to the app.";
+                    RLMGLogger.Instance.Log("CAMERA ERROR: Camera has timed out.", MESSAGETYPE.ERROR);
                     break;
 
                 case myWebCamTextureToMatHelper.ErrorCode.CAMERA_PERMISSION_DENIED:
                     errorText.text = "Camera permission denied.";
+                    RLMGLogger.Instance.Log("CAMERA ERROR: Camera permission denied.", MESSAGETYPE.ERROR);
                     break;
             }
         }
@@ -135,7 +138,10 @@ namespace ArtScan.ErrorDisplayModule
         {
             while (doAttemptRecovery)
             {
+                RLMGLogger.Instance.Log("CAMERA RE-INIT: Attempting auto-recovery after a camera error.", MESSAGETYPE.INFO);
+
                 ReInitialize();
+
                 yield return new WaitForSeconds(autoRecoveryInterval);
             }
         }
@@ -148,10 +154,12 @@ namespace ArtScan.ErrorDisplayModule
             {
                 case myWebCamTextureToMatHelper.WarnCode.WRONG_CAMERA_FRONTFACING_SELECTED:
                     warningText.text = "The requested camera was not found, and the first frontfacing camera was used instead.";
+                    RLMGLogger.Instance.Log("CAMERA WARNING: First FRONTFACING camera used instead of requested camera.", MESSAGETYPE.INFO);
                     break;
 
                 case myWebCamTextureToMatHelper.WarnCode.WRONG_CAMERA_FIRST_SELECTED:
                     warningText.text = "The requested camera was not found, and the first camera was used instead.";
+                    RLMGLogger.Instance.Log("CAMERA WARNING: First camera OF ANY KIND used instead of requested camera.", MESSAGETYPE.INFO);
                     break;
             }
         }
@@ -186,7 +194,11 @@ namespace ArtScan.ErrorDisplayModule
                     {
                         webCamTextureToMatHelper.Pause();
 
+                        RLMGLogger.Instance.Log("CAMERA RE-INIT: Checking for updated frames timed out in Update loop.", MESSAGETYPE.INFO);
+
                         ReInitialize();
+
+                        lastUpdateTime = 0;
                     }
                 }
             }
@@ -195,7 +207,7 @@ namespace ArtScan.ErrorDisplayModule
         private void ReInitialize()
         {
             RLMGLogger.Instance.Log(
-                System.String.Format("Re-initializing...", webCamTextureToMatHelper.requestedDeviceName),
+                System.String.Format("Re-initializing {0}...", webCamTextureToMatHelper.requestedDeviceName),
                 MESSAGETYPE.INFO
             );
 

@@ -11,16 +11,22 @@ namespace ArtScan.ScanSavingModule
 
         private void OnEnable()
         {
-            Client.instance.onStartRound += StartRound;
-            Client.instance.onResumeRound += ResumeRound;
-            Client.instance.onEndMission += EndMission;
+            if (Client.instance != null)
+            {
+                Client.instance.onStartRound += StartRound;
+                Client.instance.onResumeRound += ResumeRound;
+                Client.instance.onEndMission += EndMission;
+            }
         }
 
         private void OnDisable()
         {
-            Client.instance.onStartRound -= StartRound;
-            Client.instance.onResumeRound -= ResumeRound;
-            Client.instance.onEndMission -= EndMission;
+            if (Client.instance != null)
+            {
+                Client.instance.onStartRound -= StartRound;
+                Client.instance.onResumeRound -= ResumeRound;
+                Client.instance.onEndMission -= EndMission;
+            }
         }
 
         private void OnDestroy()
@@ -30,7 +36,6 @@ namespace ArtScan.ScanSavingModule
 
         private void AbortAll()
         {
-            Debug.Log("Aborting threads...");
             uploadThreadController.AbortThread();
             downloadThreadController.AbortThread();
             deleteThreadController.AbortThread();

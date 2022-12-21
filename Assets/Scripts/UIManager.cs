@@ -233,6 +233,9 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             DrawingsMenu.SetActive(!DrawingsMenu.activeSelf);
+        }
+        else if (Input.GetKeyDown(KeyCode.I))
+        {
             RemoveBackgroundDebugMenu.SetActive(!RemoveBackgroundDebugMenu.activeSelf);
         }
         //Shared Conclusion
@@ -271,10 +274,6 @@ public class UIManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.U))
         {
             CloseAllWindowsEvent.Raise();
-        }
-        else if (Input.GetKeyDown(KeyCode.W))
-        {
-            StartEvent.Raise();
         }
         else if (Input.GetKeyDown(KeyCode.T))
         {
