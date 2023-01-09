@@ -29,6 +29,8 @@ namespace ArtScan.CoreModule
                 button.interactable = (
                     myWebCamTextureToMatHelper.IsPlaying() &&
                     asynchronousRemoveBackground.paperFound &&
+                    asynchronousRemoveBackground.consistentPaperFound &&
+                    asynchronousRemoveBackground.consistentPaperArea &&
                     asynchronousRemoveBackground.consistentRunningAverage &&
                     !refinedScanController.anotherScanIsUnderway
                 );

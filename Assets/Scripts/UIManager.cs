@@ -99,10 +99,13 @@ public class UIManager : MonoBehaviour
 
         gameState.Reset();
 
-        if (mainTimer.time > 0)
-            timerDisplay.timer = mainTimer;
-        else
-            timerDisplay.timer = bufferTimer;
+        if (mainTimer != null)
+        {
+            if (mainTimer != null && mainTimer.time > 0)
+                timerDisplay.timer = mainTimer;
+            else
+                timerDisplay.timer = bufferTimer;
+        }
 
         if (doRestart) { StartCoroutine(LateStart()); }
         else { StartCoroutine(LateClose()); }
@@ -124,6 +127,7 @@ public class UIManager : MonoBehaviour
 
             CloseAllWindowsEvent.Raise();
 
+            RLMGLogger.Instance.Log("Starting app...");
             StartEvent.Raise();
             started = true;
 
@@ -167,12 +171,14 @@ public class UIManager : MonoBehaviour
 
     public void StartOver()
     {
+        RLMGLogger.Instance.Log("Starting over from UI manager...", MESSAGETYPE.INFO);
+
         primarySequenceManager.CompleteCurrentSequence();
         namesakeSequenceManager.CompleteCurrentSequence();
 
         //gameState.Reset(); //do NOT clear scans
-        myWebCamTextureToMatHelper.Initialize();
-
+        //myWebCamTextureToMatHelper.Initialize();
+        
         if (mainTimer != null && bufferTimer != null && timerDisplay != null)
         {
             if (mainTimer.time > 0)
@@ -180,7 +186,6 @@ public class UIManager : MonoBehaviour
             else
                 timerDisplay.timer = bufferTimer;
         }
-
 
         CloseAllWindowsEvent.Raise();
         StartEvent.Raise();

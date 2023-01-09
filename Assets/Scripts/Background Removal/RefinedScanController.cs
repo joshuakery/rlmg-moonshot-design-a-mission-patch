@@ -11,6 +11,7 @@ using OpenCVForUnity.UnityUtils.Helper;
 using ArtScan.CoreModule;
 using ArtScan;
 using rlmg.logging;
+using TMPro;
 
 namespace ArtScan.CoreModule
 {
@@ -37,6 +38,8 @@ namespace ArtScan.CoreModule
         public GameEvent NewPreview;
 
         public Mat previewMat;
+
+        public TMP_Text scanFailedDisplay;
 
         private void Start()
         {
@@ -126,16 +129,56 @@ namespace ArtScan.CoreModule
                 // }
 
             }
+        }
 
-            // asynchronousRemoveBackground.webCamTextureToMatHelper.Play();  
+        private IEnumerator SyncingTimeout()
+        {
+            DateTime before = DateTime.Now;
 
+            yield return new WaitForSeconds(5f);
+
+            if (asynchronousRemoveBackground.shouldCopyToRefinedMat)
+            {
+                asynchronousRemoveBackground.shouldCopyToRefinedMat = false;
+
+                AbortRefinedScan();
+                StopAllCoroutines();
+
+                DateTime after = DateTime.Now;
+
+                TimeSpan duration = after.Subtract(before);
+
+                RLMGLogger.Instance.Log(
+                    String.Format("Syncing timeout aborted scan after {0} milliseconds.", duration.TotalMilliseconds),
+                    MESSAGETYPE.INFO
+                );
+
+                if (scanFailedDisplay != null) { scanFailedDisplay.text = "Syncing timed out."; }
+                RLMGLogger.Instance.Log("Getting a frame from live preview timed out.", MESSAGETYPE.ERROR);
+                StartCoroutine(RaiseScanFailed());
+            }
 
         }
 
         private IEnumerator DoRefinedScanAfterSyncing()
         {
             asynchronousRemoveBackground.shouldCopyToRefinedMat = true;
+
+            StartCoroutine(SyncingTimeout());
+
+            DateTime before = DateTime.Now;
+
             yield return StartCoroutine(WaitForRefinedMatReady());
+
+            DateTime after = DateTime.Now;
+
+            TimeSpan duration = after.Subtract(before);
+
+            RLMGLogger.Instance.Log(
+                String.Format("Refined mat ready in {0} milliseconds.", duration.TotalMilliseconds),
+                MESSAGETYPE.INFO
+            );
+
             asynchronousRemoveBackground.refinedMatReady = false;
             StartCoroutine(DoRefinedScan());
         }
@@ -175,27 +218,49 @@ namespace ArtScan.CoreModule
 
         public void OnBeginScan()
         {
-            StopAllCoroutines();
-            AbortRefinedScan();
-
+            //Check 1 - is the webcam on?
             if (!asynchronousRemoveBackground.webCamTextureToMatHelper ||
                 !asynchronousRemoveBackground.webCamTextureToMatHelper.IsPlaying()
                 )
             {
+                if (scanFailedDisplay != null) { scanFailedDisplay.text = "Webcam is not playing."; }
                 RLMGLogger.Instance.Log("Cannot do refined scan because webcam is not playing.", MESSAGETYPE.ERROR);
                 StartCoroutine(RaiseScanFailed());
                 return;
             }
 
-            if (!anotherScanIsUnderway)
+            //Check 2 - have we found the bounds of the paper?
+            if (!asynchronousRemoveBackground.paperFound)
             {
-                StartCoroutine(DoRefinedScanAfterSyncing());
+                if (scanFailedDisplay != null) { scanFailedDisplay.text = "No paper found."; }
+                RLMGLogger.Instance.Log("Cannot do refined scan because the paper cannot be found.", MESSAGETYPE.ERROR);
+                StartCoroutine(RaiseScanFailed());
+                return;
             }
-            else
+
+            //Check 3 - do we have a consistent running average?
+            if (!asynchronousRemoveBackground.consistentRunningAverage)
             {
+                if (scanFailedDisplay != null) { scanFailedDisplay.text = "No artwork detected."; }
+                RLMGLogger.Instance.Log("Cannot do refined scan because we do not have a consistent running average.", MESSAGETYPE.ERROR);
+                StartCoroutine(RaiseScanFailed());
+                return;
+            }
+
+            StopAllCoroutines();
+            AbortRefinedScan();
+
+            //Check 4
+            if (anotherScanIsUnderway) //should always be false after AbortRefinedScan()
+            {
+                if (scanFailedDisplay != null) { scanFailedDisplay.text = "Another scan is underway."; }
                 RLMGLogger.Instance.Log("Cannot do refined scan because another refined scan is underway.", MESSAGETYPE.ERROR);
+                StartCoroutine(RaiseScanFailed());
+                return;
                 //todo something to stop the audio loop from playing, or keep it from playing before passing this check
             }
+
+            StartCoroutine(DoRefinedScanAfterSyncing());
         }
 
         /// <summary>

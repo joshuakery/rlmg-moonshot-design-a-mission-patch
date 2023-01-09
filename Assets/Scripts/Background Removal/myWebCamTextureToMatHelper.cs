@@ -442,6 +442,8 @@ namespace OpenCVForUnity.UnityUtils.Helper
         /// </summary>
         public virtual void Initialize()
         {
+            RLMGLogger.Instance.Log("Initializing from myWebCamTextureToMatHelper...", MESSAGETYPE.INFO);
+
             if (isInitWaiting)
             {
                 CancelInitCoroutine();
@@ -737,6 +739,7 @@ namespace OpenCVForUnity.UnityUtils.Helper
                     break;
                 }
 
+                // //use this for simulating a timeout
                 //initFrameCount++;
                 //yield return null;
                 //continue;
@@ -1264,6 +1267,8 @@ namespace OpenCVForUnity.UnityUtils.Helper
         /// </summary>
         protected virtual void ReleaseResources()
         {
+            RLMGLogger.Instance.Log("Releasing resources...", MESSAGETYPE.INFO);
+
             isInitWaiting = false;
             hasInitDone = false;
 

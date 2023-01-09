@@ -32,6 +32,8 @@ namespace ArtScan.CamConfigLoaderModule
 
 		public RemoveBackgroundSettings.PostProcessingSettings postProcessingSettings;
 
+		public RemoveBackgroundSettings.EnableBeginScanButtonSettings enableBeginScanButtonSettings;
+
 		public ErrorDisplaySettings errorDisplaySettings;
 		
 	}
@@ -67,7 +69,20 @@ namespace ArtScan.CamConfigLoaderModule
 				settings.doSizeToFit = configData.doSizeToFit;
 				settings.doCropToBoundingBox = configData.doCropToBoundingBox;
 
-				settings.postProcessingSettings = configData.postProcessingSettings;
+				settings.postProcessingSettings = new RemoveBackgroundSettings.PostProcessingSettings();
+				settings.postProcessingSettings.brightness = configData.postProcessingSettings.brightness;
+				settings.postProcessingSettings.contrast = configData.postProcessingSettings.contrast;
+
+				settings.enableBeginScanButtonSettings = new RemoveBackgroundSettings.EnableBeginScanButtonSettings();
+
+				settings.enableBeginScanButtonSettings.minimumPaperFoundFrames = configData.enableBeginScanButtonSettings.minimumPaperFoundFrames;
+
+				settings.enableBeginScanButtonSettings.consistentPaperAreaThreshold = configData.enableBeginScanButtonSettings.consistentPaperAreaThreshold;
+				settings.enableBeginScanButtonSettings.minimumPaperConsistentFrames = configData.enableBeginScanButtonSettings.minimumPaperConsistentFrames;
+
+				settings.enableBeginScanButtonSettings.consistentScanAreaThreshold = configData.enableBeginScanButtonSettings.consistentScanAreaThreshold;
+				settings.enableBeginScanButtonSettings.minimumConsistentFrames = configData.enableBeginScanButtonSettings.minimumConsistentFrames;
+				settings.enableBeginScanButtonSettings.minimumScanSize = configData.enableBeginScanButtonSettings.minimumScanSize;
 			}
 
 			if (errorDisplaySettingsSO != null)

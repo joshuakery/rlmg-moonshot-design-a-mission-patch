@@ -13,6 +13,17 @@ public class RemoveBackgroundSettings : ScriptableObject
         public int contrast = 127;
     }
 
+    [System.Serializable]
+    public class EnableBeginScanButtonSettings
+    {
+        public int minimumPaperFoundFrames = 2;
+        public float consistentPaperAreaThreshold = 0.5f;
+        public int minimumPaperConsistentFrames = 2;
+        public float consistentScanAreaThreshold = 0.5f;
+        public int minimumScanSize = 25;
+        public int minimumConsistentFrames = 2;
+    }
+
     public string saveDir = "SavedScans";
     public string trashDir = "TrashedScans";
 
@@ -50,6 +61,8 @@ public class RemoveBackgroundSettings : ScriptableObject
 
     /// Post Processing
     public PostProcessingSettings postProcessingSettings;
+
+    public EnableBeginScanButtonSettings enableBeginScanButtonSettings;
 
 }
 

@@ -18,7 +18,16 @@
         "brightness": 344,
         "contrast": 161
     },
+    "enableBeginScanButtonSettings": {
+        "minimumPaperFoundFrames": 5,
+        "consistentPaperAreaThreshold": 0.1,
+        "minimumPaperConsistentFrames": 5,
+        "consistentScanAreaThreshold": 0.4,
+        "minimumScanSize": 50,
+        "minimumConsistentFrames": 11
+    },
     "errorDisplaySettings": {
-        "cameraDisconnectTimeout": 2.5
+        "doAttemptCameraRestart": true,
+        "cameraDisconnectTimeout": 11.0
     }
 }

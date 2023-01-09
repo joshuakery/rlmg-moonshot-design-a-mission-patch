@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveDir: Images
   trashDir: Trashed Images
-  clearCacheOnQuit: 0
+  clearSaveDirOnQuit: 1
+  clearTrashDirOnQuit: 1
+  doSaveCroppedToBoundingBox: 1
   targetWidth: 750
   targetHeight: 750
   brightness: 255
@@ -25,4 +27,12 @@ MonoBehaviour:
   cannyApertureSize: 3
   doCropToBoundingBox: 1
   doSizeToFit: 1
-  doSaveCroppedToBoundingBox: 1
+  postProcessingSettings:
+    brightness: 344
+    contrast: 161
+  enableBeginScanButtonSettings:
+    consistentPaperAreaThreshold: 0.5
+    minimumPaperConsistentFrames: 2
+    consistentScanAreaThreshold: 0.5
+    minimumScanSize: 50
+    minimumConsistentFrames: 5

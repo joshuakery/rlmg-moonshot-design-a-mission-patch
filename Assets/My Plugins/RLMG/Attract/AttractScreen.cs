@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.Video;
+using rlmg.logging;
 
 public class AttractScreen : MonoBehaviour
 {
@@ -132,7 +133,8 @@ public class AttractScreen : MonoBehaviour
 
 	public void OpenAttractScreen()
 	{
-		Debug.Log("Opening attract...");
+		if (!isOpen)
+			RLMGLogger.Instance.Log("Opening attract...", MESSAGETYPE.INFO);
 
 		timeOfLastInput = Time.time;
 
@@ -160,7 +162,7 @@ public class AttractScreen : MonoBehaviour
 
 	public void CloseAttractScreen()
 	{
-		Debug.Log("close attract");
+		RLMGLogger.Instance.Log("Closing attract...", MESSAGETYPE.INFO);
 
 		isOpen = false;
 

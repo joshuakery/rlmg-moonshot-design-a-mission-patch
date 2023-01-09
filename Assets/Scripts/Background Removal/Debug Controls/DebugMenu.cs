@@ -53,6 +53,9 @@ public class DebugMenu : MonoBehaviour
     public Toggle showEdgesToggle;
     public Toggle doRemoveBackgroundToggle;
     public Toggle doDrawMaxAreaContourToggle;
+
+    public Slider minimumConsistentFrames;
+    public Slider minimumScanSize;
     
     public Button resetButton;
     public GameObject feedback;
@@ -72,7 +75,6 @@ public class DebugMenu : MonoBehaviour
         RLMGLogger.Instance.Log("Closing debug menu...", MESSAGETYPE.INFO);
 
         OnResetToConfig();
-        ResetSettingsUI();
         ResetDisplayOptions();
         ResetDisplayOptionsUIToCurrentState();
     }
@@ -186,6 +188,10 @@ public class DebugMenu : MonoBehaviour
         pBrightnessSlider.value = settings.postProcessingSettings.brightness;
         pContrastSlider.value = settings.postProcessingSettings.contrast;
 
+        //Thresholds Settings
+        minimumConsistentFrames.value = settings.enableBeginScanButtonSettings.minimumConsistentFrames;
+        minimumScanSize.value = settings.enableBeginScanButtonSettings.minimumScanSize;
+
         resetButton.interactable = false;
     }
 
@@ -209,7 +215,11 @@ public class DebugMenu : MonoBehaviour
             settings.doSizeToFit = originalConfigData.doSizeToFit;
             settings.doCropToBoundingBox = originalConfigData.doCropToBoundingBox;
 
-            settings.postProcessingSettings = originalConfigData.postProcessingSettings;
+            settings.postProcessingSettings.brightness = originalConfigData.postProcessingSettings.brightness;
+            settings.postProcessingSettings.contrast = originalConfigData.postProcessingSettings.contrast;
+
+            settings.enableBeginScanButtonSettings.minimumConsistentFrames = originalConfigData.enableBeginScanButtonSettings.minimumConsistentFrames;
+            settings.enableBeginScanButtonSettings.minimumScanSize = originalConfigData.enableBeginScanButtonSettings.minimumScanSize;
 
             ResetSettingsUI();
 
@@ -245,7 +255,11 @@ public class DebugMenu : MonoBehaviour
             originalConfigData.doSizeToFit = settings.doSizeToFit;
             originalConfigData.doCropToBoundingBox = settings.doCropToBoundingBox;
 
-            originalConfigData.postProcessingSettings = settings.postProcessingSettings;
+            originalConfigData.postProcessingSettings.brightness = settings.postProcessingSettings.brightness;
+            originalConfigData.postProcessingSettings.contrast = settings.postProcessingSettings.contrast;
+
+            originalConfigData.enableBeginScanButtonSettings.minimumConsistentFrames = settings.enableBeginScanButtonSettings.minimumConsistentFrames;
+            originalConfigData.enableBeginScanButtonSettings.minimumScanSize = settings.enableBeginScanButtonSettings.minimumScanSize;
 
             string json = JsonUtility.ToJson(originalConfigData, true);
 
@@ -299,7 +313,10 @@ public class DebugMenu : MonoBehaviour
             settings.doSizeToFit != originalConfigData.doSizeToFit ||
 
             settings.postProcessingSettings.brightness != originalConfigData.postProcessingSettings.brightness ||
-            settings.postProcessingSettings.contrast != originalConfigData.postProcessingSettings.contrast
+            settings.postProcessingSettings.contrast != originalConfigData.postProcessingSettings.contrast ||
+
+            settings.enableBeginScanButtonSettings.minimumConsistentFrames != originalConfigData.enableBeginScanButtonSettings.minimumConsistentFrames ||
+            settings.enableBeginScanButtonSettings.minimumScanSize != originalConfigData.enableBeginScanButtonSettings.minimumScanSize
         );
     }
 
@@ -405,6 +422,18 @@ public class DebugMenu : MonoBehaviour
     {
         settings.postProcessingSettings.contrast = (int)pContrastSlider.value;
 
+        resetButton.interactable = AreSettingsChanged();
+    }
+
+    public void OnMinimumConsistentFramesValueChanged()
+    {
+        settings.enableBeginScanButtonSettings.minimumConsistentFrames = (int)minimumConsistentFrames.value;
+        resetButton.interactable = AreSettingsChanged();
+    }
+
+    public void OnMinimumScanSizeValueChanged()
+    {
+        settings.enableBeginScanButtonSettings.minimumScanSize = (int)minimumScanSize.value;
         resetButton.interactable = AreSettingsChanged();
     }
 

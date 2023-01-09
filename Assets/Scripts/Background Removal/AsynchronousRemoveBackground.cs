@@ -58,7 +58,8 @@ namespace ArtScan.CoreModule
         public Mat rawImageDisplayMat;
         public Texture2D rawImageTexture;
 
-        public Scalar PAPER_EDGE_COLOR;
+        public Scalar DEBUG_PAPER_EDGE_COLOR;
+        public Scalar FEEDBACK_PAPER_EDGE_COLOR;
 
         public RawImage rawImage;
         public RectTransform rawImageRT;
@@ -91,17 +92,85 @@ namespace ArtScan.CoreModule
 
         public bool paperFound;
 
+        private int paperFoundFrames = 0;
+        public bool consistentPaperFound
+        {
+            get
+            {
+                if (settings != null && settings.enableBeginScanButtonSettings != null)
+                {
+                    return (
+                        paperFoundFrames >= settings.enableBeginScanButtonSettings.minimumPaperFoundFrames
+                    );
+                }
+                else
+                {
+                    return (
+                        paperFoundFrames >= 2
+                    );
+                }
+            }
+        }
+
+        private double currentPaperArea = 0.0d;
+        private double runningAveragePaperArea = 0.0d;
+        private int paperAtRunningAverageArea = 0;
+
+        public bool consistentPaperArea
+        {
+            get
+            {
+                if (settings != null && settings.enableBeginScanButtonSettings != null)
+                {
+                    return (
+                        paperAtRunningAverageArea >= settings.enableBeginScanButtonSettings.minimumPaperConsistentFrames
+                    );
+                }
+                else
+                {
+                    return (
+                        paperAtRunningAverageArea >= 2
+                    );
+                }
+            }
+        }
+
+        private Vector2 currentPaperCenter;
+        private Vector2 runningAveragePaperCenter;
+        private int paperAtRunningAverageCenter;
+
+        public bool consistentPaperCenter
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         private double currentContourArea = 0.0d;
         private double runningAverageContourSize = 0.0d;
         private int contoursAtRunningAverageSize = 0;
+
         public bool consistentRunningAverage
         {
             get
             {
-                return (
-                    contoursAtRunningAverageSize > 3 &&
-                    currentContourArea > 50
-                );
+                if (settings != null && settings.enableBeginScanButtonSettings != null)
+                {
+                    return (
+                        
+                        contoursAtRunningAverageSize >= settings.enableBeginScanButtonSettings.minimumConsistentFrames &&
+                        currentContourArea >= settings.enableBeginScanButtonSettings.minimumScanSize
+                    );
+                }
+                else
+                {
+                    return (
+                        contoursAtRunningAverageSize >= 2 &&
+                        currentContourArea >= 0
+                    );
+                }
+
             }
         }
 
@@ -292,7 +361,7 @@ namespace ArtScan.CoreModule
         /// </summary>
         public void OnWebCamTextureToMatHelperInitialized()
         {
-            //RLMGLogger.Instance.Log("Calling OnWebCamTextureToMatHelperInitialized...", MESSAGETYPE.INFO);
+            RLMGLogger.Instance.Log("Calling OnWebCamTextureToMatHelperInitialized...", MESSAGETYPE.INFO);
 
             Mat webCamTextureMat = webCamTextureToMatHelper.GetMat();
 
@@ -303,7 +372,7 @@ namespace ArtScan.CoreModule
             rawImageTexture = new Texture2D(rawImageDisplayMat.cols(), rawImageDisplayMat.rows(), TextureFormat.RGBA32, false);
             rawImage.texture = rawImageTexture;
 
-            RLMGLogger.Instance.Log("Screen.width " + Screen.width + " Screen.height " + Screen.height + " Screen.orientation " + Screen.orientation, MESSAGETYPE.INFO);
+            RLMGLogger.Instance.Log("OnWebCamTextureToMatHelperInitialized. Screen.width " + Screen.width + " Screen.height " + Screen.height + " Screen.orientation " + Screen.orientation, MESSAGETYPE.INFO);
 
             float width = rawImageDisplayMat.width();
             float height = rawImageDisplayMat.height();
@@ -319,7 +388,8 @@ namespace ArtScan.CoreModule
                 Camera.main.orthographicSize = height / 2;
             }
 
-            PAPER_EDGE_COLOR = new Scalar(0,255,0,255);
+            DEBUG_PAPER_EDGE_COLOR = new Scalar(0,255,0,255);
+            FEEDBACK_PAPER_EDGE_COLOR = new Scalar(49,238,255,255);
 
             InitThread();
 
@@ -648,7 +718,21 @@ namespace ArtScan.CoreModule
                 paperMaxAreaContour = PerspectiveUtils.OrderCornerPoints(paperMaxAreaContour);
 
                 paperFound = (paperMaxAreaContour.size().area() > 0);
-                if (paperFound && displayOptions.doWarp)
+
+                if (paperFound)
+                {
+                    paperFoundFrames++;
+
+                    currentPaperArea = Imgproc.contourArea(paperMaxAreaContour);
+                    DoPaperAreaRunningAverage();
+                }
+                else
+                {
+                    paperFoundFrames = 0;
+                    ClearPaperAreaRunningAverage();
+                }
+
+                if (paperFound && consistentPaperFound && displayOptions.doWarp)
                 {
                     // transform the perspective of original image.
                     using (Mat transformedMat = PerspectiveUtils.PerspectiveTransform(rgbaMat4Thread, paperMaxAreaContour))
@@ -676,55 +760,68 @@ namespace ArtScan.CoreModule
 
                                 using (Mat removedMat = RemoveBackgroundUtils.PolyfillMaskBackground(transformedMat,edgeMat, out MatOfPoint maxAreaContour, out Mat mask))
                                 {
-                                    
-                                    //undo warp perspective and apply mask to input
-                                    if (false)
-                                    {
-                                        using (Mat reverseTransformedMask = new Mat(rgbaMat4Thread.height(), rgbaMat4Thread.width(), rgbaMat4Thread.type(), new Scalar(0,0,0,0)))
-                                        {
-                                            PerspectiveUtils.ReversePerspectiveTransform(mask,paperMaxAreaContour,reverseTransformedMask);
-
-                                            using (Mat outputMat = new Mat(rgbaMat4Thread.height(), rgbaMat4Thread.width(), rgbaMat4Thread.type(), new Scalar(0,0,0,255)))
-                                            {
-                                                Core.copyTo(rgbaMat4Thread, outputMat, reverseTransformedMask);
-
-                                                Core.addWeighted(rgbaMat4Thread,0.2f,outputMat,0.8f,0,outputMat);
-
-                                                PresentationUtils.ScaleUpAndDisplayMat(
-                                                    outputMat, resultMat,
-                                                    settings.doSizeToFit
-                                                );
-                                            }
-
-                                        }
-
-                                        return;
-                                    }
-
-                                    if (displayOptions.doRemoveBackground)
-                                    {
-                                        PerspectiveUtils.BrightnessContrast(removedMat, settings.postProcessingSettings.brightness, settings.postProcessingSettings.contrast, true);
-
-                                        PresentationUtils.MakeReadyToPresent(
-                                            removedMat, resultMat,
-                                            maxAreaContour,
-                                            displayOptions, settings
-                                        );
-                                    }
-                                    else
-                                    {
-                                        PerspectiveUtils.BrightnessContrast(transformedMat, settings.postProcessingSettings.brightness, settings.postProcessingSettings.contrast, true);
-
-                                        PresentationUtils.MakeReadyToPresent(
-                                            transformedMat, resultMat,
-                                            maxAreaContour,
-                                            displayOptions, settings
-                                        );
-                                    }
-
                                     currentContourArea = maxAreaContour.size().area();
                                     DoContourSizeRunningAverage(currentContourArea);
 
+                                    //undo warp perspective and apply mask to input
+                                    //if (false)
+                                    //{
+                                    //    using (Mat reverseTransformedMask = new Mat(rgbaMat4Thread.height(), rgbaMat4Thread.width(), rgbaMat4Thread.type(), new Scalar(0,0,0,0)))
+                                    //    {
+                                    //        PerspectiveUtils.ReversePerspectiveTransform(mask,paperMaxAreaContour,reverseTransformedMask);
+
+                                    //        using (Mat outputMat = new Mat(rgbaMat4Thread.height(), rgbaMat4Thread.width(), rgbaMat4Thread.type(), new Scalar(0,0,0,255)))
+                                    //        {
+                                    //            Core.copyTo(rgbaMat4Thread, outputMat, reverseTransformedMask);
+
+                                    //            Core.addWeighted(rgbaMat4Thread,0.2f,outputMat,0.8f,0,outputMat);
+
+                                    //            PresentationUtils.ScaleUpAndDisplayMat(
+                                    //                outputMat, resultMat,
+                                    //                settings.doSizeToFit
+                                    //            );
+                                    //        }
+
+                                    //    }
+
+                                    //    return;
+                                    //}
+
+                                    if (consistentRunningAverage)
+                                    {
+                                        if (displayOptions.doRemoveBackground)
+                                        {
+                                            PerspectiveUtils.BrightnessContrast(removedMat, settings.postProcessingSettings.brightness, settings.postProcessingSettings.contrast, true);
+
+                                            PresentationUtils.MakeReadyToPresent(
+                                                removedMat, resultMat,
+                                                maxAreaContour,
+                                                displayOptions, settings
+                                            );
+                                        }
+                                        else
+                                        {
+                                            PerspectiveUtils.BrightnessContrast(transformedMat, settings.postProcessingSettings.brightness, settings.postProcessingSettings.contrast, true);
+
+                                            PresentationUtils.MakeReadyToPresent(
+                                                transformedMat, resultMat,
+                                                maxAreaContour,
+                                                displayOptions, settings
+                                            );
+                                        }
+                                    }
+                                    else
+                                    {
+                                        resultMat.setTo(new Scalar(0, 0, 0, 0));
+
+                                        //if (consistentPaperArea)
+                                        //    Imgproc.drawContours(rgbaMat4Thread, new List<MatOfPoint> { paperMaxAreaContour }, -1, FEEDBACK_PAPER_EDGE_COLOR, 10);
+
+                                        PresentationUtils.ScaleUpAndDisplayMat(
+                                            rgbaMat4Thread, resultMat,
+                                            settings.doSizeToFit
+                                        );
+                                    }
                                 }
                             }
                             
@@ -734,15 +831,15 @@ namespace ArtScan.CoreModule
                     
                     
                 }
-                else //not paperFound and/or doing warp
+                else //not paperFound and/or paperFoundFrames > x and/or doing warp
                 {
                     resultMat.setTo( new Scalar(0,0,0,0) );
 
                     if (displayOptions.showEdges) //yMat is now Canny edges, see above
                         Imgproc.cvtColor(yMat, rgbaMat4Thread, Imgproc.COLOR_GRAY2RGBA);
 
-                    if (displayOptions.doDrawPaperEdge)
-                        Imgproc.drawContours(rgbaMat4Thread,new List<MatOfPoint> {paperMaxAreaContour}, -1, PAPER_EDGE_COLOR, 4);
+                    if (paperFound && displayOptions.doDrawPaperEdge)
+                        Imgproc.drawContours(rgbaMat4Thread,new List<MatOfPoint> {paperMaxAreaContour}, -1, DEBUG_PAPER_EDGE_COLOR, 4);
 
                     PresentationUtils.ScaleUpAndDisplayMat(
                         rgbaMat4Thread, resultMat,
@@ -758,11 +855,49 @@ namespace ArtScan.CoreModule
             
         }
 
+        private void ClearPaperAreaRunningAverage()
+        {
+            paperAtRunningAverageArea = 0;
+            runningAveragePaperArea = 0.0d;
+        }
+
+        private void DoPaperAreaRunningAverage()
+        {
+            float threshold = settings != null && settings.enableBeginScanButtonSettings != null ? settings.enableBeginScanButtonSettings.consistentPaperAreaThreshold : 0.5f;
+
+            if (Math.Abs(currentPaperArea - runningAveragePaperArea) > (double)threshold * runningAveragePaperArea)
+            {
+                paperAtRunningAverageArea = 1;
+                runningAveragePaperArea = currentPaperArea;
+            }
+            else
+            {
+                paperAtRunningAverageArea += 1;
+                runningAveragePaperArea = (runningAveragePaperArea + currentPaperArea) / 2.0d;
+            }
+        }
+
+        private void DoPaperCenterRunningAverage()
+        {
+            if (Vector2.Distance(currentPaperCenter,runningAveragePaperCenter) > 100)
+            {
+                paperAtRunningAverageCenter = 1;
+                runningAveragePaperCenter = currentPaperCenter;
+            }
+            else
+            {
+                paperAtRunningAverageCenter += 1;
+                runningAveragePaperCenter = Vector2.Lerp(runningAveragePaperCenter, currentPaperCenter, 0.5f);
+            }
+        }
+
         private void DoContourSizeRunningAverage(double currentContourArea)
         {
-            if (Math.Abs(currentContourArea - runningAverageContourSize) > 0.4d * runningAverageContourSize)
+            float threshold = settings != null && settings.enableBeginScanButtonSettings != null ? settings.enableBeginScanButtonSettings.consistentScanAreaThreshold : 0.5f;
+
+            if (Math.Abs(currentContourArea - runningAverageContourSize) > (double)threshold * runningAverageContourSize)
             {
-                contoursAtRunningAverageSize = 0;
+                contoursAtRunningAverageSize = 1;
                 runningAverageContourSize = currentContourArea;
             }
             else

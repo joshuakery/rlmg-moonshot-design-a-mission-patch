@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using rlmg.logging;
@@ -11,26 +12,27 @@ namespace ArtScan.ErrorDisplayModule
     public class CameraDisconnectHandler : MonoBehaviour
     {
         public myWebCamTextureToMatHelper webCamTextureToMatHelper;
+        public RefinedScanController refinedScanController;
         public DebugMenu debugMenu;
+
+        public ErrorDisplaySettingsSO errorDisplaySettingsSO;
 
         public Canvas errorDisplay;
         public TMP_Text errorText;
         public Canvas warningDisplay;
         public TMP_Text warningText;
 
-        public bool doAttemptCameraRestart = true;
-
-        public float autoRecoveryInterval = 10f;
-        private bool doAttemptRecovery = false;
-
-        public float timeout = 30f;
-
-        public float lastUpdateTime;
+        [SerializeField]
+        private bool canCountTowardsTimeout = false;
+        private float lastUpdateTime;
 
         private void Awake()
         {
             if (webCamTextureToMatHelper == null)
                 webCamTextureToMatHelper = (myWebCamTextureToMatHelper)FindObjectOfType(typeof(myWebCamTextureToMatHelper));
+
+            if (refinedScanController == null)
+                refinedScanController = FindObjectOfType<RefinedScanController>();
 
             if (debugMenu == null)
                 debugMenu = (DebugMenu)FindObjectOfType(typeof(DebugMenu));
@@ -51,10 +53,9 @@ namespace ArtScan.ErrorDisplayModule
             {
                 webCamTextureToMatHelper.onInitialized.AddListener(ResetTimeoutCounter);
                 webCamTextureToMatHelper.onInitialized.AddListener(HideCameraError);
-                webCamTextureToMatHelper.onInitialized.AddListener(StopAutoRecovery);
 
                 webCamTextureToMatHelper.onErrorOccurred.AddListener(ShowCameraError);
-                webCamTextureToMatHelper.onErrorOccurred.AddListener(InitiateAutoRecovery);
+                webCamTextureToMatHelper.onErrorOccurred.AddListener(AttemptAutoRecovery);
 
                 webCamTextureToMatHelper.onWarnOccurred.AddListener(ShowWarnDisplay);
 
@@ -68,10 +69,9 @@ namespace ArtScan.ErrorDisplayModule
             {
                 webCamTextureToMatHelper.onInitialized.RemoveListener(ResetTimeoutCounter);
                 webCamTextureToMatHelper.onInitialized.RemoveListener(HideCameraError);
-                webCamTextureToMatHelper.onInitialized.RemoveListener(StopAutoRecovery);
 
                 webCamTextureToMatHelper.onErrorOccurred.RemoveListener(ShowCameraError);
-                webCamTextureToMatHelper.onErrorOccurred.RemoveListener(InitiateAutoRecovery);
+                webCamTextureToMatHelper.onErrorOccurred.RemoveListener(AttemptAutoRecovery);
 
                 webCamTextureToMatHelper.onWarnOccurred.RemoveListener(ShowWarnDisplay);
 
@@ -81,6 +81,9 @@ namespace ArtScan.ErrorDisplayModule
 
         private void ResetTimeoutCounter()
         {
+            RLMGLogger.Instance.Log("Resetting timeout counter...", MESSAGETYPE.INFO);
+
+            canCountTowardsTimeout = true;
             lastUpdateTime = 0;
         }
 
@@ -120,34 +123,20 @@ namespace ArtScan.ErrorDisplayModule
             errorDisplay.enabled = false;
         }
 
-        private void InitiateAutoRecovery(myWebCamTextureToMatHelper.ErrorCode errorCode)
+        private void AttemptAutoRecovery(myWebCamTextureToMatHelper.ErrorCode errorCode)
         {
-            StopAllCoroutines();
+            RLMGLogger.Instance.Log(
+                string.Format("CAMERA RE-INIT: Attempting auto-recovery after a camera error: {0}.", errorCode),
+                MESSAGETYPE.INFO
+            );
 
-            doAttemptRecovery = true;
-            StartCoroutine(AttemptAutoRecovery());
-        }
-
-        private void StopAutoRecovery()
-        {
-            doAttemptRecovery = false;
-            StopAllCoroutines();
-        }
-
-        private IEnumerator AttemptAutoRecovery()
-        {
-            while (doAttemptRecovery)
-            {
-                RLMGLogger.Instance.Log("CAMERA RE-INIT: Attempting auto-recovery after a camera error.", MESSAGETYPE.INFO);
-
-                ReInitialize();
-
-                yield return new WaitForSeconds(autoRecoveryInterval);
-            }
+            ReInitialize();
         }
 
         private void ShowWarnDisplay(myWebCamTextureToMatHelper.WarnCode warnCode)
         {
+            RLMGLogger.Instance.Log("Showing warn display...", MESSAGETYPE.INFO);
+
             warningDisplay.enabled = true;
 
             switch (warnCode)
@@ -173,16 +162,45 @@ namespace ArtScan.ErrorDisplayModule
         void Update()
         {
             CheckForDidUpdateFrame();
+
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                lastUpdateTime = errorDisplaySettingsSO.errorDisplaySettings.cameraDisconnectTimeout + 10f;
+                ReInitialize();
+            }
         }
 
         private void CheckForDidUpdateFrame()
         {
+            if (!canCountTowardsTimeout) { return; }
+            if (refinedScanController.anotherScanIsUnderway)
+            {
+                lastUpdateTime = 0;
+                return;
+            }
+
             if (webCamTextureToMatHelper != null)
             {
                 if (webCamTextureToMatHelper.IsPlaying())
                 {
+                    if (webCamTextureToMatHelper.IsInitialized() == false)
+                        RLMGLogger.Instance.Log("WebCamTexture is not initialized.", MESSAGETYPE.ERROR);
+
+                    if (webCamTextureToMatHelper.GetWebCamTexture() == null)
+                        RLMGLogger.Instance.Log("WebCamTexture is null", MESSAGETYPE.ERROR);
+
+
                     if (!webCamTextureToMatHelper.DidUpdateThisFrame())
                     {
+                        if (Time.deltaTime > errorDisplaySettingsSO.errorDisplaySettings.cameraDisconnectTimeout)
+                        {
+                            RLMGLogger.Instance.Log("Frame update was longer than timeout.", MESSAGETYPE.ERROR);
+                        }
+                        else if (Time.deltaTime > 3f)
+                        {
+                            RLMGLogger.Instance.Log("Frame update was longer than 3 seconds.", MESSAGETYPE.ERROR);
+                        }
+
                         lastUpdateTime += Time.deltaTime;
                     }
                     else
@@ -190,16 +208,38 @@ namespace ArtScan.ErrorDisplayModule
                         lastUpdateTime = 0;
                     }
 
-                    if (lastUpdateTime > timeout)
+                    if (lastUpdateTime > errorDisplaySettingsSO.errorDisplaySettings.cameraDisconnectTimeout)
                     {
-                        webCamTextureToMatHelper.Pause();
+                        if (errorDisplaySettingsSO.errorDisplaySettings.doAttemptCameraRestart)
+                        {
+                            webCamTextureToMatHelper.Pause();
 
-                        RLMGLogger.Instance.Log("CAMERA RE-INIT: Checking for updated frames timed out in Update loop.", MESSAGETYPE.INFO);
+                            RLMGLogger.Instance.Log(
+                                string.Format("CAMERA RE-INIT: Checking for updated frames timed out after {0} seconds.", lastUpdateTime),
+                                MESSAGETYPE.ERROR
+                            );
 
-                        ReInitialize();
+                            canCountTowardsTimeout = false;
+                            lastUpdateTime = 0;
 
-                        lastUpdateTime = 0;
+                            try
+                            {
+                                ReInitialize();
+                            }
+                            catch (Exception e)
+                            {
+                                RLMGLogger.Instance.Log(
+                                    string.Format("Exception occurred during re-initialize: {0}", e.ToString()),
+                                    MESSAGETYPE.ERROR
+                                );
+                            }
+
+                        }
                     }
+                }
+                else
+                {
+                    lastUpdateTime = 0;
                 }
             }
         }
