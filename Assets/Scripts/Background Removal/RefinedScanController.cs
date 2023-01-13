@@ -10,6 +10,7 @@ using OpenCVForUnity.UnityUtils;
 using OpenCVForUnity.UnityUtils.Helper;
 using ArtScan.CoreModule;
 using ArtScan;
+using ArtScan.ErrorDisplayModule;
 using rlmg.logging;
 using TMPro;
 
@@ -33,17 +34,33 @@ namespace ArtScan.CoreModule
 
         public RemoveBackgroundSettings settings;
         public RemoveBackgroundDisplayOptions displayOptions;
+        public ErrorDisplaySettingsSO errorDisplaySettingsSO;
 
         public GameEvent ScanFailed;
         public GameEvent NewPreview;
+        public GameEvent ScanAgain;
 
         public Mat previewMat;
 
         public TMP_Text scanFailedDisplay;
 
+        private bool isWaitingForUpdate = false;
+        private bool hasUpdated = false;
+        private bool isWaitingToSync = false;
+
         private void Start()
         {
             previewMat = new Mat();
+        }
+
+        private void OnEnable()
+        {
+            asynchronousRemoveBackground.webCamTextureToMatHelper.onInitialized.AddListener(OnInitialized);
+        }
+
+        private void OnDisable()
+        {
+            asynchronousRemoveBackground.webCamTextureToMatHelper.onInitialized.RemoveListener(OnInitialized);
         }
 
         private void OnDestroy()
@@ -131,11 +148,114 @@ namespace ArtScan.CoreModule
             }
         }
 
-        private IEnumerator SyncingTimeout()
+        private void OnInitialized()
+        {
+            if (isWaitingForUpdate || isWaitingToSync || anotherScanIsUnderway)
+            {
+                StopAllCoroutines();
+                AbortRefinedScan();
+
+                if (scanFailedDisplay != null) { scanFailedDisplay.text = "Camera was restarted."; }
+                RLMGLogger.Instance.Log("Camera was initialized during refined scan.", MESSAGETYPE.ERROR);
+                StartCoroutine(RaiseScanFailed());
+
+                isWaitingForUpdate = false;
+                isWaitingToSync = false;
+            }
+        }
+
+
+        /// <summary>
+        /// Does one additional check to see if the webcam is on
+        /// Then waits for a copy of the webcam Mat to be created before refined process
+        /// </summary>
+        private IEnumerator DoRefinedScanAfterSyncing()
+        {
+            yield return StartCoroutine(WaitForUpdate());
+
+            asynchronousRemoveBackground.shouldCopyToRefinedMat = true;
+
+            DateTime before = DateTime.Now;
+
+            yield return StartCoroutine(WaitForRefinedMatReady());
+
+            DateTime after = DateTime.Now;
+
+            TimeSpan duration = after.Subtract(before);
+
+            RLMGLogger.Instance.Log(
+                String.Format("Refined mat ready in {0} milliseconds.", duration.TotalMilliseconds),
+                MESSAGETYPE.INFO
+            );
+
+            asynchronousRemoveBackground.refinedMatReady = false;
+            
+            yield return StartCoroutine(DoRefinedScan());
+        }
+
+        /// <summary>
+        /// Timeout coroutine that waits x seconds before checking if we have had a frame update
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator WaitForUpdateTimeout()
         {
             DateTime before = DateTime.Now;
 
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(errorDisplaySettingsSO.errorDisplaySettings.refinedScanTimeout);
+
+            if (!hasUpdated)
+            {
+                AbortRefinedScan();
+                StopAllCoroutines();
+
+                DateTime after = DateTime.Now;
+
+                TimeSpan duration = after.Subtract(before);
+
+                RLMGLogger.Instance.Log(
+                    String.Format("Wait for update timeout aborted scan after {0} milliseconds.", duration.TotalMilliseconds),
+                    MESSAGETYPE.INFO
+                );
+
+                if (scanFailedDisplay != null) { scanFailedDisplay.text = "Webcam update timed out."; }
+                RLMGLogger.Instance.Log("Waiting for an updated frame from webcam timed out.", MESSAGETYPE.ERROR);
+                StartCoroutine(RaiseScanFailed());
+            }
+        }
+
+
+        /// <summary>
+        /// Wait for didUpdateThisFrame from webCamTexture, as a check that the webcam is working
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator WaitForUpdate()
+        {
+            isWaitingForUpdate = true;
+            hasUpdated = false;
+
+            StartCoroutine(WaitForUpdateTimeout());
+
+            while (!hasUpdated)
+            {
+                if (asynchronousRemoveBackground.webCamTextureToMatHelper.GetWebCamTexture() != null &&
+                    asynchronousRemoveBackground.webCamTextureToMatHelper.GetWebCamTexture().didUpdateThisFrame)
+                    hasUpdated = true;
+
+                yield return null;
+            }
+
+            isWaitingForUpdate = false;
+        }
+
+        /// <summary>
+        /// Timeout coroutine that waits x seconds before checking if we are still waiting to copy to refined Mat
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator WaitForRefinedMatReadyTimeout()
+        {
+            DateTime before = DateTime.Now;
+
+            yield return new WaitForSeconds(errorDisplaySettingsSO.errorDisplaySettings.refinedScanTimeout);
 
             if (asynchronousRemoveBackground.shouldCopyToRefinedMat)
             {
@@ -160,62 +280,48 @@ namespace ArtScan.CoreModule
 
         }
 
-        private IEnumerator DoRefinedScanAfterSyncing()
-        {
-            asynchronousRemoveBackground.shouldCopyToRefinedMat = true;
-
-            StartCoroutine(SyncingTimeout());
-
-            DateTime before = DateTime.Now;
-
-            yield return StartCoroutine(WaitForRefinedMatReady());
-
-            DateTime after = DateTime.Now;
-
-            TimeSpan duration = after.Subtract(before);
-
-            RLMGLogger.Instance.Log(
-                String.Format("Refined mat ready in {0} milliseconds.", duration.TotalMilliseconds),
-                MESSAGETYPE.INFO
-            );
-
-            asynchronousRemoveBackground.refinedMatReady = false;
-            StartCoroutine(DoRefinedScan());
-        }
-
         private IEnumerator WaitForRefinedMatReady()
         {
+            isWaitingToSync = true;
+
+            StartCoroutine(WaitForRefinedMatReadyTimeout());
+
             while (!asynchronousRemoveBackground.refinedMatReady)
                 yield return null;
+
+            isWaitingToSync = false;
         }
 
-        private bool IsAllTransparent(Mat src)
-        {
-            if (src.channels() == 4)
-            {
-                List<Mat> planes = new List<Mat>();
-                Core.split(src, planes);
-                Mat alpha = planes[3];
+        //private bool IsAllTransparent(Mat src)
+        //{
+        //    if (src.channels() == 4)
+        //    {
+        //        List<Mat> planes = new List<Mat>();
+        //        Core.split(src, planes);
+        //        Mat alpha = planes[3];
 
-                int rows = alpha.rows();
-                int cols = alpha.cols();
-                for (int i0 = 0; i0 < rows; i0++)
-                {
-                    for (int i1 = 0; i1 < cols; i1++)
-                    {
-                        byte[] p = new byte[1];
-                        alpha.get(i0, i1, p);
-                        if (p[0] > 0) return false;
-                    }
-                }
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //        int rows = alpha.rows();
+        //        int cols = alpha.cols();
+        //        for (int i0 = 0; i0 < rows; i0++)
+        //        {
+        //            for (int i1 = 0; i1 < cols; i1++)
+        //            {
+        //                byte[] p = new byte[1];
+        //                alpha.get(i0, i1, p);
+        //                if (p[0] > 0) return false;
+        //            }
+        //        }
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
 
+        /// <summary>
+        /// Checks if we can safely begin a scan, then calls the coroutine
+        /// </summary>
         public void OnBeginScan()
         {
             //Check 1 - is the webcam on?
@@ -272,6 +378,9 @@ namespace ArtScan.CoreModule
             ScanFailed.Raise();
         }
 
+        /// <summary>
+        /// Aborts refined scan thread and resets asynchronous feed variables
+        /// </summary>
         public void AbortRefinedScan()
         {
             StopAllCoroutines();

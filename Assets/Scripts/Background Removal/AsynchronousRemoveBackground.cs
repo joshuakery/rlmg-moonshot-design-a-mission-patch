@@ -315,6 +315,9 @@ namespace ArtScan.CoreModule
 
             webCamTextureToMatHelper.flipHorizontal = configLoader.configData.flipHorizontal;
 
+            webCamTextureToMatHelper.requestedFPS = configLoader.configData.requestedFPS;
+
+
 #if UNITY_ANDROID && !UNITY_EDITOR
             // Avoids the front camera low light issue that occurs in only some Android devices (e.g. Google Pixel, Pixel2).
             webCamTextureToMatHelper.avoidAndroidFrontCameraLowLightIssue = true;
@@ -583,7 +586,7 @@ namespace ArtScan.CoreModule
 
         private void InitThread()
         {
-            //RLMGLogger.Instance.Log("Initializing thread.", MESSAGETYPE.INFO);
+            RLMGLogger.Instance.Log("Initializing thread.", MESSAGETYPE.INFO);
             StopThread();
 
             rgbaMat4Thread = new Mat();
@@ -611,7 +614,7 @@ namespace ArtScan.CoreModule
             ThreadPool.QueueUserWorkItem(_ => action());
 #endif
 
-            //RLMGLogger.Instance.Log("Thread Start.", MESSAGETYPE.INFO);
+            RLMGLogger.Instance.Log("Thread Start.", MESSAGETYPE.INFO);
         }
 
         private void StopThread()
@@ -623,11 +626,13 @@ namespace ArtScan.CoreModule
 
             while (isThreadRunning)
             {
-                //RLMGLogger.Instance.Log("Awaiting thread stop...", MESSAGETYPE.INFO);
+                //if (RLMGLogger.Instance != null)
+                //    RLMGLogger.Instance.Log("Awaiting thread stop...", MESSAGETYPE.INFO);
                 //Wait threading stop
             }
 
-            //RLMGLogger.Instance.Log("...thread stopped.", MESSAGETYPE.INFO);
+            if (RLMGLogger.Instance != null)
+                RLMGLogger.Instance.Log("...thread stopped.", MESSAGETYPE.INFO);
         }
 
 #if !UNITY_WEBGL
@@ -740,91 +745,91 @@ namespace ArtScan.CoreModule
                         if (transformedMat.width() > 1 && transformedMat.height() > 1)
                         {
                             //crop in the edges to hide them from the find largest contour later
-                            PerspectiveUtils.CropByPercent(transformedMat, transformedMat, 0.95f);
-
-                            if (doDownsizeToDisplay)
+                            using (Mat croppedMat = PerspectiveUtils.CropByPercent(transformedMat, 0.95f))
                             {
-                                float ratio = rawImageSize.x / transformedMat.width();
-                                if (ratio < 1)
+                                if (doDownsizeToDisplay)
                                 {
-                                    Imgproc.resize(transformedMat, transformedMat, new Size(), ratio, ratio, Imgproc.INTER_LINEAR);
-                                }
-                            }
-
-                            using (Mat edgeMat = new Mat())
-                            {
-                                EdgeFinding.SetEdgeMat(transformedMat, edgeMat, settings, edgeDetection);
-
-                                if (displayOptions.showEdges)
-                                    PresentationUtils.ShowEdges(edgeMat,transformedMat);
-
-                                using (Mat removedMat = RemoveBackgroundUtils.PolyfillMaskBackground(transformedMat,edgeMat, out MatOfPoint maxAreaContour, out Mat mask))
-                                {
-                                    currentContourArea = maxAreaContour.size().area();
-                                    DoContourSizeRunningAverage(currentContourArea);
-
-                                    //undo warp perspective and apply mask to input
-                                    //if (false)
-                                    //{
-                                    //    using (Mat reverseTransformedMask = new Mat(rgbaMat4Thread.height(), rgbaMat4Thread.width(), rgbaMat4Thread.type(), new Scalar(0,0,0,0)))
-                                    //    {
-                                    //        PerspectiveUtils.ReversePerspectiveTransform(mask,paperMaxAreaContour,reverseTransformedMask);
-
-                                    //        using (Mat outputMat = new Mat(rgbaMat4Thread.height(), rgbaMat4Thread.width(), rgbaMat4Thread.type(), new Scalar(0,0,0,255)))
-                                    //        {
-                                    //            Core.copyTo(rgbaMat4Thread, outputMat, reverseTransformedMask);
-
-                                    //            Core.addWeighted(rgbaMat4Thread,0.2f,outputMat,0.8f,0,outputMat);
-
-                                    //            PresentationUtils.ScaleUpAndDisplayMat(
-                                    //                outputMat, resultMat,
-                                    //                settings.doSizeToFit
-                                    //            );
-                                    //        }
-
-                                    //    }
-
-                                    //    return;
-                                    //}
-
-                                    if (consistentRunningAverage)
+                                    float ratio = rawImageSize.x / transformedMat.width();
+                                    if (ratio < 1)
                                     {
-                                        if (displayOptions.doRemoveBackground)
-                                        {
-                                            PerspectiveUtils.BrightnessContrast(removedMat, settings.postProcessingSettings.brightness, settings.postProcessingSettings.contrast, true);
+                                        Imgproc.resize(transformedMat, transformedMat, new Size(), ratio, ratio, Imgproc.INTER_LINEAR);
+                                    }
+                                }
 
-                                            PresentationUtils.MakeReadyToPresent(
-                                                removedMat, resultMat,
-                                                maxAreaContour,
-                                                displayOptions, settings
-                                            );
+                                using (Mat edgeMat = new Mat())
+                                {
+                                    EdgeFinding.SetEdgeMat(transformedMat, edgeMat, settings, edgeDetection);
+
+                                    if (displayOptions.showEdges)
+                                        PresentationUtils.ShowEdges(edgeMat, transformedMat);
+
+                                    using (Mat removedMat = RemoveBackgroundUtils.PolyfillMaskBackground(transformedMat, edgeMat, out MatOfPoint maxAreaContour, out Mat mask))
+                                    {
+                                        currentContourArea = maxAreaContour.size().area();
+                                        DoContourSizeRunningAverage(currentContourArea);
+
+                                        //undo warp perspective and apply mask to input
+                                        //if (false)
+                                        //{
+                                        //    using (Mat reverseTransformedMask = new Mat(rgbaMat4Thread.height(), rgbaMat4Thread.width(), rgbaMat4Thread.type(), new Scalar(0,0,0,0)))
+                                        //    {
+                                        //        PerspectiveUtils.ReversePerspectiveTransform(mask,paperMaxAreaContour,reverseTransformedMask);
+
+                                        //        using (Mat outputMat = new Mat(rgbaMat4Thread.height(), rgbaMat4Thread.width(), rgbaMat4Thread.type(), new Scalar(0,0,0,255)))
+                                        //        {
+                                        //            Core.copyTo(rgbaMat4Thread, outputMat, reverseTransformedMask);
+
+                                        //            Core.addWeighted(rgbaMat4Thread,0.2f,outputMat,0.8f,0,outputMat);
+
+                                        //            PresentationUtils.ScaleUpAndDisplayMat(
+                                        //                outputMat, resultMat,
+                                        //                settings.doSizeToFit
+                                        //            );
+                                        //        }
+
+                                        //    }
+
+                                        //    return;
+                                        //}
+
+                                        if (consistentRunningAverage)
+                                        {
+                                            if (displayOptions.doRemoveBackground)
+                                            {
+                                                PerspectiveUtils.BrightnessContrast(removedMat, settings.postProcessingSettings.brightness, settings.postProcessingSettings.contrast, true);
+
+                                                PresentationUtils.MakeReadyToPresent(
+                                                    removedMat, resultMat,
+                                                    maxAreaContour,
+                                                    displayOptions, settings
+                                                );
+                                            }
+                                            else
+                                            {
+                                                PerspectiveUtils.BrightnessContrast(transformedMat, settings.postProcessingSettings.brightness, settings.postProcessingSettings.contrast, true);
+
+                                                PresentationUtils.MakeReadyToPresent(
+                                                    transformedMat, resultMat,
+                                                    maxAreaContour,
+                                                    displayOptions, settings
+                                                );
+                                            }
                                         }
                                         else
                                         {
-                                            PerspectiveUtils.BrightnessContrast(transformedMat, settings.postProcessingSettings.brightness, settings.postProcessingSettings.contrast, true);
+                                            resultMat.setTo(new Scalar(0, 0, 0, 0));
 
-                                            PresentationUtils.MakeReadyToPresent(
-                                                transformedMat, resultMat,
-                                                maxAreaContour,
-                                                displayOptions, settings
+                                            //if (consistentPaperArea)
+                                            //    Imgproc.drawContours(rgbaMat4Thread, new List<MatOfPoint> { paperMaxAreaContour }, -1, FEEDBACK_PAPER_EDGE_COLOR, 10);
+
+                                            PresentationUtils.ScaleUpAndDisplayMat(
+                                                rgbaMat4Thread, resultMat,
+                                                settings.doSizeToFit
                                             );
                                         }
                                     }
-                                    else
-                                    {
-                                        resultMat.setTo(new Scalar(0, 0, 0, 0));
-
-                                        //if (consistentPaperArea)
-                                        //    Imgproc.drawContours(rgbaMat4Thread, new List<MatOfPoint> { paperMaxAreaContour }, -1, FEEDBACK_PAPER_EDGE_COLOR, 10);
-
-                                        PresentationUtils.ScaleUpAndDisplayMat(
-                                            rgbaMat4Thread, resultMat,
-                                            settings.doSizeToFit
-                                        );
-                                    }
                                 }
                             }
-                            
                         }
                     }
                     

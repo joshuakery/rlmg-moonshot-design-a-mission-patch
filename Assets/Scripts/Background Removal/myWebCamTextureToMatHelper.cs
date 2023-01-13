@@ -221,6 +221,21 @@ namespace OpenCVForUnity.UnityUtils.Helper
         public UnityEvent onSuccessOccurred;
 
         /// <summary>
+        /// UnityEvent that is triggered when this instance has successfully paused the requested device.
+        /// </summary>
+        public UnityEvent onPlay;
+
+        /// <summary>
+        /// UnityEvent that is triggered when this instance has successfully paused the requested device.
+        /// </summary>
+        public UnityEvent onPause;
+
+        /// <summary>
+        /// UnityEvent that is triggered when this instance has successfully stopped the requested device.
+        /// </summary>
+        public UnityEvent onStop;
+
+        /// <summary>
         /// The active WebcamTexture.
         /// </summary>
         protected WebCamTexture webCamTexture;
@@ -460,6 +475,12 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 onWarnOccurred = new WarnUnityEvent();
             if (onSuccessOccurred == null)
                 onSuccessOccurred = new UnityEvent();
+            if (onPlay == null)
+                onPlay = new UnityEvent();
+            if (onPause == null)
+                onPause = new UnityEvent();
+            if (onStop == null)
+                onStop = new UnityEvent();
 
             initCoroutine = _Initialize();
             StartCoroutine(initCoroutine);
@@ -492,6 +513,12 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 onWarnOccurred = new WarnUnityEvent();
             if (onSuccessOccurred == null)
                 onSuccessOccurred = new UnityEvent();
+            if (onPlay == null)
+                onPlay = new UnityEvent();
+            if (onPause == null)
+                onPause = new UnityEvent();
+            if (onStop == null)
+                onStop = new UnityEvent();
 
             initCoroutine = _Initialize();
             StartCoroutine(initCoroutine);
@@ -525,6 +552,12 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 onWarnOccurred = new WarnUnityEvent();
             if (onSuccessOccurred == null)
                 onSuccessOccurred = new UnityEvent();
+            if (onPlay == null)
+                onPlay = new UnityEvent();
+            if (onPause == null)
+                onPause = new UnityEvent();
+            if (onStop == null)
+                onStop = new UnityEvent();
 
             initCoroutine = _Initialize();
             StartCoroutine(initCoroutine);
@@ -563,6 +596,12 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 onWarnOccurred = new WarnUnityEvent();
             if (onSuccessOccurred == null)
                 onSuccessOccurred = new UnityEvent();
+            if (onPlay == null)
+                onPlay = new UnityEvent();
+            if (onPause == null)
+                onPause = new UnityEvent();
+            if (onStop == null)
+                onStop = new UnityEvent();
 
             initCoroutine = _Initialize();
             StartCoroutine(initCoroutine);
@@ -900,7 +939,11 @@ namespace OpenCVForUnity.UnityUtils.Helper
         public virtual void Play()
         {
             if (hasInitDone)
+            {
                 webCamTexture.Play();
+                onPlay.Invoke();
+            }
+                
             //throw a warning here if this is not working
         }
 
@@ -910,7 +953,11 @@ namespace OpenCVForUnity.UnityUtils.Helper
         public virtual void Pause()
         {
             if (hasInitDone)
+            {
                 webCamTexture.Pause();
+                onPause.Invoke();
+            }
+
         }
 
         /// <summary>
@@ -919,7 +966,11 @@ namespace OpenCVForUnity.UnityUtils.Helper
         public virtual void Stop()
         {
             if (hasInitDone)
+            {
                 webCamTexture.Stop();
+                onStop.Invoke();
+            }
+               
         }
 
         /// <summary>
@@ -1267,7 +1318,8 @@ namespace OpenCVForUnity.UnityUtils.Helper
         /// </summary>
         protected virtual void ReleaseResources()
         {
-            RLMGLogger.Instance.Log("Releasing resources...", MESSAGETYPE.INFO);
+            if (RLMGLogger.Instance != null)
+                RLMGLogger.Instance.Log("Releasing resources...", MESSAGETYPE.INFO);
 
             isInitWaiting = false;
             hasInitDone = false;

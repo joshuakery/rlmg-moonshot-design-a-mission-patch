@@ -236,7 +236,7 @@ namespace ArtScan.PerspectiveUtilsModule
             return outputMat;
         }
 
-        public static void CropByPercent(Mat src, Mat dest, float scale)
+        public static Mat CropByPercent(Mat src, float scale)
         {
             // Debug.Log("Width: " + image.width().ToString());
             // Debug.Log("Height: " + image.height().ToString());
@@ -250,8 +250,7 @@ namespace ArtScan.PerspectiveUtilsModule
             int y = (int)(src.height() / 2 - src.height() * scale / 2);
             // Debug.Log("W: " + w.ToString() + "H: " + h.ToString() + "X: " + x.ToString() + "Y: " + y.ToString());
 
-            Mat output = new Mat(src, new OpenCVForUnity.CoreModule.Rect(x,y,w,h));
-            dest = output;
+            return new Mat(src, new OpenCVForUnity.CoreModule.Rect(x, y, w, h));
         }
     }
 }

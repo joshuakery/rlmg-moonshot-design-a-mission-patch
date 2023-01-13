@@ -4220,6 +4220,7 @@ MonoBehaviour:
     defaultCamera: 
     flipVertical: 0
     flipHorizontal: 0
+    requestedFPS: 30
     brightness: 0
     contrast: 0
     edgeFindingMethod: 0
@@ -4236,8 +4237,10 @@ MonoBehaviour:
       minimumScanSize: 25
       minimumConsistentFrames: 2
     errorDisplaySettings:
+      checkForDisconnectInterval: 60
       doAttemptCameraRestart: 1
       cameraDisconnectTimeout: 2
+      refinedScanTimeout: 5
 --- !u!1 &1328863885
 GameObject:
   m_ObjectHideFlags: 0
@@ -13933,6 +13936,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  onPause:
+    m_PersistentCalls:
+      m_Calls: []
+  onStop:
+    m_PersistentCalls:
+      m_Calls: []
   avoidAndroidFrontCameraLowLightIssue: 0
 --- !u!1 &5514461683746088424
 GameObject:
@@ -14022,8 +14034,10 @@ MonoBehaviour:
   asynchronousRemoveBackground: {fileID: 5514461683746088428}
   settings: {fileID: 11400000, guid: eebe36b8bd1234f8ca3d2e070246f3b8, type: 2}
   displayOptions: {fileID: 11400000, guid: d53c3c50cfdcb488aad470ae2f9fd0e2, type: 2}
+  errorDisplaySettingsSO: {fileID: 11400000, guid: a77b44a46473c4611a39b26f754e5906, type: 2}
   ScanFailed: {fileID: 11400000, guid: 1dedfc55b9af542ffb068eb10ce68e01, type: 2}
   NewPreview: {fileID: 11400000, guid: d8753c9ac856442cf940da88af0b334b, type: 2}
+  ScanAgain: {fileID: 11400000, guid: 78f554e4def56486b9a6e516ee2ae4f9, type: 2}
   scanFailedDisplay: {fileID: 297355432}
 --- !u!114 &5514461683746088438
 MonoBehaviour:
@@ -14151,7 +14165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0597ba48488a84b429b5c9e6ed5ab365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  asynchronousRemoveBackground: {fileID: 0}
   webCamTextureToMatHelper: {fileID: 0}
+  refinedScanController: {fileID: 0}
   debugMenu: {fileID: 0}
   errorDisplaySettingsSO: {fileID: 11400000, guid: a77b44a46473c4611a39b26f754e5906, type: 2}
   errorDisplay: {fileID: 1766371759}
@@ -14159,6 +14175,7 @@ MonoBehaviour:
   warningDisplay: {fileID: 866272719}
   warningText: {fileID: 233258552}
   canCountTowardsTimeout: 0
+  lastUpdateCount: -1
 --- !u!114 &5514461683746088443
 MonoBehaviour:
   m_ObjectHideFlags: 0

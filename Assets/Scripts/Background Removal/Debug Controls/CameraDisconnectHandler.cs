@@ -11,6 +11,7 @@ namespace ArtScan.ErrorDisplayModule
 {
     public class CameraDisconnectHandler : MonoBehaviour
     {
+        public AsynchronousRemoveBackground asynchronousRemoveBackground;
         public myWebCamTextureToMatHelper webCamTextureToMatHelper;
         public RefinedScanController refinedScanController;
         public DebugMenu debugMenu;
@@ -26,8 +27,13 @@ namespace ArtScan.ErrorDisplayModule
         private bool canCountTowardsTimeout = false;
         private float lastUpdateTime;
 
+        public int lastUpdateCount = -1;
+
         private void Awake()
         {
+            if (asynchronousRemoveBackground == null)
+                asynchronousRemoveBackground = FindObjectOfType<AsynchronousRemoveBackground>();
+
             if (webCamTextureToMatHelper == null)
                 webCamTextureToMatHelper = (myWebCamTextureToMatHelper)FindObjectOfType(typeof(myWebCamTextureToMatHelper));
 
@@ -45,6 +51,8 @@ namespace ArtScan.ErrorDisplayModule
         void Start()
         {
             lastUpdateTime = 0;
+
+            StartCoroutine(CheckDevices());
         }
 
         private void OnEnable()
@@ -52,6 +60,7 @@ namespace ArtScan.ErrorDisplayModule
             if (webCamTextureToMatHelper != null)
             {
                 webCamTextureToMatHelper.onInitialized.AddListener(ResetTimeoutCounter);
+                webCamTextureToMatHelper.onInitialized.AddListener(ResetUpdateCount);
                 webCamTextureToMatHelper.onInitialized.AddListener(HideCameraError);
 
                 webCamTextureToMatHelper.onErrorOccurred.AddListener(ShowCameraError);
@@ -60,6 +69,10 @@ namespace ArtScan.ErrorDisplayModule
                 webCamTextureToMatHelper.onWarnOccurred.AddListener(ShowWarnDisplay);
 
                 webCamTextureToMatHelper.onSuccessOccurred.AddListener(HideWarnDisplay);
+
+                webCamTextureToMatHelper.onPlay.AddListener(ResetUpdateCount);
+                webCamTextureToMatHelper.onPause.AddListener(ResetUpdateCount);
+                webCamTextureToMatHelper.onStop.AddListener(ResetUpdateCount);
             }
         }
 
@@ -68,6 +81,7 @@ namespace ArtScan.ErrorDisplayModule
             if (webCamTextureToMatHelper != null)
             {
                 webCamTextureToMatHelper.onInitialized.RemoveListener(ResetTimeoutCounter);
+                webCamTextureToMatHelper.onInitialized.RemoveListener(ResetUpdateCount);
                 webCamTextureToMatHelper.onInitialized.RemoveListener(HideCameraError);
 
                 webCamTextureToMatHelper.onErrorOccurred.RemoveListener(ShowCameraError);
@@ -76,6 +90,10 @@ namespace ArtScan.ErrorDisplayModule
                 webCamTextureToMatHelper.onWarnOccurred.RemoveListener(ShowWarnDisplay);
 
                 webCamTextureToMatHelper.onSuccessOccurred.RemoveListener(HideWarnDisplay);
+
+                webCamTextureToMatHelper.onPlay.RemoveListener(ResetUpdateCount);
+                webCamTextureToMatHelper.onPause.RemoveListener(ResetUpdateCount);
+                webCamTextureToMatHelper.onStop.RemoveListener(ResetUpdateCount);
             }
         }
 
@@ -85,6 +103,12 @@ namespace ArtScan.ErrorDisplayModule
 
             canCountTowardsTimeout = true;
             lastUpdateTime = 0;
+        }
+
+        private void ResetUpdateCount()
+        {
+            RLMGLogger.Instance.Log("Resetting update count...", MESSAGETYPE.INFO);
+            lastUpdateCount = -1;
         }
 
         private void ShowCameraError(myWebCamTextureToMatHelper.ErrorCode errorCode)
@@ -168,6 +192,116 @@ namespace ArtScan.ErrorDisplayModule
                 lastUpdateTime = errorDisplaySettingsSO.errorDisplaySettings.cameraDisconnectTimeout + 10f;
                 ReInitialize();
             }
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                StartCoroutine(SpecialCheckDevices());
+            }
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                StartCoroutine(SpecialCheckDevices2());
+            }
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                RLMGLogger.Instance.Log(
+                    string.Format("F key pressed: Current requestedFPS: {0}",
+                        webCamTextureToMatHelper.GetWebCamTexture() != null ?
+                        webCamTextureToMatHelper.GetWebCamTexture().requestedFPS :
+                        "WebCamTexture is null."
+                    ),
+                    MESSAGETYPE.INFO
+                );
+            }
+        }
+
+        private IEnumerator SpecialCheckDevices2()
+        {
+            webCamTextureToMatHelper.Play();
+            yield return null;
+            webCamTextureToMatHelper.Pause();
+        }
+
+        private IEnumerator SpecialCheckDevices()
+        {
+            if (webCamTextureToMatHelper.GetWebCamTexture() != null)
+            {
+                bool aux = webCamTextureToMatHelper.IsPlaying();
+                Debug.Log(webCamTextureToMatHelper.GetWebCamTexture().updateCount);
+                Debug.Log(webCamTextureToMatHelper.IsPlaying());
+                lastUpdateCount = (int)webCamTextureToMatHelper.GetWebCamTexture().updateCount;
+                webCamTextureToMatHelper.Pause();
+                yield return null;
+                if (aux) webCamTextureToMatHelper.Play();
+                Debug.Log(webCamTextureToMatHelper.GetWebCamTexture().updateCount);
+                Debug.Log(webCamTextureToMatHelper.IsPlaying());
+                Debug.Log(lastUpdateCount);
+                Debug.Log("HAS UPDATED: " + (!(lastUpdateCount == webCamTextureToMatHelper.GetWebCamTexture().updateCount)).ToString());
+            }
+        }
+
+        private IEnumerator CheckDevices()
+        {
+            while (true)
+            {
+                Debug.Log("checking devices...");
+
+                if ((asynchronousRemoveBackground.shouldCopyToRefinedMat && !asynchronousRemoveBackground.refinedMatReady) ||
+                    refinedScanController.anotherScanIsUnderway)
+                {
+                    continue;
+                }
+
+                if (webCamTextureToMatHelper.GetWebCamTexture() != null)
+                {
+                    if (webCamTextureToMatHelper.IsPlaying() &&
+                        lastUpdateCount == webCamTextureToMatHelper.GetWebCamTexture().updateCount)
+                    {
+                        RLMGLogger.Instance.Log(
+                            string.Format("CAMERA RE-INIT: Currently used webcam, {0}, has not updated since last check. Update count: {1}", webCamTextureToMatHelper.GetWebCamDevice().name, webCamTextureToMatHelper.GetWebCamTexture().updateCount),
+                            MESSAGETYPE.ERROR
+                        );
+
+                        lastUpdateCount = (int)webCamTextureToMatHelper.GetWebCamTexture().updateCount;
+
+                        if (errorDisplaySettingsSO.errorDisplaySettings.doAttemptCameraRestart)
+                            ReInitialize();
+
+                        continue;
+                    }
+
+                    lastUpdateCount = (int)webCamTextureToMatHelper.GetWebCamTexture().updateCount;
+                }
+                else
+                {
+                    lastUpdateCount = -1;
+                }
+
+                WebCamDevice[] devices = WebCamTexture.devices;
+                if (Array.IndexOf(devices, webCamTextureToMatHelper.GetWebCamDevice()) < 0)
+                {
+                    RLMGLogger.Instance.Log(
+                        string.Format("CAMERA RE-INIT: Currently used webcam, {0}, not found in devices list: {1}", webCamTextureToMatHelper.GetWebCamDevice().name, PrintDeviceNames(devices)),
+                        MESSAGETYPE.ERROR
+                    );
+
+                    if (errorDisplaySettingsSO.errorDisplaySettings.doAttemptCameraRestart)
+                        ReInitialize();
+
+                    //do not continue
+                }
+
+                yield return new WaitForSeconds(errorDisplaySettingsSO.errorDisplaySettings.checkForDisconnectInterval);
+            }
+
+        }
+
+        private string PrintDeviceNames(WebCamDevice[] devices)
+        {
+            string names = "";
+            foreach (WebCamDevice d in devices)
+            {
+                names += String.Format("\n{0}",d.name);
+            }
+            return names;
         }
 
         private void CheckForDidUpdateFrame()

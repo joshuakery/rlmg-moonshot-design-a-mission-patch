@@ -21,6 +21,7 @@ namespace ArtScan.CamConfigLoaderModule
 		public string defaultCamera;
 		public bool flipVertical;
 		public bool flipHorizontal;
+		public int requestedFPS = 30;
 
 		public int brightness = 255;
 		public int contrast = 127;

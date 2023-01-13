@@ -9,6 +9,7 @@
     "defaultCamera": "HD Pro Webcam C920",
     "flipVertical": true,
     "flipHorizontal": false,
+    "requestedFPS": 60,
     "brightness": 255,
     "contrast": 127,
     "edgeFindingMethod": 0,
@@ -27,7 +28,9 @@
         "minimumConsistentFrames": 11
     },
     "errorDisplaySettings": {
+        "checkForDisconnectInterval": 3000,
         "doAttemptCameraRestart": true,
-        "cameraDisconnectTimeout": 11.0
+        "cameraDisconnectTimeout": 11.0,
+	"refinedScanTimeout": 3.0
     }
 }
