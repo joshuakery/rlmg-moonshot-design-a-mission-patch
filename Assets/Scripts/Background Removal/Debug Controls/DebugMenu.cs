@@ -53,9 +53,16 @@ public class DebugMenu : MonoBehaviour
     public Toggle showEdgesToggle;
     public Toggle doRemoveBackgroundToggle;
     public Toggle doDrawMaxAreaContourToggle;
+    public Toggle doDropInconsistentFramesToggle;
 
-    public Slider minimumConsistentFrames;
-    public Slider minimumScanSize;
+    public Slider minimumPaperFoundFrames;
+    public Slider minimumPaperFoundFramesToFail;
+    public Slider minimumPaperConsistentAreaFrames;
+    public Slider minimumPaperConsistentAreaFramesToFail;
+    public Slider minimumArtArea;
+    public Slider maximumArtArea;
+    public Slider minimumArtConsistentAreaFrames;
+    public Slider minimumArtConsistentAreaFramesToFail;
     
     public Button resetButton;
     public GameObject feedback;
@@ -135,13 +142,14 @@ public class DebugMenu : MonoBehaviour
         displayOptions.showEdges = false;
         displayOptions.doRemoveBackground = true;
         displayOptions.doDrawMaxAreaContour = false;
+        displayOptions.doDropInconsistentFrames = true;
     }
 
     private void ResetDisplayOptionsUIToCurrentState()
     {
         //Remove Background Toggles
         doDrawPaperEdgeToggle.isOn = displayOptions.doDrawPaperEdge;
-        doDrawPaperEdgeToggle.interactable = !displayOptions.doWarp;
+        doDrawPaperEdgeToggle.interactable = true;
 
         doWarpToggle.isOn = displayOptions.doWarp;
 
@@ -152,6 +160,8 @@ public class DebugMenu : MonoBehaviour
 
         doDrawMaxAreaContourToggle.isOn = displayOptions.doDrawMaxAreaContour;
         doDrawMaxAreaContourToggle.interactable = displayOptions.doWarp;
+
+        doDropInconsistentFramesToggle.isOn = displayOptions.doDropInconsistentFrames;
     }
 
     private void ResetSettingsUI()
@@ -189,8 +199,14 @@ public class DebugMenu : MonoBehaviour
         pContrastSlider.value = settings.postProcessingSettings.contrast;
 
         //Thresholds Settings
-        minimumConsistentFrames.value = settings.enableBeginScanButtonSettings.minimumConsistentFrames;
-        minimumScanSize.value = settings.enableBeginScanButtonSettings.minimumScanSize;
+        minimumPaperFoundFrames.value = settings.enableBeginScanButtonSettings.minimumPaperFoundFrames;
+        minimumPaperFoundFramesToFail.value = settings.enableBeginScanButtonSettings.minimumPaperNotFoundFramesToFail;
+        minimumPaperConsistentAreaFrames.value = settings.enableBeginScanButtonSettings.minimumPaperConsistentFrames;
+        minimumPaperConsistentAreaFramesToFail.value = settings.enableBeginScanButtonSettings.minimumPaperInconsistentFramesToFail;
+        minimumArtArea.value = settings.enableBeginScanButtonSettings.minimumScanSize;
+        maximumArtArea.value = settings.enableBeginScanButtonSettings.maximumArtworkPercentageOfPaper;
+        minimumArtConsistentAreaFrames.value = settings.enableBeginScanButtonSettings.minimumConsistentFrames;
+        minimumArtConsistentAreaFramesToFail.value = settings.enableBeginScanButtonSettings.minimumArtworkInconsistentFramesToFail;
 
         resetButton.interactable = false;
     }
@@ -218,8 +234,18 @@ public class DebugMenu : MonoBehaviour
             settings.postProcessingSettings.brightness = originalConfigData.postProcessingSettings.brightness;
             settings.postProcessingSettings.contrast = originalConfigData.postProcessingSettings.contrast;
 
-            settings.enableBeginScanButtonSettings.minimumConsistentFrames = originalConfigData.enableBeginScanButtonSettings.minimumConsistentFrames;
+            settings.enableBeginScanButtonSettings.minimumPaperFoundFrames = originalConfigData.enableBeginScanButtonSettings.minimumPaperFoundFrames;
+            settings.enableBeginScanButtonSettings.minimumPaperNotFoundFramesToFail = originalConfigData.enableBeginScanButtonSettings.minimumPaperNotFoundFramesToFail;
+
+            settings.enableBeginScanButtonSettings.minimumPaperConsistentFrames = originalConfigData.enableBeginScanButtonSettings.minimumPaperConsistentFrames;
+            settings.enableBeginScanButtonSettings.minimumPaperInconsistentFramesToFail = originalConfigData.enableBeginScanButtonSettings.minimumPaperInconsistentFramesToFail;
+
+            
+            settings.enableBeginScanButtonSettings.maximumArtworkPercentageOfPaper = originalConfigData.enableBeginScanButtonSettings.maximumArtworkPercentageOfPaper;
             settings.enableBeginScanButtonSettings.minimumScanSize = originalConfigData.enableBeginScanButtonSettings.minimumScanSize;
+
+            settings.enableBeginScanButtonSettings.minimumConsistentFrames = originalConfigData.enableBeginScanButtonSettings.minimumConsistentFrames;
+            settings.enableBeginScanButtonSettings.minimumArtworkInconsistentFramesToFail = originalConfigData.enableBeginScanButtonSettings.minimumArtworkInconsistentFramesToFail;
 
             ResetSettingsUI();
 
@@ -425,17 +451,61 @@ public class DebugMenu : MonoBehaviour
         resetButton.interactable = AreSettingsChanged();
     }
 
-    public void OnMinimumConsistentFramesValueChanged()
+
+
+
+    //begin scan
+
+    public void OnMinimumPaperFoundFramesValueChanged()
     {
-        settings.enableBeginScanButtonSettings.minimumConsistentFrames = (int)minimumConsistentFrames.value;
+        settings.enableBeginScanButtonSettings.minimumPaperFoundFrames = (int)minimumPaperFoundFrames.value;
         resetButton.interactable = AreSettingsChanged();
     }
 
-    public void OnMinimumScanSizeValueChanged()
+    public void OnMinimumPaperFoundFramesToFailValueChanged()
     {
-        settings.enableBeginScanButtonSettings.minimumScanSize = (int)minimumScanSize.value;
+        settings.enableBeginScanButtonSettings.minimumPaperNotFoundFramesToFail = (int)minimumPaperFoundFramesToFail.value;
         resetButton.interactable = AreSettingsChanged();
     }
+
+    public void OnMinimumPaperConsistentAreaFramesValueChanged()
+    {
+        settings.enableBeginScanButtonSettings.minimumPaperConsistentFrames = (int)minimumPaperConsistentAreaFrames.value;
+        resetButton.interactable = AreSettingsChanged();
+    }
+
+    public void OnMinimumPaperConsistentAreaFramesToFailValueChanged()
+    {
+        settings.enableBeginScanButtonSettings.minimumPaperInconsistentFramesToFail = (int)minimumArtConsistentAreaFramesToFail.value;
+        resetButton.interactable = AreSettingsChanged();
+    }
+
+    public void OnMinimumArtAreaValueChanged()
+    {
+        settings.enableBeginScanButtonSettings.minimumScanSize = (int)minimumArtArea.value;
+        resetButton.interactable = AreSettingsChanged();
+    }
+
+    public void OnMaximumArtAreaValueChanged()
+    {
+        Debug.Log("changed");
+        settings.enableBeginScanButtonSettings.maximumArtworkPercentageOfPaper = maximumArtArea.value;
+        resetButton.interactable = AreSettingsChanged();
+    }
+
+    public void OnMinimumConsistentAreaFramesValueChanged()
+    {
+        settings.enableBeginScanButtonSettings.minimumConsistentFrames = (int)minimumArtConsistentAreaFrames.value;
+        resetButton.interactable = AreSettingsChanged();
+    }
+
+    public void OnMinimumConsistentAreaFramesToFailValueChanged()
+    {
+        settings.enableBeginScanButtonSettings.minimumArtworkInconsistentFramesToFail = (int)minimumArtConsistentAreaFramesToFail.value;
+        resetButton.interactable = AreSettingsChanged();
+    }
+
+
 
     /// <summary>
     /// Raises the is final mode toggle value changed event.
@@ -444,8 +514,7 @@ public class DebugMenu : MonoBehaviour
     {
         displayOptions.doWarp = value;
 
-        //cannot draw paper edge after warping so disable...
-        doDrawPaperEdgeToggle.interactable = !value;
+        doDrawPaperEdgeToggle.interactable = true;
         //conversely, cannot remove background without warping, so...
         doRemoveBackgroundToggle.interactable = value;
         doDrawMaxAreaContourToggle.interactable = value;
@@ -481,6 +550,14 @@ public class DebugMenu : MonoBehaviour
     public void OnDoDrawMaxAreaContourToggleValueChanged(bool value)
     {
         displayOptions.doDrawMaxAreaContour = value;
+    }
+
+    /// <summary>
+    /// Raises the "do drop inconsistent frames" toggle value changed event.
+    /// </summary>
+    public void OnDoDropInconsistentFramesToggleValueChanged(bool value)
+    {
+        displayOptions.doDropInconsistentFrames = value;
     }
 
 }

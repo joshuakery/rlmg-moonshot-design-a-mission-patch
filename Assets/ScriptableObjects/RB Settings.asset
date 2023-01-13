@@ -31,8 +31,13 @@ MonoBehaviour:
     brightness: 344
     contrast: 161
   enableBeginScanButtonSettings:
-    consistentPaperAreaThreshold: 0.5
-    minimumPaperConsistentFrames: 2
-    consistentScanAreaThreshold: 0.5
+    minimumPaperFoundFrames: 5
+    minimumPaperNotFoundFramesToFail: 2
+    consistentPaperAreaThreshold: 0.1
+    minimumPaperConsistentFrames: 5
+    minimumPaperInconsistentFramesToFail: 2
     minimumScanSize: 50
-    minimumConsistentFrames: 5
+    maximumArtworkPercentageOfPaper: 0
+    consistentScanAreaThreshold: 0.01
+    minimumConsistentFrames: 4
+    minimumArtworkInconsistentFramesToFail: 2

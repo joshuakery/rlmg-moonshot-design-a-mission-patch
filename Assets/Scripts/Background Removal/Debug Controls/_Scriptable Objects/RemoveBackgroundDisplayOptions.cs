@@ -31,6 +31,14 @@ public class RemoveBackgroundDisplayOptions : ScriptableObject
     /// </summary>
     public bool doDrawMaxAreaContour;
 
+    /// <summary>
+    /// Determines whether or not to send updated frames to be displayed after a frame fails one of the following checks:
+    /// paperFound
+    /// paperConsistentArea
+    /// artworkConsistentArea
+    /// </summary>
+    public bool doDropInconsistentFrames;
+
 }
 
 

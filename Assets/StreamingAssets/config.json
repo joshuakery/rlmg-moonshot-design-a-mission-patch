@@ -21,16 +21,21 @@
     },
     "enableBeginScanButtonSettings": {
         "minimumPaperFoundFrames": 5,
+        "minimumPaperNotFoundFramesToFail": 2,
         "consistentPaperAreaThreshold": 0.1,
         "minimumPaperConsistentFrames": 5,
-        "consistentScanAreaThreshold": 0.4,
+        "minimumPaperInconsistentFramesToFail": 2,
+        "cropPaperByPercentage": 0.949999988079071,
         "minimumScanSize": 50,
-        "minimumConsistentFrames": 11
+        "maximumArtworkPercentageOfPaper": 0.7,
+        "consistentScanAreaThreshold": 0.009999999776482582,
+        "minimumConsistentFrames": 4,
+        "minimumArtworkInconsistentFramesToFail": 3
     },
     "errorDisplaySettings": {
-        "checkForDisconnectInterval": 3000,
+        "checkForDisconnectInterval": 60,
         "doAttemptCameraRestart": true,
         "cameraDisconnectTimeout": 11.0,
-	"refinedScanTimeout": 3.0
+        "refinedScanTimeout": 3.0
     }
 }

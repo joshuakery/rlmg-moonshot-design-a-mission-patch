@@ -17,3 +17,4 @@ MonoBehaviour:
   showEdges: 0
   doRemoveBackground: 1
   doDrawMaxAreaContour: 0
+  doDropInconsistentFrames: 1

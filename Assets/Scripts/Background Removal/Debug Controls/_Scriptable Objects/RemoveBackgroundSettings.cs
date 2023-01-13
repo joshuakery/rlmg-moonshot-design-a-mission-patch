@@ -17,11 +17,20 @@ public class RemoveBackgroundSettings : ScriptableObject
     public class EnableBeginScanButtonSettings
     {
         public int minimumPaperFoundFrames = 2;
+        public int minimumPaperNotFoundFramesToFail = 2;
+
         public float consistentPaperAreaThreshold = 0.5f;
         public int minimumPaperConsistentFrames = 2;
-        public float consistentScanAreaThreshold = 0.5f;
+
+        public int minimumPaperInconsistentFramesToFail = 2;
+
         public int minimumScanSize = 25;
+        public float maximumArtworkPercentageOfPaper = 0.9f;
+
+        public float consistentScanAreaThreshold = 0.5f;
         public int minimumConsistentFrames = 2;
+
+        public int minimumArtworkInconsistentFramesToFail = 2;
     }
 
     public string saveDir = "SavedScans";
