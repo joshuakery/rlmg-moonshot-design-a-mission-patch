@@ -725,7 +725,7 @@ namespace OpenCVForUnity.UnityUtils.Helper
                         if (onWarnOccurred != null)
                             onWarnOccurred.Invoke(WarnCode.WRONG_CAMERA_FRONTFACING_SELECTED);
 
-                        break;
+                        //yield break; //todo necessary?
                     }
                 }
             }
@@ -756,7 +756,7 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 {
                     isInitWaiting = false;
                     initCoroutine = null;
-
+                     
                     if (onErrorOccurred != null)
                         onErrorOccurred.Invoke(ErrorCode.CAMERA_DEVICE_NOT_EXIST);
 
@@ -940,11 +940,15 @@ namespace OpenCVForUnity.UnityUtils.Helper
         {
             if (hasInitDone)
             {
+                if (RLMGLogger.Instance != null)
+                    RLMGLogger.Instance.Log("Webcam playing...", MESSAGETYPE.INFO);
+
                 webCamTexture.Play();
                 onPlay.Invoke();
             }
                 
             //throw a warning here if this is not working
+
         }
 
         /// <summary>
@@ -954,6 +958,9 @@ namespace OpenCVForUnity.UnityUtils.Helper
         {
             if (hasInitDone)
             {
+                if (RLMGLogger.Instance != null)
+                    RLMGLogger.Instance.Log("Webcam pausing...", MESSAGETYPE.INFO);
+
                 webCamTexture.Pause();
                 onPause.Invoke();
             }
@@ -967,6 +974,9 @@ namespace OpenCVForUnity.UnityUtils.Helper
         {
             if (hasInitDone)
             {
+                if (RLMGLogger.Instance != null)
+                    RLMGLogger.Instance.Log("Webcam stopping...", MESSAGETYPE.INFO);
+
                 webCamTexture.Stop();
                 onStop.Invoke();
             }

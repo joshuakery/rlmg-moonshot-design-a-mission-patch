@@ -368,7 +368,8 @@ namespace ArtScan.CoreModule
         {
             if (string.IsNullOrEmpty(sForests_model_filepath))
             {
-                RLMGLogger.Instance.Log("Structured forests model file is not loaded. \n Please copy to “Assets/StreamingAssets/” folder.", MESSAGETYPE.INFO);
+                if (RLMGLogger.Instance != null)
+                    RLMGLogger.Instance.Log("Structured forests model file is not loaded. \n Please copy to “Assets/StreamingAssets/” folder.", MESSAGETYPE.INFO);
             }
             else
             {
@@ -377,7 +378,8 @@ namespace ArtScan.CoreModule
                 edgeDetection = Ximgproc.createStructuredEdgeDetection(sForests_model_filepath);
                 
                 if (edgeDetection.empty())
-                    RLMGLogger.Instance.Log("Structured forests algorithm is empty.", MESSAGETYPE.ERROR);
+                    if (RLMGLogger.Instance != null)
+                        RLMGLogger.Instance.Log("Structured forests algorithm is empty.", MESSAGETYPE.ERROR);
             }
 
         }
@@ -387,7 +389,8 @@ namespace ArtScan.CoreModule
         /// </summary>
         public void OnWebCamTextureToMatHelperInitialized()
         {
-            RLMGLogger.Instance.Log("Calling OnWebCamTextureToMatHelperInitialized...", MESSAGETYPE.INFO);
+            if (RLMGLogger.Instance != null)
+                RLMGLogger.Instance.Log("Calling OnWebCamTextureToMatHelperInitialized...", MESSAGETYPE.INFO);
 
             Mat webCamTextureMat = webCamTextureToMatHelper.GetMat();
 
@@ -398,7 +401,8 @@ namespace ArtScan.CoreModule
             rawImageTexture = new Texture2D(rawImageDisplayMat.cols(), rawImageDisplayMat.rows(), TextureFormat.RGBA32, false);
             rawImage.texture = rawImageTexture;
 
-            RLMGLogger.Instance.Log("OnWebCamTextureToMatHelperInitialized. Screen.width " + Screen.width + " Screen.height " + Screen.height + " Screen.orientation " + Screen.orientation, MESSAGETYPE.INFO);
+            if (RLMGLogger.Instance != null)
+                RLMGLogger.Instance.Log("OnWebCamTextureToMatHelperInitialized. Screen.width " + Screen.width + " Screen.height " + Screen.height + " Screen.orientation " + Screen.orientation, MESSAGETYPE.INFO);
 
             float width = rawImageDisplayMat.width();
             float height = rawImageDisplayMat.height();
@@ -576,10 +580,11 @@ namespace ArtScan.CoreModule
 
                         TimeSpan duration = after.Subtract(before);
 
-                        RLMGLogger.Instance.Log(
-                            String.Format("Webcam texture successfuly copied for refined scan in {0} milliseconds.", duration.TotalMilliseconds),
-                            MESSAGETYPE.INFO
-                        );
+                        if (RLMGLogger.Instance != null)
+                            RLMGLogger.Instance.Log(
+                                String.Format("Webcam texture successfuly copied for refined scan in {0} milliseconds.", duration.TotalMilliseconds),
+                                MESSAGETYPE.INFO
+                            );
                     }
                     else
                     {
@@ -611,7 +616,9 @@ namespace ArtScan.CoreModule
 
         private void InitThread()
         {
-            RLMGLogger.Instance.Log("Initializing thread.", MESSAGETYPE.INFO);
+            if (RLMGLogger.Instance != null)
+                RLMGLogger.Instance.Log("Initializing thread.", MESSAGETYPE.INFO);
+
             StopThread();
 
             rgbaMat4Thread = new Mat();
@@ -638,8 +645,8 @@ namespace ArtScan.CoreModule
 #else
             ThreadPool.QueueUserWorkItem(_ => action());
 #endif
-
-            RLMGLogger.Instance.Log("Thread Start.", MESSAGETYPE.INFO);
+            if (RLMGLogger.Instance != null)
+                RLMGLogger.Instance.Log("Thread Start.", MESSAGETYPE.INFO);
         }
 
         private void StopThread()
@@ -655,6 +662,7 @@ namespace ArtScan.CoreModule
                 //    RLMGLogger.Instance.Log("Awaiting thread stop...", MESSAGETYPE.INFO);
                 //Wait threading stop
             }
+
 
             if (RLMGLogger.Instance != null)
                 RLMGLogger.Instance.Log("...thread stopped.", MESSAGETYPE.INFO);
@@ -677,7 +685,11 @@ namespace ArtScan.CoreModule
                 catch (Exception e)
                 {
                     // Debug.LogError(e);
-                    RLMGLogger.Instance.Log(e.ToString(), MESSAGETYPE.INFO);
+                    if (RLMGLogger.Instance != null)
+                        RLMGLogger.Instance.Log(e.ToString(), MESSAGETYPE.INFO);
+                    else
+                        Debug.LogError(e.ToString());
+
                     shouldStopThread = true;
                 }
                 
@@ -716,8 +728,6 @@ namespace ArtScan.CoreModule
         private void ProcessImage()
         {
             if ( rgbaMat4Thread.empty() ) return;
-
-
 
             //reduce size
             if (DOWNSCALE_RATIO > 0)

@@ -4245,6 +4245,7 @@ MonoBehaviour:
       doAttemptCameraRestart: 1
       cameraDisconnectTimeout: 2
       refinedScanTimeout: 5
+      doAttemptCameraRestartIfWrongCamera: 0
 --- !u!1 &1328863885
 GameObject:
   m_ObjectHideFlags: 0
@@ -13968,6 +13969,7 @@ GameObject:
   - component: {fileID: 5514461683746088440}
   - component: {fileID: 5514461683746088441}
   - component: {fileID: 5514461683746088443}
+  - component: {fileID: 5514461683746088444}
   m_Layer: 5
   m_Name: Remove Background
   m_TagString: Untagged
@@ -14184,7 +14186,6 @@ MonoBehaviour:
   errorText: {fileID: 1921990268}
   warningDisplay: {fileID: 866272719}
   warningText: {fileID: 233258552}
-  canCountTowardsTimeout: 0
   lastUpdateCount: -1
 --- !u!114 &5514461683746088443
 MonoBehaviour:
@@ -14213,6 +14214,35 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5514461683746088444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5514461683746088424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd4da8dd6f98b4323acaa3485a1317be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: a81920f527d7f449a8f975afca5fd8fc, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5514461683746088442}
+        m_TargetAssemblyTypeName: ArtScan.ErrorDisplayModule.CameraDisconnectHandler,
+          Assembly-CSharp
+        m_MethodName: SetCanCheckDevices
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!1001 &6306038879146577215
 PrefabInstance:

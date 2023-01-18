@@ -10,6 +10,8 @@ namespace ArtScan.ErrorDisplayModule
         public float cameraDisconnectTimeout = 10f;
 
         public float refinedScanTimeout = 5f;
+
+        public bool doAttemptCameraRestartIfWrongCamera = false;
     }
 
 }

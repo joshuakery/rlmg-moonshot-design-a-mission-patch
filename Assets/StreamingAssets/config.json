@@ -33,9 +33,10 @@
         "minimumArtworkInconsistentFramesToFail": 3
     },
     "errorDisplaySettings": {
-        "checkForDisconnectInterval": 60,
+        "checkForDisconnectInterval": 5,
         "doAttemptCameraRestart": true,
         "cameraDisconnectTimeout": 11.0,
-        "refinedScanTimeout": 3.0
+        "refinedScanTimeout": 3.0,
+	"doAttemptCameraRestartIfWrongCamera": true
     }
 }
