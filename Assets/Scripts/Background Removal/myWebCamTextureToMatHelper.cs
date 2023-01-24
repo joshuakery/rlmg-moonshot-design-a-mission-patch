@@ -766,6 +766,7 @@ namespace OpenCVForUnity.UnityUtils.Helper
 
             // Starts the camera
             webCamTexture.Play();
+            onPlay.Invoke();
 
             int initFrameCount = 0;
             bool isTimeout = false;
@@ -845,6 +846,7 @@ namespace OpenCVForUnity.UnityUtils.Helper
             if (isTimeout)
             {
                 webCamTexture.Stop();
+                onStop.Invoke();
                 webCamTexture = null;
                 isInitWaiting = false;
                 initCoroutine = null;
@@ -1342,6 +1344,7 @@ namespace OpenCVForUnity.UnityUtils.Helper
             if (webCamTexture != null)
             {
                 webCamTexture.Stop();
+                onStop.Invoke();
                 WebCamTexture.Destroy(webCamTexture);
                 webCamTexture = null;
             }

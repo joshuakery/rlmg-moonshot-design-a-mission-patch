@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Error Display Settings
   m_EditorClassIdentifier: 
   errorDisplaySettings:
-    checkForDisconnectInterval: 3
+    checkForDisconnectInterval: 5
     doAttemptCameraRestart: 1
     cameraDisconnectTimeout: 11
     refinedScanTimeout: 3
+    doAttemptCameraRestartIfWrongCamera: 0

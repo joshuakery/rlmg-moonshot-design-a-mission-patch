@@ -3,7 +3,7 @@ namespace ArtScan.ErrorDisplayModule
     [System.Serializable]
     public class ErrorDisplaySettings
     {
-        public float checkForDisconnectInterval = 60f;
+        public float checkForDisconnectInterval = 5f;
 
         public bool doAttemptCameraRestart = true;
 

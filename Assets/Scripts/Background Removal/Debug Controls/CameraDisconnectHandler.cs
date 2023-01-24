@@ -11,22 +11,29 @@ namespace ArtScan.ErrorDisplayModule
 {
     public class CameraDisconnectHandler : MonoBehaviour
     {
-        public AsynchronousRemoveBackground asynchronousRemoveBackground;
-        public myWebCamTextureToMatHelper webCamTextureToMatHelper;
-        public RefinedScanController refinedScanController;
-        public DebugMenu debugMenu;
+        private AsynchronousRemoveBackground asynchronousRemoveBackground;
+        private myWebCamTextureToMatHelper webCamTextureToMatHelper;
+        private RefinedScanController refinedScanController;
+        //public DebugMenu debugMenu;
 
-        public ErrorDisplaySettingsSO errorDisplaySettingsSO;
+        [SerializeField]
+        private ErrorDisplaySettingsSO errorDisplaySettingsSO;
 
-        public Canvas errorDisplay;
-        public TMP_Text errorText;
-        public Canvas warningDisplay;
-        public TMP_Text warningText;
+        [SerializeField]
+        private Canvas errorDisplay;
+        [SerializeField]
+        private TMP_Text errorText;
+        [SerializeField]
+        private Canvas warningDisplay;
+        [SerializeField]
+        private TMP_Text warningText;
 
-        private bool canCountTowardsTimeout = false;
-        private float lastUpdateTime;
+        //private bool canCountTowardsTimeout = false;
+        //private float lastUpdateTime;
 
-        public int lastUpdateCount = -1;
+        private int lastUpdateCount = -1;
+
+        
 
         private DateTime timeout;
         private bool configLoaded = false;
@@ -44,8 +51,8 @@ namespace ArtScan.ErrorDisplayModule
             if (refinedScanController == null)
                 refinedScanController = FindObjectOfType<RefinedScanController>();
 
-            if (debugMenu == null)
-                debugMenu = (DebugMenu)FindObjectOfType(typeof(DebugMenu));
+            //if (debugMenu == null)
+            //    debugMenu = (DebugMenu)FindObjectOfType(typeof(DebugMenu));
 
             errorDisplay.enabled = false;
             warningDisplay.enabled = false;
@@ -54,7 +61,7 @@ namespace ArtScan.ErrorDisplayModule
         // Start is called before the first frame update
         void Start()
         {
-            lastUpdateTime = 0;
+            //lastUpdateTime = 0;
             configLoaded = false;
 
             timeout = DateTime.Now + TimeSpan.FromSeconds((double)errorDisplaySettingsSO.errorDisplaySettings.checkForDisconnectInterval);
@@ -65,7 +72,7 @@ namespace ArtScan.ErrorDisplayModule
         {
             if (webCamTextureToMatHelper != null)
             {
-                webCamTextureToMatHelper.onInitialized.AddListener(ResetTimeoutCounter);
+                //webCamTextureToMatHelper.onInitialized.AddListener(ResetTimeoutCounter);
                 webCamTextureToMatHelper.onInitialized.AddListener(ResetUpdateCount);
                 webCamTextureToMatHelper.onInitialized.AddListener(HideCameraError);
 
@@ -91,7 +98,7 @@ namespace ArtScan.ErrorDisplayModule
         {
             if (webCamTextureToMatHelper != null)
             {
-                webCamTextureToMatHelper.onInitialized.RemoveListener(ResetTimeoutCounter);
+                //webCamTextureToMatHelper.onInitialized.RemoveListener(ResetTimeoutCounter);
                 webCamTextureToMatHelper.onInitialized.RemoveListener(ResetUpdateCount);
                 webCamTextureToMatHelper.onInitialized.RemoveListener(HideCameraError);
 
@@ -113,13 +120,13 @@ namespace ArtScan.ErrorDisplayModule
             }
         }
 
-        private void ResetTimeoutCounter()
-        {
-            RLMGLogger.Instance.Log("Resetting timeout counter...", MESSAGETYPE.INFO);
+        //private void ResetTimeoutCounter()
+        //{
+        //    RLMGLogger.Instance.Log("Resetting timeout counter...", MESSAGETYPE.INFO);
 
-            canCountTowardsTimeout = true;
-            lastUpdateTime = 0;
-        }
+        //    canCountTowardsTimeout = true;
+        //    lastUpdateTime = 0;
+        //}
 
         private void ResetUpdateCount()
         {
@@ -361,14 +368,18 @@ namespace ArtScan.ErrorDisplayModule
                     MESSAGETYPE.INFO
                 );
 
-                if (refinedScanController.refinedScanningIsUnderway)
+                if (refinedScanController != null)
                 {
-                    RLMGLogger.Instance.Log("...cannot check devices because a refined scan is underway.", MESSAGETYPE.INFO);
-                    return;
+                    if (refinedScanController.refinedScanningIsUnderway)
+                    {
+                        RLMGLogger.Instance.Log("...cannot check devices because a refined scan is underway.", MESSAGETYPE.INFO);
+                        return;
+                    }
+
+                    refinedScanController.StopAllCoroutines();
+                    refinedScanController.AbortRefinedScan();
                 }
 
-                refinedScanController.StopAllCoroutines();
-                refinedScanController.AbortRefinedScan();
 
                 if (webCamTextureToMatHelper.GetWebCamTexture() != null)
                 {
@@ -557,8 +568,13 @@ namespace ArtScan.ErrorDisplayModule
 
             webCamTextureToMatHelper.Initialize();
 
-            if (debugMenu != null)
-                debugMenu.InitializeDebugMenu();
+            //if (debugMenu != null)
+            //    debugMenu.InitializeDebugMenu();
+        }
+
+        public void DoReInitialize()
+        {
+            ReInitialize();
         }
     }
 }
