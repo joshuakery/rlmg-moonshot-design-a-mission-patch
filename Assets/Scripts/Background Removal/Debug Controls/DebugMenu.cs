@@ -12,12 +12,11 @@ using TMPro;
 
 public class DebugMenu : MonoBehaviour
 {
+    private myWebCamTextureToMatHelper webCamTextureToMatHelper;
+    private CamConfigLoader configLoader;
 
-    public myWebCamTextureToMatHelper webCamTextureToMatHelper;
     public RemoveBackgroundSettings settings;
     public RemoveBackgroundDisplayOptions displayOptions;
-
-    public CamConfigLoader configLoader;
 
     /// <summary>
     /// ChangeCamera Button Prefab
@@ -69,6 +68,15 @@ public class DebugMenu : MonoBehaviour
 
     public Color32 SUCCESS_COLOR = new Color32(40,178,52,255);
     public Color32 ERROR_COLOR = new Color32(178,40,40,255);
+
+    private void Awake()
+    {
+        if (webCamTextureToMatHelper == null)
+            webCamTextureToMatHelper = FindObjectOfType<myWebCamTextureToMatHelper>();
+
+        if (configLoader == null)
+            configLoader = FindObjectOfType<CamConfigLoader>();
+    }
 
     private void OnEnable()
     {

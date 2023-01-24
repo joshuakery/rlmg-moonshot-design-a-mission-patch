@@ -37,5 +37,13 @@ public class DebugHelper : MonoBehaviour
             if (cameraDisconnectHandler != null)
                 cameraDisconnectHandler.DoReInitialize();
         }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            if (asynchronousRemoveBackground != null)
+            {
+                asynchronousRemoveBackground.doProcessImage = !asynchronousRemoveBackground.doProcessImage;
+            }
+        }
+
     }
 }

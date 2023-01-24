@@ -16,13 +16,13 @@ public class UIManager : MonoBehaviour
     public GameState gameState;
     public GameEvent CloseAllWindowsEvent;
     public GameEvent StartEvent;
-    public myWebCamTextureToMatHelper myWebCamTextureToMatHelper;
+    //public myWebCamTextureToMatHelper myWebCamTextureToMatHelper;
     public GameEvent EndingEvent;
 
     public UISequenceManager primarySequenceManager;
     public UISequenceManager namesakeSequenceManager;
     //debug
-    public GameEvent ConfigLoaded;
+    //public GameEvent ConfigLoaded;
     public MoonshotTimer.Timer mainTimer;
     public MoonshotTimer.Timer bufferTimer;
     public MoonshotTimer.TimerDisplay timerDisplay;
@@ -131,10 +131,10 @@ public class UIManager : MonoBehaviour
             StartEvent.Raise();
             started = true;
 
-            if (myWebCamTextureToMatHelper != null && myWebCamTextureToMatHelper.IsInitialized())
-            {
+            //if (myWebCamTextureToMatHelper != null && myWebCamTextureToMatHelper.IsInitialized())
+            //{
                 
-            }
+            //}
         }
     }
 

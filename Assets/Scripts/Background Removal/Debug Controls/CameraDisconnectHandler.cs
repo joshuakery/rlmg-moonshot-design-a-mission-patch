@@ -33,7 +33,8 @@ namespace ArtScan.ErrorDisplayModule
 
         private int lastUpdateCount = -1;
 
-        
+        [SerializeField]
+        private int webCamTextureID;
 
         private DateTime timeout;
         private bool configLoaded = false;
@@ -132,6 +133,12 @@ namespace ArtScan.ErrorDisplayModule
         {
             RLMGLogger.Instance.Log("Resetting update count...", MESSAGETYPE.INFO);
             lastUpdateCount = -1;
+
+            if (webCamTextureToMatHelper != null &&
+                webCamTextureToMatHelper.GetWebCamTexture() != null)
+            {
+                webCamTextureID = webCamTextureToMatHelper.GetWebCamTexture().GetInstanceID();
+            }
         }
 
         private void SetShouldBePlayingTrue()
@@ -359,11 +366,12 @@ namespace ArtScan.ErrorDisplayModule
             {
                 RLMGLogger.Instance.Log(
                     System.String.Format(
-                        "Checking devices... webCamTexture is null: {0}; isPlaying: {1}; updateCount: {2}, shouldBePlaying: {3}",
+                        "Checking devices... webCamTexture is null: {0}; isPlaying: {1}; updateCount: {2}; shouldBePlaying: {3}; webCamTexture Instance ID: {4}",
                         (webCamTextureToMatHelper.GetWebCamTexture() == null) ? "True" : "False",
                         (webCamTextureToMatHelper.IsPlaying()) ? "True" : "False",
                         (webCamTextureToMatHelper.GetWebCamTexture() != null) ? webCamTextureToMatHelper.GetWebCamTexture().updateCount : "Is Null",
-                        (shouldBePlaying) ? "True" : "False"
+                        (shouldBePlaying) ? "True" : "False",
+                        webCamTextureID.ToString()
                     ),
                     MESSAGETYPE.INFO
                 );
@@ -383,6 +391,15 @@ namespace ArtScan.ErrorDisplayModule
 
                 if (webCamTextureToMatHelper.GetWebCamTexture() != null)
                 {
+                    if (webCamTextureID != webCamTextureToMatHelper.GetWebCamTexture().GetInstanceID())
+                    {
+                        RLMGLogger.Instance.Log(
+                            string.Format("WEBCAM TEXTURE IDS ARE UNEQUAL: saved: {0} and current: {1}",
+                            webCamTextureID, webCamTextureToMatHelper.GetWebCamTexture().GetInstanceID()),
+                            MESSAGETYPE.ERROR
+                        );
+                    }
+
                     if (webCamTextureToMatHelper.IsPlaying())
                     {
                         if (lastUpdateCount == webCamTextureToMatHelper.GetWebCamTexture().updateCount)

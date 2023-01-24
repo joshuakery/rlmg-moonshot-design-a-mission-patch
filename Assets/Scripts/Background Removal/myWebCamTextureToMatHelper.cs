@@ -766,7 +766,8 @@ namespace OpenCVForUnity.UnityUtils.Helper
 
             // Starts the camera
             webCamTexture.Play();
-            onPlay.Invoke();
+            if (onPlay != null) { onPlay.Invoke(); }
+            
 
             int initFrameCount = 0;
             bool isTimeout = false;
@@ -846,7 +847,7 @@ namespace OpenCVForUnity.UnityUtils.Helper
             if (isTimeout)
             {
                 webCamTexture.Stop();
-                onStop.Invoke();
+                if (onStop != null) { onStop.Invoke(); }
                 webCamTexture = null;
                 isInitWaiting = false;
                 initCoroutine = null;
@@ -946,7 +947,9 @@ namespace OpenCVForUnity.UnityUtils.Helper
                     RLMGLogger.Instance.Log("Webcam playing...", MESSAGETYPE.INFO);
 
                 webCamTexture.Play();
-                onPlay.Invoke();
+
+                if (onPlay != null)
+                    onPlay.Invoke();
             }
             else
             {
@@ -969,7 +972,9 @@ namespace OpenCVForUnity.UnityUtils.Helper
                     RLMGLogger.Instance.Log("Webcam pausing...", MESSAGETYPE.INFO);
 
                 webCamTexture.Pause();
-                onPause.Invoke();
+
+                if (onPause != null)
+                    onPause.Invoke();
             }
 
         }
@@ -985,7 +990,9 @@ namespace OpenCVForUnity.UnityUtils.Helper
                     RLMGLogger.Instance.Log("Webcam stopping...", MESSAGETYPE.INFO);
 
                 webCamTexture.Stop();
-                onStop.Invoke();
+
+                if (onStop != null)
+                    onStop.Invoke();
             }
                
         }
@@ -1344,7 +1351,7 @@ namespace OpenCVForUnity.UnityUtils.Helper
             if (webCamTexture != null)
             {
                 webCamTexture.Stop();
-                onStop.Invoke();
+                if (onStop != null) { onStop.Invoke(); }
                 WebCamTexture.Destroy(webCamTexture);
                 webCamTexture = null;
             }

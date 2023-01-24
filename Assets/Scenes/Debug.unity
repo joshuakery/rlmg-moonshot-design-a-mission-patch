@@ -435,7 +435,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &790067734
 Transform:
   m_ObjectHideFlags: 0
@@ -468,6 +468,51 @@ MonoBehaviour:
   errorText: {fileID: 1436206394}
   warningDisplay: {fileID: 563445252}
   warningText: {fileID: 1558470436}
+  webCamTextureID: 0
+--- !u!1 &837472128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 837472130}
+  - component: {fileID: 837472129}
+  m_Layer: 0
+  m_Name: App Setup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &837472129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837472128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd390593f5a747a687740ca291b2fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &837472130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837472128}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1698.8838, y: 1239.1589, z: -3.2338128}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &853140283
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +608,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -600,7 +645,10 @@ MonoBehaviour:
   settings: {fileID: 11400000, guid: eebe36b8bd1234f8ca3d2e070246f3b8, type: 2}
   doProcessImage: 1
   displayOptions: {fileID: 11400000, guid: d53c3c50cfdcb488aad470ae2f9fd0e2, type: 2}
+  rawImageTexture: {fileID: 0}
   rawImage: {fileID: 1916034276}
+  rawImageRT: {fileID: 0}
+  rawImageSize: {x: 0, y: 0}
   webCamTextureToMatHelper: {fileID: 0}
   WebCamTextureToMatHelperInitialized: {fileID: 11400000, guid: 1609cc9ddecf44e659d076ca828a9c6b, type: 2}
   paperFound: 0
@@ -620,7 +668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59ff12b3f76db4941b127b82b00e50ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _requestedDeviceName: 
+  _requestedDeviceName: 1
   _requestedWidth: 640
   _requestedHeight: 480
   _requestedIsFrontFacing: 0
@@ -664,10 +712,36 @@ MonoBehaviour:
         m_CallState: 2
   onErrorOccurred:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 859987002}
+        m_TargetAssemblyTypeName: ArtScan.CoreModule.AsynchronousRemoveBackground,
+          Assembly-CSharp
+        m_MethodName: OnWebCamTextureToMatHelperErrorOccurred
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onWarnOccurred:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 859987002}
+        m_TargetAssemblyTypeName: ArtScan.CoreModule.AsynchronousRemoveBackground,
+          Assembly-CSharp
+        m_MethodName: OnWebCamTextureToMatHelperWarnOccurred
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onSuccessOccurred:
     m_PersistentCalls:
       m_Calls:
@@ -707,8 +781,139 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &953460977
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 953460979}
+  - component: {fileID: 953460978}
+  - component: {fileID: 953460980}
+  m_Layer: 0
+  m_Name: Config Loader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &953460978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953460977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3ac744d66aa4e588db5e2faa956360, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadOnAwake: 1
+  loadFromExternal: 1
+  useInEditor: 1
+  loadingScreen: {fileID: 0}
+  contentFolderName: 
+  contentFilename: config.json
+  cmsUrl: 
+  tryDownloadFromCMS: 0
+  cmsTimeOut: 60
+  cacheFromCMS: 0
+  cachedFileExtensions: .jpeg|.png|.jpg|.ogg
+  onFinishedLoadingContent:
+    m_PersistentCalls:
+      m_Calls: []
+  contentLocation: 2
+  attractScreens: []
+  eventSystem: {fileID: 0}
+  settings: {fileID: 11400000, guid: eebe36b8bd1234f8ca3d2e070246f3b8, type: 2}
+  errorDisplaySettingsSO: {fileID: 11400000, guid: a77b44a46473c4611a39b26f754e5906, type: 2}
+  ConfigLoaded: {fileID: 11400000, guid: a81920f527d7f449a8f975afca5fd8fc, type: 2}
+  configData:
+    attractWaitTime: 60
+    dragPixelThreshold: 0
+    saveDir: 
+    trashDir: 
+    clearSaveDirOnQuit: 0
+    clearTrashDirOnQuit: 0
+    doSaveCroppedToBoundingBox: 0
+    defaultCamera: 
+    flipVertical: 0
+    flipHorizontal: 0
+    requestedFPS: 30
+    brightness: 255
+    contrast: 127
+    edgeFindingMethod: 0
+    doSizeToFit: 0
+    doCropToBoundingBox: 0
+    postProcessingSettings:
+      brightness: 255
+      contrast: 127
+    enableBeginScanButtonSettings:
+      minimumPaperFoundFrames: 2
+      minimumPaperNotFoundFramesToFail: 2
+      consistentPaperAreaThreshold: 0.5
+      minimumPaperConsistentFrames: 2
+      minimumPaperInconsistentFramesToFail: 2
+      minimumScanSize: 25
+      maximumArtworkPercentageOfPaper: 0.9
+      consistentScanAreaThreshold: 0.5
+      minimumConsistentFrames: 2
+      minimumArtworkInconsistentFramesToFail: 2
+    errorDisplaySettings:
+      checkForDisconnectInterval: 5
+      doAttemptCameraRestart: 1
+      cameraDisconnectTimeout: 10
+      refinedScanTimeout: 5
+      doAttemptCameraRestartIfWrongCamera: 0
+--- !u!4 &953460979
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953460977}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1698.8838, y: 1239.1589, z: -3.2338128}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &953460980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953460977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd4da8dd6f98b4323acaa3485a1317be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: a81920f527d7f449a8f975afca5fd8fc, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 859987002}
+        m_TargetAssemblyTypeName: ArtScan.CoreModule.AsynchronousRemoveBackground,
+          Assembly-CSharp
+        m_MethodName: SetupRemoveBackground
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1403879059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,5 +1450,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

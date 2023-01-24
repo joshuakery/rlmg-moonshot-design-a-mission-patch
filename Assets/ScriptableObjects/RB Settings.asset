@@ -39,5 +39,5 @@ MonoBehaviour:
     minimumScanSize: 50
     maximumArtworkPercentageOfPaper: 0
     consistentScanAreaThreshold: 0.01
-    minimumConsistentFrames: 4
+    minimumConsistentFrames: 1
     minimumArtworkInconsistentFramesToFail: 2

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68422875453d44a4ea9d59fa2391f926, type: 3}
   m_Name: RB Display Options
   m_EditorClassIdentifier: 
-  doDrawPaperEdge: 0
+  doDrawPaperEdge: 1
   doWarp: 1
   showEdges: 0
   doRemoveBackground: 1
   doDrawMaxAreaContour: 0
-  doDropInconsistentFrames: 1
+  doDropInconsistentFrames: 0

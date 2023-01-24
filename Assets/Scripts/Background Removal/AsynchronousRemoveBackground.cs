@@ -36,8 +36,7 @@ namespace ArtScan.CoreModule
     {
         public RemoveBackgroundSettings settings;
 
-        [SerializeField]
-        private bool doProcessImage = true;
+        public bool doProcessImage = true;
 
         public RemoveBackgroundDisplayOptions displayOptions;
 
@@ -57,19 +56,26 @@ namespace ArtScan.CoreModule
         IEnumerator getFilePath_Coroutine;
 #endif
 
-        private Mat rawImageDisplayMat;
-        private Texture2D rawImageTexture;
+        /// <summary>
+        /// The Mat to which the processed image will be pushed
+        /// MUST BE PUBLIC FOR THREAD TO ACCESS
+        /// </summary>
+        public Mat rawImageDisplayMat;
+
+        /// <summary>
+        /// The texture to which the processed image will be pushed
+        /// MUST BE PUBLIC FOR THREAD TO ACCESS
+        /// </summary>
+        public Texture2D rawImageTexture;
 
         private Scalar DEBUG_PAPER_EDGE_COLOR;
         private Scalar PAPER_FOUND_CONSISTENTLY_EDGE_COLOR;
         private Scalar PAPER_AREA_CONSISTENT_EDGE_COLOR;
         private Scalar FEEDBACK_PAPER_EDGE_COLOR;
 
-        [SerializeField]
-        private RawImage rawImage;
-
-        private RectTransform rawImageRT;
-        private Vector2 rawImageSize;
+        public RawImage rawImage;
+        public RectTransform rawImageRT;
+        public Vector2 rawImageSize;
 
         /// <summary>
         /// The webcam texture to mat helper.
@@ -434,7 +440,8 @@ namespace ArtScan.CoreModule
 
             InitThread();
 
-            WebCamTextureToMatHelperInitialized.Raise();
+            if (WebCamTextureToMatHelperInitialized != null)
+                WebCamTextureToMatHelperInitialized.Raise();
         }
 
         /// <summary>
@@ -557,6 +564,16 @@ namespace ArtScan.CoreModule
         {
             bool webCamTextureReady = (webCamTextureToMatHelper &&
                 webCamTextureToMatHelper.IsPlaying ());
+
+            if (!doProcessImage)
+            {
+                if (!webCamTextureReady)
+                    StopThread();
+
+                rawImage.texture = webCamTextureToMatHelper.GetWebCamTexture();
+
+                return;
+            }
 
             //if (webCamTextureToMatHelper != null)
             //{
@@ -736,6 +753,7 @@ namespace ArtScan.CoreModule
 
         private void ProcessImage()
         {
+            if (rgbaMat4Thread == null) return;
             if ( rgbaMat4Thread.empty() ) return;
 
             //reduce size

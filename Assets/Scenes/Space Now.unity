@@ -4298,11 +4298,9 @@ MonoBehaviour:
   gameState: {fileID: 11400000, guid: 697ff388aff8249d9b6ee08e618dfac2, type: 2}
   CloseAllWindowsEvent: {fileID: 11400000, guid: 0da4bff33b5b443a58f1d75bddbe7667, type: 2}
   StartEvent: {fileID: 11400000, guid: c0cb2c953ac2f4b419d33fba5d76f4c4, type: 2}
-  myWebCamTextureToMatHelper: {fileID: 5514461683746088419}
   EndingEvent: {fileID: 11400000, guid: 943381fb2f1e6468d8411173561f18a2, type: 2}
   primarySequenceManager: {fileID: 11400000, guid: 2d058e80c2bec41f1a4cb49d9ee3b36c, type: 2}
   namesakeSequenceManager: {fileID: 11400000, guid: 30c9ccaf9b15f445ab056406d1919fca, type: 2}
-  ConfigLoaded: {fileID: 11400000, guid: a81920f527d7f449a8f975afca5fd8fc, type: 2}
   mainTimer: {fileID: 0}
   bufferTimer: {fileID: 0}
   timerDisplay: {fileID: 0}
@@ -14167,6 +14165,7 @@ MonoBehaviour:
   errorText: {fileID: 1921990268}
   warningDisplay: {fileID: 866272719}
   warningText: {fileID: 233258552}
+  webCamTextureID: 0
 --- !u!114 &5514461683746088443
 MonoBehaviour:
   m_ObjectHideFlags: 0
