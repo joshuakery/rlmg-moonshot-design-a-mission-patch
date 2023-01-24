@@ -88,6 +88,8 @@ public class DebugMenu : MonoBehaviour
 
     public void InitializeDebugMenu()
     {
+        RLMGLogger.Instance.Log("Initializing debug menu...", MESSAGETYPE.INFO);
+
         if (webCamTextureToMatHelper == null)
             webCamTextureToMatHelper = (myWebCamTextureToMatHelper)FindObjectOfType(typeof(myWebCamTextureToMatHelper));
 

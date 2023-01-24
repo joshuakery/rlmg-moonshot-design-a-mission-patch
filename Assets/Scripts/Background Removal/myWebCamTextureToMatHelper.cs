@@ -850,7 +850,7 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 initCoroutine = null;
 
                 if (onErrorOccurred != null)
-                    onErrorOccurred.Invoke(ErrorCode.TIMEOUT); //TODO here is the bug! this triggers a successive attempted autorecovery
+                    onErrorOccurred.Invoke(ErrorCode.TIMEOUT);
             }
         }
 
