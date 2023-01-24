@@ -55,17 +55,18 @@ namespace ArtScan.CoreModule
         IEnumerator getFilePath_Coroutine;
 #endif
 
-        public Mat rawImageDisplayMat;
-        public Texture2D rawImageTexture;
+        private Mat rawImageDisplayMat;
+        private Texture2D rawImageTexture;
 
-        public Scalar DEBUG_PAPER_EDGE_COLOR;
-        public Scalar PAPER_FOUND_CONSISTENTLY_EDGE_COLOR;
-        public Scalar PAPER_AREA_CONSISTENT_EDGE_COLOR;
-        public Scalar FEEDBACK_PAPER_EDGE_COLOR;
+        private Scalar DEBUG_PAPER_EDGE_COLOR;
+        private Scalar PAPER_FOUND_CONSISTENTLY_EDGE_COLOR;
+        private Scalar PAPER_AREA_CONSISTENT_EDGE_COLOR;
+        private Scalar FEEDBACK_PAPER_EDGE_COLOR;
 
-        public RawImage rawImage;
-        public RectTransform rawImageRT;
-        public Vector2 rawImageSize;
+        [SerializeField]
+        private RawImage rawImage;
+        private RectTransform rawImageRT;
+        private Vector2 rawImageSize;
 
         /// <summary>
         /// The webcam texture to mat helper.
@@ -78,19 +79,11 @@ namespace ArtScan.CoreModule
         //FpsMonitor fpsMonitor;
 
         /// <summary>
-        /// The Game State Scriptable Object.
-        /// </summary>
-        public GameState gameState;
-
-        /// <summary>
         /// GameEvent that's fired after myWebcameTextureHelper initialization
         /// </summary>
         public GameEvent WebCamTextureToMatHelperInitialized;
 
-        public GameEvent NewPreview;
-        public GameEvent ScanFailed;
-
-        public CamConfigLoader configLoader;
+        private CamConfigLoader configLoader;
 
         public bool paperFound;
 
@@ -311,6 +304,9 @@ namespace ArtScan.CoreModule
                 rawImageRT = rawImage.gameObject.GetComponent<RectTransform>();
                 rawImageSize = new Vector2(rawImageRT.rect.width, rawImageRT.rect.height);
             }
+
+            if (configLoader == null)
+                configLoader = FindObjectOfType<CamConfigLoader>();
         }
 
         // Use this for initialization
@@ -330,15 +326,18 @@ namespace ArtScan.CoreModule
             // sForests_model_filepath = Utils.getFilePath(SFORESTS_MODEL_FILENAME);
             // SetupStructuredForests();
 #endif
+            if (configLoader != null && configLoader.configData != null)
+            {
+                if (configLoader.configData.defaultCamera != null)
+                    webCamTextureToMatHelper.requestedDeviceName = configLoader.configData.defaultCamera;
 
-            if (configLoader.configData.defaultCamera != null)
-                webCamTextureToMatHelper.requestedDeviceName = configLoader.configData.defaultCamera;
+                webCamTextureToMatHelper.flipVertical = configLoader.configData.flipVertical;
 
-            webCamTextureToMatHelper.flipVertical = configLoader.configData.flipVertical;
+                webCamTextureToMatHelper.flipHorizontal = configLoader.configData.flipHorizontal;
 
-            webCamTextureToMatHelper.flipHorizontal = configLoader.configData.flipHorizontal;
+                webCamTextureToMatHelper.requestedFPS = configLoader.configData.requestedFPS;
+            }
 
-            webCamTextureToMatHelper.requestedFPS = configLoader.configData.requestedFPS;
 
 
 #if UNITY_ANDROID && !UNITY_EDITOR
@@ -548,6 +547,15 @@ namespace ArtScan.CoreModule
         {
             bool webCamTextureReady = (webCamTextureToMatHelper &&
                 webCamTextureToMatHelper.IsPlaying ());
+
+            if (!doProcessImage)
+            {
+                if (!webCamTextureReady)
+                    StopThread();
+
+                rawImage.texture = webCamTextureToMatHelper.GetWebCamTexture();
+                return;
+            }
 
             //if (webCamTextureToMatHelper != null)
             //{

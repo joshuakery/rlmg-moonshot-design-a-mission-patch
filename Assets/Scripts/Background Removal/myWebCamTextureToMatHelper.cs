@@ -766,6 +766,7 @@ namespace OpenCVForUnity.UnityUtils.Helper
 
             // Starts the camera
             webCamTexture.Play();
+            if (onPlay != null) { onPlay.Invoke(); }
 
             int initFrameCount = 0;
             bool isTimeout = false;

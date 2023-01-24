@@ -13,8 +13,8 @@ namespace ArtScan.ErrorDisplayModule
     {
         public AsynchronousRemoveBackground asynchronousRemoveBackground;
         public myWebCamTextureToMatHelper webCamTextureToMatHelper;
-        public RefinedScanController refinedScanController;
-        public DebugMenu debugMenu;
+        private RefinedScanController refinedScanController;
+        //public DebugMenu debugMenu;
 
         public ErrorDisplaySettingsSO errorDisplaySettingsSO;
 
@@ -44,11 +44,14 @@ namespace ArtScan.ErrorDisplayModule
             if (refinedScanController == null)
                 refinedScanController = FindObjectOfType<RefinedScanController>();
 
-            if (debugMenu == null)
-                debugMenu = (DebugMenu)FindObjectOfType(typeof(DebugMenu));
+            //if (debugMenu == null)
+            //    debugMenu = (DebugMenu)FindObjectOfType(typeof(DebugMenu));
 
-            errorDisplay.enabled = false;
-            warningDisplay.enabled = false;
+            if (errorDisplay != null)
+                errorDisplay.enabled = false;
+
+            if (warningDisplay != null)
+                warningDisplay.enabled = false;
         }
 
         // Start is called before the first frame update
@@ -141,38 +144,48 @@ namespace ArtScan.ErrorDisplayModule
 
         private void ShowCameraError(myWebCamTextureToMatHelper.ErrorCode errorCode)
         {
-            errorDisplay.enabled = true;
-
-            switch (errorCode)
+            if (errorDisplay != null)
             {
-                case myWebCamTextureToMatHelper.ErrorCode.CAMERA_DEVICE_NOT_EXIST:
-                    errorText.text = "No camera devices detected.";
-                    RLMGLogger.Instance.Log("CAMERA ERROR: No camera devices detected", MESSAGETYPE.ERROR);
-                    break;
+                errorDisplay.enabled = true;
 
-                case myWebCamTextureToMatHelper.ErrorCode.TIMEOUT:
-                    errorText.text = "Camera has timed out.\n\nThis might be because the camera is not sending any frame data to the app.";
-                    RLMGLogger.Instance.Log("CAMERA ERROR: Camera has timed out.", MESSAGETYPE.ERROR);
-                    break;
+                switch (errorCode)
+                {
+                    case myWebCamTextureToMatHelper.ErrorCode.CAMERA_DEVICE_NOT_EXIST:
+                        if (errorText != null)
+                            errorText.text = "No camera devices detected.";
+                        RLMGLogger.Instance.Log("CAMERA ERROR: No camera devices detected", MESSAGETYPE.ERROR);
+                        break;
 
-                case myWebCamTextureToMatHelper.ErrorCode.CAMERA_PERMISSION_DENIED:
-                    errorText.text = "Camera permission denied.";
-                    RLMGLogger.Instance.Log("CAMERA ERROR: Camera permission denied.", MESSAGETYPE.ERROR);
-                    break;
+                    case myWebCamTextureToMatHelper.ErrorCode.TIMEOUT:
+                        if (errorText != null)
+                            errorText.text = "Camera has timed out.\n\nThis might be because the camera is not sending any frame data to the app.";
+                        RLMGLogger.Instance.Log("CAMERA ERROR: Camera has timed out.", MESSAGETYPE.ERROR);
+                        break;
+
+                    case myWebCamTextureToMatHelper.ErrorCode.CAMERA_PERMISSION_DENIED:
+                        if (errorText != null)
+                            errorText.text = "Camera permission denied.";
+                        RLMGLogger.Instance.Log("CAMERA ERROR: Camera permission denied.", MESSAGETYPE.ERROR);
+                        break;
+                }
             }
+
         }
 
         private void HideCameraError()
         {
-            if (errorDisplay.enabled)
+            if (errorDisplay != null)
             {
-                RLMGLogger.Instance.Log(
-                   System.String.Format("Camera {0} appears to be connected. Dismissing error display...", webCamTextureToMatHelper.requestedDeviceName),
-                   MESSAGETYPE.INFO
-               );
-            }
+                if (errorDisplay.enabled)
+                {
+                    RLMGLogger.Instance.Log(
+                       System.String.Format("Camera {0} appears to be connected. Dismissing error display...", webCamTextureToMatHelper.requestedDeviceName),
+                       MESSAGETYPE.INFO
+                   );
+                }
 
-            errorDisplay.enabled = false;
+                errorDisplay.enabled = false;
+            }
         }
 
         private void AttemptAutoRecovery(myWebCamTextureToMatHelper.ErrorCode errorCode)
@@ -197,27 +210,34 @@ namespace ArtScan.ErrorDisplayModule
 
         private void ShowWarnDisplay(myWebCamTextureToMatHelper.WarnCode warnCode)
         {
-            RLMGLogger.Instance.Log("Showing warn display...", MESSAGETYPE.INFO);
-
-            warningDisplay.enabled = true;
-
-            switch (warnCode)
+            if (warningDisplay != null)
             {
-                case myWebCamTextureToMatHelper.WarnCode.WRONG_CAMERA_FRONTFACING_SELECTED:
-                    warningText.text = "The requested camera was not found, and the first frontfacing camera was used instead.";
-                    RLMGLogger.Instance.Log("CAMERA WARNING: First FRONTFACING camera used instead of requested camera.", MESSAGETYPE.INFO);
-                    break;
+                RLMGLogger.Instance.Log("Showing warn display...", MESSAGETYPE.INFO);
 
-                case myWebCamTextureToMatHelper.WarnCode.WRONG_CAMERA_FIRST_SELECTED:
-                    warningText.text = "The requested camera was not found, and the first camera was used instead.";
-                    RLMGLogger.Instance.Log("CAMERA WARNING: First camera OF ANY KIND used instead of requested camera.", MESSAGETYPE.INFO);
-                    break;
+                warningDisplay.enabled = true;
+
+                switch (warnCode)
+                {
+                    case myWebCamTextureToMatHelper.WarnCode.WRONG_CAMERA_FRONTFACING_SELECTED:
+                        if (warningText != null)
+                            warningText.text = "The requested camera was not found, and the first frontfacing camera was used instead.";
+                        RLMGLogger.Instance.Log("CAMERA WARNING: First FRONTFACING camera used instead of requested camera.", MESSAGETYPE.INFO);
+                        break;
+
+                    case myWebCamTextureToMatHelper.WarnCode.WRONG_CAMERA_FIRST_SELECTED:
+                        if (warningText != null)
+                            warningText.text = "The requested camera was not found, and the first camera was used instead.";
+                        RLMGLogger.Instance.Log("CAMERA WARNING: First camera OF ANY KIND used instead of requested camera.", MESSAGETYPE.INFO);
+                        break;
+                }
             }
+
         }
 
         private void HideWarnDisplay()
         {
-            warningDisplay.enabled = false;
+            if (warningDisplay != null)
+                warningDisplay.enabled = false;
         }
 
 
@@ -361,14 +381,19 @@ namespace ArtScan.ErrorDisplayModule
                     MESSAGETYPE.INFO
                 );
 
-                if (refinedScanController.refinedScanningIsUnderway)
+                if (refinedScanController != null)
                 {
-                    RLMGLogger.Instance.Log("...cannot check devices because a refined scan is underway.", MESSAGETYPE.INFO);
-                    return;
+                    if (refinedScanController.refinedScanningIsUnderway)
+                    {
+                        RLMGLogger.Instance.Log("...cannot check devices because a refined scan is underway.", MESSAGETYPE.INFO);
+                        return;
+                    }
+
+                    refinedScanController.StopAllCoroutines();
+                    refinedScanController.AbortRefinedScan();
                 }
 
-                refinedScanController.StopAllCoroutines();
-                refinedScanController.AbortRefinedScan();
+
 
                 if (webCamTextureToMatHelper.GetWebCamTexture() != null)
                 {
@@ -557,8 +582,8 @@ namespace ArtScan.ErrorDisplayModule
 
             webCamTextureToMatHelper.Initialize();
 
-            if (debugMenu != null)
-                debugMenu.InitializeDebugMenu();
+            //if (debugMenu != null)
+            //    debugMenu.InitializeDebugMenu();
         }
     }
 }

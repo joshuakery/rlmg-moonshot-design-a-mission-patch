@@ -26,7 +26,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/DEPRECATED_Space Now.unity
     guid: 78a02207216e147348b1267b4fae0dfe
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Space Now.unity
     guid: 43f4f198309b841868492dfba7b55a15
   - enabled: 0
@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Blank.unity
     guid: ea80c43286abc447085108015e69ce89
+  - enabled: 1
+    path: Assets/Scenes/Debug2.unity
+    guid: da8966d540bf6427c9094ec36d58fd43
   m_configObjects: {}
