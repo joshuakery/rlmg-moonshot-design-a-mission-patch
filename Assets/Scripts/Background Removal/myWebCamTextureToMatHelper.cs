@@ -946,6 +946,11 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 webCamTexture.Play();
                 onPlay.Invoke();
             }
+            else
+            {
+                if (RLMGLogger.Instance != null)
+                    RLMGLogger.Instance.Log("Cannot play webcam because webCamTexture is not inititalized.", MESSAGETYPE.ERROR);
+            }
                 
             //throw a warning here if this is not working
 
