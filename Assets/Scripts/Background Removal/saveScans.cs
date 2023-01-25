@@ -170,6 +170,34 @@ namespace ArtScan.ScanSavingModule
             RLMGLogger.Instance.Log(String.Format("Downloaded scans in {0} milliseconds.", duration.Milliseconds), MESSAGETYPE.INFO);
         }
 
+        public static void SaveTexture2D(Texture2D tex, string dirPath, string filename)
+        {
+            DirectoryInfo mainDI = new DirectoryInfo(dirPath);
+
+            try
+            {
+                if (!mainDI.Exists)
+                {
+                    mainDI.Create();
+                    RLMGLogger.Instance.Log(String.Format("The directory was created successfully at {0}.", dirPath), MESSAGETYPE.INFO);
+                }
+
+                string fullPath = Path.Join(dirPath, filename);
+                byte[] bytes;
+
+                if (tex != null)
+                    bytes = tex.EncodeToPNG();
+                else
+                    bytes = new Texture2D(2, 2).EncodeToPNG();
+
+                File.WriteAllBytes(fullPath, bytes);
+            }
+            catch (Exception e)
+            {
+                RLMGLogger.Instance.Log(String.Format("The process failed: {0}.", e.ToString()), MESSAGETYPE.ERROR);
+            }
+        }
+
         public static void SaveScan(Mat src, string dirPath, string filename)
         {
             DirectoryInfo mainDI = new DirectoryInfo(dirPath);

@@ -44,6 +44,7 @@ namespace ArtScan.CoreModule
 
         public TMP_Text scanFailedDisplay;
 
+        private bool isInRefinedScanProcess = false;
         private bool isWaitingForUpdate = false;
         private bool hasUpdated = false;
         private bool isWaitingToSync = false;
@@ -52,7 +53,7 @@ namespace ArtScan.CoreModule
         {
             get
             {
-                return (isWaitingForUpdate || isWaitingToSync || anotherScanIsUnderway);
+                return (isInRefinedScanProcess || isWaitingForUpdate || isWaitingToSync || anotherScanIsUnderway);
             }
         }
 
@@ -103,12 +104,13 @@ namespace ArtScan.CoreModule
                 StopAllCoroutines();
                 AbortRefinedScan();
 
-                if (scanFailedDisplay != null) { scanFailedDisplay.text = "Camera was restarted."; }
+                if (scanFailedDisplay != null) { scanFailedDisplay.text = "Oops!\nThe camera restarted during the scan.\nPlease try again."; }
                 RLMGLogger.Instance.Log("Camera was initialized during refined scan.", MESSAGETYPE.ERROR);
                 StartCoroutine(RaiseScanFailed());
 
                 isWaitingForUpdate = false;
                 isWaitingToSync = false;
+                isInRefinedScanProcess = false;
             }
         }
 
@@ -122,7 +124,7 @@ namespace ArtScan.CoreModule
                 !asynchronousRemoveBackground.webCamTextureToMatHelper.IsPlaying()
                 )
             {
-                if (scanFailedDisplay != null) { scanFailedDisplay.text = "Webcam is not playing."; }
+                if (scanFailedDisplay != null) { scanFailedDisplay.text = "Oh no!\nThe webcam is not playing.\nPlease try again."; }
                 RLMGLogger.Instance.Log("Cannot do refined scan because webcam is not playing.", MESSAGETYPE.ERROR);
                 StartCoroutine(RaiseScanFailed());
                 return;
@@ -131,7 +133,7 @@ namespace ArtScan.CoreModule
             //Check 2 - have we found the bounds of the paper?
             if (!asynchronousRemoveBackground.paperFound)
             {
-                if (scanFailedDisplay != null) { scanFailedDisplay.text = "No paper found."; }
+                if (scanFailedDisplay != null) { scanFailedDisplay.text = "Oh no!\nNo paper can be found.\nPlease try again."; }
                 RLMGLogger.Instance.Log("Cannot do refined scan because the paper cannot be found.", MESSAGETYPE.ERROR);
                 StartCoroutine(RaiseScanFailed());
                 return;
@@ -140,7 +142,7 @@ namespace ArtScan.CoreModule
             //Check 3 - do we have a consistent running average?
             if (!asynchronousRemoveBackground.consistentRunningAverage)
             {
-                if (scanFailedDisplay != null) { scanFailedDisplay.text = "No artwork detected."; }
+                if (scanFailedDisplay != null) { scanFailedDisplay.text = "Oh no!\nNo artwork was detected.\nPlease try again."; }
                 RLMGLogger.Instance.Log("Cannot do refined scan because we do not have a consistent running average.", MESSAGETYPE.ERROR);
                 StartCoroutine(RaiseScanFailed());
                 return;
@@ -152,7 +154,7 @@ namespace ArtScan.CoreModule
             //Check 4
             if (anotherScanIsUnderway) //should always be false after AbortRefinedScan()
             {
-                if (scanFailedDisplay != null) { scanFailedDisplay.text = "Another scan is underway."; }
+                if (scanFailedDisplay != null) { scanFailedDisplay.text = "Oops!\nAnother scan was already underway.\nPlease try again."; }
                 RLMGLogger.Instance.Log("Cannot do refined scan because another refined scan is underway.", MESSAGETYPE.ERROR);
                 StartCoroutine(RaiseScanFailed());
                 return;
@@ -169,6 +171,8 @@ namespace ArtScan.CoreModule
         /// </summary>
         private IEnumerator DoRefinedScanAfterSyncing()
         {
+            isInRefinedScanProcess = true;
+
             //yield return StartCoroutine(WaitForUpdate());
 
             asynchronousRemoveBackground.shouldCopyToRefinedMat = true;
@@ -187,8 +191,12 @@ namespace ArtScan.CoreModule
             );
 
             asynchronousRemoveBackground.refinedMatReady = false;
+
+            yield return new WaitForSeconds(10);
             
             yield return StartCoroutine(DoRefinedScan());
+
+            isInRefinedScanProcess = false;
         }
 
         /// <summary>
@@ -281,11 +289,13 @@ namespace ArtScan.CoreModule
                         MESSAGETYPE.INFO
                     );
 
-                    if (scanFailedDisplay != null) { scanFailedDisplay.text = "Syncing timed out."; }
+                    if (scanFailedDisplay != null) { scanFailedDisplay.text = "Oops!\nThe scanner was taking too long, so we stopped it.\nPlease try again."; }
                     RLMGLogger.Instance.Log("Getting a frame from live preview timed out.", MESSAGETYPE.ERROR);
                     StartCoroutine(RaiseScanFailed());
 
                     timeout = DateTime.Now + TimeSpan.FromSeconds(errorDisplaySettingsSO.errorDisplaySettings.refinedScanTimeout);
+
+                    isInRefinedScanProcess = false;
 
                     break;
                 }
@@ -391,6 +401,8 @@ namespace ArtScan.CoreModule
                     MESSAGETYPE.INFO
                 );
 
+                isInRefinedScanProcess = false;
+
             }
         }
 
@@ -416,6 +428,7 @@ namespace ArtScan.CoreModule
             }
             asynchronousRemoveBackground.shouldCopyToRefinedMat = false;
             asynchronousRemoveBackground.refinedMatReady = false;
+            isInRefinedScanProcess = false;
         }
     }
 }

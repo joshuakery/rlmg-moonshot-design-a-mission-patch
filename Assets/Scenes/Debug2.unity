@@ -175,6 +175,64 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &146872835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 146872837}
+  - component: {fileID: 146872836}
+  - component: {fileID: 146872838}
+  m_Layer: 0
+  m_Name: DebugHelper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &146872836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146872835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64524184a4ffe4bfcbe6a28a6c03b67d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &146872837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146872835}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1698.8838, y: 1239.1589, z: -3.2338128}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &146872838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146872835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf75fcc73a3a84b578019e4ac6a487ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asynchronousRemoveBackground: {fileID: 0}
 --- !u!1 &370860200
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46daed81463d24dd8b8c0bd541d6a395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  copiedFramesCount: 0
   settings: {fileID: 11400000, guid: eebe36b8bd1234f8ca3d2e070246f3b8, type: 2}
   doProcessImage: 0
   displayOptions: {fileID: 11400000, guid: d53c3c50cfdcb488aad470ae2f9fd0e2, type: 2}

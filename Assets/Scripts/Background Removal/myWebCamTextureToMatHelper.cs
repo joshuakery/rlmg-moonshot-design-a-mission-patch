@@ -756,13 +756,16 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 {
                     isInitWaiting = false;
                     initCoroutine = null;
-                     
+
                     if (onErrorOccurred != null)
                         onErrorOccurred.Invoke(ErrorCode.CAMERA_DEVICE_NOT_EXIST);
 
                     yield break;
                 }
             }
+
+
+            RLMGLogger.Instance.Log("NEW webCamTexture ID: " + webCamTexture.GetInstanceID(), MESSAGETYPE.INFO);
 
             // Starts the camera
             webCamTexture.Play();

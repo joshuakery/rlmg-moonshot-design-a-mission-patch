@@ -34,6 +34,7 @@ namespace ArtScan.CoreModule
     [RequireComponent(typeof(myWebCamTextureToMatHelper))]
     public class AsynchronousRemoveBackground : MonoBehaviour
     {
+        public int copiedFramesCount = 0;
 
         public RemoveBackgroundSettings settings;
         public bool doProcessImage = true;
@@ -581,6 +582,7 @@ namespace ArtScan.CoreModule
                         CopyToThreadMat();
                         CopyToRefinedThreadMat();
 
+
                         refinedMatReady = true;
                         shouldCopyToRefinedMat = false;
 
@@ -599,6 +601,8 @@ namespace ArtScan.CoreModule
                         //Copy for just the continuous feedback
                         CopyToThreadMat();
                     }
+
+                    copiedFramesCount++;
 
                     shouldDetectInMultiThread = true;
                 }
