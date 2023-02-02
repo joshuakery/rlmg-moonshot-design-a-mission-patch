@@ -12,12 +12,15 @@ using TMPro;
 
 public class DebugMenu : MonoBehaviour
 {
+    private myWebCamTextureToMatHelper webCamTextureToMatHelper;
 
-    public myWebCamTextureToMatHelper webCamTextureToMatHelper;
-    public RemoveBackgroundSettings settings;
-    public RemoveBackgroundDisplayOptions displayOptions;
+    [SerializeField]
+    private RemoveBackgroundSettings settings;
+    [SerializeField]
+    private RemoveBackgroundDisplayOptions displayOptions;
 
-    public CamConfigLoader configLoader;
+    [SerializeField]
+    private CamConfigLoader configLoader;
 
     /// <summary>
     /// ChangeCamera Button Prefab
@@ -31,7 +34,6 @@ public class DebugMenu : MonoBehaviour
 
     public Toggle flipVerticalToggle;
     public Toggle flipHorizontalToggle;
-
 
     public Slider brightnessSlider;
     public Slider contrastSlider;
@@ -69,6 +71,15 @@ public class DebugMenu : MonoBehaviour
 
     public Color32 SUCCESS_COLOR = new Color32(40,178,52,255);
     public Color32 ERROR_COLOR = new Color32(178,40,40,255);
+
+    private void Awake()
+    {
+        if (webCamTextureToMatHelper == null)
+            webCamTextureToMatHelper = FindObjectOfType<myWebCamTextureToMatHelper>();
+
+        if (configLoader == null)
+            configLoader = FindObjectOfType<CamConfigLoader>();
+    }
 
     private void OnEnable()
     {

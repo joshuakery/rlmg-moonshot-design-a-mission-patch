@@ -18,9 +18,10 @@ namespace ArtScan.CoreModule
 {
     public class RefinedScanController : MonoBehaviour
     {
-        public GameState gameState;
+        [SerializeField]
+        private GameState gameState;
 
-        public AsynchronousRemoveBackground asynchronousRemoveBackground;
+        private AsynchronousRemoveBackground asynchronousRemoveBackground;
 
         public RefinedScanThread refinedScanThread;
 
@@ -32,17 +33,24 @@ namespace ArtScan.CoreModule
             }
         }
 
-        public RemoveBackgroundSettings settings;
-        public RemoveBackgroundDisplayOptions displayOptions;
-        public ErrorDisplaySettingsSO errorDisplaySettingsSO;
+        [SerializeField]
+        private RemoveBackgroundSettings settings;
+        [SerializeField]
+        private RemoveBackgroundDisplayOptions displayOptions;
+        [SerializeField]
+        private ErrorDisplaySettingsSO errorDisplaySettingsSO;
 
-        public GameEvent ScanFailed;
-        public GameEvent NewPreview;
-        public GameEvent ScanAgain;
+        [SerializeField]
+        private GameEvent ScanFailed;
+        [SerializeField]
+        private GameEvent NewPreview;
+        [SerializeField]
+        private GameEvent ScanAgain;
 
         public Mat previewMat;
 
-        public TMP_Text scanFailedDisplay;
+        [SerializeField]
+        private TMP_Text scanFailedDisplay;
 
         private bool isInRefinedScanProcess = false;
         private bool isWaitingForUpdate = false;
@@ -55,6 +63,12 @@ namespace ArtScan.CoreModule
             {
                 return (isInRefinedScanProcess || isWaitingForUpdate || isWaitingToSync || anotherScanIsUnderway);
             }
+        }
+
+        private void Awake()
+        {
+            if (asynchronousRemoveBackground == null)
+                asynchronousRemoveBackground = FindObjectOfType<AsynchronousRemoveBackground>();
         }
 
         private void Start()

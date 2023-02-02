@@ -84,6 +84,7 @@ namespace ArtScan.CoreModule
         /// </summary>
         public GameEvent WebCamTextureToMatHelperInitialized;
 
+        [SerializeField]
         private CamConfigLoader configLoader;
 
         public bool paperFound;

@@ -4730,15 +4730,15 @@ PrefabInstance:
     - target: {fileID: 2015544510, guid: 92a4d3a854abe4f09ade0e9a651ff820, type: 3}
       propertyPath: refinedScanController
       value: 
-      objectReference: {fileID: 5514461683746088429}
+      objectReference: {fileID: 0}
     - target: {fileID: 2015544510, guid: 92a4d3a854abe4f09ade0e9a651ff820, type: 3}
       propertyPath: myWebCamTextureToMatHelper
       value: 
-      objectReference: {fileID: 5514461683746088419}
+      objectReference: {fileID: 0}
     - target: {fileID: 2015544510, guid: 92a4d3a854abe4f09ade0e9a651ff820, type: 3}
       propertyPath: asynchronousRemoveBackground
       value: 
-      objectReference: {fileID: 5514461683746088428}
+      objectReference: {fileID: 0}
     - target: {fileID: 3796159872657002065, guid: 92a4d3a854abe4f09ade0e9a651ff820, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -12953,6 +12953,7 @@ MonoBehaviour:
     defaultCamera: 
     flipVertical: 0
     flipHorizontal: 0
+    requestedFPS: 30
     brightness: 0
     contrast: 0
     edgeFindingMethod: 0
@@ -12963,14 +12964,21 @@ MonoBehaviour:
       contrast: 127
     enableBeginScanButtonSettings:
       minimumPaperFoundFrames: 2
+      minimumPaperNotFoundFramesToFail: 2
       consistentPaperAreaThreshold: 0.5
       minimumPaperConsistentFrames: 2
-      consistentScanAreaThreshold: 0.5
+      minimumPaperInconsistentFramesToFail: 2
       minimumScanSize: 25
+      maximumArtworkPercentageOfPaper: 0.9
+      consistentScanAreaThreshold: 0.5
       minimumConsistentFrames: 2
+      minimumArtworkInconsistentFramesToFail: 2
     errorDisplaySettings:
-      doAttemptCameraRestart: 1
-      cameraDisconnectTimeout: 2
+      checkForDisconnectInterval: 5
+      doAttemptCameraRestartIfMissingDevice: 1
+      doAttemptCameraRestartIfFrozenUpdateCount: 1
+      doAttemptCameraRestartIfWrongCamera: 0
+      refinedScanTimeout: 5
 --- !u!1 &1320468628 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3711387800678506974, guid: 6fe9eb86a976d492f8472d640fb950b7, type: 3}
@@ -13011,9 +13019,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1328863886}
   - component: {fileID: 1328863887}
-  - component: {fileID: 1328863889}
   - component: {fileID: 1328863888}
-  - component: {fileID: 1328863892}
   - component: {fileID: 1328863893}
   - component: {fileID: 1328863890}
   - component: {fileID: 1328863891}
@@ -13054,11 +13060,9 @@ MonoBehaviour:
   gameState: {fileID: 11400000, guid: 697ff388aff8249d9b6ee08e618dfac2, type: 2}
   CloseAllWindowsEvent: {fileID: 11400000, guid: 0da4bff33b5b443a58f1d75bddbe7667, type: 2}
   StartEvent: {fileID: 11400000, guid: 20f88eafcbe9c4119983ec03af53569a, type: 2}
-  myWebCamTextureToMatHelper: {fileID: 5514461683746088419}
   EndingEvent: {fileID: 11400000, guid: 943381fb2f1e6468d8411173561f18a2, type: 2}
   primarySequenceManager: {fileID: 11400000, guid: 2d058e80c2bec41f1a4cb49d9ee3b36c, type: 2}
   namesakeSequenceManager: {fileID: 11400000, guid: 30c9ccaf9b15f445ab056406d1919fca, type: 2}
-  ConfigLoaded: {fileID: 11400000, guid: a81920f527d7f449a8f975afca5fd8fc, type: 2}
   mainTimer: {fileID: 301422062}
   bufferTimer: {fileID: 1814425970}
   timerDisplay: {fileID: 582100586}
@@ -13093,8 +13097,8 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1492947570}
-        m_TargetAssemblyTypeName: SaveScansHelper, Assembly-CSharp
+      - m_Target: {fileID: 1751391212}
+        m_TargetAssemblyTypeName: ArtScan.ScanSavingModule.SaveScansHelper, Assembly-CSharp
         m_MethodName: DownloadScans
         m_Mode: 2
         m_Arguments:
@@ -13120,35 +13124,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1328863887}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: CallLateStartCoroutine
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &1328863889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1328863885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd4da8dd6f98b4323acaa3485a1317be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: a81920f527d7f449a8f975afca5fd8fc, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5514461683746088428}
-        m_TargetAssemblyTypeName: OpenCVForUnityExample.AsynchronousRemoveBackground,
-          Assembly-CSharp
-        m_MethodName: SetupRemoveBackground
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13188,47 +13163,6 @@ MonoBehaviour:
   bufferTimer: {fileID: 1814425970}
   gameState: {fileID: 11400000, guid: 697ff388aff8249d9b6ee08e618dfac2, type: 2}
   useServer: 1
---- !u!114 &1328863892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1328863885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd4da8dd6f98b4323acaa3485a1317be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: ce02ff3c5fa1a462fb4ecefa477a1a89, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 697ff388aff8249d9b6ee08e618dfac2, type: 2}
-        m_TargetAssemblyTypeName: ArtScan.GameState, Assembly-CSharp
-        m_MethodName: ReadScans
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 5514461683746088419}
-          m_ObjectArgumentAssemblyTypeName: OpenCVForUnity.UnityUtils.Helper.myWebCamTextureToMatHelper,
-            Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 11400000, guid: 9e4b7ebc9bc5c4a2598c08727a3524fe, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1328863893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15274,84 +15208,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!1 &1492947568
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1492947571}
-  - component: {fileID: 1492947570}
-  - component: {fileID: 1492947572}
-  m_Layer: 0
-  m_Name: Saving Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1492947570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1492947568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bb50a0dfa8674eeda87f1e8eddceff6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameState: {fileID: 11400000, guid: 697ff388aff8249d9b6ee08e618dfac2, type: 2}
-  refinedScanController: {fileID: 5514461683746088429}
-  downloadThreadController: {fileID: 11400000, guid: 968362ace6fa34f7885ad4b9f95dc8f2, type: 2}
-  uploadThreadController: {fileID: 11400000, guid: c37264f6532894e1a9286ee4ab8fdc7f, type: 2}
-  UploadCompleteEvent: {fileID: 11400000, guid: fa83d33506f0749839bb97055153160f, type: 2}
-  NewScanEvent: {fileID: 11400000, guid: 9e4b7ebc9bc5c4a2598c08727a3524fe, type: 2}
-  UploadFailedEvent: {fileID: 11400000, guid: 9995b5a7b06ec4231a9072c45600936e, type: 2}
-  DownloadFailedEvent: {fileID: 0}
-  DownloadSucceededEvent: {fileID: 0}
-  DeleteFailedEvent: {fileID: 0}
-  DeleteSucceededEvent: {fileID: 0}
-  doUploadToServer: 1
-  doRaiseUploadFailed: 0
-  doRaiseUploadSucceeded: 0
-  doRaiseDownloadFailed: 0
-  doRaiseDownloadSucceeded: 0
-  doRaiseDeleteFailed: 0
-  doRaiseDeleteSucceeded: 0
---- !u!4 &1492947571
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1492947568}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1932.9933, y: 1453.5507, z: -19.385399}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1492947572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1492947568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cea0aa6c62a84104867dfb0ef58fe00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uploadThreadController: {fileID: 11400000, guid: c37264f6532894e1a9286ee4ab8fdc7f, type: 2}
-  downloadThreadController: {fileID: 11400000, guid: 968362ace6fa34f7885ad4b9f95dc8f2, type: 2}
-  deleteThreadController: {fileID: 11400000, guid: 19962bac39f474af49d58180d3e351fc, type: 2}
 --- !u!224 &1498423224 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8504828349188889863, guid: d89df1abcb06043099a88e6c88cdd29b, type: 3}
@@ -15908,22 +15764,6 @@ PrefabInstance:
 --- !u!224 &1525296202 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8755140665223351372, guid: 790eb1350eeb34ebe826b6f5666e9e95, type: 3}
-  m_PrefabInstance: {fileID: 1525296201}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1525296203 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7707818636392736973, guid: 790eb1350eeb34ebe826b6f5666e9e95, type: 3}
-  m_PrefabInstance: {fileID: 1525296201}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!223 &1525296204 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 8755140665223351374, guid: 790eb1350eeb34ebe826b6f5666e9e95, type: 3}
   m_PrefabInstance: {fileID: 1525296201}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1531679515
@@ -16849,7 +16689,7 @@ Transform:
   m_Children:
   - {fileID: 620618565}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1674225887
 MonoBehaviour:
@@ -17414,6 +17254,94 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f81fdf6302d75496eb4ceeede13a04fa, type: 3}
+--- !u!1001 &1751391211
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2371739559352800175, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+      propertyPath: errorText
+      value: 
+      objectReference: {fileID: 1922214548}
+    - target: {fileID: 2371739559352800175, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+      propertyPath: warningText
+      value: 
+      objectReference: {fileID: 2078628757}
+    - target: {fileID: 2371739559352800175, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+      propertyPath: errorDisplay
+      value: 
+      objectReference: {fileID: 1922214549}
+    - target: {fileID: 2371739559352800175, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+      propertyPath: warningDisplay
+      value: 
+      objectReference: {fileID: 2078628758}
+    - target: {fileID: 2371739559352800185, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+      propertyPath: rawImage
+      value: 
+      objectReference: {fileID: 4078934416286107428}
+    - target: {fileID: 2371739559352800188, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371739559352800188, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2783
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371739559352800188, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 825
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371739559352800188, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371739559352800188, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371739559352800188, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371739559352800188, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371739559352800188, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371739559352800188, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371739559352800188, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371739559352800188, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2371739559352800189, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+      propertyPath: m_Name
+      value: Remove Background
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+--- !u!114 &1751391212 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1492947570, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+  m_PrefabInstance: {fileID: 1751391211}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bb50a0dfa8674eeda87f1e8eddceff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1753576856 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3711387800678506974, guid: 6fe9eb86a976d492f8472d640fb950b7, type: 3}
@@ -18026,7 +17954,7 @@ MonoBehaviour:
     onStartEvent:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 5514461683746088429}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: ArtScan.CoreModule.RefinedScanController, Assembly-CSharp
           m_MethodName: AbortRefinedScan
           m_Mode: 1
@@ -19633,11 +19561,75 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5244674667954895616, guid: 688d1bc53957548dc973db2bab4ebfa6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5244674667954895616, guid: 688d1bc53957548dc973db2bab4ebfa6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5244674667954895616, guid: 688d1bc53957548dc973db2bab4ebfa6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5244674667954895616, guid: 688d1bc53957548dc973db2bab4ebfa6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5244674667954895616, guid: 688d1bc53957548dc973db2bab4ebfa6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5244674667954895616, guid: 688d1bc53957548dc973db2bab4ebfa6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093983306653568088, guid: 688d1bc53957548dc973db2bab4ebfa6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093983306653568088, guid: 688d1bc53957548dc973db2bab4ebfa6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093983306653568088, guid: 688d1bc53957548dc973db2bab4ebfa6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093983306653568088, guid: 688d1bc53957548dc973db2bab4ebfa6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093983306653568088, guid: 688d1bc53957548dc973db2bab4ebfa6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093983306653568088, guid: 688d1bc53957548dc973db2bab4ebfa6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 688d1bc53957548dc973db2bab4ebfa6, type: 3}
 --- !u!224 &1922214547 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 807015976571403181, guid: 688d1bc53957548dc973db2bab4ebfa6, type: 3}
+  m_PrefabInstance: {fileID: 1922214546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1922214548 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1748583007855740017, guid: 688d1bc53957548dc973db2bab4ebfa6, type: 3}
+  m_PrefabInstance: {fileID: 1922214546}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!223 &1922214549 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 807015976571403183, guid: 688d1bc53957548dc973db2bab4ebfa6, type: 3}
   m_PrefabInstance: {fileID: 1922214546}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1923827145
@@ -23369,7 +23361,7 @@ RectTransform:
   - {fileID: 1392578658}
   - {fileID: 321345770}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -25544,7 +25536,7 @@ MonoBehaviour:
   viewedTeamIndex: 0
   scans: []
   settings: {fileID: 11400000, guid: eebe36b8bd1234f8ca3d2e070246f3b8, type: 2}
-  webCamTextureToMatHelper: {fileID: 5514461683746088419}
+  webCamTextureToMatHelper: {fileID: 0}
 --- !u!114 &2984178591394759278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30937,363 +30929,6 @@ RectTransform:
   m_AnchoredPosition: {x: 344, y: -654}
   m_SizeDelta: {x: 450, y: 1000}
   m_Pivot: {x: 0, y: 1}
---- !u!114 &5514461683746088419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5514461683746088424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59ff12b3f76db4941b127b82b00e50ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _requestedDeviceName: 1
-  _requestedWidth: 1280
-  _requestedHeight: 960
-  _requestedIsFrontFacing: 0
-  _requestedFPS: 30
-  _rotate90Degree: 0
-  _flipVertical: 1
-  _flipHorizontal: 0
-  _outputColorFormat: 3
-  _timeoutFrameCount: 300
-  onInitialized:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5514461683746088428}
-        m_TargetAssemblyTypeName: OpenCVForUnityExample.AsynchronousRemoveBackground,
-          Assembly-CSharp
-        m_MethodName: OnWebCamTextureToMatHelperInitialized
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onDisposed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5514461683746088428}
-        m_TargetAssemblyTypeName: OpenCVForUnityExample.AsynchronousRemoveBackground,
-          Assembly-CSharp
-        m_MethodName: OnWebCamTextureToMatHelperDisposed
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onErrorOccurred:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5514461683746088428}
-        m_TargetAssemblyTypeName: OpenCVForUnityExample.AsynchronousRemoveBackground,
-          Assembly-CSharp
-        m_MethodName: OnWebCamTextureToMatHelperErrorOccurred
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onWarnOccurred:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5514461683746088428}
-        m_TargetAssemblyTypeName: ArtScan.CoreModule.AsynchronousRemoveBackground,
-          Assembly-CSharp
-        m_MethodName: OnWebCamTextureToMatHelperWarnOccurred
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onSuccessOccurred:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5514461683746088428}
-        m_TargetAssemblyTypeName: ArtScan.CoreModule.AsynchronousRemoveBackground,
-          Assembly-CSharp
-        m_MethodName: OnWebCamTextureToMatHelperSuccessOccurred
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  avoidAndroidFrontCameraLowLightIssue: 0
---- !u!1 &5514461683746088424
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5514461683746088425}
-  - component: {fileID: 5514461683746088419}
-  - component: {fileID: 5514461683746088428}
-  - component: {fileID: 5514461683746088429}
-  - component: {fileID: 5514461683746088442}
-  - component: {fileID: 5514461683746088438}
-  - component: {fileID: 5514461683746088439}
-  - component: {fileID: 5514461683746088440}
-  - component: {fileID: 5514461683746088441}
-  - component: {fileID: 5514461683746088443}
-  m_Layer: 5
-  m_Name: Remove Background
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5514461683746088425
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5514461683746088424}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2783, y: 825, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5514461683746088428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5514461683746088424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46daed81463d24dd8b8c0bd541d6a395, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  settings: {fileID: 11400000, guid: eebe36b8bd1234f8ca3d2e070246f3b8, type: 2}
-  doProcessImage: 1
-  displayOptions: {fileID: 11400000, guid: d53c3c50cfdcb488aad470ae2f9fd0e2, type: 2}
-  rawImageTexture: {fileID: 0}
-  DEBUG_PAPER_EDGE_COLOR:
-    val: []
-  FEEDBACK_PAPER_EDGE_COLOR:
-    val: []
-  rawImage: {fileID: 4078934416286107428}
-  rawImageRT: {fileID: 0}
-  rawImageSize: {x: 0, y: 0}
-  webCamTextureToMatHelper: {fileID: 5514461683746088419}
-  gameState: {fileID: 11400000, guid: 697ff388aff8249d9b6ee08e618dfac2, type: 2}
-  WebCamTextureToMatHelperInitialized: {fileID: 11400000, guid: 1609cc9ddecf44e659d076ca828a9c6b, type: 2}
-  NewPreview: {fileID: 11400000, guid: d8753c9ac856442cf940da88af0b334b, type: 2}
-  ScanFailed: {fileID: 11400000, guid: 1dedfc55b9af542ffb068eb10ce68e01, type: 2}
-  configLoader: {fileID: 1320106519}
-  paperFound: 0
-  DOWNSCALE_RATIO: 1
-  doDownsizeToDisplay: 0
---- !u!114 &5514461683746088429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5514461683746088424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1eeefc8cff8645979f3ce3c96bc1000, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameState: {fileID: 11400000, guid: 697ff388aff8249d9b6ee08e618dfac2, type: 2}
-  asynchronousRemoveBackground: {fileID: 5514461683746088428}
-  settings: {fileID: 11400000, guid: eebe36b8bd1234f8ca3d2e070246f3b8, type: 2}
-  displayOptions: {fileID: 11400000, guid: d53c3c50cfdcb488aad470ae2f9fd0e2, type: 2}
-  ScanFailed: {fileID: 11400000, guid: 1dedfc55b9af542ffb068eb10ce68e01, type: 2}
-  NewPreview: {fileID: 11400000, guid: d8753c9ac856442cf940da88af0b334b, type: 2}
-  scanFailedDisplay: {fileID: 0}
---- !u!114 &5514461683746088438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5514461683746088424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd4da8dd6f98b4323acaa3485a1317be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 623994dbbbb294c3d81c2ac9f9bda4a1, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1492947570}
-        m_TargetAssemblyTypeName: SaveScansHelper, Assembly-CSharp
-        m_MethodName: SavePreview
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &5514461683746088439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5514461683746088424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd4da8dd6f98b4323acaa3485a1317be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 0eace360fccd645059b47e48768467a8, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5514461683746088419}
-        m_TargetAssemblyTypeName: OpenCVForUnity.UnityUtils.Helper.myWebCamTextureToMatHelper,
-          Assembly-CSharp
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &5514461683746088440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5514461683746088424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd4da8dd6f98b4323acaa3485a1317be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: b22c5f623a65a44a0b85204929290171, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5514461683746088419}
-        m_TargetAssemblyTypeName: OpenCVForUnity.UnityUtils.Helper.myWebCamTextureToMatHelper,
-          Assembly-CSharp
-        m_MethodName: Pause
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &5514461683746088441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5514461683746088424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd4da8dd6f98b4323acaa3485a1317be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: ebb763a9e9644492da08872f37562c69, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5514461683746088429}
-        m_TargetAssemblyTypeName: RefinedScanController, Assembly-CSharp
-        m_MethodName: OnBeginScan
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &5514461683746088442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5514461683746088424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0597ba48488a84b429b5c9e6ed5ab365, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  webCamTextureToMatHelper: {fileID: 0}
-  refinedScanController: {fileID: 0}
-  debugMenu: {fileID: 0}
-  errorDisplaySettingsSO: {fileID: 11400000, guid: a77b44a46473c4611a39b26f754e5906, type: 2}
-  errorDisplay: {fileID: 1525296204}
-  errorText: {fileID: 1525296203}
-  warningDisplay: {fileID: 2078628758}
-  warningText: {fileID: 2078628757}
-  canCountTowardsTimeout: 0
---- !u!114 &5514461683746088443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5514461683746088424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd4da8dd6f98b4323acaa3485a1317be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 0da4bff33b5b443a58f1d75bddbe7667, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5514461683746088429}
-        m_TargetAssemblyTypeName: ArtScan.CoreModule.RefinedScanController, Assembly-CSharp
-        m_MethodName: AbortRefinedScan
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &5776238067189428135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33169,7 +32804,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7513131675301535348, guid: ae3c1b10feefd423e88cf76319d92ea5, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7513131675301535348, guid: ae3c1b10feefd423e88cf76319d92ea5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -35014,7 +34649,7 @@ PrefabInstance:
     - target: {fileID: 6985610470909921829, guid: 460e1c309cbd24730933f466e6f121ec, type: 3}
       propertyPath: webCamTextureToMatHelper
       value: 
-      objectReference: {fileID: 5514461683746088419}
+      objectReference: {fileID: 0}
     - target: {fileID: 7118029279240437724, guid: 460e1c309cbd24730933f466e6f121ec, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0.125
@@ -35436,7 +35071,7 @@ MonoBehaviour:
         m_MethodName: OnUndo
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5514461683746088419}
+          m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: OpenCVForUnity.UnityUtils.Helper.myWebCamTextureToMatHelper,
             Assembly-CSharp
           m_IntArgument: 0

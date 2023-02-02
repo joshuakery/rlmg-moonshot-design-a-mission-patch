@@ -13,17 +13,22 @@ namespace ArtScan.ErrorDisplayModule
 {
     public class CameraDisconnectHandler : MonoBehaviour
     {
-        public AsynchronousRemoveBackground asynchronousRemoveBackground;
-        public myWebCamTextureToMatHelper webCamTextureToMatHelper;
+        private AsynchronousRemoveBackground asynchronousRemoveBackground;
+        private myWebCamTextureToMatHelper webCamTextureToMatHelper;
         private RefinedScanController refinedScanController;
         //public DebugMenu debugMenu;
 
-        public ErrorDisplaySettingsSO errorDisplaySettingsSO;
+        [SerializeField]
+        private ErrorDisplaySettingsSO errorDisplaySettingsSO;
 
-        public Canvas errorDisplay;
-        public TMP_Text errorText;
-        public Canvas warningDisplay;
-        public TMP_Text warningText;
+        [SerializeField]
+        private Canvas errorDisplay;
+        [SerializeField]
+        private TMP_Text errorText;
+        [SerializeField]
+        private Canvas warningDisplay;
+        [SerializeField]
+        private TMP_Text warningText;
 
         private bool canCountTowardsTimeout = false;
         private float lastUpdateTime;

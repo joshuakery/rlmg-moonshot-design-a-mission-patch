@@ -11,31 +11,49 @@ namespace ArtScan.ScanSavingModule
 {
     public class SaveScansHelper : MonoBehaviour
     {
-        public GameState gameState;
-        public RefinedScanController refinedScanController;
-        public DownloadThreadController downloadThreadController;
-        public UploadThreadController uploadThreadController;
+        [SerializeField]
+        private GameState gameState;
 
-        public GameEvent UploadCompleteEvent;
-        public GameEvent NewScanEvent;
-        public GameEvent UploadFailedEvent;
+        private RefinedScanController refinedScanController;
 
-        public GameEvent DownloadFailedEvent;
-        public GameEvent DownloadSucceededEvent;
+        [SerializeField]
+        private DownloadThreadController downloadThreadController;
+        [SerializeField]
+        private UploadThreadController uploadThreadController;
 
-        public GameEvent DeleteFailedEvent;
-        public GameEvent DeleteSucceededEvent;
+        [SerializeField]
+        private GameEvent UploadCompleteEvent;
+        [SerializeField]
+        private GameEvent NewScanEvent;
+        [SerializeField]
+        private GameEvent UploadFailedEvent;
 
-        public bool doUploadToServer;
+        [SerializeField]
+        private GameEvent DownloadFailedEvent;
+        [SerializeField]
+        private GameEvent DownloadSucceededEvent;
 
-        public bool doRaiseUploadFailed;
-        public bool doRaiseUploadSucceeded;
+        [SerializeField]
+        private GameEvent DeleteFailedEvent;
+        [SerializeField]
+        private GameEvent DeleteSucceededEvent;
 
-        public bool doRaiseDownloadFailed;
-        public bool doRaiseDownloadSucceeded;
+        private bool doUploadToServer;
 
-        public bool doRaiseDeleteFailed;
-        public bool doRaiseDeleteSucceeded;
+        private bool doRaiseUploadFailed;
+        private bool doRaiseUploadSucceeded;
+
+        private bool doRaiseDownloadFailed;
+        private bool doRaiseDownloadSucceeded;
+
+        private bool doRaiseDeleteFailed;
+        private bool doRaiseDeleteSucceeded;
+
+        private void Awake()
+        {
+            if (refinedScanController == null)
+                refinedScanController = FindObjectOfType<RefinedScanController>();
+        }
 
         private void OnEnable()
         {

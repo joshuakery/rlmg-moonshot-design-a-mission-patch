@@ -2,12 +2,8 @@
     "teams": [
         {
             "teamName": "Default Team",
-            "namesake": "Galileo",
-            "chosenWords": [
-                "Roguish",
-                "Scientific",
-                "Strong-willed"
-            ],
+            "namesake": "",
+            "chosenWords": [],
             "didRoverActivity": false,
             "roverStepsCompleted": 0,
             "didMapActivity": false,
@@ -22,8 +18,8 @@
                 "Default Team-1.png",
                 "Default Team-2.png",
                 "Default Team-3.png",
-                "",
-                ""
+                "Default Team-4.png",
+                "Default Team-5.png"
             ],
             "didCharterActivity": false,
             "charterQsCompleted": 0,
