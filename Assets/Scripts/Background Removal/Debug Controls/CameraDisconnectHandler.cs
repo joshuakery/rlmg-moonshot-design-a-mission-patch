@@ -133,7 +133,7 @@ namespace ArtScan.ErrorDisplayModule
         {
             RLMGLogger.Instance.Log("Resetting update count...", MESSAGETYPE.INFO);
             lastUpdateCount = -1;
-            //todo set lastTexture to null
+
             lastTexture = null;
             webCamTextureID = webCamTextureToMatHelper.GetWebCamTexture() != null ?
                 webCamTextureToMatHelper.GetWebCamTexture().GetInstanceID() : 0;
@@ -259,7 +259,8 @@ namespace ArtScan.ErrorDisplayModule
                 timeout = DateTime.Now + TimeSpan.FromSeconds((double)errorDisplaySettingsSO.errorDisplaySettings.checkForDisconnectInterval);
                 RLMGLogger.Instance.Log("Resetting timeout to " + timeout.ToLongTimeString(), MESSAGETYPE.INFO);
 
-                CheckDevices();
+                //CheckDevices();
+                StartCoroutine(CheckDevicesCo());
             }
             //CheckForDidUpdateFrame();
 
@@ -373,6 +374,13 @@ namespace ArtScan.ErrorDisplayModule
         public void SetCanCheckDevices(bool value)
         {
             configLoaded = value;
+        }
+
+        private IEnumerator CheckDevicesCo()
+        {
+            yield return new WaitForEndOfFrame();
+
+            CheckDevices();
         }
 
         private void CheckDevices()

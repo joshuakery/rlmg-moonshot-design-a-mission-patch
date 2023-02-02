@@ -192,8 +192,6 @@ namespace ArtScan.CoreModule
 
             asynchronousRemoveBackground.refinedMatReady = false;
 
-            yield return new WaitForSeconds(10);
-            
             yield return StartCoroutine(DoRefinedScan());
 
             isInRefinedScanProcess = false;
