@@ -73,6 +73,8 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+aux.meta
+
 # Art-Scan specific images and models
 **/SavedScans/**
 SavedScans.meta
