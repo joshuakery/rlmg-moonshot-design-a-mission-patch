@@ -17261,6 +17261,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1492947570, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+      propertyPath: doUploadToServer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2371739559352800175, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
       propertyPath: errorText
       value: 

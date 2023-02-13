@@ -56,6 +56,12 @@ namespace ArtScan.ScanSavingModule
         public RemoveBackgroundSettings settings;
         public myWebCamTextureToMatHelper webCamTextureToMatHelper;
 
+        private void Awake()
+        {
+            if (webCamTextureToMatHelper == null)
+                webCamTextureToMatHelper = FindObjectOfType<myWebCamTextureToMatHelper>();
+        }
+
         private void Start()
         {
             deleteButton.interactable = false;

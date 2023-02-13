@@ -38,6 +38,7 @@ namespace ArtScan.ScanSavingModule
         [SerializeField]
         private GameEvent DeleteSucceededEvent;
 
+        [SerializeField]
         private bool doUploadToServer;
 
         private bool doRaiseUploadFailed;
