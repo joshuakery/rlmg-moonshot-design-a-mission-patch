@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/DEPRECATED Mission1-Async.unity
     guid: 02ba6e88bf5a349f0ad1bbc7f37799f3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Mission1.unity
     guid: f4b740b05c8f44e098a33acd35963da3
   - enabled: 0
@@ -38,4 +38,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Debug2.unity
     guid: da8966d540bf6427c9094ec36d58fd43
+  - enabled: 0
+    path: Assets/Scenes/Debug_LiveFeedback.unity
+    guid: 2cfa1a113cb13418294bd713e405ce63
+  - enabled: 0
+    path: Assets/Scenes/Debug_LiveFeedback_RefinedScan.unity
+    guid: 81ba38e6c793043e1af67314c2a9000f
+  - enabled: 1
+    path: Assets/Scenes/Debug_RefinedScan.unity
+    guid: 229f986d430ab49cf800c6c1c0e4bfc3
   m_configObjects: {}

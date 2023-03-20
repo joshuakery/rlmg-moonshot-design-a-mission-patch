@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using ArtScan.CoreModule;
 using ArtScan.ErrorDisplayModule;
 
@@ -38,6 +39,18 @@ public class DebugHelper : MonoBehaviour
         {
             if (cameraDisconnectHandler != null)
                 cameraDisconnectHandler.SaveCurrentAndLastWebCamTexturesToFile();
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SceneManager.LoadScene("Debug_RefinedScan");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            SceneManager.LoadScene("Debug_LiveFeedback");
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha6))
+        {
+            SceneManager.LoadScene("Debug_LiveFeedback_RefinedScan");
         }
 
     }

@@ -1248,7 +1248,7 @@ namespace OpenCVForUnity.UnityUtils.Helper
             }
         }
 
-        protected virtual int Channels(ColorFormat type)
+        public virtual int Channels(ColorFormat type)
         {
             switch (type)
             {

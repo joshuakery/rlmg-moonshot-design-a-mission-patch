@@ -197,7 +197,6 @@ namespace ArtScan.CoreModule
 
         //for new Thread
         Mat rgbaMat4Thread;
-        public Mat rgbaMat4RefinedThread;
         Mat resultMat;
 
         public float DOWNSCALE_RATIO = 2f;
@@ -267,38 +266,6 @@ namespace ArtScan.CoreModule
             }
         }
 
-        bool _shouldCopyToRefinedMat = false;
-
-        public bool shouldCopyToRefinedMat
-        {
-            get
-            {
-                lock (sync)
-                    return _shouldCopyToRefinedMat;
-            }
-            set
-            {
-                lock (sync)
-                    _shouldCopyToRefinedMat = value;
-            }
-        }
-
-        bool _refinedMatReady = false;
-
-        public bool refinedMatReady
-        {
-            get
-            {
-                lock (sync)
-                    return _refinedMatReady;
-            }
-            set
-            {
-                lock (sync)
-                    _refinedMatReady = value;
-            }
-        }
-
         private void Awake()
         {
             if (rawImage != null)
@@ -314,11 +281,6 @@ namespace ArtScan.CoreModule
         // Use this for initialization
         public void SetupRemoveBackground()
         {
-            //RLMGLogger.Instance.Log("Setting up remove background...", MESSAGETYPE.INFO);
-
-
-            //fpsMonitor = GetComponent<FpsMonitor>();
-
             webCamTextureToMatHelper = gameObject.GetComponent<myWebCamTextureToMatHelper>();
 
 #if UNITY_WEBGL
@@ -460,9 +422,6 @@ namespace ArtScan.CoreModule
             if (rgbaMat4Thread != null)
                 rgbaMat4Thread.Dispose();
 
-            if (rgbaMat4RefinedThread != null)
-                rgbaMat4RefinedThread.Dispose();
-
             if (resultMat != null)
                 resultMat.Dispose();
 
@@ -528,19 +487,8 @@ namespace ArtScan.CoreModule
                 rgbaMat.copyTo(rgbaMat4Thread);
         }
 
-        private void CopyToRefinedThreadMat()
-        {
-            //slighly inefficient, because onBeginScan we call this twice in one frame
-            //but negligible
-            Mat rgbaMat = webCamTextureToMatHelper.GetMat();
-
-            if (rgbaMat4RefinedThread != null)
-                rgbaMat.copyTo(rgbaMat4RefinedThread);
-        }
-
         private void ToTexture2D()
         {
-
             Utils.fastMatToTexture2D(resultMat, rawImageTexture, true, 0, true);
         }
 
@@ -575,33 +523,7 @@ namespace ArtScan.CoreModule
             {
                 if (!shouldDetectInMultiThread)
                 {
-                    if (shouldCopyToRefinedMat)
-                    {
-                        DateTime before = DateTime.Now;
-
-                        //Copy for both threads
-                        CopyToThreadMat();
-                        CopyToRefinedThreadMat();
-
-
-                        refinedMatReady = true;
-                        shouldCopyToRefinedMat = false;
-
-                        DateTime after = DateTime.Now;
-
-                        TimeSpan duration = after.Subtract(before);
-
-                        if (RLMGLogger.Instance != null)
-                            RLMGLogger.Instance.Log(
-                                String.Format("Webcam texture successfuly copied for refined scan in {0} milliseconds.", duration.TotalMilliseconds),
-                                MESSAGETYPE.INFO
-                            );
-                    }
-                    else
-                    {
-                        //Copy for just the continuous feedback
-                        CopyToThreadMat();
-                    }
+                    CopyToThreadMat();
 
                     copiedFramesCount++;
 
@@ -619,9 +541,6 @@ namespace ArtScan.CoreModule
                     //perhaps reduce the size of this mat first
                     
                     ToTexture2D();
-
-                    // if (beginScanButton)
-                    //     beginScanButton.interactable = beginScanButtonInteractable;
                 }
                 
             }
@@ -635,7 +554,7 @@ namespace ArtScan.CoreModule
             StopThread();
 
             rgbaMat4Thread = new Mat();
-            rgbaMat4RefinedThread = new Mat();
+
             resultMat = rawImageDisplayMat.clone();
 
             shouldDetectInMultiThread = false;
