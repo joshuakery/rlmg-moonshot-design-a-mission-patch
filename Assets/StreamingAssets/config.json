@@ -10,6 +10,8 @@
     "flipVertical": true,
     "flipHorizontal": false,
     "requestedFPS": 60,
+    "preProcessingSizeFactor": 2,
+    "postProcessingSizeFactor": 0.75,
     "brightness": 255,
     "contrast": 127,
     "edgeFindingMethod": 0,
@@ -29,8 +31,8 @@
         "minimumScanSize": 50,
         "maximumArtworkPercentageOfPaper": 0.7,
         "consistentScanAreaThreshold": 0.009999999776482582,
-        "minimumConsistentFrames": 4,
-        "minimumArtworkInconsistentFramesToFail": 3
+        "minimumConsistentFrames": 1,
+        "minimumArtworkInconsistentFramesToFail": 2
     },
     "errorDisplaySettings": {
         "checkForDisconnectInterval": 15,

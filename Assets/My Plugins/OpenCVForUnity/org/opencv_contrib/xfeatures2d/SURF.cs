@@ -345,6 +345,20 @@
 //        }
 
 
+//        //
+//        // C++:  String cv::xfeatures2d::SURF::getDefaultName()
+//        //
+
+//        public override string getDefaultName()
+//        {
+//            ThrowIfDisposed();
+
+//            string retVal = Marshal.PtrToStringAnsi(DisposableObject.ThrowIfNullIntPtr(xfeatures2d_SURF_getDefaultName_10(nativeObj)));
+
+//            return retVal;
+//        }
+
+
 //#if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
 //        const string LIBNAME = "__Internal";
 //#else
@@ -408,6 +422,10 @@
 //        [DllImport(LIBNAME)]
 //        [return: MarshalAs(UnmanagedType.U1)]
 //        private static extern bool xfeatures2d_SURF_getUpright_10(IntPtr nativeObj);
+
+//        // C++:  String cv::xfeatures2d::SURF::getDefaultName()
+//        [DllImport(LIBNAME)]
+//        private static extern IntPtr xfeatures2d_SURF_getDefaultName_10(IntPtr nativeObj);
 
 //        // native support for java finalize()
 //        [DllImport(LIBNAME)]

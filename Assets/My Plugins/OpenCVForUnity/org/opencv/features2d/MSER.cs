@@ -372,6 +372,174 @@ namespace OpenCVForUnity.Features2dModule
 
 
         //
+        // C++:  void cv::MSER::setMaxVariation(double maxVariation)
+        //
+
+        public void setMaxVariation(double maxVariation)
+        {
+            ThrowIfDisposed();
+
+            features2d_MSER_setMaxVariation_10(nativeObj, maxVariation);
+
+
+        }
+
+
+        //
+        // C++:  double cv::MSER::getMaxVariation()
+        //
+
+        public double getMaxVariation()
+        {
+            ThrowIfDisposed();
+
+            return features2d_MSER_getMaxVariation_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::MSER::setMinDiversity(double minDiversity)
+        //
+
+        public void setMinDiversity(double minDiversity)
+        {
+            ThrowIfDisposed();
+
+            features2d_MSER_setMinDiversity_10(nativeObj, minDiversity);
+
+
+        }
+
+
+        //
+        // C++:  double cv::MSER::getMinDiversity()
+        //
+
+        public double getMinDiversity()
+        {
+            ThrowIfDisposed();
+
+            return features2d_MSER_getMinDiversity_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::MSER::setMaxEvolution(int maxEvolution)
+        //
+
+        public void setMaxEvolution(int maxEvolution)
+        {
+            ThrowIfDisposed();
+
+            features2d_MSER_setMaxEvolution_10(nativeObj, maxEvolution);
+
+
+        }
+
+
+        //
+        // C++:  int cv::MSER::getMaxEvolution()
+        //
+
+        public int getMaxEvolution()
+        {
+            ThrowIfDisposed();
+
+            return features2d_MSER_getMaxEvolution_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::MSER::setAreaThreshold(double areaThreshold)
+        //
+
+        public void setAreaThreshold(double areaThreshold)
+        {
+            ThrowIfDisposed();
+
+            features2d_MSER_setAreaThreshold_10(nativeObj, areaThreshold);
+
+
+        }
+
+
+        //
+        // C++:  double cv::MSER::getAreaThreshold()
+        //
+
+        public double getAreaThreshold()
+        {
+            ThrowIfDisposed();
+
+            return features2d_MSER_getAreaThreshold_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::MSER::setMinMargin(double min_margin)
+        //
+
+        public void setMinMargin(double min_margin)
+        {
+            ThrowIfDisposed();
+
+            features2d_MSER_setMinMargin_10(nativeObj, min_margin);
+
+
+        }
+
+
+        //
+        // C++:  double cv::MSER::getMinMargin()
+        //
+
+        public double getMinMargin()
+        {
+            ThrowIfDisposed();
+
+            return features2d_MSER_getMinMargin_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::MSER::setEdgeBlurSize(int edge_blur_size)
+        //
+
+        public void setEdgeBlurSize(int edge_blur_size)
+        {
+            ThrowIfDisposed();
+
+            features2d_MSER_setEdgeBlurSize_10(nativeObj, edge_blur_size);
+
+
+        }
+
+
+        //
+        // C++:  int cv::MSER::getEdgeBlurSize()
+        //
+
+        public int getEdgeBlurSize()
+        {
+            ThrowIfDisposed();
+
+            return features2d_MSER_getEdgeBlurSize_10(nativeObj);
+
+
+        }
+
+
+        //
         // C++:  void cv::MSER::setPass2Only(bool f)
         //
 
@@ -470,6 +638,54 @@ namespace OpenCVForUnity.Features2dModule
         // C++:  int cv::MSER::getMaxArea()
         [DllImport(LIBNAME)]
         private static extern int features2d_MSER_getMaxArea_10(IntPtr nativeObj);
+
+        // C++:  void cv::MSER::setMaxVariation(double maxVariation)
+        [DllImport(LIBNAME)]
+        private static extern void features2d_MSER_setMaxVariation_10(IntPtr nativeObj, double maxVariation);
+
+        // C++:  double cv::MSER::getMaxVariation()
+        [DllImport(LIBNAME)]
+        private static extern double features2d_MSER_getMaxVariation_10(IntPtr nativeObj);
+
+        // C++:  void cv::MSER::setMinDiversity(double minDiversity)
+        [DllImport(LIBNAME)]
+        private static extern void features2d_MSER_setMinDiversity_10(IntPtr nativeObj, double minDiversity);
+
+        // C++:  double cv::MSER::getMinDiversity()
+        [DllImport(LIBNAME)]
+        private static extern double features2d_MSER_getMinDiversity_10(IntPtr nativeObj);
+
+        // C++:  void cv::MSER::setMaxEvolution(int maxEvolution)
+        [DllImport(LIBNAME)]
+        private static extern void features2d_MSER_setMaxEvolution_10(IntPtr nativeObj, int maxEvolution);
+
+        // C++:  int cv::MSER::getMaxEvolution()
+        [DllImport(LIBNAME)]
+        private static extern int features2d_MSER_getMaxEvolution_10(IntPtr nativeObj);
+
+        // C++:  void cv::MSER::setAreaThreshold(double areaThreshold)
+        [DllImport(LIBNAME)]
+        private static extern void features2d_MSER_setAreaThreshold_10(IntPtr nativeObj, double areaThreshold);
+
+        // C++:  double cv::MSER::getAreaThreshold()
+        [DllImport(LIBNAME)]
+        private static extern double features2d_MSER_getAreaThreshold_10(IntPtr nativeObj);
+
+        // C++:  void cv::MSER::setMinMargin(double min_margin)
+        [DllImport(LIBNAME)]
+        private static extern void features2d_MSER_setMinMargin_10(IntPtr nativeObj, double min_margin);
+
+        // C++:  double cv::MSER::getMinMargin()
+        [DllImport(LIBNAME)]
+        private static extern double features2d_MSER_getMinMargin_10(IntPtr nativeObj);
+
+        // C++:  void cv::MSER::setEdgeBlurSize(int edge_blur_size)
+        [DllImport(LIBNAME)]
+        private static extern void features2d_MSER_setEdgeBlurSize_10(IntPtr nativeObj, int edge_blur_size);
+
+        // C++:  int cv::MSER::getEdgeBlurSize()
+        [DllImport(LIBNAME)]
+        private static extern int features2d_MSER_getEdgeBlurSize_10(IntPtr nativeObj);
 
         // C++:  void cv::MSER::setPass2Only(bool f)
         [DllImport(LIBNAME)]

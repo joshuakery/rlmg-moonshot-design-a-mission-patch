@@ -23,8 +23,13 @@ namespace ArtScan.CoreModule
         [SerializeField]
         private GameState gameState;
 
+        /// <summary>
+        /// Using this reference just for fetching the structured forest model
+        /// </summary>
         private AsynchronousRemoveBackground asynchronousRemoveBackground;
+        // TODO remove the model reference from the asyncRmBg for modularity
 
+        [SerializeField]
         private myWebCamTextureToMatHelper webCamTextureToMatHelper;
 
         [SerializeField]
@@ -95,32 +100,11 @@ namespace ArtScan.CoreModule
             }
         }
 
-        public void SetUpRemoveBackground()
-        {
-            webCamTextureToMatHelper = gameObject.GetComponent<myWebCamTextureToMatHelper>();
-
-            if (configLoader != null && configLoader.configData != null)
-            {
-                if (configLoader.configData.defaultCamera != null)
-                    webCamTextureToMatHelper.requestedDeviceName = configLoader.configData.defaultCamera;
-
-                webCamTextureToMatHelper.flipVertical = configLoader.configData.flipVertical;
-
-                webCamTextureToMatHelper.flipHorizontal = configLoader.configData.flipHorizontal;
-
-                webCamTextureToMatHelper.requestedFPS = configLoader.configData.requestedFPS;
-            }
-
-            webCamTextureToMatHelper.Initialize();
-        }
-
         /// <summary>
         /// Checks if we can safely begin a scan, then calls the coroutine
         /// </summary>
         public void OnBeginScan()
         {
-            Debug.Log("Beginning scan");
-
             StopAllCoroutines();
             AbortRefinedScan();
 
@@ -141,7 +125,7 @@ namespace ArtScan.CoreModule
                 return;
             }
 
-            Mat rgbaMat = webCamTextureToMatHelper.GetMat();
+            Mat rgbaMat = webCamTextureToMatHelper.GetNewMat();
 
             StartCoroutine(DoRefinedScan(rgbaMat));
         }
@@ -164,8 +148,8 @@ namespace ArtScan.CoreModule
                 refinedScanThread.settings = settings;
                 refinedScanThread.displayOptions = displayOptions;
                 refinedScanThread.edgeDetection = asynchronousRemoveBackground != null ?
-                    asynchronousRemoveBackground.edgeDetection : null
-                    ;
+                    asynchronousRemoveBackground.edgeDetection :
+                    null;
                 //input
                 refinedScanThread.rgbaMat = targetMat;
                 //outputs

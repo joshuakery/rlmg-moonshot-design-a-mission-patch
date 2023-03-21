@@ -109,6 +109,132 @@ namespace OpenCVForUnity.Xfeatures2dModule
         }
 
 
+        //
+        // C++:  void cv::xfeatures2d::LATCH::setBytes(int bytes)
+        //
+
+        public void setBytes(int bytes)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_LATCH_setBytes_10(nativeObj, bytes);
+
+
+        }
+
+
+        //
+        // C++:  int cv::xfeatures2d::LATCH::getBytes()
+        //
+
+        public int getBytes()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_LATCH_getBytes_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::xfeatures2d::LATCH::setRotationInvariance(bool rotationInvariance)
+        //
+
+        public void setRotationInvariance(bool rotationInvariance)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_LATCH_setRotationInvariance_10(nativeObj, rotationInvariance);
+
+
+        }
+
+
+        //
+        // C++:  bool cv::xfeatures2d::LATCH::getRotationInvariance()
+        //
+
+        public bool getRotationInvariance()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_LATCH_getRotationInvariance_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::xfeatures2d::LATCH::setHalfSSDsize(int half_ssd_size)
+        //
+
+        public void setHalfSSDsize(int half_ssd_size)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_LATCH_setHalfSSDsize_10(nativeObj, half_ssd_size);
+
+
+        }
+
+
+        //
+        // C++:  int cv::xfeatures2d::LATCH::getHalfSSDsize()
+        //
+
+        public int getHalfSSDsize()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_LATCH_getHalfSSDsize_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::xfeatures2d::LATCH::setSigma(double sigma)
+        //
+
+        public void setSigma(double sigma)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_LATCH_setSigma_10(nativeObj, sigma);
+
+
+        }
+
+
+        //
+        // C++:  double cv::xfeatures2d::LATCH::getSigma()
+        //
+
+        public double getSigma()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_LATCH_getSigma_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  String cv::xfeatures2d::LATCH::getDefaultName()
+        //
+
+        public override string getDefaultName()
+        {
+            ThrowIfDisposed();
+
+            string retVal = Marshal.PtrToStringAnsi(DisposableObject.ThrowIfNullIntPtr(xfeatures2d_LATCH_getDefaultName_10(nativeObj)));
+
+            return retVal;
+        }
+
+
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         const string LIBNAME = "__Internal";
 #else
@@ -128,6 +254,43 @@ namespace OpenCVForUnity.Xfeatures2dModule
         private static extern IntPtr xfeatures2d_LATCH_create_13(int bytes);
         [DllImport(LIBNAME)]
         private static extern IntPtr xfeatures2d_LATCH_create_14();
+
+        // C++:  void cv::xfeatures2d::LATCH::setBytes(int bytes)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_LATCH_setBytes_10(IntPtr nativeObj, int bytes);
+
+        // C++:  int cv::xfeatures2d::LATCH::getBytes()
+        [DllImport(LIBNAME)]
+        private static extern int xfeatures2d_LATCH_getBytes_10(IntPtr nativeObj);
+
+        // C++:  void cv::xfeatures2d::LATCH::setRotationInvariance(bool rotationInvariance)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_LATCH_setRotationInvariance_10(IntPtr nativeObj, [MarshalAs(UnmanagedType.U1)] bool rotationInvariance);
+
+        // C++:  bool cv::xfeatures2d::LATCH::getRotationInvariance()
+        [DllImport(LIBNAME)]
+        [return: MarshalAs(UnmanagedType.U1)]
+        private static extern bool xfeatures2d_LATCH_getRotationInvariance_10(IntPtr nativeObj);
+
+        // C++:  void cv::xfeatures2d::LATCH::setHalfSSDsize(int half_ssd_size)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_LATCH_setHalfSSDsize_10(IntPtr nativeObj, int half_ssd_size);
+
+        // C++:  int cv::xfeatures2d::LATCH::getHalfSSDsize()
+        [DllImport(LIBNAME)]
+        private static extern int xfeatures2d_LATCH_getHalfSSDsize_10(IntPtr nativeObj);
+
+        // C++:  void cv::xfeatures2d::LATCH::setSigma(double sigma)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_LATCH_setSigma_10(IntPtr nativeObj, double sigma);
+
+        // C++:  double cv::xfeatures2d::LATCH::getSigma()
+        [DllImport(LIBNAME)]
+        private static extern double xfeatures2d_LATCH_getSigma_10(IntPtr nativeObj);
+
+        // C++:  String cv::xfeatures2d::LATCH::getDefaultName()
+        [DllImport(LIBNAME)]
+        private static extern IntPtr xfeatures2d_LATCH_getDefaultName_10(IntPtr nativeObj);
 
         // native support for java finalize()
         [DllImport(LIBNAME)]

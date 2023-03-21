@@ -15,7 +15,7 @@ using System.Collections;
 using System.IO;
 using System.Collections.Generic;
 
-namespace OpenCVForUnity
+namespace OpenCVForUnity.Editor
 {
     public class OpenCVForUnityIOSBuildPostprocessor : MonoBehaviour
     {
@@ -67,40 +67,8 @@ namespace OpenCVForUnity
                 string target = proj.TargetGuidByName(PBXProject.GetUnityTargetName());
 #endif
 
-#if UNITY_2018_1_OR_NEWER
-                string[] guids = UnityEditor.AssetDatabase.FindAssets("OpenCVForUnityIOSBuildPostprocessor");
-                if (guids.Length == 0)
-                {
-                    UnityEngine.Debug.LogWarning("SetPluginImportSettings Faild : OpenCVForUnityIOSBuildPostprocessor.cs is missing.");
-                    return;
-                }
-                string opencvForUnityFolderPath = AssetDatabase.GUIDToAssetPath(guids[0]).Substring(0, AssetDatabase.GUIDToAssetPath(guids[0]).LastIndexOf("Editor/OpenCVForUnityIOSBuildPostprocessor.cs"));
 
-                string pluginsFolderPath = opencvForUnityFolderPath + "Plugins";
-                //UnityEngine.Debug.Log ("pluginsFolderPath " + pluginsFolderPath);
-
-                PluginImporter pluginImporter = PluginImporter.GetAtPath(pluginsFolderPath + "/iOS/opencv2.framework") as PluginImporter;
-
-                if (pluginImporter != null)
-                {
-                    if (pluginImporter.GetPlatformData(BuildTarget.iOS, "AddToEmbeddedBinaries") == "false")
-                    {
-                        //UnityEngine.Debug.Log("AddToEmbeddedBinaries false");
-
-                        OpenCVForUnityMenuItem.SetPlugins(new string[] { pluginsFolderPath + "/iOS/opencv2.framework" }, null,
-                            new Dictionary<BuildTarget, Dictionary<string, string>>() { {
-                                BuildTarget.iOS,
-                                new Dictionary<string, string> () { {
-                                    "AddToEmbeddedBinaries",
-                                    "true"
-                                    }
-                                }
-                            }
-                        });
-                    }
-                }
-
-#elif UNITY_2017_2_OR_NEWER
+#if !UNITY_2018_1_OR_NEWER && UNITY_2017_2_OR_NEWER
                 string fileGuid = proj.FindFileGuidByProjectPath(opencvFrameworkPath.Substring(path.Length + 1));
 
                 proj.AddFileToBuild(target, fileGuid);
@@ -110,8 +78,6 @@ namespace OpenCVForUnity
                     var configGuid = proj.BuildConfigByName(target, configName);
                     proj.SetBuildPropertyForConfig(configGuid, "LD_RUNPATH_SEARCH_PATHS", "$(inherited) @executable_path/Frameworks");
                 }
-#else
-                UnityEngine.Debug.LogError("If the version of Unity is less than 2017.2, you have to set opencv2.framework to Embedded Binaries manually.");
 #endif
 
 

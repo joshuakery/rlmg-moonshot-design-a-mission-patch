@@ -108,6 +108,35 @@ namespace OpenCVForUnity.Features2dModule
 
 
         //
+        // C++:  void cv::SimpleBlobDetector::setParams(SimpleBlobDetector_Params _params)
+        //
+
+        public void setParams(SimpleBlobDetector_Params _params)
+        {
+            ThrowIfDisposed();
+            if (_params != null) _params.ThrowIfDisposed();
+
+            features2d_SimpleBlobDetector_setParams_10(nativeObj, _params.nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  SimpleBlobDetector_Params cv::SimpleBlobDetector::getParams()
+        //
+
+        public SimpleBlobDetector_Params getParams()
+        {
+            ThrowIfDisposed();
+
+            return new SimpleBlobDetector_Params(DisposableObject.ThrowIfNullIntPtr(features2d_SimpleBlobDetector_getParams_10(nativeObj)));
+
+
+        }
+
+
+        //
         // C++:  String cv::SimpleBlobDetector::getDefaultName()
         //
 
@@ -117,6 +146,20 @@ namespace OpenCVForUnity.Features2dModule
 
             string retVal = Marshal.PtrToStringAnsi(DisposableObject.ThrowIfNullIntPtr(features2d_SimpleBlobDetector_getDefaultName_10(nativeObj)));
 
+            return retVal;
+        }
+
+
+        //
+        // C++:  vector_vector_Point cv::SimpleBlobDetector::getBlobContours()
+        //
+
+        public List<MatOfPoint> getBlobContours()
+        {
+            ThrowIfDisposed();
+            List<MatOfPoint> retVal = new List<MatOfPoint>();
+            Mat retValMat = new Mat(DisposableObject.ThrowIfNullIntPtr(features2d_SimpleBlobDetector_getBlobContours_10(nativeObj)));
+            Converters.Mat_to_vector_vector_Point(retValMat, retVal);
             return retVal;
         }
 
@@ -135,9 +178,21 @@ namespace OpenCVForUnity.Features2dModule
         [DllImport(LIBNAME)]
         private static extern IntPtr features2d_SimpleBlobDetector_create_11();
 
+        // C++:  void cv::SimpleBlobDetector::setParams(SimpleBlobDetector_Params _params)
+        [DllImport(LIBNAME)]
+        private static extern void features2d_SimpleBlobDetector_setParams_10(IntPtr nativeObj, IntPtr _params_nativeObj);
+
+        // C++:  SimpleBlobDetector_Params cv::SimpleBlobDetector::getParams()
+        [DllImport(LIBNAME)]
+        private static extern IntPtr features2d_SimpleBlobDetector_getParams_10(IntPtr nativeObj);
+
         // C++:  String cv::SimpleBlobDetector::getDefaultName()
         [DllImport(LIBNAME)]
         private static extern IntPtr features2d_SimpleBlobDetector_getDefaultName_10(IntPtr nativeObj);
+
+        // C++:  vector_vector_Point cv::SimpleBlobDetector::getBlobContours()
+        [DllImport(LIBNAME)]
+        private static extern IntPtr features2d_SimpleBlobDetector_getBlobContours_10(IntPtr nativeObj);
 
         // native support for java finalize()
         [DllImport(LIBNAME)]

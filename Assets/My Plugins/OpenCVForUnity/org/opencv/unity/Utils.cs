@@ -23,7 +23,7 @@ namespace OpenCVForUnity.UnityUtils
         */
         public static string getVersion()
         {
-            return "2.4.8";
+            return "2.5.3";
         }
 
         /**
@@ -725,6 +725,9 @@ namespace OpenCVForUnity.UnityUtils
 #elif UNITY_2017_1_OR_NEWER
                 if (request.isHttpError || request.isNetworkError) 
                 {
+#else
+                if (request.isError)
+                {
 #endif
                     Debug.LogWarning(request.error);
                     Debug.LogWarning(request.responseCode);
@@ -738,7 +741,7 @@ namespace OpenCVForUnity.UnityUtils
 
                 File.WriteAllBytes(destPath, request.downloadHandler.data);
             }
-#else
+#else // UNITY_2017_1_OR_NEWER
             using (WWW request = new WWW(srcPath))
             {
                 while (!request.isDone) {; }
@@ -756,7 +759,7 @@ namespace OpenCVForUnity.UnityUtils
 
                 File.WriteAllBytes(destPath, request.bytes);
             }
-#endif
+#endif // UNITY_2017_1_OR_NEWER
             return destPath;
 #elif UNITY_WEBGL && !UNITY_EDITOR
             string destPath = Path.Combine(Path.DirectorySeparatorChar.ToString(), "opencvforunity");
@@ -770,7 +773,7 @@ namespace OpenCVForUnity.UnityUtils
             {
                 return String.Empty;
             }
-#else
+#else // UNITY_ANDROID && !UNITY_EDITOR
             string destPath = Path.Combine(Application.streamingAssetsPath, filepath);
 
             if (File.Exists(destPath))
@@ -781,7 +784,7 @@ namespace OpenCVForUnity.UnityUtils
             {
                 return String.Empty;
             }
-#endif
+#endif // UNITY_ANDROID && !UNITY_EDITOR
         }
 
         /**
@@ -943,6 +946,9 @@ namespace OpenCVForUnity.UnityUtils
 #elif UNITY_2017_1_OR_NEWER
                 if (request.isHttpError || request.isNetworkError) 
                 {
+#else
+                if (request.isError)
+                {
 #endif
                         Debug.LogWarning(request.error);
                         Debug.LogWarning(request.responseCode);
@@ -966,7 +972,7 @@ namespace OpenCVForUnity.UnityUtils
 
                     File.WriteAllBytes(destPath, request.downloadHandler.data);
                 }
-#else
+#else // UNITY_WEBGL || (UNITY_ANDROID && UNITY_2017_1_OR_NEWER)
                 using (WWW request = new WWW(srcPath))
                 {
 
@@ -1004,11 +1010,11 @@ namespace OpenCVForUnity.UnityUtils
 
                     File.WriteAllBytes(destPath, request.bytes);
                 }
-#endif
+#endif // UNITY_WEBGL || (UNITY_ANDROID && UNITY_2017_1_OR_NEWER)
                 if (completed != null)
                     completed(destPath);
             }
-#else
+#else // (UNITY_ANDROID || UNITY_WEBGL) && !UNITY_EDITOR
             string destPath = Path.Combine(Application.streamingAssetsPath, filepath);
 
             if (progressChanged != null)
@@ -1034,7 +1040,7 @@ namespace OpenCVForUnity.UnityUtils
                         completed(String.Empty);
                 }
             }
-#endif
+#endif // (UNITY_ANDROID || UNITY_WEBGL) && !UNITY_EDITOR
 
             yield break;
         }
@@ -1199,7 +1205,11 @@ namespace OpenCVForUnity.UnityUtils
         {
             if (throwOpenCVException)
             {
+#if UNITY_2022_2_OR_NEWER && UNITY_ANDROID && ENABLE_IL2CPP
+                Debug.LogError(str);
+#else
                 throw new CvException(str);
+#endif
             }
             else
             {

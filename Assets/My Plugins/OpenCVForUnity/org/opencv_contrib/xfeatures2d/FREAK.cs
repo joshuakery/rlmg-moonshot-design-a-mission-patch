@@ -150,6 +150,132 @@ namespace OpenCVForUnity.Xfeatures2dModule
         }
 
 
+        //
+        // C++:  void cv::xfeatures2d::FREAK::setOrientationNormalized(bool orientationNormalized)
+        //
+
+        public void setOrientationNormalized(bool orientationNormalized)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_FREAK_setOrientationNormalized_10(nativeObj, orientationNormalized);
+
+
+        }
+
+
+        //
+        // C++:  bool cv::xfeatures2d::FREAK::getOrientationNormalized()
+        //
+
+        public bool getOrientationNormalized()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_FREAK_getOrientationNormalized_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::xfeatures2d::FREAK::setScaleNormalized(bool scaleNormalized)
+        //
+
+        public void setScaleNormalized(bool scaleNormalized)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_FREAK_setScaleNormalized_10(nativeObj, scaleNormalized);
+
+
+        }
+
+
+        //
+        // C++:  bool cv::xfeatures2d::FREAK::getScaleNormalized()
+        //
+
+        public bool getScaleNormalized()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_FREAK_getScaleNormalized_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::xfeatures2d::FREAK::setPatternScale(double patternScale)
+        //
+
+        public void setPatternScale(double patternScale)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_FREAK_setPatternScale_10(nativeObj, patternScale);
+
+
+        }
+
+
+        //
+        // C++:  double cv::xfeatures2d::FREAK::getPatternScale()
+        //
+
+        public double getPatternScale()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_FREAK_getPatternScale_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::xfeatures2d::FREAK::setNOctaves(int nOctaves)
+        //
+
+        public void setNOctaves(int nOctaves)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_FREAK_setNOctaves_10(nativeObj, nOctaves);
+
+
+        }
+
+
+        //
+        // C++:  int cv::xfeatures2d::FREAK::getNOctaves()
+        //
+
+        public int getNOctaves()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_FREAK_getNOctaves_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  String cv::xfeatures2d::FREAK::getDefaultName()
+        //
+
+        public override string getDefaultName()
+        {
+            ThrowIfDisposed();
+
+            string retVal = Marshal.PtrToStringAnsi(DisposableObject.ThrowIfNullIntPtr(xfeatures2d_FREAK_getDefaultName_10(nativeObj)));
+
+            return retVal;
+        }
+
+
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         const string LIBNAME = "__Internal";
 #else
@@ -171,6 +297,44 @@ namespace OpenCVForUnity.Xfeatures2dModule
         private static extern IntPtr xfeatures2d_FREAK_create_14([MarshalAs(UnmanagedType.U1)] bool orientationNormalized);
         [DllImport(LIBNAME)]
         private static extern IntPtr xfeatures2d_FREAK_create_15();
+
+        // C++:  void cv::xfeatures2d::FREAK::setOrientationNormalized(bool orientationNormalized)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_FREAK_setOrientationNormalized_10(IntPtr nativeObj, [MarshalAs(UnmanagedType.U1)] bool orientationNormalized);
+
+        // C++:  bool cv::xfeatures2d::FREAK::getOrientationNormalized()
+        [DllImport(LIBNAME)]
+        [return: MarshalAs(UnmanagedType.U1)]
+        private static extern bool xfeatures2d_FREAK_getOrientationNormalized_10(IntPtr nativeObj);
+
+        // C++:  void cv::xfeatures2d::FREAK::setScaleNormalized(bool scaleNormalized)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_FREAK_setScaleNormalized_10(IntPtr nativeObj, [MarshalAs(UnmanagedType.U1)] bool scaleNormalized);
+
+        // C++:  bool cv::xfeatures2d::FREAK::getScaleNormalized()
+        [DllImport(LIBNAME)]
+        [return: MarshalAs(UnmanagedType.U1)]
+        private static extern bool xfeatures2d_FREAK_getScaleNormalized_10(IntPtr nativeObj);
+
+        // C++:  void cv::xfeatures2d::FREAK::setPatternScale(double patternScale)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_FREAK_setPatternScale_10(IntPtr nativeObj, double patternScale);
+
+        // C++:  double cv::xfeatures2d::FREAK::getPatternScale()
+        [DllImport(LIBNAME)]
+        private static extern double xfeatures2d_FREAK_getPatternScale_10(IntPtr nativeObj);
+
+        // C++:  void cv::xfeatures2d::FREAK::setNOctaves(int nOctaves)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_FREAK_setNOctaves_10(IntPtr nativeObj, int nOctaves);
+
+        // C++:  int cv::xfeatures2d::FREAK::getNOctaves()
+        [DllImport(LIBNAME)]
+        private static extern int xfeatures2d_FREAK_getNOctaves_10(IntPtr nativeObj);
+
+        // C++:  String cv::xfeatures2d::FREAK::getDefaultName()
+        [DllImport(LIBNAME)]
+        private static extern IntPtr xfeatures2d_FREAK_getDefaultName_10(IntPtr nativeObj);
 
         // native support for java finalize()
         [DllImport(LIBNAME)]

@@ -256,6 +256,34 @@ namespace OpenCVForUnity.Features2dModule
 
 
         //
+        // C++:  void cv::GFTTDetector::setGradientSize(int gradientSize_)
+        //
+
+        public void setGradientSize(int gradientSize_)
+        {
+            ThrowIfDisposed();
+
+            features2d_GFTTDetector_setGradientSize_10(nativeObj, gradientSize_);
+
+
+        }
+
+
+        //
+        // C++:  int cv::GFTTDetector::getGradientSize()
+        //
+
+        public int getGradientSize()
+        {
+            ThrowIfDisposed();
+
+            return features2d_GFTTDetector_getGradientSize_10(nativeObj);
+
+
+        }
+
+
+        //
         // C++:  void cv::GFTTDetector::setHarrisDetector(bool val)
         //
 
@@ -388,6 +416,14 @@ namespace OpenCVForUnity.Features2dModule
         // C++:  int cv::GFTTDetector::getBlockSize()
         [DllImport(LIBNAME)]
         private static extern int features2d_GFTTDetector_getBlockSize_10(IntPtr nativeObj);
+
+        // C++:  void cv::GFTTDetector::setGradientSize(int gradientSize_)
+        [DllImport(LIBNAME)]
+        private static extern void features2d_GFTTDetector_setGradientSize_10(IntPtr nativeObj, int gradientSize_);
+
+        // C++:  int cv::GFTTDetector::getGradientSize()
+        [DllImport(LIBNAME)]
+        private static extern int features2d_GFTTDetector_getGradientSize_10(IntPtr nativeObj);
 
         // C++:  void cv::GFTTDetector::setHarrisDetector(bool val)
         [DllImport(LIBNAME)]

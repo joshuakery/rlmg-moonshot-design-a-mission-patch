@@ -273,6 +273,146 @@ namespace OpenCVForUnity.Features2dModule
         }
 
 
+        //
+        // C++:  void cv::SIFT::setNFeatures(int maxFeatures)
+        //
+
+        public void setNFeatures(int maxFeatures)
+        {
+            ThrowIfDisposed();
+
+            features2d_SIFT_setNFeatures_10(nativeObj, maxFeatures);
+
+
+        }
+
+
+        //
+        // C++:  int cv::SIFT::getNFeatures()
+        //
+
+        public int getNFeatures()
+        {
+            ThrowIfDisposed();
+
+            return features2d_SIFT_getNFeatures_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::SIFT::setNOctaveLayers(int nOctaveLayers)
+        //
+
+        public void setNOctaveLayers(int nOctaveLayers)
+        {
+            ThrowIfDisposed();
+
+            features2d_SIFT_setNOctaveLayers_10(nativeObj, nOctaveLayers);
+
+
+        }
+
+
+        //
+        // C++:  int cv::SIFT::getNOctaveLayers()
+        //
+
+        public int getNOctaveLayers()
+        {
+            ThrowIfDisposed();
+
+            return features2d_SIFT_getNOctaveLayers_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::SIFT::setContrastThreshold(double contrastThreshold)
+        //
+
+        public void setContrastThreshold(double contrastThreshold)
+        {
+            ThrowIfDisposed();
+
+            features2d_SIFT_setContrastThreshold_10(nativeObj, contrastThreshold);
+
+
+        }
+
+
+        //
+        // C++:  double cv::SIFT::getContrastThreshold()
+        //
+
+        public double getContrastThreshold()
+        {
+            ThrowIfDisposed();
+
+            return features2d_SIFT_getContrastThreshold_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::SIFT::setEdgeThreshold(double edgeThreshold)
+        //
+
+        public void setEdgeThreshold(double edgeThreshold)
+        {
+            ThrowIfDisposed();
+
+            features2d_SIFT_setEdgeThreshold_10(nativeObj, edgeThreshold);
+
+
+        }
+
+
+        //
+        // C++:  double cv::SIFT::getEdgeThreshold()
+        //
+
+        public double getEdgeThreshold()
+        {
+            ThrowIfDisposed();
+
+            return features2d_SIFT_getEdgeThreshold_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::SIFT::setSigma(double sigma)
+        //
+
+        public void setSigma(double sigma)
+        {
+            ThrowIfDisposed();
+
+            features2d_SIFT_setSigma_10(nativeObj, sigma);
+
+
+        }
+
+
+        //
+        // C++:  double cv::SIFT::getSigma()
+        //
+
+        public double getSigma()
+        {
+            ThrowIfDisposed();
+
+            return features2d_SIFT_getSigma_10(nativeObj);
+
+
+        }
+
+
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         const string LIBNAME = "__Internal";
 #else
@@ -302,6 +442,46 @@ namespace OpenCVForUnity.Features2dModule
         // C++:  String cv::SIFT::getDefaultName()
         [DllImport(LIBNAME)]
         private static extern IntPtr features2d_SIFT_getDefaultName_10(IntPtr nativeObj);
+
+        // C++:  void cv::SIFT::setNFeatures(int maxFeatures)
+        [DllImport(LIBNAME)]
+        private static extern void features2d_SIFT_setNFeatures_10(IntPtr nativeObj, int maxFeatures);
+
+        // C++:  int cv::SIFT::getNFeatures()
+        [DllImport(LIBNAME)]
+        private static extern int features2d_SIFT_getNFeatures_10(IntPtr nativeObj);
+
+        // C++:  void cv::SIFT::setNOctaveLayers(int nOctaveLayers)
+        [DllImport(LIBNAME)]
+        private static extern void features2d_SIFT_setNOctaveLayers_10(IntPtr nativeObj, int nOctaveLayers);
+
+        // C++:  int cv::SIFT::getNOctaveLayers()
+        [DllImport(LIBNAME)]
+        private static extern int features2d_SIFT_getNOctaveLayers_10(IntPtr nativeObj);
+
+        // C++:  void cv::SIFT::setContrastThreshold(double contrastThreshold)
+        [DllImport(LIBNAME)]
+        private static extern void features2d_SIFT_setContrastThreshold_10(IntPtr nativeObj, double contrastThreshold);
+
+        // C++:  double cv::SIFT::getContrastThreshold()
+        [DllImport(LIBNAME)]
+        private static extern double features2d_SIFT_getContrastThreshold_10(IntPtr nativeObj);
+
+        // C++:  void cv::SIFT::setEdgeThreshold(double edgeThreshold)
+        [DllImport(LIBNAME)]
+        private static extern void features2d_SIFT_setEdgeThreshold_10(IntPtr nativeObj, double edgeThreshold);
+
+        // C++:  double cv::SIFT::getEdgeThreshold()
+        [DllImport(LIBNAME)]
+        private static extern double features2d_SIFT_getEdgeThreshold_10(IntPtr nativeObj);
+
+        // C++:  void cv::SIFT::setSigma(double sigma)
+        [DllImport(LIBNAME)]
+        private static extern void features2d_SIFT_setSigma_10(IntPtr nativeObj, double sigma);
+
+        // C++:  double cv::SIFT::getSigma()
+        [DllImport(LIBNAME)]
+        private static extern double features2d_SIFT_getSigma_10(IntPtr nativeObj);
 
         // native support for java finalize()
         [DllImport(LIBNAME)]

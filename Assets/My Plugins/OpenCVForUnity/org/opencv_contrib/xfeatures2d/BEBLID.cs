@@ -131,6 +131,48 @@ namespace OpenCVForUnity.Xfeatures2dModule
         }
 
 
+        //
+        // C++:  void cv::xfeatures2d::BEBLID::setScaleFactor(float scale_factor)
+        //
+
+        public void setScaleFactor(float scale_factor)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_BEBLID_setScaleFactor_10(nativeObj, scale_factor);
+
+
+        }
+
+
+        //
+        // C++:  float cv::xfeatures2d::BEBLID::getScaleFactor()
+        //
+
+        public float getScaleFactor()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_BEBLID_getScaleFactor_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  String cv::xfeatures2d::BEBLID::getDefaultName()
+        //
+
+        public override string getDefaultName()
+        {
+            ThrowIfDisposed();
+
+            string retVal = Marshal.PtrToStringAnsi(DisposableObject.ThrowIfNullIntPtr(xfeatures2d_BEBLID_getDefaultName_10(nativeObj)));
+
+            return retVal;
+        }
+
+
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         const string LIBNAME = "__Internal";
 #else
@@ -144,6 +186,18 @@ namespace OpenCVForUnity.Xfeatures2dModule
         private static extern IntPtr xfeatures2d_BEBLID_create_10(float scale_factor, int n_bits);
         [DllImport(LIBNAME)]
         private static extern IntPtr xfeatures2d_BEBLID_create_11(float scale_factor);
+
+        // C++:  void cv::xfeatures2d::BEBLID::setScaleFactor(float scale_factor)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_BEBLID_setScaleFactor_10(IntPtr nativeObj, float scale_factor);
+
+        // C++:  float cv::xfeatures2d::BEBLID::getScaleFactor()
+        [DllImport(LIBNAME)]
+        private static extern float xfeatures2d_BEBLID_getScaleFactor_10(IntPtr nativeObj);
+
+        // C++:  String cv::xfeatures2d::BEBLID::getDefaultName()
+        [DllImport(LIBNAME)]
+        private static extern IntPtr xfeatures2d_BEBLID_getDefaultName_10(IntPtr nativeObj);
 
         // native support for java finalize()
         [DllImport(LIBNAME)]
