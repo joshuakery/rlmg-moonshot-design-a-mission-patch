@@ -537,9 +537,9 @@ namespace ArtScan.CoreModule
 #if UNITY_WEBGL
                     Imgproc.putText (resultMat, "WebGL platform does not support multi-threading.", new Point (5, resultMat.rows () - 10), Imgproc.FONT_HERSHEY_SIMPLEX, 0.5, new Scalar (255, 255, 255, 255), 1, Imgproc.LINE_AA, false);
 #endif
+                    //if (settings.postProcessingSizeFactor != 1)
+                    //    Imgproc.resize(resultMat, resultMat, new Size(), 1.0f / settings.postProcessingSizeFactor, 1.0f / settings.postProcessingSizeFactor, Imgproc.INTER_LINEAR);
 
-                    //perhaps reduce the size of this mat first
-                    
                     ToTexture2D();
                 }
                 
@@ -654,14 +654,27 @@ namespace ArtScan.CoreModule
         }
 #endif
 
+        /// <summary>
+        /// Scales the x and y values of each point in a given contour by the scaleFactor
+        /// </summary>
+        /// <param name="paperMaxAreaContour"></param>
+        /// <param name="scaleFactor"></param>
         private void ResizeContour(MatOfPoint paperMaxAreaContour, float scaleFactor)
         {
             Point[] points = paperMaxAreaContour.toArray();
             for (int i = 0; i < points.Length; i++)
-                points[i] *= scaleFactor;
+            {
+                Point p = points[i];
+                p.x = (double)Mathf.Round((float)p.x * scaleFactor);
+                p.y = (double)Mathf.Round((float)p.y * scaleFactor);
+            }
+                
             paperMaxAreaContour.fromArray(points);
         }
 
+        /// <summary>
+        /// MAIN FUNCTION FOR PROCESSING IMAGE TO REMOVE ITS BACKGROUND
+        /// </summary>
         private void ProcessImage()
         {
             if ( rgbaMat4Thread.empty() ) return;
@@ -695,13 +708,13 @@ namespace ArtScan.CoreModule
                     paperMaxAreaContour = PerspectiveUtils.OrderCornerPoints(paperMaxAreaContour);
 
                     paperFound = (paperMaxAreaContour.size().area() > 0);
-                    DoConsistentPaperFound();
+                    CalculateConsistentPaperFound();
 
                     if (paperFound)
                     {
                         currentPaperArea = Imgproc.contourArea(paperMaxAreaContour);
                         //currentContourArea = paperMaxAreaContour.size().area()
-                        bool paperThisFrameIsConsistentArea = DoPaperAreaRunningAverage();
+                        bool paperThisFrameIsConsistentArea = CalculatePaperAreaRunningAverage();
 
                         if (consistentPaperFound)
                         {
@@ -744,7 +757,7 @@ namespace ArtScan.CoreModule
                                                         {
                                                             //currentContourArea = maxAreaContour.size().area();
                                                             currentContourArea = Imgproc.contourArea(maxAreaContour);
-                                                            bool thisFrameIsConsistentWithAverageArea = DoContourSizeRunningAverage();
+                                                            bool thisFrameIsConsistentWithAverageArea = CalculateContourSizeRunningAverage();
 
                                                             //undo warp perspective and apply mask to input
                                                             /*                                                      using (Mat reverseTransformedMask = new Mat(resizedMat.height(), resizedMat.width(), resizedMat.type(), new Scalar(0, 0, 0, 0)))
@@ -917,7 +930,7 @@ namespace ArtScan.CoreModule
         //    runningAveragePaperArea = 0.0d;
         //}
 
-        private void DoConsistentPaperFound()
+        private void CalculateConsistentPaperFound()
         {
             if (paperFound)
             {
@@ -934,7 +947,7 @@ namespace ArtScan.CoreModule
             }
         }
 
-        private bool DoPaperAreaRunningAverage()
+        private bool CalculatePaperAreaRunningAverage()
         {
             float threshold = settings != null && settings.enableBeginScanButtonSettings != null ?
                 settings.enableBeginScanButtonSettings.consistentPaperAreaThreshold :
@@ -967,7 +980,7 @@ namespace ArtScan.CoreModule
             }
         }
 
-        private void DoPaperCenterRunningAverage()
+        private void CalculatePaperCenterRunningAverage()
         {
             if (Vector2.Distance(currentPaperCenter,runningAveragePaperCenter) > 100)
             {
@@ -980,7 +993,7 @@ namespace ArtScan.CoreModule
                 runningAveragePaperCenter = Vector2.Lerp(runningAveragePaperCenter, currentPaperCenter, 0.5f);
             }
         }
-        private bool DoContourSizeRunningAverage()
+        private bool CalculateContourSizeRunningAverage()
         {
             float threshold = settings != null && settings.enableBeginScanButtonSettings != null ? settings.enableBeginScanButtonSettings.consistentScanAreaThreshold : 0.5f;
 
@@ -1010,6 +1023,11 @@ namespace ArtScan.CoreModule
 
                 return true;
             }
+        }
+
+        public void ChangeDoProcessImageValue(bool value)
+        {
+            doProcessImage = value;
         }
 
         /// <summary>
