@@ -87,8 +87,10 @@ structured_forests.yml.gz.meta
 
 # Art-Scan libraries and plugins
 **/TextMesh Pro/**
-TextMesh Pro.meta
+**/TextMesh Pro.meta
 **/OpenCVForUnity/Plugins/**
-OpenCVForUnity/Plugins.meta
+**/OpenCVForUnity/Plugins.meta
+**/OpenCVForUnity/Examples/**
+**/OpenCVForUnity/Examples.meta
 *.mp4
 **/Debug Images/**
