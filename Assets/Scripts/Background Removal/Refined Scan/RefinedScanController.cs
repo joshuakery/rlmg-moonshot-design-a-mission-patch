@@ -139,6 +139,7 @@ namespace ArtScan.CoreModule
                 DateTime before = DateTime.Now;
 
                 Texture2D scanTexture = new Texture2D(displayMat.cols(), displayMat.rows(), TextureFormat.RGBA32, false);
+                scanTexture.name = "Scan Texture for Refined Scan";
 
                 MatOfPoint maxAreaContourDest = new MatOfPoint();
 

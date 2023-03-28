@@ -1,0 +1,1028 @@
+Timestamp, Message
+2023/03/24 12:25:24,Resetting timeout to 12:26:14 PM
+2023/03/24 12:25:24,Application Awake - version #2023.1.18
+2023/03/24 12:25:24,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/03/24 12:25:24,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/03/24 12:25:25,GameEvent raised: ConfigLoaded
+2023/03/24 12:25:25,Initializing from myWebCamTextureToMatHelper...
+2023/03/24 12:25:25,Successfully found correct camera.
+2023/03/24 12:25:25,NEW webCamTexture ID: -136
+2023/03/24 12:25:25,Resetting update count...
+2023/03/24 12:25:25,Setting should be playing to true...
+2023/03/24 12:25:25,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/03/24 12:25:25,Calling OnWebCamTextureToMatHelperInitialized...
+2023/03/24 12:25:25,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/03/24 12:25:25,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/03/24 12:25:25,Resetting update count...
+2023/03/24 12:26:14,Resetting timeout to 12:26:29 PM
+2023/03/24 12:26:14,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1448; shouldBePlaying: True; saved webCamTextureID: -136; current ID: -136; lastUpdateCount: -1
+2023/03/24 12:26:29,Resetting timeout to 12:26:44 PM
+2023/03/24 12:26:29,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1898; shouldBePlaying: True; saved webCamTextureID: -136; current ID: -136; lastUpdateCount: 1448
+2023/03/24 12:26:44,Resetting timeout to 12:26:59 PM
+2023/03/24 12:26:44,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2348; shouldBePlaying: True; saved webCamTextureID: -136; current ID: -136; lastUpdateCount: 1898
+2023/03/24 12:26:59,Resetting timeout to 12:27:14 PM
+2023/03/24 12:26:59,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2798; shouldBePlaying: True; saved webCamTextureID: -136; current ID: -136; lastUpdateCount: 2348
+2023/03/24 12:27:15,Resetting timeout to 12:27:30 PM
+2023/03/24 12:27:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3241; shouldBePlaying: True; saved webCamTextureID: -136; current ID: -136; lastUpdateCount: 2798
+2023/03/24 12:27:30,Resetting timeout to 12:27:45 PM
+2023/03/24 12:27:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3690; shouldBePlaying: True; saved webCamTextureID: -136; current ID: -136; lastUpdateCount: 3241
+2023/03/24 12:27:45,Resetting timeout to 12:28:00 PM
+2023/03/24 12:27:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 4141; shouldBePlaying: True; saved webCamTextureID: -136; current ID: -136; lastUpdateCount: 3690
+2023/03/24 12:27:58,Re-initializing HD Pro Webcam C920...
+2023/03/24 12:27:58,Initializing from myWebCamTextureToMatHelper...
+2023/03/24 12:27:58,Releasing resources...
+2023/03/24 12:27:58,OnWebCamTextureToMatHelperDisposed
+2023/03/24 12:27:58,Successfully found correct camera.
+2023/03/24 12:27:58,NEW webCamTexture ID: -154
+2023/03/24 12:27:59,Resetting update count...
+2023/03/24 12:27:59,Setting should be playing to true...
+2023/03/24 12:27:59,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/03/24 12:27:59,Calling OnWebCamTextureToMatHelperInitialized...
+2023/03/24 12:27:59,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/03/24 12:27:59,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/03/24 12:27:59,Resetting update count...
+2023/03/24 12:28:00,Resetting timeout to 12:28:15 PM
+2023/03/24 12:28:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 19; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: -1
+2023/03/24 12:28:15,Resetting timeout to 12:28:30 PM
+2023/03/24 12:28:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 469; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 19
+2023/03/24 12:28:30,Resetting timeout to 12:28:45 PM
+2023/03/24 12:28:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 901; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 469
+2023/03/24 12:28:45,Resetting timeout to 12:29:00 PM
+2023/03/24 12:28:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1351; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 901
+2023/03/24 12:29:00,Resetting timeout to 12:29:15 PM
+2023/03/24 12:29:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1801; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 1351
+2023/03/24 12:29:15,Resetting timeout to 12:29:30 PM
+2023/03/24 12:29:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2252; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 1801
+2023/03/24 12:29:30,Resetting timeout to 12:29:45 PM
+2023/03/24 12:29:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2702; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 2252
+2023/03/24 12:29:45,Resetting timeout to 12:30:00 PM
+2023/03/24 12:29:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3152; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 2702
+2023/03/24 12:30:00,Resetting timeout to 12:30:15 PM
+2023/03/24 12:30:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3602; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 3152
+2023/03/24 12:30:15,Resetting timeout to 12:30:30 PM
+2023/03/24 12:30:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 4052; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 3602
+2023/03/24 12:30:30,Resetting timeout to 12:30:45 PM
+2023/03/24 12:30:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 4502; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 4052
+2023/03/24 12:30:45,Resetting timeout to 12:31:00 PM
+2023/03/24 12:30:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 4953; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 4502
+2023/03/24 12:31:00,Resetting timeout to 12:31:15 PM
+2023/03/24 12:31:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 5402; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 4953
+2023/03/24 12:31:15,Resetting timeout to 12:31:30 PM
+2023/03/24 12:31:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 5853; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 5402
+2023/03/24 12:31:30,Resetting timeout to 12:31:45 PM
+2023/03/24 12:31:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 6303; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 5853
+2023/03/24 12:31:45,Resetting timeout to 12:32:00 PM
+2023/03/24 12:31:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 6753; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 6303
+2023/03/24 12:32:00,Resetting timeout to 12:32:15 PM
+2023/03/24 12:32:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 7203; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 6753
+2023/03/24 12:32:15,Resetting timeout to 12:32:30 PM
+2023/03/24 12:32:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 7653; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 7203
+2023/03/24 12:32:30,Resetting timeout to 12:32:45 PM
+2023/03/24 12:32:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 8103; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 7653
+2023/03/24 12:32:45,Resetting timeout to 12:33:00 PM
+2023/03/24 12:32:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 8554; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 8103
+2023/03/24 12:33:00,Resetting timeout to 12:33:15 PM
+2023/03/24 12:33:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 9003; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 8554
+2023/03/24 12:33:15,Resetting timeout to 12:33:30 PM
+2023/03/24 12:33:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 9454; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 9003
+2023/03/24 12:33:30,Resetting timeout to 12:33:45 PM
+2023/03/24 12:33:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 9904; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 9454
+2023/03/24 12:33:45,Resetting timeout to 12:34:00 PM
+2023/03/24 12:33:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 10354; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 9904
+2023/03/24 12:34:00,Resetting timeout to 12:34:15 PM
+2023/03/24 12:34:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 10804; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 10354
+2023/03/24 12:34:15,Resetting timeout to 12:34:30 PM
+2023/03/24 12:34:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 11254; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 10804
+2023/03/24 12:34:30,Resetting timeout to 12:34:45 PM
+2023/03/24 12:34:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 11704; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 11254
+2023/03/24 12:34:45,Resetting timeout to 12:35:00 PM
+2023/03/24 12:34:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 12154; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 11704
+2023/03/24 12:35:00,Resetting timeout to 12:35:15 PM
+2023/03/24 12:35:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 12604; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 12154
+2023/03/24 12:35:15,Resetting timeout to 12:35:30 PM
+2023/03/24 12:35:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 13055; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 12604
+2023/03/24 12:35:30,Resetting timeout to 12:35:45 PM
+2023/03/24 12:35:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 13505; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 13055
+2023/03/24 12:35:45,Resetting timeout to 12:36:00 PM
+2023/03/24 12:35:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 13955; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 13505
+2023/03/24 12:36:00,Resetting timeout to 12:36:15 PM
+2023/03/24 12:36:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 14405; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 13955
+2023/03/24 12:36:15,Resetting timeout to 12:36:30 PM
+2023/03/24 12:36:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 14855; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 14405
+2023/03/24 12:36:30,Resetting timeout to 12:36:45 PM
+2023/03/24 12:36:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 15305; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 14855
+2023/03/24 12:36:45,Resetting timeout to 12:37:00 PM
+2023/03/24 12:36:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 15755; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 15305
+2023/03/24 12:37:00,Resetting timeout to 12:37:15 PM
+2023/03/24 12:37:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 16205; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 15755
+2023/03/24 12:37:15,Resetting timeout to 12:37:30 PM
+2023/03/24 12:37:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 16656; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 16205
+2023/03/24 12:37:30,Resetting timeout to 12:37:45 PM
+2023/03/24 12:37:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 17105; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 16656
+2023/03/24 12:37:45,Resetting timeout to 12:38:00 PM
+2023/03/24 12:37:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 17556; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 17105
+2023/03/24 12:38:00,Resetting timeout to 12:38:15 PM
+2023/03/24 12:38:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 18006; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 17556
+2023/03/24 12:38:15,Resetting timeout to 12:38:30 PM
+2023/03/24 12:38:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 18456; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 18006
+2023/03/24 12:38:30,Resetting timeout to 12:38:45 PM
+2023/03/24 12:38:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 18906; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 18456
+2023/03/24 12:38:45,Resetting timeout to 12:39:00 PM
+2023/03/24 12:38:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 19356; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 18906
+2023/03/24 12:39:00,Resetting timeout to 12:39:15 PM
+2023/03/24 12:39:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 19806; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 19356
+2023/03/24 12:39:15,Resetting timeout to 12:39:30 PM
+2023/03/24 12:39:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 20257; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 19806
+2023/03/24 12:39:30,Resetting timeout to 12:39:45 PM
+2023/03/24 12:39:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 20706; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 20257
+2023/03/24 12:39:45,Resetting timeout to 12:40:00 PM
+2023/03/24 12:39:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 21157; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 20706
+2023/03/24 12:40:00,Resetting timeout to 12:40:15 PM
+2023/03/24 12:40:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 21607; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 21157
+2023/03/24 12:40:15,Resetting timeout to 12:40:30 PM
+2023/03/24 12:40:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 22057; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 21607
+2023/03/24 12:40:30,Resetting timeout to 12:40:45 PM
+2023/03/24 12:40:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 22507; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 22057
+2023/03/24 12:40:45,Resetting timeout to 12:41:00 PM
+2023/03/24 12:40:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 22957; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 22507
+2023/03/24 12:41:00,Resetting timeout to 12:41:15 PM
+2023/03/24 12:41:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 23407; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 22957
+2023/03/24 12:41:15,Resetting timeout to 12:41:30 PM
+2023/03/24 12:41:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 23857; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 23407
+2023/03/24 12:41:30,Resetting timeout to 12:41:45 PM
+2023/03/24 12:41:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 24308; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 23857
+2023/03/24 12:41:45,Resetting timeout to 12:42:00 PM
+2023/03/24 12:41:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 24758; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 24308
+2023/03/24 12:42:00,Resetting timeout to 12:42:15 PM
+2023/03/24 12:42:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 25148; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 24758
+2023/03/24 12:42:15,Resetting timeout to 12:42:30 PM
+2023/03/24 12:42:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 25598; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 25148
+2023/03/24 12:42:30,Resetting timeout to 12:42:45 PM
+2023/03/24 12:42:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 26048; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 25598
+2023/03/24 12:42:45,Resetting timeout to 12:43:00 PM
+2023/03/24 12:42:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 26498; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 26048
+2023/03/24 12:43:00,Resetting timeout to 12:43:15 PM
+2023/03/24 12:43:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 26949; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 26498
+2023/03/24 12:43:15,Resetting timeout to 12:43:30 PM
+2023/03/24 12:43:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 27398; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 26949
+2023/03/24 12:43:30,Resetting timeout to 12:43:45 PM
+2023/03/24 12:43:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 27849; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 27398
+2023/03/24 12:43:45,Resetting timeout to 12:44:00 PM
+2023/03/24 12:43:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 28299; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 27849
+2023/03/24 12:44:00,Resetting timeout to 12:44:15 PM
+2023/03/24 12:44:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 28749; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 28299
+2023/03/24 12:44:15,Resetting timeout to 12:44:30 PM
+2023/03/24 12:44:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 29199; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 28749
+2023/03/24 12:44:30,Resetting timeout to 12:44:45 PM
+2023/03/24 12:44:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 29649; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 29199
+2023/03/24 12:44:45,Resetting timeout to 12:45:00 PM
+2023/03/24 12:44:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 30099; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 29649
+2023/03/24 12:45:00,Resetting timeout to 12:45:15 PM
+2023/03/24 12:45:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 30550; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 30099
+2023/03/24 12:45:15,Resetting timeout to 12:45:30 PM
+2023/03/24 12:45:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 30999; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 30550
+2023/03/24 12:45:30,Resetting timeout to 12:45:45 PM
+2023/03/24 12:45:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 31450; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 30999
+2023/03/24 12:45:45,Resetting timeout to 12:46:00 PM
+2023/03/24 12:45:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 31900; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 31450
+2023/03/24 12:46:00,Resetting timeout to 12:46:15 PM
+2023/03/24 12:46:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 32350; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 31900
+2023/03/24 12:46:15,Resetting timeout to 12:46:30 PM
+2023/03/24 12:46:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 32800; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 32350
+2023/03/24 12:46:30,Resetting timeout to 12:46:45 PM
+2023/03/24 12:46:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 33250; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 32800
+2023/03/24 12:46:45,Resetting timeout to 12:47:00 PM
+2023/03/24 12:46:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 33700; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 33250
+2023/03/24 12:47:00,Resetting timeout to 12:47:15 PM
+2023/03/24 12:47:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 34150; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 33700
+2023/03/24 12:47:15,Resetting timeout to 12:47:30 PM
+2023/03/24 12:47:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 34600; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 34150
+2023/03/24 12:47:30,Resetting timeout to 12:47:45 PM
+2023/03/24 12:47:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 35051; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 34600
+2023/03/24 12:47:45,Resetting timeout to 12:48:00 PM
+2023/03/24 12:47:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 35501; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 35051
+2023/03/24 12:48:00,Resetting timeout to 12:48:15 PM
+2023/03/24 12:48:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 35951; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 35501
+2023/03/24 12:48:15,Resetting timeout to 12:48:30 PM
+2023/03/24 12:48:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 36401; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 35951
+2023/03/24 12:48:30,Resetting timeout to 12:48:45 PM
+2023/03/24 12:48:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 36851; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 36401
+2023/03/24 12:48:45,Resetting timeout to 12:49:00 PM
+2023/03/24 12:48:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 37301; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 36851
+2023/03/24 12:49:00,Resetting timeout to 12:49:15 PM
+2023/03/24 12:49:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 37751; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 37301
+2023/03/24 12:49:15,Resetting timeout to 12:49:30 PM
+2023/03/24 12:49:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 38201; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 37751
+2023/03/24 12:49:30,Resetting timeout to 12:49:45 PM
+2023/03/24 12:49:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 38652; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 38201
+2023/03/24 12:49:45,Resetting timeout to 12:50:00 PM
+2023/03/24 12:49:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 39101; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 38652
+2023/03/24 12:50:00,Resetting timeout to 12:50:15 PM
+2023/03/24 12:50:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 39552; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 39101
+2023/03/24 12:50:15,Resetting timeout to 12:50:30 PM
+2023/03/24 12:50:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 40002; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 39552
+2023/03/24 12:50:30,Resetting timeout to 12:50:45 PM
+2023/03/24 12:50:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 40452; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 40002
+2023/03/24 12:50:45,Resetting timeout to 12:51:00 PM
+2023/03/24 12:50:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 40902; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 40452
+2023/03/24 12:51:00,Resetting timeout to 12:51:15 PM
+2023/03/24 12:51:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 41352; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 40902
+2023/03/24 12:51:15,Resetting timeout to 12:51:30 PM
+2023/03/24 12:51:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 41802; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 41352
+2023/03/24 12:51:30,Resetting timeout to 12:51:45 PM
+2023/03/24 12:51:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 42253; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 41802
+2023/03/24 12:51:45,Resetting timeout to 12:52:00 PM
+2023/03/24 12:51:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 42702; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 42253
+2023/03/24 12:52:00,Resetting timeout to 12:52:15 PM
+2023/03/24 12:52:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 43153; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 42702
+2023/03/24 12:52:15,Resetting timeout to 12:52:30 PM
+2023/03/24 12:52:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 43603; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 43153
+2023/03/24 12:52:30,Resetting timeout to 12:52:45 PM
+2023/03/24 12:52:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 44053; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 43603
+2023/03/24 12:52:45,Resetting timeout to 12:53:00 PM
+2023/03/24 12:52:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 44503; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 44053
+2023/03/24 12:53:00,Resetting timeout to 12:53:15 PM
+2023/03/24 12:53:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 44953; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 44503
+2023/03/24 12:53:15,Resetting timeout to 12:53:30 PM
+2023/03/24 12:53:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 45404; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 44953
+2023/03/24 12:53:30,Resetting timeout to 12:53:45 PM
+2023/03/24 12:53:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 45854; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 45404
+2023/03/24 12:53:45,Resetting timeout to 12:54:00 PM
+2023/03/24 12:53:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 46304; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 45854
+2023/03/24 12:54:00,Resetting timeout to 12:54:15 PM
+2023/03/24 12:54:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 46754; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 46304
+2023/03/24 12:54:15,Resetting timeout to 12:54:30 PM
+2023/03/24 12:54:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 47204; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 46754
+2023/03/24 12:54:30,Resetting timeout to 12:54:45 PM
+2023/03/24 12:54:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 47653; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 47204
+2023/03/24 12:54:45,Resetting timeout to 12:55:00 PM
+2023/03/24 12:54:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 48103; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 47653
+2023/03/24 12:55:00,Resetting timeout to 12:55:15 PM
+2023/03/24 12:55:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 48553; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 48103
+2023/03/24 12:55:15,Resetting timeout to 12:55:30 PM
+2023/03/24 12:55:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 49004; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 48553
+2023/03/24 12:55:30,Resetting timeout to 12:55:45 PM
+2023/03/24 12:55:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 49453; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 49004
+2023/03/24 12:55:45,Resetting timeout to 12:56:00 PM
+2023/03/24 12:55:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 49904; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 49453
+2023/03/24 12:56:00,Resetting timeout to 12:56:15 PM
+2023/03/24 12:56:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 50354; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 49904
+2023/03/24 12:56:15,Resetting timeout to 12:56:30 PM
+2023/03/24 12:56:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 50804; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 50354
+2023/03/24 12:56:30,Resetting timeout to 12:56:45 PM
+2023/03/24 12:56:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 51254; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 50804
+2023/03/24 12:56:45,Resetting timeout to 12:57:00 PM
+2023/03/24 12:56:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 51704; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 51254
+2023/03/24 12:57:00,Resetting timeout to 12:57:15 PM
+2023/03/24 12:57:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 52155; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 51704
+2023/03/24 12:57:15,Resetting timeout to 12:57:30 PM
+2023/03/24 12:57:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 52605; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 52155
+2023/03/24 12:57:30,Resetting timeout to 12:57:45 PM
+2023/03/24 12:57:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 53054; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 52605
+2023/03/24 12:57:45,Resetting timeout to 12:58:00 PM
+2023/03/24 12:57:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 53505; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 53054
+2023/03/24 12:58:00,Resetting timeout to 12:58:15 PM
+2023/03/24 12:58:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 53955; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 53505
+2023/03/24 12:58:15,Resetting timeout to 12:58:30 PM
+2023/03/24 12:58:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 54405; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 53955
+2023/03/24 12:58:30,Resetting timeout to 12:58:45 PM
+2023/03/24 12:58:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 54855; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 54405
+2023/03/24 12:58:45,Resetting timeout to 12:59:00 PM
+2023/03/24 12:58:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 55305; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 54855
+2023/03/24 12:59:00,Resetting timeout to 12:59:15 PM
+2023/03/24 12:59:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 55756; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 55305
+2023/03/24 12:59:15,Resetting timeout to 12:59:30 PM
+2023/03/24 12:59:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 56205; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 55756
+2023/03/24 12:59:30,Resetting timeout to 12:59:45 PM
+2023/03/24 12:59:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 56655; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 56205
+2023/03/24 12:59:45,Resetting timeout to 1:00:00 PM
+2023/03/24 12:59:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 57106; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 56655
+2023/03/24 13:00:00,Resetting timeout to 1:00:15 PM
+2023/03/24 13:00:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 57556; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 57106
+2023/03/24 13:00:15,Resetting timeout to 1:00:30 PM
+2023/03/24 13:00:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 58006; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 57556
+2023/03/24 13:00:30,Resetting timeout to 1:00:45 PM
+2023/03/24 13:00:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 58456; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 58006
+2023/03/24 13:00:45,Resetting timeout to 1:01:00 PM
+2023/03/24 13:00:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 58906; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 58456
+2023/03/24 13:01:00,Resetting timeout to 1:01:15 PM
+2023/03/24 13:01:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 59357; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 58906
+2023/03/24 13:01:15,Resetting timeout to 1:01:30 PM
+2023/03/24 13:01:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 59806; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 59357
+2023/03/24 13:01:30,Resetting timeout to 1:01:45 PM
+2023/03/24 13:01:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 60257; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 59806
+2023/03/24 13:01:45,Resetting timeout to 1:02:00 PM
+2023/03/24 13:01:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 60707; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 60257
+2023/03/24 13:02:00,Resetting timeout to 1:02:15 PM
+2023/03/24 13:02:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 61157; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 60707
+2023/03/24 13:02:15,Resetting timeout to 1:02:30 PM
+2023/03/24 13:02:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 61607; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 61157
+2023/03/24 13:02:30,Resetting timeout to 1:02:45 PM
+2023/03/24 13:02:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 62057; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 61607
+2023/03/24 13:02:45,Resetting timeout to 1:03:00 PM
+2023/03/24 13:02:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 62507; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 62057
+2023/03/24 13:03:00,Resetting timeout to 1:03:15 PM
+2023/03/24 13:03:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 62957; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 62507
+2023/03/24 13:03:15,Resetting timeout to 1:03:30 PM
+2023/03/24 13:03:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 63407; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 62957
+2023/03/24 13:03:30,Resetting timeout to 1:03:45 PM
+2023/03/24 13:03:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 63858; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 63407
+2023/03/24 13:03:45,Resetting timeout to 1:04:00 PM
+2023/03/24 13:03:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 64308; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 63858
+2023/03/24 13:04:00,Resetting timeout to 1:04:15 PM
+2023/03/24 13:04:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 64758; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 64308
+2023/03/24 13:04:15,Resetting timeout to 1:04:30 PM
+2023/03/24 13:04:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 65208; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 64758
+2023/03/24 13:04:30,Resetting timeout to 1:04:45 PM
+2023/03/24 13:04:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 65658; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 65208
+2023/03/24 13:04:45,Resetting timeout to 1:05:00 PM
+2023/03/24 13:04:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 66109; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 65658
+2023/03/24 13:05:00,Resetting timeout to 1:05:15 PM
+2023/03/24 13:05:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 66558; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 66109
+2023/03/24 13:05:15,Resetting timeout to 1:05:30 PM
+2023/03/24 13:05:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 67009; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 66558
+2023/03/24 13:05:30,Resetting timeout to 1:05:45 PM
+2023/03/24 13:05:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 67459; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 67009
+2023/03/24 13:05:45,Resetting timeout to 1:06:00 PM
+2023/03/24 13:05:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 67909; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 67459
+2023/03/24 13:06:00,Resetting timeout to 1:06:15 PM
+2023/03/24 13:06:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 68359; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 67909
+2023/03/24 13:06:15,Resetting timeout to 1:06:30 PM
+2023/03/24 13:06:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 68809; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 68359
+2023/03/24 13:06:30,Resetting timeout to 1:06:45 PM
+2023/03/24 13:06:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 69259; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 68809
+2023/03/24 13:06:45,Resetting timeout to 1:07:00 PM
+2023/03/24 13:06:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 69709; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 69259
+2023/03/24 13:07:00,Resetting timeout to 1:07:15 PM
+2023/03/24 13:07:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 70159; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 69709
+2023/03/24 13:07:15,Resetting timeout to 1:07:30 PM
+2023/03/24 13:07:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 70610; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 70159
+2023/03/24 13:07:30,Resetting timeout to 1:07:45 PM
+2023/03/24 13:07:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 71060; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 70610
+2023/03/24 13:07:45,Resetting timeout to 1:08:00 PM
+2023/03/24 13:07:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 71510; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 71060
+2023/03/24 13:08:00,Resetting timeout to 1:08:15 PM
+2023/03/24 13:08:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 71960; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 71510
+2023/03/24 13:08:15,Resetting timeout to 1:08:30 PM
+2023/03/24 13:08:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 72410; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 71960
+2023/03/24 13:08:30,Resetting timeout to 1:08:45 PM
+2023/03/24 13:08:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 72860; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 72410
+2023/03/24 13:08:45,Resetting timeout to 1:09:00 PM
+2023/03/24 13:08:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 73310; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 72860
+2023/03/24 13:09:00,Resetting timeout to 1:09:15 PM
+2023/03/24 13:09:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 73760; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 73310
+2023/03/24 13:09:15,Resetting timeout to 1:09:30 PM
+2023/03/24 13:09:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 74211; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 73760
+2023/03/24 13:09:30,Resetting timeout to 1:09:45 PM
+2023/03/24 13:09:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 74661; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 74211
+2023/03/24 13:09:45,Resetting timeout to 1:10:00 PM
+2023/03/24 13:09:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 75097; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 74661
+2023/03/24 13:10:00,Resetting timeout to 1:10:15 PM
+2023/03/24 13:10:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 75547; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 75097
+2023/03/24 13:10:15,Resetting timeout to 1:10:30 PM
+2023/03/24 13:10:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 75997; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 75547
+2023/03/24 13:10:30,Resetting timeout to 1:10:45 PM
+2023/03/24 13:10:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 76447; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 75997
+2023/03/24 13:10:45,Resetting timeout to 1:11:00 PM
+2023/03/24 13:10:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 76897; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 76447
+2023/03/24 13:11:00,Resetting timeout to 1:11:15 PM
+2023/03/24 13:11:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 77347; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 76897
+2023/03/24 13:11:15,Resetting timeout to 1:11:30 PM
+2023/03/24 13:11:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 77797; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 77347
+2023/03/24 13:11:30,Resetting timeout to 1:11:45 PM
+2023/03/24 13:11:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 78247; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 77797
+2023/03/24 13:11:45,Resetting timeout to 1:12:00 PM
+2023/03/24 13:11:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 78697; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 78247
+2023/03/24 13:12:00,Resetting timeout to 1:12:15 PM
+2023/03/24 13:12:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 79148; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 78697
+2023/03/24 13:12:15,Resetting timeout to 1:12:30 PM
+2023/03/24 13:12:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 79598; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 79148
+2023/03/24 13:12:30,Resetting timeout to 1:12:45 PM
+2023/03/24 13:12:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 80048; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 79598
+2023/03/24 13:12:45,Resetting timeout to 1:13:00 PM
+2023/03/24 13:12:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 80498; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 80048
+2023/03/24 13:13:00,Resetting timeout to 1:13:15 PM
+2023/03/24 13:13:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 80948; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 80498
+2023/03/24 13:13:15,Resetting timeout to 1:13:30 PM
+2023/03/24 13:13:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 81398; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 80948
+2023/03/24 13:13:30,Resetting timeout to 1:13:45 PM
+2023/03/24 13:13:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 81848; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 81398
+2023/03/24 13:13:45,Resetting timeout to 1:14:00 PM
+2023/03/24 13:13:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 82298; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 81848
+2023/03/24 13:14:00,Resetting timeout to 1:14:15 PM
+2023/03/24 13:14:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 82749; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 82298
+2023/03/24 13:14:15,Resetting timeout to 1:14:30 PM
+2023/03/24 13:14:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 83199; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 82749
+2023/03/24 13:14:30,Resetting timeout to 1:14:45 PM
+2023/03/24 13:14:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 83649; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 83199
+2023/03/24 13:14:45,Resetting timeout to 1:15:00 PM
+2023/03/24 13:14:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 84099; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 83649
+2023/03/24 13:15:00,Resetting timeout to 1:15:15 PM
+2023/03/24 13:15:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 84549; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 84099
+2023/03/24 13:15:15,Resetting timeout to 1:15:30 PM
+2023/03/24 13:15:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 84999; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 84549
+2023/03/24 13:15:30,Resetting timeout to 1:15:45 PM
+2023/03/24 13:15:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 85449; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 84999
+2023/03/24 13:15:45,Resetting timeout to 1:16:00 PM
+2023/03/24 13:15:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 85899; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 85449
+2023/03/24 13:16:00,Resetting timeout to 1:16:15 PM
+2023/03/24 13:16:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 86350; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 85899
+2023/03/24 13:16:15,Resetting timeout to 1:16:30 PM
+2023/03/24 13:16:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 86799; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 86350
+2023/03/24 13:16:30,Resetting timeout to 1:16:45 PM
+2023/03/24 13:16:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 87250; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 86799
+2023/03/24 13:16:45,Resetting timeout to 1:17:00 PM
+2023/03/24 13:16:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 87700; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 87250
+2023/03/24 13:17:00,Resetting timeout to 1:17:15 PM
+2023/03/24 13:17:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 88150; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 87700
+2023/03/24 13:17:15,Resetting timeout to 1:17:30 PM
+2023/03/24 13:17:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 88600; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 88150
+2023/03/24 13:17:30,Resetting timeout to 1:17:45 PM
+2023/03/24 13:17:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 89050; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 88600
+2023/03/24 13:17:45,Resetting timeout to 1:18:00 PM
+2023/03/24 13:17:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 89501; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 89050
+2023/03/24 13:18:00,Resetting timeout to 1:18:15 PM
+2023/03/24 13:18:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 89951; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 89501
+2023/03/24 13:18:15,Resetting timeout to 1:18:30 PM
+2023/03/24 13:18:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 90401; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 89951
+2023/03/24 13:18:30,Resetting timeout to 1:18:45 PM
+2023/03/24 13:18:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 90851; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 90401
+2023/03/24 13:18:45,Resetting timeout to 1:19:00 PM
+2023/03/24 13:18:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 91301; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 90851
+2023/03/24 13:19:00,Resetting timeout to 1:19:15 PM
+2023/03/24 13:19:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 91751; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 91301
+2023/03/24 13:19:15,Resetting timeout to 1:19:30 PM
+2023/03/24 13:19:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 92201; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 91751
+2023/03/24 13:19:30,Resetting timeout to 1:19:45 PM
+2023/03/24 13:19:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 92651; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 92201
+2023/03/24 13:19:45,Resetting timeout to 1:20:00 PM
+2023/03/24 13:19:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 93102; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 92651
+2023/03/24 13:20:00,Resetting timeout to 1:20:15 PM
+2023/03/24 13:20:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 93551; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 93102
+2023/03/24 13:20:15,Resetting timeout to 1:20:30 PM
+2023/03/24 13:20:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 94002; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 93551
+2023/03/24 13:20:30,Resetting timeout to 1:20:45 PM
+2023/03/24 13:20:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 94452; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 94002
+2023/03/24 13:20:45,Resetting timeout to 1:21:00 PM
+2023/03/24 13:20:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 94902; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 94452
+2023/03/24 13:21:00,Resetting timeout to 1:21:15 PM
+2023/03/24 13:21:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 95352; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 94902
+2023/03/24 13:21:15,Resetting timeout to 1:21:30 PM
+2023/03/24 13:21:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 95802; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 95352
+2023/03/24 13:21:30,Resetting timeout to 1:21:45 PM
+2023/03/24 13:21:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 96253; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 95802
+2023/03/24 13:21:45,Resetting timeout to 1:22:00 PM
+2023/03/24 13:21:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 96703; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 96253
+2023/03/24 13:22:00,Resetting timeout to 1:22:15 PM
+2023/03/24 13:22:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 97153; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 96703
+2023/03/24 13:22:15,Resetting timeout to 1:22:30 PM
+2023/03/24 13:22:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 97603; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 97153
+2023/03/24 13:22:30,Resetting timeout to 1:22:45 PM
+2023/03/24 13:22:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 98053; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 97603
+2023/03/24 13:22:45,Resetting timeout to 1:23:00 PM
+2023/03/24 13:22:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 98503; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 98053
+2023/03/24 13:23:00,Resetting timeout to 1:23:15 PM
+2023/03/24 13:23:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 98953; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 98503
+2023/03/24 13:23:15,Resetting timeout to 1:23:30 PM
+2023/03/24 13:23:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 99403; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 98953
+2023/03/24 13:23:30,Resetting timeout to 1:23:45 PM
+2023/03/24 13:23:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 99854; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 99403
+2023/03/24 13:23:45,Resetting timeout to 1:24:00 PM
+2023/03/24 13:23:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 100303; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 99854
+2023/03/24 13:24:00,Resetting timeout to 1:24:15 PM
+2023/03/24 13:24:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 100754; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 100303
+2023/03/24 13:24:15,Resetting timeout to 1:24:30 PM
+2023/03/24 13:24:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 101204; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 100754
+2023/03/24 13:24:30,Resetting timeout to 1:24:45 PM
+2023/03/24 13:24:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 101654; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 101204
+2023/03/24 13:24:45,Resetting timeout to 1:25:00 PM
+2023/03/24 13:24:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 102104; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 101654
+2023/03/24 13:25:00,Resetting timeout to 1:25:15 PM
+2023/03/24 13:25:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 102554; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 102104
+2023/03/24 13:25:15,Resetting timeout to 1:25:30 PM
+2023/03/24 13:25:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 103004; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 102554
+2023/03/24 13:25:30,Resetting timeout to 1:25:45 PM
+2023/03/24 13:25:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 103455; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 103004
+2023/03/24 13:25:45,Resetting timeout to 1:26:00 PM
+2023/03/24 13:25:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 103904; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 103455
+2023/03/24 13:26:00,Resetting timeout to 1:26:15 PM
+2023/03/24 13:26:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 104355; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 103904
+2023/03/24 13:26:15,Resetting timeout to 1:26:30 PM
+2023/03/24 13:26:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 104805; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 104355
+2023/03/24 13:26:30,Resetting timeout to 1:26:45 PM
+2023/03/24 13:26:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 105255; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 104805
+2023/03/24 13:26:45,Resetting timeout to 1:27:00 PM
+2023/03/24 13:26:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 105705; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 105255
+2023/03/24 13:27:00,Resetting timeout to 1:27:15 PM
+2023/03/24 13:27:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 106155; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 105705
+2023/03/24 13:27:15,Resetting timeout to 1:27:30 PM
+2023/03/24 13:27:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 106606; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 106155
+2023/03/24 13:27:30,Resetting timeout to 1:27:45 PM
+2023/03/24 13:27:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 107055; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 106606
+2023/03/24 13:27:45,Resetting timeout to 1:28:00 PM
+2023/03/24 13:27:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 107505; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 107055
+2023/03/24 13:28:00,Resetting timeout to 1:28:15 PM
+2023/03/24 13:28:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 107956; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 107505
+2023/03/24 13:28:15,Resetting timeout to 1:28:30 PM
+2023/03/24 13:28:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 108406; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 107956
+2023/03/24 13:28:30,Resetting timeout to 1:28:45 PM
+2023/03/24 13:28:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 108856; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 108406
+2023/03/24 13:28:45,Resetting timeout to 1:29:00 PM
+2023/03/24 13:28:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 109306; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 108856
+2023/03/24 13:29:00,Resetting timeout to 1:29:15 PM
+2023/03/24 13:29:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 109756; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 109306
+2023/03/24 13:29:15,Resetting timeout to 1:29:30 PM
+2023/03/24 13:29:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 110207; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 109756
+2023/03/24 13:29:30,Resetting timeout to 1:29:45 PM
+2023/03/24 13:29:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 110656; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 110207
+2023/03/24 13:29:45,Resetting timeout to 1:30:00 PM
+2023/03/24 13:29:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 111107; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 110656
+2023/03/24 13:30:00,Resetting timeout to 1:30:15 PM
+2023/03/24 13:30:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 111557; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 111107
+2023/03/24 13:30:15,Resetting timeout to 1:30:30 PM
+2023/03/24 13:30:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 112007; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 111557
+2023/03/24 13:30:30,Resetting timeout to 1:30:45 PM
+2023/03/24 13:30:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 112457; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 112007
+2023/03/24 13:30:45,Resetting timeout to 1:31:00 PM
+2023/03/24 13:30:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 112907; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 112457
+2023/03/24 13:31:00,Resetting timeout to 1:31:15 PM
+2023/03/24 13:31:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 113357; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 112907
+2023/03/24 13:31:15,Resetting timeout to 1:31:30 PM
+2023/03/24 13:31:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 113807; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 113357
+2023/03/24 13:31:30,Resetting timeout to 1:31:45 PM
+2023/03/24 13:31:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 114257; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 113807
+2023/03/24 13:31:45,Resetting timeout to 1:32:00 PM
+2023/03/24 13:31:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 114708; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 114257
+2023/03/24 13:32:00,Resetting timeout to 1:32:15 PM
+2023/03/24 13:32:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 115158; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 114708
+2023/03/24 13:32:15,Resetting timeout to 1:32:30 PM
+2023/03/24 13:32:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 115608; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 115158
+2023/03/24 13:32:30,Resetting timeout to 1:32:45 PM
+2023/03/24 13:32:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 116058; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 115608
+2023/03/24 13:32:45,Resetting timeout to 1:33:00 PM
+2023/03/24 13:32:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 116508; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 116058
+2023/03/24 13:33:00,Resetting timeout to 1:33:15 PM
+2023/03/24 13:33:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 116958; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 116508
+2023/03/24 13:33:15,Resetting timeout to 1:33:30 PM
+2023/03/24 13:33:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 117408; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 116958
+2023/03/24 13:33:30,Resetting timeout to 1:33:45 PM
+2023/03/24 13:33:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 117858; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 117408
+2023/03/24 13:33:45,Resetting timeout to 1:34:00 PM
+2023/03/24 13:33:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 118309; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 117858
+2023/03/24 13:34:00,Resetting timeout to 1:34:15 PM
+2023/03/24 13:34:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 118759; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 118309
+2023/03/24 13:34:15,Resetting timeout to 1:34:30 PM
+2023/03/24 13:34:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 119209; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 118759
+2023/03/24 13:34:30,Resetting timeout to 1:34:45 PM
+2023/03/24 13:34:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 119659; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 119209
+2023/03/24 13:34:45,Resetting timeout to 1:35:00 PM
+2023/03/24 13:34:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 120109; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 119659
+2023/03/24 13:35:00,Resetting timeout to 1:35:15 PM
+2023/03/24 13:35:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 120559; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 120109
+2023/03/24 13:35:15,Resetting timeout to 1:35:30 PM
+2023/03/24 13:35:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 121009; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 120559
+2023/03/24 13:35:30,Resetting timeout to 1:35:45 PM
+2023/03/24 13:35:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 121459; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 121009
+2023/03/24 13:35:45,Resetting timeout to 1:36:00 PM
+2023/03/24 13:35:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 121910; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 121459
+2023/03/24 13:36:00,Resetting timeout to 1:36:15 PM
+2023/03/24 13:36:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 122359; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 121910
+2023/03/24 13:36:15,Resetting timeout to 1:36:30 PM
+2023/03/24 13:36:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 122810; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 122359
+2023/03/24 13:36:30,Resetting timeout to 1:36:45 PM
+2023/03/24 13:36:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 123260; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 122810
+2023/03/24 13:36:45,Resetting timeout to 1:37:00 PM
+2023/03/24 13:36:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 123710; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 123260
+2023/03/24 13:37:00,Resetting timeout to 1:37:15 PM
+2023/03/24 13:37:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 124160; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 123710
+2023/03/24 13:37:15,Resetting timeout to 1:37:30 PM
+2023/03/24 13:37:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 124610; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 124160
+2023/03/24 13:37:30,Resetting timeout to 1:37:45 PM
+2023/03/24 13:37:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 125060; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 124610
+2023/03/24 13:37:45,Resetting timeout to 1:38:00 PM
+2023/03/24 13:37:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 125511; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 125060
+2023/03/24 13:38:00,Resetting timeout to 1:38:15 PM
+2023/03/24 13:38:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 125960; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 125511
+2023/03/24 13:38:15,Resetting timeout to 1:38:30 PM
+2023/03/24 13:38:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 126411; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 125960
+2023/03/24 13:38:30,Resetting timeout to 1:38:45 PM
+2023/03/24 13:38:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 126861; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 126411
+2023/03/24 13:38:45,Resetting timeout to 1:39:00 PM
+2023/03/24 13:38:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 127311; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 126861
+2023/03/24 13:39:00,Resetting timeout to 1:39:15 PM
+2023/03/24 13:39:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 127761; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 127311
+2023/03/24 13:39:15,Resetting timeout to 1:39:30 PM
+2023/03/24 13:39:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 128211; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 127761
+2023/03/24 13:39:30,Resetting timeout to 1:39:45 PM
+2023/03/24 13:39:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 128661; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 128211
+2023/03/24 13:39:45,Resetting timeout to 1:40:00 PM
+2023/03/24 13:39:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 129111; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 128661
+2023/03/24 13:40:00,Resetting timeout to 1:40:15 PM
+2023/03/24 13:40:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 129561; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 129111
+2023/03/24 13:40:15,Resetting timeout to 1:40:30 PM
+2023/03/24 13:40:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 130012; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 129561
+2023/03/24 13:40:30,Resetting timeout to 1:40:45 PM
+2023/03/24 13:40:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 130462; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 130012
+2023/03/24 13:40:45,Resetting timeout to 1:41:00 PM
+2023/03/24 13:40:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 130863; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 130462
+2023/03/24 13:41:00,Resetting timeout to 1:41:15 PM
+2023/03/24 13:41:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 131313; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 130863
+2023/03/24 13:41:15,Resetting timeout to 1:41:30 PM
+2023/03/24 13:41:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 131763; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 131313
+2023/03/24 13:41:30,Resetting timeout to 1:41:45 PM
+2023/03/24 13:41:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 132213; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 131763
+2023/03/24 13:41:45,Resetting timeout to 1:42:00 PM
+2023/03/24 13:41:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 132663; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 132213
+2023/03/24 13:42:00,Resetting timeout to 1:42:15 PM
+2023/03/24 13:42:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 133113; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 132663
+2023/03/24 13:42:15,Resetting timeout to 1:42:30 PM
+2023/03/24 13:42:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 133564; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 133113
+2023/03/24 13:42:30,Resetting timeout to 1:42:45 PM
+2023/03/24 13:42:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 134014; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 133564
+2023/03/24 13:42:45,Resetting timeout to 1:43:00 PM
+2023/03/24 13:42:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 134464; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 134014
+2023/03/24 13:43:00,Resetting timeout to 1:43:15 PM
+2023/03/24 13:43:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 134914; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 134464
+2023/03/24 13:43:15,Resetting timeout to 1:43:30 PM
+2023/03/24 13:43:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 135364; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 134914
+2023/03/24 13:43:30,Resetting timeout to 1:43:45 PM
+2023/03/24 13:43:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 135814; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 135364
+2023/03/24 13:43:45,Resetting timeout to 1:44:00 PM
+2023/03/24 13:43:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 136264; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 135814
+2023/03/24 13:44:00,Resetting timeout to 1:44:15 PM
+2023/03/24 13:44:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 136714; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 136264
+2023/03/24 13:44:15,Resetting timeout to 1:44:30 PM
+2023/03/24 13:44:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 137128; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 136714
+2023/03/24 13:44:30,Resetting timeout to 1:44:45 PM
+2023/03/24 13:44:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 137577; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 137128
+2023/03/24 13:44:45,Resetting timeout to 1:45:00 PM
+2023/03/24 13:44:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 138028; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 137577
+2023/03/24 13:45:00,Resetting timeout to 1:45:15 PM
+2023/03/24 13:45:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 138478; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 138028
+2023/03/24 13:45:15,Resetting timeout to 1:45:30 PM
+2023/03/24 13:45:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 138927; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 138478
+2023/03/24 13:45:30,Resetting timeout to 1:45:45 PM
+2023/03/24 13:45:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 139370; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 138927
+2023/03/24 13:45:45,Resetting timeout to 1:46:00 PM
+2023/03/24 13:45:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 139820; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 139370
+2023/03/24 13:46:00,Resetting timeout to 1:46:15 PM
+2023/03/24 13:46:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 140270; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 139820
+2023/03/24 13:46:15,Resetting timeout to 1:46:30 PM
+2023/03/24 13:46:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 140721; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 140270
+2023/03/24 13:46:30,Resetting timeout to 1:46:45 PM
+2023/03/24 13:46:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 141170; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 140721
+2023/03/24 13:46:45,Resetting timeout to 1:47:00 PM
+2023/03/24 13:46:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 141621; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 141170
+2023/03/24 13:47:00,Resetting timeout to 1:47:15 PM
+2023/03/24 13:47:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 142071; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 141621
+2023/03/24 13:47:15,Resetting timeout to 1:47:30 PM
+2023/03/24 13:47:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 142521; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 142071
+2023/03/24 13:47:30,Resetting timeout to 1:47:45 PM
+2023/03/24 13:47:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 142971; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 142521
+2023/03/24 13:47:45,Resetting timeout to 1:48:00 PM
+2023/03/24 13:47:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 143421; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 142971
+2023/03/24 13:48:00,Resetting timeout to 1:48:15 PM
+2023/03/24 13:48:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 143871; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 143421
+2023/03/24 13:48:15,Resetting timeout to 1:48:30 PM
+2023/03/24 13:48:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 144321; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 143871
+2023/03/24 13:48:30,Resetting timeout to 1:48:45 PM
+2023/03/24 13:48:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 144771; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 144321
+2023/03/24 13:48:45,Resetting timeout to 1:49:00 PM
+2023/03/24 13:48:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 145222; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 144771
+2023/03/24 13:49:00,Resetting timeout to 1:49:15 PM
+2023/03/24 13:49:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 145672; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 145222
+2023/03/24 13:49:15,Resetting timeout to 1:49:30 PM
+2023/03/24 13:49:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 146122; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 145672
+2023/03/24 13:49:30,Resetting timeout to 1:49:45 PM
+2023/03/24 13:49:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 146572; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 146122
+2023/03/24 13:49:45,Resetting timeout to 1:50:00 PM
+2023/03/24 13:49:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 147022; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 146572
+2023/03/24 13:50:00,Resetting timeout to 1:50:15 PM
+2023/03/24 13:50:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 147472; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 147022
+2023/03/24 13:50:15,Resetting timeout to 1:50:30 PM
+2023/03/24 13:50:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 147922; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 147472
+2023/03/24 13:50:30,Resetting timeout to 1:50:45 PM
+2023/03/24 13:50:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 148372; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 147922
+2023/03/24 13:50:45,Resetting timeout to 1:51:00 PM
+2023/03/24 13:50:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 148823; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 148372
+2023/03/24 13:51:00,Resetting timeout to 1:51:15 PM
+2023/03/24 13:51:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 149273; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 148823
+2023/03/24 13:51:15,Resetting timeout to 1:51:30 PM
+2023/03/24 13:51:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 149723; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 149273
+2023/03/24 13:51:30,Resetting timeout to 1:51:45 PM
+2023/03/24 13:51:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 150173; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 149723
+2023/03/24 13:51:45,Resetting timeout to 1:52:00 PM
+2023/03/24 13:51:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 150623; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 150173
+2023/03/24 13:52:00,Resetting timeout to 1:52:15 PM
+2023/03/24 13:52:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 151073; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 150623
+2023/03/24 13:52:15,Resetting timeout to 1:52:30 PM
+2023/03/24 13:52:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 151523; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 151073
+2023/03/24 13:52:30,Resetting timeout to 1:52:45 PM
+2023/03/24 13:52:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 151973; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 151523
+2023/03/24 13:52:45,Resetting timeout to 1:53:00 PM
+2023/03/24 13:52:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 152424; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 151973
+2023/03/24 13:53:00,Resetting timeout to 1:53:15 PM
+2023/03/24 13:53:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 152873; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 152424
+2023/03/24 13:53:15,Resetting timeout to 1:53:30 PM
+2023/03/24 13:53:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 153324; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 152873
+2023/03/24 13:53:30,Resetting timeout to 1:53:45 PM
+2023/03/24 13:53:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 153774; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 153324
+2023/03/24 13:53:45,Resetting timeout to 1:54:00 PM
+2023/03/24 13:53:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 154224; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 153774
+2023/03/24 13:54:00,Resetting timeout to 1:54:15 PM
+2023/03/24 13:54:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 154674; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 154224
+2023/03/24 13:54:15,Resetting timeout to 1:54:30 PM
+2023/03/24 13:54:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 155124; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 154674
+2023/03/24 13:54:30,Resetting timeout to 1:54:45 PM
+2023/03/24 13:54:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 155574; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 155124
+2023/03/24 13:54:45,Resetting timeout to 1:55:00 PM
+2023/03/24 13:54:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 156025; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 155574
+2023/03/24 13:55:00,Resetting timeout to 1:55:15 PM
+2023/03/24 13:55:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 156474; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 156025
+2023/03/24 13:55:15,Resetting timeout to 1:55:30 PM
+2023/03/24 13:55:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 156925; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 156474
+2023/03/24 13:55:30,Resetting timeout to 1:55:45 PM
+2023/03/24 13:55:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 157375; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 156925
+2023/03/24 13:55:45,Resetting timeout to 1:56:00 PM
+2023/03/24 13:55:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 157825; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 157375
+2023/03/24 13:56:00,Resetting timeout to 1:56:15 PM
+2023/03/24 13:56:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 158275; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 157825
+2023/03/24 13:56:15,Resetting timeout to 1:56:30 PM
+2023/03/24 13:56:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 158725; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 158275
+2023/03/24 13:56:30,Resetting timeout to 1:56:45 PM
+2023/03/24 13:56:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 159175; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 158725
+2023/03/24 13:56:45,Resetting timeout to 1:57:00 PM
+2023/03/24 13:56:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 159625; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 159175
+2023/03/24 13:57:00,Resetting timeout to 1:57:15 PM
+2023/03/24 13:57:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 160075; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 159625
+2023/03/24 13:57:15,Resetting timeout to 1:57:30 PM
+2023/03/24 13:57:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 160526; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 160075
+2023/03/24 13:57:30,Resetting timeout to 1:57:45 PM
+2023/03/24 13:57:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 160976; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 160526
+2023/03/24 13:57:45,Resetting timeout to 1:58:00 PM
+2023/03/24 13:57:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 161426; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 160976
+2023/03/24 13:58:00,Resetting timeout to 1:58:15 PM
+2023/03/24 13:58:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 161876; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 161426
+2023/03/24 13:58:15,Resetting timeout to 1:58:30 PM
+2023/03/24 13:58:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 162326; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 161876
+2023/03/24 13:58:30,Resetting timeout to 1:58:45 PM
+2023/03/24 13:58:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 162776; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 162326
+2023/03/24 13:58:45,Resetting timeout to 1:59:00 PM
+2023/03/24 13:58:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 163226; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 162776
+2023/03/24 13:59:00,Resetting timeout to 1:59:15 PM
+2023/03/24 13:59:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 163676; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 163226
+2023/03/24 13:59:15,Resetting timeout to 1:59:30 PM
+2023/03/24 13:59:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 164127; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 163676
+2023/03/24 13:59:30,Resetting timeout to 1:59:45 PM
+2023/03/24 13:59:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 164576; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 164127
+2023/03/24 13:59:45,Resetting timeout to 2:00:00 PM
+2023/03/24 13:59:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 165027; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 164576
+2023/03/24 14:00:00,Resetting timeout to 2:00:15 PM
+2023/03/24 14:00:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 165477; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 165027
+2023/03/24 14:00:15,Resetting timeout to 2:00:30 PM
+2023/03/24 14:00:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 165927; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 165477
+2023/03/24 14:00:30,Resetting timeout to 2:00:45 PM
+2023/03/24 14:00:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 166377; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 165927
+2023/03/24 14:00:45,Resetting timeout to 2:01:00 PM
+2023/03/24 14:00:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 166827; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 166377
+2023/03/24 14:01:00,Resetting timeout to 2:01:15 PM
+2023/03/24 14:01:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 167277; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 166827
+2023/03/24 14:01:15,Resetting timeout to 2:01:30 PM
+2023/03/24 14:01:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 167728; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 167277
+2023/03/24 14:01:30,Resetting timeout to 2:01:45 PM
+2023/03/24 14:01:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 168177; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 167728
+2023/03/24 14:01:45,Resetting timeout to 2:02:00 PM
+2023/03/24 14:01:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 168628; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 168177
+2023/03/24 14:02:00,Resetting timeout to 2:02:15 PM
+2023/03/24 14:02:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 169078; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 168628
+2023/03/24 14:02:15,Resetting timeout to 2:02:30 PM
+2023/03/24 14:02:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 169527; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 169078
+2023/03/24 14:02:30,Resetting timeout to 2:02:45 PM
+2023/03/24 14:02:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 169977; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 169527
+2023/03/24 14:02:45,Resetting timeout to 2:03:00 PM
+2023/03/24 14:02:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 170427; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 169977
+2023/03/24 14:03:00,Resetting timeout to 2:03:15 PM
+2023/03/24 14:03:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 170877; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 170427
+2023/03/24 14:03:15,Resetting timeout to 2:03:30 PM
+2023/03/24 14:03:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 171327; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 170877
+2023/03/24 14:03:30,Resetting timeout to 2:03:45 PM
+2023/03/24 14:03:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 171738; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 171327
+2023/03/24 14:03:45,Resetting timeout to 2:04:00 PM
+2023/03/24 14:03:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 172189; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 171738
+2023/03/24 14:04:00,Resetting timeout to 2:04:15 PM
+2023/03/24 14:04:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 172639; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 172189
+2023/03/24 14:04:15,Resetting timeout to 2:04:30 PM
+2023/03/24 14:04:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 173089; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 172639
+2023/03/24 14:04:30,Resetting timeout to 2:04:45 PM
+2023/03/24 14:04:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 173539; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 173089
+2023/03/24 14:04:45,Resetting timeout to 2:05:00 PM
+2023/03/24 14:04:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 173989; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 173539
+2023/03/24 14:05:00,Resetting timeout to 2:05:15 PM
+2023/03/24 14:05:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 174439; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 173989
+2023/03/24 14:05:15,Resetting timeout to 2:05:30 PM
+2023/03/24 14:05:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 174889; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 174439
+2023/03/24 14:05:30,Resetting timeout to 2:05:45 PM
+2023/03/24 14:05:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 175339; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 174889
+2023/03/24 14:05:45,Resetting timeout to 2:06:00 PM
+2023/03/24 14:05:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 175789; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 175339
+2023/03/24 14:06:00,Resetting timeout to 2:06:15 PM
+2023/03/24 14:06:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 176239; shouldBePlaying: True; saved webCamTextureID: -154; current ID: -154; lastUpdateCount: 175789
+2023/03/24 14:06:10,Re-initializing HD Pro Webcam C920...
+2023/03/24 14:06:10,Initializing from myWebCamTextureToMatHelper...
+2023/03/24 14:06:10,Releasing resources...
+2023/03/24 14:06:11,OnWebCamTextureToMatHelperDisposed
+2023/03/24 14:06:11,Successfully found correct camera.
+2023/03/24 14:06:11,NEW webCamTexture ID: -944
+2023/03/24 14:06:12,Resetting update count...
+2023/03/24 14:06:12,Setting should be playing to true...
+2023/03/24 14:06:12,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/03/24 14:06:12,Calling OnWebCamTextureToMatHelperInitialized...
+2023/03/24 14:06:12,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/03/24 14:06:12,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/03/24 14:06:12,Resetting update count...
+2023/03/24 14:06:15,Resetting timeout to 2:06:30 PM
+2023/03/24 14:06:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 110; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: -1
+2023/03/24 14:06:30,Resetting timeout to 2:06:45 PM
+2023/03/24 14:06:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 519; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 110
+2023/03/24 14:06:45,Resetting timeout to 2:07:00 PM
+2023/03/24 14:06:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 969; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 519
+2023/03/24 14:07:00,Resetting timeout to 2:07:15 PM
+2023/03/24 14:07:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1419; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 969
+2023/03/24 14:07:15,Resetting timeout to 2:07:30 PM
+2023/03/24 14:07:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1869; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 1419
+2023/03/24 14:07:30,Resetting timeout to 2:07:45 PM
+2023/03/24 14:07:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2319; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 1869
+2023/03/24 14:07:45,Resetting timeout to 2:08:00 PM
+2023/03/24 14:07:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2769; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 2319
+2023/03/24 14:08:00,Resetting timeout to 2:08:15 PM
+2023/03/24 14:08:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3212; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 2769
+2023/03/24 14:08:15,Resetting timeout to 2:08:30 PM
+2023/03/24 14:08:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3662; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 3212
+2023/03/24 14:08:30,Resetting timeout to 2:08:45 PM
+2023/03/24 14:08:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 4113; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 3662
+2023/03/24 14:08:45,Resetting timeout to 2:09:00 PM
+2023/03/24 14:08:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 4563; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 4113
+2023/03/24 14:09:00,Resetting timeout to 2:09:15 PM
+2023/03/24 14:09:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 5013; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 4563
+2023/03/24 14:09:15,Resetting timeout to 2:09:30 PM
+2023/03/24 14:09:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 5463; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 5013
+2023/03/24 14:09:30,Resetting timeout to 2:09:45 PM
+2023/03/24 14:09:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 5913; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 5463
+2023/03/24 14:09:45,Resetting timeout to 2:10:00 PM
+2023/03/24 14:09:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 6363; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 5913
+2023/03/24 14:10:00,Resetting timeout to 2:10:15 PM
+2023/03/24 14:10:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 6813; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 6363
+2023/03/24 14:10:15,Resetting timeout to 2:10:30 PM
+2023/03/24 14:10:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 7263; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 6813
+2023/03/24 14:10:30,Resetting timeout to 2:10:45 PM
+2023/03/24 14:10:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 7714; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 7263
+2023/03/24 14:10:45,Resetting timeout to 2:11:00 PM
+2023/03/24 14:10:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 8124; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 7714
+2023/03/24 14:11:00,Resetting timeout to 2:11:15 PM
+2023/03/24 14:11:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 8574; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 8124
+2023/03/24 14:11:15,Resetting timeout to 2:11:30 PM
+2023/03/24 14:11:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 9025; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 8574
+2023/03/24 14:11:30,Resetting timeout to 2:11:45 PM
+2023/03/24 14:11:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 9474; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 9025
+2023/03/24 14:11:45,Resetting timeout to 2:12:00 PM
+2023/03/24 14:11:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 9925; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 9474
+2023/03/24 14:12:00,Resetting timeout to 2:12:15 PM
+2023/03/24 14:12:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 10375; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 9925
+2023/03/24 14:12:15,Resetting timeout to 2:12:30 PM
+2023/03/24 14:12:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 10825; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 10375
+2023/03/24 14:12:30,Resetting timeout to 2:12:45 PM
+2023/03/24 14:12:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 11275; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 10825
+2023/03/24 14:12:45,Resetting timeout to 2:13:00 PM
+2023/03/24 14:12:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 11725; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 11275
+2023/03/24 14:13:00,Resetting timeout to 2:13:15 PM
+2023/03/24 14:13:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 12175; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 11725
+2023/03/24 14:13:15,Resetting timeout to 2:13:30 PM
+2023/03/24 14:13:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 12626; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 12175
+2023/03/24 14:13:30,Resetting timeout to 2:13:45 PM
+2023/03/24 14:13:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 13075; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 12626
+2023/03/24 14:13:45,Resetting timeout to 2:14:00 PM
+2023/03/24 14:13:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 13526; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 13075
+2023/03/24 14:14:00,Resetting timeout to 2:14:15 PM
+2023/03/24 14:14:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 13976; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 13526
+2023/03/24 14:14:15,Resetting timeout to 2:14:30 PM
+2023/03/24 14:14:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 14426; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 13976
+2023/03/24 14:14:30,Resetting timeout to 2:14:45 PM
+2023/03/24 14:14:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 14876; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 14426
+2023/03/24 14:14:45,Resetting timeout to 2:15:00 PM
+2023/03/24 14:14:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 15326; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 14876
+2023/03/24 14:15:00,Resetting timeout to 2:15:15 PM
+2023/03/24 14:15:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 15776; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 15326
+2023/03/24 14:15:15,Resetting timeout to 2:15:30 PM
+2023/03/24 14:15:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 16227; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 15776
+2023/03/24 14:15:30,Resetting timeout to 2:15:45 PM
+2023/03/24 14:15:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 16676; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 16227
+2023/03/24 14:15:45,Resetting timeout to 2:16:00 PM
+2023/03/24 14:15:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 17127; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 16676
+2023/03/24 14:16:00,Resetting timeout to 2:16:15 PM
+2023/03/24 14:16:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 17577; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 17127
+2023/03/24 14:16:15,Resetting timeout to 2:16:30 PM
+2023/03/24 14:16:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 18027; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 17577
+2023/03/24 14:16:30,Resetting timeout to 2:16:45 PM
+2023/03/24 14:16:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 18477; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 18027
+2023/03/24 14:16:45,Resetting timeout to 2:17:00 PM
+2023/03/24 14:16:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 18927; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 18477
+2023/03/24 14:17:00,Resetting timeout to 2:17:15 PM
+2023/03/24 14:17:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 19377; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 18927
+2023/03/24 14:17:15,Resetting timeout to 2:17:30 PM
+2023/03/24 14:17:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 19827; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 19377
+2023/03/24 14:17:30,Resetting timeout to 2:17:45 PM
+2023/03/24 14:17:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 20277; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 19827
+2023/03/24 14:17:45,Resetting timeout to 2:18:00 PM
+2023/03/24 14:17:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 20728; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 20277
+2023/03/24 14:18:00,Resetting timeout to 2:18:15 PM
+2023/03/24 14:18:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 21178; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 20728
+2023/03/24 14:18:15,Resetting timeout to 2:18:30 PM
+2023/03/24 14:18:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 21628; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 21178
+2023/03/24 14:18:30,Resetting timeout to 2:18:45 PM
+2023/03/24 14:18:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 22078; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 21628
+2023/03/24 14:18:45,Resetting timeout to 2:19:00 PM
+2023/03/24 14:18:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 22528; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 22078
+2023/03/24 14:19:00,Resetting timeout to 2:19:15 PM
+2023/03/24 14:19:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 22978; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 22528
+2023/03/24 14:19:15,Resetting timeout to 2:19:30 PM
+2023/03/24 14:19:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 23428; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 22978
+2023/03/24 14:19:30,Resetting timeout to 2:19:45 PM
+2023/03/24 14:19:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 23878; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 23428
+2023/03/24 14:19:45,Resetting timeout to 2:20:00 PM
+2023/03/24 14:19:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 24329; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 23878
+2023/03/24 14:20:00,Resetting timeout to 2:20:15 PM
+2023/03/24 14:20:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 24778; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 24329
+2023/03/24 14:20:15,Resetting timeout to 2:20:30 PM
+2023/03/24 14:20:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 25229; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 24778
+2023/03/24 14:20:30,Resetting timeout to 2:20:45 PM
+2023/03/24 14:20:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 25679; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 25229
+2023/03/24 14:20:45,Resetting timeout to 2:21:00 PM
+2023/03/24 14:20:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 26129; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 25679
+2023/03/24 14:21:00,Resetting timeout to 2:21:15 PM
+2023/03/24 14:21:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 26579; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 26129
+2023/03/24 14:21:15,Resetting timeout to 2:21:30 PM
+2023/03/24 14:21:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 27029; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 26579
+2023/03/24 14:21:30,Resetting timeout to 2:21:45 PM
+2023/03/24 14:21:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 27479; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 27029
+2023/03/24 14:21:45,Resetting timeout to 2:22:00 PM
+2023/03/24 14:21:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 27930; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 27479
+2023/03/24 14:22:00,Resetting timeout to 2:22:15 PM
+2023/03/24 14:22:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 28378; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 27930
+2023/03/24 14:22:15,Resetting timeout to 2:22:30 PM
+2023/03/24 14:22:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 28829; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 28378
+2023/03/24 14:22:30,Resetting timeout to 2:22:45 PM
+2023/03/24 14:22:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 29279; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 28829
+2023/03/24 14:22:45,Resetting timeout to 2:23:00 PM
+2023/03/24 14:22:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 29729; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 29279
+2023/03/24 14:23:00,Resetting timeout to 2:23:15 PM
+2023/03/24 14:23:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 30179; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 29729
+2023/03/24 14:23:15,Resetting timeout to 2:23:30 PM
+2023/03/24 14:23:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 30629; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 30179
+2023/03/24 14:23:30,Resetting timeout to 2:23:45 PM
+2023/03/24 14:23:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 31080; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 30629
+2023/03/24 14:23:45,Resetting timeout to 2:24:00 PM
+2023/03/24 14:23:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 31529; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 31080
+2023/03/24 14:24:00,Resetting timeout to 2:24:15 PM
+2023/03/24 14:24:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 31980; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 31529
+2023/03/24 14:24:15,Resetting timeout to 2:24:30 PM
+2023/03/24 14:24:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 32430; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 31980
+2023/03/24 14:24:31,Resetting timeout to 2:24:46 PM
+2023/03/24 14:24:31,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 32880; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 32430
+2023/03/24 14:24:46,Resetting timeout to 2:25:01 PM
+2023/03/24 14:24:46,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 33330; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 32880
+2023/03/24 14:25:01,Resetting timeout to 2:25:16 PM
+2023/03/24 14:25:01,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 33780; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 33330
+2023/03/24 14:25:16,Resetting timeout to 2:25:31 PM
+2023/03/24 14:25:16,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 34231; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 33780
+2023/03/24 14:25:31,Resetting timeout to 2:25:46 PM
+2023/03/24 14:25:31,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 34681; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 34231
+2023/03/24 14:25:46,Resetting timeout to 2:26:01 PM
+2023/03/24 14:25:46,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 35131; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 34681
+2023/03/24 14:26:01,Resetting timeout to 2:26:16 PM
+2023/03/24 14:26:01,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 35581; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 35131
+2023/03/24 14:26:16,Resetting timeout to 2:26:31 PM
+2023/03/24 14:26:16,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 36031; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 35581
+2023/03/24 14:26:31,Resetting timeout to 2:26:46 PM
+2023/03/24 14:26:31,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 36481; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 36031
+2023/03/24 14:26:46,Resetting timeout to 2:27:01 PM
+2023/03/24 14:26:46,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 36931; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 36481
+2023/03/24 14:27:01,Resetting timeout to 2:27:16 PM
+2023/03/24 14:27:01,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 37381; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 36931
+2023/03/24 14:27:16,Resetting timeout to 2:27:31 PM
+2023/03/24 14:27:16,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 37832; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 37381
+2023/03/24 14:27:31,Resetting timeout to 2:27:46 PM
+2023/03/24 14:27:31,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 38281; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 37832
+2023/03/24 14:27:46,Resetting timeout to 2:28:01 PM
+2023/03/24 14:27:46,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 38725; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 38281
+2023/03/24 14:28:01,Resetting timeout to 2:28:16 PM
+2023/03/24 14:28:01,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 39134; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 38725
+2023/03/24 14:28:16,Resetting timeout to 2:28:31 PM
+2023/03/24 14:28:16,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 39584; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 39134
+2023/03/24 14:28:31,Resetting timeout to 2:28:46 PM
+2023/03/24 14:28:31,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 40034; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 39584
+2023/03/24 14:28:46,Resetting timeout to 2:29:01 PM
+2023/03/24 14:28:46,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 40484; shouldBePlaying: True; saved webCamTextureID: -944; current ID: -944; lastUpdateCount: 40034
+2023/03/24 14:29:00,Quit application via 'Escape' key.
+2023/03/24 14:29:00,Application Quit
+2023/03/24 14:29:01,Releasing resources...
+2023/03/24 14:29:01,OnWebCamTextureToMatHelperDisposed

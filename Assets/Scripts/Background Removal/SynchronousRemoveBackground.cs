@@ -26,13 +26,7 @@ using ArtScan.PresentationUtilsModule;
 
 namespace ArtScan.CoreModule
 {
-    /// <summary>
-    /// Asynchronous Remove Background
-    /// Based on Asynchronous Face Detection WebCamTexture Example
-    /// Referring to https://github.com/Itseez/opencv/blob/master/modules/objdetect/src/detection_based_tracker.cpp.
-    /// </summary>
-    [RequireComponent(typeof(myWebCamTextureToMatHelper))]
-    public class AsynchronousRemoveBackground : MonoBehaviour
+    public class SynchronousRemoveBackground : MonoBehaviour
     {
         public int copiedFramesCount = 0;
 
@@ -53,7 +47,7 @@ namespace ArtScan.CoreModule
         string sForests_model_filepath;
 
 #if UNITY_WEBGL
-        IEnumerator getFilePath_Coroutine;
+    IEnumerator getFilePath_Coroutine;
 #endif
 
         private Mat rawImageDisplayMat;
@@ -75,11 +69,6 @@ namespace ArtScan.CoreModule
         public myWebCamTextureToMatHelper webCamTextureToMatHelper;
 
         /// <summary>
-        /// The FPS monitor.
-        /// </summary>
-        //FpsMonitor fpsMonitor;
-
-        /// <summary>
         /// GameEvent that's fired after myWebcameTextureHelper initialization
         /// </summary>
         public GameEvent WebCamTextureToMatHelperInitialized;
@@ -91,6 +80,7 @@ namespace ArtScan.CoreModule
 
         private int paperFoundFrames = 0;
         private int paperNotFoundFrames = 0;
+
         public bool consistentPaperFound
         {
             get
@@ -192,79 +182,10 @@ namespace ArtScan.CoreModule
             }
         }
 
-        // for Thread
-        System.Object sync = new System.Object();
-
-        //for new Thread
-        Mat rgbaMat4Thread;
         Mat resultMat;
 
         public float DOWNSCALE_RATIO = 2f;
         public bool doDownsizeToDisplay = false;
-
-        bool _isThreadRunning = false;
-
-        bool isThreadRunning
-        {
-            get
-            {
-                lock (sync)
-                    return _isThreadRunning;
-            }
-            set
-            {
-                lock (sync)
-                    _isThreadRunning = value;
-            }
-        }
-
-        bool _shouldStopThread = false;
-
-        bool shouldStopThread
-        {
-            get
-            {
-                lock (sync)
-                    return _shouldStopThread;
-            }
-            set
-            {
-                lock (sync)
-                    _shouldStopThread = value;
-            }
-        }
-
-        bool _shouldDetectInMultiThread = false;
-
-        bool shouldDetectInMultiThread
-        {
-            get
-            {
-                lock (sync)
-                    return _shouldDetectInMultiThread;
-            }
-            set
-            {
-                lock (sync)
-                    _shouldDetectInMultiThread = value;
-            }
-        }
-
-        bool _didUpdateTheDetectionResult = false;
-
-        bool didUpdateTheDetectionResult
-        {
-            get
-            {
-                lock (sync)
-                    return _didUpdateTheDetectionResult;
-            }
-            set
-            {
-                lock (sync)
-                    _didUpdateTheDetectionResult = value;
-            }
-        }
 
         private void Awake()
         {
@@ -309,7 +230,7 @@ namespace ArtScan.CoreModule
             webCamTextureToMatHelper.avoidAndroidFrontCameraLowLightIssue = true;
 #endif
 
-            webCamTextureToMatHelper.Initialize ();
+            webCamTextureToMatHelper.Initialize();
         }
 
 #if UNITY_WEBGL
@@ -327,26 +248,6 @@ namespace ArtScan.CoreModule
         }
 #endif
 
-        void SetupStructuredForests()
-        {
-            if (string.IsNullOrEmpty(sForests_model_filepath))
-            {
-                if (RLMGLogger.Instance != null)
-                    RLMGLogger.Instance.Log("Structured forests model file is not loaded. \n Please copy to “Assets/StreamingAssets/” folder.", MESSAGETYPE.INFO);
-            }
-            else
-            {
-                //RLMGLogger.Instance.Log("Creating edge detection... " + sForests_model_filepath, MESSAGETYPE.INFO);
-
-                edgeDetection = Ximgproc.createStructuredEdgeDetection(sForests_model_filepath);
-                
-                if (edgeDetection.empty())
-                    if (RLMGLogger.Instance != null)
-                        RLMGLogger.Instance.Log("Structured forests algorithm is empty.", MESSAGETYPE.ERROR);
-            }
-
-        }
-
         /// <summary>
         /// Raises the webcam texture to mat helper initialized event.
         /// </summary>
@@ -358,11 +259,13 @@ namespace ArtScan.CoreModule
             Mat webCamTextureMat = webCamTextureToMatHelper.GetMat();
 
             int rWidth = webCamTextureMat.cols();
-            int rHeight = (int)(rWidth * (settings.targetHeight/settings.targetWidth));
-            rawImageDisplayMat = new Mat(rHeight, rWidth, webCamTextureMat.type(), new Scalar(0,0,0,0));
-            
+            int rHeight = (int)(rWidth * (settings.targetHeight / settings.targetWidth));
+
+            if (rawImageDisplayMat != null) rawImageDisplayMat.Dispose();
+            rawImageDisplayMat = new Mat(rHeight, rWidth, webCamTextureMat.type(), new Scalar(0, 0, 0, 0));
+
             rawImageTexture = new Texture2D(rawImageDisplayMat.cols(), rawImageDisplayMat.rows(), TextureFormat.RGBA32, false);
-            rawImageTexture.name = "AsyncRB Raw Image Texture";
+            rawImageTexture.name = "Raw Image Texture";
             rawImage.texture = rawImageTexture;
 
             if (RLMGLogger.Instance != null)
@@ -382,12 +285,12 @@ namespace ArtScan.CoreModule
                 Camera.main.orthographicSize = height / 2;
             }
 
-            DEBUG_PAPER_EDGE_COLOR = new Scalar(0,255,0,255);
+            DEBUG_PAPER_EDGE_COLOR = new Scalar(0, 255, 0, 255);
             PAPER_FOUND_CONSISTENTLY_EDGE_COLOR = new Scalar(255, 0, 0, 255);
             PAPER_AREA_CONSISTENT_EDGE_COLOR = new Scalar(250, 250, 0, 255);
-            FEEDBACK_PAPER_EDGE_COLOR = new Scalar(49,238,255,255);
+            FEEDBACK_PAPER_EDGE_COLOR = new Scalar(49, 238, 255, 255);
 
-            InitThread();
+            resultMat = rawImageDisplayMat.clone();
 
             WebCamTextureToMatHelperInitialized.Raise();
         }
@@ -405,13 +308,6 @@ namespace ArtScan.CoreModule
             {
                 Debug.Log("OnWebCamTextureToMatHelperDisposed");
             }
-            
-
-#if !UNITY_WEBGL
-            StopThread();
-#else
-            StopCoroutine ("ThreadWorker");
-#endif
 
 
             if (rawImageDisplayMat != null)
@@ -419,9 +315,6 @@ namespace ArtScan.CoreModule
                 rawImageDisplayMat.Dispose();
                 rawImageDisplayMat = null;
             }
-
-            if (rgbaMat4Thread != null)
-                rgbaMat4Thread.Dispose();
 
             if (resultMat != null)
                 resultMat.Dispose();
@@ -432,7 +325,7 @@ namespace ArtScan.CoreModule
         /// Listener for the web cam texture to mat helper error occurred event.
         /// </summary>
         /// <param name="errorCode">Error code.</param>
-        public void OnWebCamTextureToMatHelperErrorOccurred (myWebCamTextureToMatHelper.ErrorCode errorCode)
+        public void OnWebCamTextureToMatHelperErrorOccurred(myWebCamTextureToMatHelper.ErrorCode errorCode)
         {
             if (RLMGLogger.Instance != null) //always false?
             {
@@ -476,18 +369,6 @@ namespace ArtScan.CoreModule
             }
         }
 
-        private void CopyToThreadMat()
-        {
-            //no need for a 'using' statement here
-            //this is just a new reference to either the frameMat
-            //or rotatedFrameMat on myWebCamTextureToMatHelper
-            //which are disposed of properly
-            Mat rgbaMat = webCamTextureToMatHelper.GetMat();
-
-            if (rgbaMat4Thread != null)
-                rgbaMat.copyTo(rgbaMat4Thread);
-        }
-
         private void ToTexture2D()
         {
             Utils.fastMatToTexture2D(resultMat, rawImageTexture, true, 0, true);
@@ -497,163 +378,22 @@ namespace ArtScan.CoreModule
         void Update()
         {
             bool webCamTextureReady = (webCamTextureToMatHelper &&
-                webCamTextureToMatHelper.IsPlaying ());
+                webCamTextureToMatHelper.IsPlaying());
 
             if (!doProcessImage)
             {
-                if (!webCamTextureReady)
-                    StopThread();
-
                 rawImage.texture = webCamTextureToMatHelper.GetWebCamTexture();
                 return;
             }
 
-            //if (webCamTextureToMatHelper != null)
-            //{
-            //    Debug.Log(webCamTextureToMatHelper.IsPlaying());
-            //    Debug.Log(webCamTextureToMatHelper.DidUpdateThisFrame());
-            //}
-
-            if (webCamTextureReady && !isThreadRunning)
-                InitThread();
-            
-            if (!webCamTextureReady)
-                StopThread();
-
-            if (webCamTextureReady && webCamTextureToMatHelper.DidUpdateThisFrame ())
+            if (webCamTextureReady && webCamTextureToMatHelper.DidUpdateThisFrame())
             {
-                if (!shouldDetectInMultiThread)
-                {
-                    CopyToThreadMat();
-
-                    copiedFramesCount++;
-
-                    shouldDetectInMultiThread = true;
-                }
-
-                if (didUpdateTheDetectionResult)
-                {
-                    didUpdateTheDetectionResult = false;
-
-#if UNITY_WEBGL
-                    Imgproc.putText (resultMat, "WebGL platform does not support multi-threading.", new Point (5, resultMat.rows () - 10), Imgproc.FONT_HERSHEY_SIMPLEX, 0.5, new Scalar (255, 255, 255, 255), 1, Imgproc.LINE_AA, false);
-#endif
-                    //if (settings.postProcessingSizeFactor != 1)
-                    //    Imgproc.resize(resultMat, resultMat, new Size(), 1.0f / settings.postProcessingSizeFactor, 1.0f / settings.postProcessingSizeFactor, Imgproc.INTER_LINEAR);
-
-                    ToTexture2D();
-                }
-                
+                copiedFramesCount++;
+                ProcessImage();
+                ToTexture2D();
+                GC.Collect();
             }
         }
-
-        private void InitThread()
-        {
-            if (RLMGLogger.Instance != null)
-                RLMGLogger.Instance.Log("Initializing thread.", MESSAGETYPE.INFO);
-
-            StopThread();
-
-            rgbaMat4Thread = new Mat();
-
-            resultMat = rawImageDisplayMat.clone();
-
-            shouldDetectInMultiThread = false;
-
-#if !UNITY_WEBGL
-            StartThread(ThreadWorker);
-#else
-            StartCoroutine ("ThreadWorker");
-#endif
-        }
-
-        private void StartThread(Action action)
-        {
-            shouldStopThread = false;
-
-#if UNITY_METRO && NETFX_CORE
-            System.Threading.Tasks.Task.Run(() => action());
-#elif UNITY_METRO
-            action.BeginInvoke(ar => action.EndInvoke(ar), null);
-#else
-            ThreadPool.QueueUserWorkItem(_ => action());
-#endif
-            if (RLMGLogger.Instance != null)
-                RLMGLogger.Instance.Log("Thread Start.", MESSAGETYPE.INFO);
-        }
-
-        private void StopThread()
-        {
-            if (!isThreadRunning)
-                return;
-
-            shouldStopThread = true;
-
-            while (isThreadRunning)
-            {
-                //Wait threading stop
-            }
-
-            if (RLMGLogger.Instance != null)
-                RLMGLogger.Instance.Log("Thread stopped.", MESSAGETYPE.INFO);
-        }
-
-#if !UNITY_WEBGL
-        private void ThreadWorker()
-        {
-            isThreadRunning = true;
-
-            while (!shouldStopThread)
-            {
-                if (!shouldDetectInMultiThread)
-                    continue;
-
-                try
-                {
-                    ProcessImage();
-                }
-                catch (Exception e)
-                {
-                    // Debug.LogError(e);
-                    if (RLMGLogger.Instance != null)
-                        RLMGLogger.Instance.Log(e.ToString(), MESSAGETYPE.INFO);
-                    else
-                        Debug.LogError(e.ToString());
-
-                    shouldStopThread = true;
-                }
-                
-                shouldDetectInMultiThread = false;
-                didUpdateTheDetectionResult = true;
-            }
-
-            isThreadRunning = false;
-        }
-
-
-#else
-        private IEnumerator ThreadWorker ()
-        {
-            while (true) {
-                while (!shouldDetectInMultiThread) {
-                    yield return null;
-                }
-
-                try
-                {
-                    ProcessImage();
-                }
-                catch (Exception e)
-                {
-                    // Debug.Log(e);
-                    RLMGLogger.Instance.Log(e.ToString(), MESSAGETYPE.INFO);
-                }
-
-                shouldDetectInMultiThread = false;
-                didUpdateTheDetectionResult = true;
-            }
-        }
-#endif
 
         /// <summary>
         /// Scales the x and y values of each point in a given contour by the scaleFactor
@@ -669,7 +409,7 @@ namespace ArtScan.CoreModule
                 p.x = (double)Mathf.Round((float)p.x * scaleFactor);
                 p.y = (double)Mathf.Round((float)p.y * scaleFactor);
             }
-                
+
             paperMaxAreaContour.fromArray(points);
         }
 
@@ -678,13 +418,15 @@ namespace ArtScan.CoreModule
         /// </summary>
         private void ProcessImage()
         {
-            if ( rgbaMat4Thread.empty() ) return;
+            Mat rgbaMat = webCamTextureToMatHelper.GetMat();
+
+            if (rgbaMat.empty()) return;
 
             if (!doProcessImage)
             {
                 resultMat.setTo(new Scalar(0, 0, 0, 0));
                 PresentationUtils.ScaleUpAndDisplayMat(
-                    rgbaMat4Thread, resultMat,
+                    rgbaMat, resultMat,
                     settings.doSizeToFit
                 );
                 return;
@@ -692,7 +434,7 @@ namespace ArtScan.CoreModule
 
             using (Mat resizedMat = new Mat())
             {
-                Imgproc.resize(rgbaMat4Thread, resizedMat, new Size(), 1.0f / settings.preProcessingSizeFactor, 1.0f / settings.preProcessingSizeFactor, Imgproc.INTER_LINEAR);
+                Imgproc.resize(rgbaMat, resizedMat, new Size(), 1.0f / settings.preProcessingSizeFactor, 1.0f / settings.preProcessingSizeFactor, Imgproc.INTER_LINEAR);
 
                 PerspectiveUtils.BrightnessContrast(resizedMat, settings.brightness, settings.contrast);
 
@@ -749,7 +491,7 @@ namespace ArtScan.CoreModule
                                                     EdgeFinding.SetEdgeMat(transformedResizedMat, edgeMat, settings, edgeDetection);
 
                                                     ResizeContour(paperMaxAreaContour, settings.preProcessingSizeFactor);
-                                                    using (Mat transformedRGBAMat = PerspectiveUtils.PerspectiveTransform(rgbaMat4Thread, paperMaxAreaContour))
+                                                    using (Mat transformedRGBAMat = PerspectiveUtils.PerspectiveTransform(rgbaMat, paperMaxAreaContour))
                                                     {
                                                         if (displayOptions.showEdges)
                                                             PresentationUtils.ShowEdges(edgeMat, transformedRGBAMat);
@@ -823,11 +565,11 @@ namespace ArtScan.CoreModule
                                                                 if (displayOptions.doDrawPaperEdge)
                                                                 {
                                                                     //no need to resize paperMaxAreaContour here; it is resized before this
-                                                                    Imgproc.drawContours(rgbaMat4Thread, new List<MatOfPoint> { paperMaxAreaContour }, -1, FEEDBACK_PAPER_EDGE_COLOR, 10);
+                                                                    Imgproc.drawContours(rgbaMat, new List<MatOfPoint> { paperMaxAreaContour }, -1, FEEDBACK_PAPER_EDGE_COLOR, 10);
                                                                 }
 
                                                                 PresentationUtils.ScaleUpAndDisplayMat(
-                                                                    rgbaMat4Thread, resultMat,
+                                                                    rgbaMat, resultMat,
                                                                     settings.doSizeToFit
                                                                 );
 
@@ -836,7 +578,7 @@ namespace ArtScan.CoreModule
                                                         }
                                                     }
 
-                                                    
+
                                                 }
                                             }
                                         }
@@ -847,16 +589,16 @@ namespace ArtScan.CoreModule
                                     resultMat.setTo(new Scalar(0, 0, 0, 0));
 
                                     if (displayOptions.showEdges) //yMat is now Canny edges, see above
-                                        Imgproc.cvtColor(yMat, rgbaMat4Thread, Imgproc.COLOR_GRAY2RGBA);
+                                        Imgproc.cvtColor(yMat, rgbaMat, Imgproc.COLOR_GRAY2RGBA);
 
                                     if (displayOptions.doDrawPaperEdge)
                                     {
                                         ResizeContour(paperMaxAreaContour, settings.preProcessingSizeFactor);
-                                        Imgproc.drawContours(rgbaMat4Thread, new List<MatOfPoint> { paperMaxAreaContour }, -1, PAPER_AREA_CONSISTENT_EDGE_COLOR, 4);
+                                        Imgproc.drawContours(rgbaMat, new List<MatOfPoint> { paperMaxAreaContour }, -1, PAPER_AREA_CONSISTENT_EDGE_COLOR, 4);
                                     }
 
                                     PresentationUtils.ScaleUpAndDisplayMat(
-                                        rgbaMat4Thread, resultMat,
+                                        rgbaMat, resultMat,
                                         settings.doSizeToFit
                                     );
                                 }
@@ -872,16 +614,16 @@ namespace ArtScan.CoreModule
                                     resultMat.setTo(new Scalar(0, 0, 0, 0));
 
                                     if (displayOptions.showEdges) //yMat is now Canny edges, see above
-                                        Imgproc.cvtColor(yMat, rgbaMat4Thread, Imgproc.COLOR_GRAY2RGBA);
+                                        Imgproc.cvtColor(yMat, rgbaMat, Imgproc.COLOR_GRAY2RGBA);
 
                                     if (displayOptions.doDrawPaperEdge)
                                     {
                                         ResizeContour(paperMaxAreaContour, settings.preProcessingSizeFactor);
-                                        Imgproc.drawContours(rgbaMat4Thread, new List<MatOfPoint> { paperMaxAreaContour }, -1, PAPER_FOUND_CONSISTENTLY_EDGE_COLOR, 4);
+                                        Imgproc.drawContours(rgbaMat, new List<MatOfPoint> { paperMaxAreaContour }, -1, PAPER_FOUND_CONSISTENTLY_EDGE_COLOR, 4);
                                     }
 
                                     PresentationUtils.ScaleUpAndDisplayMat(
-                                        rgbaMat4Thread, resultMat,
+                                        rgbaMat, resultMat,
                                         settings.doSizeToFit
                                     );
                                 }
@@ -893,16 +635,16 @@ namespace ArtScan.CoreModule
                             resultMat.setTo(new Scalar(0, 0, 0, 0));
 
                             if (displayOptions.showEdges) //yMat is now Canny edges, see above
-                                Imgproc.cvtColor(yMat, rgbaMat4Thread, Imgproc.COLOR_GRAY2RGBA);
+                                Imgproc.cvtColor(yMat, rgbaMat, Imgproc.COLOR_GRAY2RGBA);
 
                             if (displayOptions.doDrawPaperEdge)
                             {
                                 ResizeContour(paperMaxAreaContour, settings.preProcessingSizeFactor);
-                                Imgproc.drawContours(rgbaMat4Thread, new List<MatOfPoint> { paperMaxAreaContour }, -1, DEBUG_PAPER_EDGE_COLOR, 4);
+                                Imgproc.drawContours(rgbaMat, new List<MatOfPoint> { paperMaxAreaContour }, -1, DEBUG_PAPER_EDGE_COLOR, 4);
                             }
 
                             PresentationUtils.ScaleUpAndDisplayMat(
-                                rgbaMat4Thread, resultMat,
+                                rgbaMat, resultMat,
                                 settings.doSizeToFit
                             );
                         }
@@ -912,24 +654,18 @@ namespace ArtScan.CoreModule
                         resultMat.setTo(new Scalar(0, 0, 0, 0));
 
                         if (displayOptions.showEdges) //yMat is now Canny edges, see above
-                            Imgproc.cvtColor(yMat, rgbaMat4Thread, Imgproc.COLOR_GRAY2RGBA);
+                            Imgproc.cvtColor(yMat, rgbaMat, Imgproc.COLOR_GRAY2RGBA);
 
                         PresentationUtils.ScaleUpAndDisplayMat(
-                            rgbaMat4Thread, resultMat,
+                            rgbaMat, resultMat,
                             settings.doSizeToFit
                         );
                     }
                 }
 
             }
-                         
-        }
 
-        //private void ClearPaperAreaRunningAverage()
-        //{
-        //    paperFramesAtRunningAverageArea = 0;
-        //    runningAveragePaperArea = 0.0d;
-        //}
+        }
 
         private void CalculateConsistentPaperFound()
         {
@@ -983,7 +719,7 @@ namespace ArtScan.CoreModule
 
         private void CalculatePaperCenterRunningAverage()
         {
-            if (Vector2.Distance(currentPaperCenter,runningAveragePaperCenter) > 100)
+            if (Vector2.Distance(currentPaperCenter, runningAveragePaperCenter) > 100)
             {
                 paperAtRunningAverageCenter = 1;
                 runningAveragePaperCenter = currentPaperCenter;
@@ -1037,7 +773,7 @@ namespace ArtScan.CoreModule
         void OnDestroy()
         {
             if (webCamTextureToMatHelper != null)
-                webCamTextureToMatHelper.Dispose ();
+                webCamTextureToMatHelper.Dispose();
 
 #if UNITY_WEBGL
             if (getFilePath_Coroutine != null) {
@@ -1046,9 +782,9 @@ namespace ArtScan.CoreModule
             }
 #endif
         }
-
-      
     }
+
 }
+
 
 #endif

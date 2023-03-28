@@ -764,7 +764,6 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 }
             }
 
-
             RLMGLogger.Instance.Log("NEW webCamTexture ID: " + webCamTexture.GetInstanceID(), MESSAGETYPE.INFO);
 
             // Starts the camera
@@ -783,11 +782,11 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 }
 
                 // //use this for simulating a timeout
-                //initFrameCount++;
-                //yield return null;
-                //continue;
+/*                initFrameCount++;
+                yield return null;
+                continue;*/
 
-                else
+                /*else*/
                 if (webCamTexture.didUpdateThisFrame)
                 {
                     string deviceInfo = "WebCamTextureToMatHelper: " + "Devicename:" + webCamTexture.deviceName + " name:" + webCamTexture.name + " width:" + webCamTexture.width + " height:" + webCamTexture.height + " fps:" + webCamTexture.requestedFPS

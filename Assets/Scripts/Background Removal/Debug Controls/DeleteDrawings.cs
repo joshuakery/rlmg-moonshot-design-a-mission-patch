@@ -117,6 +117,7 @@ namespace ArtScan.ScanSavingModule
                             string filepath = Path.Join(dirPath, filename);
 
                             Texture2D scanTexture = ScanSaving.GetTexture2DFromImageFile(filepath, settings, webCamTextureToMatHelper);
+                            scanTexture.name = "Delete Drawings Loaded Texture";
 
                             scans[i] = scanTexture;
                         }

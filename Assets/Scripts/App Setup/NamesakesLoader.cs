@@ -35,6 +35,7 @@ namespace ArtScan.NamesakesModule
         private Texture2D GetTexture2DFromPath(string path)
         {
             Texture2D tex = new Texture2D(2,2);
+            tex.name = "Config texture for " + path;
 
             try
             {

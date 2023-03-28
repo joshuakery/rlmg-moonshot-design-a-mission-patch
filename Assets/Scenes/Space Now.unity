@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3946,6 +3946,8 @@ MonoBehaviour:
     flipVertical: 0
     flipHorizontal: 0
     requestedFPS: 30
+    preProcessingSizeFactor: 2
+    postProcessingSizeFactor: 2
     brightness: 0
     contrast: 0
     edgeFindingMethod: 0
@@ -3970,6 +3972,8 @@ MonoBehaviour:
       doAttemptCameraRestartIfMissingDevice: 1
       doAttemptCameraRestartIfFrozenUpdateCount: 1
       doAttemptCameraRestartIfWrongCamera: 0
+      doSaveCurrentAndLastWebCamTexturesToDisk: 0
+      doVerboseLoggingOfDisconnectHandler: 0
       refinedScanTimeout: 5
 --- !u!1 &1328863885
 GameObject:
@@ -14830,10 +14834,6 @@ PrefabInstance:
     - target: {fileID: 8755140665223351373, guid: 790eb1350eeb34ebe826b6f5666e9e95, type: 3}
       propertyPath: m_Name
       value: Camera Disconnect Display
-      objectReference: {fileID: 0}
-    - target: {fileID: 8755140665223351374, guid: 790eb1350eeb34ebe826b6f5666e9e95, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 790eb1350eeb34ebe826b6f5666e9e95, type: 3}

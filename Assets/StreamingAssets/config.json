@@ -37,8 +37,10 @@
     "errorDisplaySettings": {
         "checkForDisconnectInterval": 15,
         "doAttemptCameraRestartIfMissingDevice": true,
-	"doAttemptCameraRestartIfFrozenUpdateCount": true,
+	    "doAttemptCameraRestartIfFrozenUpdateCount": true,
         "refinedScanTimeout": 3.0,
-	"doAttemptCameraRestartIfWrongCamera": true
+        "doAttemptCameraRestartIfWrongCamera": true,
+        "doSaveCurrentAndLastWebCamTexturesToDisk": false,
+        "doVerboseLoggingOfDisconnectHandler": true
     }
 }

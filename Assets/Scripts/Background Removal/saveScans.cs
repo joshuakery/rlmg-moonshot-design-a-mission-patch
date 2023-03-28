@@ -45,6 +45,7 @@ namespace ArtScan.ScanSavingModule
                     );
 
                 Texture2D scanTexture = new Texture2D(displayMat.cols(), displayMat.rows(), TextureFormat.RGBA32, false);
+                scanTexture.name = "Save Scans Texture Loaded From File";
                 Utils.fastMatToTexture2D(displayMat,scanTexture,true,0,true);
                 return scanTexture;
             }
@@ -188,7 +189,10 @@ namespace ArtScan.ScanSavingModule
                 if (tex != null)
                     bytes = tex.EncodeToPNG();
                 else
+                {
                     bytes = new Texture2D(2, 2).EncodeToPNG();
+                }
+                    
 
                 File.WriteAllBytes(fullPath, bytes);
             }

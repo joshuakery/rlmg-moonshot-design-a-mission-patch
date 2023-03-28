@@ -7,11 +7,13 @@ namespace ArtScan.ErrorDisplayModule
 
         public bool doAttemptCameraRestartIfMissingDevice = true;
 
-        //public float cameraDisconnectTimeout = 10f;
-
         public bool doAttemptCameraRestartIfFrozenUpdateCount = true;
 
         public bool doAttemptCameraRestartIfWrongCamera = false;
+
+        public bool doSaveCurrentAndLastWebCamTexturesToDisk = false;
+
+        public bool doVerboseLoggingOfDisconnectHandler = false;
 
         public float refinedScanTimeout = 5f;
     }

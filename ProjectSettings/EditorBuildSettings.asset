@@ -39,15 +39,21 @@ EditorBuildSettings:
     path: Assets/Scenes/Debug2.unity
     guid: da8966d540bf6427c9094ec36d58fd43
   - enabled: 0
-    path: Assets/Scenes/Debug_LiveFeedback.unity
-    guid: 2cfa1a113cb13418294bd713e405ce63
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: Assets/Scenes/Debug_LiveFeedback_RefinedScan.unity
     guid: 81ba38e6c793043e1af67314c2a9000f
   - enabled: 0
-    path: Assets/Scenes/Debug_RefinedScan.unity
-    guid: 229f986d430ab49cf800c6c1c0e4bfc3
-  - enabled: 1
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/My Plugins/OpenCVForUnity/Examples/Advanced/DocumentScannerExample/DocumentScannerExample.unity
     guid: 78d803b688d792c4db6e27ebfa5da6d4
+  - enabled: 1
+    path: Assets/Scenes/Debug_LiveFeedback_RefinedScan_Synchronous.unity
+    guid: 996bd922d8d30384f88ed84a7f0cc352
+  - enabled: 0
+    path: Assets/Scenes/MemoryLeak.unity
+    guid: df0847e4dd33ba74d807ca3e9ab90d7a
   m_configObjects: {}
