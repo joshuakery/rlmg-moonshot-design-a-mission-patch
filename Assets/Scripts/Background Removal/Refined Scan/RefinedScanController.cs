@@ -29,11 +29,7 @@ namespace ArtScan.CoreModule
         private AsynchronousRemoveBackground asynchronousRemoveBackground;
         // TODO remove the model reference from the asyncRmBg for modularity
 
-        [SerializeField]
         private myWebCamTextureToMatHelper webCamTextureToMatHelper;
-
-        [SerializeField]
-        private CamConfigLoader configLoader;
 
         public RefinedScanThread refinedScanThread;
 
@@ -59,6 +55,7 @@ namespace ArtScan.CoreModule
         [SerializeField]
         private GameEvent ScanAgain;
 
+        private Texture2D scanTexture;
         public Mat previewMat;
 
         [SerializeField]
@@ -76,11 +73,36 @@ namespace ArtScan.CoreModule
         {
             if (asynchronousRemoveBackground == null)
                 asynchronousRemoveBackground = FindObjectOfType<AsynchronousRemoveBackground>();
+
+            if (webCamTextureToMatHelper == null)
+                webCamTextureToMatHelper = FindObjectOfType<myWebCamTextureToMatHelper>();
         }
 
         private void Start()
         {
             previewMat = new Mat();
+
+            RecreateScanTexture();
+        }
+
+        private void RecreateScanTexture()
+        {
+            if (scanTexture != null)
+            {
+                Destroy(scanTexture);
+                scanTexture = null;
+            }
+
+            if (settings != null)
+            {
+                scanTexture = new Texture2D(settings.targetWidth, settings.targetHeight, TextureFormat.RGBA32, false);
+            }
+            else
+            {
+                scanTexture = new Texture2D(2, 2, TextureFormat.RGBA32, false);
+            }
+            
+            scanTexture.name = "Scan Texture for Refined Scan";
         }
 
         private void OnDestroy()
@@ -98,6 +120,13 @@ namespace ArtScan.CoreModule
             {
                 previewMat.Dispose();
             }
+
+            if (scanTexture != null)
+            {
+                Destroy(scanTexture);
+                scanTexture = null;
+            }
+                
         }
 
         /// <summary>
@@ -130,6 +159,11 @@ namespace ArtScan.CoreModule
             StartCoroutine(DoRefinedScan(rgbaMat));
         }
 
+        private bool ScanTextureDiffersFromTargetSize()
+        {
+            return scanTexture.width != settings.targetWidth || scanTexture.height != settings.targetHeight;
+        }
+
         private IEnumerator DoRefinedScan(Mat targetMat)
         {
             using (Mat displayMat = new Mat(settings.targetHeight, settings.targetWidth, targetMat.type(), new Scalar(0, 0, 0, 0)),
@@ -138,8 +172,7 @@ namespace ArtScan.CoreModule
             {
                 DateTime before = DateTime.Now;
 
-                Texture2D scanTexture = new Texture2D(displayMat.cols(), displayMat.rows(), TextureFormat.RGBA32, false);
-                scanTexture.name = "Scan Texture for Refined Scan";
+                if (ScanTextureDiffersFromTargetSize()) { RecreateScanTexture(); }
 
                 MatOfPoint maxAreaContourDest = new MatOfPoint();
 

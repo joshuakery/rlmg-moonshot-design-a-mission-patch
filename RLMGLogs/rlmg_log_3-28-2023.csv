@@ -1,0 +1,1169 @@
+Timestamp, Message
+2023/03/28 13:45:28,Resetting timeout to 1:45:43 PM
+2023/03/28 13:45:28,Application Awake - version #2023.1.18
+2023/03/28 13:45:28,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/03/28 13:45:28,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/03/28 13:45:28,GameEvent raised: ConfigLoaded
+2023/03/28 13:45:28,Initializing from myWebCamTextureToMatHelper...
+2023/03/28 13:45:28,Successfully found correct camera.
+2023/03/28 13:45:28,NEW webCamTexture ID: -136
+2023/03/28 13:45:29,Resetting update count...
+2023/03/28 13:45:29,Setting should be playing to true...
+2023/03/28 13:45:29,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/03/28 13:45:29,Calling OnWebCamTextureToMatHelperInitialized...
+2023/03/28 13:45:29,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/03/28 13:45:29,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/03/28 13:45:29,Resetting update count...
+2023/03/28 13:45:43,Resetting timeout to 1:45:58 PM
+2023/03/28 13:45:43,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 412; shouldBePlaying: True; saved webCamTextureID: -136; current ID: -136; lastUpdateCount: -1
+2023/03/28 13:45:58,Resetting timeout to 1:46:13 PM
+2023/03/28 13:45:58,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 850; shouldBePlaying: True; saved webCamTextureID: -136; current ID: -136; lastUpdateCount: 412
+2023/03/28 13:46:06,Re-initializing HD Pro Webcam C920...
+2023/03/28 13:46:06,Initializing from myWebCamTextureToMatHelper...
+2023/03/28 13:46:06,Releasing resources...
+2023/03/28 13:46:06,OnWebCamTextureToMatHelperDisposed
+2023/03/28 13:46:06,Successfully found correct camera.
+2023/03/28 13:46:06,NEW webCamTexture ID: -140
+2023/03/28 13:46:07,Resetting update count...
+2023/03/28 13:46:07,Setting should be playing to true...
+2023/03/28 13:46:07,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/03/28 13:46:07,Calling OnWebCamTextureToMatHelperInitialized...
+2023/03/28 13:46:07,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/03/28 13:46:07,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/03/28 13:46:07,Resetting update count...
+2023/03/28 13:46:13,Resetting timeout to 1:46:28 PM
+2023/03/28 13:46:13,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 172; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: -1
+2023/03/28 13:46:28,Resetting timeout to 1:46:43 PM
+2023/03/28 13:46:28,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 622; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 172
+2023/03/28 13:46:43,Resetting timeout to 1:46:58 PM
+2023/03/28 13:46:43,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1072; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 622
+2023/03/28 13:46:58,Resetting timeout to 1:47:13 PM
+2023/03/28 13:46:58,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1515; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 1072
+2023/03/28 13:46:59,Refined scan thread successfully created and executed in 404.7086 milliseconds.
+2023/03/28 13:46:59,GameEvent raised: NewPreview
+2023/03/28 13:46:59,Refined scan successfully copied to preview mats in 1.999 milliseconds.
+2023/03/28 13:47:01,Refined scan thread successfully created and executed in 339.0152 milliseconds.
+2023/03/28 13:47:01,GameEvent raised: NewPreview
+2023/03/28 13:47:01,Refined scan successfully copied to preview mats in 1.0008 milliseconds.
+2023/03/28 13:47:02,Refined scan thread successfully created and executed in 336.2144 milliseconds.
+2023/03/28 13:47:02,GameEvent raised: NewPreview
+2023/03/28 13:47:02,Refined scan successfully copied to preview mats in 2.0006 milliseconds.
+2023/03/28 13:47:03,Refined scan thread successfully created and executed in 314.2102 milliseconds.
+2023/03/28 13:47:03,GameEvent raised: NewPreview
+2023/03/28 13:47:03,Refined scan successfully copied to preview mats in 1.5075 milliseconds.
+2023/03/28 13:47:03,Refined scan thread successfully created and executed in 345.7988 milliseconds.
+2023/03/28 13:47:03,GameEvent raised: NewPreview
+2023/03/28 13:47:03,Refined scan successfully copied to preview mats in 1.0462 milliseconds.
+2023/03/28 13:47:04,Refined scan thread successfully created and executed in 321.5717 milliseconds.
+2023/03/28 13:47:04,GameEvent raised: NewPreview
+2023/03/28 13:47:04,Refined scan successfully copied to preview mats in 0 milliseconds.
+2023/03/28 13:47:05,Refined scan thread successfully created and executed in 314.9355 milliseconds.
+2023/03/28 13:47:05,GameEvent raised: NewPreview
+2023/03/28 13:47:05,Refined scan successfully copied to preview mats in 1.9987 milliseconds.
+2023/03/28 13:47:05,Refined scan thread successfully created and executed in 328.2278 milliseconds.
+2023/03/28 13:47:05,GameEvent raised: NewPreview
+2023/03/28 13:47:05,Refined scan successfully copied to preview mats in 1.001 milliseconds.
+2023/03/28 13:47:06,Refined scan thread successfully created and executed in 316.6254 milliseconds.
+2023/03/28 13:47:06,GameEvent raised: NewPreview
+2023/03/28 13:47:06,Refined scan successfully copied to preview mats in 1.1785 milliseconds.
+2023/03/28 13:47:07,Refined scan thread successfully created and executed in 321.6632 milliseconds.
+2023/03/28 13:47:07,GameEvent raised: NewPreview
+2023/03/28 13:47:07,Refined scan successfully copied to preview mats in 1.9991 milliseconds.
+2023/03/28 13:47:08,Refined scan thread successfully created and executed in 345.7055 milliseconds.
+2023/03/28 13:47:08,GameEvent raised: NewPreview
+2023/03/28 13:47:08,Refined scan successfully copied to preview mats in 1.5158 milliseconds.
+2023/03/28 13:47:08,Refined scan thread successfully created and executed in 344.8611 milliseconds.
+2023/03/28 13:47:08,GameEvent raised: NewPreview
+2023/03/28 13:47:08,Refined scan successfully copied to preview mats in 1.9908 milliseconds.
+2023/03/28 13:47:09,Refined scan thread successfully created and executed in 326.7909 milliseconds.
+2023/03/28 13:47:09,GameEvent raised: NewPreview
+2023/03/28 13:47:09,Refined scan successfully copied to preview mats in 2.0033 milliseconds.
+2023/03/28 13:47:10,Refined scan thread successfully created and executed in 317.5924 milliseconds.
+2023/03/28 13:47:10,GameEvent raised: NewPreview
+2023/03/28 13:47:10,Refined scan successfully copied to preview mats in 1.9997 milliseconds.
+2023/03/28 13:47:10,Refined scan thread successfully created and executed in 309.6665 milliseconds.
+2023/03/28 13:47:10,GameEvent raised: NewPreview
+2023/03/28 13:47:10,Refined scan successfully copied to preview mats in 1.9961 milliseconds.
+2023/03/28 13:47:11,Refined scan thread successfully created and executed in 326.3633 milliseconds.
+2023/03/28 13:47:11,GameEvent raised: NewPreview
+2023/03/28 13:47:11,Refined scan successfully copied to preview mats in 0.9997 milliseconds.
+2023/03/28 13:47:12,Refined scan thread successfully created and executed in 329.0822 milliseconds.
+2023/03/28 13:47:12,GameEvent raised: NewPreview
+2023/03/28 13:47:12,Refined scan successfully copied to preview mats in 2.0038 milliseconds.
+2023/03/28 13:47:12,Refined scan thread successfully created and executed in 339.6956 milliseconds.
+2023/03/28 13:47:12,GameEvent raised: NewPreview
+2023/03/28 13:47:12,Refined scan successfully copied to preview mats in 1.0064 milliseconds.
+2023/03/28 13:47:13,Resetting timeout to 1:47:28 PM
+2023/03/28 13:47:13,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1965; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 1515
+2023/03/28 13:47:13,Refined scan thread successfully created and executed in 361.6963 milliseconds.
+2023/03/28 13:47:13,GameEvent raised: NewPreview
+2023/03/28 13:47:13,Refined scan successfully copied to preview mats in 2.0027 milliseconds.
+2023/03/28 13:47:14,Refined scan thread successfully created and executed in 357.0601 milliseconds.
+2023/03/28 13:47:14,GameEvent raised: NewPreview
+2023/03/28 13:47:14,Refined scan successfully copied to preview mats in 2.0005 milliseconds.
+2023/03/28 13:47:14,Refined scan thread successfully created and executed in 335.4734 milliseconds.
+2023/03/28 13:47:14,GameEvent raised: NewPreview
+2023/03/28 13:47:14,Refined scan successfully copied to preview mats in 1.9985 milliseconds.
+2023/03/28 13:47:15,Refined scan thread successfully created and executed in 376.038 milliseconds.
+2023/03/28 13:47:15,GameEvent raised: NewPreview
+2023/03/28 13:47:15,Refined scan successfully copied to preview mats in 2.5121 milliseconds.
+2023/03/28 13:47:16,Refined scan thread successfully created and executed in 350.1047 milliseconds.
+2023/03/28 13:47:16,GameEvent raised: NewPreview
+2023/03/28 13:47:16,Refined scan successfully copied to preview mats in 2.001 milliseconds.
+2023/03/28 13:47:17,Refined scan thread successfully created and executed in 378.6952 milliseconds.
+2023/03/28 13:47:17,GameEvent raised: NewPreview
+2023/03/28 13:47:17,Refined scan successfully copied to preview mats in 1.0014 milliseconds.
+2023/03/28 13:47:17,Refined scan thread successfully created and executed in 347.0278 milliseconds.
+2023/03/28 13:47:17,GameEvent raised: NewPreview
+2023/03/28 13:47:17,Refined scan successfully copied to preview mats in 0.9995 milliseconds.
+2023/03/28 13:47:18,Refined scan thread successfully created and executed in 339.1763 milliseconds.
+2023/03/28 13:47:18,GameEvent raised: NewPreview
+2023/03/28 13:47:18,Refined scan successfully copied to preview mats in 2.0005 milliseconds.
+2023/03/28 13:47:19,Refined scan thread successfully created and executed in 360.4614 milliseconds.
+2023/03/28 13:47:19,GameEvent raised: NewPreview
+2023/03/28 13:47:19,Refined scan successfully copied to preview mats in 0.5062 milliseconds.
+2023/03/28 13:47:19,Refined scan thread successfully created and executed in 325.5863 milliseconds.
+2023/03/28 13:47:19,GameEvent raised: NewPreview
+2023/03/28 13:47:19,Refined scan successfully copied to preview mats in 1.9999 milliseconds.
+2023/03/28 13:47:20,Refined scan thread successfully created and executed in 315.7017 milliseconds.
+2023/03/28 13:47:20,GameEvent raised: NewPreview
+2023/03/28 13:47:20,Refined scan successfully copied to preview mats in 1.5099 milliseconds.
+2023/03/28 13:47:21,Refined scan thread successfully created and executed in 333.4855 milliseconds.
+2023/03/28 13:47:21,GameEvent raised: NewPreview
+2023/03/28 13:47:21,Refined scan successfully copied to preview mats in 1.0019 milliseconds.
+2023/03/28 13:47:21,Refined scan thread successfully created and executed in 321.0303 milliseconds.
+2023/03/28 13:47:21,GameEvent raised: NewPreview
+2023/03/28 13:47:21,Refined scan successfully copied to preview mats in 2.0141 milliseconds.
+2023/03/28 13:47:22,Refined scan thread successfully created and executed in 328.3718 milliseconds.
+2023/03/28 13:47:22,GameEvent raised: NewPreview
+2023/03/28 13:47:22,Refined scan successfully copied to preview mats in 0.9995 milliseconds.
+2023/03/28 13:47:23,Refined scan thread successfully created and executed in 343.7067 milliseconds.
+2023/03/28 13:47:23,GameEvent raised: NewPreview
+2023/03/28 13:47:23,Refined scan successfully copied to preview mats in 0.9971 milliseconds.
+2023/03/28 13:47:23,Refined scan thread successfully created and executed in 341.5879 milliseconds.
+2023/03/28 13:47:23,GameEvent raised: NewPreview
+2023/03/28 13:47:23,Refined scan successfully copied to preview mats in 0.9944 milliseconds.
+2023/03/28 13:47:24,Refined scan thread successfully created and executed in 331.8989 milliseconds.
+2023/03/28 13:47:24,GameEvent raised: NewPreview
+2023/03/28 13:47:24,Refined scan successfully copied to preview mats in 2.0003 milliseconds.
+2023/03/28 13:47:25,Refined scan thread successfully created and executed in 315.3277 milliseconds.
+2023/03/28 13:47:25,GameEvent raised: NewPreview
+2023/03/28 13:47:25,Refined scan successfully copied to preview mats in 0.9994 milliseconds.
+2023/03/28 13:47:25,Refined scan thread successfully created and executed in 320.3592 milliseconds.
+2023/03/28 13:47:25,GameEvent raised: NewPreview
+2023/03/28 13:47:25,Refined scan successfully copied to preview mats in 3.0006 milliseconds.
+2023/03/28 13:47:26,Refined scan thread successfully created and executed in 316.7367 milliseconds.
+2023/03/28 13:47:26,GameEvent raised: NewPreview
+2023/03/28 13:47:26,Refined scan successfully copied to preview mats in 0.9995 milliseconds.
+2023/03/28 13:47:27,Refined scan thread successfully created and executed in 331.726 milliseconds.
+2023/03/28 13:47:27,GameEvent raised: NewPreview
+2023/03/28 13:47:27,Refined scan successfully copied to preview mats in 1.0033 milliseconds.
+2023/03/28 13:47:27,Refined scan thread successfully created and executed in 326.3515 milliseconds.
+2023/03/28 13:47:27,GameEvent raised: NewPreview
+2023/03/28 13:47:27,Refined scan successfully copied to preview mats in 1.1645 milliseconds.
+2023/03/28 13:47:28,Resetting timeout to 1:47:43 PM
+2023/03/28 13:47:28,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2415; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 1965
+2023/03/28 13:47:28,Refined scan thread successfully created and executed in 329.5978 milliseconds.
+2023/03/28 13:47:28,GameEvent raised: NewPreview
+2023/03/28 13:47:28,Refined scan successfully copied to preview mats in 1.0211 milliseconds.
+2023/03/28 13:47:29,Refined scan thread successfully created and executed in 359.8155 milliseconds.
+2023/03/28 13:47:29,GameEvent raised: NewPreview
+2023/03/28 13:47:29,Refined scan successfully copied to preview mats in 1.5184 milliseconds.
+2023/03/28 13:47:30,Refined scan thread successfully created and executed in 341.3391 milliseconds.
+2023/03/28 13:47:30,GameEvent raised: NewPreview
+2023/03/28 13:47:30,Refined scan successfully copied to preview mats in 2.0017 milliseconds.
+2023/03/28 13:47:43,Resetting timeout to 1:47:58 PM
+2023/03/28 13:47:43,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2857; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 2415
+2023/03/28 13:47:58,Resetting timeout to 1:48:13 PM
+2023/03/28 13:47:58,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3306; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 2857
+2023/03/28 13:48:13,Resetting timeout to 1:48:28 PM
+2023/03/28 13:48:13,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3757; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 3306
+2023/03/28 13:48:28,Resetting timeout to 1:48:43 PM
+2023/03/28 13:48:28,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 4207; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 3757
+2023/03/28 13:48:43,Resetting timeout to 1:48:58 PM
+2023/03/28 13:48:43,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 4657; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 4207
+2023/03/28 13:48:58,Resetting timeout to 1:49:13 PM
+2023/03/28 13:48:58,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 5107; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 4657
+2023/03/28 13:49:13,Resetting timeout to 1:49:28 PM
+2023/03/28 13:49:13,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 5557; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 5107
+2023/03/28 13:49:28,Resetting timeout to 1:49:43 PM
+2023/03/28 13:49:28,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 6008; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 5557
+2023/03/28 13:49:43,Resetting timeout to 1:49:58 PM
+2023/03/28 13:49:43,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 6457; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 6008
+2023/03/28 13:49:58,Resetting timeout to 1:50:13 PM
+2023/03/28 13:49:58,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 6907; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 6457
+2023/03/28 13:50:13,Resetting timeout to 1:50:28 PM
+2023/03/28 13:50:13,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 7358; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 6907
+2023/03/28 13:50:28,Resetting timeout to 1:50:43 PM
+2023/03/28 13:50:28,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 7808; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 7358
+2023/03/28 13:50:43,Resetting timeout to 1:50:58 PM
+2023/03/28 13:50:43,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 8258; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 7808
+2023/03/28 13:50:58,Resetting timeout to 1:51:13 PM
+2023/03/28 13:50:58,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 8708; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 8258
+2023/03/28 13:51:13,Resetting timeout to 1:51:28 PM
+2023/03/28 13:51:13,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 9158; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 8708
+2023/03/28 13:51:28,Resetting timeout to 1:51:43 PM
+2023/03/28 13:51:28,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 9609; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 9158
+2023/03/28 13:51:43,Resetting timeout to 1:51:58 PM
+2023/03/28 13:51:43,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 10058; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 9609
+2023/03/28 13:51:58,Resetting timeout to 1:52:13 PM
+2023/03/28 13:51:58,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 10509; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 10058
+2023/03/28 13:52:13,Resetting timeout to 1:52:28 PM
+2023/03/28 13:52:13,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 10959; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 10509
+2023/03/28 13:52:28,Resetting timeout to 1:52:43 PM
+2023/03/28 13:52:28,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 11409; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 10959
+2023/03/28 13:52:43,Resetting timeout to 1:52:58 PM
+2023/03/28 13:52:43,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 11859; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 11409
+2023/03/28 13:52:56,Refined scan thread successfully created and executed in 356.2073 milliseconds.
+2023/03/28 13:52:56,GameEvent raised: NewPreview
+2023/03/28 13:52:56,Refined scan successfully copied to preview mats in 2.0003 milliseconds.
+2023/03/28 13:52:57,Refined scan thread successfully created and executed in 352.7963 milliseconds.
+2023/03/28 13:52:57,GameEvent raised: NewPreview
+2023/03/28 13:52:57,Refined scan successfully copied to preview mats in 0.9998 milliseconds.
+2023/03/28 13:52:58,Resetting timeout to 1:53:13 PM
+2023/03/28 13:52:58,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 12279; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 11859
+2023/03/28 13:52:58,Refined scan thread successfully created and executed in 359.9496 milliseconds.
+2023/03/28 13:52:58,GameEvent raised: NewPreview
+2023/03/28 13:52:58,Refined scan successfully copied to preview mats in 1.0154 milliseconds.
+2023/03/28 13:52:59,Refined scan thread successfully created and executed in 353.2057 milliseconds.
+2023/03/28 13:52:59,GameEvent raised: NewPreview
+2023/03/28 13:52:59,Refined scan successfully copied to preview mats in 2.0435 milliseconds.
+2023/03/28 13:52:59,Refined scan thread successfully created and executed in 346.7038 milliseconds.
+2023/03/28 13:52:59,GameEvent raised: NewPreview
+2023/03/28 13:52:59,Refined scan successfully copied to preview mats in 2.0128 milliseconds.
+2023/03/28 13:53:00,Refined scan thread successfully created and executed in 335.5678 milliseconds.
+2023/03/28 13:53:00,GameEvent raised: NewPreview
+2023/03/28 13:53:00,Refined scan successfully copied to preview mats in 2.0023 milliseconds.
+2023/03/28 13:53:01,Refined scan thread successfully created and executed in 352.0932 milliseconds.
+2023/03/28 13:53:01,GameEvent raised: NewPreview
+2023/03/28 13:53:01,Refined scan successfully copied to preview mats in 1.0049 milliseconds.
+2023/03/28 13:53:02,Refined scan thread successfully created and executed in 358.0905 milliseconds.
+2023/03/28 13:53:02,GameEvent raised: NewPreview
+2023/03/28 13:53:02,Refined scan successfully copied to preview mats in 2.0028 milliseconds.
+2023/03/28 13:53:02,Refined scan thread successfully created and executed in 369.2901 milliseconds.
+2023/03/28 13:53:02,GameEvent raised: NewPreview
+2023/03/28 13:53:02,Refined scan successfully copied to preview mats in 2.0041 milliseconds.
+2023/03/28 13:53:03,Refined scan thread successfully created and executed in 354.0329 milliseconds.
+2023/03/28 13:53:03,GameEvent raised: NewPreview
+2023/03/28 13:53:03,Refined scan successfully copied to preview mats in 3.0085 milliseconds.
+2023/03/28 13:53:04,Refined scan thread successfully created and executed in 371.553 milliseconds.
+2023/03/28 13:53:04,GameEvent raised: NewPreview
+2023/03/28 13:53:04,Refined scan successfully copied to preview mats in 1.0003 milliseconds.
+2023/03/28 13:53:05,Refined scan thread successfully created and executed in 382.9006 milliseconds.
+2023/03/28 13:53:05,GameEvent raised: NewPreview
+2023/03/28 13:53:05,Refined scan successfully copied to preview mats in 1.9994 milliseconds.
+2023/03/28 13:53:06,Refined scan thread successfully created and executed in 361.9363 milliseconds.
+2023/03/28 13:53:06,GameEvent raised: NewPreview
+2023/03/28 13:53:06,Refined scan successfully copied to preview mats in 1.0037 milliseconds.
+2023/03/28 13:53:07,Refined scan thread successfully created and executed in 352.3101 milliseconds.
+2023/03/28 13:53:07,GameEvent raised: NewPreview
+2023/03/28 13:53:07,Refined scan successfully copied to preview mats in 2.5151 milliseconds.
+2023/03/28 13:53:08,Refined scan thread successfully created and executed in 346.6855 milliseconds.
+2023/03/28 13:53:08,GameEvent raised: NewPreview
+2023/03/28 13:53:08,Refined scan successfully copied to preview mats in 0.9998 milliseconds.
+2023/03/28 13:53:09,Refined scan thread successfully created and executed in 352.7997 milliseconds.
+2023/03/28 13:53:09,GameEvent raised: NewPreview
+2023/03/28 13:53:09,Refined scan successfully copied to preview mats in 2.5171 milliseconds.
+2023/03/28 13:53:09,Refined scan thread successfully created and executed in 350.2275 milliseconds.
+2023/03/28 13:53:09,GameEvent raised: NewPreview
+2023/03/28 13:53:09,Refined scan successfully copied to preview mats in 1 milliseconds.
+2023/03/28 13:53:10,Refined scan thread successfully created and executed in 350.453 milliseconds.
+2023/03/28 13:53:10,GameEvent raised: NewPreview
+2023/03/28 13:53:10,Refined scan successfully copied to preview mats in 1.9988 milliseconds.
+2023/03/28 13:53:11,Refined scan thread successfully created and executed in 356.335 milliseconds.
+2023/03/28 13:53:11,GameEvent raised: NewPreview
+2023/03/28 13:53:11,Refined scan successfully copied to preview mats in 1.0056 milliseconds.
+2023/03/28 13:53:12,Refined scan thread successfully created and executed in 356.5584 milliseconds.
+2023/03/28 13:53:12,GameEvent raised: NewPreview
+2023/03/28 13:53:12,Refined scan successfully copied to preview mats in 1.9979 milliseconds.
+2023/03/28 13:53:13,Resetting timeout to 1:53:28 PM
+2023/03/28 13:53:13,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 12729; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 12279
+2023/03/28 13:53:13,Refined scan thread successfully created and executed in 362.61 milliseconds.
+2023/03/28 13:53:13,GameEvent raised: NewPreview
+2023/03/28 13:53:13,Refined scan successfully copied to preview mats in 1.5618 milliseconds.
+2023/03/28 13:53:13,Refined scan thread successfully created and executed in 334.8232 milliseconds.
+2023/03/28 13:53:13,GameEvent raised: NewPreview
+2023/03/28 13:53:13,Refined scan successfully copied to preview mats in 1.0005 milliseconds.
+2023/03/28 13:53:15,Refined scan thread successfully created and executed in 342.391 milliseconds.
+2023/03/28 13:53:15,GameEvent raised: NewPreview
+2023/03/28 13:53:15,Refined scan successfully copied to preview mats in 1.0036 milliseconds.
+2023/03/28 13:53:15,Refined scan thread successfully created and executed in 335.0595 milliseconds.
+2023/03/28 13:53:15,GameEvent raised: NewPreview
+2023/03/28 13:53:15,Refined scan successfully copied to preview mats in 2.161 milliseconds.
+2023/03/28 13:53:16,Refined scan thread successfully created and executed in 337.983 milliseconds.
+2023/03/28 13:53:16,GameEvent raised: NewPreview
+2023/03/28 13:53:16,Refined scan successfully copied to preview mats in 2.6813 milliseconds.
+2023/03/28 13:53:17,Refined scan thread successfully created and executed in 319.8232 milliseconds.
+2023/03/28 13:53:17,GameEvent raised: NewPreview
+2023/03/28 13:53:17,Refined scan successfully copied to preview mats in 2.0003 milliseconds.
+2023/03/28 13:53:18,Refined scan thread successfully created and executed in 337.6118 milliseconds.
+2023/03/28 13:53:18,GameEvent raised: NewPreview
+2023/03/28 13:53:18,Refined scan successfully copied to preview mats in 1.0299 milliseconds.
+2023/03/28 13:53:19,Refined scan thread successfully created and executed in 385.4701 milliseconds.
+2023/03/28 13:53:19,GameEvent raised: NewPreview
+2023/03/28 13:53:19,Refined scan successfully copied to preview mats in 0.9972 milliseconds.
+2023/03/28 13:53:19,Refined scan thread successfully created and executed in 339.7961 milliseconds.
+2023/03/28 13:53:19,GameEvent raised: NewPreview
+2023/03/28 13:53:19,Refined scan successfully copied to preview mats in 2.0036 milliseconds.
+2023/03/28 13:53:20,Refined scan thread successfully created and executed in 330.9832 milliseconds.
+2023/03/28 13:53:20,GameEvent raised: NewPreview
+2023/03/28 13:53:20,Refined scan successfully copied to preview mats in 1.002 milliseconds.
+2023/03/28 13:53:21,Refined scan thread successfully created and executed in 334.9903 milliseconds.
+2023/03/28 13:53:21,GameEvent raised: NewPreview
+2023/03/28 13:53:21,Refined scan successfully copied to preview mats in 2.5128 milliseconds.
+2023/03/28 13:53:22,Refined scan thread successfully created and executed in 325.3748 milliseconds.
+2023/03/28 13:53:22,GameEvent raised: NewPreview
+2023/03/28 13:53:22,Refined scan successfully copied to preview mats in 0.9995 milliseconds.
+2023/03/28 13:53:23,Refined scan thread successfully created and executed in 312.272 milliseconds.
+2023/03/28 13:53:23,GameEvent raised: NewPreview
+2023/03/28 13:53:23,Refined scan successfully copied to preview mats in 1.9994 milliseconds.
+2023/03/28 13:53:23,Refined scan thread successfully created and executed in 329.3743 milliseconds.
+2023/03/28 13:53:23,GameEvent raised: NewPreview
+2023/03/28 13:53:23,Refined scan successfully copied to preview mats in 1.9999 milliseconds.
+2023/03/28 13:53:24,Refined scan thread successfully created and executed in 344.4494 milliseconds.
+2023/03/28 13:53:24,GameEvent raised: NewPreview
+2023/03/28 13:53:24,Refined scan successfully copied to preview mats in 2.01 milliseconds.
+2023/03/28 13:53:25,Refined scan thread successfully created and executed in 354.431 milliseconds.
+2023/03/28 13:53:25,GameEvent raised: NewPreview
+2023/03/28 13:53:25,Refined scan successfully copied to preview mats in 0.9987 milliseconds.
+2023/03/28 13:53:26,Refined scan thread successfully created and executed in 336.8572 milliseconds.
+2023/03/28 13:53:26,GameEvent raised: NewPreview
+2023/03/28 13:53:26,Refined scan successfully copied to preview mats in 1.0011 milliseconds.
+2023/03/28 13:53:26,Refined scan thread successfully created and executed in 329.2272 milliseconds.
+2023/03/28 13:53:26,GameEvent raised: NewPreview
+2023/03/28 13:53:26,Refined scan successfully copied to preview mats in 2.0043 milliseconds.
+2023/03/28 13:53:28,Resetting timeout to 1:53:43 PM
+2023/03/28 13:53:28,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 13179; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 12729
+2023/03/28 13:53:28,Refined scan thread successfully created and executed in 336.5626 milliseconds.
+2023/03/28 13:53:28,GameEvent raised: NewPreview
+2023/03/28 13:53:28,Refined scan successfully copied to preview mats in 2.5166 milliseconds.
+2023/03/28 13:53:28,Refined scan thread successfully created and executed in 326.6886 milliseconds.
+2023/03/28 13:53:28,GameEvent raised: NewPreview
+2023/03/28 13:53:28,Refined scan successfully copied to preview mats in 1.9985 milliseconds.
+2023/03/28 13:53:29,Refined scan thread successfully created and executed in 338.0783 milliseconds.
+2023/03/28 13:53:29,GameEvent raised: NewPreview
+2023/03/28 13:53:29,Refined scan successfully copied to preview mats in 0.9997 milliseconds.
+2023/03/28 13:53:30,Refined scan thread successfully created and executed in 332.3928 milliseconds.
+2023/03/28 13:53:30,GameEvent raised: NewPreview
+2023/03/28 13:53:30,Refined scan successfully copied to preview mats in 1.9994 milliseconds.
+2023/03/28 13:53:31,Refined scan thread successfully created and executed in 358.9791 milliseconds.
+2023/03/28 13:53:31,GameEvent raised: NewPreview
+2023/03/28 13:53:31,Refined scan successfully copied to preview mats in 1.0033 milliseconds.
+2023/03/28 13:53:31,Refined scan thread successfully created and executed in 389.2864 milliseconds.
+2023/03/28 13:53:31,GameEvent raised: NewPreview
+2023/03/28 13:53:31,Refined scan successfully copied to preview mats in 1.5065 milliseconds.
+2023/03/28 13:53:32,Refined scan thread successfully created and executed in 359.8178 milliseconds.
+2023/03/28 13:53:32,GameEvent raised: NewPreview
+2023/03/28 13:53:32,Refined scan successfully copied to preview mats in 1.0029 milliseconds.
+2023/03/28 13:53:33,Refined scan thread successfully created and executed in 336.1801 milliseconds.
+2023/03/28 13:53:33,GameEvent raised: NewPreview
+2023/03/28 13:53:33,Refined scan successfully copied to preview mats in 1.0121 milliseconds.
+2023/03/28 13:53:34,Refined scan thread successfully created and executed in 346.5972 milliseconds.
+2023/03/28 13:53:34,GameEvent raised: NewPreview
+2023/03/28 13:53:34,Refined scan successfully copied to preview mats in 1 milliseconds.
+2023/03/28 13:53:35,Refined scan thread successfully created and executed in 329.4837 milliseconds.
+2023/03/28 13:53:35,GameEvent raised: NewPreview
+2023/03/28 13:53:35,Refined scan successfully copied to preview mats in 1.9991 milliseconds.
+2023/03/28 13:53:35,Refined scan thread successfully created and executed in 330.8539 milliseconds.
+2023/03/28 13:53:35,GameEvent raised: NewPreview
+2023/03/28 13:53:35,Refined scan successfully copied to preview mats in 1.9936 milliseconds.
+2023/03/28 13:53:36,Refined scan thread successfully created and executed in 336.3491 milliseconds.
+2023/03/28 13:53:36,GameEvent raised: NewPreview
+2023/03/28 13:53:36,Refined scan successfully copied to preview mats in 1.9981 milliseconds.
+2023/03/28 13:53:37,Refined scan thread successfully created and executed in 337.1199 milliseconds.
+2023/03/28 13:53:37,GameEvent raised: NewPreview
+2023/03/28 13:53:37,Refined scan successfully copied to preview mats in 1.1506 milliseconds.
+2023/03/28 13:53:38,Refined scan thread successfully created and executed in 350.6548 milliseconds.
+2023/03/28 13:53:38,GameEvent raised: NewPreview
+2023/03/28 13:53:38,Refined scan successfully copied to preview mats in 1.0002 milliseconds.
+2023/03/28 13:53:39,Refined scan thread successfully created and executed in 349.1322 milliseconds.
+2023/03/28 13:53:39,GameEvent raised: NewPreview
+2023/03/28 13:53:39,Refined scan successfully copied to preview mats in 2.0071 milliseconds.
+2023/03/28 13:53:40,Refined scan thread successfully created and executed in 344.1331 milliseconds.
+2023/03/28 13:53:40,GameEvent raised: NewPreview
+2023/03/28 13:53:40,Refined scan successfully copied to preview mats in 2.0002 milliseconds.
+2023/03/28 13:53:40,Refined scan thread successfully created and executed in 333.3308 milliseconds.
+2023/03/28 13:53:40,GameEvent raised: NewPreview
+2023/03/28 13:53:40,Refined scan successfully copied to preview mats in 1.0044 milliseconds.
+2023/03/28 13:53:41,Refined scan thread successfully created and executed in 323.3213 milliseconds.
+2023/03/28 13:53:41,GameEvent raised: NewPreview
+2023/03/28 13:53:41,Refined scan successfully copied to preview mats in 1.017 milliseconds.
+2023/03/28 13:53:43,Resetting timeout to 1:53:58 PM
+2023/03/28 13:53:43,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 13629; shouldBePlaying: True; saved webCamTextureID: -140; current ID: -140; lastUpdateCount: 13179
+2023/03/28 13:53:51,Quit application via 'Escape' key.
+2023/03/28 13:53:51,Application Quit
+2023/03/28 14:37:24,Resetting timeout to 2:37:39 PM
+2023/03/28 14:37:24,Application Awake - version #2023.1.18
+2023/03/28 14:37:24,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/03/28 14:37:24,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/03/28 14:37:24,GameEvent raised: ConfigLoaded
+2023/03/28 14:37:24,Initializing from myWebCamTextureToMatHelper...
+2023/03/28 14:37:24,Successfully found correct camera.
+2023/03/28 14:37:24,NEW webCamTexture ID: -138
+2023/03/28 14:37:25,Resetting update count...
+2023/03/28 14:37:25,Setting should be playing to true...
+2023/03/28 14:37:25,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/03/28 14:37:25,Calling OnWebCamTextureToMatHelperInitialized...
+2023/03/28 14:37:25,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/03/28 14:37:25,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/03/28 14:37:25,Resetting update count...
+2023/03/28 14:37:39,Resetting timeout to 2:37:54 PM
+2023/03/28 14:37:39,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 405; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: -1
+2023/03/28 14:37:43,Refined scan thread successfully created and executed in 365.9644 milliseconds.
+2023/03/28 14:37:43,GameEvent raised: NewPreview
+2023/03/28 14:37:43,Refined scan successfully copied to preview mats in 4.3361 milliseconds.
+2023/03/28 14:37:45,Refined scan thread successfully created and executed in 330.0432 milliseconds.
+2023/03/28 14:37:45,GameEvent raised: NewPreview
+2023/03/28 14:37:45,Refined scan successfully copied to preview mats in 2.1357 milliseconds.
+2023/03/28 14:37:45,Refined scan thread successfully created and executed in 335.8012 milliseconds.
+2023/03/28 14:37:45,GameEvent raised: NewPreview
+2023/03/28 14:37:45,Refined scan successfully copied to preview mats in 1.4217 milliseconds.
+2023/03/28 14:37:46,Refined scan thread successfully created and executed in 336.2673 milliseconds.
+2023/03/28 14:37:46,GameEvent raised: NewPreview
+2023/03/28 14:37:46,Refined scan successfully copied to preview mats in 0.998 milliseconds.
+2023/03/28 14:37:47,Refined scan thread successfully created and executed in 329.4508 milliseconds.
+2023/03/28 14:37:47,GameEvent raised: NewPreview
+2023/03/28 14:37:47,Refined scan successfully copied to preview mats in 1.9984 milliseconds.
+2023/03/28 14:37:47,Refined scan thread successfully created and executed in 342.9783 milliseconds.
+2023/03/28 14:37:47,GameEvent raised: NewPreview
+2023/03/28 14:37:47,Refined scan successfully copied to preview mats in 1.9995 milliseconds.
+2023/03/28 14:37:48,Refined scan thread successfully created and executed in 379.5087 milliseconds.
+2023/03/28 14:37:48,GameEvent raised: NewPreview
+2023/03/28 14:37:48,Refined scan successfully copied to preview mats in 1.0009 milliseconds.
+2023/03/28 14:37:49,Refined scan thread successfully created and executed in 334.9286 milliseconds.
+2023/03/28 14:37:49,GameEvent raised: NewPreview
+2023/03/28 14:37:49,Refined scan successfully copied to preview mats in 1.9985 milliseconds.
+2023/03/28 14:37:49,Refined scan thread successfully created and executed in 350.6328 milliseconds.
+2023/03/28 14:37:49,GameEvent raised: NewPreview
+2023/03/28 14:37:49,Refined scan successfully copied to preview mats in 1.0054 milliseconds.
+2023/03/28 14:37:50,Refined scan thread successfully created and executed in 338.847 milliseconds.
+2023/03/28 14:37:50,GameEvent raised: NewPreview
+2023/03/28 14:37:50,Refined scan successfully copied to preview mats in 1.0028 milliseconds.
+2023/03/28 14:37:50,Refined scan thread successfully created and executed in 339.2115 milliseconds.
+2023/03/28 14:37:50,GameEvent raised: NewPreview
+2023/03/28 14:37:50,Refined scan successfully copied to preview mats in 1.9991 milliseconds.
+2023/03/28 14:37:51,Refined scan thread successfully created and executed in 339.2692 milliseconds.
+2023/03/28 14:37:51,GameEvent raised: NewPreview
+2023/03/28 14:37:51,Refined scan successfully copied to preview mats in 1.0081 milliseconds.
+2023/03/28 14:37:52,Refined scan thread successfully created and executed in 322.3327 milliseconds.
+2023/03/28 14:37:52,GameEvent raised: NewPreview
+2023/03/28 14:37:52,Refined scan successfully copied to preview mats in 1.999 milliseconds.
+2023/03/28 14:37:52,Refined scan thread successfully created and executed in 343.4936 milliseconds.
+2023/03/28 14:37:52,GameEvent raised: NewPreview
+2023/03/28 14:37:52,Refined scan successfully copied to preview mats in 2.0028 milliseconds.
+2023/03/28 14:37:53,Refined scan thread successfully created and executed in 342.8557 milliseconds.
+2023/03/28 14:37:53,GameEvent raised: NewPreview
+2023/03/28 14:37:53,Refined scan successfully copied to preview mats in 1.9956 milliseconds.
+2023/03/28 14:37:53,Refined scan thread successfully created and executed in 363.0509 milliseconds.
+2023/03/28 14:37:53,GameEvent raised: NewPreview
+2023/03/28 14:37:53,Refined scan successfully copied to preview mats in 1.9991 milliseconds.
+2023/03/28 14:37:54,Refined scan thread successfully created and executed in 337.7001 milliseconds.
+2023/03/28 14:37:54,GameEvent raised: NewPreview
+2023/03/28 14:37:54,Refined scan successfully copied to preview mats in 0.985 milliseconds.
+2023/03/28 14:37:54,Resetting timeout to 2:38:09 PM
+2023/03/28 14:37:54,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 852; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 405
+2023/03/28 14:37:54,Refined scan thread successfully created and executed in 337.2768 milliseconds.
+2023/03/28 14:37:54,GameEvent raised: NewPreview
+2023/03/28 14:37:54,Refined scan successfully copied to preview mats in 2.0345 milliseconds.
+2023/03/28 14:37:55,Refined scan thread successfully created and executed in 338.7919 milliseconds.
+2023/03/28 14:37:55,GameEvent raised: NewPreview
+2023/03/28 14:37:55,Refined scan successfully copied to preview mats in 0.9971 milliseconds.
+2023/03/28 14:37:56,Refined scan thread successfully created and executed in 347.7072 milliseconds.
+2023/03/28 14:37:56,GameEvent raised: NewPreview
+2023/03/28 14:37:56,Refined scan successfully copied to preview mats in 2.0081 milliseconds.
+2023/03/28 14:37:56,Refined scan thread successfully created and executed in 339.0911 milliseconds.
+2023/03/28 14:37:56,GameEvent raised: NewPreview
+2023/03/28 14:37:56,Refined scan successfully copied to preview mats in 1.9994 milliseconds.
+2023/03/28 14:37:57,Refined scan thread successfully created and executed in 320.0758 milliseconds.
+2023/03/28 14:37:57,GameEvent raised: NewPreview
+2023/03/28 14:37:57,Refined scan successfully copied to preview mats in 1.0025 milliseconds.
+2023/03/28 14:37:57,Refined scan thread successfully created and executed in 328.8467 milliseconds.
+2023/03/28 14:37:57,GameEvent raised: NewPreview
+2023/03/28 14:37:57,Refined scan successfully copied to preview mats in 1.0001 milliseconds.
+2023/03/28 14:37:58,Refined scan thread successfully created and executed in 319.1507 milliseconds.
+2023/03/28 14:37:58,GameEvent raised: NewPreview
+2023/03/28 14:37:58,Refined scan successfully copied to preview mats in 0.9991 milliseconds.
+2023/03/28 14:37:58,Refined scan thread successfully created and executed in 326.1433 milliseconds.
+2023/03/28 14:37:58,GameEvent raised: NewPreview
+2023/03/28 14:37:58,Refined scan successfully copied to preview mats in 1.9992 milliseconds.
+2023/03/28 14:37:59,Refined scan thread successfully created and executed in 327.3764 milliseconds.
+2023/03/28 14:37:59,GameEvent raised: NewPreview
+2023/03/28 14:37:59,Refined scan successfully copied to preview mats in 1.0001 milliseconds.
+2023/03/28 14:37:59,Refined scan thread successfully created and executed in 323.7717 milliseconds.
+2023/03/28 14:37:59,GameEvent raised: NewPreview
+2023/03/28 14:37:59,Refined scan successfully copied to preview mats in 0.9997 milliseconds.
+2023/03/28 14:38:00,Refined scan thread successfully created and executed in 327.1954 milliseconds.
+2023/03/28 14:38:00,GameEvent raised: NewPreview
+2023/03/28 14:38:00,Refined scan successfully copied to preview mats in 2.0269 milliseconds.
+2023/03/28 14:38:00,Refined scan thread successfully created and executed in 331.3764 milliseconds.
+2023/03/28 14:38:00,GameEvent raised: NewPreview
+2023/03/28 14:38:00,Refined scan successfully copied to preview mats in 0.9996 milliseconds.
+2023/03/28 14:38:01,Refined scan thread successfully created and executed in 320.926 milliseconds.
+2023/03/28 14:38:01,GameEvent raised: NewPreview
+2023/03/28 14:38:01,Refined scan successfully copied to preview mats in 1.9989 milliseconds.
+2023/03/28 14:38:02,Refined scan thread successfully created and executed in 319.033 milliseconds.
+2023/03/28 14:38:02,GameEvent raised: NewPreview
+2023/03/28 14:38:02,Refined scan successfully copied to preview mats in 1.0015 milliseconds.
+2023/03/28 14:38:02,Refined scan thread successfully created and executed in 331.1 milliseconds.
+2023/03/28 14:38:02,GameEvent raised: NewPreview
+2023/03/28 14:38:02,Refined scan successfully copied to preview mats in 1.1293 milliseconds.
+2023/03/28 14:38:03,Refined scan thread successfully created and executed in 317.6979 milliseconds.
+2023/03/28 14:38:03,GameEvent raised: NewPreview
+2023/03/28 14:38:03,Refined scan successfully copied to preview mats in 1.9996 milliseconds.
+2023/03/28 14:38:03,Refined scan thread successfully created and executed in 320.1332 milliseconds.
+2023/03/28 14:38:03,GameEvent raised: NewPreview
+2023/03/28 14:38:03,Refined scan successfully copied to preview mats in 1.997 milliseconds.
+2023/03/28 14:38:04,Refined scan thread successfully created and executed in 335.831 milliseconds.
+2023/03/28 14:38:04,GameEvent raised: NewPreview
+2023/03/28 14:38:04,Refined scan successfully copied to preview mats in 2.0028 milliseconds.
+2023/03/28 14:38:05,Refined scan thread successfully created and executed in 319.7699 milliseconds.
+2023/03/28 14:38:05,GameEvent raised: NewPreview
+2023/03/28 14:38:05,Refined scan successfully copied to preview mats in 1.9992 milliseconds.
+2023/03/28 14:38:05,Refined scan thread successfully created and executed in 322.0901 milliseconds.
+2023/03/28 14:38:05,GameEvent raised: NewPreview
+2023/03/28 14:38:05,Refined scan successfully copied to preview mats in 1.0005 milliseconds.
+2023/03/28 14:38:06,Refined scan thread successfully created and executed in 324.8135 milliseconds.
+2023/03/28 14:38:06,GameEvent raised: NewPreview
+2023/03/28 14:38:06,Refined scan successfully copied to preview mats in 1.9991 milliseconds.
+2023/03/28 14:38:06,Refined scan thread successfully created and executed in 324.4317 milliseconds.
+2023/03/28 14:38:06,GameEvent raised: NewPreview
+2023/03/28 14:38:06,Refined scan successfully copied to preview mats in 2.003 milliseconds.
+2023/03/28 14:38:07,Refined scan thread successfully created and executed in 321.7621 milliseconds.
+2023/03/28 14:38:07,GameEvent raised: NewPreview
+2023/03/28 14:38:07,Refined scan successfully copied to preview mats in 1.9988 milliseconds.
+2023/03/28 14:38:07,Refined scan thread successfully created and executed in 339.0052 milliseconds.
+2023/03/28 14:38:07,GameEvent raised: NewPreview
+2023/03/28 14:38:07,Refined scan successfully copied to preview mats in 1.0003 milliseconds.
+2023/03/28 14:38:08,Refined scan thread successfully created and executed in 323.591 milliseconds.
+2023/03/28 14:38:08,GameEvent raised: NewPreview
+2023/03/28 14:38:08,Refined scan successfully copied to preview mats in 1.0011 milliseconds.
+2023/03/28 14:38:09,Refined scan thread successfully created and executed in 335.1036 milliseconds.
+2023/03/28 14:38:09,GameEvent raised: NewPreview
+2023/03/28 14:38:09,Refined scan successfully copied to preview mats in 2.0014 milliseconds.
+2023/03/28 14:38:09,Resetting timeout to 2:38:24 PM
+2023/03/28 14:38:09,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1302; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 852
+2023/03/28 14:38:11,Refined scan thread successfully created and executed in 325.2661 milliseconds.
+2023/03/28 14:38:11,GameEvent raised: NewPreview
+2023/03/28 14:38:11,Refined scan successfully copied to preview mats in 2.0022 milliseconds.
+2023/03/28 14:38:12,Refined scan thread successfully created and executed in 327.2372 milliseconds.
+2023/03/28 14:38:12,GameEvent raised: NewPreview
+2023/03/28 14:38:12,Refined scan successfully copied to preview mats in 1.0046 milliseconds.
+2023/03/28 14:38:12,Refined scan thread successfully created and executed in 322.8179 milliseconds.
+2023/03/28 14:38:12,GameEvent raised: NewPreview
+2023/03/28 14:38:12,Refined scan successfully copied to preview mats in 2.0048 milliseconds.
+2023/03/28 14:38:13,Refined scan thread successfully created and executed in 335.0097 milliseconds.
+2023/03/28 14:38:13,GameEvent raised: NewPreview
+2023/03/28 14:38:13,Refined scan successfully copied to preview mats in 1.9991 milliseconds.
+2023/03/28 14:38:14,Refined scan thread successfully created and executed in 336.8347 milliseconds.
+2023/03/28 14:38:14,GameEvent raised: NewPreview
+2023/03/28 14:38:14,Refined scan successfully copied to preview mats in 1.0006 milliseconds.
+2023/03/28 14:38:14,Refined scan thread successfully created and executed in 327.7632 milliseconds.
+2023/03/28 14:38:14,GameEvent raised: NewPreview
+2023/03/28 14:38:14,Refined scan successfully copied to preview mats in 1.0001 milliseconds.
+2023/03/28 14:38:15,Refined scan thread successfully created and executed in 325.9635 milliseconds.
+2023/03/28 14:38:15,GameEvent raised: NewPreview
+2023/03/28 14:38:15,Refined scan successfully copied to preview mats in 2.002 milliseconds.
+2023/03/28 14:38:16,Refined scan thread successfully created and executed in 325.1095 milliseconds.
+2023/03/28 14:38:16,GameEvent raised: NewPreview
+2023/03/28 14:38:16,Refined scan successfully copied to preview mats in 1.9967 milliseconds.
+2023/03/28 14:38:16,Refined scan thread successfully created and executed in 368.1046 milliseconds.
+2023/03/28 14:38:16,GameEvent raised: NewPreview
+2023/03/28 14:38:16,Refined scan successfully copied to preview mats in 1.9962 milliseconds.
+2023/03/28 14:38:17,Refined scan thread successfully created and executed in 321.9942 milliseconds.
+2023/03/28 14:38:17,GameEvent raised: NewPreview
+2023/03/28 14:38:17,Refined scan successfully copied to preview mats in 0.9989 milliseconds.
+2023/03/28 14:38:18,Refined scan thread successfully created and executed in 322.7369 milliseconds.
+2023/03/28 14:38:18,GameEvent raised: NewPreview
+2023/03/28 14:38:18,Refined scan successfully copied to preview mats in 1.9981 milliseconds.
+2023/03/28 14:38:18,Refined scan thread successfully created and executed in 371.1547 milliseconds.
+2023/03/28 14:38:18,GameEvent raised: NewPreview
+2023/03/28 14:38:18,Refined scan successfully copied to preview mats in 1.9965 milliseconds.
+2023/03/28 14:38:19,Refined scan thread successfully created and executed in 338.7591 milliseconds.
+2023/03/28 14:38:19,GameEvent raised: NewPreview
+2023/03/28 14:38:19,Refined scan successfully copied to preview mats in 1.0003 milliseconds.
+2023/03/28 14:38:20,Refined scan thread successfully created and executed in 331.0088 milliseconds.
+2023/03/28 14:38:20,GameEvent raised: NewPreview
+2023/03/28 14:38:20,Refined scan successfully copied to preview mats in 1.0115 milliseconds.
+2023/03/28 14:38:20,Refined scan thread successfully created and executed in 333.0248 milliseconds.
+2023/03/28 14:38:20,GameEvent raised: NewPreview
+2023/03/28 14:38:20,Refined scan successfully copied to preview mats in 1.9978 milliseconds.
+2023/03/28 14:38:21,Refined scan thread successfully created and executed in 326.8499 milliseconds.
+2023/03/28 14:38:21,GameEvent raised: NewPreview
+2023/03/28 14:38:21,Refined scan successfully copied to preview mats in 1.9995 milliseconds.
+2023/03/28 14:38:21,Refined scan thread successfully created and executed in 334.9888 milliseconds.
+2023/03/28 14:38:21,GameEvent raised: NewPreview
+2023/03/28 14:38:21,Refined scan successfully copied to preview mats in 0.999 milliseconds.
+2023/03/28 14:38:22,Refined scan thread successfully created and executed in 338.3499 milliseconds.
+2023/03/28 14:38:22,GameEvent raised: NewPreview
+2023/03/28 14:38:22,Refined scan successfully copied to preview mats in 1.9981 milliseconds.
+2023/03/28 14:38:23,Refined scan thread successfully created and executed in 354.0118 milliseconds.
+2023/03/28 14:38:23,GameEvent raised: NewPreview
+2023/03/28 14:38:23,Refined scan successfully copied to preview mats in 1.9989 milliseconds.
+2023/03/28 14:38:23,Refined scan thread successfully created and executed in 352.7272 milliseconds.
+2023/03/28 14:38:23,GameEvent raised: NewPreview
+2023/03/28 14:38:23,Refined scan successfully copied to preview mats in 2.2963 milliseconds.
+2023/03/28 14:38:24,Resetting timeout to 2:38:39 PM
+2023/03/28 14:38:24,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1752; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 1302
+2023/03/28 14:38:24,Refined scan thread successfully created and executed in 322.8244 milliseconds.
+2023/03/28 14:38:24,GameEvent raised: NewPreview
+2023/03/28 14:38:24,Refined scan successfully copied to preview mats in 1.9984 milliseconds.
+2023/03/28 14:38:25,Refined scan thread successfully created and executed in 333.8711 milliseconds.
+2023/03/28 14:38:25,GameEvent raised: NewPreview
+2023/03/28 14:38:25,Refined scan successfully copied to preview mats in 2.2908 milliseconds.
+2023/03/28 14:38:25,Refined scan thread successfully created and executed in 337.3352 milliseconds.
+2023/03/28 14:38:25,GameEvent raised: NewPreview
+2023/03/28 14:38:25,Refined scan successfully copied to preview mats in 2.0018 milliseconds.
+2023/03/28 14:38:26,Refined scan thread successfully created and executed in 324.3966 milliseconds.
+2023/03/28 14:38:26,GameEvent raised: NewPreview
+2023/03/28 14:38:26,Refined scan successfully copied to preview mats in 0.9987 milliseconds.
+2023/03/28 14:38:27,Refined scan thread successfully created and executed in 332.2736 milliseconds.
+2023/03/28 14:38:27,GameEvent raised: NewPreview
+2023/03/28 14:38:27,Refined scan successfully copied to preview mats in 1.0425 milliseconds.
+2023/03/28 14:38:27,Refined scan thread successfully created and executed in 336.8075 milliseconds.
+2023/03/28 14:38:27,GameEvent raised: NewPreview
+2023/03/28 14:38:27,Refined scan successfully copied to preview mats in 1.0096 milliseconds.
+2023/03/28 14:38:28,Refined scan thread successfully created and executed in 334.3136 milliseconds.
+2023/03/28 14:38:28,GameEvent raised: NewPreview
+2023/03/28 14:38:28,Refined scan successfully copied to preview mats in 1.9986 milliseconds.
+2023/03/28 14:38:29,Refined scan thread successfully created and executed in 337.0075 milliseconds.
+2023/03/28 14:38:29,GameEvent raised: NewPreview
+2023/03/28 14:38:29,Refined scan successfully copied to preview mats in 2.0007 milliseconds.
+2023/03/28 14:38:29,Refined scan thread successfully created and executed in 335.7052 milliseconds.
+2023/03/28 14:38:29,GameEvent raised: NewPreview
+2023/03/28 14:38:29,Refined scan successfully copied to preview mats in 2.0055 milliseconds.
+2023/03/28 14:38:30,Refined scan thread successfully created and executed in 347.3233 milliseconds.
+2023/03/28 14:38:30,GameEvent raised: NewPreview
+2023/03/28 14:38:30,Refined scan successfully copied to preview mats in 0 milliseconds.
+2023/03/28 14:38:31,Refined scan thread successfully created and executed in 326.7585 milliseconds.
+2023/03/28 14:38:31,GameEvent raised: NewPreview
+2023/03/28 14:38:31,Refined scan successfully copied to preview mats in 1.003 milliseconds.
+2023/03/28 14:38:31,Refined scan thread successfully created and executed in 345.5224 milliseconds.
+2023/03/28 14:38:31,GameEvent raised: NewPreview
+2023/03/28 14:38:31,Refined scan successfully copied to preview mats in 2.0055 milliseconds.
+2023/03/28 14:38:32,Refined scan thread successfully created and executed in 332.9515 milliseconds.
+2023/03/28 14:38:32,GameEvent raised: NewPreview
+2023/03/28 14:38:32,Refined scan successfully copied to preview mats in 1.5075 milliseconds.
+2023/03/28 14:38:33,Refined scan thread successfully created and executed in 328.1783 milliseconds.
+2023/03/28 14:38:33,GameEvent raised: NewPreview
+2023/03/28 14:38:33,Refined scan successfully copied to preview mats in 1.0053 milliseconds.
+2023/03/28 14:38:33,Refined scan thread successfully created and executed in 338.1825 milliseconds.
+2023/03/28 14:38:33,GameEvent raised: NewPreview
+2023/03/28 14:38:33,Refined scan successfully copied to preview mats in 0.9972 milliseconds.
+2023/03/28 14:38:39,Resetting timeout to 2:38:54 PM
+2023/03/28 14:38:39,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2186; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 1752
+2023/03/28 14:38:54,Resetting timeout to 2:39:09 PM
+2023/03/28 14:38:54,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2636; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 2186
+2023/03/28 14:39:09,Resetting timeout to 2:39:24 PM
+2023/03/28 14:39:09,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3086; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 2636
+2023/03/28 14:39:22,Refined scan thread successfully created and executed in 339.0716 milliseconds.
+2023/03/28 14:39:22,GameEvent raised: NewPreview
+2023/03/28 14:39:22,Refined scan successfully copied to preview mats in 2.5086 milliseconds.
+2023/03/28 14:39:22,Refined scan thread successfully created and executed in 350.9332 milliseconds.
+2023/03/28 14:39:22,GameEvent raised: NewPreview
+2023/03/28 14:39:22,Refined scan successfully copied to preview mats in 2.0042 milliseconds.
+2023/03/28 14:39:23,Refined scan thread successfully created and executed in 328.6738 milliseconds.
+2023/03/28 14:39:23,GameEvent raised: NewPreview
+2023/03/28 14:39:23,Refined scan successfully copied to preview mats in 1.5184 milliseconds.
+2023/03/28 14:39:24,Refined scan thread successfully created and executed in 349.5093 milliseconds.
+2023/03/28 14:39:24,GameEvent raised: NewPreview
+2023/03/28 14:39:24,Refined scan successfully copied to preview mats in 2.0048 milliseconds.
+2023/03/28 14:39:24,Resetting timeout to 2:39:39 PM
+2023/03/28 14:39:24,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3536; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 3086
+2023/03/28 14:39:24,Refined scan thread successfully created and executed in 337.8328 milliseconds.
+2023/03/28 14:39:24,GameEvent raised: NewPreview
+2023/03/28 14:39:24,Refined scan successfully copied to preview mats in 1.0031 milliseconds.
+2023/03/28 14:39:25,Refined scan thread successfully created and executed in 324.4052 milliseconds.
+2023/03/28 14:39:25,GameEvent raised: NewPreview
+2023/03/28 14:39:25,Refined scan successfully copied to preview mats in 1.004 milliseconds.
+2023/03/28 14:39:26,Refined scan thread successfully created and executed in 326.7711 milliseconds.
+2023/03/28 14:39:26,GameEvent raised: NewPreview
+2023/03/28 14:39:26,Refined scan successfully copied to preview mats in 1.0002 milliseconds.
+2023/03/28 14:39:26,Refined scan thread successfully created and executed in 330.9163 milliseconds.
+2023/03/28 14:39:26,GameEvent raised: NewPreview
+2023/03/28 14:39:26,Refined scan successfully copied to preview mats in 1.0033 milliseconds.
+2023/03/28 14:39:27,Refined scan thread successfully created and executed in 324.3807 milliseconds.
+2023/03/28 14:39:27,GameEvent raised: NewPreview
+2023/03/28 14:39:27,Refined scan successfully copied to preview mats in 1.9983 milliseconds.
+2023/03/28 14:39:28,Refined scan thread successfully created and executed in 330.0802 milliseconds.
+2023/03/28 14:39:28,GameEvent raised: NewPreview
+2023/03/28 14:39:28,Refined scan successfully copied to preview mats in 0.9991 milliseconds.
+2023/03/28 14:39:28,Refined scan thread successfully created and executed in 324.4561 milliseconds.
+2023/03/28 14:39:28,GameEvent raised: NewPreview
+2023/03/28 14:39:28,Refined scan successfully copied to preview mats in 2.0075 milliseconds.
+2023/03/28 14:39:29,Refined scan thread successfully created and executed in 350.8758 milliseconds.
+2023/03/28 14:39:29,GameEvent raised: NewPreview
+2023/03/28 14:39:29,Refined scan successfully copied to preview mats in 1.5165 milliseconds.
+2023/03/28 14:39:29,Refined scan thread successfully created and executed in 325.0495 milliseconds.
+2023/03/28 14:39:29,GameEvent raised: NewPreview
+2023/03/28 14:39:29,Refined scan successfully copied to preview mats in 1.9999 milliseconds.
+2023/03/28 14:39:30,Refined scan thread successfully created and executed in 323.6281 milliseconds.
+2023/03/28 14:39:30,GameEvent raised: NewPreview
+2023/03/28 14:39:30,Refined scan successfully copied to preview mats in 2.0029 milliseconds.
+2023/03/28 14:39:31,Refined scan thread successfully created and executed in 338.5423 milliseconds.
+2023/03/28 14:39:31,GameEvent raised: NewPreview
+2023/03/28 14:39:31,Refined scan successfully copied to preview mats in 1.0035 milliseconds.
+2023/03/28 14:39:31,Refined scan thread successfully created and executed in 330.1944 milliseconds.
+2023/03/28 14:39:31,GameEvent raised: NewPreview
+2023/03/28 14:39:31,Refined scan successfully copied to preview mats in 2.0038 milliseconds.
+2023/03/28 14:39:32,Refined scan thread successfully created and executed in 312.0165 milliseconds.
+2023/03/28 14:39:32,GameEvent raised: NewPreview
+2023/03/28 14:39:32,Refined scan successfully copied to preview mats in 1.0072 milliseconds.
+2023/03/28 14:39:33,Refined scan thread successfully created and executed in 331.5595 milliseconds.
+2023/03/28 14:39:33,GameEvent raised: NewPreview
+2023/03/28 14:39:33,Refined scan successfully copied to preview mats in 2.3408 milliseconds.
+2023/03/28 14:39:33,Refined scan thread successfully created and executed in 329.0463 milliseconds.
+2023/03/28 14:39:33,GameEvent raised: NewPreview
+2023/03/28 14:39:33,Refined scan successfully copied to preview mats in 2.2102 milliseconds.
+2023/03/28 14:39:34,Refined scan thread successfully created and executed in 316.2095 milliseconds.
+2023/03/28 14:39:34,GameEvent raised: NewPreview
+2023/03/28 14:39:34,Refined scan successfully copied to preview mats in 1.0046 milliseconds.
+2023/03/28 14:39:35,Refined scan thread successfully created and executed in 343.4855 milliseconds.
+2023/03/28 14:39:35,GameEvent raised: NewPreview
+2023/03/28 14:39:35,Refined scan successfully copied to preview mats in 2.3138 milliseconds.
+2023/03/28 14:39:35,Refined scan thread successfully created and executed in 320.0366 milliseconds.
+2023/03/28 14:39:35,GameEvent raised: NewPreview
+2023/03/28 14:39:35,Refined scan successfully copied to preview mats in 2.0507 milliseconds.
+2023/03/28 14:39:36,Refined scan thread successfully created and executed in 328.6277 milliseconds.
+2023/03/28 14:39:36,GameEvent raised: NewPreview
+2023/03/28 14:39:36,Refined scan successfully copied to preview mats in 1.0038 milliseconds.
+2023/03/28 14:39:37,Refined scan thread successfully created and executed in 323.0136 milliseconds.
+2023/03/28 14:39:37,GameEvent raised: NewPreview
+2023/03/28 14:39:37,Refined scan successfully copied to preview mats in 2 milliseconds.
+2023/03/28 14:39:37,Refined scan thread successfully created and executed in 306.5588 milliseconds.
+2023/03/28 14:39:37,GameEvent raised: NewPreview
+2023/03/28 14:39:37,Refined scan successfully copied to preview mats in 2.0007 milliseconds.
+2023/03/28 14:39:38,Refined scan thread successfully created and executed in 315.6433 milliseconds.
+2023/03/28 14:39:38,GameEvent raised: NewPreview
+2023/03/28 14:39:38,Refined scan successfully copied to preview mats in 1.0088 milliseconds.
+2023/03/28 14:39:39,Refined scan thread successfully created and executed in 310.9844 milliseconds.
+2023/03/28 14:39:39,GameEvent raised: NewPreview
+2023/03/28 14:39:39,Refined scan successfully copied to preview mats in 0.9997 milliseconds.
+2023/03/28 14:39:39,Resetting timeout to 2:39:54 PM
+2023/03/28 14:39:39,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3986; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 3536
+2023/03/28 14:39:39,Refined scan thread successfully created and executed in 314.6679 milliseconds.
+2023/03/28 14:39:39,GameEvent raised: NewPreview
+2023/03/28 14:39:39,Refined scan successfully copied to preview mats in 1.4968 milliseconds.
+2023/03/28 14:39:40,Refined scan thread successfully created and executed in 319.216 milliseconds.
+2023/03/28 14:39:40,GameEvent raised: NewPreview
+2023/03/28 14:39:40,Refined scan successfully copied to preview mats in 0.9982 milliseconds.
+2023/03/28 14:39:40,Refined scan thread successfully created and executed in 327.5978 milliseconds.
+2023/03/28 14:39:40,GameEvent raised: NewPreview
+2023/03/28 14:39:40,Refined scan successfully copied to preview mats in 1.0174 milliseconds.
+2023/03/28 14:39:41,Refined scan thread successfully created and executed in 320.6062 milliseconds.
+2023/03/28 14:39:41,GameEvent raised: NewPreview
+2023/03/28 14:39:41,Refined scan successfully copied to preview mats in 2.0128 milliseconds.
+2023/03/28 14:39:42,Refined scan thread successfully created and executed in 321.7387 milliseconds.
+2023/03/28 14:39:42,GameEvent raised: NewPreview
+2023/03/28 14:39:42,Refined scan successfully copied to preview mats in 1.0006 milliseconds.
+2023/03/28 14:39:42,Refined scan thread successfully created and executed in 334.8125 milliseconds.
+2023/03/28 14:39:42,GameEvent raised: NewPreview
+2023/03/28 14:39:42,Refined scan successfully copied to preview mats in 2.5208 milliseconds.
+2023/03/28 14:39:43,Refined scan thread successfully created and executed in 321.1233 milliseconds.
+2023/03/28 14:39:43,GameEvent raised: NewPreview
+2023/03/28 14:39:43,Refined scan successfully copied to preview mats in 1.9994 milliseconds.
+2023/03/28 14:39:44,Refined scan thread successfully created and executed in 314.6104 milliseconds.
+2023/03/28 14:39:44,GameEvent raised: NewPreview
+2023/03/28 14:39:44,Refined scan successfully copied to preview mats in 1.9973 milliseconds.
+2023/03/28 14:39:44,Refined scan thread successfully created and executed in 343.7367 milliseconds.
+2023/03/28 14:39:44,GameEvent raised: NewPreview
+2023/03/28 14:39:44,Refined scan successfully copied to preview mats in 1.0151 milliseconds.
+2023/03/28 14:39:45,Refined scan thread successfully created and executed in 331.5292 milliseconds.
+2023/03/28 14:39:45,GameEvent raised: NewPreview
+2023/03/28 14:39:45,Refined scan successfully copied to preview mats in 1.0007 milliseconds.
+2023/03/28 14:39:46,Refined scan thread successfully created and executed in 325.1218 milliseconds.
+2023/03/28 14:39:46,GameEvent raised: NewPreview
+2023/03/28 14:39:46,Refined scan successfully copied to preview mats in 1.995 milliseconds.
+2023/03/28 14:39:46,Refined scan thread successfully created and executed in 342.7486 milliseconds.
+2023/03/28 14:39:46,GameEvent raised: NewPreview
+2023/03/28 14:39:46,Refined scan successfully copied to preview mats in 0.9995 milliseconds.
+2023/03/28 14:39:47,Refined scan thread successfully created and executed in 329.8486 milliseconds.
+2023/03/28 14:39:47,GameEvent raised: NewPreview
+2023/03/28 14:39:47,Refined scan successfully copied to preview mats in 2.0123 milliseconds.
+2023/03/28 14:39:47,Refined scan thread successfully created and executed in 325.8567 milliseconds.
+2023/03/28 14:39:47,GameEvent raised: NewPreview
+2023/03/28 14:39:47,Refined scan successfully copied to preview mats in 1.0017 milliseconds.
+2023/03/28 14:39:48,Refined scan thread successfully created and executed in 330.2282 milliseconds.
+2023/03/28 14:39:48,GameEvent raised: NewPreview
+2023/03/28 14:39:48,Refined scan successfully copied to preview mats in 1.9986 milliseconds.
+2023/03/28 14:39:49,Refined scan thread successfully created and executed in 320.4414 milliseconds.
+2023/03/28 14:39:49,GameEvent raised: NewPreview
+2023/03/28 14:39:49,Refined scan successfully copied to preview mats in 1.0013 milliseconds.
+2023/03/28 14:39:49,Refined scan thread successfully created and executed in 351.5297 milliseconds.
+2023/03/28 14:39:49,GameEvent raised: NewPreview
+2023/03/28 14:39:49,Refined scan successfully copied to preview mats in 2.0015 milliseconds.
+2023/03/28 14:39:50,Refined scan thread successfully created and executed in 327.9525 milliseconds.
+2023/03/28 14:39:50,GameEvent raised: NewPreview
+2023/03/28 14:39:50,Refined scan successfully copied to preview mats in 2.0025 milliseconds.
+2023/03/28 14:39:51,Refined scan thread successfully created and executed in 318.5548 milliseconds.
+2023/03/28 14:39:51,GameEvent raised: NewPreview
+2023/03/28 14:39:51,Refined scan successfully copied to preview mats in 1.9976 milliseconds.
+2023/03/28 14:39:51,Refined scan thread successfully created and executed in 324.5076 milliseconds.
+2023/03/28 14:39:51,GameEvent raised: NewPreview
+2023/03/28 14:39:51,Refined scan successfully copied to preview mats in 1.0334 milliseconds.
+2023/03/28 14:39:52,Refined scan thread successfully created and executed in 334.6713 milliseconds.
+2023/03/28 14:39:52,GameEvent raised: NewPreview
+2023/03/28 14:39:52,Refined scan successfully copied to preview mats in 1.0049 milliseconds.
+2023/03/28 14:39:53,Refined scan thread successfully created and executed in 314.6003 milliseconds.
+2023/03/28 14:39:53,GameEvent raised: NewPreview
+2023/03/28 14:39:53,Refined scan successfully copied to preview mats in 1.0089 milliseconds.
+2023/03/28 14:39:53,Refined scan thread successfully created and executed in 349.648 milliseconds.
+2023/03/28 14:39:53,GameEvent raised: NewPreview
+2023/03/28 14:39:53,Refined scan successfully copied to preview mats in 2.209 milliseconds.
+2023/03/28 14:39:54,Refined scan thread successfully created and executed in 339.5235 milliseconds.
+2023/03/28 14:39:54,GameEvent raised: NewPreview
+2023/03/28 14:39:54,Refined scan successfully copied to preview mats in 2.5189 milliseconds.
+2023/03/28 14:39:54,Resetting timeout to 2:40:09 PM
+2023/03/28 14:39:54,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 4436; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 3986
+2023/03/28 14:39:55,Refined scan thread successfully created and executed in 325.1824 milliseconds.
+2023/03/28 14:39:55,GameEvent raised: NewPreview
+2023/03/28 14:39:55,Refined scan successfully copied to preview mats in 1.9957 milliseconds.
+2023/03/28 14:39:55,Refined scan thread successfully created and executed in 324.9995 milliseconds.
+2023/03/28 14:39:55,GameEvent raised: NewPreview
+2023/03/28 14:39:55,Refined scan successfully copied to preview mats in 1.9991 milliseconds.
+2023/03/28 14:39:56,Refined scan thread successfully created and executed in 319.8071 milliseconds.
+2023/03/28 14:39:56,GameEvent raised: NewPreview
+2023/03/28 14:39:56,Refined scan successfully copied to preview mats in 1.0098 milliseconds.
+2023/03/28 14:39:56,Refined scan thread successfully created and executed in 324.006 milliseconds.
+2023/03/28 14:39:56,GameEvent raised: NewPreview
+2023/03/28 14:39:56,Refined scan successfully copied to preview mats in 2.0041 milliseconds.
+2023/03/28 14:39:57,Refined scan thread successfully created and executed in 341.9521 milliseconds.
+2023/03/28 14:39:57,GameEvent raised: NewPreview
+2023/03/28 14:39:57,Refined scan successfully copied to preview mats in 2.0113 milliseconds.
+2023/03/28 14:39:58,Refined scan thread successfully created and executed in 323.6717 milliseconds.
+2023/03/28 14:39:58,GameEvent raised: NewPreview
+2023/03/28 14:39:58,Refined scan successfully copied to preview mats in 2.0012 milliseconds.
+2023/03/28 14:39:58,Refined scan thread successfully created and executed in 328.3884 milliseconds.
+2023/03/28 14:39:58,GameEvent raised: NewPreview
+2023/03/28 14:39:58,Refined scan successfully copied to preview mats in 1.5098 milliseconds.
+2023/03/28 14:39:59,Refined scan thread successfully created and executed in 356.5918 milliseconds.
+2023/03/28 14:39:59,GameEvent raised: NewPreview
+2023/03/28 14:39:59,Refined scan successfully copied to preview mats in 0.9999 milliseconds.
+2023/03/28 14:40:00,Refined scan thread successfully created and executed in 335.5196 milliseconds.
+2023/03/28 14:40:00,GameEvent raised: NewPreview
+2023/03/28 14:40:00,Refined scan successfully copied to preview mats in 2.0024 milliseconds.
+2023/03/28 14:40:09,Resetting timeout to 2:40:24 PM
+2023/03/28 14:40:09,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 4848; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 4436
+2023/03/28 14:40:24,Resetting timeout to 2:40:39 PM
+2023/03/28 14:40:24,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 5298; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 4848
+2023/03/28 14:40:39,Resetting timeout to 2:40:54 PM
+2023/03/28 14:40:39,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 5749; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 5298
+2023/03/28 14:40:54,Resetting timeout to 2:41:09 PM
+2023/03/28 14:40:54,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 6199; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 5749
+2023/03/28 14:41:09,Resetting timeout to 2:41:24 PM
+2023/03/28 14:41:09,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 6649; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 6199
+2023/03/28 14:41:24,Resetting timeout to 2:41:39 PM
+2023/03/28 14:41:24,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 7099; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 6649
+2023/03/28 14:41:39,Resetting timeout to 2:41:54 PM
+2023/03/28 14:41:39,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 7508; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 7099
+2023/03/28 14:41:54,Resetting timeout to 2:42:09 PM
+2023/03/28 14:41:54,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 7958; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 7508
+2023/03/28 14:42:09,Resetting timeout to 2:42:24 PM
+2023/03/28 14:42:09,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 8408; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 7958
+2023/03/28 14:42:24,Resetting timeout to 2:42:39 PM
+2023/03/28 14:42:24,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 8858; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 8408
+2023/03/28 14:42:39,Resetting timeout to 2:42:54 PM
+2023/03/28 14:42:39,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 9309; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 8858
+2023/03/28 14:42:54,Resetting timeout to 2:43:09 PM
+2023/03/28 14:42:54,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 9758; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 9309
+2023/03/28 14:43:09,Resetting timeout to 2:43:24 PM
+2023/03/28 14:43:09,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 10209; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 9758
+2023/03/28 14:43:24,Resetting timeout to 2:43:39 PM
+2023/03/28 14:43:24,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 10659; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 10209
+2023/03/28 14:43:39,Resetting timeout to 2:43:54 PM
+2023/03/28 14:43:39,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 11109; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 10659
+2023/03/28 14:43:54,Resetting timeout to 2:44:09 PM
+2023/03/28 14:43:54,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 11559; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 11109
+2023/03/28 14:44:09,Resetting timeout to 2:44:24 PM
+2023/03/28 14:44:09,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 11970; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 11559
+2023/03/28 14:44:24,Resetting timeout to 2:44:39 PM
+2023/03/28 14:44:24,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 12420; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 11970
+2023/03/28 14:44:27,Refined scan thread successfully created and executed in 334.8514 milliseconds.
+2023/03/28 14:44:27,GameEvent raised: NewPreview
+2023/03/28 14:44:27,Refined scan successfully copied to preview mats in 1.0006 milliseconds.
+2023/03/28 14:44:27,Refined scan thread successfully created and executed in 329.006 milliseconds.
+2023/03/28 14:44:27,GameEvent raised: NewPreview
+2023/03/28 14:44:27,Refined scan successfully copied to preview mats in 1.5121 milliseconds.
+2023/03/28 14:44:28,Refined scan thread successfully created and executed in 343.7713 milliseconds.
+2023/03/28 14:44:28,GameEvent raised: NewPreview
+2023/03/28 14:44:28,Refined scan successfully copied to preview mats in 1.0002 milliseconds.
+2023/03/28 14:44:29,Refined scan thread successfully created and executed in 336.7895 milliseconds.
+2023/03/28 14:44:29,GameEvent raised: NewPreview
+2023/03/28 14:44:29,Refined scan successfully copied to preview mats in 2.0008 milliseconds.
+2023/03/28 14:44:29,Refined scan thread successfully created and executed in 340.9289 milliseconds.
+2023/03/28 14:44:29,GameEvent raised: NewPreview
+2023/03/28 14:44:29,Refined scan successfully copied to preview mats in 2.5189 milliseconds.
+2023/03/28 14:44:30,Refined scan thread successfully created and executed in 332.6289 milliseconds.
+2023/03/28 14:44:30,GameEvent raised: NewPreview
+2023/03/28 14:44:30,Refined scan successfully copied to preview mats in 1.011 milliseconds.
+2023/03/28 14:44:31,Refined scan thread successfully created and executed in 340.7919 milliseconds.
+2023/03/28 14:44:31,GameEvent raised: NewPreview
+2023/03/28 14:44:31,Refined scan successfully copied to preview mats in 1.5101 milliseconds.
+2023/03/28 14:44:31,Refined scan thread successfully created and executed in 348.2086 milliseconds.
+2023/03/28 14:44:31,GameEvent raised: NewPreview
+2023/03/28 14:44:31,Refined scan successfully copied to preview mats in 1.0023 milliseconds.
+2023/03/28 14:44:32,Refined scan thread successfully created and executed in 331.3203 milliseconds.
+2023/03/28 14:44:32,GameEvent raised: NewPreview
+2023/03/28 14:44:32,Refined scan successfully copied to preview mats in 1.3854 milliseconds.
+2023/03/28 14:44:33,Refined scan thread successfully created and executed in 343.2548 milliseconds.
+2023/03/28 14:44:33,GameEvent raised: NewPreview
+2023/03/28 14:44:33,Refined scan successfully copied to preview mats in 1.9989 milliseconds.
+2023/03/28 14:44:33,Refined scan thread successfully created and executed in 337.0711 milliseconds.
+2023/03/28 14:44:33,GameEvent raised: NewPreview
+2023/03/28 14:44:33,Refined scan successfully copied to preview mats in 2.5295 milliseconds.
+2023/03/28 14:44:34,Refined scan thread successfully created and executed in 339.1733 milliseconds.
+2023/03/28 14:44:34,GameEvent raised: NewPreview
+2023/03/28 14:44:34,Refined scan successfully copied to preview mats in 0.9972 milliseconds.
+2023/03/28 14:44:35,Refined scan thread successfully created and executed in 325.9233 milliseconds.
+2023/03/28 14:44:35,GameEvent raised: NewPreview
+2023/03/28 14:44:35,Refined scan successfully copied to preview mats in 2.008 milliseconds.
+2023/03/28 14:44:36,Refined scan thread successfully created and executed in 346.0857 milliseconds.
+2023/03/28 14:44:36,GameEvent raised: NewPreview
+2023/03/28 14:44:36,Refined scan successfully copied to preview mats in 1.5068 milliseconds.
+2023/03/28 14:44:36,Refined scan thread successfully created and executed in 339.0699 milliseconds.
+2023/03/28 14:44:36,GameEvent raised: NewPreview
+2023/03/28 14:44:36,Refined scan successfully copied to preview mats in 2.0006 milliseconds.
+2023/03/28 14:44:37,Refined scan thread successfully created and executed in 330.9582 milliseconds.
+2023/03/28 14:44:37,GameEvent raised: NewPreview
+2023/03/28 14:44:37,Refined scan successfully copied to preview mats in 2.0179 milliseconds.
+2023/03/28 14:44:38,Refined scan thread successfully created and executed in 324.2408 milliseconds.
+2023/03/28 14:44:38,GameEvent raised: NewPreview
+2023/03/28 14:44:38,Refined scan successfully copied to preview mats in 2.0001 milliseconds.
+2023/03/28 14:44:39,Refined scan thread successfully created and executed in 337.8336 milliseconds.
+2023/03/28 14:44:39,GameEvent raised: NewPreview
+2023/03/28 14:44:39,Refined scan successfully copied to preview mats in 1.0025 milliseconds.
+2023/03/28 14:44:39,Resetting timeout to 2:44:54 PM
+2023/03/28 14:44:39,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 12871; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 12420
+2023/03/28 14:44:39,Refined scan thread successfully created and executed in 334.8913 milliseconds.
+2023/03/28 14:44:39,GameEvent raised: NewPreview
+2023/03/28 14:44:39,Refined scan successfully copied to preview mats in 1.9915 milliseconds.
+2023/03/28 14:44:40,Refined scan thread successfully created and executed in 334.5829 milliseconds.
+2023/03/28 14:44:40,GameEvent raised: NewPreview
+2023/03/28 14:44:40,Refined scan successfully copied to preview mats in 0.9923 milliseconds.
+2023/03/28 14:44:41,Refined scan thread successfully created and executed in 329.4352 milliseconds.
+2023/03/28 14:44:41,GameEvent raised: NewPreview
+2023/03/28 14:44:41,Refined scan successfully copied to preview mats in 2.0006 milliseconds.
+2023/03/28 14:44:42,Refined scan thread successfully created and executed in 335.6328 milliseconds.
+2023/03/28 14:44:42,GameEvent raised: NewPreview
+2023/03/28 14:44:42,Refined scan successfully copied to preview mats in 2.0017 milliseconds.
+2023/03/28 14:44:42,Refined scan thread successfully created and executed in 328.8886 milliseconds.
+2023/03/28 14:44:42,GameEvent raised: NewPreview
+2023/03/28 14:44:42,Refined scan successfully copied to preview mats in 2.0061 milliseconds.
+2023/03/28 14:44:43,Refined scan thread successfully created and executed in 324.9408 milliseconds.
+2023/03/28 14:44:43,GameEvent raised: NewPreview
+2023/03/28 14:44:43,Refined scan successfully copied to preview mats in 2.0003 milliseconds.
+2023/03/28 14:44:44,Refined scan thread successfully created and executed in 337.6579 milliseconds.
+2023/03/28 14:44:44,GameEvent raised: NewPreview
+2023/03/28 14:44:44,Refined scan successfully copied to preview mats in 1.9965 milliseconds.
+2023/03/28 14:44:44,Refined scan thread successfully created and executed in 342.3303 milliseconds.
+2023/03/28 14:44:44,GameEvent raised: NewPreview
+2023/03/28 14:44:44,Refined scan successfully copied to preview mats in 2.1231 milliseconds.
+2023/03/28 14:44:45,Refined scan thread successfully created and executed in 327.295 milliseconds.
+2023/03/28 14:44:45,GameEvent raised: NewPreview
+2023/03/28 14:44:45,Refined scan successfully copied to preview mats in 0.9975 milliseconds.
+2023/03/28 14:44:46,Refined scan thread successfully created and executed in 346.0282 milliseconds.
+2023/03/28 14:44:46,GameEvent raised: NewPreview
+2023/03/28 14:44:46,Refined scan successfully copied to preview mats in 1.9908 milliseconds.
+2023/03/28 14:44:46,Refined scan thread successfully created and executed in 346.4258 milliseconds.
+2023/03/28 14:44:46,GameEvent raised: NewPreview
+2023/03/28 14:44:46,Refined scan successfully copied to preview mats in 2.011 milliseconds.
+2023/03/28 14:44:47,Refined scan thread successfully created and executed in 328.0109 milliseconds.
+2023/03/28 14:44:47,GameEvent raised: NewPreview
+2023/03/28 14:44:47,Refined scan successfully copied to preview mats in 2.0003 milliseconds.
+2023/03/28 14:44:48,Refined scan thread successfully created and executed in 334.0462 milliseconds.
+2023/03/28 14:44:48,GameEvent raised: NewPreview
+2023/03/28 14:44:48,Refined scan successfully copied to preview mats in 1.5064 milliseconds.
+2023/03/28 14:44:48,Refined scan thread successfully created and executed in 335.2671 milliseconds.
+2023/03/28 14:44:48,GameEvent raised: NewPreview
+2023/03/28 14:44:48,Refined scan successfully copied to preview mats in 2.0954 milliseconds.
+2023/03/28 14:44:49,Refined scan thread successfully created and executed in 327.4726 milliseconds.
+2023/03/28 14:44:49,GameEvent raised: NewPreview
+2023/03/28 14:44:49,Refined scan successfully copied to preview mats in 2.0221 milliseconds.
+2023/03/28 14:44:50,Refined scan thread successfully created and executed in 335.7105 milliseconds.
+2023/03/28 14:44:50,GameEvent raised: NewPreview
+2023/03/28 14:44:50,Refined scan successfully copied to preview mats in 2.1588 milliseconds.
+2023/03/28 14:44:50,Refined scan thread successfully created and executed in 335.215 milliseconds.
+2023/03/28 14:44:50,GameEvent raised: NewPreview
+2023/03/28 14:44:50,Refined scan successfully copied to preview mats in 1.0002 milliseconds.
+2023/03/28 14:44:51,Refined scan thread successfully created and executed in 333.9843 milliseconds.
+2023/03/28 14:44:51,GameEvent raised: NewPreview
+2023/03/28 14:44:51,Refined scan successfully copied to preview mats in 1.9999 milliseconds.
+2023/03/28 14:44:52,Refined scan thread successfully created and executed in 343.0791 milliseconds.
+2023/03/28 14:44:52,GameEvent raised: NewPreview
+2023/03/28 14:44:52,Refined scan successfully copied to preview mats in 1.1306 milliseconds.
+2023/03/28 14:44:52,Refined scan thread successfully created and executed in 367.785 milliseconds.
+2023/03/28 14:44:52,GameEvent raised: NewPreview
+2023/03/28 14:44:52,Refined scan successfully copied to preview mats in 2.0018 milliseconds.
+2023/03/28 14:44:53,Refined scan thread successfully created and executed in 320.6639 milliseconds.
+2023/03/28 14:44:53,GameEvent raised: NewPreview
+2023/03/28 14:44:53,Refined scan successfully copied to preview mats in 1.9989 milliseconds.
+2023/03/28 14:44:54,Refined scan thread successfully created and executed in 338.052 milliseconds.
+2023/03/28 14:44:54,GameEvent raised: NewPreview
+2023/03/28 14:44:54,Refined scan successfully copied to preview mats in 2.0006 milliseconds.
+2023/03/28 14:44:54,Resetting timeout to 2:45:09 PM
+2023/03/28 14:44:54,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 13320; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 12871
+2023/03/28 14:44:54,Refined scan thread successfully created and executed in 326.3712 milliseconds.
+2023/03/28 14:44:54,GameEvent raised: NewPreview
+2023/03/28 14:44:54,Refined scan successfully copied to preview mats in 1.9988 milliseconds.
+2023/03/28 14:44:55,Refined scan thread successfully created and executed in 332.411 milliseconds.
+2023/03/28 14:44:55,GameEvent raised: NewPreview
+2023/03/28 14:44:55,Refined scan successfully copied to preview mats in 2.0106 milliseconds.
+2023/03/28 14:44:56,Refined scan thread successfully created and executed in 330.1558 milliseconds.
+2023/03/28 14:44:56,GameEvent raised: NewPreview
+2023/03/28 14:44:56,Refined scan successfully copied to preview mats in 2.0085 milliseconds.
+2023/03/28 14:44:56,Refined scan thread successfully created and executed in 331.9924 milliseconds.
+2023/03/28 14:44:56,GameEvent raised: NewPreview
+2023/03/28 14:44:56,Refined scan successfully copied to preview mats in 1.9902 milliseconds.
+2023/03/28 14:44:57,Refined scan thread successfully created and executed in 333.4352 milliseconds.
+2023/03/28 14:44:57,GameEvent raised: NewPreview
+2023/03/28 14:44:57,Refined scan successfully copied to preview mats in 2.9993 milliseconds.
+2023/03/28 14:44:58,Refined scan thread successfully created and executed in 331.5079 milliseconds.
+2023/03/28 14:44:58,GameEvent raised: NewPreview
+2023/03/28 14:44:58,Refined scan successfully copied to preview mats in 1.9991 milliseconds.
+2023/03/28 14:44:58,Refined scan thread successfully created and executed in 324.7108 milliseconds.
+2023/03/28 14:44:58,GameEvent raised: NewPreview
+2023/03/28 14:44:58,Refined scan successfully copied to preview mats in 1.9983 milliseconds.
+2023/03/28 14:44:59,Refined scan thread successfully created and executed in 338.2843 milliseconds.
+2023/03/28 14:44:59,GameEvent raised: NewPreview
+2023/03/28 14:44:59,Refined scan successfully copied to preview mats in 2.5195 milliseconds.
+2023/03/28 14:45:00,Refined scan thread successfully created and executed in 341.0051 milliseconds.
+2023/03/28 14:45:00,GameEvent raised: NewPreview
+2023/03/28 14:45:00,Refined scan successfully copied to preview mats in 1.9992 milliseconds.
+2023/03/28 14:45:00,Refined scan thread successfully created and executed in 325.9971 milliseconds.
+2023/03/28 14:45:00,GameEvent raised: NewPreview
+2023/03/28 14:45:00,Refined scan successfully copied to preview mats in 2.0003 milliseconds.
+2023/03/28 14:45:01,Refined scan thread successfully created and executed in 337.927 milliseconds.
+2023/03/28 14:45:01,GameEvent raised: NewPreview
+2023/03/28 14:45:01,Refined scan successfully copied to preview mats in 0.9983 milliseconds.
+2023/03/28 14:45:02,Refined scan thread successfully created and executed in 351.577 milliseconds.
+2023/03/28 14:45:02,GameEvent raised: NewPreview
+2023/03/28 14:45:02,Refined scan successfully copied to preview mats in 1.5763 milliseconds.
+2023/03/28 14:45:02,Refined scan thread successfully created and executed in 331.2535 milliseconds.
+2023/03/28 14:45:02,GameEvent raised: NewPreview
+2023/03/28 14:45:02,Refined scan successfully copied to preview mats in 1.9988 milliseconds.
+2023/03/28 14:45:03,Refined scan thread successfully created and executed in 351.2297 milliseconds.
+2023/03/28 14:45:03,GameEvent raised: NewPreview
+2023/03/28 14:45:03,Refined scan successfully copied to preview mats in 1.0006 milliseconds.
+2023/03/28 14:45:04,Refined scan thread successfully created and executed in 333.9457 milliseconds.
+2023/03/28 14:45:04,GameEvent raised: NewPreview
+2023/03/28 14:45:04,Refined scan successfully copied to preview mats in 2.0023 milliseconds.
+2023/03/28 14:45:04,Refined scan thread successfully created and executed in 341.8296 milliseconds.
+2023/03/28 14:45:04,GameEvent raised: NewPreview
+2023/03/28 14:45:04,Refined scan successfully copied to preview mats in 1.0008 milliseconds.
+2023/03/28 14:45:05,Refined scan thread successfully created and executed in 325.971 milliseconds.
+2023/03/28 14:45:05,GameEvent raised: NewPreview
+2023/03/28 14:45:05,Refined scan successfully copied to preview mats in 2.1222 milliseconds.
+2023/03/28 14:45:06,Refined scan thread successfully created and executed in 338.6126 milliseconds.
+2023/03/28 14:45:06,GameEvent raised: NewPreview
+2023/03/28 14:45:06,Refined scan successfully copied to preview mats in 2.5141 milliseconds.
+2023/03/28 14:45:07,Refined scan thread successfully created and executed in 327.0159 milliseconds.
+2023/03/28 14:45:07,GameEvent raised: NewPreview
+2023/03/28 14:45:07,Refined scan successfully copied to preview mats in 0.9992 milliseconds.
+2023/03/28 14:45:08,Refined scan thread successfully created and executed in 337.1891 milliseconds.
+2023/03/28 14:45:08,GameEvent raised: NewPreview
+2023/03/28 14:45:08,Refined scan successfully copied to preview mats in 0.9971 milliseconds.
+2023/03/28 14:45:08,Refined scan thread successfully created and executed in 331.0395 milliseconds.
+2023/03/28 14:45:08,GameEvent raised: NewPreview
+2023/03/28 14:45:08,Refined scan successfully copied to preview mats in 2.0015 milliseconds.
+2023/03/28 14:45:09,Refined scan thread successfully created and executed in 334.3119 milliseconds.
+2023/03/28 14:45:09,GameEvent raised: NewPreview
+2023/03/28 14:45:09,Refined scan successfully copied to preview mats in 2.0024 milliseconds.
+2023/03/28 14:45:09,Resetting timeout to 2:45:24 PM
+2023/03/28 14:45:09,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 13771; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 13320
+2023/03/28 14:45:09,Refined scan thread successfully created and executed in 346.5113 milliseconds.
+2023/03/28 14:45:09,GameEvent raised: NewPreview
+2023/03/28 14:45:09,Refined scan successfully copied to preview mats in 0.9386 milliseconds.
+2023/03/28 14:45:10,Refined scan thread successfully created and executed in 337.9588 milliseconds.
+2023/03/28 14:45:10,GameEvent raised: NewPreview
+2023/03/28 14:45:10,Refined scan successfully copied to preview mats in 1.9998 milliseconds.
+2023/03/28 14:45:11,Refined scan thread successfully created and executed in 326.0425 milliseconds.
+2023/03/28 14:45:11,GameEvent raised: NewPreview
+2023/03/28 14:45:11,Refined scan successfully copied to preview mats in 1.0391 milliseconds.
+2023/03/28 14:45:11,Refined scan thread successfully created and executed in 332.0993 milliseconds.
+2023/03/28 14:45:11,GameEvent raised: NewPreview
+2023/03/28 14:45:11,Refined scan successfully copied to preview mats in 1.9996 milliseconds.
+2023/03/28 14:45:12,Refined scan thread successfully created and executed in 324.5607 milliseconds.
+2023/03/28 14:45:12,GameEvent raised: NewPreview
+2023/03/28 14:45:12,Refined scan successfully copied to preview mats in 2.0243 milliseconds.
+2023/03/28 14:45:13,Refined scan thread successfully created and executed in 339.9331 milliseconds.
+2023/03/28 14:45:13,GameEvent raised: NewPreview
+2023/03/28 14:45:13,Refined scan successfully copied to preview mats in 1.9992 milliseconds.
+2023/03/28 14:45:14,Refined scan thread successfully created and executed in 356.1475 milliseconds.
+2023/03/28 14:45:14,GameEvent raised: NewPreview
+2023/03/28 14:45:14,Refined scan successfully copied to preview mats in 2.509 milliseconds.
+2023/03/28 14:45:14,Refined scan thread successfully created and executed in 339.739 milliseconds.
+2023/03/28 14:45:14,GameEvent raised: NewPreview
+2023/03/28 14:45:14,Refined scan successfully copied to preview mats in 1.5074 milliseconds.
+2023/03/28 14:45:24,Resetting timeout to 2:45:39 PM
+2023/03/28 14:45:24,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 14181; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 13771
+2023/03/28 14:45:39,Resetting timeout to 2:45:54 PM
+2023/03/28 14:45:39,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 14631; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 14181
+2023/03/28 14:45:54,Resetting timeout to 2:46:09 PM
+2023/03/28 14:45:54,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 15081; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 14631
+2023/03/28 14:46:09,Resetting timeout to 2:46:24 PM
+2023/03/28 14:46:09,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 15531; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 15081
+2023/03/28 14:46:24,Resetting timeout to 2:46:39 PM
+2023/03/28 14:46:24,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 15982; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 15531
+2023/03/28 14:46:39,Resetting timeout to 2:46:54 PM
+2023/03/28 14:46:39,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 16432; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 15982
+2023/03/28 14:46:54,Resetting timeout to 2:47:09 PM
+2023/03/28 14:46:54,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 16875; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 16432
+2023/03/28 14:47:09,Resetting timeout to 2:47:24 PM
+2023/03/28 14:47:09,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 17325; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 16875
+2023/03/28 14:47:24,Resetting timeout to 2:47:39 PM
+2023/03/28 14:47:24,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 17775; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 17325
+2023/03/28 14:47:39,Resetting timeout to 2:47:54 PM
+2023/03/28 14:47:39,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 18225; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 17775
+2023/03/28 14:47:54,Resetting timeout to 2:48:09 PM
+2023/03/28 14:47:54,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 18675; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 18225
+2023/03/28 14:48:09,Resetting timeout to 2:48:24 PM
+2023/03/28 14:48:09,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 19125; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 18675
+2023/03/28 14:48:24,Resetting timeout to 2:48:39 PM
+2023/03/28 14:48:24,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 19576; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 19125
+2023/03/28 14:48:39,Resetting timeout to 2:48:54 PM
+2023/03/28 14:48:39,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 20025; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 19576
+2023/03/28 14:48:54,Resetting timeout to 2:49:09 PM
+2023/03/28 14:48:54,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 20476; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 20025
+2023/03/28 14:49:09,Resetting timeout to 2:49:24 PM
+2023/03/28 14:49:09,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 20926; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 20476
+2023/03/28 14:49:24,Resetting timeout to 2:49:39 PM
+2023/03/28 14:49:24,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 21376; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 20926
+2023/03/28 14:49:39,Resetting timeout to 2:49:54 PM
+2023/03/28 14:49:39,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 21826; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 21376
+2023/03/28 14:49:54,Resetting timeout to 2:50:09 PM
+2023/03/28 14:49:54,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 22276; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 21826
+2023/03/28 14:50:09,Resetting timeout to 2:50:24 PM
+2023/03/28 14:50:09,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 22726; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 22276
+2023/03/28 14:50:24,Resetting timeout to 2:50:39 PM
+2023/03/28 14:50:24,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 23177; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 22726
+2023/03/28 14:50:39,Resetting timeout to 2:50:54 PM
+2023/03/28 14:50:39,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 23626; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 23177
+2023/03/28 14:50:54,Resetting timeout to 2:51:09 PM
+2023/03/28 14:50:54,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 24077; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 23626
+2023/03/28 14:51:09,Resetting timeout to 2:51:24 PM
+2023/03/28 14:51:09,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 24527; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 24077
+2023/03/28 14:51:24,Resetting timeout to 2:51:39 PM
+2023/03/28 14:51:24,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 24977; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 24527
+2023/03/28 14:51:39,Resetting timeout to 2:51:54 PM
+2023/03/28 14:51:39,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 25427; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 24977
+2023/03/28 14:51:54,Resetting timeout to 2:52:09 PM
+2023/03/28 14:51:54,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 25877; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 25427
+2023/03/28 14:52:09,Resetting timeout to 2:52:24 PM
+2023/03/28 14:52:09,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 26327; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 25877
+2023/03/28 14:52:24,Resetting timeout to 2:52:39 PM
+2023/03/28 14:52:24,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 26777; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 26327
+2023/03/28 14:52:39,Resetting timeout to 2:52:54 PM
+2023/03/28 14:52:39,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 27227; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 26777
+2023/03/28 14:52:54,Resetting timeout to 2:53:09 PM
+2023/03/28 14:52:54,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 27678; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 27227
+2023/03/28 14:53:09,Resetting timeout to 2:53:24 PM
+2023/03/28 14:53:09,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 28128; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 27678
+2023/03/28 14:53:24,Resetting timeout to 2:53:39 PM
+2023/03/28 14:53:24,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 28578; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 28128
+2023/03/28 14:53:39,Resetting timeout to 2:53:54 PM
+2023/03/28 14:53:39,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 29028; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 28578
+2023/03/28 14:53:54,Resetting timeout to 2:54:09 PM
+2023/03/28 14:53:54,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 29478; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 29028
+2023/03/28 14:54:09,Resetting timeout to 2:54:24 PM
+2023/03/28 14:54:09,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 29873; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 29478
+2023/03/28 14:54:17,Quit application via 'Escape' key.
+2023/03/28 14:54:17,Application Quit

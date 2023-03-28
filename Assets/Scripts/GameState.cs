@@ -42,6 +42,7 @@ namespace ArtScan
         public Texture2D preview;
         public int scanMax;
 
+        private Texture2D[] _scans;
         public Texture2D[] scans;
         public List<int> nextToReplace;
 
@@ -50,6 +51,8 @@ namespace ArtScan
         public RemoveBackgroundSettings settings;
 
         public UploadThreadController uploadThreadController;
+
+ 
 
         public void SwitchTeam(int i)
         {
@@ -86,9 +89,62 @@ namespace ArtScan
 
         }
 
+        private Texture2D GetScan(int i)
+        {
+            if (i >= 0 && i < scans.Length)
+            {
+                Texture2D scan = scans[i];
+                if (scan == null) { return null; }
+                else return _scans[i];
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private void SetScan(Texture2D tex, int i)
+        {
+            if (tex == null) { return; }
+            if (i >= 0 && i < scans.Length)
+            {
+                _scans[i] = tex;
+                scans[i] = tex;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+        }
+
         public void ClearScans()
         {
+            for (int i=0; i<_scans.Length; i++)
+            {
+                Texture2D _scan = _scans[i];
+                if (_scan != null)
+                {
+                    Destroy(_scan);
+                    _scans[i] = null;
+                    scans[i] = null;
+                }
+            }
+
+            _scans = new Texture2D[scanMax];
             scans = new Texture2D[scanMax];
+            for (int i=0; i<_scans.Length; i++)
+            {
+                if (settings != null)
+                {
+                    _scans[i] = new Texture2D(settings.targetWidth, settings.targetHeight, TextureFormat.RGBA32, false);
+                    scans[i] = _scans[i];
+                }
+                else
+                {
+                    _scans[i] = new Texture2D(2, 2, TextureFormat.RGBA32, false);
+                    scans[i] = _scans[i];
+                }
+            }
             nextToReplace.Clear();
         }
 
@@ -178,48 +234,30 @@ namespace ArtScan
             //UploadThreadController.Upload(fullPath);
         }
 
-        public int AddScan(Texture2D newScan)
+        public void AddPreview()
         {
-            //If there's room, just add it to the list
-            for (int i = 0; i < scans.Length; i++)
+            int index = GetNextScanIndex();
+            Texture2D scanDest = scans[index];
+            if (scanDest == null)
             {
-                if (scans[i] == null)
-                {
-                    scans[i] = newScan;
-
-                    if (nextToReplace == null) nextToReplace = new List<int>();
-                    nextToReplace.Add(i);
-
-                    return i;
-                }
+                
             }
-
-            //Else replace the oldest scan
-            if (nextToReplace.Count > 0)
-            {
-                int toRemove = nextToReplace[0];
-                scans[toRemove] = newScan;
-
-                nextToReplace.RemoveAt(0);
-                nextToReplace.Add(toRemove);
-                return toRemove;
-            }
-            //Should never happen
-            else
-            {
-                int arbitraryIndex = 0;
-
-                scans[arbitraryIndex] = newScan;
-                nextToReplace.Add(arbitraryIndex);
-                return arbitraryIndex;
-            }
+            //copy gamestate.preview
+            //addscan
         }
 
-        public int AddScan(Texture2D newScan, int index)
+        public void AddScan(Texture2D newScan)
         {
+            int index = GetNextScanIndex();
+            AddScan(newScan, index);
+        }
+
+        public void AddScan(Texture2D newScan, int index)
+        {
+            
+
             scans[index] = newScan;
             nextToReplace.Add(index);
-            return index;
         }
 
         public int GetNextScanIndex()
@@ -232,6 +270,8 @@ namespace ArtScan
                     return i;
                 }
             }
+
+            if (nextToReplace == null) { nextToReplace = new List<int>(); }
 
             //Else replace the oldest scan
             if (nextToReplace.Count > 0)

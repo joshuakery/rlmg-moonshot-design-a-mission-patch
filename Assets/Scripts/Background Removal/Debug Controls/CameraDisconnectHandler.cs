@@ -147,10 +147,6 @@ namespace ArtScan.ErrorDisplayModule
             ReInitialize();
         }
 
-
-
-
-
         // Update is called once per frame
         void Update()
         {
@@ -182,134 +178,196 @@ namespace ArtScan.ErrorDisplayModule
             CheckDevices();
         }
 
+        private void LogWebCamTextureToMatHelperStatus()
+        {
+            RLMGLogger.Instance.Log(
+                 System.String.Format(
+                     "Checking devices... webCamTexture is null: {0}; isPlaying: {1}; updateCount: {2}; shouldBePlaying: {3}; saved webCamTextureID: {4}; current ID: {5}; lastUpdateCount: {6}",
+                     (mainWebCamTextureToMatHelper.GetWebCamTexture() == null) ? "True" : "False",
+                     (mainWebCamTextureToMatHelper.IsPlaying()) ? "True" : "False",
+                     (mainWebCamTextureToMatHelper.GetWebCamTexture() != null) ? mainWebCamTextureToMatHelper.GetWebCamTexture().updateCount : "Is Null",
+                     (shouldBePlaying) ? "True" : "False",
+                     webCamTextureID,
+                     mainWebCamTextureToMatHelper.GetWebCamTexture() != null ?
+                         mainWebCamTextureToMatHelper.GetWebCamTexture().GetInstanceID() : "Null webCamTexture",
+                     lastUpdateCount
+                 ),
+                 MESSAGETYPE.INFO
+             );
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>Bool if the helper exists and IsInitialized()</returns>
+        private bool CheckForWebCamTextureToMatHelperReady()
+        {
+            if (mainWebCamTextureToMatHelper == null)
+            {
+                RLMGLogger.Instance.Log("...cannot check devices because a webCamTextureToMatHelper is null.", MESSAGETYPE.ERROR);
+                return false;
+            }
+
+            else if (!mainWebCamTextureToMatHelper.IsInitialized())
+            {
+                RLMGLogger.Instance.Log("...cannot check devices because a webCamTextureToMatHelper is not initialized.", MESSAGETYPE.ERROR);
+                return false;
+            }
+
+            else return true;
+        }
+
+        /// <summary>
+        /// Sets the lastUpdateCount value and also performs a comparison between the last updateCount and the current
+        /// </summary>
+        /// <returns>
+        /// False if the helper says the WebCamTexture exists and isPlaying, but the updateCount has remained the same
+        /// between two timeouts; true if the updateCount has incremented, if the WebCamTexture is not playing, or if it does not exist
+        /// </returns>
+        private bool CheckIfFramesAreUpdatingWhenTheyShouldBe()
+        {
+            if (mainWebCamTextureToMatHelper.GetWebCamTexture() != null)
+            {
+                if (mainWebCamTextureToMatHelper.IsPlaying())
+                {
+                    if (lastUpdateCount == mainWebCamTextureToMatHelper.GetWebCamTexture().updateCount)
+                    {
+                        RLMGLogger.Instance.Log(
+                            string.Format("CAMERA RE-INIT: Currently used webcam, {0}, has not updated since last check. Update count: {1}", mainWebCamTextureToMatHelper.GetWebCamDevice().name, mainWebCamTextureToMatHelper.GetWebCamTexture().updateCount),
+                            MESSAGETYPE.ERROR
+                        );
+
+                        if (errorDisplaySettingsSO.errorDisplaySettings.doSaveCurrentAndLastWebCamTexturesToDisk)
+                        {
+                            SaveCurrentAndLastWebCamTexturesToFile();
+                            SetLastWebCamTexture();
+                        }
+
+                        lastUpdateCount = (int)mainWebCamTextureToMatHelper.GetWebCamTexture().updateCount;
+
+                        return false;
+                    }
+                    else //updateCounts are not equal
+                    {
+                        lastUpdateCount = (int)mainWebCamTextureToMatHelper.GetWebCamTexture().updateCount;
+
+                        if (errorDisplaySettingsSO.errorDisplaySettings.doSaveCurrentAndLastWebCamTexturesToDisk)
+                            SetLastWebCamTexture();
+
+                        return true;
+                    }
+                }
+                else //not isPlaying
+                {
+                    lastUpdateCount = -1;
+                    if (lastWebCamTexture != null) { Destroy(lastWebCamTexture); }
+                    lastWebCamTexture = null;
+                    return true;
+                }
+            }
+            else
+            {
+                RLMGLogger.Instance.Log(
+                        "Resetting lastUpdateCount because webCamTexture was null.",
+                        MESSAGETYPE.ERROR
+                    );
+
+                lastUpdateCount = -1;
+                if (lastWebCamTexture != null) { Destroy(lastWebCamTexture); }
+                lastWebCamTexture = null;
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// If the webcam is not playing but this handler says it should be, calls the Play() method on the helper
+        /// The 'shouldBeValue' is changed by this handler's listeners to the helper's Play, Pause, and Stop methods
+        /// This feature solves a Windows issue in which a momentarily disconnected camera Paused or Stopped the camera
+        /// with otherwise no noticed problems
+        /// </summary>
+        private void TryPlayingWebCamIfNotPlayingButShouldBePlaying()
+        {
+            if (mainWebCamTextureToMatHelper.GetWebCamTexture() != null)
+            {
+                if (shouldBePlaying && !mainWebCamTextureToMatHelper.IsPlaying())
+                {
+                    RLMGLogger.Instance.Log(
+                        "Webcam should be playing but it's not. Playing...",
+                        MESSAGETYPE.ERROR
+                    );
+                    mainWebCamTextureToMatHelper.Play();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Checks if the current device on the helper is in the polled list of available devices
+        /// </summary>
+        /// <returns>Bool the device name is in the list of available devices</returns>
+        private bool CheckForMissingDevice()
+        {
+            WebCamDevice[] devices = WebCamTexture.devices;
+            if (Array.IndexOf(devices, mainWebCamTextureToMatHelper.GetWebCamDevice()) < 0)
+            {
+                RLMGLogger.Instance.Log(
+                    string.Format("CAMERA RE-INIT: Currently used webcam, {0}, not found in devices list: {1}", mainWebCamTextureToMatHelper.GetWebCamDevice().name, PrintDeviceNames(devices)),
+                    MESSAGETYPE.ERROR
+                );
+                return false;
+            }
+            else return true;
+        }
+
+        /// <summary>
+        /// Checks if the requested device on the helper matches the current device
+        /// </summary>
+        /// <returns>Bool the device names match</returns>
+        private bool CheckForRequestedDevice()
+        {
+            if (mainWebCamTextureToMatHelper.requestedDeviceName != mainWebCamTextureToMatHelper.GetDeviceName())
+            {
+                RLMGLogger.Instance.Log(
+                    string.Format("CAMERA RE-INIT: Currently used webcam, {0} is not the requested device: {1}", mainWebCamTextureToMatHelper.GetDeviceName(), mainWebCamTextureToMatHelper.requestedDeviceName),
+                    MESSAGETYPE.ERROR
+                );
+
+                return false;
+            }
+            else return true;
+        }
+
         private void CheckDevices()
         {
             if (configLoaded)
             {
                 if (errorDisplaySettingsSO.errorDisplaySettings.doVerboseLoggingOfDisconnectHandler)
+                    LogWebCamTextureToMatHelperStatus();
+
+                bool webCamTextureToMatHelperReady = CheckForWebCamTextureToMatHelperReady();
+                if (webCamTextureToMatHelperReady)
                 {
-                    RLMGLogger.Instance.Log(
-                        System.String.Format(
-                            "Checking devices... webCamTexture is null: {0}; isPlaying: {1}; updateCount: {2}; shouldBePlaying: {3}; saved webCamTextureID: {4}; current ID: {5}; lastUpdateCount: {6}",
-                            (mainWebCamTextureToMatHelper.GetWebCamTexture() == null) ? "True" : "False",
-                            (mainWebCamTextureToMatHelper.IsPlaying()) ? "True" : "False",
-                            (mainWebCamTextureToMatHelper.GetWebCamTexture() != null) ? mainWebCamTextureToMatHelper.GetWebCamTexture().updateCount : "Is Null",
-                            (shouldBePlaying) ? "True" : "False",
-                            webCamTextureID,
-                            mainWebCamTextureToMatHelper.GetWebCamTexture() != null ?
-                                mainWebCamTextureToMatHelper.GetWebCamTexture().GetInstanceID() : "Null webCamTexture",
-                            lastUpdateCount
-                        ),
-                        MESSAGETYPE.INFO
-                    );
-                }
-
-                if (mainWebCamTextureToMatHelper == null)
-                {
-                    RLMGLogger.Instance.Log("...cannot check devices because a webCamTextureToMatHelper is null.", MESSAGETYPE.ERROR);
-                    return;
-                }
-
-                if (!mainWebCamTextureToMatHelper.IsInitialized())
-                {
-                    RLMGLogger.Instance.Log("...cannot check devices because a webCamTextureToMatHelper is not initialized.", MESSAGETYPE.ERROR);
-                    return;
-                }    
-
-                if (mainWebCamTextureToMatHelper.GetWebCamTexture() != null)
-                {
-                    if (mainWebCamTextureToMatHelper.IsPlaying())
-                    {
-                        if (lastUpdateCount == mainWebCamTextureToMatHelper.GetWebCamTexture().updateCount)
-                        {
-                            RLMGLogger.Instance.Log(
-                                string.Format("CAMERA RE-INIT: Currently used webcam, {0}, has not updated since last check. Update count: {1}", mainWebCamTextureToMatHelper.GetWebCamDevice().name, mainWebCamTextureToMatHelper.GetWebCamTexture().updateCount),
-                                MESSAGETYPE.ERROR
-                            );
-
-                            if (errorDisplaySettingsSO.errorDisplaySettings.doSaveCurrentAndLastWebCamTexturesToDisk)
-                            {
-                                SaveCurrentAndLastWebCamTexturesToFile();
-                                SetLastWebCamTexture();
-                            }
-
-                            lastUpdateCount = (int)mainWebCamTextureToMatHelper.GetWebCamTexture().updateCount;
-
-                            if (errorDisplaySettingsSO.errorDisplaySettings.doAttemptCameraRestartIfFrozenUpdateCount)
-                            {
-                                ReInitialize();
-                            }
-
-                            return;
-                        }
-                        else //updateCounts are not equal
-                        {
-                            lastUpdateCount = (int)mainWebCamTextureToMatHelper.GetWebCamTexture().updateCount;
-
-                            if (errorDisplaySettingsSO.errorDisplaySettings.doSaveCurrentAndLastWebCamTexturesToDisk)
-                                SetLastWebCamTexture();
-                        }
-                    }
-                    else //not isPlaying
-                    {
-                        lastUpdateCount = -1;
-                        if (lastWebCamTexture != null) { Destroy(lastWebCamTexture); }
-                        lastWebCamTexture = null;
-                    }                    
-                }
-                else
-                {
-                    RLMGLogger.Instance.Log(
-                            "Resetting lastUpdateCount because webCamTexture was null.",
-                            MESSAGETYPE.ERROR
-                        );
-
-                    lastUpdateCount = -1;
-                    if (lastWebCamTexture != null) { Destroy(lastWebCamTexture); }
-                    lastWebCamTexture = null;
-                }
-
-                if (mainWebCamTextureToMatHelper.GetWebCamTexture() != null)
-                {
-                    if (shouldBePlaying && !mainWebCamTextureToMatHelper.IsPlaying())
-                    {
-                        RLMGLogger.Instance.Log(
-                            "Webcam should be playing but it's not. Playing...",
-                            MESSAGETYPE.ERROR
-                        );
-                        mainWebCamTextureToMatHelper.Play();
-                    }
-                }
-
-                WebCamDevice[] devices = WebCamTexture.devices;
-                if (Array.IndexOf(devices, mainWebCamTextureToMatHelper.GetWebCamDevice()) < 0)
-                {
-                    RLMGLogger.Instance.Log(
-                        string.Format("CAMERA RE-INIT: Currently used webcam, {0}, not found in devices list: {1}", mainWebCamTextureToMatHelper.GetWebCamDevice().name, PrintDeviceNames(devices)),
-                        MESSAGETYPE.ERROR
-                    );
-
-                    if (errorDisplaySettingsSO.errorDisplaySettings.doAttemptCameraRestartIfMissingDevice)
+                    if (!CheckIfFramesAreUpdatingWhenTheyShouldBe() &&
+                        errorDisplaySettingsSO.errorDisplaySettings.doAttemptCameraRestartIfFrozenUpdateCount)
                     {
                         ReInitialize();
+                        return;
                     }
 
-                    return;
-                }
+                    TryPlayingWebCamIfNotPlayingButShouldBePlaying();
 
-                if (mainWebCamTextureToMatHelper.requestedDeviceName != mainWebCamTextureToMatHelper.GetDeviceName())
-                {
-                    RLMGLogger.Instance.Log(
-                        string.Format("CAMERA RE-INIT: Currently used webcam, {0} is not the requested device: {1}", mainWebCamTextureToMatHelper.GetDeviceName(), mainWebCamTextureToMatHelper.requestedDeviceName),
-                        MESSAGETYPE.ERROR
-                    );
-
-                    if (errorDisplaySettingsSO.errorDisplaySettings.doAttemptCameraRestartIfWrongCamera)
+                    if (!CheckForMissingDevice() &&
+                        errorDisplaySettingsSO.errorDisplaySettings.doAttemptCameraRestartIfMissingDevice)
                     {
                         ReInitialize();
+                        return;
                     }
-
-                    return;
+                        
+                    if (!CheckForRequestedDevice() &&
+                        errorDisplaySettingsSO.errorDisplaySettings.doAttemptCameraRestartIfWrongCamera)
+                    {
+                        ReInitialize();
+                        return;
+                    }
                 }
             }
             else
