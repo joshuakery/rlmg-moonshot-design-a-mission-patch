@@ -27,15 +27,15 @@ namespace ArtScan.MuralPositionsModule
             {
                 Patch patch = patches[i];
 
-                if (gameState.scans[i] != null) //if we have a scan, show it
+                if (gameState.savedScanManager.scans[i] != null) //if we have a scan, show it
                 {
-                    Texture2D scan = gameState.scans[i];
+                    Texture2D scan = gameState.savedScanManager.scans[i];
                     patch.ri.texture = scan;
 
                     patch.drawingGenericWindow.Open();
                     patch.defaultGenericWindow.Close();
                 }
-                else if (i == 0 || (i >= 1 && gameState.scans[i - 1] != null))
+                else if (i == 0 || (i >= 1 && gameState.savedScanManager.scans[i - 1] != null))
                 //if not, if this is the first one, or if the last one was a scan, show the placeholder
                 {
                     patch.drawingGenericWindow.Close();

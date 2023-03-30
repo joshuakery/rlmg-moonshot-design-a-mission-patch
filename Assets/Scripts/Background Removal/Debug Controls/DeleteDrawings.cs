@@ -24,6 +24,7 @@ namespace ArtScan.ScanSavingModule
             }
         }
 
+        private bool useServer = false;
         public DownloadThreadController downloadThreadController;
         public DeleteThreadController deleteThreadController;
         public UploadThreadController uploadThreadController;
@@ -51,7 +52,23 @@ namespace ArtScan.ScanSavingModule
             }
         }
 
-        public Texture2D[] scans;
+        [SerializeField]
+        private SavedScanManager savedScanManager;
+
+        private Texture2D[] scansOnView
+        {
+            get
+            {
+                if (viewedTeamIndex == gameState.currentTeamIndex)
+                {
+                    return gameState.savedScanManager.scans;
+                }
+                else
+                {
+                    return savedScanManager.scans;
+                }
+            }
+        }
 
         public RemoveBackgroundSettings settings;
         public myWebCamTextureToMatHelper webCamTextureToMatHelper;
@@ -71,11 +88,12 @@ namespace ArtScan.ScanSavingModule
 
             viewedTeamIndex = gameState.currentTeamIndex;
             ViewTeam();
+
+            useServer = FindObjectOfType<Client>() != null;
         }
 
         private void OnEnable()
         {
-            SyncScans();
             UpdatePatches();
         }
 
@@ -84,11 +102,16 @@ namespace ArtScan.ScanSavingModule
             StartCoroutine(_ViewTeam());
         }
 
+        /// <summary>
+        /// Downloads the requested team's images except if its the current team
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator _ViewTeam()
         {
-            if (viewedTeamIndex != gameState.currentTeamIndex)
+            if (viewedTeamIndex != gameState.currentTeamIndex && useServer)
             {
                 patchesContainer.gameObject.SetActive(false);
+
                 if (loadingFeedback != null)
                     loadingFeedback.SetActive(true);
 
@@ -100,33 +123,11 @@ namespace ArtScan.ScanSavingModule
                 yield return StartCoroutine(ScanSaving.DownloadScansCoroutine(downloadThreadController, dirPath, viewedTeam.artworks, false, null));
 
                 patchesContainer.gameObject.SetActive(true);
+
                 if (loadingFeedback != null)
                     loadingFeedback.SetActive(false);
 
-                //read images to Texture2D and add to scans list
-                DirectoryInfo mainDI = new DirectoryInfo(dirPath);
-                if (viewedTeam.artworks != null && mainDI.Exists)
-                {
-                    scans = new Texture2D[viewedTeam.artworks.Length];
-
-                    for (int i = 0; i < viewedTeam.artworks.Length; i++)
-                    {
-                        string filename = viewedTeam.artworks[i];
-                        if (!String.IsNullOrEmpty(filename))
-                        {
-                            string filepath = Path.Join(dirPath, filename);
-
-                            Texture2D scanTexture = ScanSaving.GetTexture2DFromImageFile(filepath, settings, webCamTextureToMatHelper);
-                            scanTexture.name = "Delete Drawings Loaded Texture";
-
-                            scans[i] = scanTexture;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                SyncScans();
+                savedScanManager.ReadScans(viewedTeam.artworks, webCamTextureToMatHelper);
             }
 
             //update special patch log
@@ -140,14 +141,6 @@ namespace ArtScan.ScanSavingModule
             if (scanHistories != null) { scanHistories.Clear(); }
         }
 
-        public void SyncScans()
-        {
-            if (viewedTeamIndex == gameState.currentTeamIndex)
-            {
-                scans = gameState.scans;
-            }
-        }
-
         public void UpdatePatches()
         {
             for (int i = 0; i < patchesContainer.childCount; i++)
@@ -156,9 +149,9 @@ namespace ArtScan.ScanSavingModule
                 Image img = patchLogItem.GetChild(0).GetComponent<Image>();
                 RawImage ri = patchLogItem.GetChild(1).GetComponent<RawImage>();
 
-                if (i < scans.Length && scans[i] != null)
+                if (i < scansOnView.Length && scansOnView[i] != null)
                 {
-                    Texture2D scan = scans[i];
+                    Texture2D scan = scansOnView[i];
                     ri.texture = scan;
 
                     ri.gameObject.SetActive(true);
@@ -180,7 +173,7 @@ namespace ArtScan.ScanSavingModule
                 Transform patchLogItem = patchesContainer.GetChild(i);
                 Toggle toggle = patchLogItem.GetChild(1).GetComponent<Toggle>();
 
-                if (scans[i] != null && toggle.isOn)
+                if (scansOnView[i] != null && toggle.isOn)
                 {
                     deleteButton.interactable = true;
                     return;
@@ -203,19 +196,22 @@ namespace ArtScan.ScanSavingModule
                 Transform patchLogItem = patchesContainer.GetChild(i);
                 Toggle toggle = patchLogItem.GetChild(1).GetComponent<Toggle>();
 
-                if (scans[i] != null && toggle.isOn)
+                if (scansOnView[i] != null && toggle.isOn)
                 {
                     string filename = viewedTeam.artworks[i];
 
                     if (viewedTeam == gameState.currentTeam)
                     {
-                        gameState.TrashScanFromCurrentTeam(filename, i);
+                        gameState.savedScanManager.TrashScanAndRemoveFromScans(filename, i);
                     }
                     else
                     {
-                        gameState.TrashScan(filename);
-                        yield return StartCoroutine(deleteThreadController.DeleteCoroutine(filename));
-                        Array.Clear(scans, i, 1);
+                        gameState.savedScanManager.TrashScan(filename);
+                        if (useServer)
+                        {
+                            yield return StartCoroutine(deleteThreadController.DeleteCoroutine(filename));
+                        }
+                        Array.Clear(scansOnView, i, 1);
                     }
 
                     //Update UI
@@ -243,22 +239,23 @@ namespace ArtScan.ScanSavingModule
 
                 ScanHistory mostRecent = scanHistories[scanHistories.Count - 1];
 
-                string saveDirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
-                string fullPath = Path.Join(saveDirPath, mostRecent.filename);
-
                 if (viewedTeam == gameState.currentTeam)
                 {
-                    gameState.UnTrashScanFromCurrentTeam(mostRecent.filename, mostRecent.index, webCamTextureToMatHelper);
-                    yield return StartCoroutine(uploadThreadController.UploadCoroutine(fullPath));
+                    gameState.savedScanManager.UnTrashScanAndReadToScans(mostRecent.filename, mostRecent.index, webCamTextureToMatHelper);
                 }
                 else
                 {
-                    gameState.UnTrashScan(mostRecent.filename);
-                    yield return StartCoroutine(uploadThreadController.UploadCoroutine(fullPath));
-
-                    Texture2D untrashedScan = ScanSaving.GetTexture2DFromImageFile(fullPath, settings, webCamTextureToMatHelper);
-                    scans[mostRecent.index] = untrashedScan;
+                    savedScanManager.UnTrashScanAndReadToScans(mostRecent.filename, mostRecent.index, webCamTextureToMatHelper);
                 }
+
+
+                if (useServer)
+                {
+                    string saveDirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
+                    string fullPath = Path.Join(saveDirPath, mostRecent.filename);
+                    yield return StartCoroutine(uploadThreadController.UploadCoroutine(fullPath));
+                }
+
 
                 scanHistories.Remove(mostRecent);
 

@@ -4,10 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ImgprocModule;
 using OpenCVForUnity.UnityUtils.Helper;
+using OpenCVForUnity.UnityUtils;
 using ArtScan.NamesakesModule;
 using ArtScan.WordPoints;
 using ArtScan.CoreModule;
+using ArtScan.PresentationUtilsModule;
 using ArtScan.WordScoringUtilsModule;
 using ArtScan.WordSavingUtilsModule;
 using ArtScan.TeamsModule;
@@ -42,9 +46,15 @@ namespace ArtScan
         public Texture2D preview;
         public int scanMax;
 
-        private Texture2D[] _scans;
-        public Texture2D[] scans;
-        public List<int> nextToReplace;
+        public SavedScanManager savedScanManager;
+
+        public bool allScansEmpty
+        {
+            get
+            {
+                return savedScanManager.allScansEmpty;
+            }
+        }
 
         public List<string> exclude;
 
@@ -89,65 +99,14 @@ namespace ArtScan
 
         }
 
-        private Texture2D GetScan(int i)
+        public void AddPreview()
         {
-            if (i >= 0 && i < scans.Length)
-            {
-                Texture2D scan = scans[i];
-                if (scan == null) { return null; }
-                else return _scans[i];
-            }
-            else
-            {
-                throw new ArgumentOutOfRangeException();
-            }
+            savedScanManager.AddScanAsCopyOfTexture(preview);
         }
 
-        private void SetScan(Texture2D tex, int i)
-        {
-            if (tex == null) { return; }
-            if (i >= 0 && i < scans.Length)
-            {
-                _scans[i] = tex;
-                scans[i] = tex;
-            }
-            else
-            {
-                throw new ArgumentOutOfRangeException();
-            }
-        }
-
-        public void ClearScans()
-        {
-            for (int i=0; i<_scans.Length; i++)
-            {
-                Texture2D _scan = _scans[i];
-                if (_scan != null)
-                {
-                    Destroy(_scan);
-                    _scans[i] = null;
-                    scans[i] = null;
-                }
-            }
-
-            _scans = new Texture2D[scanMax];
-            scans = new Texture2D[scanMax];
-            for (int i=0; i<_scans.Length; i++)
-            {
-                if (settings != null)
-                {
-                    _scans[i] = new Texture2D(settings.targetWidth, settings.targetHeight, TextureFormat.RGBA32, false);
-                    scans[i] = _scans[i];
-                }
-                else
-                {
-                    _scans[i] = new Texture2D(2, 2, TextureFormat.RGBA32, false);
-                    scans[i] = _scans[i];
-                }
-            }
-            nextToReplace.Clear();
-        }
-
+        /// <summary>
+        /// Calls the static DownloadScans method to download and save images to the saveDir
+        /// </summary>
         public void DownloadScans()
         {
             string dirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
@@ -155,141 +114,19 @@ namespace ArtScan
             ScanSavingModule.ScanSaving.DownloadScans(dirPath, currentTeam);
         }
 
+        /// <summary>
+        /// Reads scans from file and adds them to the _scans array
+        /// </summary>
+        /// <param name="webCamTextureToMatHelper">Instance passed along to get Mat format</param>
         public void ReadScans(myWebCamTextureToMatHelper webCamTextureToMatHelper)
         {
-            ClearScans();
-
-            string dirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
-
-            DirectoryInfo mainDI = new DirectoryInfo(dirPath);
-
-            if (currentTeam.artworks != null && mainDI.Exists)
-            {
-                for (int i = 0; i < currentTeam.artworks.Length; i++)
-                {
-                    string filename = currentTeam.artworks[i];
-                    if (!String.IsNullOrEmpty(filename))
-                    {
-                        string filepath = Path.Join(dirPath, filename);
-
-                        Texture2D scanTexture = ScanSavingModule.ScanSaving.GetTexture2DFromImageFile(filepath, settings, webCamTextureToMatHelper);
-
-                        AddScan(scanTexture, i);
-                    }
-                }
-            }
-
-            //ScanSaving.ReadScans(dirPath, AddScan, settings, webCamTextureToMatHelper);
-        }
-
-        public void TrashScanFromCurrentTeam(string filename, int index)
-        {
-            //remove from list of Texture2D
-            Array.Clear(scans, index, 1);
-
-            //remove from replacement order
-            if (nextToReplace.Contains(index))
-                nextToReplace.Remove(index);
-
-            //do not remove from local artworks list - but since the image is deleted it won't matter
-            //Array.Clear(currentTeam.artworks, index, 1);
-            //WordSaving.SaveTeamsToFile(saveFile,teams);
-
-            //do not remove from server artworks list - but since the image is deleted it won't matter
-            //Array.Clear(Client.instance.team.MoonshotTeamData.artworks, index, 1);
-            //ClientSend.SendStationDataToServer();
-
-            TrashScan(filename);     
-        }
-
-        public void TrashScan(string filename)
-        {
-            string saveDirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
-            string trashDirPath = Path.Combine(Application.streamingAssetsPath, settings.trashDir);
-            ScanSavingModule.ScanSaving.TrashScan(saveDirPath, trashDirPath, filename);
-
-            //ClientSend.DeleteFileFromServer(filename);
-            //DeleteThreadController.Delete(filename);
-        }
-
-        public void UnTrashScanFromCurrentTeam(string filename, int index, myWebCamTextureToMatHelper webCamTextureToMatHelper)
-        {
-            UnTrashScan(filename);
-
-            string saveDirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
-            string fullPath = Path.Join(saveDirPath, filename);
-
-            Texture2D untrashedScan = ScanSavingModule.ScanSaving.GetTexture2DFromImageFile(fullPath, settings, webCamTextureToMatHelper);
-            AddScan(untrashedScan, index);
-        }
-
-        public void UnTrashScan(string filename)
-        {
-            string saveDirPath = Path.Join(Application.streamingAssetsPath, settings.saveDir);
-            string trashDirPath = Path.Combine(Application.streamingAssetsPath, settings.trashDir);
-            ScanSavingModule.ScanSaving.UnTrashScan(saveDirPath, trashDirPath, filename);
-
-            //string fullPath = Path.Join(saveDirPath, filename);
-            //ClientSend.SendFileToServer(fullPath);
-            //UploadThreadController.Upload(fullPath);
-        }
-
-        public void AddPreview()
-        {
-            int index = GetNextScanIndex();
-            Texture2D scanDest = scans[index];
-            if (scanDest == null)
-            {
-                
-            }
-            //copy gamestate.preview
-            //addscan
-        }
-
-        public void AddScan(Texture2D newScan)
-        {
-            int index = GetNextScanIndex();
-            AddScan(newScan, index);
-        }
-
-        public void AddScan(Texture2D newScan, int index)
-        {
-            
-
-            scans[index] = newScan;
-            nextToReplace.Add(index);
-        }
-
-        public int GetNextScanIndex()
-        {
-            //If there's room, just add it to the list
-            for (int i = 0; i < scans.Length; i++)
-            {
-                if (scans[i] == null)
-                {
-                    return i;
-                }
-            }
-
-            if (nextToReplace == null) { nextToReplace = new List<int>(); }
-
-            //Else replace the oldest scan
-            if (nextToReplace.Count > 0)
-            {
-                int toRemove = nextToReplace[0];
-                return toRemove;
-            }
-            //Should never happen
-            else
-            {
-                int arbitraryIndex = 0;
-                return arbitraryIndex;
-            }
+            if (currentTeam != null)
+                savedScanManager.ReadScans(currentTeam.artworks, webCamTextureToMatHelper);
         }
 
         public void Reset()
         {
-            ClearScans();
+            savedScanManager.ClearScans();
         }
 
         public void AddTeam(MoonshotTeamData team)

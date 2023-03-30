@@ -21,8 +21,7 @@ public class EndingWindow : GenericWindow
 
     public void SetTexts()
     {
-        bool isEmpty = Array.TrueForAll(gameState.scans, scan => scan == null);
-        if (isEmpty)
+        if (gameState.allScansEmpty)
         {   
             heading.text = headings[0];
             body.text = bodies[0];

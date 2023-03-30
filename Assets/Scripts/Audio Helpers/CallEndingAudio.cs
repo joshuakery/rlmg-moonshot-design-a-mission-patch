@@ -12,8 +12,7 @@ public class CallEndingAudio : MonoBehaviour
 
     public void CallAudioEvent()
     {
-        bool isEmpty = Array.TrueForAll(gameState.scans, scan => scan == null);
-        if (isEmpty)
+        if (gameState.allScansEmpty)
         {
             TooBadAudioEvent.Raise();
         }

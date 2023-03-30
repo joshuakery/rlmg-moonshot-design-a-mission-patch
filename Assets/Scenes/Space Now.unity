@@ -8806,10 +8806,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 3840, y: 2160}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -9542,7 +9542,7 @@ MonoBehaviour:
   undoButton: {fileID: 8990090366488444160}
   deleteButton: {fileID: 7344987474240340928}
   viewedTeamIndex: 0
-  scans: []
+  savedScanManager: {fileID: 11400000, guid: fbb26fb72211dec489eb0d25dfc59a2c, type: 2}
   settings: {fileID: 11400000, guid: eebe36b8bd1234f8ca3d2e070246f3b8, type: 2}
   webCamTextureToMatHelper: {fileID: 5514461683746088419}
 --- !u!114 &2984178591394759278
