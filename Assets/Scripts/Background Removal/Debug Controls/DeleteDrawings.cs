@@ -77,6 +77,8 @@ namespace ArtScan.ScanSavingModule
         {
             if (webCamTextureToMatHelper == null)
                 webCamTextureToMatHelper = FindObjectOfType<myWebCamTextureToMatHelper>();
+
+            savedScanManager.ClearScans();
         }
 
         private void Start()

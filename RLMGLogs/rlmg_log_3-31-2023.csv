@@ -1,0 +1,204 @@
+Timestamp, Message
+2023/03/31 16:55:32,Application Awake - version #2023.1.18
+2023/03/31 16:55:32,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/03/31 16:55:32,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/03/31 16:55:32,GameEvent raised: CloseAllWindows
+2023/03/31 16:55:32,GameEvent raised: MuralPositionsLoaded
+2023/03/31 16:55:32,GameEvent raised: ConfigLoaded
+2023/03/31 16:55:32,Initializing from myWebCamTextureToMatHelper...
+2023/03/31 16:55:32,Successfully found correct camera.
+2023/03/31 16:55:32,NEW webCamTexture ID: -522
+2023/03/31 16:55:33,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/03/31 16:55:33,Calling OnWebCamTextureToMatHelperInitialized...
+2023/03/31 16:55:33,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/03/31 16:55:33,Initializing thread.
+2023/03/31 16:55:33,Thread Start.
+2023/03/31 16:55:33,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/03/31 16:55:33,The directory was created successfully at C:/Users/joshu/Documents/GitHub/moonshot-art-scan/Builds/Leak9-Mission/Moonshot Art Scan_Data/StreamingAssets\Images.
+2023/03/31 16:55:33,Downloading scans to C:/Users/joshu/Documents/GitHub/moonshot-art-scan/Builds/Leak9-Mission/Moonshot Art Scan_Data/StreamingAssets\Images.
+2023/03/31 16:55:33,Downloading number 0 of 6 scans: Red-0.png
+2023/03/31 16:55:33,Initializing debug menu...
+2023/03/31 16:55:33,GameEvent raised: WindowsRefreshed
+2023/03/31 16:55:33,GameEvent raised: CloseAllWindows
+2023/03/31 16:55:33,Starting app...
+2023/03/31 16:55:33,GameEvent raised: Welcome
+2023/03/31 16:55:33,Message from server: Connected to the Moonshot Server.
+2023/03/31 16:55:33,GameEvent raised: NonScanWindowIsIn
+2023/03/31 16:55:33,Webcam pausing...
+2023/03/31 16:55:33,Thread stopped.
+2023/03/31 16:55:33,Resume Round
+2023/03/31 16:55:33,Resume round with: Red
+2023/03/31 16:55:33,Client received 'resume round' from server.   missionState = Paused
+2023/03/31 16:55:33,Negotiation failed.
+2023/03/31 16:56:22,Downloading scans to C:/Users/joshu/Documents/GitHub/moonshot-art-scan/Builds/Leak9-Mission/Moonshot Art Scan_Data/StreamingAssets\Images.
+2023/03/31 16:56:22,Downloading number 0 of 6 scans: Purple-0.png
+2023/03/31 16:56:24,Downloading number 1 of 6 scans: Purple-1.png
+2023/03/31 16:56:25,Could not find source path ('/Purple-1.png').
+2023/03/31 16:56:25,Downloading number 2 of 6 scans: Purple-2.png
+2023/03/31 16:56:26,Could not find source path ('/Purple-2.png').
+2023/03/31 16:56:26,Downloading number 3 of 6 scans: Purple-3.png
+2023/03/31 16:56:27,Downloading number 4 of 6 scans: Purple-4.png
+2023/03/31 16:56:29,Downloaded scans in 6853.3995 milliseconds.
+2023/03/31 16:56:48,GameEvent raised: CloseAllWindows
+2023/03/31 16:56:48,GameEvent raised: NamesakeWindow
+2023/03/31 16:56:48,GameEvent raised: Namesake Close
+2023/03/31 16:56:48,GameEvent raised: NamePicker
+2023/03/31 16:56:48,GameEvent raised: Start Click
+2023/03/31 16:56:48,GameEvent raised: NonScanWindowIsIn
+2023/03/31 16:56:48,Webcam pausing...
+2023/03/31 16:56:49,GameEvent raised: Toggle On
+2023/03/31 16:56:49,GameEvent raised: Toggle On
+2023/03/31 16:56:50,GameEvent raised: Toggle On
+2023/03/31 16:56:50,GameEvent raised: Namesake Close
+2023/03/31 16:56:50,GameEvent raised: NameResult
+2023/03/31 16:56:50,GameEvent raised: Button Click
+2023/03/31 16:56:53,GameEvent raised: Namesake Close
+2023/03/31 16:56:53,GameEvent raised: ScanIntro
+2023/03/31 16:56:53,GameEvent raised: Button Click
+2023/03/31 16:56:54,GameEvent raised: CloseAllWindows
+2023/03/31 16:56:54,GameEvent raised: ScanWindow
+2023/03/31 16:56:54,GameEvent raised: Button Click
+2023/03/31 16:56:55,GameEvent raised: ScanWindowIsIn
+2023/03/31 16:56:55,Webcam playing...
+2023/03/31 16:56:55,Initializing thread.
+2023/03/31 16:56:55,Thread Start.
+2023/03/31 16:57:15,Client received 'end mission' from server.
+2023/03/31 16:57:15,Releasing resources...
+2023/03/31 16:57:16,OnWebCamTextureToMatHelperDisposed
+2023/03/31 16:57:16,Thread stopped.
+2023/03/31 16:57:16,IdentifiedCurrentStation()   Client.instance._moonshotStation = Art
+2023/03/31 16:57:16,Loading Team Results Data   teamName = Red
+2023/03/31 16:57:16,ResultsDisplay.DownloadThenLoadImages() singleTeamData = MoonshotTeamData
+2023/03/31 16:57:16,Downloading scans to C:/Users/joshu/Documents/GitHub/moonshot-art-scan/Builds/Leak9-Mission/Moonshot Art Scan_Data/StreamingAssets\Images.
+2023/03/31 16:57:16,Downloading number 0 of 6 scans.
+2023/03/31 16:57:16,Application Awake - version #2023.1.18
+2023/03/31 16:57:16,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/03/31 16:57:16,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/03/31 16:57:16,ConclusionTextManager    roverSuccess=False   mapSuccess=False   artSuccess=True   charterSuccess=False   treasureSuccess=False
+2023/03/31 16:57:16,dynamic conclusion text: You had great team spirit, but you didn't find much water, were in a poor location, weren't very organized, and didn't have enough crew members. 
+
+Your settlement failed miserably after two weeks, but your beautiful art and winning personalities made you instant celebrities.
+2023/03/31 16:57:17,Downloaded scans in 434 milliseconds.
+2023/03/31 16:57:17,trying to load image from file path: file:///C:/Users/joshu/Documents/GitHub/moonshot-art-scan/Builds/Leak9-Mission/Moonshot Art Scan_Data/StreamingAssets\Images\Red-0.png   directory exists? True
+2023/03/31 16:57:17,artworkSprites #0 =  (UnityEngine.Sprite)
+2023/03/31 16:57:30,Client received 'start mission' from server.
+2023/03/31 16:57:30,Application Awake - version #2023.1.18
+2023/03/31 16:57:30,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/03/31 16:57:30,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/03/31 16:57:31,GameEvent raised: CloseAllWindows
+2023/03/31 16:57:31,Start Round
+2023/03/31 16:57:31,Start round with: Green
+2023/03/31 16:57:31,Client received 'start round' from server.
+2023/03/31 16:57:31,GameEvent raised: MuralPositionsLoaded
+2023/03/31 16:57:31,GameEvent raised: ConfigLoaded
+2023/03/31 16:57:31,Initializing from myWebCamTextureToMatHelper...
+2023/03/31 16:57:31,Successfully found correct camera.
+2023/03/31 16:57:31,NEW webCamTexture ID: -3850
+2023/03/31 16:57:31,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/03/31 16:57:31,Calling OnWebCamTextureToMatHelperInitialized...
+2023/03/31 16:57:31,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/03/31 16:57:31,Initializing thread.
+2023/03/31 16:57:31,Thread Start.
+2023/03/31 16:57:31,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/03/31 16:57:31,Downloading scans to C:/Users/joshu/Documents/GitHub/moonshot-art-scan/Builds/Leak9-Mission/Moonshot Art Scan_Data/StreamingAssets\Images.
+2023/03/31 16:57:31,Downloading number 0 of 6 scans: Red-0.png
+2023/03/31 16:57:31,Initializing debug menu...
+2023/03/31 16:57:31,Thread was being aborted.
+2023/03/31 16:57:31,Starting over from UI manager...
+2023/03/31 16:57:31,GameEvent raised: CloseAllWindows
+2023/03/31 16:57:31,GameEvent raised: Welcome
+2023/03/31 16:57:31,GameEvent raised: WindowsRefreshed
+2023/03/31 16:57:31,GameEvent raised: CloseAllWindows
+2023/03/31 16:57:31,Starting app...
+2023/03/31 16:57:31,GameEvent raised: Welcome
+2023/03/31 16:57:31,Send All Station Data To Client
+2023/03/31 16:57:31,GameEvent raised: NonScanWindowIsIn
+2023/03/31 16:57:31,Webcam pausing...
+2023/03/31 16:57:31,Thread stopped.
+2023/03/31 16:57:32,GameEvent raised: NonScanWindowIsIn
+2023/03/31 16:57:32,Webcam pausing...
+2023/03/31 16:57:34,GameEvent raised: CloseAllWindows
+2023/03/31 16:57:34,GameEvent raised: NamesakeWindow
+2023/03/31 16:57:34,GameEvent raised: Namesake Close
+2023/03/31 16:57:34,GameEvent raised: NamePicker
+2023/03/31 16:57:34,GameEvent raised: Start Click
+2023/03/31 16:57:35,GameEvent raised: NonScanWindowIsIn
+2023/03/31 16:57:35,Webcam pausing...
+2023/03/31 16:57:35,Client received 'pause mission' from server.
+2023/03/31 16:57:37,GameEvent raised: Toggle On
+2023/03/31 16:57:38,GameEvent raised: CloseAllWindows
+2023/03/31 16:57:38,GameEvent raised: ScanWindow
+2023/03/31 16:57:38,GameEvent raised: ScanWindowIsIn
+2023/03/31 16:57:38,Webcam playing...
+2023/03/31 16:57:38,Initializing thread.
+2023/03/31 16:57:38,Thread Start.
+2023/03/31 16:58:03,Opening debug menu and initializing...
+2023/03/31 16:58:03,Initializing debug menu...
+2023/03/31 16:58:05,Closing debug menu...
+2023/03/31 16:58:05,Webcam pausing...
+2023/03/31 16:58:05,resetting requested device name
+2023/03/31 16:58:05,Initializing from myWebCamTextureToMatHelper...
+2023/03/31 16:58:05,Releasing resources...
+2023/03/31 16:58:06,OnWebCamTextureToMatHelperDisposed
+2023/03/31 16:58:06,Thread stopped.
+2023/03/31 16:58:06,Successfully found correct camera.
+2023/03/31 16:58:06,NEW webCamTexture ID: -5764
+2023/03/31 16:58:07,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/03/31 16:58:07,Calling OnWebCamTextureToMatHelperInitialized...
+2023/03/31 16:58:07,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/03/31 16:58:07,Initializing thread.
+2023/03/31 16:58:07,Thread Start.
+2023/03/31 16:58:07,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/03/31 16:58:07,Downloading scans to C:/Users/joshu/Documents/GitHub/moonshot-art-scan/Builds/Leak9-Mission/Moonshot Art Scan_Data/StreamingAssets\Images.
+2023/03/31 16:58:07,Current team has no artworks list. Cannot download scans.
+2023/03/31 16:58:07,Downloaded scans in 1.5103 milliseconds.
+2023/03/31 16:58:07,GameEvent raised: AllScansDownloaded
+2023/03/31 16:58:07,GameEvent raised: ScanAdded
+2023/03/31 16:58:07,Initializing debug menu...
+2023/03/31 16:58:07,Webcam playing...
+2023/03/31 16:59:12,CAMERA RE-INIT: Currently used webcam, HD Pro Webcam C920, has not updated since last check. Update count: 7
+2023/03/31 16:59:12,Re-initializing HD Pro Webcam C920...
+2023/03/31 16:59:12,Initializing from myWebCamTextureToMatHelper...
+2023/03/31 16:59:12,Releasing resources...
+2023/03/31 16:59:12,OnWebCamTextureToMatHelperDisposed
+2023/03/31 16:59:12,Thread stopped.
+2023/03/31 16:59:12,Successfully found correct camera.
+2023/03/31 16:59:12,NEW webCamTexture ID: -5808
+2023/03/31 16:59:13,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/03/31 16:59:13,Calling OnWebCamTextureToMatHelperInitialized...
+2023/03/31 16:59:13,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/03/31 16:59:13,Initializing thread.
+2023/03/31 16:59:13,Thread Start.
+2023/03/31 16:59:13,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/03/31 16:59:13,Downloading scans to C:/Users/joshu/Documents/GitHub/moonshot-art-scan/Builds/Leak9-Mission/Moonshot Art Scan_Data/StreamingAssets\Images.
+2023/03/31 16:59:13,Current team has no artworks list. Cannot download scans.
+2023/03/31 16:59:13,Downloaded scans in 1.0005 milliseconds.
+2023/03/31 16:59:13,GameEvent raised: AllScansDownloaded
+2023/03/31 16:59:13,GameEvent raised: ScanAdded
+2023/03/31 16:59:13,Initializing debug menu...
+2023/03/31 17:01:43,CAMERA RE-INIT: Currently used webcam, HD Pro Webcam C920, has not updated since last check. Update count: 7
+2023/03/31 17:01:43,Re-initializing HD Pro Webcam C920...
+2023/03/31 17:01:43,Initializing from myWebCamTextureToMatHelper...
+2023/03/31 17:01:43,Releasing resources...
+2023/03/31 17:01:44,OnWebCamTextureToMatHelperDisposed
+2023/03/31 17:01:44,Thread stopped.
+2023/03/31 17:01:44,Successfully found correct camera.
+2023/03/31 17:01:44,NEW webCamTexture ID: -5852
+2023/03/31 17:01:44,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/03/31 17:01:44,Calling OnWebCamTextureToMatHelperInitialized...
+2023/03/31 17:01:44,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/03/31 17:01:44,Initializing thread.
+2023/03/31 17:01:44,Thread Start.
+2023/03/31 17:01:44,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/03/31 17:01:44,Downloading scans to C:/Users/joshu/Documents/GitHub/moonshot-art-scan/Builds/Leak9-Mission/Moonshot Art Scan_Data/StreamingAssets\Images.
+2023/03/31 17:01:44,Current team has no artworks list. Cannot download scans.
+2023/03/31 17:01:44,Downloaded scans in 1 milliseconds.
+2023/03/31 17:01:44,GameEvent raised: AllScansDownloaded
+2023/03/31 17:01:44,GameEvent raised: ScanAdded
+2023/03/31 17:01:44,Initializing debug menu...
+2023/03/31 17:02:54,Quit application via 'Escape' key.
+2023/03/31 17:02:54,Disconnected from server.
+2023/03/31 17:02:54,Application Quit
+2023/03/31 17:02:55,Releasing resources...
+2023/03/31 17:02:55,OnWebCamTextureToMatHelperDisposed
+2023/03/31 17:02:55,Thread stopped.

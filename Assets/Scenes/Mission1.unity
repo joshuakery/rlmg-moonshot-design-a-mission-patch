@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731713, g: 0.13414736, b: 0.121078536, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3685,10 +3685,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 3840, y: 2160}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -12954,6 +12954,8 @@ MonoBehaviour:
     flipVertical: 0
     flipHorizontal: 0
     requestedFPS: 30
+    preProcessingSizeFactor: 2
+    postProcessingSizeFactor: 2
     brightness: 0
     contrast: 0
     edgeFindingMethod: 0
@@ -12978,6 +12980,8 @@ MonoBehaviour:
       doAttemptCameraRestartIfMissingDevice: 1
       doAttemptCameraRestartIfFrozenUpdateCount: 1
       doAttemptCameraRestartIfWrongCamera: 0
+      doSaveCurrentAndLastWebCamTexturesToDisk: 0
+      doVerboseLoggingOfDisconnectHandler: 0
       refinedScanTimeout: 5
 --- !u!1 &1320468628 stripped
 GameObject:
@@ -16136,6 +16140,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aff0e201d5bdb448ba942067e01930c7, type: 3}
+--- !u!114 &1611857412 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2371739559352800182, guid: 62c8b1ea2f7bb4d6caaf0e97ef47e902, type: 3}
+  m_PrefabInstance: {fileID: 1751391211}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ff12b3f76db4941b127b82b00e50ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1617563535
 GameObject:
   m_ObjectHideFlags: 0
@@ -25538,7 +25553,7 @@ MonoBehaviour:
   undoButton: {fileID: 8990090366488444160}
   deleteButton: {fileID: 7344987474240340928}
   viewedTeamIndex: 0
-  scans: []
+  savedScanManager: {fileID: 11400000, guid: fbb26fb72211dec489eb0d25dfc59a2c, type: 2}
   settings: {fileID: 11400000, guid: eebe36b8bd1234f8ca3d2e070246f3b8, type: 2}
   webCamTextureToMatHelper: {fileID: 0}
 --- !u!114 &2984178591394759278
@@ -35075,7 +35090,7 @@ MonoBehaviour:
         m_MethodName: OnUndo
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgument: {fileID: 1611857412}
           m_ObjectArgumentAssemblyTypeName: OpenCVForUnity.UnityUtils.Helper.myWebCamTextureToMatHelper,
             Assembly-CSharp
           m_IntArgument: 0

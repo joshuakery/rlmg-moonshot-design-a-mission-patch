@@ -50,7 +50,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/My Plugins/OpenCVForUnity/Examples/Advanced/DocumentScannerExample/DocumentScannerExample.unity
     guid: 78d803b688d792c4db6e27ebfa5da6d4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Debug_LiveFeedback_RefinedScan_Synchronous.unity
     guid: 996bd922d8d30384f88ed84a7f0cc352
   - enabled: 0

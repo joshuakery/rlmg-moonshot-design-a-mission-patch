@@ -178,17 +178,20 @@ namespace ArtScan.ScanSavingModule
         /// </summary>
         public void AddScanAsCopyOfTexture(Texture2D src)
         {
-            int index = GetNextScanIndex();
-            //first assure that preview and destination texture are the same size and type
-            PrepareScanDestinationTexture(index, src);
-            //then copy into the destination texture
-            Graphics.CopyTexture(src, _scans[index]);
-            //update our scans array
-            scans[index] = _scans[index];
-            //finally, if used, pop out this index from the beginning of nextToReplace. regardless, add it to the end
-            if (nextToReplace == null) { nextToReplace = new List<int>(); }
-            if (nextToReplace.Count > 0 && nextToReplace[0] == index) { nextToReplace.RemoveAt(0); }
-            nextToReplace.Add(index);
+            if (src != null)
+            {
+                int index = GetNextScanIndex();
+                //first assure that preview and destination texture are the same size and type
+                PrepareScanDestinationTexture(index, src);
+                //then copy into the destination texture
+                Graphics.CopyTexture(src, _scans[index]);
+                //update our scans array
+                scans[index] = _scans[index];
+                //finally, if used, pop out this index from the beginning of nextToReplace. regardless, add it to the end
+                if (nextToReplace == null) { nextToReplace = new List<int>(); }
+                if (nextToReplace.Count > 0 && nextToReplace[0] == index) { nextToReplace.RemoveAt(0); }
+                nextToReplace.Add(index);
+            }
         }
 
         /// <summary>
@@ -224,6 +227,7 @@ namespace ArtScan.ScanSavingModule
                     );
 
                 int index = (atIndex >= 0 && atIndex < scanMax) ? atIndex : GetNextScanIndex();
+                Debug.Log(index);
                 PrepareScanDestinationTexture(index, displayMat.cols(), displayMat.rows(), TextureFormat.RGBA32);
 
                 Utils.fastMatToTexture2D(displayMat, _scans[index], true, 0, true);
