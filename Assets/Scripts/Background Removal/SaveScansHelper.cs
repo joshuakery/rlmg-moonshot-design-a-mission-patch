@@ -264,10 +264,10 @@ namespace ArtScan.ScanSavingModule
             }
         }
 
-        public void AbortUpload()
+        public void CancelUpload()
         {
             StopAllCoroutines();
-            uploadThreadController.AbortThread();
+            uploadThreadController.CancelThread();
         }
     }
 

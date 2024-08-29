@@ -75,8 +75,11 @@ namespace ArtScan
 
         public void ClearCurrentTeamScores()
         {
-            currentTeam.chosenWords = new List<string>();
-            currentTeam.namesake = null;
+            if (currentTeam != null)
+            {
+                currentTeam.chosenWords = new List<string>();
+                currentTeam.namesake = null;
+            }
         }
 
         public void SetNewNamesake()

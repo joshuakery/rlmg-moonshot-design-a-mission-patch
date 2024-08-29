@@ -85,6 +85,20 @@ namespace ArtScan.CoreModule
             RecreateScanTexture();
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                if (refinedScanThread != null && !refinedScanThread.IsDone)
+                {
+                    CancelRefinedScan();
+                    if (scanFailedDisplay != null) { scanFailedDisplay.text = "Cancelled scan by X key."; }
+                    RLMGLogger.Instance.Log("Cancelling scan by X key.", MESSAGETYPE.ERROR);
+                    StartCoroutine(RaiseScanFailed());
+                }
+            }
+        }
+
         private void RecreateScanTexture()
         {
             if (scanTexture != null)
@@ -112,7 +126,7 @@ namespace ArtScan.CoreModule
             if (refinedScanThread != null && !refinedScanThread.IsDone)
             {
                 RLMGLogger.Instance.Log("Ending parallel refined scan thread...", MESSAGETYPE.INFO);
-                refinedScanThread.Abort();
+                refinedScanThread.Cancel();
                 RLMGLogger.Instance.Log("...ended", MESSAGETYPE.INFO);
             }
 
@@ -135,9 +149,9 @@ namespace ArtScan.CoreModule
         public void OnBeginScan()
         {
             StopAllCoroutines();
-            AbortRefinedScan();
+            CancelRefinedScan();
 
-            if (anotherScanIsUnderway) //should always be false after AbortRefinedScan()
+            if (anotherScanIsUnderway) //should always be false after CancelRefinedScan()
             {
                 if (scanFailedDisplay != null) { scanFailedDisplay.text = "Oops!\nAnother scan was already underway.\nPlease try again."; }
                 RLMGLogger.Instance.Log("Cannot do refined scan because another refined scan is underway.", MESSAGETYPE.ERROR);
@@ -164,9 +178,9 @@ namespace ArtScan.CoreModule
             return scanTexture.width != settings.targetWidth || scanTexture.height != settings.targetHeight;
         }
 
-        private IEnumerator DoRefinedScan(Mat targetMat)
+        private IEnumerator DoRefinedScan(Mat srcMat)
         {
-            using (Mat displayMat = new Mat(settings.targetHeight, settings.targetWidth, targetMat.type(), new Scalar(0, 0, 0, 0)),
+            using (Mat displayMat = new Mat(settings.targetHeight, settings.targetWidth, srcMat.type(), new Scalar(0, 0, 0, 0)),
                        unscaledMat = new Mat()
             )
             {
@@ -185,7 +199,7 @@ namespace ArtScan.CoreModule
                     asynchronousRemoveBackground.edgeDetection :
                     null;
                 //input
-                refinedScanThread.rgbaMat = targetMat;
+                refinedScanThread.rgbaMat = srcMat;
                 //outputs
                 refinedScanThread.unscaledMat = unscaledMat;
                 refinedScanThread.displayMat = displayMat;
@@ -233,16 +247,16 @@ namespace ArtScan.CoreModule
         }
 
         /// <summary>
-        /// Aborts refined scan thread and resets asynchronous feed variables
+        /// Cancels refined scan thread and resets asynchronous feed variables
         /// </summary>
-        public void AbortRefinedScan()
+        public void CancelRefinedScan()
         {
-            StopAllCoroutines();
             if (refinedScanThread != null && !refinedScanThread.IsDone)
             {
-                refinedScanThread.Abort(); //thread is disposed after abort or use
+                refinedScanThread.Cancel(); //thread is disposed after cancel or use
                 refinedScanThread = null; //clear reference so we know to create new threaded job
             }
+            StopAllCoroutines();
         }
     }
 }

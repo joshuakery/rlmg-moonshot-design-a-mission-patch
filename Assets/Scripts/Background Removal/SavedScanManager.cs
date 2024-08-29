@@ -227,7 +227,7 @@ namespace ArtScan.ScanSavingModule
                     );
 
                 int index = (atIndex >= 0 && atIndex < scanMax) ? atIndex : GetNextScanIndex();
-                Debug.Log(index);
+
                 PrepareScanDestinationTexture(index, displayMat.cols(), displayMat.rows(), TextureFormat.RGBA32);
 
                 Utils.fastMatToTexture2D(displayMat, _scans[index], true, 0, true);

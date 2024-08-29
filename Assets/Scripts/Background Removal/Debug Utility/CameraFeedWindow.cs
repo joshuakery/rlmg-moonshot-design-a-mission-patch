@@ -9,8 +9,12 @@ public class CameraFeedWindow : MonoBehaviour
     [SerializeField]
     private RawImage ri;
 
-    [SerializeField]
     private myWebCamTextureToMatHelper webCamTextureToMatHelper;
+
+    private void Awake()
+    {
+        webCamTextureToMatHelper = FindObjectOfType<myWebCamTextureToMatHelper>();
+    }
 
     // Update is called once per frame
     void Update()

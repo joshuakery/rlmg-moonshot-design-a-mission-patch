@@ -8,6 +8,7 @@ using OpenCVForUnity.ImgprocModule;
 using OpenCVForUnity.UnityUtils.Helper;
 using OpenCVForUnity.UnityUtils;
 using System;
+using System.Threading;
 using ArtScan;
 
 namespace ArtScan.CoreModule
@@ -22,7 +23,7 @@ namespace ArtScan.CoreModule
         public Mat fgdModel;
         public int iterCount;
 
-        protected override void ThreadFunction()
+        protected override void ThreadFunction(CancellationToken token)
         {
             Imgproc.grabCut(converted, trimap, rectangle, bgdModel, fgdModel, iterCount, Imgproc.GC_INIT_WITH_MASK);
         }

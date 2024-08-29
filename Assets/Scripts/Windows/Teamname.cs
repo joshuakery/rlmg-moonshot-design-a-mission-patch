@@ -10,7 +10,8 @@ public class Teamname : MonoBehaviour
     public GameState gameState;
     public void SetTeamname()
     {
-        tmp_text.text = BoldTags(gameState.currentTeam.teamName);
+        if (tmp_text != null && gameState != null && gameState.currentTeam != null)
+            tmp_text.text = BoldTags(gameState.currentTeam.teamName);
     }
     private string BoldTags(string input)
     {

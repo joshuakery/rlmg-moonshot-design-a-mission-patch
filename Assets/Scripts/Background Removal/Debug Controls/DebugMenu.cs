@@ -19,7 +19,6 @@ public class DebugMenu : MonoBehaviour
     [SerializeField]
     private RemoveBackgroundDisplayOptions displayOptions;
 
-    [SerializeField]
     private CamConfigLoader configLoader;
 
     /// <summary>
@@ -74,11 +73,8 @@ public class DebugMenu : MonoBehaviour
 
     private void Awake()
     {
-        if (webCamTextureToMatHelper == null)
-            webCamTextureToMatHelper = FindObjectOfType<myWebCamTextureToMatHelper>();
-
-        if (configLoader == null)
-            configLoader = FindObjectOfType<CamConfigLoader>();
+        webCamTextureToMatHelper = FindObjectOfType<myWebCamTextureToMatHelper>();
+        configLoader = FindObjectOfType<CamConfigLoader>();
     }
 
     private void OnEnable()
@@ -200,7 +196,6 @@ public class DebugMenu : MonoBehaviour
         else if (settings.edgeFindingMethod == EdgeFindingMethod.Canny)
             cannyToggle.isOn = true;
 
-        // if ()
         
         //Size to Fit
         doSizeToFitToggle.isOn = settings.doSizeToFit;

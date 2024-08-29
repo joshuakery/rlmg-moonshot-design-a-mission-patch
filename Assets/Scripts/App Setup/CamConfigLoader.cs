@@ -22,6 +22,8 @@ namespace ArtScan.CamConfigLoaderModule
 		public bool flipVertical;
 		public bool flipHorizontal;
 		public int requestedFPS = 30;
+		public int requestedWidth = 640;
+		public int requestedHeight = 480;
 
 		public int preProcessingSizeFactor = 2;
 		public int postProcessingSizeFactor = 2;

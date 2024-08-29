@@ -39,7 +39,7 @@ MonoBehaviour:
     minimumPaperConsistentFrames: 5
     minimumPaperInconsistentFramesToFail: 2
     minimumScanSize: 50
-    maximumArtworkPercentageOfPaper: 0.9
+    maximumArtworkPercentageOfPaper: 0.7
     consistentScanAreaThreshold: 0.01
     minimumConsistentFrames: 1
     minimumArtworkInconsistentFramesToFail: 2

@@ -765,6 +765,8 @@ namespace OpenCVForUnity.UnityUtils.Helper
             }
 
             RLMGLogger.Instance.Log("NEW webCamTexture ID: " + webCamTexture.GetInstanceID(), MESSAGETYPE.INFO);
+            RLMGLogger.Instance.Log("NEW webCamTexture width: " + webCamTexture.width, MESSAGETYPE.INFO);
+            RLMGLogger.Instance.Log("NEW webCamTexture height: " + webCamTexture.height, MESSAGETYPE.INFO);
 
             // Starts the camera
             webCamTexture.Play();
@@ -1200,15 +1202,23 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 return (rotatedFrameMat != null) ? rotatedFrameMat : frameMat;
             }
 
-            if (baseColorFormat == outputColorFormat)
+            try
             {
-                Utils.webCamTextureToMat(webCamTexture, frameMat, colors, false);
+                if (baseColorFormat == outputColorFormat)
+                {
+                    Utils.webCamTextureToMat(webCamTexture, frameMat, colors, false);
+                }
+                else
+                {
+                    Utils.webCamTextureToMat(webCamTexture, baseMat, colors, false);
+                    Imgproc.cvtColor(baseMat, frameMat, ColorConversionCodes(baseColorFormat, outputColorFormat));
+                }
             }
-            else
+            catch
             {
-                Utils.webCamTextureToMat(webCamTexture, baseMat, colors, false);
-                Imgproc.cvtColor(baseMat, frameMat, ColorConversionCodes(baseColorFormat, outputColorFormat));
+                return (rotatedFrameMat != null) ? rotatedFrameMat : frameMat;
             }
+
 
 #if !UNITY_EDITOR && !(UNITY_STANDALONE || UNITY_WEBGL)
             if (rotatedFrameMat != null)

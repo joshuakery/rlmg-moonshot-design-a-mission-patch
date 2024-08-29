@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Threading;
 using rlmg.logging;
 
 namespace ArtScan.ScanSavingModule
@@ -13,7 +14,7 @@ namespace ArtScan.ScanSavingModule
             //parameters
             public string filename;
 
-            protected override void ThreadFunction()
+            protected override void ThreadFunction(CancellationToken token)
             {
                 if (RLMGLogger.Instance != null)
                     RLMGLogger.Instance.Log(string.Format("Uploading {0}", filename), MESSAGETYPE.INFO);
@@ -26,12 +27,12 @@ namespace ArtScan.ScanSavingModule
 
         private UploadThread uploadThread;
 
-        public void AbortThread()
+        public void CancelThread()
         {
             if (uploadThread != null && !uploadThread.IsDone)
             {
                 Debug.Log("Ending parallel upload thread...");
-                uploadThread.Abort();
+                uploadThread.Cancel();
                 uploadThread = null;
                 Debug.Log("...ended.");
             }

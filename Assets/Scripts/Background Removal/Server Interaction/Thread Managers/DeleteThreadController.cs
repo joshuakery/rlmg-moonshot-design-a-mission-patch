@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Threading;
 using rlmg.logging;
 
 namespace ArtScan.ScanSavingModule
@@ -13,7 +14,7 @@ namespace ArtScan.ScanSavingModule
             //parameters
             public string filename;
 
-            protected override void ThreadFunction()
+            protected override void ThreadFunction(CancellationToken token)
             {
                 ClientSend.DeleteFileFromServer(filename);
             }
@@ -21,12 +22,12 @@ namespace ArtScan.ScanSavingModule
 
         private DeleteThread deleteThread;
 
-        public void AbortThread()
+        public void CancelThread()
         {
             if (deleteThread != null && !deleteThread.IsDone)
             {
                 Debug.Log("Ending parallel delete thread...");
-                deleteThread.Abort();
+                deleteThread.Cancel();
                 deleteThread = null;
                 Debug.Log("...ended.");
             }

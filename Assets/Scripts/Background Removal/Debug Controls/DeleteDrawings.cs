@@ -70,14 +70,14 @@ namespace ArtScan.ScanSavingModule
             }
         }
 
-        public RemoveBackgroundSettings settings;
-        public myWebCamTextureToMatHelper webCamTextureToMatHelper;
+        [SerializeField]
+        private RemoveBackgroundSettings settings;
+
+        private myWebCamTextureToMatHelper webCamTextureToMatHelper;
 
         private void Awake()
         {
-            if (webCamTextureToMatHelper == null)
-                webCamTextureToMatHelper = FindObjectOfType<myWebCamTextureToMatHelper>();
-
+            webCamTextureToMatHelper = FindObjectOfType<myWebCamTextureToMatHelper>();
             savedScanManager.ClearScans();
         }
 
@@ -228,12 +228,12 @@ namespace ArtScan.ScanSavingModule
             }
         }
 
-        public void OnUndo(myWebCamTextureToMatHelper webCamTextureToMatHelper)
+        public void OnUndo()
         {
-            StartCoroutine(_OnUndo(webCamTextureToMatHelper));
+            StartCoroutine(_OnUndo());
         }
 
-        private IEnumerator _OnUndo(myWebCamTextureToMatHelper webCamTextureToMatHelper)
+        private IEnumerator _OnUndo()
         {
             if (scanHistories.Count > 0)
             {

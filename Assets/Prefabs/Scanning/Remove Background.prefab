@@ -56,6 +56,7 @@ MonoBehaviour:
   DownloadSucceededEvent: {fileID: 0}
   DeleteFailedEvent: {fileID: 0}
   DeleteSucceededEvent: {fileID: 0}
+  doUploadToServer: 0
 --- !u!114 &1492947572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2371739559352800188}
   - component: {fileID: 2371739559352800182}
-  - component: {fileID: 2371739559352800185}
+  - component: {fileID: 384349786796251653}
   - component: {fileID: 2371739559352800184}
   - component: {fileID: 2371739559352800175}
   - component: {fileID: 226815325191349992}
@@ -180,8 +181,8 @@ MonoBehaviour:
   onInitialized:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2371739559352800185}
-        m_TargetAssemblyTypeName: OpenCVForUnityExample.AsynchronousRemoveBackground,
+      - m_Target: {fileID: 384349786796251653}
+        m_TargetAssemblyTypeName: ArtScan.CoreModule.SynchronousRemoveBackground,
           Assembly-CSharp
         m_MethodName: OnWebCamTextureToMatHelperInitialized
         m_Mode: 1
@@ -196,8 +197,8 @@ MonoBehaviour:
   onDisposed:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2371739559352800185}
-        m_TargetAssemblyTypeName: OpenCVForUnityExample.AsynchronousRemoveBackground,
+      - m_Target: {fileID: 384349786796251653}
+        m_TargetAssemblyTypeName: ArtScan.CoreModule.SynchronousRemoveBackground,
           Assembly-CSharp
         m_MethodName: OnWebCamTextureToMatHelperDisposed
         m_Mode: 1
@@ -212,8 +213,8 @@ MonoBehaviour:
   onErrorOccurred:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2371739559352800185}
-        m_TargetAssemblyTypeName: OpenCVForUnityExample.AsynchronousRemoveBackground,
+      - m_Target: {fileID: 384349786796251653}
+        m_TargetAssemblyTypeName: ArtScan.CoreModule.SynchronousRemoveBackground,
           Assembly-CSharp
         m_MethodName: OnWebCamTextureToMatHelperErrorOccurred
         m_Mode: 0
@@ -228,8 +229,8 @@ MonoBehaviour:
   onWarnOccurred:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2371739559352800185}
-        m_TargetAssemblyTypeName: ArtScan.CoreModule.AsynchronousRemoveBackground,
+      - m_Target: {fileID: 384349786796251653}
+        m_TargetAssemblyTypeName: ArtScan.CoreModule.SynchronousRemoveBackground,
           Assembly-CSharp
         m_MethodName: OnWebCamTextureToMatHelperWarnOccurred
         m_Mode: 0
@@ -244,8 +245,8 @@ MonoBehaviour:
   onSuccessOccurred:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2371739559352800185}
-        m_TargetAssemblyTypeName: ArtScan.CoreModule.AsynchronousRemoveBackground,
+      - m_Target: {fileID: 384349786796251653}
+        m_TargetAssemblyTypeName: ArtScan.CoreModule.SynchronousRemoveBackground,
           Assembly-CSharp
         m_MethodName: OnWebCamTextureToMatHelperSuccessOccurred
         m_Mode: 1
@@ -267,7 +268,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   avoidAndroidFrontCameraLowLightIssue: 0
---- !u!114 &2371739559352800185
+--- !u!114 &384349786796251653
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -276,7 +277,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2371739559352800189}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46daed81463d24dd8b8c0bd541d6a395, type: 3}
+  m_Script: {fileID: 11500000, guid: e0608171303087f4bbd074fb124be234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   copiedFramesCount: 0
@@ -290,7 +291,6 @@ MonoBehaviour:
   paperFound: 0
   currentPaperArea: 0
   currentContourArea: 0
-  DOWNSCALE_RATIO: 1
   doDownsizeToDisplay: 0
 --- !u!114 &2371739559352800184
 MonoBehaviour:
@@ -325,12 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   errorDisplaySettingsSO: {fileID: 11400000, guid: a77b44a46473c4611a39b26f754e5906, type: 2}
-  errorDisplay: {fileID: 0}
-  errorText: {fileID: 0}
-  warningDisplay: {fileID: 0}
-  warningText: {fileID: 0}
   lastUpdateCount: -1
-  lastTexture: {fileID: 0}
 --- !u!114 &226815325191349992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,8 +342,8 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2371739559352800185}
-        m_TargetAssemblyTypeName: ArtScan.CoreModule.AsynchronousRemoveBackground,
+      - m_Target: {fileID: 384349786796251653}
+        m_TargetAssemblyTypeName: ArtScan.CoreModule.SynchronousRemoveBackground,
           Assembly-CSharp
         m_MethodName: SetupRemoveBackground
         m_Mode: 1
@@ -492,7 +487,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2371739559352800184}
         m_TargetAssemblyTypeName: ArtScan.CoreModule.RefinedScanController, Assembly-CSharp
-        m_MethodName: AbortRefinedScan
+        m_MethodName: CancelRefinedScan
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

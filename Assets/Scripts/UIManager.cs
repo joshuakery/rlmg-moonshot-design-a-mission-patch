@@ -229,16 +229,8 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            DrawingsMenu.SetActive(!DrawingsMenu.activeSelf);
-        }
-        else if (Input.GetKeyDown(KeyCode.I))
-        {
-            RemoveBackgroundDebugMenu.SetActive(!RemoveBackgroundDebugMenu.activeSelf);
-        }
         //Shared Conclusion
-        else if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             GoToConclusion();
         }

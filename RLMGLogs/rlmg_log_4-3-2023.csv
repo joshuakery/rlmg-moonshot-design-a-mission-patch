@@ -1,0 +1,1578 @@
+Timestamp, Message
+2023/04/03 10:18:52,Application Awake - version #2023.1.18
+2023/04/03 10:18:52,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 10:18:52,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 10:18:52,Opening attract...
+2023/04/03 10:18:52,Resetting timeout to 10:19:07 AM
+2023/04/03 10:18:53,GameEvent raised: CloseAllWindows
+2023/04/03 10:18:53,GameEvent raised: MuralPositionsLoaded
+2023/04/03 10:18:53,GameEvent raised: ConfigLoaded
+2023/04/03 10:18:53,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 10:18:53,Successfully found correct camera.
+2023/04/03 10:18:53,NEW webCamTexture ID: -282
+2023/04/03 10:18:53,Resetting update count...
+2023/04/03 10:18:53,Setting should be playing to true...
+2023/04/03 10:18:53,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 10:18:53,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 10:18:53,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 10:18:53,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 10:18:53,Initializing debug menu...
+2023/04/03 10:18:53,Resetting update count...
+2023/04/03 10:18:53,GameEvent raised: WindowsRefreshed
+2023/04/03 10:18:53,GameEvent raised: CloseAllWindows
+2023/04/03 10:18:53,Starting app...
+2023/04/03 10:18:53,GameEvent raised: Attract
+2023/04/03 10:18:54,GameEvent raised: NonScanWindowIsIn
+2023/04/03 10:18:54,Webcam pausing...
+2023/04/03 10:18:54,Resetting update count...
+2023/04/03 10:18:54,Setting should be playing to false...
+2023/04/03 10:19:07,Resetting timeout to 10:19:22 AM
+2023/04/03 10:19:07,Checking devices... webCamTexture is null: False; isPlaying: False; updateCount: 1; shouldBePlaying: False; saved webCamTextureID: -282; current ID: -282; lastUpdateCount: -1
+2023/04/03 10:19:13,Closing attract...
+2023/04/03 10:19:16,GameEvent raised: CloseAllWindows
+2023/04/03 10:19:16,GameEvent raised: ScanWindow
+2023/04/03 10:19:16,GameEvent raised: Start Click
+2023/04/03 10:19:16,GameEvent raised: ScanWindowIsIn
+2023/04/03 10:19:16,Webcam playing...
+2023/04/03 10:19:16,Resetting update count...
+2023/04/03 10:19:16,Setting should be playing to true...
+2023/04/03 10:19:23,Resetting timeout to 10:19:38 AM
+2023/04/03 10:19:23,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 5; shouldBePlaying: True; saved webCamTextureID: -282; current ID: -282; lastUpdateCount: -1
+2023/04/03 10:19:39,Resetting timeout to 10:19:54 AM
+2023/04/03 10:19:39,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 5; shouldBePlaying: True; saved webCamTextureID: -282; current ID: -282; lastUpdateCount: 5
+2023/04/03 10:19:39,CAMERA RE-INIT: Currently used webcam, HD Pro Webcam C920, has not updated since last check. Update count: 5
+2023/04/03 10:19:39,Re-initializing HD Pro Webcam C920...
+2023/04/03 10:19:39,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 10:19:39,Releasing resources...
+2023/04/03 10:19:40,OnWebCamTextureToMatHelperDisposed
+2023/04/03 10:19:40,Successfully found correct camera.
+2023/04/03 10:19:40,NEW webCamTexture ID: -328
+2023/04/03 10:19:40,Resetting update count...
+2023/04/03 10:19:40,Setting should be playing to true...
+2023/04/03 10:19:40,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 10:19:40,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 10:19:40,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 10:19:40,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 10:19:40,Initializing debug menu...
+2023/04/03 10:19:40,Resetting update count...
+2023/04/03 10:19:51,Quit application via 'Escape' key.
+2023/04/03 10:19:51,Application Quit
+2023/04/03 10:19:52,Releasing resources...
+2023/04/03 10:19:52,OnWebCamTextureToMatHelperDisposed
+2023/04/03 10:51:05,Application Awake - version #2023.1.18
+2023/04/03 10:51:05,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 10:51:05,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 10:51:06,GameEvent raised: ConfigLoaded
+2023/04/03 10:51:06,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 10:51:06,Successfully found correct camera.
+2023/04/03 10:51:06,NEW webCamTexture ID: -138
+2023/04/03 10:51:06,Resetting update count...
+2023/04/03 10:51:06,Setting should be playing to true...
+2023/04/03 10:51:06,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 10:51:06,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 10:51:06,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 10:51:06,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 10:51:06,Resetting update count...
+2023/04/03 10:51:13,Re-initializing HD Pro Webcam C920...
+2023/04/03 10:51:13,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 10:51:13,Releasing resources...
+2023/04/03 10:51:13,OnWebCamTextureToMatHelperDisposed
+2023/04/03 10:51:13,Successfully found correct camera.
+2023/04/03 10:51:13,NEW webCamTexture ID: -142
+2023/04/03 10:51:14,Resetting update count...
+2023/04/03 10:51:14,Setting should be playing to true...
+2023/04/03 10:51:14,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 10:51:14,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 10:51:14,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 10:51:14,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 10:51:14,Resetting update count...
+2023/04/03 10:51:17,Opening debug menu and initializing...
+2023/04/03 10:51:17,Initializing debug menu...
+2023/04/03 10:51:17,Closing debug menu...
+2023/04/03 10:51:17,Webcam pausing...
+2023/04/03 10:51:17,Resetting update count...
+2023/04/03 10:51:17,Setting should be playing to false...
+2023/04/03 10:51:17,resetting requested device name
+2023/04/03 10:51:17,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 10:51:17,Releasing resources...
+2023/04/03 10:51:17,OnWebCamTextureToMatHelperDisposed
+2023/04/03 10:51:17,Successfully found correct camera.
+2023/04/03 10:51:17,NEW webCamTexture ID: -240
+2023/04/03 10:51:18,Resetting update count...
+2023/04/03 10:51:18,Setting should be playing to true...
+2023/04/03 10:51:18,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 10:51:18,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 10:51:18,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 10:51:18,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 10:51:18,Resetting update count...
+2023/04/03 10:51:18,Webcam playing...
+2023/04/03 10:51:18,Resetting update count...
+2023/04/03 10:51:18,Setting should be playing to true...
+2023/04/03 10:51:20,Opening debug menu and initializing...
+2023/04/03 10:51:20,Initializing debug menu...
+2023/04/03 10:51:23,Closing debug menu...
+2023/04/03 10:51:23,Webcam pausing...
+2023/04/03 10:51:23,Resetting update count...
+2023/04/03 10:51:23,Setting should be playing to false...
+2023/04/03 10:51:23,resetting requested device name
+2023/04/03 10:51:23,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 10:51:23,Releasing resources...
+2023/04/03 10:51:23,OnWebCamTextureToMatHelperDisposed
+2023/04/03 10:51:23,Successfully found correct camera.
+2023/04/03 10:51:23,NEW webCamTexture ID: -284
+2023/04/03 10:51:24,Resetting update count...
+2023/04/03 10:51:24,Setting should be playing to true...
+2023/04/03 10:51:24,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 10:51:24,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 10:51:24,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 10:51:24,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 10:51:24,Resetting update count...
+2023/04/03 10:51:24,Webcam playing...
+2023/04/03 10:51:24,Resetting update count...
+2023/04/03 10:51:24,Setting should be playing to true...
+2023/04/03 10:51:29,Refined scan thread successfully created and executed in 347.7723 milliseconds.
+2023/04/03 10:51:29,GameEvent raised: NewPreview
+2023/04/03 10:51:29,Refined scan successfully copied to preview mats in 0.9997 milliseconds.
+2023/04/03 10:51:31,Quit application via 'Escape' key.
+2023/04/03 10:51:31,Application Quit
+2023/04/03 10:51:31,Releasing resources...
+2023/04/03 10:51:31,OnWebCamTextureToMatHelperDisposed
+2023/04/03 11:16:22,Application Awake - version #2023.1.18
+2023/04/03 11:16:22,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:16:22,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:16:23,GameEvent raised: ConfigLoaded
+2023/04/03 11:16:23,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 11:16:23,Successfully found correct camera.
+2023/04/03 11:16:23,NEW webCamTexture ID: -138
+2023/04/03 11:16:23,Resetting update count...
+2023/04/03 11:16:23,Setting should be playing to true...
+2023/04/03 11:16:23,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 11:16:23,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 11:16:23,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 11:16:23,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 11:16:23,Resetting update count...
+2023/04/03 11:16:39,Quit application via 'Escape' key.
+2023/04/03 11:16:39,Application Quit
+2023/04/03 11:18:14,Application Awake - version #2023.1.18
+2023/04/03 11:18:14,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:18:14,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:18:14,Opening attract...
+2023/04/03 11:18:14,GameEvent raised: CloseAllWindows
+2023/04/03 11:18:14,GameEvent raised: MuralPositionsLoaded
+2023/04/03 11:18:14,GameEvent raised: ConfigLoaded
+2023/04/03 11:18:14,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 11:18:14,Successfully found correct camera.
+2023/04/03 11:18:14,NEW webCamTexture ID: -282
+2023/04/03 11:18:15,Resetting update count...
+2023/04/03 11:18:15,Setting should be playing to true...
+2023/04/03 11:18:15,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 11:18:15,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 11:18:21,Closing attract...
+2023/04/03 11:18:25,GameEvent raised: CloseAllWindows
+2023/04/03 11:18:25,GameEvent raised: Attract
+2023/04/03 11:18:25,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:18:25,GameEvent raised: CloseAllWindows
+2023/04/03 11:18:25,GameEvent raised: ScanWindow
+2023/04/03 11:18:25,GameEvent raised: ScanWindowIsIn
+2023/04/03 11:18:25,GameEvent raised: CloseAllWindows
+2023/04/03 11:18:25,GameEvent raised: Attract
+2023/04/03 11:18:26,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:18:26,GameEvent raised: CloseAllWindows
+2023/04/03 11:18:26,GameEvent raised: ScanWindow
+2023/04/03 11:18:26,GameEvent raised: ScanWindowIsIn
+2023/04/03 11:18:32,Quit application via 'Escape' key.
+2023/04/03 11:18:32,Application Quit
+2023/04/03 11:20:20,Application Awake - version #2023.1.18
+2023/04/03 11:20:20,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:20:20,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:20:20,Opening attract...
+2023/04/03 11:20:20,Resetting timeout to 11:20:35 AM
+2023/04/03 11:20:21,GameEvent raised: CloseAllWindows
+2023/04/03 11:20:21,GameEvent raised: MuralPositionsLoaded
+2023/04/03 11:20:21,GameEvent raised: ConfigLoaded
+2023/04/03 11:20:21,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 11:20:21,Successfully found correct camera.
+2023/04/03 11:20:21,NEW webCamTexture ID: -282
+2023/04/03 11:20:21,Resetting update count...
+2023/04/03 11:20:21,Setting should be playing to true...
+2023/04/03 11:20:21,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 11:20:21,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 11:20:21,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 11:20:21,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 11:20:21,Resetting update count...
+2023/04/03 11:20:21,GameEvent raised: WindowsRefreshed
+2023/04/03 11:20:21,GameEvent raised: CloseAllWindows
+2023/04/03 11:20:21,Starting app...
+2023/04/03 11:20:21,GameEvent raised: Attract
+2023/04/03 11:20:21,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:20:28,Closing attract...
+2023/04/03 11:20:29,GameEvent raised: CloseAllWindows
+2023/04/03 11:20:29,GameEvent raised: ScanWindow
+2023/04/03 11:20:29,GameEvent raised: Start Click
+2023/04/03 11:20:30,GameEvent raised: ScanWindowIsIn
+2023/04/03 11:20:35,Resetting timeout to 11:20:50 AM
+2023/04/03 11:20:35,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 416; shouldBePlaying: True; saved webCamTextureID: -282; current ID: -282; lastUpdateCount: -1
+2023/04/03 11:20:50,Resetting timeout to 11:21:05 AM
+2023/04/03 11:20:50,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 864; shouldBePlaying: True; saved webCamTextureID: -282; current ID: -282; lastUpdateCount: 416
+2023/04/03 11:21:05,Resetting timeout to 11:21:20 AM
+2023/04/03 11:21:05,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1314; shouldBePlaying: True; saved webCamTextureID: -282; current ID: -282; lastUpdateCount: 864
+2023/04/03 11:21:20,Resetting timeout to 11:21:35 AM
+2023/04/03 11:21:20,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1764; shouldBePlaying: True; saved webCamTextureID: -282; current ID: -282; lastUpdateCount: 1314
+2023/04/03 11:21:35,Resetting timeout to 11:21:50 AM
+2023/04/03 11:21:35,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2214; shouldBePlaying: True; saved webCamTextureID: -282; current ID: -282; lastUpdateCount: 1764
+2023/04/03 11:21:50,Resetting timeout to 11:22:05 AM
+2023/04/03 11:21:50,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2662; shouldBePlaying: True; saved webCamTextureID: -282; current ID: -282; lastUpdateCount: 2214
+2023/04/03 11:22:05,Resetting timeout to 11:22:20 AM
+2023/04/03 11:22:05,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3112; shouldBePlaying: True; saved webCamTextureID: -282; current ID: -282; lastUpdateCount: 2662
+2023/04/03 11:22:20,Resetting timeout to 11:22:35 AM
+2023/04/03 11:22:20,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3562; shouldBePlaying: True; saved webCamTextureID: -282; current ID: -282; lastUpdateCount: 3112
+2023/04/03 11:22:35,Resetting timeout to 11:22:50 AM
+2023/04/03 11:22:35,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 4010; shouldBePlaying: True; saved webCamTextureID: -282; current ID: -282; lastUpdateCount: 3562
+2023/04/03 11:22:45,GameEvent raised: On Begin Scan
+2023/04/03 11:22:50,Resetting timeout to 11:23:05 AM
+2023/04/03 11:22:50,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 4459; shouldBePlaying: True; saved webCamTextureID: -282; current ID: -282; lastUpdateCount: 4010
+2023/04/03 11:22:56,Quit application via 'Escape' key.
+2023/04/03 11:22:56,Application Quit
+2023/04/03 11:25:27,Application Awake - version #2023.1.18
+2023/04/03 11:25:27,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:25:27,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:25:27,Opening attract...
+2023/04/03 11:25:28,GameEvent raised: CloseAllWindows
+2023/04/03 11:25:28,GameEvent raised: MuralPositionsLoaded
+2023/04/03 11:25:28,GameEvent raised: ConfigLoaded
+2023/04/03 11:25:28,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 11:25:28,Successfully found correct camera.
+2023/04/03 11:25:28,NEW webCamTexture ID: -282
+2023/04/03 11:25:28,Resetting update count...
+2023/04/03 11:25:28,Setting should be playing to true...
+2023/04/03 11:25:28,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 11:25:28,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 11:25:28,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 11:25:28,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 11:25:28,Resetting update count...
+2023/04/03 11:25:28,GameEvent raised: WindowsRefreshed
+2023/04/03 11:25:28,GameEvent raised: CloseAllWindows
+2023/04/03 11:25:28,Starting app...
+2023/04/03 11:25:28,GameEvent raised: Attract
+2023/04/03 11:25:28,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:25:28,Webcam pausing...
+2023/04/03 11:25:28,Resetting update count...
+2023/04/03 11:25:28,Setting should be playing to false...
+2023/04/03 11:25:30,Closing attract...
+2023/04/03 11:25:32,GameEvent raised: CloseAllWindows
+2023/04/03 11:25:32,GameEvent raised: ScanWindow
+2023/04/03 11:25:32,GameEvent raised: Start Click
+2023/04/03 11:25:32,GameEvent raised: ScanWindowIsIn
+2023/04/03 11:25:32,Webcam playing...
+2023/04/03 11:25:32,Resetting update count...
+2023/04/03 11:25:32,Setting should be playing to true...
+2023/04/03 11:25:38,Quit application via 'Escape' key.
+2023/04/03 11:25:38,Application Quit
+2023/04/03 11:25:38,Releasing resources...
+2023/04/03 11:25:38,OnWebCamTextureToMatHelperDisposed
+2023/04/03 11:27:15,Application Awake - version #2023.1.18
+2023/04/03 11:27:15,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:27:15,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:27:15,Opening attract...
+2023/04/03 11:27:16,GameEvent raised: CloseAllWindows
+2023/04/03 11:27:16,GameEvent raised: MuralPositionsLoaded
+2023/04/03 11:27:16,GameEvent raised: ConfigLoaded
+2023/04/03 11:27:16,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 11:27:16,Successfully found correct camera.
+2023/04/03 11:27:16,NEW webCamTexture ID: -282
+2023/04/03 11:27:16,Resetting update count...
+2023/04/03 11:27:16,Setting should be playing to true...
+2023/04/03 11:27:16,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 11:27:16,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 11:27:16,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 11:27:16,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 11:27:16,Resetting update count...
+2023/04/03 11:27:16,GameEvent raised: WindowsRefreshed
+2023/04/03 11:27:16,GameEvent raised: CloseAllWindows
+2023/04/03 11:27:16,Starting app...
+2023/04/03 11:27:16,GameEvent raised: Attract
+2023/04/03 11:27:16,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:27:16,Webcam pausing...
+2023/04/03 11:27:16,Resetting update count...
+2023/04/03 11:27:16,Setting should be playing to false...
+2023/04/03 11:27:20,Closing attract...
+2023/04/03 11:27:21,GameEvent raised: CloseAllWindows
+2023/04/03 11:27:21,GameEvent raised: ScanWindow
+2023/04/03 11:27:21,GameEvent raised: Start Click
+2023/04/03 11:27:21,GameEvent raised: ScanWindowIsIn
+2023/04/03 11:27:21,Webcam playing...
+2023/04/03 11:27:21,Resetting update count...
+2023/04/03 11:27:21,Setting should be playing to true...
+2023/04/03 11:27:24,GameEvent raised: On Begin Scan
+2023/04/03 11:27:24,Refined scan thread successfully created and executed in 335.6561 milliseconds.
+2023/04/03 11:27:24,GameEvent raised: NewPreview
+2023/04/03 11:27:24,Refined scan successfully copied to preview mats in 1.0026 milliseconds.
+2023/04/03 11:27:25,GameEvent raised: AcceptScan
+2023/04/03 11:27:25,The directory was created successfully at C:/Users/joshu/Documents/GitHub/moonshot-art-scan/Builds/Leak0/Moonshot Art Scan_Data/StreamingAssets\Images.
+2023/04/03 11:27:25,GameEvent raised: ScanAdded
+2023/04/03 11:27:25,GameEvent raised: UploadComplete
+2023/04/03 11:27:25,GameEvent raised: On Begin Scan
+2023/04/03 11:27:26,Refined scan thread successfully created and executed in 322.144 milliseconds.
+2023/04/03 11:27:26,GameEvent raised: NewPreview
+2023/04/03 11:27:26,Refined scan successfully copied to preview mats in 2.0003 milliseconds.
+2023/04/03 11:27:26,GameEvent raised: AcceptScan
+2023/04/03 11:27:26,GameEvent raised: ScanAdded
+2023/04/03 11:27:26,GameEvent raised: UploadComplete
+2023/04/03 11:27:27,GameEvent raised: On Begin Scan
+2023/04/03 11:27:27,Refined scan thread successfully created and executed in 322.9125 milliseconds.
+2023/04/03 11:27:27,GameEvent raised: NewPreview
+2023/04/03 11:27:27,Refined scan successfully copied to preview mats in 1.0103 milliseconds.
+2023/04/03 11:27:27,GameEvent raised: AcceptScan
+2023/04/03 11:27:27,GameEvent raised: ScanAdded
+2023/04/03 11:27:27,GameEvent raised: UploadComplete
+2023/04/03 11:27:31,Quit application via 'Escape' key.
+2023/04/03 11:27:31,Application Quit
+2023/04/03 11:34:12,Application Awake - version #2023.1.18
+2023/04/03 11:34:12,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:34:12,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:34:12,Opening attract...
+2023/04/03 11:34:12,GameEvent raised: CloseAllWindows
+2023/04/03 11:34:12,GameEvent raised: MuralPositionsLoaded
+2023/04/03 11:34:12,GameEvent raised: ConfigLoaded
+2023/04/03 11:34:12,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 11:34:12,Successfully found correct camera.
+2023/04/03 11:34:12,NEW webCamTexture ID: -282
+2023/04/03 11:34:13,Resetting update count...
+2023/04/03 11:34:13,Setting should be playing to true...
+2023/04/03 11:34:13,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 11:34:13,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 11:34:13,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 11:34:13,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 11:34:13,Resetting update count...
+2023/04/03 11:34:13,GameEvent raised: WindowsRefreshed
+2023/04/03 11:34:13,GameEvent raised: CloseAllWindows
+2023/04/03 11:34:13,Starting app...
+2023/04/03 11:34:13,GameEvent raised: Attract
+2023/04/03 11:34:13,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:34:13,Webcam pausing...
+2023/04/03 11:34:13,Resetting update count...
+2023/04/03 11:34:13,Setting should be playing to false...
+2023/04/03 11:34:17,Closing attract...
+2023/04/03 11:34:28,GameEvent raised: CloseAllWindows
+2023/04/03 11:34:28,GameEvent raised: ScanWindow
+2023/04/03 11:34:28,GameEvent raised: Start Click
+2023/04/03 11:34:28,GameEvent raised: ScanWindowIsIn
+2023/04/03 11:34:28,Webcam playing...
+2023/04/03 11:34:28,Resetting update count...
+2023/04/03 11:34:28,Setting should be playing to true...
+2023/04/03 11:34:29,GameEvent raised: On Begin Scan
+2023/04/03 11:34:30,Refined scan thread successfully created and executed in 322.5345 milliseconds.
+2023/04/03 11:34:30,GameEvent raised: NewPreview
+2023/04/03 11:34:30,Refined scan successfully copied to preview mats in 2.1147 milliseconds.
+2023/04/03 11:34:30,GameEvent raised: AcceptScan
+2023/04/03 11:34:30,GameEvent raised: ScanAdded
+2023/04/03 11:34:30,GameEvent raised: UploadComplete
+2023/04/03 11:34:36,Opening debug menu and initializing...
+2023/04/03 11:34:36,Initializing debug menu...
+2023/04/03 11:34:36,Closing debug menu...
+2023/04/03 11:34:36,Webcam pausing...
+2023/04/03 11:34:36,Resetting update count...
+2023/04/03 11:34:36,Setting should be playing to false...
+2023/04/03 11:34:36,resetting requested device name
+2023/04/03 11:34:36,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 11:34:36,Releasing resources...
+2023/04/03 11:34:36,OnWebCamTextureToMatHelperDisposed
+2023/04/03 11:34:36,Successfully found correct camera.
+2023/04/03 11:34:36,NEW webCamTexture ID: -376
+2023/04/03 11:34:37,Resetting update count...
+2023/04/03 11:34:37,Setting should be playing to true...
+2023/04/03 11:34:37,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 11:34:37,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 11:34:37,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 11:34:37,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 11:34:37,Resetting update count...
+2023/04/03 11:34:37,Webcam playing...
+2023/04/03 11:34:37,Resetting update count...
+2023/04/03 11:34:37,Setting should be playing to true...
+2023/04/03 11:34:38,Opening debug menu and initializing...
+2023/04/03 11:34:38,Initializing debug menu...
+2023/04/03 11:34:39,Closing debug menu...
+2023/04/03 11:34:39,Webcam pausing...
+2023/04/03 11:34:39,Resetting update count...
+2023/04/03 11:34:39,Setting should be playing to false...
+2023/04/03 11:34:39,resetting requested device name
+2023/04/03 11:34:39,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 11:34:39,Releasing resources...
+2023/04/03 11:34:39,OnWebCamTextureToMatHelperDisposed
+2023/04/03 11:34:39,Successfully found correct camera.
+2023/04/03 11:34:39,NEW webCamTexture ID: -420
+2023/04/03 11:34:40,Resetting update count...
+2023/04/03 11:34:40,Setting should be playing to true...
+2023/04/03 11:34:40,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 11:34:40,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 11:34:40,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 11:34:40,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 11:34:40,Resetting update count...
+2023/04/03 11:34:40,Webcam playing...
+2023/04/03 11:34:40,Resetting update count...
+2023/04/03 11:34:40,Setting should be playing to true...
+2023/04/03 11:34:43,Quit application via 'Escape' key.
+2023/04/03 11:34:43,Application Quit
+2023/04/03 11:37:30,Application Awake - version #2023.1.18
+2023/04/03 11:37:30,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:37:30,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:37:30,Opening attract...
+2023/04/03 11:37:31,GameEvent raised: CloseAllWindows
+2023/04/03 11:37:31,GameEvent raised: MuralPositionsLoaded
+2023/04/03 11:37:31,GameEvent raised: ConfigLoaded
+2023/04/03 11:37:31,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 11:37:31,Successfully found correct camera.
+2023/04/03 11:37:31,NEW webCamTexture ID: -282
+2023/04/03 11:37:31,Resetting update count...
+2023/04/03 11:37:31,Setting should be playing to true...
+2023/04/03 11:37:31,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 11:37:31,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 11:37:31,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 11:37:31,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 11:37:31,Resetting update count...
+2023/04/03 11:37:31,GameEvent raised: WindowsRefreshed
+2023/04/03 11:37:31,GameEvent raised: CloseAllWindows
+2023/04/03 11:37:31,Starting app...
+2023/04/03 11:37:31,GameEvent raised: Attract
+2023/04/03 11:37:32,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:37:32,Webcam pausing...
+2023/04/03 11:37:32,Resetting update count...
+2023/04/03 11:37:32,Setting should be playing to false...
+2023/04/03 11:37:38,Closing attract...
+2023/04/03 11:37:47,GameEvent raised: CloseAllWindows
+2023/04/03 11:37:47,GameEvent raised: ScanWindow
+2023/04/03 11:37:47,GameEvent raised: Start Click
+2023/04/03 11:37:47,GameEvent raised: ScanWindowIsIn
+2023/04/03 11:37:47,Webcam playing...
+2023/04/03 11:37:47,Resetting update count...
+2023/04/03 11:37:47,Setting should be playing to true...
+2023/04/03 11:37:48,GameEvent raised: On Begin Scan
+2023/04/03 11:37:48,Refined scan thread successfully created and executed in 356.7444 milliseconds.
+2023/04/03 11:37:48,GameEvent raised: NewPreview
+2023/04/03 11:37:48,Refined scan successfully copied to preview mats in 2.008 milliseconds.
+2023/04/03 11:37:54,GameEvent raised: AcceptScan
+2023/04/03 11:37:54,GameEvent raised: ScanAdded
+2023/04/03 11:37:54,GameEvent raised: UploadComplete
+2023/04/03 11:37:58,Quit application via 'Escape' key.
+2023/04/03 11:37:58,Application Quit
+2023/04/03 11:37:59,Releasing resources...
+2023/04/03 11:37:59,OnWebCamTextureToMatHelperDisposed
+2023/04/03 11:39:01,Application Awake - version #2023.1.18
+2023/04/03 11:39:01,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:39:01,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:39:01,Opening attract...
+2023/04/03 11:39:01,GameEvent raised: CloseAllWindows
+2023/04/03 11:39:01,GameEvent raised: MuralPositionsLoaded
+2023/04/03 11:39:01,GameEvent raised: ConfigLoaded
+2023/04/03 11:39:01,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 11:39:01,Successfully found correct camera.
+2023/04/03 11:39:01,NEW webCamTexture ID: -282
+2023/04/03 11:39:02,Resetting update count...
+2023/04/03 11:39:02,Setting should be playing to true...
+2023/04/03 11:39:02,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 11:39:02,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 11:39:02,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 11:39:02,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 11:39:02,Resetting update count...
+2023/04/03 11:39:02,GameEvent raised: WindowsRefreshed
+2023/04/03 11:39:02,GameEvent raised: CloseAllWindows
+2023/04/03 11:39:02,Starting app...
+2023/04/03 11:39:02,GameEvent raised: Attract
+2023/04/03 11:39:02,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:39:02,Webcam pausing...
+2023/04/03 11:39:02,Resetting update count...
+2023/04/03 11:39:02,Setting should be playing to false...
+2023/04/03 11:39:04,Closing attract...
+2023/04/03 11:39:06,Quit application via 'Escape' key.
+2023/04/03 11:39:06,Application Quit
+2023/04/03 11:40:09,Application Awake - version #2023.1.18
+2023/04/03 11:40:10,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:40:10,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:40:10,Opening attract...
+2023/04/03 11:40:10,GameEvent raised: CloseAllWindows
+2023/04/03 11:40:10,GameEvent raised: MuralPositionsLoaded
+2023/04/03 11:40:10,GameEvent raised: ConfigLoaded
+2023/04/03 11:40:10,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 11:40:10,Successfully found correct camera.
+2023/04/03 11:40:10,NEW webCamTexture ID: -276
+2023/04/03 11:40:10,Resetting update count...
+2023/04/03 11:40:10,Setting should be playing to true...
+2023/04/03 11:40:10,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 11:40:10,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 11:40:10,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 11:40:10,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 11:40:10,Resetting update count...
+2023/04/03 11:40:10,GameEvent raised: WindowsRefreshed
+2023/04/03 11:40:10,GameEvent raised: CloseAllWindows
+2023/04/03 11:40:10,Starting app...
+2023/04/03 11:40:10,GameEvent raised: Attract
+2023/04/03 11:40:11,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:40:11,Webcam pausing...
+2023/04/03 11:40:11,Resetting update count...
+2023/04/03 11:40:11,Setting should be playing to false...
+2023/04/03 11:40:14,Closing attract...
+2023/04/03 11:40:15,GameEvent raised: CloseAllWindows
+2023/04/03 11:40:15,GameEvent raised: ScanWindow
+2023/04/03 11:40:15,GameEvent raised: Start Click
+2023/04/03 11:40:15,GameEvent raised: ScanWindowIsIn
+2023/04/03 11:40:15,Webcam playing...
+2023/04/03 11:40:15,Resetting update count...
+2023/04/03 11:40:15,Setting should be playing to true...
+2023/04/03 11:40:16,GameEvent raised: On Begin Scan
+2023/04/03 11:40:16,Refined scan thread successfully created and executed in 383.5453 milliseconds.
+2023/04/03 11:40:16,GameEvent raised: NewPreview
+2023/04/03 11:40:16,Refined scan successfully copied to preview mats in 2.0014 milliseconds.
+2023/04/03 11:40:17,GameEvent raised: AcceptScan
+2023/04/03 11:40:17,GameEvent raised: ScanAdded
+2023/04/03 11:40:17,GameEvent raised: UploadComplete
+2023/04/03 11:40:27,GameEvent raised: On Begin Scan
+2023/04/03 11:40:27,Refined scan thread successfully created and executed in 336.3049 milliseconds.
+2023/04/03 11:40:27,GameEvent raised: NewPreview
+2023/04/03 11:40:27,Refined scan successfully copied to preview mats in 2.0029 milliseconds.
+2023/04/03 11:40:28,GameEvent raised: AcceptScan
+2023/04/03 11:40:28,GameEvent raised: ScanAdded
+2023/04/03 11:40:28,GameEvent raised: UploadComplete
+2023/04/03 11:40:29,Quit application via 'Escape' key.
+2023/04/03 11:40:29,Application Quit
+2023/04/03 11:43:18,Application Awake - version #2023.1.18
+2023/04/03 11:43:18,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:43:18,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:43:18,GameEvent raised: CloseAllWindows
+2023/04/03 11:43:18,GameEvent raised: MuralPositionsLoaded
+2023/04/03 11:43:18,GameEvent raised: ConfigLoaded
+2023/04/03 11:43:18,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 11:43:18,Successfully found correct camera.
+2023/04/03 11:43:18,NEW webCamTexture ID: -522
+2023/04/03 11:43:19,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 11:43:19,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 11:43:19,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 11:43:19,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 11:43:19,Downloading scans to C:/Users/joshu/Documents/GitHub/moonshot-art-scan/Builds/Leak0/Moonshot Art Scan_Data/StreamingAssets\Images.
+2023/04/03 11:43:19,Downloading number 0 of 6 scans: Red-0.png
+2023/04/03 11:43:19,Initializing debug menu...
+2023/04/03 11:43:19,Message from server: Connected to the Moonshot Server.
+2023/04/03 11:43:19,Resume Round
+2023/04/03 11:43:19,Resume round with: Green
+2023/04/03 11:43:19,Client received 'resume round' from server.   missionState = Paused
+2023/04/03 11:43:19,Negotiation failed.
+2023/04/03 11:43:19,GameEvent raised: WindowsRefreshed
+2023/04/03 11:43:19,GameEvent raised: CloseAllWindows
+2023/04/03 11:43:19,Starting app...
+2023/04/03 11:43:19,GameEvent raised: Welcome
+2023/04/03 11:43:21,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:43:21,Webcam pausing...
+2023/04/03 11:43:25,GameEvent raised: CloseAllWindows
+2023/04/03 11:43:25,GameEvent raised: NamesakeWindow
+2023/04/03 11:43:25,GameEvent raised: Namesake Close
+2023/04/03 11:43:25,GameEvent raised: NamePicker
+2023/04/03 11:43:25,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:43:25,Webcam pausing...
+2023/04/03 11:43:26,GameEvent raised: CloseAllWindows
+2023/04/03 11:43:26,GameEvent raised: ScanWindow
+2023/04/03 11:43:27,GameEvent raised: ScanWindowIsIn
+2023/04/03 11:43:27,Webcam playing...
+2023/04/03 11:44:13,Quit application via 'Escape' key.
+2023/04/03 11:44:13,Disconnected from server.
+2023/04/03 11:44:13,Application Quit
+2023/04/03 11:44:13,Releasing resources...
+2023/04/03 11:44:13,OnWebCamTextureToMatHelperDisposed
+2023/04/03 11:50:34,Application Awake - version #2023.1.18
+2023/04/03 11:50:34,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:50:34,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:50:35,GameEvent raised: CloseAllWindows
+2023/04/03 11:50:35,GameEvent raised: MuralPositionsLoaded
+2023/04/03 11:50:35,GameEvent raised: ConfigLoaded
+2023/04/03 11:50:35,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 11:50:35,Successfully found correct camera.
+2023/04/03 11:50:35,NEW webCamTexture ID: -516
+2023/04/03 11:50:35,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 11:50:35,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 11:50:35,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 11:50:35,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 11:50:35,Downloading scans to C:/Users/joshu/Documents/GitHub/moonshot-art-scan/Builds/Leak0/Moonshot Art Scan_Data/StreamingAssets\Images.
+2023/04/03 11:50:35,Downloading number 0 of 6 scans: Red-0.png
+2023/04/03 11:50:35,Initializing debug menu...
+2023/04/03 11:50:35,Message from server: Connected to the Moonshot Server.
+2023/04/03 11:50:36,Resume Round
+2023/04/03 11:50:36,Resume round with: Green
+2023/04/03 11:50:36,Client received 'resume round' from server.   missionState = Paused
+2023/04/03 11:50:36,Negotiation failed.
+2023/04/03 11:50:36,GameEvent raised: WindowsRefreshed
+2023/04/03 11:50:36,GameEvent raised: CloseAllWindows
+2023/04/03 11:50:36,Starting app...
+2023/04/03 11:50:36,GameEvent raised: Welcome
+2023/04/03 11:50:37,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:50:37,Webcam pausing...
+2023/04/03 11:50:40,GameEvent raised: CloseAllWindows
+2023/04/03 11:50:40,GameEvent raised: NamesakeWindow
+2023/04/03 11:50:40,GameEvent raised: Namesake Close
+2023/04/03 11:50:40,GameEvent raised: NamePicker
+2023/04/03 11:50:40,GameEvent raised: Start Click
+2023/04/03 11:50:40,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:50:40,Webcam pausing...
+2023/04/03 11:50:41,GameEvent raised: CloseAllWindows
+2023/04/03 11:50:41,GameEvent raised: ScanWindow
+2023/04/03 11:50:41,GameEvent raised: ScanWindowIsIn
+2023/04/03 11:50:41,Webcam playing...
+2023/04/03 11:50:50,Quit application via 'Escape' key.
+2023/04/03 11:50:50,Disconnected from server.
+2023/04/03 11:50:50,Application Quit
+2023/04/03 11:50:51,Releasing resources...
+2023/04/03 11:50:51,OnWebCamTextureToMatHelperDisposed
+2023/04/03 11:52:48,Application Awake - version #2023.1.18
+2023/04/03 11:52:48,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:52:48,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:52:48,GameEvent raised: CloseAllWindows
+2023/04/03 11:52:48,GameEvent raised: MuralPositionsLoaded
+2023/04/03 11:52:48,GameEvent raised: ConfigLoaded
+2023/04/03 11:52:48,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 11:52:48,Successfully found correct camera.
+2023/04/03 11:52:48,NEW webCamTexture ID: -516
+2023/04/03 11:52:49,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 11:52:49,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 11:52:49,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 11:52:49,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 11:52:49,Downloading scans to C:/Users/joshu/Documents/GitHub/moonshot-art-scan/Builds/Leak0/Moonshot Art Scan_Data/StreamingAssets\Images.
+2023/04/03 11:52:49,Downloading number 0 of 6 scans: Red-0.png
+2023/04/03 11:52:49,GameEvent raised: WindowsRefreshed
+2023/04/03 11:52:49,GameEvent raised: CloseAllWindows
+2023/04/03 11:52:49,Starting app...
+2023/04/03 11:52:49,GameEvent raised: Welcome
+2023/04/03 11:52:49,Message from server: Connected to the Moonshot Server.
+2023/04/03 11:52:49,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:52:49,Webcam pausing...
+2023/04/03 11:52:49,Resume Round
+2023/04/03 11:52:49,Resume round with: Green
+2023/04/03 11:52:49,Client received 'resume round' from server.   missionState = Paused
+2023/04/03 11:52:49,Negotiation failed.
+2023/04/03 11:52:50,GameEvent raised: CloseAllWindows
+2023/04/03 11:52:50,GameEvent raised: NamesakeWindow
+2023/04/03 11:52:50,GameEvent raised: Namesake Close
+2023/04/03 11:52:50,GameEvent raised: NamePicker
+2023/04/03 11:52:51,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:52:51,Webcam pausing...
+2023/04/03 11:52:51,GameEvent raised: CloseAllWindows
+2023/04/03 11:52:51,GameEvent raised: ScanWindow
+2023/04/03 11:52:51,GameEvent raised: ScanWindowIsIn
+2023/04/03 11:52:51,Webcam playing...
+2023/04/03 11:53:02,Opening debug menu and initializing...
+2023/04/03 11:53:02,Initializing debug menu...
+2023/04/03 11:53:02,Closing debug menu...
+2023/04/03 11:53:02,Webcam pausing...
+2023/04/03 11:53:02,resetting requested device name
+2023/04/03 11:53:02,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 11:53:02,Releasing resources...
+2023/04/03 11:53:02,OnWebCamTextureToMatHelperDisposed
+2023/04/03 11:53:02,Successfully found correct camera.
+2023/04/03 11:53:02,NEW webCamTexture ID: -2408
+2023/04/03 11:53:03,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 11:53:03,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 11:53:03,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 11:53:03,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 11:53:03,Downloading scans to C:/Users/joshu/Documents/GitHub/moonshot-art-scan/Builds/Leak0/Moonshot Art Scan_Data/StreamingAssets\Images.
+2023/04/03 11:53:03,Downloading number 0 of 6 scans: Green-0.png
+2023/04/03 11:53:03,Webcam playing...
+2023/04/03 11:53:04,Downloaded scans in 1510.829 milliseconds.
+2023/04/03 11:53:04,GameEvent raised: AllScansDownloaded
+2023/04/03 11:53:04,GameEvent raised: ScanAdded
+2023/04/03 11:53:08,Opening debug menu and initializing...
+2023/04/03 11:53:08,Initializing debug menu...
+2023/04/03 11:53:15,Quit application via 'Escape' key.
+2023/04/03 11:53:15,Disconnected from server.
+2023/04/03 11:53:15,Application Quit
+2023/04/03 11:53:16,Releasing resources...
+2023/04/03 11:53:16,OnWebCamTextureToMatHelperDisposed
+2023/04/03 11:54:44,Application Awake - version #2023.1.18
+2023/04/03 11:54:44,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:54:44,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:54:44,GameEvent raised: CloseAllWindows
+2023/04/03 11:54:44,GameEvent raised: MuralPositionsLoaded
+2023/04/03 11:54:44,GameEvent raised: ConfigLoaded
+2023/04/03 11:54:44,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 11:54:44,Successfully found correct camera.
+2023/04/03 11:54:44,NEW webCamTexture ID: -516
+2023/04/03 11:54:45,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 11:54:45,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 11:54:45,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 11:54:45,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 11:54:45,Downloading scans to C:/Users/joshu/Documents/GitHub/moonshot-art-scan/Builds/Leak0/Moonshot Art Scan_Data/StreamingAssets\Images.
+2023/04/03 11:54:45,Downloading number 0 of 6 scans: Red-0.png
+2023/04/03 11:54:45,GameEvent raised: WindowsRefreshed
+2023/04/03 11:54:45,GameEvent raised: CloseAllWindows
+2023/04/03 11:54:45,Starting app...
+2023/04/03 11:54:45,GameEvent raised: Welcome
+2023/04/03 11:54:45,Message from server: Connected to the Moonshot Server.
+2023/04/03 11:54:45,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:54:45,Webcam pausing...
+2023/04/03 11:54:45,Resume Round
+2023/04/03 11:54:45,Resume round with: Green
+2023/04/03 11:54:45,Client received 'resume round' from server.   missionState = Paused
+2023/04/03 11:54:45,Negotiation failed.
+2023/04/03 11:54:48,GameEvent raised: CloseAllWindows
+2023/04/03 11:54:48,GameEvent raised: NamesakeWindow
+2023/04/03 11:54:48,GameEvent raised: Namesake Close
+2023/04/03 11:54:48,GameEvent raised: NamePicker
+2023/04/03 11:54:48,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:54:48,Webcam pausing...
+2023/04/03 11:54:49,GameEvent raised: CloseAllWindows
+2023/04/03 11:54:49,GameEvent raised: ScanWindow
+2023/04/03 11:54:49,GameEvent raised: ScanWindowIsIn
+2023/04/03 11:54:49,Webcam playing...
+2023/04/03 11:54:55,Quit application via 'Escape' key.
+2023/04/03 11:54:55,Disconnected from server.
+2023/04/03 11:54:55,Application Quit
+2023/04/03 11:54:56,Releasing resources...
+2023/04/03 11:54:56,OnWebCamTextureToMatHelperDisposed
+2023/04/03 11:56:13,Application Awake - version #2023.1.18
+2023/04/03 11:56:13,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:56:13,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:56:14,GameEvent raised: CloseAllWindows
+2023/04/03 11:56:14,GameEvent raised: MuralPositionsLoaded
+2023/04/03 11:56:14,GameEvent raised: ConfigLoaded
+2023/04/03 11:56:14,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 11:56:14,Successfully found correct camera.
+2023/04/03 11:56:14,NEW webCamTexture ID: -522
+2023/04/03 11:56:14,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 11:56:14,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 11:56:14,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 11:56:14,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 11:56:14,GameEvent raised: WindowsRefreshed
+2023/04/03 11:56:14,GameEvent raised: CloseAllWindows
+2023/04/03 11:56:14,Starting app...
+2023/04/03 11:56:14,GameEvent raised: Welcome
+2023/04/03 11:56:14,Message from server: Connected to the Moonshot Server.
+2023/04/03 11:56:14,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:56:14,Webcam pausing...
+2023/04/03 11:56:14,Resume Round
+2023/04/03 11:56:14,Resume round with: Green
+2023/04/03 11:56:14,Client received 'resume round' from server.   missionState = Paused
+2023/04/03 11:56:17,GameEvent raised: CloseAllWindows
+2023/04/03 11:56:17,GameEvent raised: NamesakeWindow
+2023/04/03 11:56:17,GameEvent raised: Namesake Close
+2023/04/03 11:56:17,GameEvent raised: NamePicker
+2023/04/03 11:56:17,GameEvent raised: Start Click
+2023/04/03 11:56:17,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:56:17,Webcam pausing...
+2023/04/03 11:56:18,GameEvent raised: CloseAllWindows
+2023/04/03 11:56:18,GameEvent raised: ScanWindow
+2023/04/03 11:56:18,GameEvent raised: ScanWindowIsIn
+2023/04/03 11:56:18,Webcam playing...
+2023/04/03 11:56:23,Quit application via 'Escape' key.
+2023/04/03 11:56:23,Disconnected from server.
+2023/04/03 11:56:23,Application Quit
+2023/04/03 11:58:29,Application Awake - version #2023.1.18
+2023/04/03 11:58:29,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:58:29,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 11:58:29,GameEvent raised: CloseAllWindows
+2023/04/03 11:58:29,GameEvent raised: MuralPositionsLoaded
+2023/04/03 11:58:29,GameEvent raised: ConfigLoaded
+2023/04/03 11:58:29,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 11:58:29,Successfully found correct camera.
+2023/04/03 11:58:29,NEW webCamTexture ID: -522
+2023/04/03 11:58:30,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 11:58:30,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 11:58:30,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 11:58:30,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 11:58:30,GameEvent raised: WindowsRefreshed
+2023/04/03 11:58:30,GameEvent raised: CloseAllWindows
+2023/04/03 11:58:30,Starting app...
+2023/04/03 11:58:30,GameEvent raised: Welcome
+2023/04/03 11:58:30,Message from server: Connected to the Moonshot Server.
+2023/04/03 11:58:30,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:58:30,Webcam pausing...
+2023/04/03 11:58:30,Resume Round
+2023/04/03 11:58:30,Resume round with: Green
+2023/04/03 11:58:30,Client received 'resume round' from server.   missionState = Paused
+2023/04/03 11:58:37,GameEvent raised: CloseAllWindows
+2023/04/03 11:58:37,GameEvent raised: NamesakeWindow
+2023/04/03 11:58:37,GameEvent raised: Namesake Close
+2023/04/03 11:58:37,GameEvent raised: NamePicker
+2023/04/03 11:58:37,GameEvent raised: Start Click
+2023/04/03 11:58:37,GameEvent raised: NonScanWindowIsIn
+2023/04/03 11:58:37,Webcam pausing...
+2023/04/03 11:58:39,GameEvent raised: CloseAllWindows
+2023/04/03 11:58:39,GameEvent raised: ScanWindow
+2023/04/03 11:58:39,GameEvent raised: ScanWindowIsIn
+2023/04/03 11:58:39,Webcam playing...
+2023/04/03 11:58:52,Quit application via 'Escape' key.
+2023/04/03 11:58:52,Disconnected from server.
+2023/04/03 11:58:52,Application Quit
+2023/04/03 12:04:52,Application Awake - version #2023.1.18
+2023/04/03 12:04:52,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 12:04:52,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 12:04:52,GameEvent raised: CloseAllWindows
+2023/04/03 12:04:52,GameEvent raised: MuralPositionsLoaded
+2023/04/03 12:04:52,GameEvent raised: ConfigLoaded
+2023/04/03 12:04:52,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 12:04:52,Successfully found correct camera.
+2023/04/03 12:04:52,NEW webCamTexture ID: -516
+2023/04/03 12:04:53,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 12:04:53,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 12:04:53,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 12:04:53,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 12:04:53,GameEvent raised: WindowsRefreshed
+2023/04/03 12:04:53,GameEvent raised: CloseAllWindows
+2023/04/03 12:04:53,Starting app...
+2023/04/03 12:04:53,GameEvent raised: Welcome
+2023/04/03 12:04:53,Message from server: Connected to the Moonshot Server.
+2023/04/03 12:04:53,GameEvent raised: NonScanWindowIsIn
+2023/04/03 12:04:53,Webcam pausing...
+2023/04/03 12:04:53,Resume Round
+2023/04/03 12:04:53,Resume round with: Green
+2023/04/03 12:04:53,Client received 'resume round' from server.   missionState = Paused
+2023/04/03 12:04:55,GameEvent raised: CloseAllWindows
+2023/04/03 12:04:55,GameEvent raised: NamesakeWindow
+2023/04/03 12:04:55,GameEvent raised: Namesake Close
+2023/04/03 12:04:55,GameEvent raised: NamePicker
+2023/04/03 12:04:55,GameEvent raised: Start Click
+2023/04/03 12:04:55,GameEvent raised: NonScanWindowIsIn
+2023/04/03 12:04:55,Webcam pausing...
+2023/04/03 12:04:56,GameEvent raised: CloseAllWindows
+2023/04/03 12:04:56,GameEvent raised: ScanWindow
+2023/04/03 12:04:57,GameEvent raised: ScanWindowIsIn
+2023/04/03 12:04:57,Webcam playing...
+2023/04/03 12:05:02,Quit application via 'Escape' key.
+2023/04/03 12:05:02,Disconnected from server.
+2023/04/03 12:05:02,Application Quit
+2023/04/03 12:05:03,Releasing resources...
+2023/04/03 12:05:03,OnWebCamTextureToMatHelperDisposed
+2023/04/03 12:07:41,Application Awake - version #2023.1.18
+2023/04/03 12:07:41,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 12:07:41,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 12:07:42,GameEvent raised: CloseAllWindows
+2023/04/03 12:07:42,GameEvent raised: MuralPositionsLoaded
+2023/04/03 12:07:42,GameEvent raised: ConfigLoaded
+2023/04/03 12:07:42,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 12:07:42,Successfully found correct camera.
+2023/04/03 12:07:42,NEW webCamTexture ID: -516
+2023/04/03 12:07:42,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 12:07:42,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 12:07:42,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 12:07:42,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 12:07:42,GameEvent raised: WindowsRefreshed
+2023/04/03 12:07:42,GameEvent raised: CloseAllWindows
+2023/04/03 12:07:42,Starting app...
+2023/04/03 12:07:42,GameEvent raised: Welcome
+2023/04/03 12:07:43,Message from server: Connected to the Moonshot Server.
+2023/04/03 12:07:43,GameEvent raised: NonScanWindowIsIn
+2023/04/03 12:07:43,Webcam pausing...
+2023/04/03 12:07:43,Resume Round
+2023/04/03 12:07:43,Resume round with: Green
+2023/04/03 12:07:43,Client received 'resume round' from server.   missionState = Paused
+2023/04/03 12:07:46,GameEvent raised: CloseAllWindows
+2023/04/03 12:07:46,GameEvent raised: NamesakeWindow
+2023/04/03 12:07:46,GameEvent raised: Namesake Close
+2023/04/03 12:07:46,GameEvent raised: NamePicker
+2023/04/03 12:07:46,GameEvent raised: NonScanWindowIsIn
+2023/04/03 12:07:46,Webcam pausing...
+2023/04/03 12:07:46,GameEvent raised: CloseAllWindows
+2023/04/03 12:07:46,GameEvent raised: ScanWindow
+2023/04/03 12:07:47,GameEvent raised: ScanWindowIsIn
+2023/04/03 12:07:47,Webcam playing...
+2023/04/03 12:07:53,Quit application via 'Escape' key.
+2023/04/03 12:07:53,Disconnected from server.
+2023/04/03 12:07:53,Application Quit
+2023/04/03 12:07:54,Releasing resources...
+2023/04/03 12:07:54,OnWebCamTextureToMatHelperDisposed
+2023/04/03 12:08:56,Application Awake - version #2023.1.18
+2023/04/03 12:08:56,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 12:08:56,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 12:08:57,GameEvent raised: CloseAllWindows
+2023/04/03 12:08:57,GameEvent raised: MuralPositionsLoaded
+2023/04/03 12:08:57,GameEvent raised: ConfigLoaded
+2023/04/03 12:08:57,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 12:08:57,Successfully found correct camera.
+2023/04/03 12:08:57,NEW webCamTexture ID: -516
+2023/04/03 12:08:57,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 12:08:57,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 12:08:57,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 12:08:57,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 12:08:57,GameEvent raised: WindowsRefreshed
+2023/04/03 12:08:57,GameEvent raised: CloseAllWindows
+2023/04/03 12:08:57,Starting app...
+2023/04/03 12:08:57,GameEvent raised: Welcome
+2023/04/03 12:08:58,Message from server: Connected to the Moonshot Server.
+2023/04/03 12:08:58,GameEvent raised: NonScanWindowIsIn
+2023/04/03 12:08:58,Webcam pausing...
+2023/04/03 12:08:58,Resume Round
+2023/04/03 12:08:58,Resume round with: Green
+2023/04/03 12:08:58,Client received 'resume round' from server.   missionState = Paused
+2023/04/03 12:09:00,GameEvent raised: CloseAllWindows
+2023/04/03 12:09:00,GameEvent raised: NamesakeWindow
+2023/04/03 12:09:00,GameEvent raised: Namesake Close
+2023/04/03 12:09:00,GameEvent raised: NamePicker
+2023/04/03 12:09:00,GameEvent raised: NonScanWindowIsIn
+2023/04/03 12:09:00,Webcam pausing...
+2023/04/03 12:09:01,GameEvent raised: CloseAllWindows
+2023/04/03 12:09:01,GameEvent raised: ScanWindow
+2023/04/03 12:09:01,GameEvent raised: ScanWindowIsIn
+2023/04/03 12:09:01,Webcam playing...
+2023/04/03 12:09:06,Quit application via 'Escape' key.
+2023/04/03 12:09:06,Disconnected from server.
+2023/04/03 12:09:06,Application Quit
+2023/04/03 13:43:14,Application Awake - version #2023.1.18
+2023/04/03 13:43:14,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:43:14,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:43:15,GameEvent raised: CloseAllWindows
+2023/04/03 13:43:15,GameEvent raised: MuralPositionsLoaded
+2023/04/03 13:43:15,GameEvent raised: ConfigLoaded
+2023/04/03 13:43:15,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 13:43:15,Successfully found correct camera.
+2023/04/03 13:43:15,NEW webCamTexture ID: -516
+2023/04/03 13:43:15,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 13:43:15,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 13:43:15,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 13:43:15,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 13:43:15,GameEvent raised: WindowsRefreshed
+2023/04/03 13:43:15,GameEvent raised: CloseAllWindows
+2023/04/03 13:43:15,Starting app...
+2023/04/03 13:43:15,GameEvent raised: Welcome
+2023/04/03 13:43:16,Message from server: Connected to the Moonshot Server.
+2023/04/03 13:43:16,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:43:16,Webcam pausing...
+2023/04/03 13:43:16,Resume Round
+2023/04/03 13:43:16,Resume round with: Green
+2023/04/03 13:43:16,Client received 'resume round' from server.   missionState = Paused
+2023/04/03 13:43:19,Quit application via 'Escape' key.
+2023/04/03 13:43:19,Disconnected from server.
+2023/04/03 13:43:19,Application Quit
+2023/04/03 13:43:20,Releasing resources...
+2023/04/03 13:43:20,OnWebCamTextureToMatHelperDisposed
+2023/04/03 13:44:03,ConclusionTextManager couldn't find team data through Client.instance
+2023/04/03 13:44:03,ConclusionTextManager couldn't find team data through Client.instance
+2023/04/03 13:44:03,ConclusionTextManager couldn't find team data through Client.instance
+2023/04/03 13:44:03,ConclusionTextManager couldn't find team data through Client.instance
+2023/04/03 13:44:03,ConclusionTextManager couldn't find team data through Client.instance
+2023/04/03 13:44:03,IdentifiedCurrentStation()   Client.instance._moonshotStation = Rover
+2023/04/03 13:44:03,Created new team data because none existed. This should only happen when testing the results scene in isolation.
+2023/04/03 13:44:03,Loading Team Results Data   teamName = 
+2023/04/03 13:44:03,ResultsDisplay.DownloadThenLoadImages() singleTeamData = MoonshotTeamData
+2023/04/03 13:44:03,Final results (ResultsDisplay.cs) is trying to load artworks but singleTeamData.artworks == null
+2023/04/03 13:44:03,Application Awake - version #2023.1.18
+2023/04/03 13:44:03,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:44:03,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:44:04,IdentifiedCurrentStation()   Client.instance._moonshotStation = Rover
+2023/04/03 13:44:05,Message from server: Connected to the Moonshot Server.
+2023/04/03 13:44:05,Resume Round
+2023/04/03 13:44:05,Team JSON data received on 'resume round' from server is null or empty, so new one is being created locally. team name = Purple
+2023/04/03 13:44:05,Resume round with: Purple
+2023/04/03 13:44:05,Client received 'resume round' from server.   missionState = Paused
+2023/04/03 13:44:07,Quit application via 'Escape' key.
+2023/04/03 13:44:07,Disconnected from server.
+2023/04/03 13:44:07,Application Quit
+2023/04/03 13:44:24,Application Awake - version #2023.1.18
+2023/04/03 13:44:24,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:44:24,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:44:25,GameEvent raised: CloseAllWindows
+2023/04/03 13:44:25,GameEvent raised: MuralPositionsLoaded
+2023/04/03 13:44:25,GameEvent raised: ConfigLoaded
+2023/04/03 13:44:25,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 13:44:25,Successfully found correct camera.
+2023/04/03 13:44:25,NEW webCamTexture ID: -520
+2023/04/03 13:44:25,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 13:44:25,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 13:44:25,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 13:44:25,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 13:44:25,GameEvent raised: WindowsRefreshed
+2023/04/03 13:44:25,GameEvent raised: CloseAllWindows
+2023/04/03 13:44:25,Starting app...
+2023/04/03 13:44:25,GameEvent raised: Welcome
+2023/04/03 13:44:26,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:44:33,GameEvent raised: CloseAllWindows
+2023/04/03 13:44:33,GameEvent raised: NamesakeWindow
+2023/04/03 13:44:33,GameEvent raised: Namesake Close
+2023/04/03 13:44:33,GameEvent raised: NamePicker
+2023/04/03 13:44:33,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:44:34,GameEvent raised: CloseAllWindows
+2023/04/03 13:44:34,GameEvent raised: ScanWindow
+2023/04/03 13:44:35,GameEvent raised: ScanWindowIsIn
+2023/04/03 13:44:44,Quit application via 'Escape' key.
+2023/04/03 13:44:44,Application Quit
+2023/04/03 13:44:45,Releasing resources...
+2023/04/03 13:44:45,OnWebCamTextureToMatHelperDisposed
+2023/04/03 13:46:33,Application Awake - version #2023.1.18
+2023/04/03 13:46:33,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:46:34,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:46:34,GameEvent raised: CloseAllWindows
+2023/04/03 13:46:34,GameEvent raised: ConfigLoaded
+2023/04/03 13:46:34,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 13:46:34,Successfully found correct camera.
+2023/04/03 13:46:34,NEW webCamTexture ID: -474
+2023/04/03 13:46:34,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 13:46:34,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 13:46:35,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 13:46:35,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 13:46:35,GameEvent raised: WindowsRefreshed
+2023/04/03 13:46:35,GameEvent raised: CloseAllWindows
+2023/04/03 13:46:35,Starting app...
+2023/04/03 13:46:35,GameEvent raised: Welcome
+2023/04/03 13:46:38,GameEvent raised: CloseAllWindows
+2023/04/03 13:46:38,GameEvent raised: Welcome
+2023/04/03 13:46:40,GameEvent raised: CloseAllWindows
+2023/04/03 13:46:40,GameEvent raised: NamesakeWindow
+2023/04/03 13:46:41,GameEvent raised: CloseAllWindows
+2023/04/03 13:46:41,GameEvent raised: ScanWindow
+2023/04/03 13:46:42,GameEvent raised: ScanWindowIsIn
+2023/04/03 13:46:52,Quit application via 'Escape' key.
+2023/04/03 13:46:52,Application Quit
+2023/04/03 13:46:52,Releasing resources...
+2023/04/03 13:46:52,OnWebCamTextureToMatHelperDisposed
+2023/04/03 13:51:06,Application Awake - version #2023.1.18
+2023/04/03 13:51:06,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:51:06,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:51:07,GameEvent raised: CloseAllWindows
+2023/04/03 13:51:07,GameEvent raised: ConfigLoaded
+2023/04/03 13:51:07,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 13:51:07,Successfully found correct camera.
+2023/04/03 13:51:07,NEW webCamTexture ID: -474
+2023/04/03 13:51:07,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 13:51:07,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 13:51:07,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 13:51:07,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 13:51:07,GameEvent raised: WindowsRefreshed
+2023/04/03 13:51:07,GameEvent raised: CloseAllWindows
+2023/04/03 13:51:07,Starting app...
+2023/04/03 13:51:07,GameEvent raised: Welcome
+2023/04/03 13:51:07,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:51:09,GameEvent raised: CloseAllWindows
+2023/04/03 13:51:09,GameEvent raised: NamesakeWindow
+2023/04/03 13:51:09,GameEvent raised: Namesake Close
+2023/04/03 13:51:09,GameEvent raised: NamePicker
+2023/04/03 13:51:09,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:51:09,GameEvent raised: CloseAllWindows
+2023/04/03 13:51:09,GameEvent raised: ScanWindow
+2023/04/03 13:51:10,GameEvent raised: ScanWindowIsIn
+2023/04/03 13:51:15,Quit application via 'Escape' key.
+2023/04/03 13:51:15,Application Quit
+2023/04/03 13:51:15,Releasing resources...
+2023/04/03 13:51:15,OnWebCamTextureToMatHelperDisposed
+2023/04/03 13:54:32,Application Awake - version #2023.1.18
+2023/04/03 13:54:32,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:54:32,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:54:32,Resetting timeout to 1:54:47 PM
+2023/04/03 13:54:32,GameEvent raised: CloseAllWindows
+2023/04/03 13:54:32,GameEvent raised: ConfigLoaded
+2023/04/03 13:54:32,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 13:54:32,Successfully found correct camera.
+2023/04/03 13:54:32,NEW webCamTexture ID: -476
+2023/04/03 13:54:33,Resetting update count...
+2023/04/03 13:54:33,Setting should be playing to true...
+2023/04/03 13:54:33,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 13:54:33,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 13:54:33,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 13:54:33,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 13:54:33,Resetting update count...
+2023/04/03 13:54:33,GameEvent raised: ConfigLoaded
+2023/04/03 13:54:33,resetting requested device name
+2023/04/03 13:54:33,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 13:54:33,Releasing resources...
+2023/04/03 13:54:34,OnWebCamTextureToMatHelperDisposed
+2023/04/03 13:54:34,Successfully found correct camera.
+2023/04/03 13:54:34,NEW webCamTexture ID: -480
+2023/04/03 13:54:34,Resetting update count...
+2023/04/03 13:54:34,Setting should be playing to true...
+2023/04/03 13:54:34,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 13:54:34,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 13:54:34,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 13:54:34,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 13:54:34,Resetting update count...
+2023/04/03 13:54:34,Webcam stopping...
+2023/04/03 13:54:35,Resetting update count...
+2023/04/03 13:54:35,Setting should be playing to false...
+2023/04/03 13:54:35,Webcam playing...
+2023/04/03 13:54:35,Resetting update count...
+2023/04/03 13:54:35,Setting should be playing to true...
+2023/04/03 13:54:35,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 13:54:35,Releasing resources...
+2023/04/03 13:54:36,OnWebCamTextureToMatHelperDisposed
+2023/04/03 13:54:36,Successfully found correct camera.
+2023/04/03 13:54:36,NEW webCamTexture ID: -484
+2023/04/03 13:54:36,Resetting update count...
+2023/04/03 13:54:36,Setting should be playing to true...
+2023/04/03 13:54:36,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 13:54:36,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 13:54:36,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 13:54:36,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 13:54:36,Resetting update count...
+2023/04/03 13:54:36,GameEvent raised: CloseAllWindows
+2023/04/03 13:54:36,GameEvent raised: Welcome
+2023/04/03 13:54:36,GameEvent raised: WindowsRefreshed
+2023/04/03 13:54:36,GameEvent raised: CloseAllWindows
+2023/04/03 13:54:36,Starting app...
+2023/04/03 13:54:36,GameEvent raised: Welcome
+2023/04/03 13:54:36,GameEvent raised: WindowsRefreshed
+2023/04/03 13:54:36,GameEvent raised: CloseAllWindows
+2023/04/03 13:54:36,Starting app...
+2023/04/03 13:54:36,GameEvent raised: Welcome
+2023/04/03 13:54:36,GameEvent raised: WindowsRefreshed
+2023/04/03 13:54:36,GameEvent raised: CloseAllWindows
+2023/04/03 13:54:36,Starting app...
+2023/04/03 13:54:36,GameEvent raised: Welcome
+2023/04/03 13:54:36,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:54:36,Webcam pausing...
+2023/04/03 13:54:36,Resetting update count...
+2023/04/03 13:54:36,Setting should be playing to false...
+2023/04/03 13:54:36,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:54:36,Webcam pausing...
+2023/04/03 13:54:36,Resetting update count...
+2023/04/03 13:54:36,Setting should be playing to false...
+2023/04/03 13:54:36,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:54:36,Webcam pausing...
+2023/04/03 13:54:36,Resetting update count...
+2023/04/03 13:54:36,Setting should be playing to false...
+2023/04/03 13:54:37,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:54:37,Webcam pausing...
+2023/04/03 13:54:37,Resetting update count...
+2023/04/03 13:54:37,Setting should be playing to false...
+2023/04/03 13:54:37,GameEvent raised: CloseAllWindows
+2023/04/03 13:54:37,GameEvent raised: NamesakeWindow
+2023/04/03 13:54:37,GameEvent raised: Namesake Close
+2023/04/03 13:54:37,GameEvent raised: NamePicker
+2023/04/03 13:54:37,GameEvent raised: Start Click
+2023/04/03 13:54:38,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:54:38,Webcam pausing...
+2023/04/03 13:54:38,Resetting update count...
+2023/04/03 13:54:38,Setting should be playing to false...
+2023/04/03 13:54:39,GameEvent raised: CloseAllWindows
+2023/04/03 13:54:39,GameEvent raised: ScanWindow
+2023/04/03 13:54:39,GameEvent raised: ScanWindowIsIn
+2023/04/03 13:54:39,Webcam playing...
+2023/04/03 13:54:39,Resetting update count...
+2023/04/03 13:54:39,Setting should be playing to true...
+2023/04/03 13:54:47,Resetting timeout to 1:55:02 PM
+2023/04/03 13:54:47,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 236; shouldBePlaying: True; saved webCamTextureID: -484; current ID: -484; lastUpdateCount: -1
+2023/04/03 13:54:53,Quit application via 'Escape' key.
+2023/04/03 13:54:53,Application Quit
+2023/04/03 13:55:31,Application Awake - version #2023.1.18
+2023/04/03 13:55:31,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:55:31,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:55:31,GameEvent raised: CloseAllWindows
+2023/04/03 13:55:31,GameEvent raised: ConfigLoaded
+2023/04/03 13:55:31,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 13:55:31,Successfully found correct camera.
+2023/04/03 13:55:31,NEW webCamTexture ID: -474
+2023/04/03 13:55:32,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 13:55:32,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 13:55:32,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 13:55:32,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 13:55:32,GameEvent raised: WindowsRefreshed
+2023/04/03 13:55:32,GameEvent raised: CloseAllWindows
+2023/04/03 13:55:32,Starting app...
+2023/04/03 13:55:32,GameEvent raised: Welcome
+2023/04/03 13:55:32,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:55:34,GameEvent raised: CloseAllWindows
+2023/04/03 13:55:34,GameEvent raised: NamesakeWindow
+2023/04/03 13:55:34,GameEvent raised: Namesake Close
+2023/04/03 13:55:34,GameEvent raised: NamePicker
+2023/04/03 13:55:34,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:55:35,GameEvent raised: CloseAllWindows
+2023/04/03 13:55:35,GameEvent raised: ScanWindow
+2023/04/03 13:55:35,GameEvent raised: ScanWindowIsIn
+2023/04/03 13:55:42,Quit application via 'Escape' key.
+2023/04/03 13:55:42,Application Quit
+2023/04/03 13:57:29,Application Awake - version #2023.1.18
+2023/04/03 13:57:29,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:57:29,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:57:29,GameEvent raised: CloseAllWindows
+2023/04/03 13:57:29,GameEvent raised: ConfigLoaded
+2023/04/03 13:57:29,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 13:57:29,Successfully found correct camera.
+2023/04/03 13:57:29,NEW webCamTexture ID: -474
+2023/04/03 13:57:29,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 13:57:29,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 13:57:29,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 13:57:29,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 13:57:29,GameEvent raised: ConfigLoaded
+2023/04/03 13:57:29,resetting requested device name
+2023/04/03 13:57:29,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 13:57:29,Releasing resources...
+2023/04/03 13:57:30,OnWebCamTextureToMatHelperDisposed
+2023/04/03 13:57:30,Successfully found correct camera.
+2023/04/03 13:57:30,NEW webCamTexture ID: -478
+2023/04/03 13:57:30,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 13:57:30,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 13:57:30,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 13:57:30,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 13:57:30,Webcam stopping...
+2023/04/03 13:57:31,Webcam playing...
+2023/04/03 13:57:31,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 13:57:31,Releasing resources...
+2023/04/03 13:57:32,OnWebCamTextureToMatHelperDisposed
+2023/04/03 13:57:32,Successfully found correct camera.
+2023/04/03 13:57:32,NEW webCamTexture ID: -482
+2023/04/03 13:57:32,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 13:57:32,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 13:57:32,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 13:57:32,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 13:57:33,GameEvent raised: CloseAllWindows
+2023/04/03 13:57:33,GameEvent raised: Welcome
+2023/04/03 13:57:33,GameEvent raised: WindowsRefreshed
+2023/04/03 13:57:33,GameEvent raised: CloseAllWindows
+2023/04/03 13:57:33,Starting app...
+2023/04/03 13:57:33,GameEvent raised: Welcome
+2023/04/03 13:57:33,GameEvent raised: WindowsRefreshed
+2023/04/03 13:57:33,GameEvent raised: CloseAllWindows
+2023/04/03 13:57:33,Starting app...
+2023/04/03 13:57:33,GameEvent raised: Welcome
+2023/04/03 13:57:33,GameEvent raised: WindowsRefreshed
+2023/04/03 13:57:33,GameEvent raised: CloseAllWindows
+2023/04/03 13:57:33,Starting app...
+2023/04/03 13:57:33,GameEvent raised: Welcome
+2023/04/03 13:57:33,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:57:33,Webcam pausing...
+2023/04/03 13:57:33,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:57:33,Webcam pausing...
+2023/04/03 13:57:33,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:57:33,Webcam pausing...
+2023/04/03 13:57:33,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:57:33,Webcam pausing...
+2023/04/03 13:57:34,GameEvent raised: CloseAllWindows
+2023/04/03 13:57:34,GameEvent raised: NamesakeWindow
+2023/04/03 13:57:34,GameEvent raised: Namesake Close
+2023/04/03 13:57:34,GameEvent raised: NamePicker
+2023/04/03 13:57:34,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:57:34,Webcam pausing...
+2023/04/03 13:57:34,GameEvent raised: CloseAllWindows
+2023/04/03 13:57:34,GameEvent raised: ScanWindow
+2023/04/03 13:57:35,GameEvent raised: ScanWindowIsIn
+2023/04/03 13:57:35,Webcam playing...
+2023/04/03 13:57:37,Quit application via 'Escape' key.
+2023/04/03 13:57:37,Application Quit
+2023/04/03 13:57:37,Releasing resources...
+2023/04/03 13:57:37,OnWebCamTextureToMatHelperDisposed
+2023/04/03 13:57:50,Application Awake - version #2023.1.18
+2023/04/03 13:57:50,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:57:50,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:57:50,GameEvent raised: CloseAllWindows
+2023/04/03 13:57:50,GameEvent raised: ConfigLoaded
+2023/04/03 13:57:50,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 13:57:50,Successfully found correct camera.
+2023/04/03 13:57:50,NEW webCamTexture ID: -474
+2023/04/03 13:57:50,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 13:57:50,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 13:57:50,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 13:57:50,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 13:57:50,GameEvent raised: ConfigLoaded
+2023/04/03 13:57:50,resetting requested device name
+2023/04/03 13:57:50,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 13:57:50,Releasing resources...
+2023/04/03 13:57:51,OnWebCamTextureToMatHelperDisposed
+2023/04/03 13:57:51,Successfully found correct camera.
+2023/04/03 13:57:51,NEW webCamTexture ID: -478
+2023/04/03 13:57:52,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 13:57:52,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 13:57:52,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 13:57:52,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 13:57:52,Webcam stopping...
+2023/04/03 13:57:52,Webcam playing...
+2023/04/03 13:57:52,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 13:57:52,Releasing resources...
+2023/04/03 13:57:53,OnWebCamTextureToMatHelperDisposed
+2023/04/03 13:57:53,Successfully found correct camera.
+2023/04/03 13:57:53,NEW webCamTexture ID: -482
+2023/04/03 13:57:53,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 13:57:53,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 13:57:53,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 13:57:53,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 13:57:54,GameEvent raised: WindowsRefreshed
+2023/04/03 13:57:54,GameEvent raised: CloseAllWindows
+2023/04/03 13:57:54,Starting app...
+2023/04/03 13:57:54,GameEvent raised: Welcome
+2023/04/03 13:57:54,GameEvent raised: WindowsRefreshed
+2023/04/03 13:57:54,GameEvent raised: CloseAllWindows
+2023/04/03 13:57:54,Starting app...
+2023/04/03 13:57:54,GameEvent raised: Welcome
+2023/04/03 13:57:54,GameEvent raised: WindowsRefreshed
+2023/04/03 13:57:54,GameEvent raised: CloseAllWindows
+2023/04/03 13:57:54,Starting app...
+2023/04/03 13:57:54,GameEvent raised: Welcome
+2023/04/03 13:57:54,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:57:54,Webcam pausing...
+2023/04/03 13:57:54,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:57:54,Webcam pausing...
+2023/04/03 13:57:54,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:57:54,Webcam pausing...
+2023/04/03 13:57:55,GameEvent raised: CloseAllWindows
+2023/04/03 13:57:55,GameEvent raised: NamesakeWindow
+2023/04/03 13:57:55,GameEvent raised: Namesake Close
+2023/04/03 13:57:55,GameEvent raised: NamePicker
+2023/04/03 13:57:55,GameEvent raised: Start Click
+2023/04/03 13:57:55,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:57:55,Webcam pausing...
+2023/04/03 13:57:56,GameEvent raised: CloseAllWindows
+2023/04/03 13:57:56,GameEvent raised: ScanWindow
+2023/04/03 13:57:57,GameEvent raised: ScanWindowIsIn
+2023/04/03 13:57:57,Webcam playing...
+2023/04/03 13:58:40,Quit application via 'Escape' key.
+2023/04/03 13:58:40,Application Quit
+2023/04/03 13:59:04,Application Awake - version #2023.1.18
+2023/04/03 13:59:04,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:59:04,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 13:59:04,GameEvent raised: CloseAllWindows
+2023/04/03 13:59:04,GameEvent raised: ConfigLoaded
+2023/04/03 13:59:04,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 13:59:04,Successfully found correct camera.
+2023/04/03 13:59:04,NEW webCamTexture ID: -474
+2023/04/03 13:59:05,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 13:59:05,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 13:59:05,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 13:59:05,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 13:59:05,GameEvent raised: ConfigLoaded
+2023/04/03 13:59:05,resetting requested device name
+2023/04/03 13:59:05,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 13:59:05,Releasing resources...
+2023/04/03 13:59:05,OnWebCamTextureToMatHelperDisposed
+2023/04/03 13:59:05,Successfully found correct camera.
+2023/04/03 13:59:05,NEW webCamTexture ID: -478
+2023/04/03 13:59:06,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 13:59:06,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 13:59:06,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 13:59:06,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 13:59:06,Webcam stopping...
+2023/04/03 13:59:06,Webcam playing...
+2023/04/03 13:59:07,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 13:59:07,Releasing resources...
+2023/04/03 13:59:07,OnWebCamTextureToMatHelperDisposed
+2023/04/03 13:59:07,Successfully found correct camera.
+2023/04/03 13:59:07,NEW webCamTexture ID: -482
+2023/04/03 13:59:08,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 13:59:08,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 13:59:08,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 13:59:08,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 13:59:08,GameEvent raised: WindowsRefreshed
+2023/04/03 13:59:08,GameEvent raised: CloseAllWindows
+2023/04/03 13:59:08,Starting app...
+2023/04/03 13:59:08,GameEvent raised: Welcome
+2023/04/03 13:59:08,GameEvent raised: WindowsRefreshed
+2023/04/03 13:59:08,GameEvent raised: CloseAllWindows
+2023/04/03 13:59:08,Starting app...
+2023/04/03 13:59:08,GameEvent raised: Welcome
+2023/04/03 13:59:08,GameEvent raised: WindowsRefreshed
+2023/04/03 13:59:08,GameEvent raised: CloseAllWindows
+2023/04/03 13:59:08,Starting app...
+2023/04/03 13:59:08,GameEvent raised: Welcome
+2023/04/03 13:59:08,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:59:08,Webcam pausing...
+2023/04/03 13:59:08,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:59:08,Webcam pausing...
+2023/04/03 13:59:08,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:59:08,Webcam pausing...
+2023/04/03 13:59:09,GameEvent raised: CloseAllWindows
+2023/04/03 13:59:09,GameEvent raised: NamesakeWindow
+2023/04/03 13:59:09,GameEvent raised: Namesake Close
+2023/04/03 13:59:09,GameEvent raised: NamePicker
+2023/04/03 13:59:09,GameEvent raised: Start Click
+2023/04/03 13:59:10,GameEvent raised: NonScanWindowIsIn
+2023/04/03 13:59:10,Webcam pausing...
+2023/04/03 13:59:10,GameEvent raised: CloseAllWindows
+2023/04/03 13:59:10,GameEvent raised: ScanWindow
+2023/04/03 13:59:11,GameEvent raised: ScanWindowIsIn
+2023/04/03 13:59:11,Webcam playing...
+2023/04/03 13:59:13,Quit application via 'Escape' key.
+2023/04/03 13:59:13,Application Quit
+2023/04/03 13:59:13,Releasing resources...
+2023/04/03 13:59:13,OnWebCamTextureToMatHelperDisposed
+2023/04/03 14:00:40,Application Awake - version #2023.1.18
+2023/04/03 14:00:40,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 14:00:40,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 14:00:40,GameEvent raised: CloseAllWindows
+2023/04/03 14:00:40,GameEvent raised: ConfigLoaded
+2023/04/03 14:00:40,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 14:00:40,Successfully found correct camera.
+2023/04/03 14:00:40,NEW webCamTexture ID: -474
+2023/04/03 14:00:41,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 14:00:41,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 14:00:41,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 14:00:41,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 14:00:41,GameEvent raised: ConfigLoaded
+2023/04/03 14:00:41,resetting requested device name
+2023/04/03 14:00:41,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 14:00:41,Releasing resources...
+2023/04/03 14:00:41,OnWebCamTextureToMatHelperDisposed
+2023/04/03 14:00:41,Successfully found correct camera.
+2023/04/03 14:00:41,NEW webCamTexture ID: -478
+2023/04/03 14:00:42,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 14:00:42,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 14:00:42,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 14:00:42,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 14:00:42,Webcam stopping...
+2023/04/03 14:00:43,Webcam playing...
+2023/04/03 14:00:43,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 14:00:43,Releasing resources...
+2023/04/03 14:00:44,OnWebCamTextureToMatHelperDisposed
+2023/04/03 14:00:44,Successfully found correct camera.
+2023/04/03 14:00:44,NEW webCamTexture ID: -482
+2023/04/03 14:00:44,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 14:00:44,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 14:00:44,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 14:00:44,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 14:00:44,GameEvent raised: WindowsRefreshed
+2023/04/03 14:00:44,GameEvent raised: CloseAllWindows
+2023/04/03 14:00:44,Starting app...
+2023/04/03 14:00:44,GameEvent raised: Welcome
+2023/04/03 14:00:44,GameEvent raised: WindowsRefreshed
+2023/04/03 14:00:44,GameEvent raised: CloseAllWindows
+2023/04/03 14:00:44,Starting app...
+2023/04/03 14:00:44,GameEvent raised: Welcome
+2023/04/03 14:00:44,GameEvent raised: WindowsRefreshed
+2023/04/03 14:00:44,GameEvent raised: CloseAllWindows
+2023/04/03 14:00:44,Starting app...
+2023/04/03 14:00:44,GameEvent raised: Welcome
+2023/04/03 14:00:45,GameEvent raised: NonScanWindowIsIn
+2023/04/03 14:00:45,Webcam pausing...
+2023/04/03 14:00:45,GameEvent raised: NonScanWindowIsIn
+2023/04/03 14:00:45,Webcam pausing...
+2023/04/03 14:00:45,GameEvent raised: NonScanWindowIsIn
+2023/04/03 14:00:45,Webcam pausing...
+2023/04/03 14:00:48,GameEvent raised: CloseAllWindows
+2023/04/03 14:00:48,GameEvent raised: NamesakeWindow
+2023/04/03 14:00:48,GameEvent raised: Namesake Close
+2023/04/03 14:00:48,GameEvent raised: NamePicker
+2023/04/03 14:00:48,GameEvent raised: Start Click
+2023/04/03 14:00:49,GameEvent raised: NonScanWindowIsIn
+2023/04/03 14:00:49,Webcam pausing...
+2023/04/03 14:00:49,GameEvent raised: CloseAllWindows
+2023/04/03 14:00:49,GameEvent raised: ScanWindow
+2023/04/03 14:00:50,GameEvent raised: ScanWindowIsIn
+2023/04/03 14:00:50,Webcam playing...
+2023/04/03 14:01:06,Quit application via 'Escape' key.
+2023/04/03 14:01:06,Application Quit
+2023/04/03 14:07:16,Application Awake - version #2023.1.18
+2023/04/03 14:07:16,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 14:07:16,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 14:07:16,GameEvent raised: CloseAllWindows
+2023/04/03 14:07:16,GameEvent raised: ConfigLoaded
+2023/04/03 14:07:16,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 14:07:16,Successfully found correct camera.
+2023/04/03 14:07:16,NEW webCamTexture ID: -474
+2023/04/03 14:07:16,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 14:07:16,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 14:07:16,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 14:07:16,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 14:07:16,GameEvent raised: ConfigLoaded
+2023/04/03 14:07:16,resetting requested device name
+2023/04/03 14:07:16,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 14:07:16,Releasing resources...
+2023/04/03 14:07:17,OnWebCamTextureToMatHelperDisposed
+2023/04/03 14:07:17,Successfully found correct camera.
+2023/04/03 14:07:17,NEW webCamTexture ID: -478
+2023/04/03 14:07:17,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 14:07:17,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 14:07:17,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 14:07:17,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 14:07:17,Webcam stopping...
+2023/04/03 14:07:18,Webcam playing...
+2023/04/03 14:07:18,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 14:07:18,Releasing resources...
+2023/04/03 14:07:19,OnWebCamTextureToMatHelperDisposed
+2023/04/03 14:07:19,Successfully found correct camera.
+2023/04/03 14:07:19,NEW webCamTexture ID: -482
+2023/04/03 14:07:19,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 14:07:19,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 14:07:19,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 14:07:19,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 14:07:19,GameEvent raised: CloseAllWindows
+2023/04/03 14:07:19,GameEvent raised: Welcome
+2023/04/03 14:07:19,GameEvent raised: WindowsRefreshed
+2023/04/03 14:07:19,GameEvent raised: CloseAllWindows
+2023/04/03 14:07:19,Starting app...
+2023/04/03 14:07:19,GameEvent raised: Welcome
+2023/04/03 14:07:19,GameEvent raised: WindowsRefreshed
+2023/04/03 14:07:19,GameEvent raised: CloseAllWindows
+2023/04/03 14:07:19,Starting app...
+2023/04/03 14:07:19,GameEvent raised: Welcome
+2023/04/03 14:07:19,GameEvent raised: WindowsRefreshed
+2023/04/03 14:07:19,GameEvent raised: CloseAllWindows
+2023/04/03 14:07:19,Starting app...
+2023/04/03 14:07:19,GameEvent raised: Welcome
+2023/04/03 14:07:20,GameEvent raised: CloseAllWindows
+2023/04/03 14:07:20,GameEvent raised: NamesakeWindow
+2023/04/03 14:07:20,GameEvent raised: Namesake Close
+2023/04/03 14:07:20,GameEvent raised: NamePicker
+2023/04/03 14:07:20,GameEvent raised: NonScanWindowIsIn
+2023/04/03 14:07:20,Webcam pausing...
+2023/04/03 14:07:20,GameEvent raised: NonScanWindowIsIn
+2023/04/03 14:07:20,Webcam pausing...
+2023/04/03 14:07:20,GameEvent raised: NonScanWindowIsIn
+2023/04/03 14:07:20,Webcam pausing...
+2023/04/03 14:07:20,GameEvent raised: NonScanWindowIsIn
+2023/04/03 14:07:20,Webcam pausing...
+2023/04/03 14:07:20,GameEvent raised: NonScanWindowIsIn
+2023/04/03 14:07:20,Webcam pausing...
+2023/04/03 14:07:21,GameEvent raised: CloseAllWindows
+2023/04/03 14:07:21,GameEvent raised: ScanWindow
+2023/04/03 14:07:21,GameEvent raised: ScanWindowIsIn
+2023/04/03 14:07:21,Webcam playing...
+2023/04/03 14:07:24,Quit application via 'Escape' key.
+2023/04/03 14:07:24,Application Quit
+2023/04/03 14:09:40,Application Awake - version #2023.1.18
+2023/04/03 14:09:41,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 14:09:41,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/03 14:09:41,GameEvent raised: CloseAllWindows
+2023/04/03 14:09:41,GameEvent raised: ConfigLoaded
+2023/04/03 14:09:41,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 14:09:41,Successfully found correct camera.
+2023/04/03 14:09:41,NEW webCamTexture ID: -474
+2023/04/03 14:09:41,NEW webCamTexture width: 16
+2023/04/03 14:09:41,NEW webCamTexture height: 16
+2023/04/03 14:09:41,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 14:09:41,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 14:09:41,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 14:09:41,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 14:09:41,GameEvent raised: ConfigLoaded
+2023/04/03 14:09:41,resetting requested device name
+2023/04/03 14:09:41,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 14:09:41,Releasing resources...
+2023/04/03 14:09:42,OnWebCamTextureToMatHelperDisposed
+2023/04/03 14:09:42,Successfully found correct camera.
+2023/04/03 14:09:42,NEW webCamTexture ID: -478
+2023/04/03 14:09:42,NEW webCamTexture width: 16
+2023/04/03 14:09:42,NEW webCamTexture height: 16
+2023/04/03 14:09:43,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 14:09:43,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 14:09:43,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 14:09:43,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 14:09:43,Webcam stopping...
+2023/04/03 14:09:43,Webcam playing...
+2023/04/03 14:09:44,Initializing from myWebCamTextureToMatHelper...
+2023/04/03 14:09:44,Releasing resources...
+2023/04/03 14:09:45,OnWebCamTextureToMatHelperDisposed
+2023/04/03 14:09:45,Successfully found correct camera.
+2023/04/03 14:09:45,NEW webCamTexture ID: -482
+2023/04/03 14:09:45,NEW webCamTexture width: 16
+2023/04/03 14:09:45,NEW webCamTexture height: 16
+2023/04/03 14:09:45,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:1280 height:720 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/03 14:09:45,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/03 14:09:45,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/03 14:09:45,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/03 14:09:45,GameEvent raised: WindowsRefreshed
+2023/04/03 14:09:45,GameEvent raised: CloseAllWindows
+2023/04/03 14:09:45,Starting app...
+2023/04/03 14:09:45,GameEvent raised: Welcome
+2023/04/03 14:09:45,GameEvent raised: WindowsRefreshed
+2023/04/03 14:09:45,GameEvent raised: CloseAllWindows
+2023/04/03 14:09:45,Starting app...
+2023/04/03 14:09:45,GameEvent raised: Welcome
+2023/04/03 14:09:45,GameEvent raised: WindowsRefreshed
+2023/04/03 14:09:45,GameEvent raised: CloseAllWindows
+2023/04/03 14:09:45,Starting app...
+2023/04/03 14:09:45,GameEvent raised: Welcome
+2023/04/03 14:09:45,GameEvent raised: NonScanWindowIsIn
+2023/04/03 14:09:45,Webcam pausing...
+2023/04/03 14:09:45,GameEvent raised: NonScanWindowIsIn
+2023/04/03 14:09:45,Webcam pausing...
+2023/04/03 14:09:45,GameEvent raised: NonScanWindowIsIn
+2023/04/03 14:09:45,Webcam pausing...
+2023/04/03 14:09:46,GameEvent raised: CloseAllWindows
+2023/04/03 14:09:46,GameEvent raised: NamesakeWindow
+2023/04/03 14:09:46,GameEvent raised: Namesake Close
+2023/04/03 14:09:46,GameEvent raised: NamePicker
+2023/04/03 14:09:46,GameEvent raised: Start Click
+2023/04/03 14:09:47,GameEvent raised: NonScanWindowIsIn
+2023/04/03 14:09:47,Webcam pausing...
+2023/04/03 14:09:47,GameEvent raised: CloseAllWindows
+2023/04/03 14:09:47,GameEvent raised: ScanWindow
+2023/04/03 14:09:48,GameEvent raised: ScanWindowIsIn
+2023/04/03 14:09:48,Webcam playing...
+2023/04/03 14:09:51,Quit application via 'Escape' key.
+2023/04/03 14:09:51,Application Quit

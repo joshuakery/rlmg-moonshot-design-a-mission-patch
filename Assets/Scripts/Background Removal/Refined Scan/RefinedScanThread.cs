@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Threading;
 using System.Collections.Generic;
 using OpenCVForUnity.CoreModule;
 using OpenCVForUnity.ImgprocModule;
@@ -25,9 +26,9 @@ namespace ArtScan.CoreModule
         public Mat unscaledMat;
         public Mat displayMat;
 
-        Scalar PAPER_EDGE_COLOR = new Scalar(0, 255, 0, 255);
+        private Scalar PAPER_EDGE_COLOR = new Scalar(0, 255, 0, 255);
 
-        protected override void ThreadFunction()
+        protected override void ThreadFunction(CancellationToken token)
         {
             if (rgbaMat != null)
             {
@@ -37,6 +38,8 @@ namespace ArtScan.CoreModule
                 {
                     EdgeFinding.GetCannyEdgeMat(rgbaMat, yMat);
 
+                    if (token.IsCancellationRequested) { return; }
+
                     // find potential paper contours.
                     List<MatOfPoint> contours = new List<MatOfPoint>();
                     PerspectiveUtils.Find4PointContours(yMat, contours);
@@ -44,6 +47,8 @@ namespace ArtScan.CoreModule
                     // pick the contour of the largest area and rearrange the points in a consistent order.
                     MatOfPoint paperMaxAreaContour = PerspectiveUtils.GetMaxAreaContour(contours);
                     paperMaxAreaContour = PerspectiveUtils.OrderCornerPoints(paperMaxAreaContour);
+
+                    if (token.IsCancellationRequested) { return; }
 
                     bool paperFound = (paperMaxAreaContour.size().area() > 0);
                     if (paperFound && displayOptions.doWarp)
@@ -62,6 +67,8 @@ namespace ArtScan.CoreModule
 
                                 using (Mat removedMat = RemoveBackgroundUtils.GrabcutMaskBackground(transformedMat, edgeMat, out MatOfPoint maxAreaContour))
                                 {
+                                    if (token.IsCancellationRequested) { return; }
+
                                     //unscaledMat will later be copied to the RefinedScanController's previewMat
                                     if (settings.doSaveCroppedToBoundingBox)
                                     {
@@ -130,6 +137,14 @@ namespace ArtScan.CoreModule
             {
                 Debug.Log("No input!");
             }
+        }
+
+        protected override void OnFinished()
+        {
+            rgbaMat = null;
+            unscaledMat = null;
+            displayMat = null;
+            base.OnFinished();
         }
 
     }

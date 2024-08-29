@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Threading;
 using rlmg.logging;
 
 namespace ArtScan.ScanSavingModule
@@ -14,7 +15,7 @@ namespace ArtScan.ScanSavingModule
             public string filename;
             public string dirPath;
 
-            protected override void ThreadFunction()
+            protected override void ThreadFunction(CancellationToken token)
             {
                 if (!System.String.IsNullOrEmpty(filename) && !System.String.IsNullOrEmpty(dirPath))
                 {
@@ -26,12 +27,12 @@ namespace ArtScan.ScanSavingModule
 
         private DownloadThread downloadThread;
 
-        public void AbortThread()
+        public void CancelThread()
         {
             if (downloadThread != null && !downloadThread.IsDone)
             {
                 Debug.Log("Ending parallel download thread...");
-                downloadThread.Abort();
+                downloadThread.Cancel();
                 downloadThread = null;
                 Debug.Log("...ended.");
             }

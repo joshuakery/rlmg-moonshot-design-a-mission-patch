@@ -52,7 +52,6 @@ namespace ArtScan.ErrorDisplayModule
                     MESSAGETYPE.INFO
                 );
             }
-
         }
 
         private void OnEnable()

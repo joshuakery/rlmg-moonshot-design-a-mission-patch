@@ -182,9 +182,8 @@ namespace ArtScan.CoreModule
             }
         }
 
-        Mat resultMat;
+        private Mat resultMat;
 
-        public float DOWNSCALE_RATIO = 2f;
         public bool doDownsizeToDisplay = false;
 
         private void Awake()
@@ -195,6 +194,9 @@ namespace ArtScan.CoreModule
                 rawImageSize = new Vector2(rawImageRT.rect.width, rawImageRT.rect.height);
             }
 
+            if (webCamTextureToMatHelper == null)
+                webCamTextureToMatHelper = FindObjectOfType<myWebCamTextureToMatHelper>();
+
             if (configLoader == null)
                 configLoader = FindObjectOfType<CamConfigLoader>();
         }
@@ -202,7 +204,7 @@ namespace ArtScan.CoreModule
         // Use this for initialization
         public void SetupRemoveBackground()
         {
-            webCamTextureToMatHelper = gameObject.GetComponent<myWebCamTextureToMatHelper>();
+            if (webCamTextureToMatHelper == null) return;
 
 #if UNITY_WEBGL
             // getFilePath_Coroutine = GetFilePath ();
@@ -221,6 +223,9 @@ namespace ArtScan.CoreModule
                 webCamTextureToMatHelper.flipHorizontal = configLoader.configData.flipHorizontal;
 
                 webCamTextureToMatHelper.requestedFPS = configLoader.configData.requestedFPS;
+
+                webCamTextureToMatHelper.requestedWidth = configLoader.configData.requestedWidth;
+                webCamTextureToMatHelper.requestedHeight = configLoader.configData.requestedHeight;
             }
 
 
@@ -264,6 +269,7 @@ namespace ArtScan.CoreModule
             if (rawImageDisplayMat != null) rawImageDisplayMat.Dispose();
             rawImageDisplayMat = new Mat(rHeight, rWidth, webCamTextureMat.type(), new Scalar(0, 0, 0, 0));
 
+            if (rawImageTexture != null) { Destroy(rawImageTexture); }
             rawImageTexture = new Texture2D(rawImageDisplayMat.cols(), rawImageDisplayMat.rows(), TextureFormat.RGBA32, false);
             rawImageTexture.name = "Raw Image Texture";
             rawImage.texture = rawImageTexture;
@@ -316,8 +322,18 @@ namespace ArtScan.CoreModule
                 rawImageDisplayMat = null;
             }
 
+            if (rawImageTexture != null)
+            {
+                Destroy(rawImageTexture);
+                rawImageTexture = null;
+            }
+
             if (resultMat != null)
+            {
                 resultMat.Dispose();
+                resultMat = null;
+            }
+                
 
         }
 
@@ -371,20 +387,16 @@ namespace ArtScan.CoreModule
 
         private void ToTexture2D()
         {
-            Utils.fastMatToTexture2D(resultMat, rawImageTexture, true, 0, true);
+            if (resultMat != null && rawImageTexture != null)
+                Utils.fastMatToTexture2D(resultMat, rawImageTexture, true, 0, true);
         }
 
         // Update is called once per frame
         void Update()
         {
-            bool webCamTextureReady = (webCamTextureToMatHelper &&
-                webCamTextureToMatHelper.IsPlaying());
-
-            if (!doProcessImage)
-            {
-                rawImage.texture = webCamTextureToMatHelper.GetWebCamTexture();
-                return;
-            }
+            bool webCamTextureReady = webCamTextureToMatHelper &&
+                webCamTextureToMatHelper.IsInitialized() &&
+                webCamTextureToMatHelper.IsPlaying();
 
             if (webCamTextureReady && webCamTextureToMatHelper.DidUpdateThisFrame())
             {
@@ -421,6 +433,8 @@ namespace ArtScan.CoreModule
             Mat rgbaMat = webCamTextureToMatHelper.GetMat();
 
             if (rgbaMat.empty()) return;
+            if (rawImageDisplayMat == null) return;
+            if (resultMat == null) return;
 
             if (!doProcessImage)
             {
@@ -781,6 +795,25 @@ namespace ArtScan.CoreModule
                 ((IDisposable)getFilePath_Coroutine).Dispose ();
             }
 #endif
+
+            if (rawImageDisplayMat != null)
+            {
+                rawImageDisplayMat.Dispose();
+                rawImageDisplayMat = null;
+            }
+
+            if (rawImageTexture != null)
+            {
+                Destroy(rawImageTexture);
+                rawImageTexture = null;
+            }
+
+            if (resultMat != null)
+            {
+                resultMat.Dispose();
+                resultMat = null;
+            }
+
         }
     }
 

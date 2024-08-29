@@ -31,29 +31,29 @@ namespace ArtScan.ScanSavingModule
 
         private void OnDestroy()
         {
-            AbortAll();
+            CancelAll();
         }
 
-        private void AbortAll()
+        private void CancelAll()
         {
-            uploadThreadController.AbortThread();
-            downloadThreadController.AbortThread();
-            deleteThreadController.AbortThread();
+            uploadThreadController.CancelThread();
+            downloadThreadController.CancelThread();
+            deleteThreadController.CancelThread();
         }
 
         private void StartRound(string _teamName, float _roundDuration, float _roundBufferDuration, int _round, string _JsonTeamData)
         {
-            AbortAll();
+            CancelAll();
         }
 
         private void ResumeRound(string _teamName, float _roundDurationRemaining, float _roundBufferDurationRemaining, MissionState _missionState, int _round, string _JsonTeamData)
         {
-            AbortAll();
+            CancelAll();
         }
 
         private void EndMission()
         {
-            AbortAll();
+            CancelAll();
         }
     }
 }

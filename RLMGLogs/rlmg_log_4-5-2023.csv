@@ -1,0 +1,1251 @@
+Timestamp, Message
+2023/04/05 09:46:37,Application Awake - version #2023.1.18
+2023/04/05 09:46:37,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 09:46:37,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 09:46:37,Opening attract...
+2023/04/05 09:46:38,GameEvent raised: CloseAllWindows
+2023/04/05 09:46:38,GameEvent raised: MuralPositionsLoaded
+2023/04/05 09:46:38,GameEvent raised: ConfigLoaded
+2023/04/05 09:46:38,Initializing from myWebCamTextureToMatHelper...
+2023/04/05 09:46:38,Cannot find camera device HD Pro Webcam C920.
+2023/04/05 09:46:38,Warning occurred while initializing camera: WRONG_CAMERA_FIRST_SELECTED
+2023/04/05 09:46:38,Showing warn display...
+2023/04/05 09:46:38,CAMERA WARNING: First camera OF ANY KIND used instead of requested camera.
+2023/04/05 09:46:38,NEW webCamTexture ID: -276
+2023/04/05 09:46:38,NEW webCamTexture width: 16
+2023/04/05 09:46:38,NEW webCamTexture height: 16
+2023/04/05 09:46:38,Resetting update count...
+2023/04/05 09:46:38,Setting should be playing to true...
+2023/04/05 09:46:38,WebCamTextureToMatHelper: Devicename:Integrated Webcam name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/05 09:46:38,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/05 09:46:38,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/05 09:46:38,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/05 09:46:38,Resetting update count...
+2023/04/05 09:46:38,GameEvent raised: WindowsRefreshed
+2023/04/05 09:46:38,GameEvent raised: CloseAllWindows
+2023/04/05 09:46:38,Starting app...
+2023/04/05 09:46:38,GameEvent raised: Attract
+2023/04/05 09:46:39,GameEvent raised: NonScanWindowIsIn
+2023/04/05 09:46:39,Webcam pausing...
+2023/04/05 09:46:39,Resetting update count...
+2023/04/05 09:46:39,Setting should be playing to false...
+2023/04/05 09:46:55,Closing attract...
+2023/04/05 09:46:56,GameEvent raised: CloseAllWindows
+2023/04/05 09:46:56,GameEvent raised: ScanWindow
+2023/04/05 09:46:56,GameEvent raised: Start Click
+2023/04/05 09:46:56,GameEvent raised: ScanWindowIsIn
+2023/04/05 09:46:56,Webcam playing...
+2023/04/05 09:46:56,Resetting update count...
+2023/04/05 09:46:56,Setting should be playing to true...
+2023/04/05 09:47:04,Opening debug menu and initializing...
+2023/04/05 09:47:04,Initializing debug menu...
+2023/04/05 09:47:04,Closing debug menu...
+2023/04/05 09:47:04,Webcam pausing...
+2023/04/05 09:47:04,Resetting update count...
+2023/04/05 09:47:04,Setting should be playing to false...
+2023/04/05 09:47:04,resetting requested device name
+2023/04/05 09:47:04,Initializing from myWebCamTextureToMatHelper...
+2023/04/05 09:47:04,Releasing resources...
+2023/04/05 09:47:04,OnWebCamTextureToMatHelperDisposed
+2023/04/05 09:47:04,Successfully found correct camera.
+2023/04/05 09:47:04,NEW webCamTexture ID: -376
+2023/04/05 09:47:04,NEW webCamTexture width: 16
+2023/04/05 09:47:04,NEW webCamTexture height: 16
+2023/04/05 09:47:04,Resetting update count...
+2023/04/05 09:47:04,Setting should be playing to true...
+2023/04/05 09:47:04,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/05 09:47:04,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/05 09:47:04,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/05 09:47:04,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/05 09:47:04,Resetting update count...
+2023/04/05 09:47:04,Webcam playing...
+2023/04/05 09:47:04,Resetting update count...
+2023/04/05 09:47:04,Setting should be playing to true...
+2023/04/05 09:47:27,Resetting timeout to 9:47:42 AM
+2023/04/05 09:47:27,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 669; shouldBePlaying: True; saved webCamTextureID: -376; current ID: -376; lastUpdateCount: -1
+2023/04/05 09:47:41,GameEvent raised: On Begin Scan
+2023/04/05 09:47:42,Refined scan thread successfully created and executed in 334.887 milliseconds.
+2023/04/05 09:47:42,GameEvent raised: NewPreview
+2023/04/05 09:47:42,Refined scan successfully copied to preview mats in 2.0065 milliseconds.
+2023/04/05 09:47:42,Resetting timeout to 9:47:57 AM
+2023/04/05 09:47:42,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1119; shouldBePlaying: True; saved webCamTextureID: -376; current ID: -376; lastUpdateCount: 669
+2023/04/05 09:47:42,GameEvent raised: AcceptScan
+2023/04/05 09:47:43,GameEvent raised: ScanAdded
+2023/04/05 09:47:43,GameEvent raised: UploadComplete
+2023/04/05 09:47:55,GameEvent raised: On Begin Scan
+2023/04/05 09:47:55,Refined scan thread successfully created and executed in 337.0756 milliseconds.
+2023/04/05 09:47:55,GameEvent raised: NewPreview
+2023/04/05 09:47:55,Refined scan successfully copied to preview mats in 1.9983 milliseconds.
+2023/04/05 09:47:56,GameEvent raised: AcceptScan
+2023/04/05 09:47:56,GameEvent raised: ScanAdded
+2023/04/05 09:47:56,GameEvent raised: UploadComplete
+2023/04/05 09:47:57,GameEvent raised: On Begin Scan
+2023/04/05 09:47:57,Resetting timeout to 9:48:12 AM
+2023/04/05 09:47:57,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1549; shouldBePlaying: True; saved webCamTextureID: -376; current ID: -376; lastUpdateCount: 1119
+2023/04/05 09:47:57,Refined scan thread successfully created and executed in 343.5957 milliseconds.
+2023/04/05 09:47:57,GameEvent raised: NewPreview
+2023/04/05 09:47:57,Refined scan successfully copied to preview mats in 1.5107 milliseconds.
+2023/04/05 09:47:58,GameEvent raised: AcceptScan
+2023/04/05 09:47:58,GameEvent raised: ScanAdded
+2023/04/05 09:47:58,GameEvent raised: UploadComplete
+2023/04/05 09:47:58,GameEvent raised: On Begin Scan
+2023/04/05 09:47:59,Refined scan thread successfully created and executed in 357.2503 milliseconds.
+2023/04/05 09:47:59,GameEvent raised: NewPreview
+2023/04/05 09:47:59,Refined scan successfully copied to preview mats in 1.5101 milliseconds.
+2023/04/05 09:47:59,GameEvent raised: AcceptScan
+2023/04/05 09:47:59,GameEvent raised: ScanAdded
+2023/04/05 09:47:59,GameEvent raised: UploadComplete
+2023/04/05 09:48:00,GameEvent raised: On Begin Scan
+2023/04/05 09:48:00,Refined scan thread successfully created and executed in 328.4383 milliseconds.
+2023/04/05 09:48:00,GameEvent raised: NewPreview
+2023/04/05 09:48:00,Refined scan successfully copied to preview mats in 0 milliseconds.
+2023/04/05 09:48:00,GameEvent raised: AcceptScan
+2023/04/05 09:48:00,GameEvent raised: ScanAdded
+2023/04/05 09:48:00,GameEvent raised: UploadComplete
+2023/04/05 09:48:01,GameEvent raised: On Begin Scan
+2023/04/05 09:48:01,Refined scan thread successfully created and executed in 326.0257 milliseconds.
+2023/04/05 09:48:01,GameEvent raised: NewPreview
+2023/04/05 09:48:01,Refined scan successfully copied to preview mats in 1.0055 milliseconds.
+2023/04/05 09:48:02,GameEvent raised: AcceptScan
+2023/04/05 09:48:02,GameEvent raised: ScanAdded
+2023/04/05 09:48:02,GameEvent raised: UploadComplete
+2023/04/05 09:48:12,Resetting timeout to 9:48:27 AM
+2023/04/05 09:48:12,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1951; shouldBePlaying: True; saved webCamTextureID: -376; current ID: -376; lastUpdateCount: 1549
+2023/04/05 09:48:19,GameEvent raised: On Begin Scan
+2023/04/05 09:48:19,Refined scan thread successfully created and executed in 312.9927 milliseconds.
+2023/04/05 09:48:19,GameEvent raised: NewPreview
+2023/04/05 09:48:19,Refined scan successfully copied to preview mats in 2.509 milliseconds.
+2023/04/05 09:48:20,GameEvent raised: AcceptScan
+2023/04/05 09:48:20,GameEvent raised: ScanAdded
+2023/04/05 09:48:20,GameEvent raised: UploadComplete
+2023/04/05 09:48:20,GameEvent raised: On Begin Scan
+2023/04/05 09:48:21,Refined scan thread successfully created and executed in 322.7259 milliseconds.
+2023/04/05 09:48:21,GameEvent raised: NewPreview
+2023/04/05 09:48:21,Refined scan successfully copied to preview mats in 2.0011 milliseconds.
+2023/04/05 09:48:21,GameEvent raised: AcceptScan
+2023/04/05 09:48:21,GameEvent raised: ScanAdded
+2023/04/05 09:48:21,GameEvent raised: UploadComplete
+2023/04/05 09:48:21,GameEvent raised: On Begin Scan
+2023/04/05 09:48:22,Refined scan thread successfully created and executed in 327.7177 milliseconds.
+2023/04/05 09:48:22,GameEvent raised: NewPreview
+2023/04/05 09:48:22,Refined scan successfully copied to preview mats in 1.9991 milliseconds.
+2023/04/05 09:48:22,GameEvent raised: AcceptScan
+2023/04/05 09:48:22,GameEvent raised: ScanAdded
+2023/04/05 09:48:22,GameEvent raised: UploadComplete
+2023/04/05 09:48:22,GameEvent raised: On Begin Scan
+2023/04/05 09:48:23,Refined scan thread successfully created and executed in 316.8786 milliseconds.
+2023/04/05 09:48:23,GameEvent raised: NewPreview
+2023/04/05 09:48:23,Refined scan successfully copied to preview mats in 1.0011 milliseconds.
+2023/04/05 09:48:23,GameEvent raised: AcceptScan
+2023/04/05 09:48:23,GameEvent raised: ScanAdded
+2023/04/05 09:48:23,GameEvent raised: UploadComplete
+2023/04/05 09:48:23,GameEvent raised: On Begin Scan
+2023/04/05 09:48:24,Refined scan thread successfully created and executed in 326.4497 milliseconds.
+2023/04/05 09:48:24,GameEvent raised: NewPreview
+2023/04/05 09:48:24,Refined scan successfully copied to preview mats in 1.0012 milliseconds.
+2023/04/05 09:48:24,GameEvent raised: AcceptScan
+2023/04/05 09:48:24,GameEvent raised: ScanAdded
+2023/04/05 09:48:24,GameEvent raised: UploadComplete
+2023/04/05 09:48:24,GameEvent raised: On Begin Scan
+2023/04/05 09:48:25,Refined scan thread successfully created and executed in 305.3686 milliseconds.
+2023/04/05 09:48:25,GameEvent raised: NewPreview
+2023/04/05 09:48:25,Refined scan successfully copied to preview mats in 0.9998 milliseconds.
+2023/04/05 09:48:25,GameEvent raised: AcceptScan
+2023/04/05 09:48:25,GameEvent raised: ScanAdded
+2023/04/05 09:48:25,GameEvent raised: UploadComplete
+2023/04/05 09:48:25,GameEvent raised: On Begin Scan
+2023/04/05 09:48:26,Refined scan thread successfully created and executed in 316.1704 milliseconds.
+2023/04/05 09:48:26,GameEvent raised: NewPreview
+2023/04/05 09:48:26,Refined scan successfully copied to preview mats in 1.0089 milliseconds.
+2023/04/05 09:48:26,GameEvent raised: AcceptScan
+2023/04/05 09:48:26,GameEvent raised: ScanAdded
+2023/04/05 09:48:26,GameEvent raised: UploadComplete
+2023/04/05 09:48:27,GameEvent raised: On Begin Scan
+2023/04/05 09:48:27,Refined scan thread successfully created and executed in 320.4218 milliseconds.
+2023/04/05 09:48:27,GameEvent raised: NewPreview
+2023/04/05 09:48:27,Refined scan successfully copied to preview mats in 1.0042 milliseconds.
+2023/04/05 09:48:27,GameEvent raised: AcceptScan
+2023/04/05 09:48:27,GameEvent raised: ScanAdded
+2023/04/05 09:48:27,GameEvent raised: UploadComplete
+2023/04/05 09:48:27,Resetting timeout to 9:48:42 AM
+2023/04/05 09:48:27,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2401; shouldBePlaying: True; saved webCamTextureID: -376; current ID: -376; lastUpdateCount: 1951
+2023/04/05 09:48:28,GameEvent raised: On Begin Scan
+2023/04/05 09:48:28,Refined scan thread successfully created and executed in 325.7604 milliseconds.
+2023/04/05 09:48:28,GameEvent raised: NewPreview
+2023/04/05 09:48:28,Refined scan successfully copied to preview mats in 0.9949 milliseconds.
+2023/04/05 09:48:28,GameEvent raised: AcceptScan
+2023/04/05 09:48:28,GameEvent raised: ScanAdded
+2023/04/05 09:48:28,GameEvent raised: UploadComplete
+2023/04/05 09:48:29,GameEvent raised: On Begin Scan
+2023/04/05 09:48:29,Refined scan thread successfully created and executed in 323.0021 milliseconds.
+2023/04/05 09:48:29,GameEvent raised: NewPreview
+2023/04/05 09:48:29,Refined scan successfully copied to preview mats in 1.9989 milliseconds.
+2023/04/05 09:48:29,GameEvent raised: AcceptScan
+2023/04/05 09:48:29,GameEvent raised: ScanAdded
+2023/04/05 09:48:29,GameEvent raised: UploadComplete
+2023/04/05 09:48:30,GameEvent raised: On Begin Scan
+2023/04/05 09:48:30,Refined scan thread successfully created and executed in 318.047 milliseconds.
+2023/04/05 09:48:30,GameEvent raised: NewPreview
+2023/04/05 09:48:30,Refined scan successfully copied to preview mats in 1.0019 milliseconds.
+2023/04/05 09:48:30,GameEvent raised: AcceptScan
+2023/04/05 09:48:30,GameEvent raised: ScanAdded
+2023/04/05 09:48:30,GameEvent raised: UploadComplete
+2023/04/05 09:48:31,GameEvent raised: On Begin Scan
+2023/04/05 09:48:31,Refined scan thread successfully created and executed in 348.5348 milliseconds.
+2023/04/05 09:48:31,GameEvent raised: NewPreview
+2023/04/05 09:48:31,Refined scan successfully copied to preview mats in 1.0053 milliseconds.
+2023/04/05 09:48:31,GameEvent raised: AcceptScan
+2023/04/05 09:48:31,GameEvent raised: ScanAdded
+2023/04/05 09:48:31,GameEvent raised: UploadComplete
+2023/04/05 09:48:32,GameEvent raised: On Begin Scan
+2023/04/05 09:48:32,Refined scan thread successfully created and executed in 323.1404 milliseconds.
+2023/04/05 09:48:32,GameEvent raised: NewPreview
+2023/04/05 09:48:32,Refined scan successfully copied to preview mats in 0.9986 milliseconds.
+2023/04/05 09:48:32,GameEvent raised: AcceptScan
+2023/04/05 09:48:32,GameEvent raised: ScanAdded
+2023/04/05 09:48:32,GameEvent raised: UploadComplete
+2023/04/05 09:48:33,GameEvent raised: On Begin Scan
+2023/04/05 09:48:33,Refined scan thread successfully created and executed in 316.4656 milliseconds.
+2023/04/05 09:48:33,GameEvent raised: NewPreview
+2023/04/05 09:48:33,Refined scan successfully copied to preview mats in 1.0034 milliseconds.
+2023/04/05 09:48:33,GameEvent raised: AcceptScan
+2023/04/05 09:48:33,GameEvent raised: ScanAdded
+2023/04/05 09:48:33,GameEvent raised: UploadComplete
+2023/04/05 09:48:34,GameEvent raised: On Begin Scan
+2023/04/05 09:48:34,Refined scan thread successfully created and executed in 315.0228 milliseconds.
+2023/04/05 09:48:34,GameEvent raised: NewPreview
+2023/04/05 09:48:34,Refined scan successfully copied to preview mats in 1.0047 milliseconds.
+2023/04/05 09:48:34,GameEvent raised: AcceptScan
+2023/04/05 09:48:34,GameEvent raised: ScanAdded
+2023/04/05 09:48:34,GameEvent raised: UploadComplete
+2023/04/05 09:48:35,GameEvent raised: On Begin Scan
+2023/04/05 09:48:35,Refined scan thread successfully created and executed in 318.7825 milliseconds.
+2023/04/05 09:48:35,GameEvent raised: NewPreview
+2023/04/05 09:48:35,Refined scan successfully copied to preview mats in 0.998 milliseconds.
+2023/04/05 09:48:35,GameEvent raised: AcceptScan
+2023/04/05 09:48:35,GameEvent raised: ScanAdded
+2023/04/05 09:48:35,GameEvent raised: UploadComplete
+2023/04/05 09:48:36,GameEvent raised: On Begin Scan
+2023/04/05 09:48:36,Refined scan thread successfully created and executed in 310.544 milliseconds.
+2023/04/05 09:48:36,GameEvent raised: NewPreview
+2023/04/05 09:48:36,Refined scan successfully copied to preview mats in 1.0119 milliseconds.
+2023/04/05 09:48:36,GameEvent raised: AcceptScan
+2023/04/05 09:48:36,GameEvent raised: ScanAdded
+2023/04/05 09:48:36,GameEvent raised: UploadComplete
+2023/04/05 09:48:37,GameEvent raised: On Begin Scan
+2023/04/05 09:48:37,Refined scan thread successfully created and executed in 319.0944 milliseconds.
+2023/04/05 09:48:37,GameEvent raised: NewPreview
+2023/04/05 09:48:37,Refined scan successfully copied to preview mats in 2.0019 milliseconds.
+2023/04/05 09:48:37,GameEvent raised: AcceptScan
+2023/04/05 09:48:37,GameEvent raised: ScanAdded
+2023/04/05 09:48:37,GameEvent raised: UploadComplete
+2023/04/05 09:48:38,GameEvent raised: On Begin Scan
+2023/04/05 09:48:38,Refined scan thread successfully created and executed in 327.8765 milliseconds.
+2023/04/05 09:48:38,GameEvent raised: NewPreview
+2023/04/05 09:48:38,Refined scan successfully copied to preview mats in 2.1739 milliseconds.
+2023/04/05 09:48:38,GameEvent raised: AcceptScan
+2023/04/05 09:48:38,GameEvent raised: ScanAdded
+2023/04/05 09:48:38,GameEvent raised: UploadComplete
+2023/04/05 09:48:39,GameEvent raised: On Begin Scan
+2023/04/05 09:48:39,Refined scan thread successfully created and executed in 368.8123 milliseconds.
+2023/04/05 09:48:39,GameEvent raised: NewPreview
+2023/04/05 09:48:39,Refined scan successfully copied to preview mats in 1.0072 milliseconds.
+2023/04/05 09:48:39,GameEvent raised: AcceptScan
+2023/04/05 09:48:39,GameEvent raised: ScanAdded
+2023/04/05 09:48:39,GameEvent raised: UploadComplete
+2023/04/05 09:48:40,GameEvent raised: On Begin Scan
+2023/04/05 09:48:40,Refined scan thread successfully created and executed in 314.966 milliseconds.
+2023/04/05 09:48:40,GameEvent raised: NewPreview
+2023/04/05 09:48:40,Refined scan successfully copied to preview mats in 0.9954 milliseconds.
+2023/04/05 09:48:40,GameEvent raised: AcceptScan
+2023/04/05 09:48:40,GameEvent raised: ScanAdded
+2023/04/05 09:48:40,GameEvent raised: UploadComplete
+2023/04/05 09:48:41,GameEvent raised: On Begin Scan
+2023/04/05 09:48:41,Refined scan thread successfully created and executed in 310.4554 milliseconds.
+2023/04/05 09:48:41,GameEvent raised: NewPreview
+2023/04/05 09:48:41,Refined scan successfully copied to preview mats in 1.9976 milliseconds.
+2023/04/05 09:48:41,GameEvent raised: AcceptScan
+2023/04/05 09:48:41,GameEvent raised: ScanAdded
+2023/04/05 09:48:41,GameEvent raised: UploadComplete
+2023/04/05 09:48:42,GameEvent raised: On Begin Scan
+2023/04/05 09:48:42,Refined scan thread successfully created and executed in 315.0948 milliseconds.
+2023/04/05 09:48:42,GameEvent raised: NewPreview
+2023/04/05 09:48:42,Refined scan successfully copied to preview mats in 1.9996 milliseconds.
+2023/04/05 09:48:42,Resetting timeout to 9:48:57 AM
+2023/04/05 09:48:42,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2851; shouldBePlaying: True; saved webCamTextureID: -376; current ID: -376; lastUpdateCount: 2401
+2023/04/05 09:48:42,GameEvent raised: AcceptScan
+2023/04/05 09:48:42,GameEvent raised: ScanAdded
+2023/04/05 09:48:42,GameEvent raised: UploadComplete
+2023/04/05 09:48:43,GameEvent raised: On Begin Scan
+2023/04/05 09:48:43,Refined scan thread successfully created and executed in 299.8954 milliseconds.
+2023/04/05 09:48:43,GameEvent raised: NewPreview
+2023/04/05 09:48:43,Refined scan successfully copied to preview mats in 2.0153 milliseconds.
+2023/04/05 09:48:44,GameEvent raised: AcceptScan
+2023/04/05 09:48:44,GameEvent raised: ScanAdded
+2023/04/05 09:48:44,GameEvent raised: UploadComplete
+2023/04/05 09:48:57,Resetting timeout to 9:49:12 AM
+2023/04/05 09:48:57,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3253; shouldBePlaying: True; saved webCamTextureID: -376; current ID: -376; lastUpdateCount: 2851
+2023/04/05 09:49:12,Resetting timeout to 9:49:27 AM
+2023/04/05 09:49:12,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3704; shouldBePlaying: True; saved webCamTextureID: -376; current ID: -376; lastUpdateCount: 3253
+2023/04/05 09:49:27,Resetting timeout to 9:49:42 AM
+2023/04/05 09:49:27,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 4154; shouldBePlaying: True; saved webCamTextureID: -376; current ID: -376; lastUpdateCount: 3704
+2023/04/05 09:49:42,Resetting timeout to 9:49:57 AM
+2023/04/05 09:49:42,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 4604; shouldBePlaying: True; saved webCamTextureID: -376; current ID: -376; lastUpdateCount: 4154
+2023/04/05 09:49:57,Resetting timeout to 9:50:12 AM
+2023/04/05 09:49:57,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 5054; shouldBePlaying: True; saved webCamTextureID: -376; current ID: -376; lastUpdateCount: 4604
+2023/04/05 09:50:12,Resetting timeout to 9:50:27 AM
+2023/04/05 09:50:12,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 5504; shouldBePlaying: True; saved webCamTextureID: -376; current ID: -376; lastUpdateCount: 5054
+2023/04/05 09:50:27,Resetting timeout to 9:50:42 AM
+2023/04/05 09:50:27,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 5955; shouldBePlaying: True; saved webCamTextureID: -376; current ID: -376; lastUpdateCount: 5504
+2023/04/05 09:50:42,Resetting timeout to 9:50:57 AM
+2023/04/05 09:50:42,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 6405; shouldBePlaying: True; saved webCamTextureID: -376; current ID: -376; lastUpdateCount: 5955
+2023/04/05 09:50:45,Opening attract...
+2023/04/05 09:50:47,Closing attract...
+2023/04/05 09:50:49,Quit application via 'Escape' key.
+2023/04/05 09:50:49,Application Quit
+2023/04/05 09:50:49,Releasing resources...
+2023/04/05 09:50:49,OnWebCamTextureToMatHelperDisposed
+2023/04/05 09:54:32,Application Awake - version #2023.1.18
+2023/04/05 09:54:32,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 09:54:32,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 09:54:32,Opening attract...
+2023/04/05 09:54:33,GameEvent raised: CloseAllWindows
+2023/04/05 09:54:33,GameEvent raised: MuralPositionsLoaded
+2023/04/05 09:54:33,GameEvent raised: ConfigLoaded
+2023/04/05 09:54:33,Initializing from myWebCamTextureToMatHelper...
+2023/04/05 09:54:33,Successfully found correct camera.
+2023/04/05 09:54:33,NEW webCamTexture ID: -276
+2023/04/05 09:54:33,NEW webCamTexture width: 16
+2023/04/05 09:54:33,NEW webCamTexture height: 16
+2023/04/05 09:54:33,Resetting update count...
+2023/04/05 09:54:33,Setting should be playing to true...
+2023/04/05 09:54:33,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/05 09:54:33,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/05 09:54:33,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/05 09:54:33,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/05 09:54:33,Resetting update count...
+2023/04/05 09:54:33,GameEvent raised: WindowsRefreshed
+2023/04/05 09:54:33,GameEvent raised: CloseAllWindows
+2023/04/05 09:54:33,Starting app...
+2023/04/05 09:54:33,GameEvent raised: Attract
+2023/04/05 09:54:33,GameEvent raised: NonScanWindowIsIn
+2023/04/05 09:54:33,Webcam pausing...
+2023/04/05 09:54:33,Resetting update count...
+2023/04/05 09:54:33,Setting should be playing to false...
+2023/04/05 09:54:45,Closing attract...
+2023/04/05 09:55:04,GameEvent raised: CloseAllWindows
+2023/04/05 09:55:04,GameEvent raised: ScanWindow
+2023/04/05 09:55:04,GameEvent raised: Start Click
+2023/04/05 09:55:04,GameEvent raised: ScanWindowIsIn
+2023/04/05 09:55:04,Webcam playing...
+2023/04/05 09:55:04,Resetting update count...
+2023/04/05 09:55:04,Setting should be playing to true...
+2023/04/05 09:55:05,GameEvent raised: On Begin Scan
+2023/04/05 09:55:22,Resetting timeout to 9:55:37 AM
+2023/04/05 09:55:22,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 532; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: -1
+2023/04/05 09:55:37,Resetting timeout to 9:55:52 AM
+2023/04/05 09:55:37,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 982; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 532
+2023/04/05 09:55:52,Resetting timeout to 9:56:07 AM
+2023/04/05 09:55:52,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1391; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 982
+2023/04/05 09:56:07,Resetting timeout to 9:56:22 AM
+2023/04/05 09:56:07,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1797; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 1391
+2023/04/05 09:56:22,Resetting timeout to 9:56:37 AM
+2023/04/05 09:56:22,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2247; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 1797
+2023/04/05 09:56:37,Resetting timeout to 9:56:52 AM
+2023/04/05 09:56:37,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2693; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 2247
+2023/04/05 09:56:52,Resetting timeout to 9:57:07 AM
+2023/04/05 09:56:52,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3143; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 2693
+2023/04/05 09:57:07,Resetting timeout to 9:57:22 AM
+2023/04/05 09:57:07,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3593; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 3143
+2023/04/05 09:57:22,Resetting timeout to 9:57:37 AM
+2023/04/05 09:57:22,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 4043; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 3593
+2023/04/05 09:57:37,Resetting timeout to 9:57:52 AM
+2023/04/05 09:57:37,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 4493; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 4043
+2023/04/05 09:57:52,Resetting timeout to 9:58:07 AM
+2023/04/05 09:57:52,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 4943; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 4493
+2023/04/05 09:58:07,Resetting timeout to 9:58:22 AM
+2023/04/05 09:58:07,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 5352; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 4943
+2023/04/05 09:58:22,Resetting timeout to 9:58:37 AM
+2023/04/05 09:58:22,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 5803; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 5352
+2023/04/05 09:58:27,Opening attract...
+2023/04/05 09:58:30,Closing attract...
+2023/04/05 09:58:37,Resetting timeout to 9:58:52 AM
+2023/04/05 09:58:37,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 6253; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 5803
+2023/04/05 09:58:51,Quit application via 'Escape' key.
+2023/04/05 09:58:51,Application Quit
+2023/04/05 09:58:51,Releasing resources...
+2023/04/05 09:58:51,OnWebCamTextureToMatHelperDisposed
+2023/04/05 09:58:51,Ending parallel refined scan thread...
+2023/04/05 10:03:21,Application Awake - version #2023.1.18
+2023/04/05 10:03:21,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:03:21,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:03:21,Opening attract...
+2023/04/05 10:03:22,GameEvent raised: CloseAllWindows
+2023/04/05 10:03:22,GameEvent raised: MuralPositionsLoaded
+2023/04/05 10:03:22,GameEvent raised: ConfigLoaded
+2023/04/05 10:03:22,Initializing from myWebCamTextureToMatHelper...
+2023/04/05 10:03:22,Successfully found correct camera.
+2023/04/05 10:03:22,NEW webCamTexture ID: -276
+2023/04/05 10:03:22,NEW webCamTexture width: 16
+2023/04/05 10:03:22,NEW webCamTexture height: 16
+2023/04/05 10:03:22,Resetting update count...
+2023/04/05 10:03:22,Setting should be playing to true...
+2023/04/05 10:03:22,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/05 10:03:22,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/05 10:03:22,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/05 10:03:22,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/05 10:03:22,Resetting update count...
+2023/04/05 10:03:22,GameEvent raised: WindowsRefreshed
+2023/04/05 10:03:22,GameEvent raised: CloseAllWindows
+2023/04/05 10:03:22,Starting app...
+2023/04/05 10:03:22,GameEvent raised: Attract
+2023/04/05 10:03:23,GameEvent raised: NonScanWindowIsIn
+2023/04/05 10:03:23,Webcam pausing...
+2023/04/05 10:03:23,Resetting update count...
+2023/04/05 10:03:23,Setting should be playing to false...
+2023/04/05 10:03:25,Closing attract...
+2023/04/05 10:03:27,GameEvent raised: CloseAllWindows
+2023/04/05 10:03:27,GameEvent raised: ScanWindow
+2023/04/05 10:03:27,GameEvent raised: Start Click
+2023/04/05 10:03:28,GameEvent raised: ScanWindowIsIn
+2023/04/05 10:03:28,Webcam playing...
+2023/04/05 10:03:28,Resetting update count...
+2023/04/05 10:03:28,Setting should be playing to true...
+2023/04/05 10:03:47,GameEvent raised: On Begin Scan
+2023/04/05 10:03:56,GameEvent raised: On Begin Scan
+2023/04/05 10:04:11,Resetting timeout to 10:04:26 AM
+2023/04/05 10:04:11,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1304; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: -1
+2023/04/05 10:04:21,Quit application via 'Escape' key.
+2023/04/05 10:04:21,Application Quit
+2023/04/05 10:04:21,Releasing resources...
+2023/04/05 10:04:21,OnWebCamTextureToMatHelperDisposed
+2023/04/05 10:04:21,Ending parallel refined scan thread...
+2023/04/05 10:06:16,Application Awake - version #2023.1.18
+2023/04/05 10:06:16,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:06:16,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:06:16,Opening attract...
+2023/04/05 10:06:16,GameEvent raised: CloseAllWindows
+2023/04/05 10:06:16,GameEvent raised: MuralPositionsLoaded
+2023/04/05 10:06:16,GameEvent raised: ConfigLoaded
+2023/04/05 10:06:16,Initializing from myWebCamTextureToMatHelper...
+2023/04/05 10:06:16,Successfully found correct camera.
+2023/04/05 10:06:16,NEW webCamTexture ID: -276
+2023/04/05 10:06:16,NEW webCamTexture width: 16
+2023/04/05 10:06:16,NEW webCamTexture height: 16
+2023/04/05 10:06:17,Resetting update count...
+2023/04/05 10:06:17,Setting should be playing to true...
+2023/04/05 10:06:17,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/05 10:06:17,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/05 10:06:17,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/05 10:06:17,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/05 10:06:17,Resetting update count...
+2023/04/05 10:06:17,GameEvent raised: WindowsRefreshed
+2023/04/05 10:06:17,GameEvent raised: CloseAllWindows
+2023/04/05 10:06:17,Starting app...
+2023/04/05 10:06:17,GameEvent raised: Attract
+2023/04/05 10:06:17,GameEvent raised: NonScanWindowIsIn
+2023/04/05 10:06:17,Webcam pausing...
+2023/04/05 10:06:17,Resetting update count...
+2023/04/05 10:06:17,Setting should be playing to false...
+2023/04/05 10:06:24,Closing attract...
+2023/04/05 10:06:36,GameEvent raised: CloseAllWindows
+2023/04/05 10:06:36,GameEvent raised: ScanWindow
+2023/04/05 10:06:36,GameEvent raised: Start Click
+2023/04/05 10:06:36,GameEvent raised: ScanWindowIsIn
+2023/04/05 10:06:36,Webcam playing...
+2023/04/05 10:06:36,Resetting update count...
+2023/04/05 10:06:36,Setting should be playing to true...
+2023/04/05 10:06:47,GameEvent raised: On Begin Scan
+2023/04/05 10:06:47,Refined scan thread successfully created and executed in 3.9994 milliseconds.
+2023/04/05 10:06:47,GameEvent raised: NewPreview
+2023/04/05 10:06:47,Refined scan successfully copied to preview mats in 2.996 milliseconds.
+2023/04/05 10:06:48,GameEvent raised: ScanAgain
+2023/04/05 10:06:49,GameEvent raised: On Begin Scan
+2023/04/05 10:06:49,Refined scan thread successfully created and executed in 2.0098 milliseconds.
+2023/04/05 10:06:49,GameEvent raised: NewPreview
+2023/04/05 10:06:49,Refined scan successfully copied to preview mats in 2.5143 milliseconds.
+2023/04/05 10:06:51,GameEvent raised: ScanAgain
+2023/04/05 10:06:52,GameEvent raised: On Begin Scan
+2023/04/05 10:06:52,Refined scan thread successfully created and executed in 1.0084 milliseconds.
+2023/04/05 10:06:52,GameEvent raised: NewPreview
+2023/04/05 10:06:52,Refined scan successfully copied to preview mats in 1.9966 milliseconds.
+2023/04/05 10:06:54,GameEvent raised: ScanAgain
+2023/04/05 10:07:06,Resetting timeout to 10:07:21 AM
+2023/04/05 10:07:06,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 847; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: -1
+2023/04/05 10:07:07,GameEvent raised: On Begin Scan
+2023/04/05 10:07:07,Refined scan thread successfully created and executed in 1.9957 milliseconds.
+2023/04/05 10:07:07,GameEvent raised: NewPreview
+2023/04/05 10:07:07,Refined scan successfully copied to preview mats in 0.9993 milliseconds.
+2023/04/05 10:07:08,GameEvent raised: ScanAgain
+2023/04/05 10:07:08,GameEvent raised: On Begin Scan
+2023/04/05 10:07:08,Refined scan thread successfully created and executed in 0.9981 milliseconds.
+2023/04/05 10:07:08,GameEvent raised: NewPreview
+2023/04/05 10:07:08,Refined scan successfully copied to preview mats in 2.0788 milliseconds.
+2023/04/05 10:07:09,GameEvent raised: ScanAgain
+2023/04/05 10:07:09,GameEvent raised: On Begin Scan
+2023/04/05 10:07:09,Refined scan thread successfully created and executed in 2.0009 milliseconds.
+2023/04/05 10:07:09,GameEvent raised: NewPreview
+2023/04/05 10:07:09,Refined scan successfully copied to preview mats in 1 milliseconds.
+2023/04/05 10:07:09,GameEvent raised: ScanAgain
+2023/04/05 10:07:09,GameEvent raised: On Begin Scan
+2023/04/05 10:07:09,Refined scan thread successfully created and executed in 2.0068 milliseconds.
+2023/04/05 10:07:09,GameEvent raised: NewPreview
+2023/04/05 10:07:09,Refined scan successfully copied to preview mats in 2.0001 milliseconds.
+2023/04/05 10:07:10,GameEvent raised: ScanAgain
+2023/04/05 10:07:10,GameEvent raised: On Begin Scan
+2023/04/05 10:07:10,Refined scan thread successfully created and executed in 1 milliseconds.
+2023/04/05 10:07:10,GameEvent raised: NewPreview
+2023/04/05 10:07:10,Refined scan successfully copied to preview mats in 2.0077 milliseconds.
+2023/04/05 10:07:10,GameEvent raised: ScanAgain
+2023/04/05 10:07:10,GameEvent raised: On Begin Scan
+2023/04/05 10:07:10,Refined scan thread successfully created and executed in 2.0018 milliseconds.
+2023/04/05 10:07:10,GameEvent raised: NewPreview
+2023/04/05 10:07:10,Refined scan successfully copied to preview mats in 1.0073 milliseconds.
+2023/04/05 10:07:10,GameEvent raised: ScanAgain
+2023/04/05 10:07:11,GameEvent raised: On Begin Scan
+2023/04/05 10:07:11,Refined scan thread successfully created and executed in 1.0016 milliseconds.
+2023/04/05 10:07:11,GameEvent raised: NewPreview
+2023/04/05 10:07:11,Refined scan successfully copied to preview mats in 0.9991 milliseconds.
+2023/04/05 10:07:11,GameEvent raised: ScanAgain
+2023/04/05 10:07:11,GameEvent raised: On Begin Scan
+2023/04/05 10:07:11,Refined scan thread successfully created and executed in 2.0063 milliseconds.
+2023/04/05 10:07:11,GameEvent raised: NewPreview
+2023/04/05 10:07:11,Refined scan successfully copied to preview mats in 0.9991 milliseconds.
+2023/04/05 10:07:11,GameEvent raised: ScanAgain
+2023/04/05 10:07:11,GameEvent raised: On Begin Scan
+2023/04/05 10:07:11,Refined scan thread successfully created and executed in 2.0037 milliseconds.
+2023/04/05 10:07:11,GameEvent raised: NewPreview
+2023/04/05 10:07:11,Refined scan successfully copied to preview mats in 1.9999 milliseconds.
+2023/04/05 10:07:11,GameEvent raised: ScanAgain
+2023/04/05 10:07:12,GameEvent raised: On Begin Scan
+2023/04/05 10:07:12,Refined scan thread successfully created and executed in 2.0014 milliseconds.
+2023/04/05 10:07:12,GameEvent raised: NewPreview
+2023/04/05 10:07:12,Refined scan successfully copied to preview mats in 2 milliseconds.
+2023/04/05 10:07:12,GameEvent raised: ScanAgain
+2023/04/05 10:07:12,GameEvent raised: On Begin Scan
+2023/04/05 10:07:12,Refined scan thread successfully created and executed in 1.5044 milliseconds.
+2023/04/05 10:07:12,GameEvent raised: NewPreview
+2023/04/05 10:07:12,Refined scan successfully copied to preview mats in 2.5388 milliseconds.
+2023/04/05 10:07:12,GameEvent raised: ScanAgain
+2023/04/05 10:07:12,GameEvent raised: On Begin Scan
+2023/04/05 10:07:12,Refined scan thread successfully created and executed in 0.999 milliseconds.
+2023/04/05 10:07:12,GameEvent raised: NewPreview
+2023/04/05 10:07:12,Refined scan successfully copied to preview mats in 2.0014 milliseconds.
+2023/04/05 10:07:13,GameEvent raised: ScanAgain
+2023/04/05 10:07:13,GameEvent raised: On Begin Scan
+2023/04/05 10:07:13,Refined scan thread successfully created and executed in 1.0355 milliseconds.
+2023/04/05 10:07:13,GameEvent raised: NewPreview
+2023/04/05 10:07:13,Refined scan successfully copied to preview mats in 2.0028 milliseconds.
+2023/04/05 10:07:13,GameEvent raised: ScanAgain
+2023/04/05 10:07:13,GameEvent raised: On Begin Scan
+2023/04/05 10:07:13,Refined scan thread successfully created and executed in 2.5131 milliseconds.
+2023/04/05 10:07:13,GameEvent raised: NewPreview
+2023/04/05 10:07:13,Refined scan successfully copied to preview mats in 2.0063 milliseconds.
+2023/04/05 10:07:13,GameEvent raised: ScanAgain
+2023/04/05 10:07:14,GameEvent raised: On Begin Scan
+2023/04/05 10:07:14,Refined scan thread successfully created and executed in 0.9984 milliseconds.
+2023/04/05 10:07:14,GameEvent raised: NewPreview
+2023/04/05 10:07:14,Refined scan successfully copied to preview mats in 2.0012 milliseconds.
+2023/04/05 10:07:14,GameEvent raised: ScanAgain
+2023/04/05 10:07:14,GameEvent raised: On Begin Scan
+2023/04/05 10:07:14,Refined scan thread successfully created and executed in 1.0008 milliseconds.
+2023/04/05 10:07:14,GameEvent raised: NewPreview
+2023/04/05 10:07:14,Refined scan successfully copied to preview mats in 1.9977 milliseconds.
+2023/04/05 10:07:14,GameEvent raised: ScanAgain
+2023/04/05 10:07:14,GameEvent raised: On Begin Scan
+2023/04/05 10:07:14,Refined scan thread successfully created and executed in 1.0035 milliseconds.
+2023/04/05 10:07:14,GameEvent raised: NewPreview
+2023/04/05 10:07:14,Refined scan successfully copied to preview mats in 2.5129 milliseconds.
+2023/04/05 10:07:15,GameEvent raised: ScanAgain
+2023/04/05 10:07:15,GameEvent raised: On Begin Scan
+2023/04/05 10:07:15,Refined scan thread successfully created and executed in 2.0589 milliseconds.
+2023/04/05 10:07:15,GameEvent raised: NewPreview
+2023/04/05 10:07:15,Refined scan successfully copied to preview mats in 1.9997 milliseconds.
+2023/04/05 10:07:15,GameEvent raised: ScanAgain
+2023/04/05 10:07:15,GameEvent raised: On Begin Scan
+2023/04/05 10:07:15,Refined scan thread successfully created and executed in 1.9989 milliseconds.
+2023/04/05 10:07:15,GameEvent raised: NewPreview
+2023/04/05 10:07:15,Refined scan successfully copied to preview mats in 1.5043 milliseconds.
+2023/04/05 10:07:15,GameEvent raised: ScanAgain
+2023/04/05 10:07:16,GameEvent raised: On Begin Scan
+2023/04/05 10:07:16,Refined scan thread successfully created and executed in 2.01 milliseconds.
+2023/04/05 10:07:16,GameEvent raised: NewPreview
+2023/04/05 10:07:16,Refined scan successfully copied to preview mats in 1.9953 milliseconds.
+2023/04/05 10:07:16,GameEvent raised: ScanAgain
+2023/04/05 10:07:16,GameEvent raised: On Begin Scan
+2023/04/05 10:07:16,Refined scan thread successfully created and executed in 1.9989 milliseconds.
+2023/04/05 10:07:16,GameEvent raised: NewPreview
+2023/04/05 10:07:16,Refined scan successfully copied to preview mats in 0.9988 milliseconds.
+2023/04/05 10:07:16,GameEvent raised: ScanAgain
+2023/04/05 10:07:16,GameEvent raised: On Begin Scan
+2023/04/05 10:07:16,Refined scan thread successfully created and executed in 2.9982 milliseconds.
+2023/04/05 10:07:16,GameEvent raised: NewPreview
+2023/04/05 10:07:16,Refined scan successfully copied to preview mats in 0.9999 milliseconds.
+2023/04/05 10:07:16,GameEvent raised: ScanAgain
+2023/04/05 10:07:17,GameEvent raised: On Begin Scan
+2023/04/05 10:07:17,Refined scan thread successfully created and executed in 1.7863 milliseconds.
+2023/04/05 10:07:17,GameEvent raised: NewPreview
+2023/04/05 10:07:17,Refined scan successfully copied to preview mats in 0.9989 milliseconds.
+2023/04/05 10:07:21,Resetting timeout to 10:07:36 AM
+2023/04/05 10:07:21,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1268; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 847
+2023/04/05 10:07:36,Resetting timeout to 10:07:51 AM
+2023/04/05 10:07:36,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1717; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 1268
+2023/04/05 10:07:51,Resetting timeout to 10:08:06 AM
+2023/04/05 10:07:51,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2167; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 1717
+2023/04/05 10:08:06,Resetting timeout to 10:08:21 AM
+2023/04/05 10:08:06,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2617; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 2167
+2023/04/05 10:08:21,Resetting timeout to 10:08:36 AM
+2023/04/05 10:08:21,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3068; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 2617
+2023/04/05 10:08:36,Resetting timeout to 10:08:51 AM
+2023/04/05 10:08:36,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3518; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 3068
+2023/04/05 10:08:51,Resetting timeout to 10:09:06 AM
+2023/04/05 10:08:51,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3968; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 3518
+2023/04/05 10:09:06,Resetting timeout to 10:09:21 AM
+2023/04/05 10:09:06,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 4418; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 3968
+2023/04/05 10:09:17,Opening attract...
+2023/04/05 10:09:21,Resetting timeout to 10:09:36 AM
+2023/04/05 10:09:21,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 4868; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 4418
+2023/04/05 10:09:36,Resetting timeout to 10:09:51 AM
+2023/04/05 10:09:36,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 5318; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 4868
+2023/04/05 10:09:51,Resetting timeout to 10:10:06 AM
+2023/04/05 10:09:51,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 5768; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 5318
+2023/04/05 10:10:06,Resetting timeout to 10:10:21 AM
+2023/04/05 10:10:06,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 6219; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 5768
+2023/04/05 10:10:21,Resetting timeout to 10:10:36 AM
+2023/04/05 10:10:21,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 6669; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 6219
+2023/04/05 10:10:36,Resetting timeout to 10:10:51 AM
+2023/04/05 10:10:36,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 7119; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 6669
+2023/04/05 10:10:51,Resetting timeout to 10:11:06 AM
+2023/04/05 10:10:51,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 7569; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 7119
+2023/04/05 10:11:06,Resetting timeout to 10:11:21 AM
+2023/04/05 10:11:06,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 8019; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 7569
+2023/04/05 10:11:21,Resetting timeout to 10:11:36 AM
+2023/04/05 10:11:21,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 8469; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 8019
+2023/04/05 10:11:36,Resetting timeout to 10:11:51 AM
+2023/04/05 10:11:36,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 8919; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 8469
+2023/04/05 10:11:51,Resetting timeout to 10:12:06 AM
+2023/04/05 10:11:51,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 9369; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 8919
+2023/04/05 10:12:06,Resetting timeout to 10:12:21 AM
+2023/04/05 10:12:06,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 9820; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 9369
+2023/04/05 10:12:21,Resetting timeout to 10:12:36 AM
+2023/04/05 10:12:21,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 10270; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 9820
+2023/04/05 10:12:36,Resetting timeout to 10:12:51 AM
+2023/04/05 10:12:36,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 10720; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 10270
+2023/04/05 10:12:51,Resetting timeout to 10:13:06 AM
+2023/04/05 10:12:51,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 11170; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 10720
+2023/04/05 10:13:06,Resetting timeout to 10:13:21 AM
+2023/04/05 10:13:06,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 11620; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 11170
+2023/04/05 10:13:21,Resetting timeout to 10:13:36 AM
+2023/04/05 10:13:21,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 12070; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 11620
+2023/04/05 10:13:28,Closing attract...
+2023/04/05 10:13:30,GameEvent raised: ScanAgain
+2023/04/05 10:13:36,Resetting timeout to 10:13:51 AM
+2023/04/05 10:13:36,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 12520; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 12070
+2023/04/05 10:13:44,GameEvent raised: On Begin Scan
+2023/04/05 10:13:44,Refined scan thread successfully created and executed in 2.0095 milliseconds.
+2023/04/05 10:13:44,GameEvent raised: NewPreview
+2023/04/05 10:13:44,Refined scan successfully copied to preview mats in 1.9996 milliseconds.
+2023/04/05 10:13:45,GameEvent raised: ScanAgain
+2023/04/05 10:13:46,GameEvent raised: On Begin Scan
+2023/04/05 10:13:46,Refined scan thread successfully created and executed in 1.5082 milliseconds.
+2023/04/05 10:13:46,GameEvent raised: NewPreview
+2023/04/05 10:13:46,Refined scan successfully copied to preview mats in 1.0124 milliseconds.
+2023/04/05 10:13:46,GameEvent raised: ScanAgain
+2023/04/05 10:13:51,Resetting timeout to 10:14:06 AM
+2023/04/05 10:13:51,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 12951; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 12520
+2023/04/05 10:14:06,Resetting timeout to 10:14:21 AM
+2023/04/05 10:14:06,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 13388; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 12951
+2023/04/05 10:14:21,Resetting timeout to 10:14:36 AM
+2023/04/05 10:14:21,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 13838; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 13388
+2023/04/05 10:14:27,Quit application via 'Escape' key.
+2023/04/05 10:14:27,Application Quit
+2023/04/05 10:14:28,Releasing resources...
+2023/04/05 10:14:28,OnWebCamTextureToMatHelperDisposed
+2023/04/05 10:15:21,Application Awake - version #2023.1.18
+2023/04/05 10:15:21,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:15:21,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:15:21,Opening attract...
+2023/04/05 10:15:21,GameEvent raised: CloseAllWindows
+2023/04/05 10:15:21,GameEvent raised: MuralPositionsLoaded
+2023/04/05 10:15:21,GameEvent raised: ConfigLoaded
+2023/04/05 10:15:21,Initializing from myWebCamTextureToMatHelper...
+2023/04/05 10:15:21,Successfully found correct camera.
+2023/04/05 10:15:21,NEW webCamTexture ID: -276
+2023/04/05 10:15:21,NEW webCamTexture width: 16
+2023/04/05 10:15:21,NEW webCamTexture height: 16
+2023/04/05 10:15:22,Resetting update count...
+2023/04/05 10:15:22,Setting should be playing to true...
+2023/04/05 10:15:22,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/05 10:15:22,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/05 10:15:22,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/05 10:15:22,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/05 10:15:22,Resetting update count...
+2023/04/05 10:15:22,GameEvent raised: WindowsRefreshed
+2023/04/05 10:15:22,GameEvent raised: CloseAllWindows
+2023/04/05 10:15:22,Starting app...
+2023/04/05 10:15:22,GameEvent raised: Attract
+2023/04/05 10:15:22,GameEvent raised: NonScanWindowIsIn
+2023/04/05 10:15:22,Webcam pausing...
+2023/04/05 10:15:22,Resetting update count...
+2023/04/05 10:15:22,Setting should be playing to false...
+2023/04/05 10:15:39,Closing attract...
+2023/04/05 10:15:41,GameEvent raised: CloseAllWindows
+2023/04/05 10:15:41,GameEvent raised: ScanWindow
+2023/04/05 10:15:41,GameEvent raised: ScanWindowIsIn
+2023/04/05 10:15:41,Webcam playing...
+2023/04/05 10:15:41,Resetting update count...
+2023/04/05 10:15:41,Setting should be playing to true...
+2023/04/05 10:16:11,Resetting timeout to 10:16:26 AM
+2023/04/05 10:16:11,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 838; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: -1
+2023/04/05 10:16:22,Quit application via 'Escape' key.
+2023/04/05 10:16:22,Application Quit
+2023/04/05 10:16:23,Releasing resources...
+2023/04/05 10:16:23,OnWebCamTextureToMatHelperDisposed
+2023/04/05 10:17:05,Application Awake - version #2023.1.18
+2023/04/05 10:17:05,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:17:05,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:17:05,GameEvent raised: ConfigLoaded
+2023/04/05 10:17:05,Initializing from myWebCamTextureToMatHelper...
+2023/04/05 10:17:05,Successfully found correct camera.
+2023/04/05 10:17:05,NEW webCamTexture ID: -138
+2023/04/05 10:17:05,NEW webCamTexture width: 16
+2023/04/05 10:17:05,NEW webCamTexture height: 16
+2023/04/05 10:17:06,Resetting update count...
+2023/04/05 10:17:06,Setting should be playing to true...
+2023/04/05 10:17:06,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/05 10:17:06,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/05 10:17:06,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/05 10:17:06,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/05 10:17:06,Resetting update count...
+2023/04/05 10:17:48,Refined scan thread successfully created and executed in 3.0006 milliseconds.
+2023/04/05 10:17:48,GameEvent raised: NewPreview
+2023/04/05 10:17:48,Refined scan successfully copied to preview mats in 2.6024 milliseconds.
+2023/04/05 10:17:49,Refined scan thread successfully created and executed in 0.9985 milliseconds.
+2023/04/05 10:17:49,GameEvent raised: NewPreview
+2023/04/05 10:17:49,Refined scan successfully copied to preview mats in 0.9965 milliseconds.
+2023/04/05 10:17:51,Refined scan thread successfully created and executed in 1.0049 milliseconds.
+2023/04/05 10:17:51,GameEvent raised: NewPreview
+2023/04/05 10:17:51,Refined scan successfully copied to preview mats in 0.9994 milliseconds.
+2023/04/05 10:17:52,Refined scan thread successfully created and executed in 0.9983 milliseconds.
+2023/04/05 10:17:52,GameEvent raised: NewPreview
+2023/04/05 10:17:52,Refined scan successfully copied to preview mats in 1.9983 milliseconds.
+2023/04/05 10:17:55,Resetting timeout to 10:18:10 AM
+2023/04/05 10:17:55,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1407; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: -1
+2023/04/05 10:18:10,Resetting timeout to 10:18:25 AM
+2023/04/05 10:18:10,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1830; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 1407
+2023/04/05 10:18:20,Quit application via 'Escape' key.
+2023/04/05 10:18:20,Application Quit
+2023/04/05 10:18:20,Releasing resources...
+2023/04/05 10:18:20,OnWebCamTextureToMatHelperDisposed
+2023/04/05 10:19:24,Application Awake - version #2023.1.18
+2023/04/05 10:19:24,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:19:24,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:19:24,GameEvent raised: ConfigLoaded
+2023/04/05 10:19:24,Initializing from myWebCamTextureToMatHelper...
+2023/04/05 10:19:24,Successfully found correct camera.
+2023/04/05 10:19:24,NEW webCamTexture ID: -138
+2023/04/05 10:19:24,NEW webCamTexture width: 16
+2023/04/05 10:19:24,NEW webCamTexture height: 16
+2023/04/05 10:19:25,Resetting update count...
+2023/04/05 10:19:25,Setting should be playing to true...
+2023/04/05 10:19:25,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/05 10:19:25,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/05 10:19:25,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/05 10:19:25,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/05 10:19:25,Resetting update count...
+2023/04/05 10:19:41,Refined scan thread successfully created and executed in 334.9406 milliseconds.
+2023/04/05 10:19:41,GameEvent raised: NewPreview
+2023/04/05 10:19:41,Refined scan successfully copied to preview mats in 2.0173 milliseconds.
+2023/04/05 10:19:44,Refined scan thread successfully created and executed in 344.7914 milliseconds.
+2023/04/05 10:19:44,GameEvent raised: NewPreview
+2023/04/05 10:19:44,Refined scan successfully copied to preview mats in 0 milliseconds.
+2023/04/05 10:19:44,Refined scan thread successfully created and executed in 298.0103 milliseconds.
+2023/04/05 10:19:44,GameEvent raised: NewPreview
+2023/04/05 10:19:44,Refined scan successfully copied to preview mats in 2.0024 milliseconds.
+2023/04/05 10:19:45,Refined scan thread successfully created and executed in 299.02 milliseconds.
+2023/04/05 10:19:45,GameEvent raised: NewPreview
+2023/04/05 10:19:45,Refined scan successfully copied to preview mats in 1.0009 milliseconds.
+2023/04/05 10:19:46,Refined scan thread successfully created and executed in 300.3114 milliseconds.
+2023/04/05 10:19:46,GameEvent raised: NewPreview
+2023/04/05 10:19:46,Refined scan successfully copied to preview mats in 1.0033 milliseconds.
+2023/04/05 10:19:56,Cancelling scan by X key.
+2023/04/05 10:19:56,GameEvent raised: ScanFailed
+2023/04/05 10:20:08,GameEvent raised: ScanAgain
+2023/04/05 10:20:09,Refined scan thread successfully created and executed in 317.0684 milliseconds.
+2023/04/05 10:20:09,GameEvent raised: NewPreview
+2023/04/05 10:20:09,Refined scan successfully copied to preview mats in 2.0426 milliseconds.
+2023/04/05 10:20:09,Refined scan thread successfully created and executed in 301.349 milliseconds.
+2023/04/05 10:20:09,GameEvent raised: NewPreview
+2023/04/05 10:20:09,Refined scan successfully copied to preview mats in 1.9977 milliseconds.
+2023/04/05 10:20:10,Refined scan thread successfully created and executed in 313.9735 milliseconds.
+2023/04/05 10:20:10,GameEvent raised: NewPreview
+2023/04/05 10:20:10,Refined scan successfully copied to preview mats in 1.0035 milliseconds.
+2023/04/05 10:20:10,Refined scan thread successfully created and executed in 303.9959 milliseconds.
+2023/04/05 10:20:10,GameEvent raised: NewPreview
+2023/04/05 10:20:10,Refined scan successfully copied to preview mats in 1.9981 milliseconds.
+2023/04/05 10:20:11,Refined scan thread successfully created and executed in 388.8958 milliseconds.
+2023/04/05 10:20:11,GameEvent raised: NewPreview
+2023/04/05 10:20:11,Refined scan successfully copied to preview mats in 2.9963 milliseconds.
+2023/04/05 10:20:12,Refined scan thread successfully created and executed in 321.2052 milliseconds.
+2023/04/05 10:20:12,GameEvent raised: NewPreview
+2023/04/05 10:20:12,Refined scan successfully copied to preview mats in 0.9997 milliseconds.
+2023/04/05 10:20:12,Refined scan thread successfully created and executed in 303.8853 milliseconds.
+2023/04/05 10:20:12,GameEvent raised: NewPreview
+2023/04/05 10:20:12,Refined scan successfully copied to preview mats in 1.5078 milliseconds.
+2023/04/05 10:20:13,Refined scan thread successfully created and executed in 315.4284 milliseconds.
+2023/04/05 10:20:13,GameEvent raised: NewPreview
+2023/04/05 10:20:13,Refined scan successfully copied to preview mats in 0 milliseconds.
+2023/04/05 10:20:13,Refined scan thread successfully created and executed in 312.2222 milliseconds.
+2023/04/05 10:20:13,GameEvent raised: NewPreview
+2023/04/05 10:20:13,Refined scan successfully copied to preview mats in 0.5056 milliseconds.
+2023/04/05 10:20:14,Refined scan thread successfully created and executed in 325.7271 milliseconds.
+2023/04/05 10:20:14,GameEvent raised: NewPreview
+2023/04/05 10:20:14,Refined scan successfully copied to preview mats in 1.9989 milliseconds.
+2023/04/05 10:20:14,Resetting timeout to 10:20:29 AM
+2023/04/05 10:20:14,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1434; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: -1
+2023/04/05 10:20:15,Cancelling scan by X key.
+2023/04/05 10:20:15,GameEvent raised: ScanFailed
+2023/04/05 10:20:25,Quit application via 'Escape' key.
+2023/04/05 10:20:25,Application Quit
+2023/04/05 10:24:38,Application Awake - version #2023.1.18
+2023/04/05 10:24:38,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:24:38,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:24:38,Opening attract...
+2023/04/05 10:24:39,GameEvent raised: CloseAllWindows
+2023/04/05 10:24:39,GameEvent raised: MuralPositionsLoaded
+2023/04/05 10:24:39,GameEvent raised: ConfigLoaded
+2023/04/05 10:24:39,Initializing from myWebCamTextureToMatHelper...
+2023/04/05 10:24:39,Successfully found correct camera.
+2023/04/05 10:24:39,NEW webCamTexture ID: -276
+2023/04/05 10:24:39,NEW webCamTexture width: 16
+2023/04/05 10:24:39,NEW webCamTexture height: 16
+2023/04/05 10:24:39,Resetting update count...
+2023/04/05 10:24:39,Setting should be playing to true...
+2023/04/05 10:24:39,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/05 10:24:39,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/05 10:24:39,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/05 10:24:39,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/05 10:24:39,Resetting update count...
+2023/04/05 10:24:39,GameEvent raised: WindowsRefreshed
+2023/04/05 10:24:39,GameEvent raised: CloseAllWindows
+2023/04/05 10:24:39,Starting app...
+2023/04/05 10:24:39,GameEvent raised: Attract
+2023/04/05 10:24:39,GameEvent raised: NonScanWindowIsIn
+2023/04/05 10:24:39,Webcam pausing...
+2023/04/05 10:24:39,Resetting update count...
+2023/04/05 10:24:39,Setting should be playing to false...
+2023/04/05 10:24:58,Closing attract...
+2023/04/05 10:25:01,GameEvent raised: CloseAllWindows
+2023/04/05 10:25:01,GameEvent raised: ScanWindow
+2023/04/05 10:25:01,GameEvent raised: Start Click
+2023/04/05 10:25:01,GameEvent raised: ScanWindowIsIn
+2023/04/05 10:25:01,Webcam playing...
+2023/04/05 10:25:01,Resetting update count...
+2023/04/05 10:25:01,Setting should be playing to true...
+2023/04/05 10:25:11,GameEvent raised: On Begin Scan
+2023/04/05 10:25:11,Refined scan thread successfully created and executed in 356.1045 milliseconds.
+2023/04/05 10:25:11,GameEvent raised: NewPreview
+2023/04/05 10:25:11,Refined scan successfully copied to preview mats in 0.9998 milliseconds.
+2023/04/05 10:25:12,GameEvent raised: AcceptScan
+2023/04/05 10:25:12,GameEvent raised: ScanAdded
+2023/04/05 10:25:12,GameEvent raised: UploadComplete
+2023/04/05 10:25:12,GameEvent raised: On Begin Scan
+2023/04/05 10:25:12,Refined scan thread successfully created and executed in 305.0738 milliseconds.
+2023/04/05 10:25:12,GameEvent raised: NewPreview
+2023/04/05 10:25:12,Refined scan successfully copied to preview mats in 2.0112 milliseconds.
+2023/04/05 10:25:13,GameEvent raised: AcceptScan
+2023/04/05 10:25:13,GameEvent raised: ScanAdded
+2023/04/05 10:25:13,GameEvent raised: UploadComplete
+2023/04/05 10:25:13,GameEvent raised: On Begin Scan
+2023/04/05 10:25:13,Refined scan thread successfully created and executed in 302.3704 milliseconds.
+2023/04/05 10:25:13,GameEvent raised: NewPreview
+2023/04/05 10:25:13,Refined scan successfully copied to preview mats in 0.9994 milliseconds.
+2023/04/05 10:25:13,GameEvent raised: AcceptScan
+2023/04/05 10:25:13,GameEvent raised: ScanAdded
+2023/04/05 10:25:13,GameEvent raised: UploadComplete
+2023/04/05 10:25:28,Resetting timeout to 10:25:43 AM
+2023/04/05 10:25:28,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 754; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: -1
+2023/04/05 10:25:43,Resetting timeout to 10:25:58 AM
+2023/04/05 10:25:43,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1204; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 754
+2023/04/05 10:25:44,GameEvent raised: On Begin Scan
+2023/04/05 10:25:44,Refined scan thread successfully created and executed in 315.3115 milliseconds.
+2023/04/05 10:25:44,GameEvent raised: NewPreview
+2023/04/05 10:25:44,Refined scan successfully copied to preview mats in 2.525 milliseconds.
+2023/04/05 10:25:45,GameEvent raised: AcceptScan
+2023/04/05 10:25:45,GameEvent raised: ScanAdded
+2023/04/05 10:25:45,GameEvent raised: UploadComplete
+2023/04/05 10:25:45,GameEvent raised: On Begin Scan
+2023/04/05 10:25:45,Refined scan thread successfully created and executed in 316.812 milliseconds.
+2023/04/05 10:25:45,GameEvent raised: NewPreview
+2023/04/05 10:25:45,Refined scan successfully copied to preview mats in 1.007 milliseconds.
+2023/04/05 10:25:46,GameEvent raised: AcceptScan
+2023/04/05 10:25:46,GameEvent raised: ScanAdded
+2023/04/05 10:25:46,GameEvent raised: UploadComplete
+2023/04/05 10:25:46,GameEvent raised: On Begin Scan
+2023/04/05 10:25:47,Refined scan thread successfully created and executed in 378.6569 milliseconds.
+2023/04/05 10:25:47,GameEvent raised: NewPreview
+2023/04/05 10:25:47,Refined scan successfully copied to preview mats in 1.5055 milliseconds.
+2023/04/05 10:25:47,GameEvent raised: AcceptScan
+2023/04/05 10:25:47,GameEvent raised: ScanAdded
+2023/04/05 10:25:47,GameEvent raised: UploadComplete
+2023/04/05 10:25:47,GameEvent raised: On Begin Scan
+2023/04/05 10:25:47,Refined scan thread successfully created and executed in 299.925 milliseconds.
+2023/04/05 10:25:47,GameEvent raised: NewPreview
+2023/04/05 10:25:47,Refined scan successfully copied to preview mats in 0.9994 milliseconds.
+2023/04/05 10:25:48,GameEvent raised: AcceptScan
+2023/04/05 10:25:48,GameEvent raised: ScanAdded
+2023/04/05 10:25:48,GameEvent raised: UploadComplete
+2023/04/05 10:25:48,GameEvent raised: On Begin Scan
+2023/04/05 10:25:48,Refined scan thread successfully created and executed in 313.9581 milliseconds.
+2023/04/05 10:25:48,GameEvent raised: NewPreview
+2023/04/05 10:25:48,Refined scan successfully copied to preview mats in 1.0021 milliseconds.
+2023/04/05 10:25:48,GameEvent raised: AcceptScan
+2023/04/05 10:25:48,GameEvent raised: ScanAdded
+2023/04/05 10:25:48,GameEvent raised: UploadComplete
+2023/04/05 10:25:49,GameEvent raised: On Begin Scan
+2023/04/05 10:25:50,Refined scan thread successfully created and executed in 305.3624 milliseconds.
+2023/04/05 10:25:50,GameEvent raised: NewPreview
+2023/04/05 10:25:50,Refined scan successfully copied to preview mats in 2.0082 milliseconds.
+2023/04/05 10:25:50,GameEvent raised: AcceptScan
+2023/04/05 10:25:50,GameEvent raised: ScanAdded
+2023/04/05 10:25:50,GameEvent raised: UploadComplete
+2023/04/05 10:25:50,GameEvent raised: On Begin Scan
+2023/04/05 10:25:50,Refined scan thread successfully created and executed in 318.7663 milliseconds.
+2023/04/05 10:25:50,GameEvent raised: NewPreview
+2023/04/05 10:25:50,Refined scan successfully copied to preview mats in 1.5177 milliseconds.
+2023/04/05 10:25:51,GameEvent raised: AcceptScan
+2023/04/05 10:25:51,GameEvent raised: ScanAdded
+2023/04/05 10:25:51,GameEvent raised: UploadComplete
+2023/04/05 10:25:51,GameEvent raised: On Begin Scan
+2023/04/05 10:25:51,Refined scan thread successfully created and executed in 317.1817 milliseconds.
+2023/04/05 10:25:51,GameEvent raised: NewPreview
+2023/04/05 10:25:51,Refined scan successfully copied to preview mats in 1.0137 milliseconds.
+2023/04/05 10:25:51,GameEvent raised: AcceptScan
+2023/04/05 10:25:51,GameEvent raised: ScanAdded
+2023/04/05 10:25:51,GameEvent raised: UploadComplete
+2023/04/05 10:25:58,Resetting timeout to 10:26:13 AM
+2023/04/05 10:25:58,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1612; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 1204
+2023/04/05 10:26:13,Resetting timeout to 10:26:28 AM
+2023/04/05 10:26:13,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2062; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 1612
+2023/04/05 10:26:27,Quit application via 'Escape' key.
+2023/04/05 10:26:27,Application Quit
+2023/04/05 10:26:28,Releasing resources...
+2023/04/05 10:26:28,OnWebCamTextureToMatHelperDisposed
+2023/04/05 10:27:07,Application Awake - version #2023.1.18
+2023/04/05 10:27:07,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:27:07,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:27:07,Opening attract...
+2023/04/05 10:27:08,GameEvent raised: CloseAllWindows
+2023/04/05 10:27:08,GameEvent raised: MuralPositionsLoaded
+2023/04/05 10:27:08,GameEvent raised: ConfigLoaded
+2023/04/05 10:27:08,Initializing from myWebCamTextureToMatHelper...
+2023/04/05 10:27:08,Successfully found correct camera.
+2023/04/05 10:27:08,NEW webCamTexture ID: -276
+2023/04/05 10:27:08,NEW webCamTexture width: 16
+2023/04/05 10:27:08,NEW webCamTexture height: 16
+2023/04/05 10:27:08,Resetting update count...
+2023/04/05 10:27:08,Setting should be playing to true...
+2023/04/05 10:27:08,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/05 10:27:08,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/05 10:27:08,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/05 10:27:08,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/05 10:27:08,Resetting update count...
+2023/04/05 10:27:08,GameEvent raised: WindowsRefreshed
+2023/04/05 10:27:08,GameEvent raised: CloseAllWindows
+2023/04/05 10:27:08,Starting app...
+2023/04/05 10:27:08,GameEvent raised: Attract
+2023/04/05 10:27:09,GameEvent raised: NonScanWindowIsIn
+2023/04/05 10:27:09,Webcam pausing...
+2023/04/05 10:27:09,Resetting update count...
+2023/04/05 10:27:09,Setting should be playing to false...
+2023/04/05 10:27:27,Closing attract...
+2023/04/05 10:27:29,GameEvent raised: CloseAllWindows
+2023/04/05 10:27:29,GameEvent raised: ScanWindow
+2023/04/05 10:27:29,GameEvent raised: Start Click
+2023/04/05 10:27:29,GameEvent raised: ScanWindowIsIn
+2023/04/05 10:27:29,Webcam playing...
+2023/04/05 10:27:29,Resetting update count...
+2023/04/05 10:27:29,Setting should be playing to true...
+2023/04/05 10:27:57,Resetting timeout to 10:28:12 AM
+2023/04/05 10:27:57,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 830; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: -1
+2023/04/05 10:28:12,Resetting timeout to 10:28:27 AM
+2023/04/05 10:28:12,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1242; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 830
+2023/04/05 10:28:27,Resetting timeout to 10:28:42 AM
+2023/04/05 10:28:27,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1688; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 1242
+2023/04/05 10:28:42,Resetting timeout to 10:28:57 AM
+2023/04/05 10:28:42,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2138; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 1688
+2023/04/05 10:28:57,Resetting timeout to 10:29:12 AM
+2023/04/05 10:28:57,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2588; shouldBePlaying: True; saved webCamTextureID: -276; current ID: -276; lastUpdateCount: 2138
+2023/04/05 10:29:04,Quit application via 'Escape' key.
+2023/04/05 10:29:04,Application Quit
+2023/04/05 10:29:04,Releasing resources...
+2023/04/05 10:29:04,OnWebCamTextureToMatHelperDisposed
+2023/04/05 10:31:15,Resetting timeout to 10:31:30 AM
+2023/04/05 10:31:15,Application Awake - version #2023.1.18
+2023/04/05 10:31:15,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:31:15,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:31:15,GameEvent raised: ConfigLoaded
+2023/04/05 10:31:15,Initializing from myWebCamTextureToMatHelper...
+2023/04/05 10:31:15,Successfully found correct camera.
+2023/04/05 10:31:15,NEW webCamTexture ID: -138
+2023/04/05 10:31:15,NEW webCamTexture width: 16
+2023/04/05 10:31:15,NEW webCamTexture height: 16
+2023/04/05 10:31:16,Resetting update count...
+2023/04/05 10:31:16,Setting should be playing to true...
+2023/04/05 10:31:16,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/05 10:31:16,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/05 10:31:16,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/05 10:31:16,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/05 10:31:16,Resetting update count...
+2023/04/05 10:31:30,Resetting timeout to 10:31:45 AM
+2023/04/05 10:31:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 389; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: -1
+2023/04/05 10:31:45,Resetting timeout to 10:32:00 AM
+2023/04/05 10:31:45,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 822; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 389
+2023/04/05 10:32:00,Resetting timeout to 10:32:15 AM
+2023/04/05 10:32:00,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1272; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 822
+2023/04/05 10:32:15,Resetting timeout to 10:32:30 AM
+2023/04/05 10:32:15,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1689; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 1272
+2023/04/05 10:32:30,Resetting timeout to 10:32:45 AM
+2023/04/05 10:32:30,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2094; shouldBePlaying: True; saved webCamTextureID: -138; current ID: -138; lastUpdateCount: 1689
+2023/04/05 10:32:36,Quit application via 'Escape' key.
+2023/04/05 10:32:36,Application Quit
+2023/04/05 10:50:52,Application Awake - version #2023.1.18
+2023/04/05 10:50:52,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:50:52,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:50:52,Opening attract...
+2023/04/05 10:50:52,Resetting timeout to 10:51:07 AM
+2023/04/05 10:50:52,GameEvent raised: CloseAllWindows
+2023/04/05 10:50:52,GameEvent raised: MuralPositionsLoaded
+2023/04/05 10:50:52,GameEvent raised: ConfigLoaded
+2023/04/05 10:50:52,Initializing from myWebCamTextureToMatHelper...
+2023/04/05 10:50:52,Successfully found correct camera.
+2023/04/05 10:50:52,NEW webCamTexture ID: -274
+2023/04/05 10:50:52,NEW webCamTexture width: 16
+2023/04/05 10:50:52,NEW webCamTexture height: 16
+2023/04/05 10:50:53,Resetting update count...
+2023/04/05 10:50:53,Setting should be playing to true...
+2023/04/05 10:50:53,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/05 10:50:53,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/05 10:50:53,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/05 10:50:53,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/05 10:50:53,Resetting update count...
+2023/04/05 10:50:53,GameEvent raised: WindowsRefreshed
+2023/04/05 10:50:53,GameEvent raised: CloseAllWindows
+2023/04/05 10:50:53,Starting app...
+2023/04/05 10:50:53,GameEvent raised: Attract
+2023/04/05 10:50:53,GameEvent raised: NonScanWindowIsIn
+2023/04/05 10:50:53,Webcam pausing...
+2023/04/05 10:50:53,Resetting update count...
+2023/04/05 10:50:53,Setting should be playing to false...
+2023/04/05 10:50:57,Closing attract...
+2023/04/05 10:50:59,GameEvent raised: CloseAllWindows
+2023/04/05 10:50:59,GameEvent raised: ScanWindow
+2023/04/05 10:50:59,GameEvent raised: Start Click
+2023/04/05 10:50:59,GameEvent raised: ScanWindowIsIn
+2023/04/05 10:50:59,Webcam playing...
+2023/04/05 10:50:59,Resetting update count...
+2023/04/05 10:50:59,Setting should be playing to true...
+2023/04/05 10:51:07,Resetting timeout to 10:51:22 AM
+2023/04/05 10:51:07,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 229; shouldBePlaying: True; saved webCamTextureID: -274; current ID: -274; lastUpdateCount: -1
+2023/04/05 10:51:21,Quit application via 'Escape' key.
+2023/04/05 10:51:21,Application Quit
+2023/04/05 10:51:22,Releasing resources...
+2023/04/05 10:51:22,OnWebCamTextureToMatHelperDisposed
+2023/04/05 10:51:52,Application Awake - version #2023.1.18
+2023/04/05 10:51:52,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:51:52,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:51:52,Opening attract...
+2023/04/05 10:51:52,Resetting timeout to 10:52:07 AM
+2023/04/05 10:51:52,GameEvent raised: CloseAllWindows
+2023/04/05 10:51:52,GameEvent raised: MuralPositionsLoaded
+2023/04/05 10:51:52,GameEvent raised: ConfigLoaded
+2023/04/05 10:51:52,Initializing from myWebCamTextureToMatHelper...
+2023/04/05 10:51:52,Successfully found correct camera.
+2023/04/05 10:51:52,NEW webCamTexture ID: -274
+2023/04/05 10:51:52,NEW webCamTexture width: 16
+2023/04/05 10:51:52,NEW webCamTexture height: 16
+2023/04/05 10:51:53,Resetting update count...
+2023/04/05 10:51:53,Setting should be playing to true...
+2023/04/05 10:51:53,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/05 10:51:53,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/05 10:51:53,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/05 10:51:53,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/05 10:51:53,Resetting update count...
+2023/04/05 10:51:53,GameEvent raised: WindowsRefreshed
+2023/04/05 10:51:53,GameEvent raised: CloseAllWindows
+2023/04/05 10:51:53,Starting app...
+2023/04/05 10:51:53,GameEvent raised: Attract
+2023/04/05 10:51:53,GameEvent raised: NonScanWindowIsIn
+2023/04/05 10:51:53,Webcam pausing...
+2023/04/05 10:51:53,Resetting update count...
+2023/04/05 10:51:53,Setting should be playing to false...
+2023/04/05 10:52:00,Closing attract...
+2023/04/05 10:52:03,GameEvent raised: CloseAllWindows
+2023/04/05 10:52:03,GameEvent raised: ScanWindow
+2023/04/05 10:52:03,GameEvent raised: Start Click
+2023/04/05 10:52:03,GameEvent raised: ScanWindowIsIn
+2023/04/05 10:52:03,Webcam playing...
+2023/04/05 10:52:03,Resetting update count...
+2023/04/05 10:52:03,Setting should be playing to true...
+2023/04/05 10:52:07,Resetting timeout to 10:52:22 AM
+2023/04/05 10:52:07,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 117; shouldBePlaying: True; saved webCamTextureID: -274; current ID: -274; lastUpdateCount: -1
+2023/04/05 10:52:22,Resetting timeout to 10:52:37 AM
+2023/04/05 10:52:22,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 567; shouldBePlaying: True; saved webCamTextureID: -274; current ID: -274; lastUpdateCount: 117
+2023/04/05 10:52:37,Resetting timeout to 10:52:52 AM
+2023/04/05 10:52:37,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1000; shouldBePlaying: True; saved webCamTextureID: -274; current ID: -274; lastUpdateCount: 567
+2023/04/05 10:52:52,Resetting timeout to 10:53:07 AM
+2023/04/05 10:52:52,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1450; shouldBePlaying: True; saved webCamTextureID: -274; current ID: -274; lastUpdateCount: 1000
+2023/04/05 10:53:07,Resetting timeout to 10:53:22 AM
+2023/04/05 10:53:07,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 1900; shouldBePlaying: True; saved webCamTextureID: -274; current ID: -274; lastUpdateCount: 1450
+2023/04/05 10:53:22,Resetting timeout to 10:53:37 AM
+2023/04/05 10:53:22,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2350; shouldBePlaying: True; saved webCamTextureID: -274; current ID: -274; lastUpdateCount: 1900
+2023/04/05 10:53:37,Resetting timeout to 10:53:52 AM
+2023/04/05 10:53:37,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 2800; shouldBePlaying: True; saved webCamTextureID: -274; current ID: -274; lastUpdateCount: 2350
+2023/04/05 10:53:52,Resetting timeout to 10:54:07 AM
+2023/04/05 10:53:52,Checking devices... webCamTexture is null: False; isPlaying: True; updateCount: 3218; shouldBePlaying: True; saved webCamTextureID: -274; current ID: -274; lastUpdateCount: 2800
+2023/04/05 10:54:05,Quit application via 'Escape' key.
+2023/04/05 10:54:05,Application Quit
+2023/04/05 10:57:42,Application Awake - version #2023.1.18
+2023/04/05 10:57:42,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:57:42,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 10:57:42,Opening attract...
+2023/04/05 10:57:42,GameEvent raised: CloseAllWindows
+2023/04/05 10:57:42,GameEvent raised: MuralPositionsLoaded
+2023/04/05 10:57:42,GameEvent raised: ConfigLoaded
+2023/04/05 10:57:42,Initializing from myWebCamTextureToMatHelper...
+2023/04/05 10:57:42,Successfully found correct camera.
+2023/04/05 10:57:42,NEW webCamTexture ID: -274
+2023/04/05 10:57:42,NEW webCamTexture width: 16
+2023/04/05 10:57:42,NEW webCamTexture height: 16
+2023/04/05 10:57:43,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/05 10:57:43,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/05 10:57:43,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/05 10:57:43,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/05 10:57:43,GameEvent raised: WindowsRefreshed
+2023/04/05 10:57:43,GameEvent raised: CloseAllWindows
+2023/04/05 10:57:43,Starting app...
+2023/04/05 10:57:43,GameEvent raised: Attract
+2023/04/05 10:57:43,GameEvent raised: NonScanWindowIsIn
+2023/04/05 10:57:43,Webcam pausing...
+2023/04/05 10:58:31,Closing attract...
+2023/04/05 10:58:33,GameEvent raised: CloseAllWindows
+2023/04/05 10:58:33,GameEvent raised: ScanWindow
+2023/04/05 10:58:33,GameEvent raised: Start Click
+2023/04/05 10:58:34,GameEvent raised: ScanWindowIsIn
+2023/04/05 10:58:34,Webcam playing...
+2023/04/05 11:01:12,Quit application via 'Escape' key.
+2023/04/05 11:01:12,Application Quit
+2023/04/05 11:03:44,Application Awake - version #2023.1.18
+2023/04/05 11:03:44,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 11:03:44,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 11:03:44,GameEvent raised: CloseAllWindows
+2023/04/05 11:03:44,GameEvent raised: ConfigLoaded
+2023/04/05 11:03:44,Initializing from myWebCamTextureToMatHelper...
+2023/04/05 11:03:44,Successfully found correct camera.
+2023/04/05 11:03:44,NEW webCamTexture ID: -228
+2023/04/05 11:03:44,NEW webCamTexture width: 16
+2023/04/05 11:03:44,NEW webCamTexture height: 16
+2023/04/05 11:03:44,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/05 11:03:44,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/05 11:03:44,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/05 11:03:44,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/05 11:03:45,GameEvent raised: CloseAllWindows
+2023/04/05 11:03:45,Starting app...
+2023/04/05 11:03:45,GameEvent raised: Attract
+2023/04/05 11:03:45,GameEvent raised: NonScanWindowIsIn
+2023/04/05 11:03:45,Webcam pausing...
+2023/04/05 11:03:48,GameEvent raised: CloseAllWindows
+2023/04/05 11:03:48,GameEvent raised: ScanWindow
+2023/04/05 11:03:48,GameEvent raised: Start Click
+2023/04/05 11:03:48,GameEvent raised: ScanWindowIsIn
+2023/04/05 11:03:48,Webcam playing...
+2023/04/05 11:12:41,GameEvent raised: On Begin Scan
+2023/04/05 11:12:46,Quit application via 'Escape' key.
+2023/04/05 11:12:46,Application Quit
+2023/04/05 11:13:12,Application Awake - version #2023.1.18
+2023/04/05 11:13:12,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 11:13:12,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 11:13:13,GameEvent raised: CloseAllWindows
+2023/04/05 11:13:13,GameEvent raised: MuralPositionsLoaded
+2023/04/05 11:13:13,GameEvent raised: ConfigLoaded
+2023/04/05 11:13:13,Initializing from myWebCamTextureToMatHelper...
+2023/04/05 11:13:13,Successfully found correct camera.
+2023/04/05 11:13:13,NEW webCamTexture ID: -268
+2023/04/05 11:13:13,NEW webCamTexture width: 16
+2023/04/05 11:13:13,NEW webCamTexture height: 16
+2023/04/05 11:13:13,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/05 11:13:13,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/05 11:13:13,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/05 11:13:13,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/05 11:13:13,GameEvent raised: WindowsRefreshed
+2023/04/05 11:13:13,GameEvent raised: CloseAllWindows
+2023/04/05 11:13:13,Starting app...
+2023/04/05 11:13:13,GameEvent raised: Attract
+2023/04/05 11:13:13,GameEvent raised: NonScanWindowIsIn
+2023/04/05 11:13:13,Webcam pausing...
+2023/04/05 11:13:23,GameEvent raised: CloseAllWindows
+2023/04/05 11:13:23,GameEvent raised: ScanWindow
+2023/04/05 11:13:23,GameEvent raised: Start Click
+2023/04/05 11:13:23,GameEvent raised: ScanWindowIsIn
+2023/04/05 11:13:23,Webcam playing...
+2023/04/05 11:13:41,Quit application via 'Escape' key.
+2023/04/05 11:13:41,Application Quit
+2023/04/05 11:15:08,Application Awake - version #2023.1.18
+2023/04/05 11:15:08,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 11:15:08,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 11:15:08,Opening attract...
+2023/04/05 11:15:09,GameEvent raised: CloseAllWindows
+2023/04/05 11:15:09,GameEvent raised: MuralPositionsLoaded
+2023/04/05 11:15:09,GameEvent raised: ConfigLoaded
+2023/04/05 11:15:09,Initializing from myWebCamTextureToMatHelper...
+2023/04/05 11:15:09,Successfully found correct camera.
+2023/04/05 11:15:09,NEW webCamTexture ID: -274
+2023/04/05 11:15:09,NEW webCamTexture width: 16
+2023/04/05 11:15:09,NEW webCamTexture height: 16
+2023/04/05 11:15:09,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/05 11:15:09,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/05 11:15:09,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/05 11:15:09,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/05 11:15:09,GameEvent raised: WindowsRefreshed
+2023/04/05 11:15:09,GameEvent raised: CloseAllWindows
+2023/04/05 11:15:09,Starting app...
+2023/04/05 11:15:09,GameEvent raised: Attract
+2023/04/05 11:15:10,GameEvent raised: NonScanWindowIsIn
+2023/04/05 11:15:10,Webcam pausing...
+2023/04/05 11:15:11,Closing attract...
+2023/04/05 11:15:12,GameEvent raised: CloseAllWindows
+2023/04/05 11:15:12,GameEvent raised: ScanWindow
+2023/04/05 11:15:12,GameEvent raised: ScanWindowIsIn
+2023/04/05 11:15:12,Webcam playing...
+2023/04/05 11:16:13,Quit application via 'Escape' key.
+2023/04/05 11:16:13,Application Quit
+2023/04/05 11:26:23,Application Awake - version #2023.1.18
+2023/04/05 11:26:23,Primary Display    App (screen dims): 1920 x 1080 (1.777778)   "Current Resolution": 1920 x 1080   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 11:26:23,Activated second display.   Rendering Res: 1920 x 1080   System Res: 1920 x 1080
+2023/04/05 11:26:23,Opening attract...
+2023/04/05 11:26:23,GameEvent raised: CloseAllWindows
+2023/04/05 11:26:23,GameEvent raised: MuralPositionsLoaded
+2023/04/05 11:26:23,GameEvent raised: ConfigLoaded
+2023/04/05 11:26:23,Initializing from myWebCamTextureToMatHelper...
+2023/04/05 11:26:23,Successfully found correct camera.
+2023/04/05 11:26:23,NEW webCamTexture ID: -274
+2023/04/05 11:26:23,NEW webCamTexture width: 16
+2023/04/05 11:26:23,NEW webCamTexture height: 16
+2023/04/05 11:26:24,WebCamTextureToMatHelper: Devicename:HD Pro Webcam C920 name: width:640 height:480 fps:60 videoRotationAngle:0 videoVerticallyMirrored:False isFrongFacing:True
+2023/04/05 11:26:24,Calling OnWebCamTextureToMatHelperInitialized...
+2023/04/05 11:26:24,OnWebCamTextureToMatHelperInitialized. Screen.width 1920 Screen.height 1080 Screen.orientation Portrait
+2023/04/05 11:26:24,GameEvent raised: WebcamTextureToMatHelperInitialized
+2023/04/05 11:26:24,GameEvent raised: WindowsRefreshed
+2023/04/05 11:26:24,GameEvent raised: CloseAllWindows
+2023/04/05 11:26:24,Starting app...
+2023/04/05 11:26:24,GameEvent raised: Attract
+2023/04/05 11:26:24,GameEvent raised: NonScanWindowIsIn
+2023/04/05 11:26:24,Webcam pausing...
+2023/04/05 11:26:27,Closing attract...
+2023/04/05 11:26:30,GameEvent raised: CloseAllWindows
+2023/04/05 11:26:30,GameEvent raised: ScanWindow
+2023/04/05 11:26:30,GameEvent raised: Start Click
+2023/04/05 11:26:30,GameEvent raised: ScanWindowIsIn
+2023/04/05 11:26:30,Webcam playing...
+2023/04/05 11:27:20,Quit application via 'Escape' key.
+2023/04/05 11:27:20,Application Quit
