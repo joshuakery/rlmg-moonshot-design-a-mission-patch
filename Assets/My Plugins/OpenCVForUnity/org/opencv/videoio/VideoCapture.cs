@@ -684,6 +684,13 @@ namespace OpenCVForUnity.VideoioModule
         }
 
 
+        //
+        // C++: static bool cv::VideoCapture::waitAny(vector_VideoCapture streams, vector_int& readyIndex, int64 timeoutNs = 0)
+        //
+
+        // Unknown type 'vector_VideoCapture' (I), skipping the function
+
+
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         const string LIBNAME = "__Internal";
 #else

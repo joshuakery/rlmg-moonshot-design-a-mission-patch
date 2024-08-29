@@ -440,7 +440,7 @@ namespace OpenCVForUnity.DnnModule
 
 
         //
-        // C++:  Net cv::dnn::Net::quantize(vector_Mat calibData, int inputsDtype, int outputsDtype)
+        // C++:  Net cv::dnn::Net::quantize(vector_Mat calibData, int inputsDtype, int outputsDtype, bool perChannel = true)
         //
 
         /**
@@ -448,13 +448,32 @@ namespace OpenCVForUnity.DnnModule
          * param calibData Calibration data to compute the quantization parameters.
          * param inputsDtype Datatype of quantized net's inputs. Can be CV_32F or CV_8S.
          * param outputsDtype Datatype of quantized net's outputs. Can be CV_32F or CV_8S.
+         * param perChannel Quantization granularity of quantized Net. The default is true, that means quantize model
+         * in per-channel way (channel-wise). Set it false to quantize model in per-tensor way (or tensor-wise).
+         * return automatically generated
+         */
+        public Net quantize(List<Mat> calibData, int inputsDtype, int outputsDtype, bool perChannel)
+        {
+            ThrowIfDisposed();
+            Mat calibData_mat = Converters.vector_Mat_to_Mat(calibData);
+            return new Net(DisposableObject.ThrowIfNullIntPtr(dnn_Net_quantize_10(nativeObj, calibData_mat.nativeObj, inputsDtype, outputsDtype, perChannel)));
+
+
+        }
+
+        /**
+         * Returns a quantized Net from a floating-point Net.
+         * param calibData Calibration data to compute the quantization parameters.
+         * param inputsDtype Datatype of quantized net's inputs. Can be CV_32F or CV_8S.
+         * param outputsDtype Datatype of quantized net's outputs. Can be CV_32F or CV_8S.
+         * in per-channel way (channel-wise). Set it false to quantize model in per-tensor way (or tensor-wise).
          * return automatically generated
          */
         public Net quantize(List<Mat> calibData, int inputsDtype, int outputsDtype)
         {
             ThrowIfDisposed();
             Mat calibData_mat = Converters.vector_Mat_to_Mat(calibData);
-            return new Net(DisposableObject.ThrowIfNullIntPtr(dnn_Net_quantize_10(nativeObj, calibData_mat.nativeObj, inputsDtype, outputsDtype)));
+            return new Net(DisposableObject.ThrowIfNullIntPtr(dnn_Net_quantize_11(nativeObj, calibData_mat.nativeObj, inputsDtype, outputsDtype)));
 
 
         }
@@ -992,6 +1011,25 @@ namespace OpenCVForUnity.DnnModule
 
 
         //
+        // C++:  void cv::dnn::Net::enableWinograd(bool useWinograd)
+        //
+
+        /**
+         * Enables or disables the Winograd compute branch. The Winograd compute branch can speed up
+         * 3x3 Convolution at a small loss of accuracy.
+         * param useWinograd true to enable the Winograd compute branch. The default is true.
+         */
+        public void enableWinograd(bool useWinograd)
+        {
+            ThrowIfDisposed();
+
+            dnn_Net_enableWinograd_10(nativeObj, useWinograd);
+
+
+        }
+
+
+        //
         // C++:  int64 cv::dnn::Net::getPerfProfile(vector_double& timings)
         //
 
@@ -1096,9 +1134,11 @@ namespace OpenCVForUnity.DnnModule
         [DllImport(LIBNAME)]
         private static extern void dnn_Net_forward_14(IntPtr nativeObj, IntPtr outputBlobs_mat_nativeObj, IntPtr outBlobNames_mat_nativeObj);
 
-        // C++:  Net cv::dnn::Net::quantize(vector_Mat calibData, int inputsDtype, int outputsDtype)
+        // C++:  Net cv::dnn::Net::quantize(vector_Mat calibData, int inputsDtype, int outputsDtype, bool perChannel = true)
         [DllImport(LIBNAME)]
-        private static extern IntPtr dnn_Net_quantize_10(IntPtr nativeObj, IntPtr calibData_mat_nativeObj, int inputsDtype, int outputsDtype);
+        private static extern IntPtr dnn_Net_quantize_10(IntPtr nativeObj, IntPtr calibData_mat_nativeObj, int inputsDtype, int outputsDtype, [MarshalAs(UnmanagedType.U1)] bool perChannel);
+        [DllImport(LIBNAME)]
+        private static extern IntPtr dnn_Net_quantize_11(IntPtr nativeObj, IntPtr calibData_mat_nativeObj, int inputsDtype, int outputsDtype);
 
         // C++:  void cv::dnn::Net::getInputDetails(vector_float& scales, vector_int& zeropoints)
         [DllImport(LIBNAME)]
@@ -1198,6 +1238,10 @@ namespace OpenCVForUnity.DnnModule
         [DllImport(LIBNAME)]
         private static extern void dnn_Net_enableFusion_10(IntPtr nativeObj, [MarshalAs(UnmanagedType.U1)] bool fusion);
 
+        // C++:  void cv::dnn::Net::enableWinograd(bool useWinograd)
+        [DllImport(LIBNAME)]
+        private static extern void dnn_Net_enableWinograd_10(IntPtr nativeObj, [MarshalAs(UnmanagedType.U1)] bool useWinograd);
+
         // C++:  int64 cv::dnn::Net::getPerfProfile(vector_double& timings)
         [DllImport(LIBNAME)]
         private static extern long dnn_Net_getPerfProfile_10(IntPtr nativeObj, IntPtr timings_mat_nativeObj);
@@ -1208,4 +1252,5 @@ namespace OpenCVForUnity.DnnModule
 
     }
 }
+
 #endif

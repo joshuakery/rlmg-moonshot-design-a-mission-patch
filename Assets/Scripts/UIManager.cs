@@ -16,13 +16,12 @@ public class UIManager : MonoBehaviour
     public GameState gameState;
     public GameEvent CloseAllWindowsEvent;
     public GameEvent StartEvent;
-    public myWebCamTextureToMatHelper myWebCamTextureToMatHelper;
     public GameEvent EndingEvent;
 
     public UISequenceManager primarySequenceManager;
     public UISequenceManager namesakeSequenceManager;
     //debug
-    public GameEvent ConfigLoaded;
+
     public MoonshotTimer.Timer mainTimer;
     public MoonshotTimer.Timer bufferTimer;
     public MoonshotTimer.TimerDisplay timerDisplay;
@@ -130,11 +129,6 @@ public class UIManager : MonoBehaviour
             RLMGLogger.Instance.Log("Starting app...");
             StartEvent.Raise();
             started = true;
-
-            if (myWebCamTextureToMatHelper != null && myWebCamTextureToMatHelper.IsInitialized())
-            {
-                
-            }
         }
     }
 
@@ -235,16 +229,8 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            DrawingsMenu.SetActive(!DrawingsMenu.activeSelf);
-        }
-        else if (Input.GetKeyDown(KeyCode.I))
-        {
-            RemoveBackgroundDebugMenu.SetActive(!RemoveBackgroundDebugMenu.activeSelf);
-        }
         //Shared Conclusion
-        else if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             GoToConclusion();
         }

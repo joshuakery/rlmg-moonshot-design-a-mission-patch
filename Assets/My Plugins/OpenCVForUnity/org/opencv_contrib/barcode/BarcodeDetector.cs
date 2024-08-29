@@ -235,4 +235,5 @@ namespace OpenCVForUnity.BarcodeModule
 
     }
 }
+
 #endif

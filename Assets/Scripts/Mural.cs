@@ -47,11 +47,9 @@ namespace ArtScan.MuralPositionsModule
             {
                 Patch patch = patches[i];
 
-
-
-                if (gameState.scans[i] != null)
+                if (gameState.savedScanManager.scans[i] != null)
                 {
-                    Texture2D scan = gameState.scans[i];
+                    Texture2D scan = gameState.savedScanManager.scans[i];
                     patch.ri.texture = scan;
 
                     patch.drawingGenericWindow.Open();

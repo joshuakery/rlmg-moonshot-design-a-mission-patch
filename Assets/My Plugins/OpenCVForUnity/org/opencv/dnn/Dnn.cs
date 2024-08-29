@@ -23,6 +23,7 @@ namespace OpenCVForUnity.DnnModule
         public const int DNN_BACKEND_CUDA = 0 + 5;
         public const int DNN_BACKEND_WEBNN = 0 + 6;
         public const int DNN_BACKEND_TIMVX = 0 + 7;
+        public const int DNN_BACKEND_CANN = 0 + 8;
         // C++: enum cv.dnn.SoftNMSMethod
         public const int SoftNMSMethod_SOFTNMS_LINEAR = 1;
         public const int SoftNMSMethod_SOFTNMS_GAUSSIAN = 2;
@@ -1211,6 +1212,89 @@ namespace OpenCVForUnity.DnnModule
 
 
         //
+        // C++:  void cv::dnn::NMSBoxesBatched(vector_Rect2d bboxes, vector_float scores, vector_int class_ids, float score_threshold, float nms_threshold, vector_int& indices, float eta = 1.f, int top_k = 0)
+        //
+
+        /**
+         * Performs batched non maximum suppression on given boxes and corresponding scores across different classes.
+         *
+         * param bboxes a set of bounding boxes to apply NMS.
+         * param scores a set of corresponding confidences.
+         * param class_ids a set of corresponding class ids. Ids are integer and usually start from 0.
+         * param score_threshold a threshold used to filter boxes by score.
+         * param nms_threshold a threshold used in non maximum suppression.
+         * param indices the kept indices of bboxes after NMS.
+         * param eta a coefficient in adaptive threshold formula: \(nms\_threshold_{i+1}=eta\cdot nms\_threshold_i\).
+         * param top_k if {code &gt;0}, keep at most {code top_k} picked indices.
+         */
+        public static void NMSBoxesBatched(MatOfRect2d bboxes, MatOfFloat scores, MatOfInt class_ids, float score_threshold, float nms_threshold, MatOfInt indices, float eta, int top_k)
+        {
+            if (bboxes != null) bboxes.ThrowIfDisposed();
+            if (scores != null) scores.ThrowIfDisposed();
+            if (class_ids != null) class_ids.ThrowIfDisposed();
+            if (indices != null) indices.ThrowIfDisposed();
+            Mat bboxes_mat = bboxes;
+            Mat scores_mat = scores;
+            Mat class_ids_mat = class_ids;
+            Mat indices_mat = indices;
+            dnn_Dnn_NMSBoxesBatched_10(bboxes_mat.nativeObj, scores_mat.nativeObj, class_ids_mat.nativeObj, score_threshold, nms_threshold, indices_mat.nativeObj, eta, top_k);
+
+
+        }
+
+        /**
+         * Performs batched non maximum suppression on given boxes and corresponding scores across different classes.
+         *
+         * param bboxes a set of bounding boxes to apply NMS.
+         * param scores a set of corresponding confidences.
+         * param class_ids a set of corresponding class ids. Ids are integer and usually start from 0.
+         * param score_threshold a threshold used to filter boxes by score.
+         * param nms_threshold a threshold used in non maximum suppression.
+         * param indices the kept indices of bboxes after NMS.
+         * param eta a coefficient in adaptive threshold formula: \(nms\_threshold_{i+1}=eta\cdot nms\_threshold_i\).
+         */
+        public static void NMSBoxesBatched(MatOfRect2d bboxes, MatOfFloat scores, MatOfInt class_ids, float score_threshold, float nms_threshold, MatOfInt indices, float eta)
+        {
+            if (bboxes != null) bboxes.ThrowIfDisposed();
+            if (scores != null) scores.ThrowIfDisposed();
+            if (class_ids != null) class_ids.ThrowIfDisposed();
+            if (indices != null) indices.ThrowIfDisposed();
+            Mat bboxes_mat = bboxes;
+            Mat scores_mat = scores;
+            Mat class_ids_mat = class_ids;
+            Mat indices_mat = indices;
+            dnn_Dnn_NMSBoxesBatched_11(bboxes_mat.nativeObj, scores_mat.nativeObj, class_ids_mat.nativeObj, score_threshold, nms_threshold, indices_mat.nativeObj, eta);
+
+
+        }
+
+        /**
+         * Performs batched non maximum suppression on given boxes and corresponding scores across different classes.
+         *
+         * param bboxes a set of bounding boxes to apply NMS.
+         * param scores a set of corresponding confidences.
+         * param class_ids a set of corresponding class ids. Ids are integer and usually start from 0.
+         * param score_threshold a threshold used to filter boxes by score.
+         * param nms_threshold a threshold used in non maximum suppression.
+         * param indices the kept indices of bboxes after NMS.
+         */
+        public static void NMSBoxesBatched(MatOfRect2d bboxes, MatOfFloat scores, MatOfInt class_ids, float score_threshold, float nms_threshold, MatOfInt indices)
+        {
+            if (bboxes != null) bboxes.ThrowIfDisposed();
+            if (scores != null) scores.ThrowIfDisposed();
+            if (class_ids != null) class_ids.ThrowIfDisposed();
+            if (indices != null) indices.ThrowIfDisposed();
+            Mat bboxes_mat = bboxes;
+            Mat scores_mat = scores;
+            Mat class_ids_mat = class_ids;
+            Mat indices_mat = indices;
+            dnn_Dnn_NMSBoxesBatched_12(bboxes_mat.nativeObj, scores_mat.nativeObj, class_ids_mat.nativeObj, score_threshold, nms_threshold, indices_mat.nativeObj);
+
+
+        }
+
+
+        //
         // C++:  void cv::dnn::softNMSBoxes(vector_Rect bboxes, vector_float scores, vector_float& updated_scores, float score_threshold, float nms_threshold, vector_int& indices, size_t top_k = 0, float sigma = 0.5, SoftNMSMethod method = SoftNMSMethod::SOFTNMS_GAUSSIAN)
         //
 
@@ -1581,6 +1665,14 @@ namespace OpenCVForUnity.DnnModule
         [DllImport(LIBNAME)]
         private static extern void dnn_Dnn_NMSBoxesRotated_12(IntPtr bboxes_mat_nativeObj, IntPtr scores_mat_nativeObj, float score_threshold, float nms_threshold, IntPtr indices_mat_nativeObj);
 
+        // C++:  void cv::dnn::NMSBoxesBatched(vector_Rect2d bboxes, vector_float scores, vector_int class_ids, float score_threshold, float nms_threshold, vector_int& indices, float eta = 1.f, int top_k = 0)
+        [DllImport(LIBNAME)]
+        private static extern void dnn_Dnn_NMSBoxesBatched_10(IntPtr bboxes_mat_nativeObj, IntPtr scores_mat_nativeObj, IntPtr class_ids_mat_nativeObj, float score_threshold, float nms_threshold, IntPtr indices_mat_nativeObj, float eta, int top_k);
+        [DllImport(LIBNAME)]
+        private static extern void dnn_Dnn_NMSBoxesBatched_11(IntPtr bboxes_mat_nativeObj, IntPtr scores_mat_nativeObj, IntPtr class_ids_mat_nativeObj, float score_threshold, float nms_threshold, IntPtr indices_mat_nativeObj, float eta);
+        [DllImport(LIBNAME)]
+        private static extern void dnn_Dnn_NMSBoxesBatched_12(IntPtr bboxes_mat_nativeObj, IntPtr scores_mat_nativeObj, IntPtr class_ids_mat_nativeObj, float score_threshold, float nms_threshold, IntPtr indices_mat_nativeObj);
+
         // C++:  void cv::dnn::softNMSBoxes(vector_Rect bboxes, vector_float scores, vector_float& updated_scores, float score_threshold, float nms_threshold, vector_int& indices, size_t top_k = 0, float sigma = 0.5, SoftNMSMethod method = SoftNMSMethod::SOFTNMS_GAUSSIAN)
         [DllImport(LIBNAME)]
         private static extern void dnn_Dnn_softNMSBoxes_10(IntPtr bboxes_mat_nativeObj, IntPtr scores_mat_nativeObj, IntPtr updated_scores_mat_nativeObj, float score_threshold, float nms_threshold, IntPtr indices_mat_nativeObj, long top_k, float sigma);
@@ -1615,4 +1707,5 @@ namespace OpenCVForUnity.DnnModule
 
     }
 }
+
 #endif

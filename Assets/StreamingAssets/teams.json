@@ -1,12 +1,12 @@
 {
     "teams": [
         {
-            "teamName": "Default Team",
-            "namesake": "Galileo",
+            "teamName": "Green",
+            "namesake": "Artemis",
             "chosenWords": [
-                "Roguish",
-                "Scientific",
-                "Strong-willed"
+                "Charming",
+                "Hasty",
+                "Enterprising"
             ],
             "didRoverActivity": false,
             "roverStepsCompleted": 0,
@@ -18,12 +18,12 @@
             "settlementWaterQuality": 0.0,
             "didArtActivity": false,
             "artworks": [
-                "Default Team-0.png",
-                "Default Team-1.png",
-                "Default Team-2.png",
-                "Default Team-3.png",
-                "",
-                ""
+                "Green-0.png",
+                "Green-1.png",
+                "Green-2.png",
+                "Green-3.png",
+                "Green-4.png",
+                "Green-5.png"
             ],
             "didCharterActivity": false,
             "charterQsCompleted": 0,

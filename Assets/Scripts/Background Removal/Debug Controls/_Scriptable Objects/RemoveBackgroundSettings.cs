@@ -48,6 +48,9 @@ public class RemoveBackgroundSettings : ScriptableObject
     public int targetWidth = 750;
     public int targetHeight = 750;
 
+    public int preProcessingSizeFactor = 2;
+    public int postProcessingSizeFactor = 2;
+
     public int brightness = 255;
     public int contrast = 127;
 

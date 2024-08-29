@@ -258,7 +258,7 @@ namespace OpenCVForUnity.Calib3dModule
          *    REF: RHO - PROSAC-based robust method
          * param ransacReprojThreshold Maximum allowed reprojection error to treat a point pair as an inlier
          * (used in the RANSAC and RHO methods only). That is, if
-         * \(\| \texttt{dstPoints} _i -  \texttt{convertPointsHomogeneous} ( \texttt{H} * \texttt{srcPoints} _i) \|_2  &gt;  \texttt{ransacReprojThreshold}\)
+         * \(\| \texttt{dstPoints} _i -  \texttt{convertPointsHomogeneous} ( \texttt{H} \cdot \texttt{srcPoints} _i) \|_2  &gt;  \texttt{ransacReprojThreshold}\)
          * then the point \(i\) is considered as an outlier. If srcPoints and dstPoints are measured in pixels,
          * it usually makes sense to set this parameter somewhere in the range of 1 to 10.
          * param mask Optional output mask set by a robust method ( RANSAC or LMeDS ). Note that the input
@@ -341,7 +341,7 @@ namespace OpenCVForUnity.Calib3dModule
          *    REF: RHO - PROSAC-based robust method
          * param ransacReprojThreshold Maximum allowed reprojection error to treat a point pair as an inlier
          * (used in the RANSAC and RHO methods only). That is, if
-         * \(\| \texttt{dstPoints} _i -  \texttt{convertPointsHomogeneous} ( \texttt{H} * \texttt{srcPoints} _i) \|_2  &gt;  \texttt{ransacReprojThreshold}\)
+         * \(\| \texttt{dstPoints} _i -  \texttt{convertPointsHomogeneous} ( \texttt{H} \cdot \texttt{srcPoints} _i) \|_2  &gt;  \texttt{ransacReprojThreshold}\)
          * then the point \(i\) is considered as an outlier. If srcPoints and dstPoints are measured in pixels,
          * it usually makes sense to set this parameter somewhere in the range of 1 to 10.
          * param mask Optional output mask set by a robust method ( RANSAC or LMeDS ). Note that the input
@@ -423,7 +423,7 @@ namespace OpenCVForUnity.Calib3dModule
          *    REF: RHO - PROSAC-based robust method
          * param ransacReprojThreshold Maximum allowed reprojection error to treat a point pair as an inlier
          * (used in the RANSAC and RHO methods only). That is, if
-         * \(\| \texttt{dstPoints} _i -  \texttt{convertPointsHomogeneous} ( \texttt{H} * \texttt{srcPoints} _i) \|_2  &gt;  \texttt{ransacReprojThreshold}\)
+         * \(\| \texttt{dstPoints} _i -  \texttt{convertPointsHomogeneous} ( \texttt{H} \cdot \texttt{srcPoints} _i) \|_2  &gt;  \texttt{ransacReprojThreshold}\)
          * then the point \(i\) is considered as an outlier. If srcPoints and dstPoints are measured in pixels,
          * it usually makes sense to set this parameter somewhere in the range of 1 to 10.
          * param mask Optional output mask set by a robust method ( RANSAC or LMeDS ). Note that the input
@@ -504,7 +504,7 @@ namespace OpenCVForUnity.Calib3dModule
          *    REF: RHO - PROSAC-based robust method
          * param ransacReprojThreshold Maximum allowed reprojection error to treat a point pair as an inlier
          * (used in the RANSAC and RHO methods only). That is, if
-         * \(\| \texttt{dstPoints} _i -  \texttt{convertPointsHomogeneous} ( \texttt{H} * \texttt{srcPoints} _i) \|_2  &gt;  \texttt{ransacReprojThreshold}\)
+         * \(\| \texttt{dstPoints} _i -  \texttt{convertPointsHomogeneous} ( \texttt{H} \cdot \texttt{srcPoints} _i) \|_2  &gt;  \texttt{ransacReprojThreshold}\)
          * then the point \(i\) is considered as an outlier. If srcPoints and dstPoints are measured in pixels,
          * it usually makes sense to set this parameter somewhere in the range of 1 to 10.
          * mask values are ignored.
@@ -582,7 +582,7 @@ namespace OpenCVForUnity.Calib3dModule
          *   <li>
          *    REF: RHO - PROSAC-based robust method
          * (used in the RANSAC and RHO methods only). That is, if
-         * \(\| \texttt{dstPoints} _i -  \texttt{convertPointsHomogeneous} ( \texttt{H} * \texttt{srcPoints} _i) \|_2  &gt;  \texttt{ransacReprojThreshold}\)
+         * \(\| \texttt{dstPoints} _i -  \texttt{convertPointsHomogeneous} ( \texttt{H} \cdot \texttt{srcPoints} _i) \|_2  &gt;  \texttt{ransacReprojThreshold}\)
          * then the point \(i\) is considered as an outlier. If srcPoints and dstPoints are measured in pixels,
          * it usually makes sense to set this parameter somewhere in the range of 1 to 10.
          * mask values are ignored.
@@ -659,7 +659,7 @@ namespace OpenCVForUnity.Calib3dModule
          *   <li>
          *    REF: RHO - PROSAC-based robust method
          * (used in the RANSAC and RHO methods only). That is, if
-         * \(\| \texttt{dstPoints} _i -  \texttt{convertPointsHomogeneous} ( \texttt{H} * \texttt{srcPoints} _i) \|_2  &gt;  \texttt{ransacReprojThreshold}\)
+         * \(\| \texttt{dstPoints} _i -  \texttt{convertPointsHomogeneous} ( \texttt{H} \cdot \texttt{srcPoints} _i) \|_2  &gt;  \texttt{ransacReprojThreshold}\)
          * then the point \(i\) is considered as an outlier. If srcPoints and dstPoints are measured in pixels,
          * it usually makes sense to set this parameter somewhere in the range of 1 to 10.
          * mask values are ignored.
@@ -897,7 +897,7 @@ namespace OpenCVForUnity.Calib3dModule
          * principal axes that results in the same orientation of an object, e.g. see CITE: Slabaugh . Returned
          * tree rotation matrices and corresponding three Euler angles are only one of the possible solutions.
          *
-         * The function is based on RQDecomp3x3 .
+         * The function is based on #RQDecomp3x3 .
          */
         public static void decomposeProjectionMatrix(Mat projMatrix, Mat cameraMatrix, Mat rotMatrix, Mat transVect, Mat rotMatrixX, Mat rotMatrixY, Mat rotMatrixZ, Mat eulerAngles)
         {
@@ -935,7 +935,7 @@ namespace OpenCVForUnity.Calib3dModule
          * principal axes that results in the same orientation of an object, e.g. see CITE: Slabaugh . Returned
          * tree rotation matrices and corresponding three Euler angles are only one of the possible solutions.
          *
-         * The function is based on RQDecomp3x3 .
+         * The function is based on #RQDecomp3x3 .
          */
         public static void decomposeProjectionMatrix(Mat projMatrix, Mat cameraMatrix, Mat rotMatrix, Mat transVect, Mat rotMatrixX, Mat rotMatrixY, Mat rotMatrixZ)
         {
@@ -971,7 +971,7 @@ namespace OpenCVForUnity.Calib3dModule
          * principal axes that results in the same orientation of an object, e.g. see CITE: Slabaugh . Returned
          * tree rotation matrices and corresponding three Euler angles are only one of the possible solutions.
          *
-         * The function is based on RQDecomp3x3 .
+         * The function is based on #RQDecomp3x3 .
          */
         public static void decomposeProjectionMatrix(Mat projMatrix, Mat cameraMatrix, Mat rotMatrix, Mat transVect, Mat rotMatrixX, Mat rotMatrixY)
         {
@@ -1005,7 +1005,7 @@ namespace OpenCVForUnity.Calib3dModule
          * principal axes that results in the same orientation of an object, e.g. see CITE: Slabaugh . Returned
          * tree rotation matrices and corresponding three Euler angles are only one of the possible solutions.
          *
-         * The function is based on RQDecomp3x3 .
+         * The function is based on #RQDecomp3x3 .
          */
         public static void decomposeProjectionMatrix(Mat projMatrix, Mat cameraMatrix, Mat rotMatrix, Mat transVect, Mat rotMatrixX)
         {
@@ -1037,7 +1037,7 @@ namespace OpenCVForUnity.Calib3dModule
          * principal axes that results in the same orientation of an object, e.g. see CITE: Slabaugh . Returned
          * tree rotation matrices and corresponding three Euler angles are only one of the possible solutions.
          *
-         * The function is based on RQDecomp3x3 .
+         * The function is based on #RQDecomp3x3 .
          */
         public static void decomposeProjectionMatrix(Mat projMatrix, Mat cameraMatrix, Mat rotMatrix, Mat transVect)
         {
@@ -1110,10 +1110,10 @@ namespace OpenCVForUnity.Calib3dModule
          * \(\begin{array}{l} \texttt{rvec3} =  \mathrm{rodrigues} ^{-1} \left ( \mathrm{rodrigues} ( \texttt{rvec2} )  \cdot \mathrm{rodrigues} ( \texttt{rvec1} ) \right )  \\ \texttt{tvec3} =  \mathrm{rodrigues} ( \texttt{rvec2} )  \cdot \texttt{tvec1} +  \texttt{tvec2} \end{array} ,\)
          *
          * where \(\mathrm{rodrigues}\) denotes a rotation vector to a rotation matrix transformation, and
-         * \(\mathrm{rodrigues}^{-1}\) denotes the inverse transformation. See Rodrigues for details.
+         * \(\mathrm{rodrigues}^{-1}\) denotes the inverse transformation. See #Rodrigues for details.
          *
          * Also, the functions can compute the derivatives of the output vectors with regards to the input
-         * vectors (see matMulDeriv ). The functions are used inside #stereoCalibrate but can also be used in
+         * vectors (see #matMulDeriv ). The functions are used inside #stereoCalibrate but can also be used in
          * your own code where Levenberg-Marquardt or another gradient-based solver is used to optimize a
          * function that contains a matrix multiplication.
          */
@@ -1161,10 +1161,10 @@ namespace OpenCVForUnity.Calib3dModule
          * \(\begin{array}{l} \texttt{rvec3} =  \mathrm{rodrigues} ^{-1} \left ( \mathrm{rodrigues} ( \texttt{rvec2} )  \cdot \mathrm{rodrigues} ( \texttt{rvec1} ) \right )  \\ \texttt{tvec3} =  \mathrm{rodrigues} ( \texttt{rvec2} )  \cdot \texttt{tvec1} +  \texttt{tvec2} \end{array} ,\)
          *
          * where \(\mathrm{rodrigues}\) denotes a rotation vector to a rotation matrix transformation, and
-         * \(\mathrm{rodrigues}^{-1}\) denotes the inverse transformation. See Rodrigues for details.
+         * \(\mathrm{rodrigues}^{-1}\) denotes the inverse transformation. See #Rodrigues for details.
          *
          * Also, the functions can compute the derivatives of the output vectors with regards to the input
-         * vectors (see matMulDeriv ). The functions are used inside #stereoCalibrate but can also be used in
+         * vectors (see #matMulDeriv ). The functions are used inside #stereoCalibrate but can also be used in
          * your own code where Levenberg-Marquardt or another gradient-based solver is used to optimize a
          * function that contains a matrix multiplication.
          */
@@ -1210,10 +1210,10 @@ namespace OpenCVForUnity.Calib3dModule
          * \(\begin{array}{l} \texttt{rvec3} =  \mathrm{rodrigues} ^{-1} \left ( \mathrm{rodrigues} ( \texttt{rvec2} )  \cdot \mathrm{rodrigues} ( \texttt{rvec1} ) \right )  \\ \texttt{tvec3} =  \mathrm{rodrigues} ( \texttt{rvec2} )  \cdot \texttt{tvec1} +  \texttt{tvec2} \end{array} ,\)
          *
          * where \(\mathrm{rodrigues}\) denotes a rotation vector to a rotation matrix transformation, and
-         * \(\mathrm{rodrigues}^{-1}\) denotes the inverse transformation. See Rodrigues for details.
+         * \(\mathrm{rodrigues}^{-1}\) denotes the inverse transformation. See #Rodrigues for details.
          *
          * Also, the functions can compute the derivatives of the output vectors with regards to the input
-         * vectors (see matMulDeriv ). The functions are used inside #stereoCalibrate but can also be used in
+         * vectors (see #matMulDeriv ). The functions are used inside #stereoCalibrate but can also be used in
          * your own code where Levenberg-Marquardt or another gradient-based solver is used to optimize a
          * function that contains a matrix multiplication.
          */
@@ -1257,10 +1257,10 @@ namespace OpenCVForUnity.Calib3dModule
          * \(\begin{array}{l} \texttt{rvec3} =  \mathrm{rodrigues} ^{-1} \left ( \mathrm{rodrigues} ( \texttt{rvec2} )  \cdot \mathrm{rodrigues} ( \texttt{rvec1} ) \right )  \\ \texttt{tvec3} =  \mathrm{rodrigues} ( \texttt{rvec2} )  \cdot \texttt{tvec1} +  \texttt{tvec2} \end{array} ,\)
          *
          * where \(\mathrm{rodrigues}\) denotes a rotation vector to a rotation matrix transformation, and
-         * \(\mathrm{rodrigues}^{-1}\) denotes the inverse transformation. See Rodrigues for details.
+         * \(\mathrm{rodrigues}^{-1}\) denotes the inverse transformation. See #Rodrigues for details.
          *
          * Also, the functions can compute the derivatives of the output vectors with regards to the input
-         * vectors (see matMulDeriv ). The functions are used inside #stereoCalibrate but can also be used in
+         * vectors (see #matMulDeriv ). The functions are used inside #stereoCalibrate but can also be used in
          * your own code where Levenberg-Marquardt or another gradient-based solver is used to optimize a
          * function that contains a matrix multiplication.
          */
@@ -1302,10 +1302,10 @@ namespace OpenCVForUnity.Calib3dModule
          * \(\begin{array}{l} \texttt{rvec3} =  \mathrm{rodrigues} ^{-1} \left ( \mathrm{rodrigues} ( \texttt{rvec2} )  \cdot \mathrm{rodrigues} ( \texttt{rvec1} ) \right )  \\ \texttt{tvec3} =  \mathrm{rodrigues} ( \texttt{rvec2} )  \cdot \texttt{tvec1} +  \texttt{tvec2} \end{array} ,\)
          *
          * where \(\mathrm{rodrigues}\) denotes a rotation vector to a rotation matrix transformation, and
-         * \(\mathrm{rodrigues}^{-1}\) denotes the inverse transformation. See Rodrigues for details.
+         * \(\mathrm{rodrigues}^{-1}\) denotes the inverse transformation. See #Rodrigues for details.
          *
          * Also, the functions can compute the derivatives of the output vectors with regards to the input
-         * vectors (see matMulDeriv ). The functions are used inside #stereoCalibrate but can also be used in
+         * vectors (see #matMulDeriv ). The functions are used inside #stereoCalibrate but can also be used in
          * your own code where Levenberg-Marquardt or another gradient-based solver is used to optimize a
          * function that contains a matrix multiplication.
          */
@@ -1345,10 +1345,10 @@ namespace OpenCVForUnity.Calib3dModule
          * \(\begin{array}{l} \texttt{rvec3} =  \mathrm{rodrigues} ^{-1} \left ( \mathrm{rodrigues} ( \texttt{rvec2} )  \cdot \mathrm{rodrigues} ( \texttt{rvec1} ) \right )  \\ \texttt{tvec3} =  \mathrm{rodrigues} ( \texttt{rvec2} )  \cdot \texttt{tvec1} +  \texttt{tvec2} \end{array} ,\)
          *
          * where \(\mathrm{rodrigues}\) denotes a rotation vector to a rotation matrix transformation, and
-         * \(\mathrm{rodrigues}^{-1}\) denotes the inverse transformation. See Rodrigues for details.
+         * \(\mathrm{rodrigues}^{-1}\) denotes the inverse transformation. See #Rodrigues for details.
          *
          * Also, the functions can compute the derivatives of the output vectors with regards to the input
-         * vectors (see matMulDeriv ). The functions are used inside #stereoCalibrate but can also be used in
+         * vectors (see #matMulDeriv ). The functions are used inside #stereoCalibrate but can also be used in
          * your own code where Levenberg-Marquardt or another gradient-based solver is used to optimize a
          * function that contains a matrix multiplication.
          */
@@ -1386,10 +1386,10 @@ namespace OpenCVForUnity.Calib3dModule
          * \(\begin{array}{l} \texttt{rvec3} =  \mathrm{rodrigues} ^{-1} \left ( \mathrm{rodrigues} ( \texttt{rvec2} )  \cdot \mathrm{rodrigues} ( \texttt{rvec1} ) \right )  \\ \texttt{tvec3} =  \mathrm{rodrigues} ( \texttt{rvec2} )  \cdot \texttt{tvec1} +  \texttt{tvec2} \end{array} ,\)
          *
          * where \(\mathrm{rodrigues}\) denotes a rotation vector to a rotation matrix transformation, and
-         * \(\mathrm{rodrigues}^{-1}\) denotes the inverse transformation. See Rodrigues for details.
+         * \(\mathrm{rodrigues}^{-1}\) denotes the inverse transformation. See #Rodrigues for details.
          *
          * Also, the functions can compute the derivatives of the output vectors with regards to the input
-         * vectors (see matMulDeriv ). The functions are used inside #stereoCalibrate but can also be used in
+         * vectors (see #matMulDeriv ). The functions are used inside #stereoCalibrate but can also be used in
          * your own code where Levenberg-Marquardt or another gradient-based solver is used to optimize a
          * function that contains a matrix multiplication.
          */
@@ -1425,10 +1425,10 @@ namespace OpenCVForUnity.Calib3dModule
          * \(\begin{array}{l} \texttt{rvec3} =  \mathrm{rodrigues} ^{-1} \left ( \mathrm{rodrigues} ( \texttt{rvec2} )  \cdot \mathrm{rodrigues} ( \texttt{rvec1} ) \right )  \\ \texttt{tvec3} =  \mathrm{rodrigues} ( \texttt{rvec2} )  \cdot \texttt{tvec1} +  \texttt{tvec2} \end{array} ,\)
          *
          * where \(\mathrm{rodrigues}\) denotes a rotation vector to a rotation matrix transformation, and
-         * \(\mathrm{rodrigues}^{-1}\) denotes the inverse transformation. See Rodrigues for details.
+         * \(\mathrm{rodrigues}^{-1}\) denotes the inverse transformation. See #Rodrigues for details.
          *
          * Also, the functions can compute the derivatives of the output vectors with regards to the input
-         * vectors (see matMulDeriv ). The functions are used inside #stereoCalibrate but can also be used in
+         * vectors (see #matMulDeriv ). The functions are used inside #stereoCalibrate but can also be used in
          * your own code where Levenberg-Marquardt or another gradient-based solver is used to optimize a
          * function that contains a matrix multiplication.
          */
@@ -1462,10 +1462,10 @@ namespace OpenCVForUnity.Calib3dModule
          * \(\begin{array}{l} \texttt{rvec3} =  \mathrm{rodrigues} ^{-1} \left ( \mathrm{rodrigues} ( \texttt{rvec2} )  \cdot \mathrm{rodrigues} ( \texttt{rvec1} ) \right )  \\ \texttt{tvec3} =  \mathrm{rodrigues} ( \texttt{rvec2} )  \cdot \texttt{tvec1} +  \texttt{tvec2} \end{array} ,\)
          *
          * where \(\mathrm{rodrigues}\) denotes a rotation vector to a rotation matrix transformation, and
-         * \(\mathrm{rodrigues}^{-1}\) denotes the inverse transformation. See Rodrigues for details.
+         * \(\mathrm{rodrigues}^{-1}\) denotes the inverse transformation. See #Rodrigues for details.
          *
          * Also, the functions can compute the derivatives of the output vectors with regards to the input
-         * vectors (see matMulDeriv ). The functions are used inside #stereoCalibrate but can also be used in
+         * vectors (see #matMulDeriv ). The functions are used inside #stereoCalibrate but can also be used in
          * your own code where Levenberg-Marquardt or another gradient-based solver is used to optimize a
          * function that contains a matrix multiplication.
          */
@@ -3726,7 +3726,7 @@ namespace OpenCVForUnity.Calib3dModule
          * old interface all the per-view vectors are concatenated.
          * param imageSize Image size in pixels used to initialize the principal point.
          * param aspectRatio If it is zero or negative, both \(f_x\) and \(f_y\) are estimated independently.
-         * Otherwise, \(f_x = f_y * \texttt{aspectRatio}\) .
+         * Otherwise, \(f_x = f_y \cdot \texttt{aspectRatio}\) .
          *
          * The function estimates and returns an initial camera intrinsic matrix for the camera calibration process.
          * Currently, the function only supports planar calibration patterns, which are patterns where each
@@ -3754,7 +3754,7 @@ namespace OpenCVForUnity.Calib3dModule
          * param imagePoints Vector of vectors of the projections of the calibration pattern points. In the
          * old interface all the per-view vectors are concatenated.
          * param imageSize Image size in pixels used to initialize the principal point.
-         * Otherwise, \(f_x = f_y * \texttt{aspectRatio}\) .
+         * Otherwise, \(f_x = f_y \cdot \texttt{aspectRatio}\) .
          *
          * The function estimates and returns an initial camera intrinsic matrix for the camera calibration process.
          * Currently, the function only supports planar calibration patterns, which are patterns where each
@@ -3792,7 +3792,7 @@ namespace OpenCVForUnity.Calib3dModule
          * and white, rather than a fixed threshold level (computed from the average image brightness).
          *   </li>
          *   <li>
-         *    REF: CALIB_CB_NORMALIZE_IMAGE Normalize the image gamma with equalizeHist before
+         *    REF: CALIB_CB_NORMALIZE_IMAGE Normalize the image gamma with #equalizeHist before
          * applying fixed or adaptive thresholding.
          *   </li>
          *   <li>
@@ -3812,7 +3812,7 @@ namespace OpenCVForUnity.Calib3dModule
          * Otherwise, if the function fails to find all the corners or reorder them, it returns 0. For example,
          * a regular chessboard has 8 x 8 squares and 7 x 7 internal corners, that is, points where the black
          * squares touch each other. The detected coordinates are approximate, and to determine their positions
-         * more accurately, the function calls cornerSubPix. You also may use the function cornerSubPix with
+         * more accurately, the function calls #cornerSubPix. You also may use the function #cornerSubPix with
          * different parameters if returned coordinates are not accurate enough.
          *
          * Sample usage of detecting and drawing chessboard corners: :
@@ -3864,7 +3864,7 @@ namespace OpenCVForUnity.Calib3dModule
          * and white, rather than a fixed threshold level (computed from the average image brightness).
          *   </li>
          *   <li>
-         *    REF: CALIB_CB_NORMALIZE_IMAGE Normalize the image gamma with equalizeHist before
+         *    REF: CALIB_CB_NORMALIZE_IMAGE Normalize the image gamma with #equalizeHist before
          * applying fixed or adaptive thresholding.
          *   </li>
          *   <li>
@@ -3884,7 +3884,7 @@ namespace OpenCVForUnity.Calib3dModule
          * Otherwise, if the function fails to find all the corners or reorder them, it returns 0. For example,
          * a regular chessboard has 8 x 8 squares and 7 x 7 internal corners, that is, points where the black
          * squares touch each other. The detected coordinates are approximate, and to determine their positions
-         * more accurately, the function calls cornerSubPix. You also may use the function cornerSubPix with
+         * more accurately, the function calls #cornerSubPix. You also may use the function #cornerSubPix with
          * different parameters if returned coordinates are not accurate enough.
          *
          * Sample usage of detecting and drawing chessboard corners: :
@@ -5262,7 +5262,7 @@ namespace OpenCVForUnity.Calib3dModule
 
 
         //
-        // C++:  double cv::stereoCalibrate(vector_Mat objectPoints, vector_Mat imagePoints1, vector_Mat imagePoints2, Mat& cameraMatrix1, Mat& distCoeffs1, Mat& cameraMatrix2, Mat& distCoeffs2, Size imageSize, Mat& R, Mat& T, Mat& E, Mat& F, Mat& perViewErrors, int flags = CALIB_FIX_INTRINSIC, TermCriteria criteria = TermCriteria(TermCriteria::COUNT+TermCriteria::EPS, 30, 1e-6))
+        // C++:  double cv::stereoCalibrate(vector_Mat objectPoints, vector_Mat imagePoints1, vector_Mat imagePoints2, Mat& cameraMatrix1, Mat& distCoeffs1, Mat& cameraMatrix2, Mat& distCoeffs2, Size imageSize, Mat& R, Mat& T, Mat& E, Mat& F, vector_Mat& rvecs, vector_Mat& tvecs, Mat& perViewErrors, int flags = CALIB_FIX_INTRINSIC, TermCriteria criteria = TermCriteria(TermCriteria::COUNT+TermCriteria::EPS, 30, 1e-6))
         //
 
         /**
@@ -5296,6 +5296,15 @@ namespace OpenCVForUnity.Calib3dModule
          * param T Output translation vector, see description above.
          * param E Output essential matrix.
          * param F Output fundamental matrix.
+         * param rvecs Output vector of rotation vectors ( REF: Rodrigues ) estimated for each pattern view in the
+         * coordinate system of the first camera of the stereo pair (e.g. std::vector&lt;cv::Mat&gt;). More in detail, each
+         * i-th rotation vector together with the corresponding i-th translation vector (see the next output parameter
+         * description) brings the calibration pattern from the object coordinate space (in which object points are
+         * specified) to the camera coordinate space of the first camera of the stereo pair. In more technical terms,
+         * the tuple of the i-th rotation and translation vector performs a change of basis from object coordinate space
+         * to camera coordinate space of the first camera of the stereo pair.
+         * param tvecs Output vector of translation vectors estimated for each pattern view, see parameter description
+         * of previous output parameter ( rvecs ).
          * param perViewErrors Output vector of the RMS re-projection error estimated for each pattern view.
          * param flags Different flags that may be zero or a combination of the following values:
          * <ul>
@@ -5419,7 +5428,7 @@ namespace OpenCVForUnity.Calib3dModule
          * re-projection error.
          * return automatically generated
          */
-        public static double stereoCalibrateExtended(List<Mat> objectPoints, List<Mat> imagePoints1, List<Mat> imagePoints2, Mat cameraMatrix1, Mat distCoeffs1, Mat cameraMatrix2, Mat distCoeffs2, Size imageSize, Mat R, Mat T, Mat E, Mat F, Mat perViewErrors, int flags, TermCriteria criteria)
+        public static double stereoCalibrateExtended(List<Mat> objectPoints, List<Mat> imagePoints1, List<Mat> imagePoints2, Mat cameraMatrix1, Mat distCoeffs1, Mat cameraMatrix2, Mat distCoeffs2, Size imageSize, Mat R, Mat T, Mat E, Mat F, List<Mat> rvecs, List<Mat> tvecs, Mat perViewErrors, int flags, TermCriteria criteria)
         {
             if (cameraMatrix1 != null) cameraMatrix1.ThrowIfDisposed();
             if (distCoeffs1 != null) distCoeffs1.ThrowIfDisposed();
@@ -5433,9 +5442,14 @@ namespace OpenCVForUnity.Calib3dModule
             Mat objectPoints_mat = Converters.vector_Mat_to_Mat(objectPoints);
             Mat imagePoints1_mat = Converters.vector_Mat_to_Mat(imagePoints1);
             Mat imagePoints2_mat = Converters.vector_Mat_to_Mat(imagePoints2);
-            return calib3d_Calib3d_stereoCalibrateExtended_10(objectPoints_mat.nativeObj, imagePoints1_mat.nativeObj, imagePoints2_mat.nativeObj, cameraMatrix1.nativeObj, distCoeffs1.nativeObj, cameraMatrix2.nativeObj, distCoeffs2.nativeObj, imageSize.width, imageSize.height, R.nativeObj, T.nativeObj, E.nativeObj, F.nativeObj, perViewErrors.nativeObj, flags, criteria.type, criteria.maxCount, criteria.epsilon);
-
-
+            Mat rvecs_mat = new Mat();
+            Mat tvecs_mat = new Mat();
+            double retVal = calib3d_Calib3d_stereoCalibrateExtended_10(objectPoints_mat.nativeObj, imagePoints1_mat.nativeObj, imagePoints2_mat.nativeObj, cameraMatrix1.nativeObj, distCoeffs1.nativeObj, cameraMatrix2.nativeObj, distCoeffs2.nativeObj, imageSize.width, imageSize.height, R.nativeObj, T.nativeObj, E.nativeObj, F.nativeObj, rvecs_mat.nativeObj, tvecs_mat.nativeObj, perViewErrors.nativeObj, flags, criteria.type, criteria.maxCount, criteria.epsilon);
+            Converters.Mat_to_vector_Mat(rvecs_mat, rvecs);
+            rvecs_mat.release();
+            Converters.Mat_to_vector_Mat(tvecs_mat, tvecs);
+            tvecs_mat.release();
+            return retVal;
         }
 
         /**
@@ -5469,6 +5483,15 @@ namespace OpenCVForUnity.Calib3dModule
          * param T Output translation vector, see description above.
          * param E Output essential matrix.
          * param F Output fundamental matrix.
+         * param rvecs Output vector of rotation vectors ( REF: Rodrigues ) estimated for each pattern view in the
+         * coordinate system of the first camera of the stereo pair (e.g. std::vector&lt;cv::Mat&gt;). More in detail, each
+         * i-th rotation vector together with the corresponding i-th translation vector (see the next output parameter
+         * description) brings the calibration pattern from the object coordinate space (in which object points are
+         * specified) to the camera coordinate space of the first camera of the stereo pair. In more technical terms,
+         * the tuple of the i-th rotation and translation vector performs a change of basis from object coordinate space
+         * to camera coordinate space of the first camera of the stereo pair.
+         * param tvecs Output vector of translation vectors estimated for each pattern view, see parameter description
+         * of previous output parameter ( rvecs ).
          * param perViewErrors Output vector of the RMS re-projection error estimated for each pattern view.
          * param flags Different flags that may be zero or a combination of the following values:
          * <ul>
@@ -5591,7 +5614,7 @@ namespace OpenCVForUnity.Calib3dModule
          * re-projection error.
          * return automatically generated
          */
-        public static double stereoCalibrateExtended(List<Mat> objectPoints, List<Mat> imagePoints1, List<Mat> imagePoints2, Mat cameraMatrix1, Mat distCoeffs1, Mat cameraMatrix2, Mat distCoeffs2, Size imageSize, Mat R, Mat T, Mat E, Mat F, Mat perViewErrors, int flags)
+        public static double stereoCalibrateExtended(List<Mat> objectPoints, List<Mat> imagePoints1, List<Mat> imagePoints2, Mat cameraMatrix1, Mat distCoeffs1, Mat cameraMatrix2, Mat distCoeffs2, Size imageSize, Mat R, Mat T, Mat E, Mat F, List<Mat> rvecs, List<Mat> tvecs, Mat perViewErrors, int flags)
         {
             if (cameraMatrix1 != null) cameraMatrix1.ThrowIfDisposed();
             if (distCoeffs1 != null) distCoeffs1.ThrowIfDisposed();
@@ -5605,9 +5628,14 @@ namespace OpenCVForUnity.Calib3dModule
             Mat objectPoints_mat = Converters.vector_Mat_to_Mat(objectPoints);
             Mat imagePoints1_mat = Converters.vector_Mat_to_Mat(imagePoints1);
             Mat imagePoints2_mat = Converters.vector_Mat_to_Mat(imagePoints2);
-            return calib3d_Calib3d_stereoCalibrateExtended_11(objectPoints_mat.nativeObj, imagePoints1_mat.nativeObj, imagePoints2_mat.nativeObj, cameraMatrix1.nativeObj, distCoeffs1.nativeObj, cameraMatrix2.nativeObj, distCoeffs2.nativeObj, imageSize.width, imageSize.height, R.nativeObj, T.nativeObj, E.nativeObj, F.nativeObj, perViewErrors.nativeObj, flags);
-
-
+            Mat rvecs_mat = new Mat();
+            Mat tvecs_mat = new Mat();
+            double retVal = calib3d_Calib3d_stereoCalibrateExtended_11(objectPoints_mat.nativeObj, imagePoints1_mat.nativeObj, imagePoints2_mat.nativeObj, cameraMatrix1.nativeObj, distCoeffs1.nativeObj, cameraMatrix2.nativeObj, distCoeffs2.nativeObj, imageSize.width, imageSize.height, R.nativeObj, T.nativeObj, E.nativeObj, F.nativeObj, rvecs_mat.nativeObj, tvecs_mat.nativeObj, perViewErrors.nativeObj, flags);
+            Converters.Mat_to_vector_Mat(rvecs_mat, rvecs);
+            rvecs_mat.release();
+            Converters.Mat_to_vector_Mat(tvecs_mat, tvecs);
+            tvecs_mat.release();
+            return retVal;
         }
 
         /**
@@ -5641,6 +5669,15 @@ namespace OpenCVForUnity.Calib3dModule
          * param T Output translation vector, see description above.
          * param E Output essential matrix.
          * param F Output fundamental matrix.
+         * param rvecs Output vector of rotation vectors ( REF: Rodrigues ) estimated for each pattern view in the
+         * coordinate system of the first camera of the stereo pair (e.g. std::vector&lt;cv::Mat&gt;). More in detail, each
+         * i-th rotation vector together with the corresponding i-th translation vector (see the next output parameter
+         * description) brings the calibration pattern from the object coordinate space (in which object points are
+         * specified) to the camera coordinate space of the first camera of the stereo pair. In more technical terms,
+         * the tuple of the i-th rotation and translation vector performs a change of basis from object coordinate space
+         * to camera coordinate space of the first camera of the stereo pair.
+         * param tvecs Output vector of translation vectors estimated for each pattern view, see parameter description
+         * of previous output parameter ( rvecs ).
          * param perViewErrors Output vector of the RMS re-projection error estimated for each pattern view.
          * <ul>
          *   <li>
@@ -5762,7 +5799,7 @@ namespace OpenCVForUnity.Calib3dModule
          * re-projection error.
          * return automatically generated
          */
-        public static double stereoCalibrateExtended(List<Mat> objectPoints, List<Mat> imagePoints1, List<Mat> imagePoints2, Mat cameraMatrix1, Mat distCoeffs1, Mat cameraMatrix2, Mat distCoeffs2, Size imageSize, Mat R, Mat T, Mat E, Mat F, Mat perViewErrors)
+        public static double stereoCalibrateExtended(List<Mat> objectPoints, List<Mat> imagePoints1, List<Mat> imagePoints2, Mat cameraMatrix1, Mat distCoeffs1, Mat cameraMatrix2, Mat distCoeffs2, Size imageSize, Mat R, Mat T, Mat E, Mat F, List<Mat> rvecs, List<Mat> tvecs, Mat perViewErrors)
         {
             if (cameraMatrix1 != null) cameraMatrix1.ThrowIfDisposed();
             if (distCoeffs1 != null) distCoeffs1.ThrowIfDisposed();
@@ -5776,9 +5813,14 @@ namespace OpenCVForUnity.Calib3dModule
             Mat objectPoints_mat = Converters.vector_Mat_to_Mat(objectPoints);
             Mat imagePoints1_mat = Converters.vector_Mat_to_Mat(imagePoints1);
             Mat imagePoints2_mat = Converters.vector_Mat_to_Mat(imagePoints2);
-            return calib3d_Calib3d_stereoCalibrateExtended_12(objectPoints_mat.nativeObj, imagePoints1_mat.nativeObj, imagePoints2_mat.nativeObj, cameraMatrix1.nativeObj, distCoeffs1.nativeObj, cameraMatrix2.nativeObj, distCoeffs2.nativeObj, imageSize.width, imageSize.height, R.nativeObj, T.nativeObj, E.nativeObj, F.nativeObj, perViewErrors.nativeObj);
-
-
+            Mat rvecs_mat = new Mat();
+            Mat tvecs_mat = new Mat();
+            double retVal = calib3d_Calib3d_stereoCalibrateExtended_12(objectPoints_mat.nativeObj, imagePoints1_mat.nativeObj, imagePoints2_mat.nativeObj, cameraMatrix1.nativeObj, distCoeffs1.nativeObj, cameraMatrix2.nativeObj, distCoeffs2.nativeObj, imageSize.width, imageSize.height, R.nativeObj, T.nativeObj, E.nativeObj, F.nativeObj, rvecs_mat.nativeObj, tvecs_mat.nativeObj, perViewErrors.nativeObj);
+            Converters.Mat_to_vector_Mat(rvecs_mat, rvecs);
+            rvecs_mat.release();
+            Converters.Mat_to_vector_Mat(tvecs_mat, tvecs);
+            tvecs_mat.release();
+            return retVal;
         }
 
 
@@ -5836,6 +5878,68 @@ namespace OpenCVForUnity.Calib3dModule
             Mat imagePoints1_mat = Converters.vector_Mat_to_Mat(imagePoints1);
             Mat imagePoints2_mat = Converters.vector_Mat_to_Mat(imagePoints2);
             return calib3d_Calib3d_stereoCalibrate_12(objectPoints_mat.nativeObj, imagePoints1_mat.nativeObj, imagePoints2_mat.nativeObj, cameraMatrix1.nativeObj, distCoeffs1.nativeObj, cameraMatrix2.nativeObj, distCoeffs2.nativeObj, imageSize.width, imageSize.height, R.nativeObj, T.nativeObj, E.nativeObj, F.nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  double cv::stereoCalibrate(vector_Mat objectPoints, vector_Mat imagePoints1, vector_Mat imagePoints2, Mat& cameraMatrix1, Mat& distCoeffs1, Mat& cameraMatrix2, Mat& distCoeffs2, Size imageSize, Mat& R, Mat& T, Mat& E, Mat& F, Mat& perViewErrors, int flags = CALIB_FIX_INTRINSIC, TermCriteria criteria = TermCriteria(TermCriteria::COUNT+TermCriteria::EPS, 30, 1e-6))
+        //
+
+        public static double stereoCalibrate(List<Mat> objectPoints, List<Mat> imagePoints1, List<Mat> imagePoints2, Mat cameraMatrix1, Mat distCoeffs1, Mat cameraMatrix2, Mat distCoeffs2, Size imageSize, Mat R, Mat T, Mat E, Mat F, Mat perViewErrors, int flags, TermCriteria criteria)
+        {
+            if (cameraMatrix1 != null) cameraMatrix1.ThrowIfDisposed();
+            if (distCoeffs1 != null) distCoeffs1.ThrowIfDisposed();
+            if (cameraMatrix2 != null) cameraMatrix2.ThrowIfDisposed();
+            if (distCoeffs2 != null) distCoeffs2.ThrowIfDisposed();
+            if (R != null) R.ThrowIfDisposed();
+            if (T != null) T.ThrowIfDisposed();
+            if (E != null) E.ThrowIfDisposed();
+            if (F != null) F.ThrowIfDisposed();
+            if (perViewErrors != null) perViewErrors.ThrowIfDisposed();
+            Mat objectPoints_mat = Converters.vector_Mat_to_Mat(objectPoints);
+            Mat imagePoints1_mat = Converters.vector_Mat_to_Mat(imagePoints1);
+            Mat imagePoints2_mat = Converters.vector_Mat_to_Mat(imagePoints2);
+            return calib3d_Calib3d_stereoCalibrate_13(objectPoints_mat.nativeObj, imagePoints1_mat.nativeObj, imagePoints2_mat.nativeObj, cameraMatrix1.nativeObj, distCoeffs1.nativeObj, cameraMatrix2.nativeObj, distCoeffs2.nativeObj, imageSize.width, imageSize.height, R.nativeObj, T.nativeObj, E.nativeObj, F.nativeObj, perViewErrors.nativeObj, flags, criteria.type, criteria.maxCount, criteria.epsilon);
+
+
+        }
+
+        public static double stereoCalibrate(List<Mat> objectPoints, List<Mat> imagePoints1, List<Mat> imagePoints2, Mat cameraMatrix1, Mat distCoeffs1, Mat cameraMatrix2, Mat distCoeffs2, Size imageSize, Mat R, Mat T, Mat E, Mat F, Mat perViewErrors, int flags)
+        {
+            if (cameraMatrix1 != null) cameraMatrix1.ThrowIfDisposed();
+            if (distCoeffs1 != null) distCoeffs1.ThrowIfDisposed();
+            if (cameraMatrix2 != null) cameraMatrix2.ThrowIfDisposed();
+            if (distCoeffs2 != null) distCoeffs2.ThrowIfDisposed();
+            if (R != null) R.ThrowIfDisposed();
+            if (T != null) T.ThrowIfDisposed();
+            if (E != null) E.ThrowIfDisposed();
+            if (F != null) F.ThrowIfDisposed();
+            if (perViewErrors != null) perViewErrors.ThrowIfDisposed();
+            Mat objectPoints_mat = Converters.vector_Mat_to_Mat(objectPoints);
+            Mat imagePoints1_mat = Converters.vector_Mat_to_Mat(imagePoints1);
+            Mat imagePoints2_mat = Converters.vector_Mat_to_Mat(imagePoints2);
+            return calib3d_Calib3d_stereoCalibrate_14(objectPoints_mat.nativeObj, imagePoints1_mat.nativeObj, imagePoints2_mat.nativeObj, cameraMatrix1.nativeObj, distCoeffs1.nativeObj, cameraMatrix2.nativeObj, distCoeffs2.nativeObj, imageSize.width, imageSize.height, R.nativeObj, T.nativeObj, E.nativeObj, F.nativeObj, perViewErrors.nativeObj, flags);
+
+
+        }
+
+        public static double stereoCalibrate(List<Mat> objectPoints, List<Mat> imagePoints1, List<Mat> imagePoints2, Mat cameraMatrix1, Mat distCoeffs1, Mat cameraMatrix2, Mat distCoeffs2, Size imageSize, Mat R, Mat T, Mat E, Mat F, Mat perViewErrors)
+        {
+            if (cameraMatrix1 != null) cameraMatrix1.ThrowIfDisposed();
+            if (distCoeffs1 != null) distCoeffs1.ThrowIfDisposed();
+            if (cameraMatrix2 != null) cameraMatrix2.ThrowIfDisposed();
+            if (distCoeffs2 != null) distCoeffs2.ThrowIfDisposed();
+            if (R != null) R.ThrowIfDisposed();
+            if (T != null) T.ThrowIfDisposed();
+            if (E != null) E.ThrowIfDisposed();
+            if (F != null) F.ThrowIfDisposed();
+            if (perViewErrors != null) perViewErrors.ThrowIfDisposed();
+            Mat objectPoints_mat = Converters.vector_Mat_to_Mat(objectPoints);
+            Mat imagePoints1_mat = Converters.vector_Mat_to_Mat(imagePoints1);
+            Mat imagePoints2_mat = Converters.vector_Mat_to_Mat(imagePoints2);
+            return calib3d_Calib3d_stereoCalibrate_15(objectPoints_mat.nativeObj, imagePoints1_mat.nativeObj, imagePoints2_mat.nativeObj, cameraMatrix1.nativeObj, distCoeffs1.nativeObj, cameraMatrix2.nativeObj, distCoeffs2.nativeObj, imageSize.width, imageSize.height, R.nativeObj, T.nativeObj, E.nativeObj, F.nativeObj, perViewErrors.nativeObj);
 
 
         }
@@ -5917,10 +6021,17 @@ namespace OpenCVForUnity.Calib3dModule
          *                      \end{bmatrix}\)
          *
          *     \(\texttt{P2} = \begin{bmatrix}
-         *                         f &amp; 0 &amp; cx_2 &amp; T_x*f \\
+         *                         f &amp; 0 &amp; cx_2 &amp; T_x \cdot f \\
          *                         0 &amp; f &amp; cy &amp; 0 \\
          *                         0 &amp; 0 &amp; 1 &amp; 0
          *                      \end{bmatrix} ,\)
+         *
+         *     \(\texttt{Q} = \begin{bmatrix}
+         *                         1 &amp; 0 &amp; 0 &amp; -cx_1 \\
+         *                         0 &amp; 1 &amp; 0 &amp; -cy \\
+         *                         0 &amp; 0 &amp; 0 &amp; f \\
+         *                         0 &amp; 0 &amp; -\frac{1}{T_x} &amp; \frac{cx_1 - cx_2}{T_x}
+         *                     \end{bmatrix} \)
          *
          *     where \(T_x\) is a horizontal shift between the cameras and \(cx_1=cx_2\) if
          *     REF: CALIB_ZERO_DISPARITY is set.
@@ -5941,9 +6052,16 @@ namespace OpenCVForUnity.Calib3dModule
          *
          *     \(\texttt{P2} = \begin{bmatrix}
          *                         f &amp; 0 &amp; cx &amp; 0 \\
-         *                         0 &amp; f &amp; cy_2 &amp; T_y*f \\
+         *                         0 &amp; f &amp; cy_2 &amp; T_y \cdot f \\
          *                         0 &amp; 0 &amp; 1 &amp; 0
          *                      \end{bmatrix},\)
+         *
+         *     \(\texttt{Q} = \begin{bmatrix}
+         *                         1 &amp; 0 &amp; 0 &amp; -cx \\
+         *                         0 &amp; 1 &amp; 0 &amp; -cy_1 \\
+         *                         0 &amp; 0 &amp; 0 &amp; f \\
+         *                         0 &amp; 0 &amp; -\frac{1}{T_y} &amp; \frac{cy_1 - cy_2}{T_y}
+         *                     \end{bmatrix} \)
          *
          *     where \(T_y\) is a vertical shift between the cameras and \(cy_1=cy_2\) if
          *     REF: CALIB_ZERO_DISPARITY is set.
@@ -6051,10 +6169,17 @@ namespace OpenCVForUnity.Calib3dModule
          *                      \end{bmatrix}\)
          *
          *     \(\texttt{P2} = \begin{bmatrix}
-         *                         f &amp; 0 &amp; cx_2 &amp; T_x*f \\
+         *                         f &amp; 0 &amp; cx_2 &amp; T_x \cdot f \\
          *                         0 &amp; f &amp; cy &amp; 0 \\
          *                         0 &amp; 0 &amp; 1 &amp; 0
          *                      \end{bmatrix} ,\)
+         *
+         *     \(\texttt{Q} = \begin{bmatrix}
+         *                         1 &amp; 0 &amp; 0 &amp; -cx_1 \\
+         *                         0 &amp; 1 &amp; 0 &amp; -cy \\
+         *                         0 &amp; 0 &amp; 0 &amp; f \\
+         *                         0 &amp; 0 &amp; -\frac{1}{T_x} &amp; \frac{cx_1 - cx_2}{T_x}
+         *                     \end{bmatrix} \)
          *
          *     where \(T_x\) is a horizontal shift between the cameras and \(cx_1=cx_2\) if
          *     REF: CALIB_ZERO_DISPARITY is set.
@@ -6075,9 +6200,16 @@ namespace OpenCVForUnity.Calib3dModule
          *
          *     \(\texttt{P2} = \begin{bmatrix}
          *                         f &amp; 0 &amp; cx &amp; 0 \\
-         *                         0 &amp; f &amp; cy_2 &amp; T_y*f \\
+         *                         0 &amp; f &amp; cy_2 &amp; T_y \cdot f \\
          *                         0 &amp; 0 &amp; 1 &amp; 0
          *                      \end{bmatrix},\)
+         *
+         *     \(\texttt{Q} = \begin{bmatrix}
+         *                         1 &amp; 0 &amp; 0 &amp; -cx \\
+         *                         0 &amp; 1 &amp; 0 &amp; -cy_1 \\
+         *                         0 &amp; 0 &amp; 0 &amp; f \\
+         *                         0 &amp; 0 &amp; -\frac{1}{T_y} &amp; \frac{cy_1 - cy_2}{T_y}
+         *                     \end{bmatrix} \)
          *
          *     where \(T_y\) is a vertical shift between the cameras and \(cy_1=cy_2\) if
          *     REF: CALIB_ZERO_DISPARITY is set.
@@ -6182,10 +6314,17 @@ namespace OpenCVForUnity.Calib3dModule
          *                      \end{bmatrix}\)
          *
          *     \(\texttt{P2} = \begin{bmatrix}
-         *                         f &amp; 0 &amp; cx_2 &amp; T_x*f \\
+         *                         f &amp; 0 &amp; cx_2 &amp; T_x \cdot f \\
          *                         0 &amp; f &amp; cy &amp; 0 \\
          *                         0 &amp; 0 &amp; 1 &amp; 0
          *                      \end{bmatrix} ,\)
+         *
+         *     \(\texttt{Q} = \begin{bmatrix}
+         *                         1 &amp; 0 &amp; 0 &amp; -cx_1 \\
+         *                         0 &amp; 1 &amp; 0 &amp; -cy \\
+         *                         0 &amp; 0 &amp; 0 &amp; f \\
+         *                         0 &amp; 0 &amp; -\frac{1}{T_x} &amp; \frac{cx_1 - cx_2}{T_x}
+         *                     \end{bmatrix} \)
          *
          *     where \(T_x\) is a horizontal shift between the cameras and \(cx_1=cx_2\) if
          *     REF: CALIB_ZERO_DISPARITY is set.
@@ -6206,9 +6345,16 @@ namespace OpenCVForUnity.Calib3dModule
          *
          *     \(\texttt{P2} = \begin{bmatrix}
          *                         f &amp; 0 &amp; cx &amp; 0 \\
-         *                         0 &amp; f &amp; cy_2 &amp; T_y*f \\
+         *                         0 &amp; f &amp; cy_2 &amp; T_y \cdot f \\
          *                         0 &amp; 0 &amp; 1 &amp; 0
          *                      \end{bmatrix},\)
+         *
+         *     \(\texttt{Q} = \begin{bmatrix}
+         *                         1 &amp; 0 &amp; 0 &amp; -cx \\
+         *                         0 &amp; 1 &amp; 0 &amp; -cy_1 \\
+         *                         0 &amp; 0 &amp; 0 &amp; f \\
+         *                         0 &amp; 0 &amp; -\frac{1}{T_y} &amp; \frac{cy_1 - cy_2}{T_y}
+         *                     \end{bmatrix} \)
          *
          *     where \(T_y\) is a vertical shift between the cameras and \(cy_1=cy_2\) if
          *     REF: CALIB_ZERO_DISPARITY is set.
@@ -6312,10 +6458,17 @@ namespace OpenCVForUnity.Calib3dModule
          *                      \end{bmatrix}\)
          *
          *     \(\texttt{P2} = \begin{bmatrix}
-         *                         f &amp; 0 &amp; cx_2 &amp; T_x*f \\
+         *                         f &amp; 0 &amp; cx_2 &amp; T_x \cdot f \\
          *                         0 &amp; f &amp; cy &amp; 0 \\
          *                         0 &amp; 0 &amp; 1 &amp; 0
          *                      \end{bmatrix} ,\)
+         *
+         *     \(\texttt{Q} = \begin{bmatrix}
+         *                         1 &amp; 0 &amp; 0 &amp; -cx_1 \\
+         *                         0 &amp; 1 &amp; 0 &amp; -cy \\
+         *                         0 &amp; 0 &amp; 0 &amp; f \\
+         *                         0 &amp; 0 &amp; -\frac{1}{T_x} &amp; \frac{cx_1 - cx_2}{T_x}
+         *                     \end{bmatrix} \)
          *
          *     where \(T_x\) is a horizontal shift between the cameras and \(cx_1=cx_2\) if
          *     REF: CALIB_ZERO_DISPARITY is set.
@@ -6336,9 +6489,16 @@ namespace OpenCVForUnity.Calib3dModule
          *
          *     \(\texttt{P2} = \begin{bmatrix}
          *                         f &amp; 0 &amp; cx &amp; 0 \\
-         *                         0 &amp; f &amp; cy_2 &amp; T_y*f \\
+         *                         0 &amp; f &amp; cy_2 &amp; T_y \cdot f \\
          *                         0 &amp; 0 &amp; 1 &amp; 0
          *                      \end{bmatrix},\)
+         *
+         *     \(\texttt{Q} = \begin{bmatrix}
+         *                         1 &amp; 0 &amp; 0 &amp; -cx \\
+         *                         0 &amp; 1 &amp; 0 &amp; -cy_1 \\
+         *                         0 &amp; 0 &amp; 0 &amp; f \\
+         *                         0 &amp; 0 &amp; -\frac{1}{T_y} &amp; \frac{cy_1 - cy_2}{T_y}
+         *                     \end{bmatrix} \)
          *
          *     where \(T_y\) is a vertical shift between the cameras and \(cy_1=cy_2\) if
          *     REF: CALIB_ZERO_DISPARITY is set.
@@ -6441,10 +6601,17 @@ namespace OpenCVForUnity.Calib3dModule
          *                      \end{bmatrix}\)
          *
          *     \(\texttt{P2} = \begin{bmatrix}
-         *                         f &amp; 0 &amp; cx_2 &amp; T_x*f \\
+         *                         f &amp; 0 &amp; cx_2 &amp; T_x \cdot f \\
          *                         0 &amp; f &amp; cy &amp; 0 \\
          *                         0 &amp; 0 &amp; 1 &amp; 0
          *                      \end{bmatrix} ,\)
+         *
+         *     \(\texttt{Q} = \begin{bmatrix}
+         *                         1 &amp; 0 &amp; 0 &amp; -cx_1 \\
+         *                         0 &amp; 1 &amp; 0 &amp; -cy \\
+         *                         0 &amp; 0 &amp; 0 &amp; f \\
+         *                         0 &amp; 0 &amp; -\frac{1}{T_x} &amp; \frac{cx_1 - cx_2}{T_x}
+         *                     \end{bmatrix} \)
          *
          *     where \(T_x\) is a horizontal shift between the cameras and \(cx_1=cx_2\) if
          *     REF: CALIB_ZERO_DISPARITY is set.
@@ -6465,9 +6632,16 @@ namespace OpenCVForUnity.Calib3dModule
          *
          *     \(\texttt{P2} = \begin{bmatrix}
          *                         f &amp; 0 &amp; cx &amp; 0 \\
-         *                         0 &amp; f &amp; cy_2 &amp; T_y*f \\
+         *                         0 &amp; f &amp; cy_2 &amp; T_y \cdot f \\
          *                         0 &amp; 0 &amp; 1 &amp; 0
          *                      \end{bmatrix},\)
+         *
+         *     \(\texttt{Q} = \begin{bmatrix}
+         *                         1 &amp; 0 &amp; 0 &amp; -cx \\
+         *                         0 &amp; 1 &amp; 0 &amp; -cy_1 \\
+         *                         0 &amp; 0 &amp; 0 &amp; f \\
+         *                         0 &amp; 0 &amp; -\frac{1}{T_y} &amp; \frac{cy_1 - cy_2}{T_y}
+         *                     \end{bmatrix} \)
          *
          *     where \(T_y\) is a vertical shift between the cameras and \(cy_1=cy_2\) if
          *     REF: CALIB_ZERO_DISPARITY is set.
@@ -6569,10 +6743,17 @@ namespace OpenCVForUnity.Calib3dModule
          *                      \end{bmatrix}\)
          *
          *     \(\texttt{P2} = \begin{bmatrix}
-         *                         f &amp; 0 &amp; cx_2 &amp; T_x*f \\
+         *                         f &amp; 0 &amp; cx_2 &amp; T_x \cdot f \\
          *                         0 &amp; f &amp; cy &amp; 0 \\
          *                         0 &amp; 0 &amp; 1 &amp; 0
          *                      \end{bmatrix} ,\)
+         *
+         *     \(\texttt{Q} = \begin{bmatrix}
+         *                         1 &amp; 0 &amp; 0 &amp; -cx_1 \\
+         *                         0 &amp; 1 &amp; 0 &amp; -cy \\
+         *                         0 &amp; 0 &amp; 0 &amp; f \\
+         *                         0 &amp; 0 &amp; -\frac{1}{T_x} &amp; \frac{cx_1 - cx_2}{T_x}
+         *                     \end{bmatrix} \)
          *
          *     where \(T_x\) is a horizontal shift between the cameras and \(cx_1=cx_2\) if
          *     REF: CALIB_ZERO_DISPARITY is set.
@@ -6593,9 +6774,16 @@ namespace OpenCVForUnity.Calib3dModule
          *
          *     \(\texttt{P2} = \begin{bmatrix}
          *                         f &amp; 0 &amp; cx &amp; 0 \\
-         *                         0 &amp; f &amp; cy_2 &amp; T_y*f \\
+         *                         0 &amp; f &amp; cy_2 &amp; T_y \cdot f \\
          *                         0 &amp; 0 &amp; 1 &amp; 0
          *                      \end{bmatrix},\)
+         *
+         *     \(\texttt{Q} = \begin{bmatrix}
+         *                         1 &amp; 0 &amp; 0 &amp; -cx \\
+         *                         0 &amp; 1 &amp; 0 &amp; -cy_1 \\
+         *                         0 &amp; 0 &amp; 0 &amp; f \\
+         *                         0 &amp; 0 &amp; -\frac{1}{T_y} &amp; \frac{cy_1 - cy_2}{T_y}
+         *                     \end{bmatrix} \)
          *
          *     where \(T_y\) is a vertical shift between the cameras and \(cy_1=cy_2\) if
          *     REF: CALIB_ZERO_DISPARITY is set.
@@ -6648,8 +6836,8 @@ namespace OpenCVForUnity.Calib3dModule
          * param H2 Output rectification homography matrix for the second image.
          * param threshold Optional threshold used to filter out the outliers. If the parameter is greater
          * than zero, all the point pairs that do not comply with the epipolar geometry (that is, the points
-         * for which \(|\texttt{points2[i]}^T*\texttt{F}*\texttt{points1[i]}|&gt;\texttt{threshold}\) ) are
-         * rejected prior to computing the homographies. Otherwise, all the points are considered inliers.
+         * for which \(|\texttt{points2[i]}^T \cdot \texttt{F} \cdot \texttt{points1[i]}|&gt;\texttt{threshold}\) )
+         * are rejected prior to computing the homographies. Otherwise, all the points are considered inliers.
          *
          * The function computes the rectification transformations without knowing intrinsic parameters of the
          * cameras and their relative position in the space, which explains the suffix "uncalibrated". Another
@@ -6691,8 +6879,8 @@ namespace OpenCVForUnity.Calib3dModule
          * param H1 Output rectification homography matrix for the first image.
          * param H2 Output rectification homography matrix for the second image.
          * than zero, all the point pairs that do not comply with the epipolar geometry (that is, the points
-         * for which \(|\texttt{points2[i]}^T*\texttt{F}*\texttt{points1[i]}|&gt;\texttt{threshold}\) ) are
-         * rejected prior to computing the homographies. Otherwise, all the points are considered inliers.
+         * for which \(|\texttt{points2[i]}^T \cdot \texttt{F} \cdot \texttt{points1[i]}|&gt;\texttt{threshold}\) )
+         * are rejected prior to computing the homographies. Otherwise, all the points are considered inliers.
          *
          * The function computes the rectification transformations without knowing intrinsic parameters of the
          * cameras and their relative position in the space, which explains the suffix "uncalibrated". Another
@@ -7751,7 +7939,7 @@ namespace OpenCVForUnity.Calib3dModule
          * algorithm, the function may return up to 3 solutions ( \(9 \times 3\) matrix that stores all 3
          * matrices sequentially).
          *
-         * The calculated fundamental matrix may be passed further to computeCorrespondEpilines that finds the
+         * The calculated fundamental matrix may be passed further to #computeCorrespondEpilines that finds the
          * epipolar lines corresponding to the specified points. It can also be passed to
          * #stereoRectifyUncalibrated to compute the rectification transformation. :
          * <code>
@@ -7825,7 +8013,7 @@ namespace OpenCVForUnity.Calib3dModule
          * algorithm, the function may return up to 3 solutions ( \(9 \times 3\) matrix that stores all 3
          * matrices sequentially).
          *
-         * The calculated fundamental matrix may be passed further to computeCorrespondEpilines that finds the
+         * The calculated fundamental matrix may be passed further to #computeCorrespondEpilines that finds the
          * epipolar lines corresponding to the specified points. It can also be passed to
          * #stereoRectifyUncalibrated to compute the rectification transformation. :
          * <code>
@@ -7979,7 +8167,7 @@ namespace OpenCVForUnity.Calib3dModule
          *
          * where \(E\) is an essential matrix, \(p_1\) and \(p_2\) are corresponding points in the first and the
          * second images, respectively. The result of this function may be passed further to
-         * #decomposeEssentialMat or  #recoverPose to recover the relative pose between cameras.
+         * #decomposeEssentialMat or #recoverPose to recover the relative pose between cameras.
          * return automatically generated
          */
         public static Mat findEssentialMat(Mat points1, Mat points2, Mat cameraMatrix, int method, double prob, double threshold, int maxIters, Mat mask)
@@ -8031,7 +8219,7 @@ namespace OpenCVForUnity.Calib3dModule
          *
          * where \(E\) is an essential matrix, \(p_1\) and \(p_2\) are corresponding points in the first and the
          * second images, respectively. The result of this function may be passed further to
-         * #decomposeEssentialMat or  #recoverPose to recover the relative pose between cameras.
+         * #decomposeEssentialMat or #recoverPose to recover the relative pose between cameras.
          * return automatically generated
          */
         public static Mat findEssentialMat(Mat points1, Mat points2, Mat cameraMatrix, int method, double prob, double threshold, int maxIters)
@@ -8081,7 +8269,7 @@ namespace OpenCVForUnity.Calib3dModule
          *
          * where \(E\) is an essential matrix, \(p_1\) and \(p_2\) are corresponding points in the first and the
          * second images, respectively. The result of this function may be passed further to
-         * #decomposeEssentialMat or  #recoverPose to recover the relative pose between cameras.
+         * #decomposeEssentialMat or #recoverPose to recover the relative pose between cameras.
          * return automatically generated
          */
         public static Mat findEssentialMat(Mat points1, Mat points2, Mat cameraMatrix, int method, double prob, double threshold)
@@ -8130,7 +8318,7 @@ namespace OpenCVForUnity.Calib3dModule
          *
          * where \(E\) is an essential matrix, \(p_1\) and \(p_2\) are corresponding points in the first and the
          * second images, respectively. The result of this function may be passed further to
-         * #decomposeEssentialMat or  #recoverPose to recover the relative pose between cameras.
+         * #decomposeEssentialMat or #recoverPose to recover the relative pose between cameras.
          * return automatically generated
          */
         public static Mat findEssentialMat(Mat points1, Mat points2, Mat cameraMatrix, int method, double prob)
@@ -8178,7 +8366,7 @@ namespace OpenCVForUnity.Calib3dModule
          *
          * where \(E\) is an essential matrix, \(p_1\) and \(p_2\) are corresponding points in the first and the
          * second images, respectively. The result of this function may be passed further to
-         * #decomposeEssentialMat or  #recoverPose to recover the relative pose between cameras.
+         * #decomposeEssentialMat or #recoverPose to recover the relative pose between cameras.
          * return automatically generated
          */
         public static Mat findEssentialMat(Mat points1, Mat points2, Mat cameraMatrix, int method)
@@ -8225,7 +8413,7 @@ namespace OpenCVForUnity.Calib3dModule
          *
          * where \(E\) is an essential matrix, \(p_1\) and \(p_2\) are corresponding points in the first and the
          * second images, respectively. The result of this function may be passed further to
-         * #decomposeEssentialMat or  #recoverPose to recover the relative pose between cameras.
+         * #decomposeEssentialMat or #recoverPose to recover the relative pose between cameras.
          * return automatically generated
          */
         public static Mat findEssentialMat(Mat points1, Mat points2, Mat cameraMatrix)
@@ -9427,7 +9615,7 @@ namespace OpenCVForUnity.Calib3dModule
 
         /**
          * Recovers the relative camera rotation and the translation from an estimated essential
-         * matrix and the corresponding points in two images, using cheirality check. Returns the number of
+         * matrix and the corresponding points in two images, using chirality check. Returns the number of
          * inliers that pass the check.
          *
          * param E The input essential matrix.
@@ -9445,11 +9633,11 @@ namespace OpenCVForUnity.Calib3dModule
          * therefore is only known up to scale, i.e. t is the direction of the translation vector and has unit
          * length.
          * param mask Input/output mask for inliers in points1 and points2. If it is not empty, then it marks
-         * inliers in points1 and points2 for then given essential matrix E. Only these inliers will be used to
-         * recover pose. In the output mask only inliers which pass the cheirality check.
+         * inliers in points1 and points2 for the given essential matrix E. Only these inliers will be used to
+         * recover pose. In the output mask only inliers which pass the chirality check.
          *
          * This function decomposes an essential matrix using REF: decomposeEssentialMat and then verifies
-         * possible pose hypotheses by doing cheirality check. The cheirality check means that the
+         * possible pose hypotheses by doing chirality check. The chirality check means that the
          * triangulated 3D points should have positive depth. Some details can be found in CITE: Nister03.
          *
          * This function can be used to process the output E and mask from REF: findEssentialMat. In this
@@ -9494,7 +9682,7 @@ namespace OpenCVForUnity.Calib3dModule
 
         /**
          * Recovers the relative camera rotation and the translation from an estimated essential
-         * matrix and the corresponding points in two images, using cheirality check. Returns the number of
+         * matrix and the corresponding points in two images, using chirality check. Returns the number of
          * inliers that pass the check.
          *
          * param E The input essential matrix.
@@ -9511,11 +9699,11 @@ namespace OpenCVForUnity.Calib3dModule
          * param t Output translation vector. This vector is obtained by REF: decomposeEssentialMat and
          * therefore is only known up to scale, i.e. t is the direction of the translation vector and has unit
          * length.
-         * inliers in points1 and points2 for then given essential matrix E. Only these inliers will be used to
-         * recover pose. In the output mask only inliers which pass the cheirality check.
+         * inliers in points1 and points2 for the given essential matrix E. Only these inliers will be used to
+         * recover pose. In the output mask only inliers which pass the chirality check.
          *
          * This function decomposes an essential matrix using REF: decomposeEssentialMat and then verifies
-         * possible pose hypotheses by doing cheirality check. The cheirality check means that the
+         * possible pose hypotheses by doing chirality check. The chirality check means that the
          * triangulated 3D points should have positive depth. Some details can be found in CITE: Nister03.
          *
          * This function can be used to process the output E and mask from REF: findEssentialMat. In this
@@ -9579,8 +9767,8 @@ namespace OpenCVForUnity.Calib3dModule
          * are feature points from cameras with same focal length and principal point.
          * param pp principal point of the camera.
          * param mask Input/output mask for inliers in points1 and points2. If it is not empty, then it marks
-         * inliers in points1 and points2 for then given essential matrix E. Only these inliers will be used to
-         * recover pose. In the output mask only inliers which pass the cheirality check.
+         * inliers in points1 and points2 for the given essential matrix E. Only these inliers will be used to
+         * recover pose. In the output mask only inliers which pass the chirality check.
          *
          * This function differs from the one above that it computes camera intrinsic matrix from focal length and
          * principal point:
@@ -9623,8 +9811,8 @@ namespace OpenCVForUnity.Calib3dModule
          * param focal Focal length of the camera. Note that this function assumes that points1 and points2
          * are feature points from cameras with same focal length and principal point.
          * param pp principal point of the camera.
-         * inliers in points1 and points2 for then given essential matrix E. Only these inliers will be used to
-         * recover pose. In the output mask only inliers which pass the cheirality check.
+         * inliers in points1 and points2 for the given essential matrix E. Only these inliers will be used to
+         * recover pose. In the output mask only inliers which pass the chirality check.
          *
          * This function differs from the one above that it computes camera intrinsic matrix from focal length and
          * principal point:
@@ -9665,8 +9853,8 @@ namespace OpenCVForUnity.Calib3dModule
          * length.
          * param focal Focal length of the camera. Note that this function assumes that points1 and points2
          * are feature points from cameras with same focal length and principal point.
-         * inliers in points1 and points2 for then given essential matrix E. Only these inliers will be used to
-         * recover pose. In the output mask only inliers which pass the cheirality check.
+         * inliers in points1 and points2 for the given essential matrix E. Only these inliers will be used to
+         * recover pose. In the output mask only inliers which pass the chirality check.
          *
          * This function differs from the one above that it computes camera intrinsic matrix from focal length and
          * principal point:
@@ -9706,8 +9894,8 @@ namespace OpenCVForUnity.Calib3dModule
          * therefore is only known up to scale, i.e. t is the direction of the translation vector and has unit
          * length.
          * are feature points from cameras with same focal length and principal point.
-         * inliers in points1 and points2 for then given essential matrix E. Only these inliers will be used to
-         * recover pose. In the output mask only inliers which pass the cheirality check.
+         * inliers in points1 and points2 for the given essential matrix E. Only these inliers will be used to
+         * recover pose. In the output mask only inliers which pass the chirality check.
          *
          * This function differs from the one above that it computes camera intrinsic matrix from focal length and
          * principal point:
@@ -9757,12 +9945,12 @@ namespace OpenCVForUnity.Calib3dModule
          * param distanceThresh threshold distance which is used to filter out far away points (i.e. infinite
          * points).
          * param mask Input/output mask for inliers in points1 and points2. If it is not empty, then it marks
-         * inliers in points1 and points2 for then given essential matrix E. Only these inliers will be used to
-         * recover pose. In the output mask only inliers which pass the cheirality check.
+         * inliers in points1 and points2 for the given essential matrix E. Only these inliers will be used to
+         * recover pose. In the output mask only inliers which pass the chirality check.
          * param triangulatedPoints 3D points which were reconstructed by triangulation.
          *
          * This function differs from the one above that it outputs the triangulated 3D point that are used for
-         * the cheirality check.
+         * the chirality check.
          * return automatically generated
          */
         public static int recoverPose(Mat E, Mat points1, Mat points2, Mat cameraMatrix, Mat R, Mat t, double distanceThresh, Mat mask, Mat triangulatedPoints)
@@ -9800,11 +9988,11 @@ namespace OpenCVForUnity.Calib3dModule
          * param distanceThresh threshold distance which is used to filter out far away points (i.e. infinite
          * points).
          * param mask Input/output mask for inliers in points1 and points2. If it is not empty, then it marks
-         * inliers in points1 and points2 for then given essential matrix E. Only these inliers will be used to
-         * recover pose. In the output mask only inliers which pass the cheirality check.
+         * inliers in points1 and points2 for the given essential matrix E. Only these inliers will be used to
+         * recover pose. In the output mask only inliers which pass the chirality check.
          *
          * This function differs from the one above that it outputs the triangulated 3D point that are used for
-         * the cheirality check.
+         * the chirality check.
          * return automatically generated
          */
         public static int recoverPose(Mat E, Mat points1, Mat points2, Mat cameraMatrix, Mat R, Mat t, double distanceThresh, Mat mask)
@@ -9840,11 +10028,11 @@ namespace OpenCVForUnity.Calib3dModule
          * length.
          * param distanceThresh threshold distance which is used to filter out far away points (i.e. infinite
          * points).
-         * inliers in points1 and points2 for then given essential matrix E. Only these inliers will be used to
-         * recover pose. In the output mask only inliers which pass the cheirality check.
+         * inliers in points1 and points2 for the given essential matrix E. Only these inliers will be used to
+         * recover pose. In the output mask only inliers which pass the chirality check.
          *
          * This function differs from the one above that it outputs the triangulated 3D point that are used for
-         * the cheirality check.
+         * the chirality check.
          * return automatically generated
          */
         public static int recoverPose(Mat E, Mat points1, Mat points2, Mat cameraMatrix, Mat R, Mat t, double distanceThresh)
@@ -9958,12 +10146,12 @@ namespace OpenCVForUnity.Calib3dModule
          * param newPoints1 The optimized points1.
          * param newPoints2 The optimized points2.
          *
-         * The function implements the Optimal Triangulation Method (see Multiple View Geometry for details).
+         * The function implements the Optimal Triangulation Method (see Multiple View Geometry CITE: HartleyZ00 for details).
          * For each given point correspondence points1[i] &lt;-&gt; points2[i], and a fundamental matrix F, it
          * computes the corrected correspondences newPoints1[i] &lt;-&gt; newPoints2[i] that minimize the geometric
          * error \(d(points1[i], newPoints1[i])^2 + d(points2[i],newPoints2[i])^2\) (where \(d(a,b)\) is the
          * geometric distance between points \(a\) and \(b\) ) subject to the epipolar constraint
-         * \(newPoints2^T * F * newPoints1 = 0\) .
+         * \(newPoints2^T \cdot F \cdot newPoints1 = 0\) .
          */
         public static void correctMatches(Mat F, Mat points1, Mat points2, Mat newPoints1, Mat newPoints2)
         {
@@ -11711,7 +11899,7 @@ namespace OpenCVForUnity.Calib3dModule
          *
          * This function extracts relative camera motion between two views of a planar object and returns up to
          * four mathematical solution tuples of rotation, translation, and plane normal. The decomposition of
-         * the homography matrix H is described in detail in CITE: Malis.
+         * the homography matrix H is described in detail in CITE: Malis2007.
          *
          * If the homography H, induced by the plane, gives the constraint
          * \(s_i \vecthree{x'_i}{y'_i}{1} \sim H \vecthree{x_i}{y_i}{1}\) on the source image points
@@ -11757,7 +11945,7 @@ namespace OpenCVForUnity.Calib3dModule
          * param pointsMask optional Mat/Vector of 8u type representing the mask for the inliers as given by the #findHomography function
          *
          * This function is intended to filter the output of the #decomposeHomographyMat based on additional
-         * information as described in CITE: Malis . The summary of the method: the #decomposeHomographyMat function
+         * information as described in CITE: Malis2007 . The summary of the method: the #decomposeHomographyMat function
          * returns 2 unique solutions and their "opposites" for a total of 4 solutions. If we have access to the
          * sets of points visible in the camera frame before and after the homography transformation is applied,
          * we can determine which are the true potential solutions and which are the opposites by verifying which
@@ -11787,7 +11975,7 @@ namespace OpenCVForUnity.Calib3dModule
          * param possibleSolutions Vector of int indices representing the viable solution set after filtering
          *
          * This function is intended to filter the output of the #decomposeHomographyMat based on additional
-         * information as described in CITE: Malis . The summary of the method: the #decomposeHomographyMat function
+         * information as described in CITE: Malis2007 . The summary of the method: the #decomposeHomographyMat function
          * returns 2 unique solutions and their "opposites" for a total of 4 solutions. If we have access to the
          * sets of points visible in the camera frame before and after the homography transformation is applied,
          * we can determine which are the true potential solutions and which are the opposites by verifying which
@@ -11956,7 +12144,7 @@ namespace OpenCVForUnity.Calib3dModule
          * of 4, 5, 8, 12 or 14 elements. If the vector is NULL/empty, the zero distortion coefficients are assumed.
          * param R Optional rectification transformation in the object space (3x3 matrix). R1 or R2 ,
          * computed by #stereoRectify can be passed here. If the matrix is empty, the identity transformation
-         * is assumed. In cvInitUndistortMap R assumed to be an identity matrix.
+         * is assumed. In #initUndistortRectifyMap R assumed to be an identity matrix.
          * param newCameraMatrix New camera matrix \(A'=\vecthreethree{f_x'}{0}{c_x'}{0}{f_y'}{c_y'}{0}{0}{1}\).
          * param size Undistorted image size.
          * param m1type Type of the first output map that can be CV_32FC1, CV_32FC2 or CV_16SC2, see #convertMaps
@@ -13140,7 +13328,7 @@ namespace OpenCVForUnity.Calib3dModule
          *     camera.
          *     param P2 Output 3x4 projection matrix in the new (rectified) coordinate systems for the second
          *     camera.
-         *     param Q Output \(4 \times 4\) disparity-to-depth mapping matrix (see reprojectImageTo3D ).
+         *     param Q Output \(4 \times 4\) disparity-to-depth mapping matrix (see #reprojectImageTo3D ).
          *     param flags Operation flags that may be zero or REF: fisheye::CALIB_ZERO_DISPARITY . If the flag is set,
          *     the function makes the principal points of each camera have the same pixel coordinates in the
          *     rectified views. And if the flag is not set, the function may still shift the images in the
@@ -13190,7 +13378,7 @@ namespace OpenCVForUnity.Calib3dModule
          *     camera.
          *     param P2 Output 3x4 projection matrix in the new (rectified) coordinate systems for the second
          *     camera.
-         *     param Q Output \(4 \times 4\) disparity-to-depth mapping matrix (see reprojectImageTo3D ).
+         *     param Q Output \(4 \times 4\) disparity-to-depth mapping matrix (see #reprojectImageTo3D ).
          *     param flags Operation flags that may be zero or REF: fisheye::CALIB_ZERO_DISPARITY . If the flag is set,
          *     the function makes the principal points of each camera have the same pixel coordinates in the
          *     rectified views. And if the flag is not set, the function may still shift the images in the
@@ -13239,7 +13427,7 @@ namespace OpenCVForUnity.Calib3dModule
          *     camera.
          *     param P2 Output 3x4 projection matrix in the new (rectified) coordinate systems for the second
          *     camera.
-         *     param Q Output \(4 \times 4\) disparity-to-depth mapping matrix (see reprojectImageTo3D ).
+         *     param Q Output \(4 \times 4\) disparity-to-depth mapping matrix (see #reprojectImageTo3D ).
          *     param flags Operation flags that may be zero or REF: fisheye::CALIB_ZERO_DISPARITY . If the flag is set,
          *     the function makes the principal points of each camera have the same pixel coordinates in the
          *     rectified views. And if the flag is not set, the function may still shift the images in the
@@ -13287,7 +13475,7 @@ namespace OpenCVForUnity.Calib3dModule
          *     camera.
          *     param P2 Output 3x4 projection matrix in the new (rectified) coordinate systems for the second
          *     camera.
-         *     param Q Output \(4 \times 4\) disparity-to-depth mapping matrix (see reprojectImageTo3D ).
+         *     param Q Output \(4 \times 4\) disparity-to-depth mapping matrix (see #reprojectImageTo3D ).
          *     param flags Operation flags that may be zero or REF: fisheye::CALIB_ZERO_DISPARITY . If the flag is set,
          *     the function makes the principal points of each camera have the same pixel coordinates in the
          *     rectified views. And if the flag is not set, the function may still shift the images in the
@@ -13319,7 +13507,7 @@ namespace OpenCVForUnity.Calib3dModule
 
 
         //
-        // C++:  double cv::fisheye::stereoCalibrate(vector_Mat objectPoints, vector_Mat imagePoints1, vector_Mat imagePoints2, Mat& K1, Mat& D1, Mat& K2, Mat& D2, Size imageSize, Mat& R, Mat& T, int flags = fisheye::CALIB_FIX_INTRINSIC, TermCriteria criteria = TermCriteria(TermCriteria::COUNT + TermCriteria::EPS, 100, DBL_EPSILON))
+        // C++:  double cv::fisheye::stereoCalibrate(vector_Mat objectPoints, vector_Mat imagePoints1, vector_Mat imagePoints2, Mat& K1, Mat& D1, Mat& K2, Mat& D2, Size imageSize, Mat& R, Mat& T, vector_Mat& rvecs, vector_Mat& tvecs, int flags = fisheye::CALIB_FIX_INTRINSIC, TermCriteria criteria = TermCriteria(TermCriteria::COUNT + TermCriteria::EPS, 100, DBL_EPSILON))
         //
 
         /**
@@ -13341,6 +13529,15 @@ namespace OpenCVForUnity.Calib3dModule
          *     param imageSize Size of the image used only to initialize camera intrinsic matrix.
          *     param R Output rotation matrix between the 1st and the 2nd camera coordinate systems.
          *     param T Output translation vector between the coordinate systems of the cameras.
+         *     param rvecs Output vector of rotation vectors ( REF: Rodrigues ) estimated for each pattern view in the
+         *     coordinate system of the first camera of the stereo pair (e.g. std::vector&lt;cv::Mat&gt;). More in detail, each
+         *     i-th rotation vector together with the corresponding i-th translation vector (see the next output parameter
+         *     description) brings the calibration pattern from the object coordinate space (in which object points are
+         *     specified) to the camera coordinate space of the first camera of the stereo pair. In more technical terms,
+         *     the tuple of the i-th rotation and translation vector performs a change of basis from object coordinate space
+         *     to camera coordinate space of the first camera of the stereo pair.
+         *     param tvecs Output vector of translation vectors estimated for each pattern view, see parameter description
+         *     of previous output parameter ( rvecs ).
          *     param flags Different flags that may be zero or a combination of the following values:
          * <ul>
          *   <li>
@@ -13370,7 +13567,7 @@ namespace OpenCVForUnity.Calib3dModule
          * </ul>
          * return automatically generated
          */
-        public static double fisheye_stereoCalibrate(List<Mat> objectPoints, List<Mat> imagePoints1, List<Mat> imagePoints2, Mat K1, Mat D1, Mat K2, Mat D2, Size imageSize, Mat R, Mat T, int flags, TermCriteria criteria)
+        public static double fisheye_stereoCalibrate(List<Mat> objectPoints, List<Mat> imagePoints1, List<Mat> imagePoints2, Mat K1, Mat D1, Mat K2, Mat D2, Size imageSize, Mat R, Mat T, List<Mat> rvecs, List<Mat> tvecs, int flags, TermCriteria criteria)
         {
             if (K1 != null) K1.ThrowIfDisposed();
             if (D1 != null) D1.ThrowIfDisposed();
@@ -13381,9 +13578,14 @@ namespace OpenCVForUnity.Calib3dModule
             Mat objectPoints_mat = Converters.vector_Mat_to_Mat(objectPoints);
             Mat imagePoints1_mat = Converters.vector_Mat_to_Mat(imagePoints1);
             Mat imagePoints2_mat = Converters.vector_Mat_to_Mat(imagePoints2);
-            return calib3d_Calib3d_fisheye_1stereoCalibrate_10(objectPoints_mat.nativeObj, imagePoints1_mat.nativeObj, imagePoints2_mat.nativeObj, K1.nativeObj, D1.nativeObj, K2.nativeObj, D2.nativeObj, imageSize.width, imageSize.height, R.nativeObj, T.nativeObj, flags, criteria.type, criteria.maxCount, criteria.epsilon);
-
-
+            Mat rvecs_mat = new Mat();
+            Mat tvecs_mat = new Mat();
+            double retVal = calib3d_Calib3d_fisheye_1stereoCalibrate_10(objectPoints_mat.nativeObj, imagePoints1_mat.nativeObj, imagePoints2_mat.nativeObj, K1.nativeObj, D1.nativeObj, K2.nativeObj, D2.nativeObj, imageSize.width, imageSize.height, R.nativeObj, T.nativeObj, rvecs_mat.nativeObj, tvecs_mat.nativeObj, flags, criteria.type, criteria.maxCount, criteria.epsilon);
+            Converters.Mat_to_vector_Mat(rvecs_mat, rvecs);
+            rvecs_mat.release();
+            Converters.Mat_to_vector_Mat(tvecs_mat, tvecs);
+            tvecs_mat.release();
+            return retVal;
         }
 
         /**
@@ -13405,6 +13607,15 @@ namespace OpenCVForUnity.Calib3dModule
          *     param imageSize Size of the image used only to initialize camera intrinsic matrix.
          *     param R Output rotation matrix between the 1st and the 2nd camera coordinate systems.
          *     param T Output translation vector between the coordinate systems of the cameras.
+         *     param rvecs Output vector of rotation vectors ( REF: Rodrigues ) estimated for each pattern view in the
+         *     coordinate system of the first camera of the stereo pair (e.g. std::vector&lt;cv::Mat&gt;). More in detail, each
+         *     i-th rotation vector together with the corresponding i-th translation vector (see the next output parameter
+         *     description) brings the calibration pattern from the object coordinate space (in which object points are
+         *     specified) to the camera coordinate space of the first camera of the stereo pair. In more technical terms,
+         *     the tuple of the i-th rotation and translation vector performs a change of basis from object coordinate space
+         *     to camera coordinate space of the first camera of the stereo pair.
+         *     param tvecs Output vector of translation vectors estimated for each pattern view, see parameter description
+         *     of previous output parameter ( rvecs ).
          *     param flags Different flags that may be zero or a combination of the following values:
          * <ul>
          *   <li>
@@ -13433,7 +13644,7 @@ namespace OpenCVForUnity.Calib3dModule
          * </ul>
          * return automatically generated
          */
-        public static double fisheye_stereoCalibrate(List<Mat> objectPoints, List<Mat> imagePoints1, List<Mat> imagePoints2, Mat K1, Mat D1, Mat K2, Mat D2, Size imageSize, Mat R, Mat T, int flags)
+        public static double fisheye_stereoCalibrate(List<Mat> objectPoints, List<Mat> imagePoints1, List<Mat> imagePoints2, Mat K1, Mat D1, Mat K2, Mat D2, Size imageSize, Mat R, Mat T, List<Mat> rvecs, List<Mat> tvecs, int flags)
         {
             if (K1 != null) K1.ThrowIfDisposed();
             if (D1 != null) D1.ThrowIfDisposed();
@@ -13444,9 +13655,14 @@ namespace OpenCVForUnity.Calib3dModule
             Mat objectPoints_mat = Converters.vector_Mat_to_Mat(objectPoints);
             Mat imagePoints1_mat = Converters.vector_Mat_to_Mat(imagePoints1);
             Mat imagePoints2_mat = Converters.vector_Mat_to_Mat(imagePoints2);
-            return calib3d_Calib3d_fisheye_1stereoCalibrate_11(objectPoints_mat.nativeObj, imagePoints1_mat.nativeObj, imagePoints2_mat.nativeObj, K1.nativeObj, D1.nativeObj, K2.nativeObj, D2.nativeObj, imageSize.width, imageSize.height, R.nativeObj, T.nativeObj, flags);
-
-
+            Mat rvecs_mat = new Mat();
+            Mat tvecs_mat = new Mat();
+            double retVal = calib3d_Calib3d_fisheye_1stereoCalibrate_11(objectPoints_mat.nativeObj, imagePoints1_mat.nativeObj, imagePoints2_mat.nativeObj, K1.nativeObj, D1.nativeObj, K2.nativeObj, D2.nativeObj, imageSize.width, imageSize.height, R.nativeObj, T.nativeObj, rvecs_mat.nativeObj, tvecs_mat.nativeObj, flags);
+            Converters.Mat_to_vector_Mat(rvecs_mat, rvecs);
+            rvecs_mat.release();
+            Converters.Mat_to_vector_Mat(tvecs_mat, tvecs);
+            tvecs_mat.release();
+            return retVal;
         }
 
         /**
@@ -13468,6 +13684,15 @@ namespace OpenCVForUnity.Calib3dModule
          *     param imageSize Size of the image used only to initialize camera intrinsic matrix.
          *     param R Output rotation matrix between the 1st and the 2nd camera coordinate systems.
          *     param T Output translation vector between the coordinate systems of the cameras.
+         *     param rvecs Output vector of rotation vectors ( REF: Rodrigues ) estimated for each pattern view in the
+         *     coordinate system of the first camera of the stereo pair (e.g. std::vector&lt;cv::Mat&gt;). More in detail, each
+         *     i-th rotation vector together with the corresponding i-th translation vector (see the next output parameter
+         *     description) brings the calibration pattern from the object coordinate space (in which object points are
+         *     specified) to the camera coordinate space of the first camera of the stereo pair. In more technical terms,
+         *     the tuple of the i-th rotation and translation vector performs a change of basis from object coordinate space
+         *     to camera coordinate space of the first camera of the stereo pair.
+         *     param tvecs Output vector of translation vectors estimated for each pattern view, see parameter description
+         *     of previous output parameter ( rvecs ).
          * <ul>
          *   <li>
          *         REF: fisheye::CALIB_FIX_INTRINSIC  Fix K1, K2? and D1, D2? so that only R, T matrices
@@ -13495,6 +13720,64 @@ namespace OpenCVForUnity.Calib3dModule
          * </ul>
          * return automatically generated
          */
+        public static double fisheye_stereoCalibrate(List<Mat> objectPoints, List<Mat> imagePoints1, List<Mat> imagePoints2, Mat K1, Mat D1, Mat K2, Mat D2, Size imageSize, Mat R, Mat T, List<Mat> rvecs, List<Mat> tvecs)
+        {
+            if (K1 != null) K1.ThrowIfDisposed();
+            if (D1 != null) D1.ThrowIfDisposed();
+            if (K2 != null) K2.ThrowIfDisposed();
+            if (D2 != null) D2.ThrowIfDisposed();
+            if (R != null) R.ThrowIfDisposed();
+            if (T != null) T.ThrowIfDisposed();
+            Mat objectPoints_mat = Converters.vector_Mat_to_Mat(objectPoints);
+            Mat imagePoints1_mat = Converters.vector_Mat_to_Mat(imagePoints1);
+            Mat imagePoints2_mat = Converters.vector_Mat_to_Mat(imagePoints2);
+            Mat rvecs_mat = new Mat();
+            Mat tvecs_mat = new Mat();
+            double retVal = calib3d_Calib3d_fisheye_1stereoCalibrate_12(objectPoints_mat.nativeObj, imagePoints1_mat.nativeObj, imagePoints2_mat.nativeObj, K1.nativeObj, D1.nativeObj, K2.nativeObj, D2.nativeObj, imageSize.width, imageSize.height, R.nativeObj, T.nativeObj, rvecs_mat.nativeObj, tvecs_mat.nativeObj);
+            Converters.Mat_to_vector_Mat(rvecs_mat, rvecs);
+            rvecs_mat.release();
+            Converters.Mat_to_vector_Mat(tvecs_mat, tvecs);
+            tvecs_mat.release();
+            return retVal;
+        }
+
+
+        //
+        // C++:  double cv::fisheye::stereoCalibrate(vector_Mat objectPoints, vector_Mat imagePoints1, vector_Mat imagePoints2, Mat& K1, Mat& D1, Mat& K2, Mat& D2, Size imageSize, Mat& R, Mat& T, int flags = fisheye::CALIB_FIX_INTRINSIC, TermCriteria criteria = TermCriteria(TermCriteria::COUNT + TermCriteria::EPS, 100, DBL_EPSILON))
+        //
+
+        public static double fisheye_stereoCalibrate(List<Mat> objectPoints, List<Mat> imagePoints1, List<Mat> imagePoints2, Mat K1, Mat D1, Mat K2, Mat D2, Size imageSize, Mat R, Mat T, int flags, TermCriteria criteria)
+        {
+            if (K1 != null) K1.ThrowIfDisposed();
+            if (D1 != null) D1.ThrowIfDisposed();
+            if (K2 != null) K2.ThrowIfDisposed();
+            if (D2 != null) D2.ThrowIfDisposed();
+            if (R != null) R.ThrowIfDisposed();
+            if (T != null) T.ThrowIfDisposed();
+            Mat objectPoints_mat = Converters.vector_Mat_to_Mat(objectPoints);
+            Mat imagePoints1_mat = Converters.vector_Mat_to_Mat(imagePoints1);
+            Mat imagePoints2_mat = Converters.vector_Mat_to_Mat(imagePoints2);
+            return calib3d_Calib3d_fisheye_1stereoCalibrate_13(objectPoints_mat.nativeObj, imagePoints1_mat.nativeObj, imagePoints2_mat.nativeObj, K1.nativeObj, D1.nativeObj, K2.nativeObj, D2.nativeObj, imageSize.width, imageSize.height, R.nativeObj, T.nativeObj, flags, criteria.type, criteria.maxCount, criteria.epsilon);
+
+
+        }
+
+        public static double fisheye_stereoCalibrate(List<Mat> objectPoints, List<Mat> imagePoints1, List<Mat> imagePoints2, Mat K1, Mat D1, Mat K2, Mat D2, Size imageSize, Mat R, Mat T, int flags)
+        {
+            if (K1 != null) K1.ThrowIfDisposed();
+            if (D1 != null) D1.ThrowIfDisposed();
+            if (K2 != null) K2.ThrowIfDisposed();
+            if (D2 != null) D2.ThrowIfDisposed();
+            if (R != null) R.ThrowIfDisposed();
+            if (T != null) T.ThrowIfDisposed();
+            Mat objectPoints_mat = Converters.vector_Mat_to_Mat(objectPoints);
+            Mat imagePoints1_mat = Converters.vector_Mat_to_Mat(imagePoints1);
+            Mat imagePoints2_mat = Converters.vector_Mat_to_Mat(imagePoints2);
+            return calib3d_Calib3d_fisheye_1stereoCalibrate_14(objectPoints_mat.nativeObj, imagePoints1_mat.nativeObj, imagePoints2_mat.nativeObj, K1.nativeObj, D1.nativeObj, K2.nativeObj, D2.nativeObj, imageSize.width, imageSize.height, R.nativeObj, T.nativeObj, flags);
+
+
+        }
+
         public static double fisheye_stereoCalibrate(List<Mat> objectPoints, List<Mat> imagePoints1, List<Mat> imagePoints2, Mat K1, Mat D1, Mat K2, Mat D2, Size imageSize, Mat R, Mat T)
         {
             if (K1 != null) K1.ThrowIfDisposed();
@@ -13506,7 +13789,7 @@ namespace OpenCVForUnity.Calib3dModule
             Mat objectPoints_mat = Converters.vector_Mat_to_Mat(objectPoints);
             Mat imagePoints1_mat = Converters.vector_Mat_to_Mat(imagePoints1);
             Mat imagePoints2_mat = Converters.vector_Mat_to_Mat(imagePoints2);
-            return calib3d_Calib3d_fisheye_1stereoCalibrate_12(objectPoints_mat.nativeObj, imagePoints1_mat.nativeObj, imagePoints2_mat.nativeObj, K1.nativeObj, D1.nativeObj, K2.nativeObj, D2.nativeObj, imageSize.width, imageSize.height, R.nativeObj, T.nativeObj);
+            return calib3d_Calib3d_fisheye_1stereoCalibrate_15(objectPoints_mat.nativeObj, imagePoints1_mat.nativeObj, imagePoints2_mat.nativeObj, K1.nativeObj, D1.nativeObj, K2.nativeObj, D2.nativeObj, imageSize.width, imageSize.height, R.nativeObj, T.nativeObj);
 
 
         }
@@ -13773,13 +14056,13 @@ namespace OpenCVForUnity.Calib3dModule
         [DllImport(LIBNAME)]
         private static extern void calib3d_Calib3d_calibrationMatrixValues_10(IntPtr cameraMatrix_nativeObj, double imageSize_width, double imageSize_height, double apertureWidth, double apertureHeight, double[] fovx_out, double[] fovy_out, double[] focalLength_out, double[] principalPoint_out, double[] aspectRatio_out);
 
-        // C++:  double cv::stereoCalibrate(vector_Mat objectPoints, vector_Mat imagePoints1, vector_Mat imagePoints2, Mat& cameraMatrix1, Mat& distCoeffs1, Mat& cameraMatrix2, Mat& distCoeffs2, Size imageSize, Mat& R, Mat& T, Mat& E, Mat& F, Mat& perViewErrors, int flags = CALIB_FIX_INTRINSIC, TermCriteria criteria = TermCriteria(TermCriteria::COUNT+TermCriteria::EPS, 30, 1e-6))
+        // C++:  double cv::stereoCalibrate(vector_Mat objectPoints, vector_Mat imagePoints1, vector_Mat imagePoints2, Mat& cameraMatrix1, Mat& distCoeffs1, Mat& cameraMatrix2, Mat& distCoeffs2, Size imageSize, Mat& R, Mat& T, Mat& E, Mat& F, vector_Mat& rvecs, vector_Mat& tvecs, Mat& perViewErrors, int flags = CALIB_FIX_INTRINSIC, TermCriteria criteria = TermCriteria(TermCriteria::COUNT+TermCriteria::EPS, 30, 1e-6))
         [DllImport(LIBNAME)]
-        private static extern double calib3d_Calib3d_stereoCalibrateExtended_10(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr cameraMatrix1_nativeObj, IntPtr distCoeffs1_nativeObj, IntPtr cameraMatrix2_nativeObj, IntPtr distCoeffs2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj, IntPtr E_nativeObj, IntPtr F_nativeObj, IntPtr perViewErrors_nativeObj, int flags, int criteria_type, int criteria_maxCount, double criteria_epsilon);
+        private static extern double calib3d_Calib3d_stereoCalibrateExtended_10(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr cameraMatrix1_nativeObj, IntPtr distCoeffs1_nativeObj, IntPtr cameraMatrix2_nativeObj, IntPtr distCoeffs2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj, IntPtr E_nativeObj, IntPtr F_nativeObj, IntPtr rvecs_mat_nativeObj, IntPtr tvecs_mat_nativeObj, IntPtr perViewErrors_nativeObj, int flags, int criteria_type, int criteria_maxCount, double criteria_epsilon);
         [DllImport(LIBNAME)]
-        private static extern double calib3d_Calib3d_stereoCalibrateExtended_11(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr cameraMatrix1_nativeObj, IntPtr distCoeffs1_nativeObj, IntPtr cameraMatrix2_nativeObj, IntPtr distCoeffs2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj, IntPtr E_nativeObj, IntPtr F_nativeObj, IntPtr perViewErrors_nativeObj, int flags);
+        private static extern double calib3d_Calib3d_stereoCalibrateExtended_11(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr cameraMatrix1_nativeObj, IntPtr distCoeffs1_nativeObj, IntPtr cameraMatrix2_nativeObj, IntPtr distCoeffs2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj, IntPtr E_nativeObj, IntPtr F_nativeObj, IntPtr rvecs_mat_nativeObj, IntPtr tvecs_mat_nativeObj, IntPtr perViewErrors_nativeObj, int flags);
         [DllImport(LIBNAME)]
-        private static extern double calib3d_Calib3d_stereoCalibrateExtended_12(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr cameraMatrix1_nativeObj, IntPtr distCoeffs1_nativeObj, IntPtr cameraMatrix2_nativeObj, IntPtr distCoeffs2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj, IntPtr E_nativeObj, IntPtr F_nativeObj, IntPtr perViewErrors_nativeObj);
+        private static extern double calib3d_Calib3d_stereoCalibrateExtended_12(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr cameraMatrix1_nativeObj, IntPtr distCoeffs1_nativeObj, IntPtr cameraMatrix2_nativeObj, IntPtr distCoeffs2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj, IntPtr E_nativeObj, IntPtr F_nativeObj, IntPtr rvecs_mat_nativeObj, IntPtr tvecs_mat_nativeObj, IntPtr perViewErrors_nativeObj);
 
         // C++:  double cv::stereoCalibrate(vector_Mat objectPoints, vector_Mat imagePoints1, vector_Mat imagePoints2, Mat& cameraMatrix1, Mat& distCoeffs1, Mat& cameraMatrix2, Mat& distCoeffs2, Size imageSize, Mat& R, Mat& T, Mat& E, Mat& F, int flags = CALIB_FIX_INTRINSIC, TermCriteria criteria = TermCriteria(TermCriteria::COUNT+TermCriteria::EPS, 30, 1e-6))
         [DllImport(LIBNAME)]
@@ -13788,6 +14071,14 @@ namespace OpenCVForUnity.Calib3dModule
         private static extern double calib3d_Calib3d_stereoCalibrate_11(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr cameraMatrix1_nativeObj, IntPtr distCoeffs1_nativeObj, IntPtr cameraMatrix2_nativeObj, IntPtr distCoeffs2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj, IntPtr E_nativeObj, IntPtr F_nativeObj, int flags);
         [DllImport(LIBNAME)]
         private static extern double calib3d_Calib3d_stereoCalibrate_12(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr cameraMatrix1_nativeObj, IntPtr distCoeffs1_nativeObj, IntPtr cameraMatrix2_nativeObj, IntPtr distCoeffs2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj, IntPtr E_nativeObj, IntPtr F_nativeObj);
+
+        // C++:  double cv::stereoCalibrate(vector_Mat objectPoints, vector_Mat imagePoints1, vector_Mat imagePoints2, Mat& cameraMatrix1, Mat& distCoeffs1, Mat& cameraMatrix2, Mat& distCoeffs2, Size imageSize, Mat& R, Mat& T, Mat& E, Mat& F, Mat& perViewErrors, int flags = CALIB_FIX_INTRINSIC, TermCriteria criteria = TermCriteria(TermCriteria::COUNT+TermCriteria::EPS, 30, 1e-6))
+        [DllImport(LIBNAME)]
+        private static extern double calib3d_Calib3d_stereoCalibrate_13(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr cameraMatrix1_nativeObj, IntPtr distCoeffs1_nativeObj, IntPtr cameraMatrix2_nativeObj, IntPtr distCoeffs2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj, IntPtr E_nativeObj, IntPtr F_nativeObj, IntPtr perViewErrors_nativeObj, int flags, int criteria_type, int criteria_maxCount, double criteria_epsilon);
+        [DllImport(LIBNAME)]
+        private static extern double calib3d_Calib3d_stereoCalibrate_14(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr cameraMatrix1_nativeObj, IntPtr distCoeffs1_nativeObj, IntPtr cameraMatrix2_nativeObj, IntPtr distCoeffs2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj, IntPtr E_nativeObj, IntPtr F_nativeObj, IntPtr perViewErrors_nativeObj, int flags);
+        [DllImport(LIBNAME)]
+        private static extern double calib3d_Calib3d_stereoCalibrate_15(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr cameraMatrix1_nativeObj, IntPtr distCoeffs1_nativeObj, IntPtr cameraMatrix2_nativeObj, IntPtr distCoeffs2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj, IntPtr E_nativeObj, IntPtr F_nativeObj, IntPtr perViewErrors_nativeObj);
 
         // C++:  void cv::stereoRectify(Mat cameraMatrix1, Mat distCoeffs1, Mat cameraMatrix2, Mat distCoeffs2, Size imageSize, Mat R, Mat T, Mat& R1, Mat& R2, Mat& P1, Mat& P2, Mat& Q, int flags = CALIB_ZERO_DISPARITY, double alpha = -1, Size newImageSize = Size(), Rect* validPixROI1 = 0, Rect* validPixROI2 = 0)
         [DllImport(LIBNAME)]
@@ -14169,13 +14460,21 @@ namespace OpenCVForUnity.Calib3dModule
         [DllImport(LIBNAME)]
         private static extern void calib3d_Calib3d_fisheye_1stereoRectify_13(IntPtr K1_nativeObj, IntPtr D1_nativeObj, IntPtr K2_nativeObj, IntPtr D2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr tvec_nativeObj, IntPtr R1_nativeObj, IntPtr R2_nativeObj, IntPtr P1_nativeObj, IntPtr P2_nativeObj, IntPtr Q_nativeObj, int flags);
 
+        // C++:  double cv::fisheye::stereoCalibrate(vector_Mat objectPoints, vector_Mat imagePoints1, vector_Mat imagePoints2, Mat& K1, Mat& D1, Mat& K2, Mat& D2, Size imageSize, Mat& R, Mat& T, vector_Mat& rvecs, vector_Mat& tvecs, int flags = fisheye::CALIB_FIX_INTRINSIC, TermCriteria criteria = TermCriteria(TermCriteria::COUNT + TermCriteria::EPS, 100, DBL_EPSILON))
+        [DllImport(LIBNAME)]
+        private static extern double calib3d_Calib3d_fisheye_1stereoCalibrate_10(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr K1_nativeObj, IntPtr D1_nativeObj, IntPtr K2_nativeObj, IntPtr D2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj, IntPtr rvecs_mat_nativeObj, IntPtr tvecs_mat_nativeObj, int flags, int criteria_type, int criteria_maxCount, double criteria_epsilon);
+        [DllImport(LIBNAME)]
+        private static extern double calib3d_Calib3d_fisheye_1stereoCalibrate_11(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr K1_nativeObj, IntPtr D1_nativeObj, IntPtr K2_nativeObj, IntPtr D2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj, IntPtr rvecs_mat_nativeObj, IntPtr tvecs_mat_nativeObj, int flags);
+        [DllImport(LIBNAME)]
+        private static extern double calib3d_Calib3d_fisheye_1stereoCalibrate_12(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr K1_nativeObj, IntPtr D1_nativeObj, IntPtr K2_nativeObj, IntPtr D2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj, IntPtr rvecs_mat_nativeObj, IntPtr tvecs_mat_nativeObj);
+
         // C++:  double cv::fisheye::stereoCalibrate(vector_Mat objectPoints, vector_Mat imagePoints1, vector_Mat imagePoints2, Mat& K1, Mat& D1, Mat& K2, Mat& D2, Size imageSize, Mat& R, Mat& T, int flags = fisheye::CALIB_FIX_INTRINSIC, TermCriteria criteria = TermCriteria(TermCriteria::COUNT + TermCriteria::EPS, 100, DBL_EPSILON))
         [DllImport(LIBNAME)]
-        private static extern double calib3d_Calib3d_fisheye_1stereoCalibrate_10(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr K1_nativeObj, IntPtr D1_nativeObj, IntPtr K2_nativeObj, IntPtr D2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj, int flags, int criteria_type, int criteria_maxCount, double criteria_epsilon);
+        private static extern double calib3d_Calib3d_fisheye_1stereoCalibrate_13(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr K1_nativeObj, IntPtr D1_nativeObj, IntPtr K2_nativeObj, IntPtr D2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj, int flags, int criteria_type, int criteria_maxCount, double criteria_epsilon);
         [DllImport(LIBNAME)]
-        private static extern double calib3d_Calib3d_fisheye_1stereoCalibrate_11(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr K1_nativeObj, IntPtr D1_nativeObj, IntPtr K2_nativeObj, IntPtr D2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj, int flags);
+        private static extern double calib3d_Calib3d_fisheye_1stereoCalibrate_14(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr K1_nativeObj, IntPtr D1_nativeObj, IntPtr K2_nativeObj, IntPtr D2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj, int flags);
         [DllImport(LIBNAME)]
-        private static extern double calib3d_Calib3d_fisheye_1stereoCalibrate_12(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr K1_nativeObj, IntPtr D1_nativeObj, IntPtr K2_nativeObj, IntPtr D2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj);
+        private static extern double calib3d_Calib3d_fisheye_1stereoCalibrate_15(IntPtr objectPoints_mat_nativeObj, IntPtr imagePoints1_mat_nativeObj, IntPtr imagePoints2_mat_nativeObj, IntPtr K1_nativeObj, IntPtr D1_nativeObj, IntPtr K2_nativeObj, IntPtr D2_nativeObj, double imageSize_width, double imageSize_height, IntPtr R_nativeObj, IntPtr T_nativeObj);
 
     }
 }

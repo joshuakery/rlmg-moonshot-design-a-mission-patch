@@ -90,15 +90,8 @@ MonoBehaviour:
   saveFile: teams.json
   preview: {fileID: 0}
   scanMax: 6
-  scans:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  nextToReplace: 000000000100000002000000030000000400000005000000
+  savedScanManager: {fileID: 11400000, guid: e665b48184ef2854a94da0b5ca65dfb9, type: 2}
   exclude:
   - 
   settings: {fileID: 11400000, guid: eebe36b8bd1234f8ca3d2e070246f3b8, type: 2}
-  uploadThreadController: {fileID: 11400000, guid: c37264f6532894e1a9286ee4ab8fdc7f, type: 2}
+  uploadThreadController: {fileID: 0}

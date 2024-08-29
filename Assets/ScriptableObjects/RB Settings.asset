@@ -19,6 +19,8 @@ MonoBehaviour:
   doSaveCroppedToBoundingBox: 1
   targetWidth: 750
   targetHeight: 750
+  preProcessingSizeFactor: 2
+  postProcessingSizeFactor: 1
   brightness: 255
   contrast: 127
   edgeFindingMethod: 0
@@ -37,7 +39,7 @@ MonoBehaviour:
     minimumPaperConsistentFrames: 5
     minimumPaperInconsistentFramesToFail: 2
     minimumScanSize: 50
-    maximumArtworkPercentageOfPaper: 0
+    maximumArtworkPercentageOfPaper: 0.7
     consistentScanAreaThreshold: 0.01
-    minimumConsistentFrames: 4
+    minimumConsistentFrames: 1
     minimumArtworkInconsistentFramesToFail: 2

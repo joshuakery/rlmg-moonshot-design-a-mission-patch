@@ -20,6 +20,7 @@ namespace ArtScan.PresentationUtilsModule
             using (Mat sobelEdgeVisualized = new Mat())
             {
                 edgeMat.convertTo(sobelEdgeVisualized, CvType.CV_8UC4);
+                Imgproc.resize(sobelEdgeVisualized, sobelEdgeVisualized, new Size(), dest.width() / edgeMat.width(), dest.width() / edgeMat.width(), Imgproc.INTER_LINEAR);
                 Imgproc.cvtColor(sobelEdgeVisualized, dest, Imgproc.COLOR_RGB2RGBA);
             }
         }
@@ -72,7 +73,6 @@ namespace ArtScan.PresentationUtilsModule
                 {
                     ScaleUpAndDisplayMat(src, dest, settings.doSizeToFit);
                 }
-
             }
             else
             {
@@ -88,8 +88,6 @@ namespace ArtScan.PresentationUtilsModule
 
         public static void ScaleUpAndDisplayMat(Mat src, Mat outputDisplayAreaMat, bool doSizeToFit)
         {
-            //Utils.setDebugMode(true);
-            //Debug.Log(src.height() + " " + src.width());
             if (src.height() == 0 || src.width() == 0)
                 return;
 
@@ -139,7 +137,6 @@ namespace ArtScan.PresentationUtilsModule
                 }
                  
             }
-            //Utils.setDebugMode(false);
         }
 
         //Convenience function to copy src to the given section of displayMat, outputDisplayAreaMat

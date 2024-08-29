@@ -19,6 +19,7 @@ public class Preview : MonoBehaviour
 
     public void SetPreview()
     {
-        rawImage.texture = gameState.preview;
+        if (gameState.preview != null)
+            rawImage.texture = gameState.preview;
     }
 }

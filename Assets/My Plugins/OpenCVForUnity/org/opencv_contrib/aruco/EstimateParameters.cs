@@ -10,14 +10,14 @@ namespace OpenCVForUnity.ArucoModule
 {
     // C++: class EstimateParameters
     /**
-     * brief
      * Pose estimation parameters
-     * pattern Defines center this system and axes direction (default PatternPos::CCW_center).
+     *
+     * pattern Defines center this system and axes direction (default PatternPositionType::ARUCO_CCW_CENTER).
      * useExtrinsicGuess Parameter used for SOLVEPNP_ITERATIVE. If true (1), the function uses the provided
      * rvec and tvec values as initial approximations of the rotation and translation vectors, respectively, and further
      * optimizes them (default false).
      * solvePnPMethod Method for solving a PnP problem: see REF: calib3d_solvePnP_flags (default SOLVEPNP_ITERATIVE).
-     * SEE: PatternPos, solvePnP(), REF: tutorial_aruco_detection
+     * SEE: PatternPositionType, solvePnP(), check tutorial_aruco_detection in aruco contrib
      */
 
     public class EstimateParameters : DisposableOpenCVObject
@@ -54,31 +54,31 @@ namespace OpenCVForUnity.ArucoModule
         public static EstimateParameters __fromPtr__(IntPtr addr) { return new EstimateParameters(addr); }
 
         //
-        // C++: static Ptr_EstimateParameters cv::aruco::EstimateParameters::create()
+        // C++:   cv::aruco::EstimateParameters::EstimateParameters()
         //
 
-        public static EstimateParameters create()
+        public EstimateParameters()
         {
 
 
-            return EstimateParameters.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(aruco_EstimateParameters_create_10()));
+            nativeObj = DisposableObject.ThrowIfNullIntPtr(aruco_EstimateParameters_EstimateParameters_10());
 
 
         }
 
 
         //
-        // C++: PatternPos EstimateParameters::pattern
+        // C++: PatternPositionType EstimateParameters::pattern
         //
 
-        // Return type 'PatternPos' is not supported, skipping the function
+        // Return type 'PatternPositionType' is not supported, skipping the function
 
 
         //
         // C++: void EstimateParameters::pattern
         //
 
-        // Unknown type 'PatternPos' (I), skipping the function
+        // Unknown type 'PatternPositionType' (I), skipping the function
 
 
         //
@@ -110,7 +110,7 @@ namespace OpenCVForUnity.ArucoModule
 
 
         //
-        // C++: SolvePnPMethod EstimateParameters::solvePnPMethod
+        // C++: int EstimateParameters::solvePnPMethod
         //
 
         public int get_solvePnPMethod()
@@ -145,9 +145,9 @@ namespace OpenCVForUnity.ArucoModule
 
 
 
-        // C++: static Ptr_EstimateParameters cv::aruco::EstimateParameters::create()
+        // C++:   cv::aruco::EstimateParameters::EstimateParameters()
         [DllImport(LIBNAME)]
-        private static extern IntPtr aruco_EstimateParameters_create_10();
+        private static extern IntPtr aruco_EstimateParameters_EstimateParameters_10();
 
         // C++: bool EstimateParameters::useExtrinsicGuess
         [DllImport(LIBNAME)]
@@ -158,7 +158,7 @@ namespace OpenCVForUnity.ArucoModule
         [DllImport(LIBNAME)]
         private static extern void aruco_EstimateParameters_set_1useExtrinsicGuess_10(IntPtr nativeObj, [MarshalAs(UnmanagedType.U1)] bool useExtrinsicGuess);
 
-        // C++: SolvePnPMethod EstimateParameters::solvePnPMethod
+        // C++: int EstimateParameters::solvePnPMethod
         [DllImport(LIBNAME)]
         private static extern int aruco_EstimateParameters_get_1solvePnPMethod_10(IntPtr nativeObj);
 

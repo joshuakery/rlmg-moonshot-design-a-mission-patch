@@ -16,40 +16,6 @@ namespace ArtScan.ScanSavingModule
 {
     public static class ScanSaving
     {
-        public static Texture2D GetTexture2DFromImageFile(
-            string png,
-            RemoveBackgroundSettings settings,
-            myWebCamTextureToMatHelper webCamTextureToMatHelper
-        )
-        {
-            using (
-                Mat src = OpenCVForUnity.ImgcodecsModule.Imgcodecs.imread(
-                        png,
-                        OpenCVForUnity.ImgcodecsModule.Imgcodecs.IMREAD_UNCHANGED
-                    ),
-
-                    displayMat = new Mat(
-                        settings.targetHeight,
-                        settings.targetWidth,
-                        webCamTextureToMatHelper.GetMat().type(),
-                        new Scalar(0,0,0,0)
-                    )
-            )
-            {
-                Imgproc.cvtColor(src, src, Imgproc.COLOR_BGRA2RGBA);;
-
-                if (src.size().width > 0 && src.size().height > 0)
-                    PresentationUtils.MakeReadyToPresent(
-                        src, displayMat,
-                        settings.doCropToBoundingBox, settings.doSizeToFit
-                    );
-
-                Texture2D scanTexture = new Texture2D(displayMat.cols(), displayMat.rows(), TextureFormat.RGBA32, false);
-                Utils.fastMatToTexture2D(displayMat,scanTexture,true,0,true);
-                return scanTexture;
-            }
-        }
-
         private static void SaveMatToFile(Mat src, string fullPath)
         {
             Imgproc.cvtColor(src, src, Imgproc.COLOR_RGBA2BGRA);
@@ -118,12 +84,7 @@ namespace ArtScan.ScanSavingModule
                 callbackEvent.Raise();
         }
 
-        public static void DownloadScans(string dirPath, MoonshotTeamData currentTeam)
-        {
-            DownloadScans(dirPath, currentTeam, true);
-        }
-
-        public static void DownloadScans(string dirPath, MoonshotTeamData currentTeam, bool doOverwrite)
+        public static void DownloadScans(string dirPath, MoonshotTeamData currentTeam, bool doOverwrite = true)
         {
             DateTime before = DateTime.Now;
 
@@ -170,6 +131,37 @@ namespace ArtScan.ScanSavingModule
             RLMGLogger.Instance.Log(String.Format("Downloaded scans in {0} milliseconds.", duration.Milliseconds), MESSAGETYPE.INFO);
         }
 
+        public static void SaveTexture2D(Texture2D tex, string dirPath, string filename)
+        {
+            DirectoryInfo mainDI = new DirectoryInfo(dirPath);
+
+            try
+            {
+                if (!mainDI.Exists)
+                {
+                    mainDI.Create();
+                    RLMGLogger.Instance.Log(String.Format("The directory was created successfully at {0}.", dirPath), MESSAGETYPE.INFO);
+                }
+
+                string fullPath = Path.Join(dirPath, filename);
+                byte[] bytes;
+
+                if (tex != null)
+                    bytes = tex.EncodeToPNG();
+                else
+                {
+                    bytes = new Texture2D(2, 2).EncodeToPNG();
+                }
+                    
+
+                File.WriteAllBytes(fullPath, bytes);
+            }
+            catch (Exception e)
+            {
+                RLMGLogger.Instance.Log(String.Format("The process failed: {0}.", e.ToString()), MESSAGETYPE.ERROR);
+            }
+        }
+
         public static void SaveScan(Mat src, string dirPath, string filename)
         {
             DirectoryInfo mainDI = new DirectoryInfo(dirPath);
@@ -191,68 +183,37 @@ namespace ArtScan.ScanSavingModule
             }
         }
 
-        public static void TrashScan(string saveDirPath, string trashDirPath, string filename)
+        /// <summary>
+        /// Moves given file from srcDir to destDir
+        /// </summary>
+        /// <param name="srcDirPath">Path of dir to move from</param>
+        /// <param name="dstDirPath">Path of dir to move to</param>
+        /// <param name="filename">Name of file to move</param>
+        public static void MoveFile(string srcDirPath, string dstDirPath, string filename)
         {
-            DirectoryInfo saveDI = new DirectoryInfo(saveDirPath);
-            DirectoryInfo trashDI = new DirectoryInfo(trashDirPath);
+            DirectoryInfo srcDI = new DirectoryInfo(srcDirPath);
+            DirectoryInfo dstDI = new DirectoryInfo(dstDirPath);
 
             try
             {
-                if (!saveDI.Exists)
+                if (!srcDI.Exists)
                 {
-                    saveDI.Create();
-                    RLMGLogger.Instance.Log(String.Format("Save directory created successfully at {0}.",saveDirPath), MESSAGETYPE.INFO);
+                    srcDI.Create();
+                    RLMGLogger.Instance.Log(String.Format("Src directory created successfully at {0}.", srcDirPath), MESSAGETYPE.INFO);
                 }
 
-                if (!trashDI.Exists)
+                if (!dstDI.Exists)
                 {
-                    trashDI.Create();
-                    RLMGLogger.Instance.Log(String.Format("Trash directory created successfully at {0}.",trashDirPath), MESSAGETYPE.INFO);
+                    dstDI.Create();
+                    RLMGLogger.Instance.Log(String.Format("Dst directory created successfully at {0}.", srcDirPath), MESSAGETYPE.INFO);
                 }
 
-                if (saveDI.Exists && trashDI.Exists)
+                if (srcDI.Exists && dstDI.Exists)
                 {
-                    string fullSavePath = Path.Join(saveDirPath, filename);
-                    string fullTrashPath = Path.Join(trashDirPath, filename);
-
-                    File.Copy(fullSavePath, fullTrashPath, true);
-
-                    File.Delete(fullSavePath);
-                }
-            }
-            catch (Exception e)
-            {
-                RLMGLogger.Instance.Log(String.Format("The process failed: {0}.",e.ToString()), MESSAGETYPE.ERROR);
-            }
-        }
-
-        public static void UnTrashScan(string saveDirPath, string trashDirPath, string filename)
-        {
-            DirectoryInfo saveDI = new DirectoryInfo(saveDirPath);
-            DirectoryInfo trashDI = new DirectoryInfo(trashDirPath);
-
-            try
-            {
-                if (!saveDI.Exists)
-                {
-                    saveDI.Create();
-                    RLMGLogger.Instance.Log(String.Format("Save directory created successfully at {0}.", saveDirPath), MESSAGETYPE.INFO);
-                }
-
-                if (!trashDI.Exists)
-                {
-                    trashDI.Create();
-                    RLMGLogger.Instance.Log(String.Format("Trash directory created successfully at {0}.", trashDirPath), MESSAGETYPE.INFO);
-                }
-
-                if (saveDI.Exists && trashDI.Exists)
-                {
-                    string fullSavePath = Path.Join(saveDirPath, filename);
-                    string fullTrashPath = Path.Join(trashDirPath, filename);
-
-                    File.Copy(fullTrashPath, fullSavePath, true);
-
-                    File.Delete(fullTrashPath);
+                    string srcFilePath = Path.Join(srcDirPath, filename);
+                    string dstFilePath = Path.Join(dstDirPath, filename);
+                    File.Copy(srcFilePath, dstFilePath, true);
+                    File.Delete(srcFilePath);
                 }
             }
             catch (Exception e)

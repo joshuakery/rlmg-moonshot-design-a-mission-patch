@@ -48,19 +48,31 @@ namespace OpenCVForUnity.ImgcodecsModule
         public const int IMWRITE_JPEG_RST_INTERVAL = 4;
         public const int IMWRITE_JPEG_LUMA_QUALITY = 5;
         public const int IMWRITE_JPEG_CHROMA_QUALITY = 6;
+        public const int IMWRITE_JPEG_SAMPLING_FACTOR = 7;
         public const int IMWRITE_PNG_COMPRESSION = 16;
         public const int IMWRITE_PNG_STRATEGY = 17;
         public const int IMWRITE_PNG_BILEVEL = 18;
         public const int IMWRITE_PXM_BINARY = 32;
         public const int IMWRITE_EXR_TYPE = (3 << 4) + 0;
         public const int IMWRITE_EXR_COMPRESSION = (3 << 4) + 1;
+        public const int IMWRITE_EXR_DWA_COMPRESSION_LEVEL = (3 << 4) + 2;
         public const int IMWRITE_WEBP_QUALITY = 64;
+        public const int IMWRITE_HDR_COMPRESSION = (5 << 4) + 0;
         public const int IMWRITE_PAM_TUPLETYPE = 128;
         public const int IMWRITE_TIFF_RESUNIT = 256;
         public const int IMWRITE_TIFF_XDPI = 257;
         public const int IMWRITE_TIFF_YDPI = 258;
         public const int IMWRITE_TIFF_COMPRESSION = 259;
         public const int IMWRITE_JPEG2000_COMPRESSION_X1000 = 272;
+        // C++: enum cv.ImwriteHDRCompressionFlags
+        public const int IMWRITE_HDR_COMPRESSION_NONE = 0;
+        public const int IMWRITE_HDR_COMPRESSION_RLE = 1;
+        // C++: enum cv.ImwriteJPEGSamplingFactorParams
+        public const int IMWRITE_JPEG_SAMPLING_FACTOR_411 = 0x411111;
+        public const int IMWRITE_JPEG_SAMPLING_FACTOR_420 = 0x221111;
+        public const int IMWRITE_JPEG_SAMPLING_FACTOR_422 = 0x211111;
+        public const int IMWRITE_JPEG_SAMPLING_FACTOR_440 = 0x121111;
+        public const int IMWRITE_JPEG_SAMPLING_FACTOR_444 = 0x111111;
         // C++: enum cv.ImwritePAMFlags
         public const int IMWRITE_PAM_FORMAT_NULL = 0;
         public const int IMWRITE_PAM_FORMAT_BLACKANDWHITE = 1;
@@ -581,6 +593,35 @@ namespace OpenCVForUnity.ImgcodecsModule
 
 
         //
+        // C++:  bool cv::imdecodemulti(Mat buf, int flags, vector_Mat& mats)
+        //
+
+        /**
+         * Reads a multi-page image from a buffer in memory.
+         *
+         * The function imdecodemulti reads a multi-page image from the specified buffer in the memory. If the buffer is too short or
+         * contains invalid data, the function returns false.
+         *
+         * See cv::imreadmulti for the list of supported formats and flags description.
+         *
+         * <b>Note:</b> In the case of color images, the decoded images will have the channels stored in <b>B G R</b> order.
+         * param buf Input array or vector of bytes.
+         * param flags The same flags as in cv::imread, see cv::ImreadModes.
+         * param mats A vector of Mat objects holding each page, if more than one.
+         * return automatically generated
+         */
+        public static bool imdecodemulti(Mat buf, int flags, List<Mat> mats)
+        {
+            if (buf != null) buf.ThrowIfDisposed();
+            Mat mats_mat = new Mat();
+            bool retVal = imgcodecs_Imgcodecs_imdecodemulti_10(buf.nativeObj, flags, mats_mat.nativeObj);
+            Converters.Mat_to_vector_Mat(mats_mat, mats);
+            mats_mat.release();
+            return retVal;
+        }
+
+
+        //
         // C++:  bool cv::imencode(String ext, Mat img, vector_uchar& buf, vector_int _params = std::vector<int>())
         //
 
@@ -725,6 +766,11 @@ namespace OpenCVForUnity.ImgcodecsModule
         // C++:  Mat cv::imdecode(Mat buf, int flags)
         [DllImport(LIBNAME)]
         private static extern IntPtr imgcodecs_Imgcodecs_imdecode_10(IntPtr buf_nativeObj, int flags);
+
+        // C++:  bool cv::imdecodemulti(Mat buf, int flags, vector_Mat& mats)
+        [DllImport(LIBNAME)]
+        [return: MarshalAs(UnmanagedType.U1)]
+        private static extern bool imgcodecs_Imgcodecs_imdecodemulti_10(IntPtr buf_nativeObj, int flags, IntPtr mats_mat_nativeObj);
 
         // C++:  bool cv::imencode(String ext, Mat img, vector_uchar& buf, vector_int _params = std::vector<int>())
         [DllImport(LIBNAME)]

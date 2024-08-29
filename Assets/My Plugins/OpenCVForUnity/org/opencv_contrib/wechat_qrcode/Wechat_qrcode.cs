@@ -18,4 +18,5 @@ namespace OpenCVForUnity.Wechat_qrcodeModule
 
     }
 }
+
 #endif

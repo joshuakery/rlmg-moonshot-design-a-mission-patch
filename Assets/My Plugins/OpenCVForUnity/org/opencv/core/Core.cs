@@ -13,10 +13,10 @@ namespace OpenCVForUnity.CoreModule
     public class Core
     {
         // these constants are wrapped inside functions to prevent inlining
-        private static string getVersion() { return "4.6.0-dev"; }
+        private static string getVersion() { return "4.7.0-dev"; }
         private static string getNativeLibraryName() { return "opencvforunity"; }
         private static int getVersionMajorJ() { return 4; }
-        private static int getVersionMinorJ() { return 6; }
+        private static int getVersionMinorJ() { return 7; }
         private static int getVersionRevisionJ() { return 0; }
         private static string getVersionStatusJ() { return "-dev"; }
 
@@ -2728,6 +2728,27 @@ namespace OpenCVForUnity.CoreModule
             if (dst != null) dst.ThrowIfDisposed();
 
             core_Core_flip_10(src.nativeObj, dst.nativeObj, flipCode);
+
+
+        }
+
+
+        //
+        // C++:  void cv::flipND(Mat src, Mat& dst, int axis)
+        //
+
+        /**
+         * Flips a n-dimensional at given axis
+         * param src input array
+         * param dst output array that has the same shape of src
+         * param axis axis that performs a flip on. 0 &lt;= axis &lt; src.dims.
+         */
+        public static void flipND(Mat src, Mat dst, int axis)
+        {
+            if (src != null) src.ThrowIfDisposed();
+            if (dst != null) dst.ThrowIfDisposed();
+
+            core_Core_flipND_10(src.nativeObj, dst.nativeObj, axis);
 
 
         }
@@ -7300,6 +7321,10 @@ namespace OpenCVForUnity.CoreModule
         // C++:  void cv::flip(Mat src, Mat& dst, int flipCode)
         [DllImport(LIBNAME)]
         private static extern void core_Core_flip_10(IntPtr src_nativeObj, IntPtr dst_nativeObj, int flipCode);
+
+        // C++:  void cv::flipND(Mat src, Mat& dst, int axis)
+        [DllImport(LIBNAME)]
+        private static extern void core_Core_flipND_10(IntPtr src_nativeObj, IntPtr dst_nativeObj, int axis);
 
         // C++:  void cv::rotate(Mat src, Mat& dst, int rotateCode)
         [DllImport(LIBNAME)]

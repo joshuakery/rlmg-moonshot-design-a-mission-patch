@@ -127,6 +127,20 @@ namespace OpenCVForUnity.Xfeatures2dModule
 
 
         //
+        // C++:  String cv::xfeatures2d::VGG::getDefaultName()
+        //
+
+        public override string getDefaultName()
+        {
+            ThrowIfDisposed();
+
+            string retVal = Marshal.PtrToStringAnsi(DisposableObject.ThrowIfNullIntPtr(xfeatures2d_VGG_getDefaultName_10(nativeObj)));
+
+            return retVal;
+        }
+
+
+        //
         // C++:  void cv::xfeatures2d::VGG::setSigma(float isigma)
         //
 
@@ -289,6 +303,10 @@ namespace OpenCVForUnity.Xfeatures2dModule
         private static extern IntPtr xfeatures2d_VGG_create_15(int desc);
         [DllImport(LIBNAME)]
         private static extern IntPtr xfeatures2d_VGG_create_16();
+
+        // C++:  String cv::xfeatures2d::VGG::getDefaultName()
+        [DllImport(LIBNAME)]
+        private static extern IntPtr xfeatures2d_VGG_getDefaultName_10(IntPtr nativeObj);
 
         // C++:  void cv::xfeatures2d::VGG::setSigma(float isigma)
         [DllImport(LIBNAME)]

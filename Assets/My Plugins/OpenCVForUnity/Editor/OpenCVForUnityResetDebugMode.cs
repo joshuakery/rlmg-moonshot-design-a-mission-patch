@@ -4,7 +4,7 @@ using UnityEditor;
 
 using OpenCVForUnity.UnityUtils;
 
-namespace OpenCVForUnity
+namespace OpenCVForUnity.Editor
 {
     public class OpenCVForUnityResetDebugMode : MonoBehaviour
     {

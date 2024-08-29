@@ -22,6 +22,11 @@ namespace ArtScan.CamConfigLoaderModule
 		public bool flipVertical;
 		public bool flipHorizontal;
 		public int requestedFPS = 30;
+		public int requestedWidth = 640;
+		public int requestedHeight = 480;
+
+		public int preProcessingSizeFactor = 2;
+		public int postProcessingSizeFactor = 2;
 
 		public int brightness = 255;
 		public int contrast = 127;
@@ -63,6 +68,9 @@ namespace ArtScan.CamConfigLoaderModule
 				settings.clearSaveDirOnQuit = configData.clearSaveDirOnQuit;
 				settings.clearTrashDirOnQuit = configData.clearTrashDirOnQuit;
 				settings.doSaveCroppedToBoundingBox = configData.doSaveCroppedToBoundingBox;
+
+				settings.preProcessingSizeFactor = configData.preProcessingSizeFactor;
+				settings.postProcessingSizeFactor = configData.postProcessingSizeFactor;
 
 				settings.brightness = configData.brightness;
 				settings.contrast = configData.contrast;

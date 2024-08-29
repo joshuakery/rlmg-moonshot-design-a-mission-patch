@@ -1,5 +1,6 @@
 
 using OpenCVForUnity.CoreModule;
+using OpenCVForUnity.ObjdetectModule;
 using OpenCVForUnity.UtilsModule;
 using System;
 using System.Collections.Generic;
@@ -13,64 +14,24 @@ namespace OpenCVForUnity.ArucoModule
     public class Aruco
     {
 
-        // C++: enum cv.aruco.CornerRefineMethod
-        public const int CORNER_REFINE_NONE = 0;
-        public const int CORNER_REFINE_SUBPIX = 1;
-        public const int CORNER_REFINE_CONTOUR = 2;
-        public const int CORNER_REFINE_APRILTAG = 3;
-        // C++: enum cv.aruco.PREDEFINED_DICTIONARY_NAME
-        public const int DICT_4X4_50 = 0;
-        public const int DICT_4X4_100 = 0 + 1;
-        public const int DICT_4X4_250 = 0 + 2;
-        public const int DICT_4X4_1000 = 0 + 3;
-        public const int DICT_5X5_50 = 0 + 4;
-        public const int DICT_5X5_100 = 0 + 5;
-        public const int DICT_5X5_250 = 0 + 6;
-        public const int DICT_5X5_1000 = 0 + 7;
-        public const int DICT_6X6_50 = 0 + 8;
-        public const int DICT_6X6_100 = 0 + 9;
-        public const int DICT_6X6_250 = 0 + 10;
-        public const int DICT_6X6_1000 = 0 + 11;
-        public const int DICT_7X7_50 = 0 + 12;
-        public const int DICT_7X7_100 = 0 + 13;
-        public const int DICT_7X7_250 = 0 + 14;
-        public const int DICT_7X7_1000 = 0 + 15;
-        public const int DICT_ARUCO_ORIGINAL = 0 + 16;
-        public const int DICT_APRILTAG_16h5 = 0 + 17;
-        public const int DICT_APRILTAG_25h9 = 0 + 18;
-        public const int DICT_APRILTAG_36h10 = 0 + 19;
-        public const int DICT_APRILTAG_36h11 = 0 + 20;
-        // C++: enum cv.aruco.PatternPos
-        public const int CCW_center = 0;
-        public const int CW_top_left_corner = 1;
+        // C++: enum cv.aruco.PatternPositionType
+        public const int ARUCO_CCW_CENTER = 0;
+        public const int ARUCO_CW_TOP_LEFT_CORNER = 1;
         //
-        // C++:  void cv::aruco::detectMarkers(Mat image, Ptr_Dictionary dictionary, vector_Mat& corners, Mat& ids, Ptr_DetectorParameters parameters = DetectorParameters::create(), vector_Mat& rejectedImgPoints = vector_Mat())
+        // C++:  void cv::aruco::detectMarkers(Mat image, Ptr_Dictionary dictionary, vector_Mat& corners, Mat& ids, Ptr_DetectorParameters parameters = makePtr<DetectorParameters>(), vector_Mat& rejectedImgPoints = vector_Mat())
         //
 
         /**
-         * Basic marker detection
-         *
-         * param image input image
-         * param dictionary indicates the type of markers that will be searched
-         * param corners vector of detected marker corners. For each marker, its four corners
-         * are provided, (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers,
-         * the dimensions of this array is Nx4. The order of the corners is clockwise.
-         * param ids vector of identifiers of the detected markers. The identifier is of type int
-         * (e.g. std::vector&lt;int&gt;). For N detected markers, the size of ids is also N.
-         * The identifiers have the same order than the markers in the imgPoints array.
-         * param parameters marker detection parameters
-         * param rejectedImgPoints contains the imgPoints of those squares whose inner code has not a
-         * correct codification. Useful for debugging purposes.
-         *
-         * Performs marker detection in the input image. Only markers included in the specific dictionary
-         * are searched. For each detected marker, it returns the 2D position of its corner in the image
-         * and its corresponding identifier.
-         * Note that this function does not perform pose estimation.
-         * <b>Note:</b> The function does not correct lens distortion or takes it into account. It's recommended to undistort
-         * input image with corresponging camera model, if camera parameters are known
-         * SEE: undistort, estimatePoseSingleMarkers,  estimatePoseBoard
-         *
+         * detect markers
+         * deprecated Use class ArucoDetector::detectMarkers
+         * param image automatically generated
+         * param dictionary automatically generated
+         * param corners automatically generated
+         * param ids automatically generated
+         * param parameters automatically generated
+         * param rejectedImgPoints automatically generated
          */
+        [Obsolete("This method is deprecated.")]
         public static void detectMarkers(Mat image, Dictionary dictionary, List<Mat> corners, Mat ids, DetectorParameters parameters, List<Mat> rejectedImgPoints)
         {
             if (image != null) image.ThrowIfDisposed();
@@ -88,28 +49,15 @@ namespace OpenCVForUnity.ArucoModule
         }
 
         /**
-         * Basic marker detection
-         *
-         * param image input image
-         * param dictionary indicates the type of markers that will be searched
-         * param corners vector of detected marker corners. For each marker, its four corners
-         * are provided, (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers,
-         * the dimensions of this array is Nx4. The order of the corners is clockwise.
-         * param ids vector of identifiers of the detected markers. The identifier is of type int
-         * (e.g. std::vector&lt;int&gt;). For N detected markers, the size of ids is also N.
-         * The identifiers have the same order than the markers in the imgPoints array.
-         * param parameters marker detection parameters
-         * correct codification. Useful for debugging purposes.
-         *
-         * Performs marker detection in the input image. Only markers included in the specific dictionary
-         * are searched. For each detected marker, it returns the 2D position of its corner in the image
-         * and its corresponding identifier.
-         * Note that this function does not perform pose estimation.
-         * <b>Note:</b> The function does not correct lens distortion or takes it into account. It's recommended to undistort
-         * input image with corresponging camera model, if camera parameters are known
-         * SEE: undistort, estimatePoseSingleMarkers,  estimatePoseBoard
-         *
+         * detect markers
+         * deprecated Use class ArucoDetector::detectMarkers
+         * param image automatically generated
+         * param dictionary automatically generated
+         * param corners automatically generated
+         * param ids automatically generated
+         * param parameters automatically generated
          */
+        [Obsolete("This method is deprecated.")]
         public static void detectMarkers(Mat image, Dictionary dictionary, List<Mat> corners, Mat ids, DetectorParameters parameters)
         {
             if (image != null) image.ThrowIfDisposed();
@@ -124,27 +72,14 @@ namespace OpenCVForUnity.ArucoModule
         }
 
         /**
-         * Basic marker detection
-         *
-         * param image input image
-         * param dictionary indicates the type of markers that will be searched
-         * param corners vector of detected marker corners. For each marker, its four corners
-         * are provided, (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers,
-         * the dimensions of this array is Nx4. The order of the corners is clockwise.
-         * param ids vector of identifiers of the detected markers. The identifier is of type int
-         * (e.g. std::vector&lt;int&gt;). For N detected markers, the size of ids is also N.
-         * The identifiers have the same order than the markers in the imgPoints array.
-         * correct codification. Useful for debugging purposes.
-         *
-         * Performs marker detection in the input image. Only markers included in the specific dictionary
-         * are searched. For each detected marker, it returns the 2D position of its corner in the image
-         * and its corresponding identifier.
-         * Note that this function does not perform pose estimation.
-         * <b>Note:</b> The function does not correct lens distortion or takes it into account. It's recommended to undistort
-         * input image with corresponging camera model, if camera parameters are known
-         * SEE: undistort, estimatePoseSingleMarkers,  estimatePoseBoard
-         *
+         * detect markers
+         * deprecated Use class ArucoDetector::detectMarkers
+         * param image automatically generated
+         * param dictionary automatically generated
+         * param corners automatically generated
+         * param ids automatically generated
          */
+        [Obsolete("This method is deprecated.")]
         public static void detectMarkers(Mat image, Dictionary dictionary, List<Mat> corners, Mat ids)
         {
             if (image != null) image.ThrowIfDisposed();
@@ -159,281 +94,26 @@ namespace OpenCVForUnity.ArucoModule
 
 
         //
-        // C++:  void cv::aruco::estimatePoseSingleMarkers(vector_Mat corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat& rvecs, Mat& tvecs, Mat& _objPoints = Mat(), Ptr_EstimateParameters estimateParameters = EstimateParameters::create())
+        // C++:  void cv::aruco::refineDetectedMarkers(Mat image, Ptr_Board board, vector_Mat& detectedCorners, Mat& detectedIds, vector_Mat& rejectedCorners, Mat cameraMatrix = Mat(), Mat distCoeffs = Mat(), float minRepDistance = 10.f, float errorCorrectionRate = 3.f, bool checkAllOrders = true, Mat& recoveredIdxs = Mat(), Ptr_DetectorParameters parameters = makePtr<DetectorParameters>())
         //
 
         /**
-         * Pose estimation for single markers
-         *
-         * param corners vector of already detected markers corners. For each marker, its four corners
-         * are provided, (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers,
-         * the dimensions of this array should be Nx4. The order of the corners should be clockwise.
-         * SEE: detectMarkers
-         * param markerLength the length of the markers' side. The returning translation vectors will
-         * be in the same unit. Normally, unit is meters.
-         * param cameraMatrix input 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * param distCoeffs vector of distortion coefficients
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         * param rvecs array of output rotation vectors (SEE: Rodrigues) (e.g. std::vector&lt;cv::Vec3d&gt;).
-         * Each element in rvecs corresponds to the specific marker in imgPoints.
-         * param tvecs array of output translation vectors (e.g. std::vector&lt;cv::Vec3d&gt;).
-         * Each element in tvecs corresponds to the specific marker in imgPoints.
-         * param _objPoints array of object points of all the marker corners
-         * param estimateParameters set the origin of coordinate system and the coordinates of the four corners of the marker
-         * (default estimateParameters.pattern = PatternPos::CCW_center, estimateParameters.useExtrinsicGuess = false,
-         * estimateParameters.solvePnPMethod = SOLVEPNP_ITERATIVE).
-         *
-         * This function receives the detected markers and returns their pose estimation respect to
-         * the camera individually. So for each marker, one rotation and translation vector is returned.
-         * The returned transformation is the one that transforms points from each marker coordinate system
-         * to the camera coordinate system.
-         * The marker coordinate system is centered on the middle (by default) or on the top-left corner of the marker,
-         * with the Z axis perpendicular to the marker plane.
-         * estimateParameters defines the coordinates of the four corners of the marker in its own coordinate system (by default) are:
-         * (-markerLength/2, markerLength/2, 0), (markerLength/2, markerLength/2, 0),
-         * (markerLength/2, -markerLength/2, 0), (-markerLength/2, -markerLength/2, 0)
-         * SEE: use cv::drawFrameAxes to get world coordinate system axis for object points
-         * SEE: REF: tutorial_aruco_detection
-         * SEE: EstimateParameters
-         * SEE: PatternPos
+         * refine detected markers
+         * deprecated Use class ArucoDetector::refineDetectedMarkers
+         * param image automatically generated
+         * param board automatically generated
+         * param detectedCorners automatically generated
+         * param detectedIds automatically generated
+         * param rejectedCorners automatically generated
+         * param cameraMatrix automatically generated
+         * param distCoeffs automatically generated
+         * param minRepDistance automatically generated
+         * param errorCorrectionRate automatically generated
+         * param checkAllOrders automatically generated
+         * param recoveredIdxs automatically generated
+         * param parameters automatically generated
          */
-        public static void estimatePoseSingleMarkers(List<Mat> corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat rvecs, Mat tvecs, Mat _objPoints, EstimateParameters estimateParameters)
-        {
-            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
-            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
-            if (rvecs != null) rvecs.ThrowIfDisposed();
-            if (tvecs != null) tvecs.ThrowIfDisposed();
-            if (_objPoints != null) _objPoints.ThrowIfDisposed();
-            if (estimateParameters != null) estimateParameters.ThrowIfDisposed();
-            Mat corners_mat = Converters.vector_Mat_to_Mat(corners);
-            aruco_Aruco_estimatePoseSingleMarkers_10(corners_mat.nativeObj, markerLength, cameraMatrix.nativeObj, distCoeffs.nativeObj, rvecs.nativeObj, tvecs.nativeObj, _objPoints.nativeObj, estimateParameters.getNativeObjAddr());
-
-
-        }
-
-        /**
-         * Pose estimation for single markers
-         *
-         * param corners vector of already detected markers corners. For each marker, its four corners
-         * are provided, (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers,
-         * the dimensions of this array should be Nx4. The order of the corners should be clockwise.
-         * SEE: detectMarkers
-         * param markerLength the length of the markers' side. The returning translation vectors will
-         * be in the same unit. Normally, unit is meters.
-         * param cameraMatrix input 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * param distCoeffs vector of distortion coefficients
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         * param rvecs array of output rotation vectors (SEE: Rodrigues) (e.g. std::vector&lt;cv::Vec3d&gt;).
-         * Each element in rvecs corresponds to the specific marker in imgPoints.
-         * param tvecs array of output translation vectors (e.g. std::vector&lt;cv::Vec3d&gt;).
-         * Each element in tvecs corresponds to the specific marker in imgPoints.
-         * param _objPoints array of object points of all the marker corners
-         * (default estimateParameters.pattern = PatternPos::CCW_center, estimateParameters.useExtrinsicGuess = false,
-         * estimateParameters.solvePnPMethod = SOLVEPNP_ITERATIVE).
-         *
-         * This function receives the detected markers and returns their pose estimation respect to
-         * the camera individually. So for each marker, one rotation and translation vector is returned.
-         * The returned transformation is the one that transforms points from each marker coordinate system
-         * to the camera coordinate system.
-         * The marker coordinate system is centered on the middle (by default) or on the top-left corner of the marker,
-         * with the Z axis perpendicular to the marker plane.
-         * estimateParameters defines the coordinates of the four corners of the marker in its own coordinate system (by default) are:
-         * (-markerLength/2, markerLength/2, 0), (markerLength/2, markerLength/2, 0),
-         * (markerLength/2, -markerLength/2, 0), (-markerLength/2, -markerLength/2, 0)
-         * SEE: use cv::drawFrameAxes to get world coordinate system axis for object points
-         * SEE: REF: tutorial_aruco_detection
-         * SEE: EstimateParameters
-         * SEE: PatternPos
-         */
-        public static void estimatePoseSingleMarkers(List<Mat> corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat rvecs, Mat tvecs, Mat _objPoints)
-        {
-            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
-            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
-            if (rvecs != null) rvecs.ThrowIfDisposed();
-            if (tvecs != null) tvecs.ThrowIfDisposed();
-            if (_objPoints != null) _objPoints.ThrowIfDisposed();
-            Mat corners_mat = Converters.vector_Mat_to_Mat(corners);
-            aruco_Aruco_estimatePoseSingleMarkers_11(corners_mat.nativeObj, markerLength, cameraMatrix.nativeObj, distCoeffs.nativeObj, rvecs.nativeObj, tvecs.nativeObj, _objPoints.nativeObj);
-
-
-        }
-
-        /**
-         * Pose estimation for single markers
-         *
-         * param corners vector of already detected markers corners. For each marker, its four corners
-         * are provided, (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers,
-         * the dimensions of this array should be Nx4. The order of the corners should be clockwise.
-         * SEE: detectMarkers
-         * param markerLength the length of the markers' side. The returning translation vectors will
-         * be in the same unit. Normally, unit is meters.
-         * param cameraMatrix input 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * param distCoeffs vector of distortion coefficients
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         * param rvecs array of output rotation vectors (SEE: Rodrigues) (e.g. std::vector&lt;cv::Vec3d&gt;).
-         * Each element in rvecs corresponds to the specific marker in imgPoints.
-         * param tvecs array of output translation vectors (e.g. std::vector&lt;cv::Vec3d&gt;).
-         * Each element in tvecs corresponds to the specific marker in imgPoints.
-         * (default estimateParameters.pattern = PatternPos::CCW_center, estimateParameters.useExtrinsicGuess = false,
-         * estimateParameters.solvePnPMethod = SOLVEPNP_ITERATIVE).
-         *
-         * This function receives the detected markers and returns their pose estimation respect to
-         * the camera individually. So for each marker, one rotation and translation vector is returned.
-         * The returned transformation is the one that transforms points from each marker coordinate system
-         * to the camera coordinate system.
-         * The marker coordinate system is centered on the middle (by default) or on the top-left corner of the marker,
-         * with the Z axis perpendicular to the marker plane.
-         * estimateParameters defines the coordinates of the four corners of the marker in its own coordinate system (by default) are:
-         * (-markerLength/2, markerLength/2, 0), (markerLength/2, markerLength/2, 0),
-         * (markerLength/2, -markerLength/2, 0), (-markerLength/2, -markerLength/2, 0)
-         * SEE: use cv::drawFrameAxes to get world coordinate system axis for object points
-         * SEE: REF: tutorial_aruco_detection
-         * SEE: EstimateParameters
-         * SEE: PatternPos
-         */
-        public static void estimatePoseSingleMarkers(List<Mat> corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat rvecs, Mat tvecs)
-        {
-            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
-            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
-            if (rvecs != null) rvecs.ThrowIfDisposed();
-            if (tvecs != null) tvecs.ThrowIfDisposed();
-            Mat corners_mat = Converters.vector_Mat_to_Mat(corners);
-            aruco_Aruco_estimatePoseSingleMarkers_12(corners_mat.nativeObj, markerLength, cameraMatrix.nativeObj, distCoeffs.nativeObj, rvecs.nativeObj, tvecs.nativeObj);
-
-
-        }
-
-
-        //
-        // C++:  int cv::aruco::estimatePoseBoard(vector_Mat corners, Mat ids, Ptr_Board board, Mat cameraMatrix, Mat distCoeffs, Mat& rvec, Mat& tvec, bool useExtrinsicGuess = false)
-        //
-
-        /**
-         * Pose estimation for a board of markers
-         *
-         * param corners vector of already detected markers corners. For each marker, its four corners
-         * are provided, (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers, the
-         * dimensions of this array should be Nx4. The order of the corners should be clockwise.
-         * param ids list of identifiers for each marker in corners
-         * param board layout of markers in the board. The layout is composed by the marker identifiers
-         * and the positions of each marker corner in the board reference system.
-         * param cameraMatrix input 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * param distCoeffs vector of distortion coefficients
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         * param rvec Output vector (e.g. cv::Mat) corresponding to the rotation vector of the board
-         * (see cv::Rodrigues). Used as initial guess if not empty.
-         * param tvec Output vector (e.g. cv::Mat) corresponding to the translation vector of the board.
-         * param useExtrinsicGuess defines whether initial guess for \b rvec and \b tvec will be used or not.
-         * Used as initial guess if not empty.
-         *
-         * This function receives the detected markers and returns the pose of a marker board composed
-         * by those markers.
-         * A Board of marker has a single world coordinate system which is defined by the board layout.
-         * The returned transformation is the one that transforms points from the board coordinate system
-         * to the camera coordinate system.
-         * Input markers that are not included in the board layout are ignored.
-         * The function returns the number of markers from the input employed for the board pose estimation.
-         * Note that returning a 0 means the pose has not been estimated.
-         * SEE: use cv::drawFrameAxes to get world coordinate system axis for object points
-         * return automatically generated
-         */
-        public static int estimatePoseBoard(List<Mat> corners, Mat ids, Board board, Mat cameraMatrix, Mat distCoeffs, Mat rvec, Mat tvec, bool useExtrinsicGuess)
-        {
-            if (ids != null) ids.ThrowIfDisposed();
-            if (board != null) board.ThrowIfDisposed();
-            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
-            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
-            if (rvec != null) rvec.ThrowIfDisposed();
-            if (tvec != null) tvec.ThrowIfDisposed();
-            Mat corners_mat = Converters.vector_Mat_to_Mat(corners);
-            return aruco_Aruco_estimatePoseBoard_10(corners_mat.nativeObj, ids.nativeObj, board.getNativeObjAddr(), cameraMatrix.nativeObj, distCoeffs.nativeObj, rvec.nativeObj, tvec.nativeObj, useExtrinsicGuess);
-
-
-        }
-
-        /**
-         * Pose estimation for a board of markers
-         *
-         * param corners vector of already detected markers corners. For each marker, its four corners
-         * are provided, (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers, the
-         * dimensions of this array should be Nx4. The order of the corners should be clockwise.
-         * param ids list of identifiers for each marker in corners
-         * param board layout of markers in the board. The layout is composed by the marker identifiers
-         * and the positions of each marker corner in the board reference system.
-         * param cameraMatrix input 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * param distCoeffs vector of distortion coefficients
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         * param rvec Output vector (e.g. cv::Mat) corresponding to the rotation vector of the board
-         * (see cv::Rodrigues). Used as initial guess if not empty.
-         * param tvec Output vector (e.g. cv::Mat) corresponding to the translation vector of the board.
-         * Used as initial guess if not empty.
-         *
-         * This function receives the detected markers and returns the pose of a marker board composed
-         * by those markers.
-         * A Board of marker has a single world coordinate system which is defined by the board layout.
-         * The returned transformation is the one that transforms points from the board coordinate system
-         * to the camera coordinate system.
-         * Input markers that are not included in the board layout are ignored.
-         * The function returns the number of markers from the input employed for the board pose estimation.
-         * Note that returning a 0 means the pose has not been estimated.
-         * SEE: use cv::drawFrameAxes to get world coordinate system axis for object points
-         * return automatically generated
-         */
-        public static int estimatePoseBoard(List<Mat> corners, Mat ids, Board board, Mat cameraMatrix, Mat distCoeffs, Mat rvec, Mat tvec)
-        {
-            if (ids != null) ids.ThrowIfDisposed();
-            if (board != null) board.ThrowIfDisposed();
-            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
-            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
-            if (rvec != null) rvec.ThrowIfDisposed();
-            if (tvec != null) tvec.ThrowIfDisposed();
-            Mat corners_mat = Converters.vector_Mat_to_Mat(corners);
-            return aruco_Aruco_estimatePoseBoard_11(corners_mat.nativeObj, ids.nativeObj, board.getNativeObjAddr(), cameraMatrix.nativeObj, distCoeffs.nativeObj, rvec.nativeObj, tvec.nativeObj);
-
-
-        }
-
-
-        //
-        // C++:  void cv::aruco::refineDetectedMarkers(Mat image, Ptr_Board board, vector_Mat& detectedCorners, Mat& detectedIds, vector_Mat& rejectedCorners, Mat cameraMatrix = Mat(), Mat distCoeffs = Mat(), float minRepDistance = 10.f, float errorCorrectionRate = 3.f, bool checkAllOrders = true, Mat& recoveredIdxs = Mat(), Ptr_DetectorParameters parameters = DetectorParameters::create())
-        //
-
-        /**
-         * Refind not detected markers based on the already detected and the board layout
-         *
-         * param image input image
-         * param board layout of markers in the board.
-         * param detectedCorners vector of already detected marker corners.
-         * param detectedIds vector of already detected marker identifiers.
-         * param rejectedCorners vector of rejected candidates during the marker detection process.
-         * param cameraMatrix optional input 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * param distCoeffs optional vector of distortion coefficients
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         * param minRepDistance minimum distance between the corners of the rejected candidate and the
-         * reprojected marker in order to consider it as a correspondence.
-         * param errorCorrectionRate rate of allowed erroneous bits respect to the error correction
-         * capability of the used dictionary. -1 ignores the error correction step.
-         * param checkAllOrders Consider the four posible corner orders in the rejectedCorners array.
-         * If it set to false, only the provided corner order is considered (default true).
-         * param recoveredIdxs Optional array to returns the indexes of the recovered candidates in the
-         * original rejectedCorners array.
-         * param parameters marker detection parameters
-         *
-         * This function tries to find markers that were not detected in the basic detecMarkers function.
-         * First, based on the current detected marker and the board layout, the function interpolates
-         * the position of the missing markers. Then it tries to find correspondence between the reprojected
-         * markers and the rejected candidates based on the minRepDistance and errorCorrectionRate
-         * parameters.
-         * If camera parameters and distortion coefficients are provided, missing markers are reprojected
-         * using projectPoint function. If not, missing marker projections are interpolated using global
-         * homography, and all the marker corners in the board must have the same Z coordinate.
-         */
+        [Obsolete("This method is deprecated.")]
         public static void refineDetectedMarkers(Mat image, Board board, List<Mat> detectedCorners, Mat detectedIds, List<Mat> rejectedCorners, Mat cameraMatrix, Mat distCoeffs, float minRepDistance, float errorCorrectionRate, bool checkAllOrders, Mat recoveredIdxs, DetectorParameters parameters)
         {
             if (image != null) image.ThrowIfDisposed();
@@ -454,35 +134,21 @@ namespace OpenCVForUnity.ArucoModule
         }
 
         /**
-         * Refind not detected markers based on the already detected and the board layout
-         *
-         * param image input image
-         * param board layout of markers in the board.
-         * param detectedCorners vector of already detected marker corners.
-         * param detectedIds vector of already detected marker identifiers.
-         * param rejectedCorners vector of rejected candidates during the marker detection process.
-         * param cameraMatrix optional input 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * param distCoeffs optional vector of distortion coefficients
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         * param minRepDistance minimum distance between the corners of the rejected candidate and the
-         * reprojected marker in order to consider it as a correspondence.
-         * param errorCorrectionRate rate of allowed erroneous bits respect to the error correction
-         * capability of the used dictionary. -1 ignores the error correction step.
-         * param checkAllOrders Consider the four posible corner orders in the rejectedCorners array.
-         * If it set to false, only the provided corner order is considered (default true).
-         * param recoveredIdxs Optional array to returns the indexes of the recovered candidates in the
-         * original rejectedCorners array.
-         *
-         * This function tries to find markers that were not detected in the basic detecMarkers function.
-         * First, based on the current detected marker and the board layout, the function interpolates
-         * the position of the missing markers. Then it tries to find correspondence between the reprojected
-         * markers and the rejected candidates based on the minRepDistance and errorCorrectionRate
-         * parameters.
-         * If camera parameters and distortion coefficients are provided, missing markers are reprojected
-         * using projectPoint function. If not, missing marker projections are interpolated using global
-         * homography, and all the marker corners in the board must have the same Z coordinate.
+         * refine detected markers
+         * deprecated Use class ArucoDetector::refineDetectedMarkers
+         * param image automatically generated
+         * param board automatically generated
+         * param detectedCorners automatically generated
+         * param detectedIds automatically generated
+         * param rejectedCorners automatically generated
+         * param cameraMatrix automatically generated
+         * param distCoeffs automatically generated
+         * param minRepDistance automatically generated
+         * param errorCorrectionRate automatically generated
+         * param checkAllOrders automatically generated
+         * param recoveredIdxs automatically generated
          */
+        [Obsolete("This method is deprecated.")]
         public static void refineDetectedMarkers(Mat image, Board board, List<Mat> detectedCorners, Mat detectedIds, List<Mat> rejectedCorners, Mat cameraMatrix, Mat distCoeffs, float minRepDistance, float errorCorrectionRate, bool checkAllOrders, Mat recoveredIdxs)
         {
             if (image != null) image.ThrowIfDisposed();
@@ -502,34 +168,20 @@ namespace OpenCVForUnity.ArucoModule
         }
 
         /**
-         * Refind not detected markers based on the already detected and the board layout
-         *
-         * param image input image
-         * param board layout of markers in the board.
-         * param detectedCorners vector of already detected marker corners.
-         * param detectedIds vector of already detected marker identifiers.
-         * param rejectedCorners vector of rejected candidates during the marker detection process.
-         * param cameraMatrix optional input 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * param distCoeffs optional vector of distortion coefficients
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         * param minRepDistance minimum distance between the corners of the rejected candidate and the
-         * reprojected marker in order to consider it as a correspondence.
-         * param errorCorrectionRate rate of allowed erroneous bits respect to the error correction
-         * capability of the used dictionary. -1 ignores the error correction step.
-         * param checkAllOrders Consider the four posible corner orders in the rejectedCorners array.
-         * If it set to false, only the provided corner order is considered (default true).
-         * original rejectedCorners array.
-         *
-         * This function tries to find markers that were not detected in the basic detecMarkers function.
-         * First, based on the current detected marker and the board layout, the function interpolates
-         * the position of the missing markers. Then it tries to find correspondence between the reprojected
-         * markers and the rejected candidates based on the minRepDistance and errorCorrectionRate
-         * parameters.
-         * If camera parameters and distortion coefficients are provided, missing markers are reprojected
-         * using projectPoint function. If not, missing marker projections are interpolated using global
-         * homography, and all the marker corners in the board must have the same Z coordinate.
+         * refine detected markers
+         * deprecated Use class ArucoDetector::refineDetectedMarkers
+         * param image automatically generated
+         * param board automatically generated
+         * param detectedCorners automatically generated
+         * param detectedIds automatically generated
+         * param rejectedCorners automatically generated
+         * param cameraMatrix automatically generated
+         * param distCoeffs automatically generated
+         * param minRepDistance automatically generated
+         * param errorCorrectionRate automatically generated
+         * param checkAllOrders automatically generated
          */
+        [Obsolete("This method is deprecated.")]
         public static void refineDetectedMarkers(Mat image, Board board, List<Mat> detectedCorners, Mat detectedIds, List<Mat> rejectedCorners, Mat cameraMatrix, Mat distCoeffs, float minRepDistance, float errorCorrectionRate, bool checkAllOrders)
         {
             if (image != null) image.ThrowIfDisposed();
@@ -548,33 +200,19 @@ namespace OpenCVForUnity.ArucoModule
         }
 
         /**
-         * Refind not detected markers based on the already detected and the board layout
-         *
-         * param image input image
-         * param board layout of markers in the board.
-         * param detectedCorners vector of already detected marker corners.
-         * param detectedIds vector of already detected marker identifiers.
-         * param rejectedCorners vector of rejected candidates during the marker detection process.
-         * param cameraMatrix optional input 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * param distCoeffs optional vector of distortion coefficients
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         * param minRepDistance minimum distance between the corners of the rejected candidate and the
-         * reprojected marker in order to consider it as a correspondence.
-         * param errorCorrectionRate rate of allowed erroneous bits respect to the error correction
-         * capability of the used dictionary. -1 ignores the error correction step.
-         * If it set to false, only the provided corner order is considered (default true).
-         * original rejectedCorners array.
-         *
-         * This function tries to find markers that were not detected in the basic detecMarkers function.
-         * First, based on the current detected marker and the board layout, the function interpolates
-         * the position of the missing markers. Then it tries to find correspondence between the reprojected
-         * markers and the rejected candidates based on the minRepDistance and errorCorrectionRate
-         * parameters.
-         * If camera parameters and distortion coefficients are provided, missing markers are reprojected
-         * using projectPoint function. If not, missing marker projections are interpolated using global
-         * homography, and all the marker corners in the board must have the same Z coordinate.
+         * refine detected markers
+         * deprecated Use class ArucoDetector::refineDetectedMarkers
+         * param image automatically generated
+         * param board automatically generated
+         * param detectedCorners automatically generated
+         * param detectedIds automatically generated
+         * param rejectedCorners automatically generated
+         * param cameraMatrix automatically generated
+         * param distCoeffs automatically generated
+         * param minRepDistance automatically generated
+         * param errorCorrectionRate automatically generated
          */
+        [Obsolete("This method is deprecated.")]
         public static void refineDetectedMarkers(Mat image, Board board, List<Mat> detectedCorners, Mat detectedIds, List<Mat> rejectedCorners, Mat cameraMatrix, Mat distCoeffs, float minRepDistance, float errorCorrectionRate)
         {
             if (image != null) image.ThrowIfDisposed();
@@ -593,32 +231,18 @@ namespace OpenCVForUnity.ArucoModule
         }
 
         /**
-         * Refind not detected markers based on the already detected and the board layout
-         *
-         * param image input image
-         * param board layout of markers in the board.
-         * param detectedCorners vector of already detected marker corners.
-         * param detectedIds vector of already detected marker identifiers.
-         * param rejectedCorners vector of rejected candidates during the marker detection process.
-         * param cameraMatrix optional input 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * param distCoeffs optional vector of distortion coefficients
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         * param minRepDistance minimum distance between the corners of the rejected candidate and the
-         * reprojected marker in order to consider it as a correspondence.
-         * capability of the used dictionary. -1 ignores the error correction step.
-         * If it set to false, only the provided corner order is considered (default true).
-         * original rejectedCorners array.
-         *
-         * This function tries to find markers that were not detected in the basic detecMarkers function.
-         * First, based on the current detected marker and the board layout, the function interpolates
-         * the position of the missing markers. Then it tries to find correspondence between the reprojected
-         * markers and the rejected candidates based on the minRepDistance and errorCorrectionRate
-         * parameters.
-         * If camera parameters and distortion coefficients are provided, missing markers are reprojected
-         * using projectPoint function. If not, missing marker projections are interpolated using global
-         * homography, and all the marker corners in the board must have the same Z coordinate.
+         * refine detected markers
+         * deprecated Use class ArucoDetector::refineDetectedMarkers
+         * param image automatically generated
+         * param board automatically generated
+         * param detectedCorners automatically generated
+         * param detectedIds automatically generated
+         * param rejectedCorners automatically generated
+         * param cameraMatrix automatically generated
+         * param distCoeffs automatically generated
+         * param minRepDistance automatically generated
          */
+        [Obsolete("This method is deprecated.")]
         public static void refineDetectedMarkers(Mat image, Board board, List<Mat> detectedCorners, Mat detectedIds, List<Mat> rejectedCorners, Mat cameraMatrix, Mat distCoeffs, float minRepDistance)
         {
             if (image != null) image.ThrowIfDisposed();
@@ -637,31 +261,17 @@ namespace OpenCVForUnity.ArucoModule
         }
 
         /**
-         * Refind not detected markers based on the already detected and the board layout
-         *
-         * param image input image
-         * param board layout of markers in the board.
-         * param detectedCorners vector of already detected marker corners.
-         * param detectedIds vector of already detected marker identifiers.
-         * param rejectedCorners vector of rejected candidates during the marker detection process.
-         * param cameraMatrix optional input 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * param distCoeffs optional vector of distortion coefficients
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         * reprojected marker in order to consider it as a correspondence.
-         * capability of the used dictionary. -1 ignores the error correction step.
-         * If it set to false, only the provided corner order is considered (default true).
-         * original rejectedCorners array.
-         *
-         * This function tries to find markers that were not detected in the basic detecMarkers function.
-         * First, based on the current detected marker and the board layout, the function interpolates
-         * the position of the missing markers. Then it tries to find correspondence between the reprojected
-         * markers and the rejected candidates based on the minRepDistance and errorCorrectionRate
-         * parameters.
-         * If camera parameters and distortion coefficients are provided, missing markers are reprojected
-         * using projectPoint function. If not, missing marker projections are interpolated using global
-         * homography, and all the marker corners in the board must have the same Z coordinate.
+         * refine detected markers
+         * deprecated Use class ArucoDetector::refineDetectedMarkers
+         * param image automatically generated
+         * param board automatically generated
+         * param detectedCorners automatically generated
+         * param detectedIds automatically generated
+         * param rejectedCorners automatically generated
+         * param cameraMatrix automatically generated
+         * param distCoeffs automatically generated
          */
+        [Obsolete("This method is deprecated.")]
         public static void refineDetectedMarkers(Mat image, Board board, List<Mat> detectedCorners, Mat detectedIds, List<Mat> rejectedCorners, Mat cameraMatrix, Mat distCoeffs)
         {
             if (image != null) image.ThrowIfDisposed();
@@ -680,30 +290,16 @@ namespace OpenCVForUnity.ArucoModule
         }
 
         /**
-         * Refind not detected markers based on the already detected and the board layout
-         *
-         * param image input image
-         * param board layout of markers in the board.
-         * param detectedCorners vector of already detected marker corners.
-         * param detectedIds vector of already detected marker identifiers.
-         * param rejectedCorners vector of rejected candidates during the marker detection process.
-         * param cameraMatrix optional input 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         * reprojected marker in order to consider it as a correspondence.
-         * capability of the used dictionary. -1 ignores the error correction step.
-         * If it set to false, only the provided corner order is considered (default true).
-         * original rejectedCorners array.
-         *
-         * This function tries to find markers that were not detected in the basic detecMarkers function.
-         * First, based on the current detected marker and the board layout, the function interpolates
-         * the position of the missing markers. Then it tries to find correspondence between the reprojected
-         * markers and the rejected candidates based on the minRepDistance and errorCorrectionRate
-         * parameters.
-         * If camera parameters and distortion coefficients are provided, missing markers are reprojected
-         * using projectPoint function. If not, missing marker projections are interpolated using global
-         * homography, and all the marker corners in the board must have the same Z coordinate.
+         * refine detected markers
+         * deprecated Use class ArucoDetector::refineDetectedMarkers
+         * param image automatically generated
+         * param board automatically generated
+         * param detectedCorners automatically generated
+         * param detectedIds automatically generated
+         * param rejectedCorners automatically generated
+         * param cameraMatrix automatically generated
          */
+        [Obsolete("This method is deprecated.")]
         public static void refineDetectedMarkers(Mat image, Board board, List<Mat> detectedCorners, Mat detectedIds, List<Mat> rejectedCorners, Mat cameraMatrix)
         {
             if (image != null) image.ThrowIfDisposed();
@@ -721,29 +317,15 @@ namespace OpenCVForUnity.ArucoModule
         }
 
         /**
-         * Refind not detected markers based on the already detected and the board layout
-         *
-         * param image input image
-         * param board layout of markers in the board.
-         * param detectedCorners vector of already detected marker corners.
-         * param detectedIds vector of already detected marker identifiers.
-         * param rejectedCorners vector of rejected candidates during the marker detection process.
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         * reprojected marker in order to consider it as a correspondence.
-         * capability of the used dictionary. -1 ignores the error correction step.
-         * If it set to false, only the provided corner order is considered (default true).
-         * original rejectedCorners array.
-         *
-         * This function tries to find markers that were not detected in the basic detecMarkers function.
-         * First, based on the current detected marker and the board layout, the function interpolates
-         * the position of the missing markers. Then it tries to find correspondence between the reprojected
-         * markers and the rejected candidates based on the minRepDistance and errorCorrectionRate
-         * parameters.
-         * If camera parameters and distortion coefficients are provided, missing markers are reprojected
-         * using projectPoint function. If not, missing marker projections are interpolated using global
-         * homography, and all the marker corners in the board must have the same Z coordinate.
+         * refine detected markers
+         * deprecated Use class ArucoDetector::refineDetectedMarkers
+         * param image automatically generated
+         * param board automatically generated
+         * param detectedCorners automatically generated
+         * param detectedIds automatically generated
+         * param rejectedCorners automatically generated
          */
+        [Obsolete("This method is deprecated.")]
         public static void refineDetectedMarkers(Mat image, Board board, List<Mat> detectedCorners, Mat detectedIds, List<Mat> rejectedCorners)
         {
             if (image != null) image.ThrowIfDisposed();
@@ -761,157 +343,19 @@ namespace OpenCVForUnity.ArucoModule
 
 
         //
-        // C++:  void cv::aruco::drawDetectedMarkers(Mat& image, vector_Mat corners, Mat ids = Mat(), Scalar borderColor = Scalar(0, 255, 0))
+        // C++:  void cv::aruco::drawPlanarBoard(Ptr_Board board, Size outSize, Mat& img, int marginSize, int borderBits)
         //
 
         /**
-         * Draw detected markers in image
-         *
-         * param image input/output image. It must have 1 or 3 channels. The number of channels is not
-         * altered.
-         * param corners positions of marker corners on input image.
-         * (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers, the dimensions of
-         * this array should be Nx4. The order of the corners should be clockwise.
-         * param ids vector of identifiers for markers in markersCorners .
-         * Optional, if not provided, ids are not painted.
-         * param borderColor color of marker borders. Rest of colors (text color and first corner color)
-         * are calculated based on this one to improve visualization.
-         *
-         * Given an array of detected marker corners and its corresponding ids, this functions draws
-         * the markers in the image. The marker borders are painted and the markers identifiers if provided.
-         * Useful for debugging purposes.
-         *
+         * draw planar board
+         * deprecated Use Board::generateImage
+         * param board automatically generated
+         * param outSize automatically generated
+         * param img automatically generated
+         * param marginSize automatically generated
+         * param borderBits automatically generated
          */
-        public static void drawDetectedMarkers(Mat image, List<Mat> corners, Mat ids, Scalar borderColor)
-        {
-            if (image != null) image.ThrowIfDisposed();
-            if (ids != null) ids.ThrowIfDisposed();
-            Mat corners_mat = Converters.vector_Mat_to_Mat(corners);
-            aruco_Aruco_drawDetectedMarkers_10(image.nativeObj, corners_mat.nativeObj, ids.nativeObj, borderColor.val[0], borderColor.val[1], borderColor.val[2], borderColor.val[3]);
-
-
-        }
-
-        /**
-         * Draw detected markers in image
-         *
-         * param image input/output image. It must have 1 or 3 channels. The number of channels is not
-         * altered.
-         * param corners positions of marker corners on input image.
-         * (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers, the dimensions of
-         * this array should be Nx4. The order of the corners should be clockwise.
-         * param ids vector of identifiers for markers in markersCorners .
-         * Optional, if not provided, ids are not painted.
-         * are calculated based on this one to improve visualization.
-         *
-         * Given an array of detected marker corners and its corresponding ids, this functions draws
-         * the markers in the image. The marker borders are painted and the markers identifiers if provided.
-         * Useful for debugging purposes.
-         *
-         */
-        public static void drawDetectedMarkers(Mat image, List<Mat> corners, Mat ids)
-        {
-            if (image != null) image.ThrowIfDisposed();
-            if (ids != null) ids.ThrowIfDisposed();
-            Mat corners_mat = Converters.vector_Mat_to_Mat(corners);
-            aruco_Aruco_drawDetectedMarkers_11(image.nativeObj, corners_mat.nativeObj, ids.nativeObj);
-
-
-        }
-
-        /**
-         * Draw detected markers in image
-         *
-         * param image input/output image. It must have 1 or 3 channels. The number of channels is not
-         * altered.
-         * param corners positions of marker corners on input image.
-         * (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers, the dimensions of
-         * this array should be Nx4. The order of the corners should be clockwise.
-         * Optional, if not provided, ids are not painted.
-         * are calculated based on this one to improve visualization.
-         *
-         * Given an array of detected marker corners and its corresponding ids, this functions draws
-         * the markers in the image. The marker borders are painted and the markers identifiers if provided.
-         * Useful for debugging purposes.
-         *
-         */
-        public static void drawDetectedMarkers(Mat image, List<Mat> corners)
-        {
-            if (image != null) image.ThrowIfDisposed();
-            Mat corners_mat = Converters.vector_Mat_to_Mat(corners);
-            aruco_Aruco_drawDetectedMarkers_12(image.nativeObj, corners_mat.nativeObj);
-
-
-        }
-
-
-        //
-        // C++:  void cv::aruco::drawMarker(Ptr_Dictionary dictionary, int id, int sidePixels, Mat& img, int borderBits = 1)
-        //
-
-        /**
-         * Draw a canonical marker image
-         *
-         * param dictionary dictionary of markers indicating the type of markers
-         * param id identifier of the marker that will be returned. It has to be a valid id
-         * in the specified dictionary.
-         * param sidePixels size of the image in pixels
-         * param img output image with the marker
-         * param borderBits width of the marker border.
-         *
-         * This function returns a marker image in its canonical form (i.e. ready to be printed)
-         */
-        public static void drawMarker(Dictionary dictionary, int id, int sidePixels, Mat img, int borderBits)
-        {
-            if (dictionary != null) dictionary.ThrowIfDisposed();
-            if (img != null) img.ThrowIfDisposed();
-
-            aruco_Aruco_drawMarker_10(dictionary.getNativeObjAddr(), id, sidePixels, img.nativeObj, borderBits);
-
-
-        }
-
-        /**
-         * Draw a canonical marker image
-         *
-         * param dictionary dictionary of markers indicating the type of markers
-         * param id identifier of the marker that will be returned. It has to be a valid id
-         * in the specified dictionary.
-         * param sidePixels size of the image in pixels
-         * param img output image with the marker
-         *
-         * This function returns a marker image in its canonical form (i.e. ready to be printed)
-         */
-        public static void drawMarker(Dictionary dictionary, int id, int sidePixels, Mat img)
-        {
-            if (dictionary != null) dictionary.ThrowIfDisposed();
-            if (img != null) img.ThrowIfDisposed();
-
-            aruco_Aruco_drawMarker_11(dictionary.getNativeObjAddr(), id, sidePixels, img.nativeObj);
-
-
-        }
-
-
-        //
-        // C++:  void cv::aruco::drawPlanarBoard(Ptr_Board board, Size outSize, Mat& img, int marginSize = 0, int borderBits = 1)
-        //
-
-        /**
-         * Draw a planar board
-         * SEE: _drawPlanarBoardImpl
-         *
-         * param board layout of the board that will be drawn. The board should be planar,
-         * z coordinate is ignored
-         * param outSize size of the output image in pixels.
-         * param img output image with the board. The size of this image will be outSize
-         * and the board will be on the center, keeping the board proportions.
-         * param marginSize minimum margins (in pixels) of the board in the output image
-         * param borderBits width of the marker borders.
-         *
-         * This function return the image of a planar board, ready to be printed. It assumes
-         * the Board layout specified is planar by ignoring the z coordinates of the object points.
-         */
+        [Obsolete("This method is deprecated.")]
         public static void drawPlanarBoard(Board board, Size outSize, Mat img, int marginSize, int borderBits)
         {
             if (board != null) board.ThrowIfDisposed();
@@ -922,49 +366,260 @@ namespace OpenCVForUnity.ArucoModule
 
         }
 
+
+        //
+        // C++:  void cv::aruco::getBoardObjectAndImagePoints(Ptr_Board board, vector_Mat detectedCorners, Mat detectedIds, Mat& objPoints, Mat& imgPoints)
+        //
+
         /**
-         * Draw a planar board
-         * SEE: _drawPlanarBoardImpl
-         *
-         * param board layout of the board that will be drawn. The board should be planar,
-         * z coordinate is ignored
-         * param outSize size of the output image in pixels.
-         * param img output image with the board. The size of this image will be outSize
-         * and the board will be on the center, keeping the board proportions.
-         * param marginSize minimum margins (in pixels) of the board in the output image
-         *
-         * This function return the image of a planar board, ready to be printed. It assumes
-         * the Board layout specified is planar by ignoring the z coordinates of the object points.
+         * get board object and image points
+         * deprecated Use Board::matchImagePoints
+         * param board automatically generated
+         * param detectedCorners automatically generated
+         * param detectedIds automatically generated
+         * param objPoints automatically generated
+         * param imgPoints automatically generated
          */
-        public static void drawPlanarBoard(Board board, Size outSize, Mat img, int marginSize)
+        [Obsolete("This method is deprecated.")]
+        public static void getBoardObjectAndImagePoints(Board board, List<Mat> detectedCorners, Mat detectedIds, Mat objPoints, Mat imgPoints)
         {
             if (board != null) board.ThrowIfDisposed();
-            if (img != null) img.ThrowIfDisposed();
+            if (detectedIds != null) detectedIds.ThrowIfDisposed();
+            if (objPoints != null) objPoints.ThrowIfDisposed();
+            if (imgPoints != null) imgPoints.ThrowIfDisposed();
+            Mat detectedCorners_mat = Converters.vector_Mat_to_Mat(detectedCorners);
+            aruco_Aruco_getBoardObjectAndImagePoints_10(board.getNativeObjAddr(), detectedCorners_mat.nativeObj, detectedIds.nativeObj, objPoints.nativeObj, imgPoints.nativeObj);
 
-            aruco_Aruco_drawPlanarBoard_11(board.getNativeObjAddr(), outSize.width, outSize.height, img.nativeObj, marginSize);
+
+        }
+
+
+        //
+        // C++:  int cv::aruco::estimatePoseBoard(vector_Mat corners, Mat ids, Ptr_Board board, Mat cameraMatrix, Mat distCoeffs, Mat& rvec, Mat& tvec, bool useExtrinsicGuess = false)
+        //
+
+        /**
+         * deprecated Use cv::solvePnP
+         * param corners automatically generated
+         * param ids automatically generated
+         * param board automatically generated
+         * param cameraMatrix automatically generated
+         * param distCoeffs automatically generated
+         * param rvec automatically generated
+         * param tvec automatically generated
+         * param useExtrinsicGuess automatically generated
+         * return automatically generated
+         */
+        [Obsolete("This method is deprecated.")]
+        public static int estimatePoseBoard(List<Mat> corners, Mat ids, Board board, Mat cameraMatrix, Mat distCoeffs, Mat rvec, Mat tvec, bool useExtrinsicGuess)
+        {
+            if (ids != null) ids.ThrowIfDisposed();
+            if (board != null) board.ThrowIfDisposed();
+            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
+            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
+            if (rvec != null) rvec.ThrowIfDisposed();
+            if (tvec != null) tvec.ThrowIfDisposed();
+            Mat corners_mat = Converters.vector_Mat_to_Mat(corners);
+            return aruco_Aruco_estimatePoseBoard_10(corners_mat.nativeObj, ids.nativeObj, board.getNativeObjAddr(), cameraMatrix.nativeObj, distCoeffs.nativeObj, rvec.nativeObj, tvec.nativeObj, useExtrinsicGuess);
 
 
         }
 
         /**
-         * Draw a planar board
-         * SEE: _drawPlanarBoardImpl
-         *
-         * param board layout of the board that will be drawn. The board should be planar,
-         * z coordinate is ignored
-         * param outSize size of the output image in pixels.
-         * param img output image with the board. The size of this image will be outSize
-         * and the board will be on the center, keeping the board proportions.
-         *
-         * This function return the image of a planar board, ready to be printed. It assumes
-         * the Board layout specified is planar by ignoring the z coordinates of the object points.
+         * deprecated Use cv::solvePnP
+         * param corners automatically generated
+         * param ids automatically generated
+         * param board automatically generated
+         * param cameraMatrix automatically generated
+         * param distCoeffs automatically generated
+         * param rvec automatically generated
+         * param tvec automatically generated
+         * return automatically generated
          */
-        public static void drawPlanarBoard(Board board, Size outSize, Mat img)
+        [Obsolete("This method is deprecated.")]
+        public static int estimatePoseBoard(List<Mat> corners, Mat ids, Board board, Mat cameraMatrix, Mat distCoeffs, Mat rvec, Mat tvec)
+        {
+            if (ids != null) ids.ThrowIfDisposed();
+            if (board != null) board.ThrowIfDisposed();
+            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
+            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
+            if (rvec != null) rvec.ThrowIfDisposed();
+            if (tvec != null) tvec.ThrowIfDisposed();
+            Mat corners_mat = Converters.vector_Mat_to_Mat(corners);
+            return aruco_Aruco_estimatePoseBoard_11(corners_mat.nativeObj, ids.nativeObj, board.getNativeObjAddr(), cameraMatrix.nativeObj, distCoeffs.nativeObj, rvec.nativeObj, tvec.nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  bool cv::aruco::estimatePoseCharucoBoard(Mat charucoCorners, Mat charucoIds, Ptr_CharucoBoard board, Mat cameraMatrix, Mat distCoeffs, Mat& rvec, Mat& tvec, bool useExtrinsicGuess = false)
+        //
+
+        /**
+         * Pose estimation for a ChArUco board given some of their corners
+         * param charucoCorners vector of detected charuco corners
+         * param charucoIds list of identifiers for each corner in charucoCorners
+         * param board layout of ChArUco board.
+         * param cameraMatrix input 3x3 floating-point camera matrix
+         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
+         * param distCoeffs vector of distortion coefficients
+         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
+         * param rvec Output vector (e.g. cv::Mat) corresponding to the rotation vector of the board
+         * (see cv::Rodrigues).
+         * param tvec Output vector (e.g. cv::Mat) corresponding to the translation vector of the board.
+         * param useExtrinsicGuess defines whether initial guess for \b rvec and \b tvec will be used or not.
+         *
+         * This function estimates a Charuco board pose from some detected corners.
+         * The function checks if the input corners are enough and valid to perform pose estimation.
+         * If pose estimation is valid, returns true, else returns false.
+         * SEE: use cv::drawFrameAxes to get world coordinate system axis for object points
+         * return automatically generated
+         */
+        public static bool estimatePoseCharucoBoard(Mat charucoCorners, Mat charucoIds, CharucoBoard board, Mat cameraMatrix, Mat distCoeffs, Mat rvec, Mat tvec, bool useExtrinsicGuess)
+        {
+            if (charucoCorners != null) charucoCorners.ThrowIfDisposed();
+            if (charucoIds != null) charucoIds.ThrowIfDisposed();
+            if (board != null) board.ThrowIfDisposed();
+            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
+            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
+            if (rvec != null) rvec.ThrowIfDisposed();
+            if (tvec != null) tvec.ThrowIfDisposed();
+
+            return aruco_Aruco_estimatePoseCharucoBoard_10(charucoCorners.nativeObj, charucoIds.nativeObj, board.getNativeObjAddr(), cameraMatrix.nativeObj, distCoeffs.nativeObj, rvec.nativeObj, tvec.nativeObj, useExtrinsicGuess);
+
+
+        }
+
+        /**
+         * Pose estimation for a ChArUco board given some of their corners
+         * param charucoCorners vector of detected charuco corners
+         * param charucoIds list of identifiers for each corner in charucoCorners
+         * param board layout of ChArUco board.
+         * param cameraMatrix input 3x3 floating-point camera matrix
+         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
+         * param distCoeffs vector of distortion coefficients
+         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
+         * param rvec Output vector (e.g. cv::Mat) corresponding to the rotation vector of the board
+         * (see cv::Rodrigues).
+         * param tvec Output vector (e.g. cv::Mat) corresponding to the translation vector of the board.
+         *
+         * This function estimates a Charuco board pose from some detected corners.
+         * The function checks if the input corners are enough and valid to perform pose estimation.
+         * If pose estimation is valid, returns true, else returns false.
+         * SEE: use cv::drawFrameAxes to get world coordinate system axis for object points
+         * return automatically generated
+         */
+        public static bool estimatePoseCharucoBoard(Mat charucoCorners, Mat charucoIds, CharucoBoard board, Mat cameraMatrix, Mat distCoeffs, Mat rvec, Mat tvec)
+        {
+            if (charucoCorners != null) charucoCorners.ThrowIfDisposed();
+            if (charucoIds != null) charucoIds.ThrowIfDisposed();
+            if (board != null) board.ThrowIfDisposed();
+            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
+            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
+            if (rvec != null) rvec.ThrowIfDisposed();
+            if (tvec != null) tvec.ThrowIfDisposed();
+
+            return aruco_Aruco_estimatePoseCharucoBoard_11(charucoCorners.nativeObj, charucoIds.nativeObj, board.getNativeObjAddr(), cameraMatrix.nativeObj, distCoeffs.nativeObj, rvec.nativeObj, tvec.nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::aruco::estimatePoseSingleMarkers(vector_Mat corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat& rvecs, Mat& tvecs, Mat& objPoints = Mat(), Ptr_EstimateParameters estimateParameters = makePtr<EstimateParameters>())
+        //
+
+        /**
+         * deprecated Use cv::solvePnP
+         * param corners automatically generated
+         * param markerLength automatically generated
+         * param cameraMatrix automatically generated
+         * param distCoeffs automatically generated
+         * param rvecs automatically generated
+         * param tvecs automatically generated
+         * param objPoints automatically generated
+         * param estimateParameters automatically generated
+         */
+        [Obsolete("This method is deprecated.")]
+        public static void estimatePoseSingleMarkers(List<Mat> corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat rvecs, Mat tvecs, Mat objPoints, EstimateParameters estimateParameters)
+        {
+            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
+            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
+            if (rvecs != null) rvecs.ThrowIfDisposed();
+            if (tvecs != null) tvecs.ThrowIfDisposed();
+            if (objPoints != null) objPoints.ThrowIfDisposed();
+            if (estimateParameters != null) estimateParameters.ThrowIfDisposed();
+            Mat corners_mat = Converters.vector_Mat_to_Mat(corners);
+            aruco_Aruco_estimatePoseSingleMarkers_10(corners_mat.nativeObj, markerLength, cameraMatrix.nativeObj, distCoeffs.nativeObj, rvecs.nativeObj, tvecs.nativeObj, objPoints.nativeObj, estimateParameters.getNativeObjAddr());
+
+
+        }
+
+        /**
+         * deprecated Use cv::solvePnP
+         * param corners automatically generated
+         * param markerLength automatically generated
+         * param cameraMatrix automatically generated
+         * param distCoeffs automatically generated
+         * param rvecs automatically generated
+         * param tvecs automatically generated
+         * param objPoints automatically generated
+         */
+        [Obsolete("This method is deprecated.")]
+        public static void estimatePoseSingleMarkers(List<Mat> corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat rvecs, Mat tvecs, Mat objPoints)
+        {
+            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
+            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
+            if (rvecs != null) rvecs.ThrowIfDisposed();
+            if (tvecs != null) tvecs.ThrowIfDisposed();
+            if (objPoints != null) objPoints.ThrowIfDisposed();
+            Mat corners_mat = Converters.vector_Mat_to_Mat(corners);
+            aruco_Aruco_estimatePoseSingleMarkers_11(corners_mat.nativeObj, markerLength, cameraMatrix.nativeObj, distCoeffs.nativeObj, rvecs.nativeObj, tvecs.nativeObj, objPoints.nativeObj);
+
+
+        }
+
+        /**
+         * deprecated Use cv::solvePnP
+         * param corners automatically generated
+         * param markerLength automatically generated
+         * param cameraMatrix automatically generated
+         * param distCoeffs automatically generated
+         * param rvecs automatically generated
+         * param tvecs automatically generated
+         */
+        [Obsolete("This method is deprecated.")]
+        public static void estimatePoseSingleMarkers(List<Mat> corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat rvecs, Mat tvecs)
+        {
+            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
+            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
+            if (rvecs != null) rvecs.ThrowIfDisposed();
+            if (tvecs != null) tvecs.ThrowIfDisposed();
+            Mat corners_mat = Converters.vector_Mat_to_Mat(corners);
+            aruco_Aruco_estimatePoseSingleMarkers_12(corners_mat.nativeObj, markerLength, cameraMatrix.nativeObj, distCoeffs.nativeObj, rvecs.nativeObj, tvecs.nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  bool cv::aruco::testCharucoCornersCollinear(Ptr_CharucoBoard board, Mat charucoIds)
+        //
+
+        /**
+         * deprecated Use CharucoBoard::checkCharucoCornersCollinear
+         * param board automatically generated
+         * param charucoIds automatically generated
+         * return automatically generated
+         */
+        [Obsolete("This method is deprecated.")]
+        public static bool testCharucoCornersCollinear(CharucoBoard board, Mat charucoIds)
         {
             if (board != null) board.ThrowIfDisposed();
-            if (img != null) img.ThrowIfDisposed();
+            if (charucoIds != null) charucoIds.ThrowIfDisposed();
 
-            aruco_Aruco_drawPlanarBoard_12(board.getNativeObjAddr(), outSize.width, outSize.height, img.nativeObj);
+            return aruco_Aruco_testCharucoCornersCollinear_10(board.getNativeObjAddr(), charucoIds.nativeObj);
 
 
         }
@@ -1151,6 +806,7 @@ namespace OpenCVForUnity.ArucoModule
         //
 
         /**
+         *
          * It's the same function as #calibrateCameraAruco but without calibration error estimation.
          * param corners automatically generated
          * param ids automatically generated
@@ -1184,6 +840,7 @@ namespace OpenCVForUnity.ArucoModule
         }
 
         /**
+         *
          * It's the same function as #calibrateCameraAruco but without calibration error estimation.
          * param corners automatically generated
          * param ids automatically generated
@@ -1216,6 +873,7 @@ namespace OpenCVForUnity.ArucoModule
         }
 
         /**
+         *
          * It's the same function as #calibrateCameraAruco but without calibration error estimation.
          * param corners automatically generated
          * param ids automatically generated
@@ -1247,6 +905,7 @@ namespace OpenCVForUnity.ArucoModule
         }
 
         /**
+         *
          * It's the same function as #calibrateCameraAruco but without calibration error estimation.
          * param corners automatically generated
          * param ids automatically generated
@@ -1274,6 +933,7 @@ namespace OpenCVForUnity.ArucoModule
         }
 
         /**
+         *
          * It's the same function as #calibrateCameraAruco but without calibration error estimation.
          * param corners automatically generated
          * param ids automatically generated
@@ -1299,331 +959,7 @@ namespace OpenCVForUnity.ArucoModule
 
 
         //
-        // C++:  void cv::aruco::getBoardObjectAndImagePoints(Ptr_Board board, vector_Mat detectedCorners, Mat detectedIds, Mat& objPoints, Mat& imgPoints)
-        //
-
-        /**
-         * Given a board configuration and a set of detected markers, returns the corresponding
-         * image points and object points to call solvePnP
-         *
-         * param board Marker board layout.
-         * param detectedCorners List of detected marker corners of the board.
-         * param detectedIds List of identifiers for each marker.
-         * param objPoints Vector of vectors of board marker points in the board coordinate space.
-         * param imgPoints Vector of vectors of the projections of board marker corner points.
-         */
-        public static void getBoardObjectAndImagePoints(Board board, List<Mat> detectedCorners, Mat detectedIds, Mat objPoints, Mat imgPoints)
-        {
-            if (board != null) board.ThrowIfDisposed();
-            if (detectedIds != null) detectedIds.ThrowIfDisposed();
-            if (objPoints != null) objPoints.ThrowIfDisposed();
-            if (imgPoints != null) imgPoints.ThrowIfDisposed();
-            Mat detectedCorners_mat = Converters.vector_Mat_to_Mat(detectedCorners);
-            aruco_Aruco_getBoardObjectAndImagePoints_10(board.getNativeObjAddr(), detectedCorners_mat.nativeObj, detectedIds.nativeObj, objPoints.nativeObj, imgPoints.nativeObj);
-
-
-        }
-
-
-        //
-        // C++:  int cv::aruco::interpolateCornersCharuco(vector_Mat markerCorners, Mat markerIds, Mat image, Ptr_CharucoBoard board, Mat& charucoCorners, Mat& charucoIds, Mat cameraMatrix = Mat(), Mat distCoeffs = Mat(), int minMarkers = 2)
-        //
-
-        /**
-         * Interpolate position of ChArUco board corners
-         * param markerCorners vector of already detected markers corners. For each marker, its four
-         * corners are provided, (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers, the
-         * dimensions of this array should be Nx4. The order of the corners should be clockwise.
-         * param markerIds list of identifiers for each marker in corners
-         * param image input image necesary for corner refinement. Note that markers are not detected and
-         * should be sent in corners and ids parameters.
-         * param board layout of ChArUco board.
-         * param charucoCorners interpolated chessboard corners
-         * param charucoIds interpolated chessboard corners identifiers
-         * param cameraMatrix optional 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * param distCoeffs optional vector of distortion coefficients
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         * param minMarkers number of adjacent markers that must be detected to return a charuco corner
-         *
-         * This function receives the detected markers and returns the 2D position of the chessboard corners
-         * from a ChArUco board using the detected Aruco markers. If camera parameters are provided,
-         * the process is based in an approximated pose estimation, else it is based on local homography.
-         * Only visible corners are returned. For each corner, its corresponding identifier is
-         * also returned in charucoIds.
-         * The function returns the number of interpolated corners.
-         * return automatically generated
-         */
-        public static int interpolateCornersCharuco(List<Mat> markerCorners, Mat markerIds, Mat image, CharucoBoard board, Mat charucoCorners, Mat charucoIds, Mat cameraMatrix, Mat distCoeffs, int minMarkers)
-        {
-            if (markerIds != null) markerIds.ThrowIfDisposed();
-            if (image != null) image.ThrowIfDisposed();
-            if (board != null) board.ThrowIfDisposed();
-            if (charucoCorners != null) charucoCorners.ThrowIfDisposed();
-            if (charucoIds != null) charucoIds.ThrowIfDisposed();
-            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
-            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
-            Mat markerCorners_mat = Converters.vector_Mat_to_Mat(markerCorners);
-            return aruco_Aruco_interpolateCornersCharuco_10(markerCorners_mat.nativeObj, markerIds.nativeObj, image.nativeObj, board.getNativeObjAddr(), charucoCorners.nativeObj, charucoIds.nativeObj, cameraMatrix.nativeObj, distCoeffs.nativeObj, minMarkers);
-
-
-        }
-
-        /**
-         * Interpolate position of ChArUco board corners
-         * param markerCorners vector of already detected markers corners. For each marker, its four
-         * corners are provided, (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers, the
-         * dimensions of this array should be Nx4. The order of the corners should be clockwise.
-         * param markerIds list of identifiers for each marker in corners
-         * param image input image necesary for corner refinement. Note that markers are not detected and
-         * should be sent in corners and ids parameters.
-         * param board layout of ChArUco board.
-         * param charucoCorners interpolated chessboard corners
-         * param charucoIds interpolated chessboard corners identifiers
-         * param cameraMatrix optional 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * param distCoeffs optional vector of distortion coefficients
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         *
-         * This function receives the detected markers and returns the 2D position of the chessboard corners
-         * from a ChArUco board using the detected Aruco markers. If camera parameters are provided,
-         * the process is based in an approximated pose estimation, else it is based on local homography.
-         * Only visible corners are returned. For each corner, its corresponding identifier is
-         * also returned in charucoIds.
-         * The function returns the number of interpolated corners.
-         * return automatically generated
-         */
-        public static int interpolateCornersCharuco(List<Mat> markerCorners, Mat markerIds, Mat image, CharucoBoard board, Mat charucoCorners, Mat charucoIds, Mat cameraMatrix, Mat distCoeffs)
-        {
-            if (markerIds != null) markerIds.ThrowIfDisposed();
-            if (image != null) image.ThrowIfDisposed();
-            if (board != null) board.ThrowIfDisposed();
-            if (charucoCorners != null) charucoCorners.ThrowIfDisposed();
-            if (charucoIds != null) charucoIds.ThrowIfDisposed();
-            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
-            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
-            Mat markerCorners_mat = Converters.vector_Mat_to_Mat(markerCorners);
-            return aruco_Aruco_interpolateCornersCharuco_11(markerCorners_mat.nativeObj, markerIds.nativeObj, image.nativeObj, board.getNativeObjAddr(), charucoCorners.nativeObj, charucoIds.nativeObj, cameraMatrix.nativeObj, distCoeffs.nativeObj);
-
-
-        }
-
-        /**
-         * Interpolate position of ChArUco board corners
-         * param markerCorners vector of already detected markers corners. For each marker, its four
-         * corners are provided, (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers, the
-         * dimensions of this array should be Nx4. The order of the corners should be clockwise.
-         * param markerIds list of identifiers for each marker in corners
-         * param image input image necesary for corner refinement. Note that markers are not detected and
-         * should be sent in corners and ids parameters.
-         * param board layout of ChArUco board.
-         * param charucoCorners interpolated chessboard corners
-         * param charucoIds interpolated chessboard corners identifiers
-         * param cameraMatrix optional 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         *
-         * This function receives the detected markers and returns the 2D position of the chessboard corners
-         * from a ChArUco board using the detected Aruco markers. If camera parameters are provided,
-         * the process is based in an approximated pose estimation, else it is based on local homography.
-         * Only visible corners are returned. For each corner, its corresponding identifier is
-         * also returned in charucoIds.
-         * The function returns the number of interpolated corners.
-         * return automatically generated
-         */
-        public static int interpolateCornersCharuco(List<Mat> markerCorners, Mat markerIds, Mat image, CharucoBoard board, Mat charucoCorners, Mat charucoIds, Mat cameraMatrix)
-        {
-            if (markerIds != null) markerIds.ThrowIfDisposed();
-            if (image != null) image.ThrowIfDisposed();
-            if (board != null) board.ThrowIfDisposed();
-            if (charucoCorners != null) charucoCorners.ThrowIfDisposed();
-            if (charucoIds != null) charucoIds.ThrowIfDisposed();
-            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
-            Mat markerCorners_mat = Converters.vector_Mat_to_Mat(markerCorners);
-            return aruco_Aruco_interpolateCornersCharuco_12(markerCorners_mat.nativeObj, markerIds.nativeObj, image.nativeObj, board.getNativeObjAddr(), charucoCorners.nativeObj, charucoIds.nativeObj, cameraMatrix.nativeObj);
-
-
-        }
-
-        /**
-         * Interpolate position of ChArUco board corners
-         * param markerCorners vector of already detected markers corners. For each marker, its four
-         * corners are provided, (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers, the
-         * dimensions of this array should be Nx4. The order of the corners should be clockwise.
-         * param markerIds list of identifiers for each marker in corners
-         * param image input image necesary for corner refinement. Note that markers are not detected and
-         * should be sent in corners and ids parameters.
-         * param board layout of ChArUco board.
-         * param charucoCorners interpolated chessboard corners
-         * param charucoIds interpolated chessboard corners identifiers
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         *
-         * This function receives the detected markers and returns the 2D position of the chessboard corners
-         * from a ChArUco board using the detected Aruco markers. If camera parameters are provided,
-         * the process is based in an approximated pose estimation, else it is based on local homography.
-         * Only visible corners are returned. For each corner, its corresponding identifier is
-         * also returned in charucoIds.
-         * The function returns the number of interpolated corners.
-         * return automatically generated
-         */
-        public static int interpolateCornersCharuco(List<Mat> markerCorners, Mat markerIds, Mat image, CharucoBoard board, Mat charucoCorners, Mat charucoIds)
-        {
-            if (markerIds != null) markerIds.ThrowIfDisposed();
-            if (image != null) image.ThrowIfDisposed();
-            if (board != null) board.ThrowIfDisposed();
-            if (charucoCorners != null) charucoCorners.ThrowIfDisposed();
-            if (charucoIds != null) charucoIds.ThrowIfDisposed();
-            Mat markerCorners_mat = Converters.vector_Mat_to_Mat(markerCorners);
-            return aruco_Aruco_interpolateCornersCharuco_13(markerCorners_mat.nativeObj, markerIds.nativeObj, image.nativeObj, board.getNativeObjAddr(), charucoCorners.nativeObj, charucoIds.nativeObj);
-
-
-        }
-
-
-        //
-        // C++:  bool cv::aruco::estimatePoseCharucoBoard(Mat charucoCorners, Mat charucoIds, Ptr_CharucoBoard board, Mat cameraMatrix, Mat distCoeffs, Mat& rvec, Mat& tvec, bool useExtrinsicGuess = false)
-        //
-
-        /**
-         * Pose estimation for a ChArUco board given some of their corners
-         * param charucoCorners vector of detected charuco corners
-         * param charucoIds list of identifiers for each corner in charucoCorners
-         * param board layout of ChArUco board.
-         * param cameraMatrix input 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * param distCoeffs vector of distortion coefficients
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         * param rvec Output vector (e.g. cv::Mat) corresponding to the rotation vector of the board
-         * (see cv::Rodrigues).
-         * param tvec Output vector (e.g. cv::Mat) corresponding to the translation vector of the board.
-         * param useExtrinsicGuess defines whether initial guess for \b rvec and \b tvec will be used or not.
-         *
-         * This function estimates a Charuco board pose from some detected corners.
-         * The function checks if the input corners are enough and valid to perform pose estimation.
-         * If pose estimation is valid, returns true, else returns false.
-         * SEE: use cv::drawFrameAxes to get world coordinate system axis for object points
-         * return automatically generated
-         */
-        public static bool estimatePoseCharucoBoard(Mat charucoCorners, Mat charucoIds, CharucoBoard board, Mat cameraMatrix, Mat distCoeffs, Mat rvec, Mat tvec, bool useExtrinsicGuess)
-        {
-            if (charucoCorners != null) charucoCorners.ThrowIfDisposed();
-            if (charucoIds != null) charucoIds.ThrowIfDisposed();
-            if (board != null) board.ThrowIfDisposed();
-            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
-            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
-            if (rvec != null) rvec.ThrowIfDisposed();
-            if (tvec != null) tvec.ThrowIfDisposed();
-
-            return aruco_Aruco_estimatePoseCharucoBoard_10(charucoCorners.nativeObj, charucoIds.nativeObj, board.getNativeObjAddr(), cameraMatrix.nativeObj, distCoeffs.nativeObj, rvec.nativeObj, tvec.nativeObj, useExtrinsicGuess);
-
-
-        }
-
-        /**
-         * Pose estimation for a ChArUco board given some of their corners
-         * param charucoCorners vector of detected charuco corners
-         * param charucoIds list of identifiers for each corner in charucoCorners
-         * param board layout of ChArUco board.
-         * param cameraMatrix input 3x3 floating-point camera matrix
-         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
-         * param distCoeffs vector of distortion coefficients
-         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
-         * param rvec Output vector (e.g. cv::Mat) corresponding to the rotation vector of the board
-         * (see cv::Rodrigues).
-         * param tvec Output vector (e.g. cv::Mat) corresponding to the translation vector of the board.
-         *
-         * This function estimates a Charuco board pose from some detected corners.
-         * The function checks if the input corners are enough and valid to perform pose estimation.
-         * If pose estimation is valid, returns true, else returns false.
-         * SEE: use cv::drawFrameAxes to get world coordinate system axis for object points
-         * return automatically generated
-         */
-        public static bool estimatePoseCharucoBoard(Mat charucoCorners, Mat charucoIds, CharucoBoard board, Mat cameraMatrix, Mat distCoeffs, Mat rvec, Mat tvec)
-        {
-            if (charucoCorners != null) charucoCorners.ThrowIfDisposed();
-            if (charucoIds != null) charucoIds.ThrowIfDisposed();
-            if (board != null) board.ThrowIfDisposed();
-            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
-            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
-            if (rvec != null) rvec.ThrowIfDisposed();
-            if (tvec != null) tvec.ThrowIfDisposed();
-
-            return aruco_Aruco_estimatePoseCharucoBoard_11(charucoCorners.nativeObj, charucoIds.nativeObj, board.getNativeObjAddr(), cameraMatrix.nativeObj, distCoeffs.nativeObj, rvec.nativeObj, tvec.nativeObj);
-
-
-        }
-
-
-        //
-        // C++:  void cv::aruco::drawDetectedCornersCharuco(Mat& image, Mat charucoCorners, Mat charucoIds = Mat(), Scalar cornerColor = Scalar(255, 0, 0))
-        //
-
-        /**
-         * Draws a set of Charuco corners
-         * param image input/output image. It must have 1 or 3 channels. The number of channels is not
-         * altered.
-         * param charucoCorners vector of detected charuco corners
-         * param charucoIds list of identifiers for each corner in charucoCorners
-         * param cornerColor color of the square surrounding each corner
-         *
-         * This function draws a set of detected Charuco corners. If identifiers vector is provided, it also
-         * draws the id of each corner.
-         */
-        public static void drawDetectedCornersCharuco(Mat image, Mat charucoCorners, Mat charucoIds, Scalar cornerColor)
-        {
-            if (image != null) image.ThrowIfDisposed();
-            if (charucoCorners != null) charucoCorners.ThrowIfDisposed();
-            if (charucoIds != null) charucoIds.ThrowIfDisposed();
-
-            aruco_Aruco_drawDetectedCornersCharuco_10(image.nativeObj, charucoCorners.nativeObj, charucoIds.nativeObj, cornerColor.val[0], cornerColor.val[1], cornerColor.val[2], cornerColor.val[3]);
-
-
-        }
-
-        /**
-         * Draws a set of Charuco corners
-         * param image input/output image. It must have 1 or 3 channels. The number of channels is not
-         * altered.
-         * param charucoCorners vector of detected charuco corners
-         * param charucoIds list of identifiers for each corner in charucoCorners
-         *
-         * This function draws a set of detected Charuco corners. If identifiers vector is provided, it also
-         * draws the id of each corner.
-         */
-        public static void drawDetectedCornersCharuco(Mat image, Mat charucoCorners, Mat charucoIds)
-        {
-            if (image != null) image.ThrowIfDisposed();
-            if (charucoCorners != null) charucoCorners.ThrowIfDisposed();
-            if (charucoIds != null) charucoIds.ThrowIfDisposed();
-
-            aruco_Aruco_drawDetectedCornersCharuco_11(image.nativeObj, charucoCorners.nativeObj, charucoIds.nativeObj);
-
-
-        }
-
-        /**
-         * Draws a set of Charuco corners
-         * param image input/output image. It must have 1 or 3 channels. The number of channels is not
-         * altered.
-         * param charucoCorners vector of detected charuco corners
-         *
-         * This function draws a set of detected Charuco corners. If identifiers vector is provided, it also
-         * draws the id of each corner.
-         */
-        public static void drawDetectedCornersCharuco(Mat image, Mat charucoCorners)
-        {
-            if (image != null) image.ThrowIfDisposed();
-            if (charucoCorners != null) charucoCorners.ThrowIfDisposed();
-
-            aruco_Aruco_drawDetectedCornersCharuco_12(image.nativeObj, charucoCorners.nativeObj);
-
-
-        }
-
-
-        //
-        // C++:  double cv::aruco::calibrateCameraCharuco(vector_Mat charucoCorners, vector_Mat charucoIds, Ptr_CharucoBoard board, Size imageSize, Mat& cameraMatrix, Mat& distCoeffs, vector_Mat& rvecs, vector_Mat& tvecs, Mat& stdDeviationsIntrinsics, Mat& stdDeviationsExtrinsics, Mat& perViewErrors, int flags = 0, TermCriteria criteria = TermCriteria(TermCriteria::COUNT + TermCriteria::EPS, 30, DBL_EPSILON))
+        // C++:  double cv::aruco::calibrateCameraCharuco(vector_Mat charucoCorners, vector_Mat charucoIds, Ptr_CharucoBoard board, Size imageSize, Mat& cameraMatrix, Mat& distCoeffs, vector_Mat& rvecs, vector_Mat& tvecs, Mat& stdDeviationsIntrinsics, Mat& stdDeviationsExtrinsics, Mat& perViewErrors, int flags = 0, TermCriteria criteria = TermCriteria( TermCriteria::COUNT + TermCriteria::EPS, 30, DBL_EPSILON))
         //
 
         /**
@@ -1932,7 +1268,175 @@ namespace OpenCVForUnity.ArucoModule
 
 
         //
-        // C++:  void cv::aruco::detectCharucoDiamond(Mat image, vector_Mat markerCorners, Mat markerIds, float squareMarkerLengthRate, vector_Mat& diamondCorners, Mat& diamondIds, Mat cameraMatrix = Mat(), Mat distCoeffs = Mat(), Ptr_Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::PREDEFINED_DICTIONARY_NAME::DICT_4X4_50))
+        // C++:  int cv::aruco::interpolateCornersCharuco(vector_Mat markerCorners, Mat markerIds, Mat image, Ptr_CharucoBoard board, Mat& charucoCorners, Mat& charucoIds, Mat cameraMatrix = Mat(), Mat distCoeffs = Mat(), int minMarkers = 2)
+        //
+
+        /**
+         * Interpolate position of ChArUco board corners
+         * param markerCorners vector of already detected markers corners. For each marker, its four
+         * corners are provided, (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers, the
+         * dimensions of this array should be Nx4. The order of the corners should be clockwise.
+         * param markerIds list of identifiers for each marker in corners
+         * param image input image necesary for corner refinement. Note that markers are not detected and
+         * should be sent in corners and ids parameters.
+         * param board layout of ChArUco board.
+         * param charucoCorners interpolated chessboard corners
+         * param charucoIds interpolated chessboard corners identifiers
+         * param cameraMatrix optional 3x3 floating-point camera matrix
+         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
+         * param distCoeffs optional vector of distortion coefficients
+         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
+         * param minMarkers number of adjacent markers that must be detected to return a charuco corner
+         *
+         * This function receives the detected markers and returns the 2D position of the chessboard corners
+         * from a ChArUco board using the detected Aruco markers. If camera parameters are provided,
+         * the process is based in an approximated pose estimation, else it is based on local homography.
+         * Only visible corners are returned. For each corner, its corresponding identifier is
+         * also returned in charucoIds.
+         * The function returns the number of interpolated corners.
+         *
+         * deprecated Use CharucoDetector::detectBoard
+         * return automatically generated
+         */
+        [Obsolete("This method is deprecated.")]
+        public static int interpolateCornersCharuco(List<Mat> markerCorners, Mat markerIds, Mat image, CharucoBoard board, Mat charucoCorners, Mat charucoIds, Mat cameraMatrix, Mat distCoeffs, int minMarkers)
+        {
+            if (markerIds != null) markerIds.ThrowIfDisposed();
+            if (image != null) image.ThrowIfDisposed();
+            if (board != null) board.ThrowIfDisposed();
+            if (charucoCorners != null) charucoCorners.ThrowIfDisposed();
+            if (charucoIds != null) charucoIds.ThrowIfDisposed();
+            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
+            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
+            Mat markerCorners_mat = Converters.vector_Mat_to_Mat(markerCorners);
+            return aruco_Aruco_interpolateCornersCharuco_10(markerCorners_mat.nativeObj, markerIds.nativeObj, image.nativeObj, board.getNativeObjAddr(), charucoCorners.nativeObj, charucoIds.nativeObj, cameraMatrix.nativeObj, distCoeffs.nativeObj, minMarkers);
+
+
+        }
+
+        /**
+         * Interpolate position of ChArUco board corners
+         * param markerCorners vector of already detected markers corners. For each marker, its four
+         * corners are provided, (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers, the
+         * dimensions of this array should be Nx4. The order of the corners should be clockwise.
+         * param markerIds list of identifiers for each marker in corners
+         * param image input image necesary for corner refinement. Note that markers are not detected and
+         * should be sent in corners and ids parameters.
+         * param board layout of ChArUco board.
+         * param charucoCorners interpolated chessboard corners
+         * param charucoIds interpolated chessboard corners identifiers
+         * param cameraMatrix optional 3x3 floating-point camera matrix
+         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
+         * param distCoeffs optional vector of distortion coefficients
+         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
+         *
+         * This function receives the detected markers and returns the 2D position of the chessboard corners
+         * from a ChArUco board using the detected Aruco markers. If camera parameters are provided,
+         * the process is based in an approximated pose estimation, else it is based on local homography.
+         * Only visible corners are returned. For each corner, its corresponding identifier is
+         * also returned in charucoIds.
+         * The function returns the number of interpolated corners.
+         *
+         * deprecated Use CharucoDetector::detectBoard
+         * return automatically generated
+         */
+        [Obsolete("This method is deprecated.")]
+        public static int interpolateCornersCharuco(List<Mat> markerCorners, Mat markerIds, Mat image, CharucoBoard board, Mat charucoCorners, Mat charucoIds, Mat cameraMatrix, Mat distCoeffs)
+        {
+            if (markerIds != null) markerIds.ThrowIfDisposed();
+            if (image != null) image.ThrowIfDisposed();
+            if (board != null) board.ThrowIfDisposed();
+            if (charucoCorners != null) charucoCorners.ThrowIfDisposed();
+            if (charucoIds != null) charucoIds.ThrowIfDisposed();
+            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
+            if (distCoeffs != null) distCoeffs.ThrowIfDisposed();
+            Mat markerCorners_mat = Converters.vector_Mat_to_Mat(markerCorners);
+            return aruco_Aruco_interpolateCornersCharuco_11(markerCorners_mat.nativeObj, markerIds.nativeObj, image.nativeObj, board.getNativeObjAddr(), charucoCorners.nativeObj, charucoIds.nativeObj, cameraMatrix.nativeObj, distCoeffs.nativeObj);
+
+
+        }
+
+        /**
+         * Interpolate position of ChArUco board corners
+         * param markerCorners vector of already detected markers corners. For each marker, its four
+         * corners are provided, (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers, the
+         * dimensions of this array should be Nx4. The order of the corners should be clockwise.
+         * param markerIds list of identifiers for each marker in corners
+         * param image input image necesary for corner refinement. Note that markers are not detected and
+         * should be sent in corners and ids parameters.
+         * param board layout of ChArUco board.
+         * param charucoCorners interpolated chessboard corners
+         * param charucoIds interpolated chessboard corners identifiers
+         * param cameraMatrix optional 3x3 floating-point camera matrix
+         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
+         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
+         *
+         * This function receives the detected markers and returns the 2D position of the chessboard corners
+         * from a ChArUco board using the detected Aruco markers. If camera parameters are provided,
+         * the process is based in an approximated pose estimation, else it is based on local homography.
+         * Only visible corners are returned. For each corner, its corresponding identifier is
+         * also returned in charucoIds.
+         * The function returns the number of interpolated corners.
+         *
+         * deprecated Use CharucoDetector::detectBoard
+         * return automatically generated
+         */
+        [Obsolete("This method is deprecated.")]
+        public static int interpolateCornersCharuco(List<Mat> markerCorners, Mat markerIds, Mat image, CharucoBoard board, Mat charucoCorners, Mat charucoIds, Mat cameraMatrix)
+        {
+            if (markerIds != null) markerIds.ThrowIfDisposed();
+            if (image != null) image.ThrowIfDisposed();
+            if (board != null) board.ThrowIfDisposed();
+            if (charucoCorners != null) charucoCorners.ThrowIfDisposed();
+            if (charucoIds != null) charucoIds.ThrowIfDisposed();
+            if (cameraMatrix != null) cameraMatrix.ThrowIfDisposed();
+            Mat markerCorners_mat = Converters.vector_Mat_to_Mat(markerCorners);
+            return aruco_Aruco_interpolateCornersCharuco_12(markerCorners_mat.nativeObj, markerIds.nativeObj, image.nativeObj, board.getNativeObjAddr(), charucoCorners.nativeObj, charucoIds.nativeObj, cameraMatrix.nativeObj);
+
+
+        }
+
+        /**
+         * Interpolate position of ChArUco board corners
+         * param markerCorners vector of already detected markers corners. For each marker, its four
+         * corners are provided, (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers, the
+         * dimensions of this array should be Nx4. The order of the corners should be clockwise.
+         * param markerIds list of identifiers for each marker in corners
+         * param image input image necesary for corner refinement. Note that markers are not detected and
+         * should be sent in corners and ids parameters.
+         * param board layout of ChArUco board.
+         * param charucoCorners interpolated chessboard corners
+         * param charucoIds interpolated chessboard corners identifiers
+         * \(A = \vecthreethree{f_x}{0}{c_x}{0}{f_y}{c_y}{0}{0}{1}\)
+         * \((k_1, k_2, p_1, p_2[, k_3[, k_4, k_5, k_6],[s_1, s_2, s_3, s_4]])\) of 4, 5, 8 or 12 elements
+         *
+         * This function receives the detected markers and returns the 2D position of the chessboard corners
+         * from a ChArUco board using the detected Aruco markers. If camera parameters are provided,
+         * the process is based in an approximated pose estimation, else it is based on local homography.
+         * Only visible corners are returned. For each corner, its corresponding identifier is
+         * also returned in charucoIds.
+         * The function returns the number of interpolated corners.
+         *
+         * deprecated Use CharucoDetector::detectBoard
+         * return automatically generated
+         */
+        [Obsolete("This method is deprecated.")]
+        public static int interpolateCornersCharuco(List<Mat> markerCorners, Mat markerIds, Mat image, CharucoBoard board, Mat charucoCorners, Mat charucoIds)
+        {
+            if (markerIds != null) markerIds.ThrowIfDisposed();
+            if (image != null) image.ThrowIfDisposed();
+            if (board != null) board.ThrowIfDisposed();
+            if (charucoCorners != null) charucoCorners.ThrowIfDisposed();
+            if (charucoIds != null) charucoIds.ThrowIfDisposed();
+            Mat markerCorners_mat = Converters.vector_Mat_to_Mat(markerCorners);
+            return aruco_Aruco_interpolateCornersCharuco_13(markerCorners_mat.nativeObj, markerIds.nativeObj, image.nativeObj, board.getNativeObjAddr(), charucoCorners.nativeObj, charucoIds.nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::aruco::detectCharucoDiamond(Mat image, vector_Mat markerCorners, Mat markerIds, float squareMarkerLengthRate, vector_Mat& diamondCorners, Mat& diamondIds, Mat cameraMatrix = Mat(), Mat distCoeffs = Mat(), Ptr_Dictionary dictionary = makePtr<Dictionary> (getPredefinedDictionary(PredefinedDictionaryType::DICT_4X4_50)))
         //
 
         /**
@@ -1956,8 +1460,11 @@ namespace OpenCVForUnity.ArucoModule
          * This function detects Diamond markers from the previous detected ArUco markers. The diamonds
          * are returned in the diamondCorners and diamondIds parameters. If camera calibration parameters
          * are provided, the diamond search is based on reprojection. If not, diamond search is based on
-         * homography. Homography is faster than reprojection but can slightly reduce the detection rate.
+         * homography. Homography is faster than reprojection, but less accurate.
+         *
+         * deprecated Use CharucoDetector::detectDiamonds
          */
+        [Obsolete("This method is deprecated.")]
         public static void detectCharucoDiamond(Mat image, List<Mat> markerCorners, Mat markerIds, float squareMarkerLengthRate, List<Mat> diamondCorners, Mat diamondIds, Mat cameraMatrix, Mat distCoeffs, Dictionary dictionary)
         {
             if (image != null) image.ThrowIfDisposed();
@@ -1994,8 +1501,11 @@ namespace OpenCVForUnity.ArucoModule
          * This function detects Diamond markers from the previous detected ArUco markers. The diamonds
          * are returned in the diamondCorners and diamondIds parameters. If camera calibration parameters
          * are provided, the diamond search is based on reprojection. If not, diamond search is based on
-         * homography. Homography is faster than reprojection but can slightly reduce the detection rate.
+         * homography. Homography is faster than reprojection, but less accurate.
+         *
+         * deprecated Use CharucoDetector::detectDiamonds
          */
+        [Obsolete("This method is deprecated.")]
         public static void detectCharucoDiamond(Mat image, List<Mat> markerCorners, Mat markerIds, float squareMarkerLengthRate, List<Mat> diamondCorners, Mat diamondIds, Mat cameraMatrix, Mat distCoeffs)
         {
             if (image != null) image.ThrowIfDisposed();
@@ -2030,8 +1540,11 @@ namespace OpenCVForUnity.ArucoModule
          * This function detects Diamond markers from the previous detected ArUco markers. The diamonds
          * are returned in the diamondCorners and diamondIds parameters. If camera calibration parameters
          * are provided, the diamond search is based on reprojection. If not, diamond search is based on
-         * homography. Homography is faster than reprojection but can slightly reduce the detection rate.
+         * homography. Homography is faster than reprojection, but less accurate.
+         *
+         * deprecated Use CharucoDetector::detectDiamonds
          */
+        [Obsolete("This method is deprecated.")]
         public static void detectCharucoDiamond(Mat image, List<Mat> markerCorners, Mat markerIds, float squareMarkerLengthRate, List<Mat> diamondCorners, Mat diamondIds, Mat cameraMatrix)
         {
             if (image != null) image.ThrowIfDisposed();
@@ -2064,8 +1577,11 @@ namespace OpenCVForUnity.ArucoModule
          * This function detects Diamond markers from the previous detected ArUco markers. The diamonds
          * are returned in the diamondCorners and diamondIds parameters. If camera calibration parameters
          * are provided, the diamond search is based on reprojection. If not, diamond search is based on
-         * homography. Homography is faster than reprojection but can slightly reduce the detection rate.
+         * homography. Homography is faster than reprojection, but less accurate.
+         *
+         * deprecated Use CharucoDetector::detectDiamonds
          */
+        [Obsolete("This method is deprecated.")]
         public static void detectCharucoDiamond(Mat image, List<Mat> markerCorners, Mat markerIds, float squareMarkerLengthRate, List<Mat> diamondCorners, Mat diamondIds)
         {
             if (image != null) image.ThrowIfDisposed();
@@ -2081,225 +1597,10 @@ namespace OpenCVForUnity.ArucoModule
 
 
         //
-        // C++:  void cv::aruco::drawDetectedDiamonds(Mat& image, vector_Mat diamondCorners, Mat diamondIds = Mat(), Scalar borderColor = Scalar(0, 0, 255))
-        //
-
-        /**
-         * Draw a set of detected ChArUco Diamond markers
-         *
-         * param image input/output image. It must have 1 or 3 channels. The number of channels is not
-         * altered.
-         * param diamondCorners positions of diamond corners in the same format returned by
-         * detectCharucoDiamond(). (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers,
-         * the dimensions of this array should be Nx4. The order of the corners should be clockwise.
-         * param diamondIds vector of identifiers for diamonds in diamondCorners, in the same format
-         * returned by detectCharucoDiamond() (e.g. std::vector&lt;Vec4i&gt;).
-         * Optional, if not provided, ids are not painted.
-         * param borderColor color of marker borders. Rest of colors (text color and first corner color)
-         * are calculated based on this one.
-         *
-         * Given an array of detected diamonds, this functions draws them in the image. The marker borders
-         * are painted and the markers identifiers if provided.
-         * Useful for debugging purposes.
-         */
-        public static void drawDetectedDiamonds(Mat image, List<Mat> diamondCorners, Mat diamondIds, Scalar borderColor)
-        {
-            if (image != null) image.ThrowIfDisposed();
-            if (diamondIds != null) diamondIds.ThrowIfDisposed();
-            Mat diamondCorners_mat = Converters.vector_Mat_to_Mat(diamondCorners);
-            aruco_Aruco_drawDetectedDiamonds_10(image.nativeObj, diamondCorners_mat.nativeObj, diamondIds.nativeObj, borderColor.val[0], borderColor.val[1], borderColor.val[2], borderColor.val[3]);
-
-
-        }
-
-        /**
-         * Draw a set of detected ChArUco Diamond markers
-         *
-         * param image input/output image. It must have 1 or 3 channels. The number of channels is not
-         * altered.
-         * param diamondCorners positions of diamond corners in the same format returned by
-         * detectCharucoDiamond(). (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers,
-         * the dimensions of this array should be Nx4. The order of the corners should be clockwise.
-         * param diamondIds vector of identifiers for diamonds in diamondCorners, in the same format
-         * returned by detectCharucoDiamond() (e.g. std::vector&lt;Vec4i&gt;).
-         * Optional, if not provided, ids are not painted.
-         * are calculated based on this one.
-         *
-         * Given an array of detected diamonds, this functions draws them in the image. The marker borders
-         * are painted and the markers identifiers if provided.
-         * Useful for debugging purposes.
-         */
-        public static void drawDetectedDiamonds(Mat image, List<Mat> diamondCorners, Mat diamondIds)
-        {
-            if (image != null) image.ThrowIfDisposed();
-            if (diamondIds != null) diamondIds.ThrowIfDisposed();
-            Mat diamondCorners_mat = Converters.vector_Mat_to_Mat(diamondCorners);
-            aruco_Aruco_drawDetectedDiamonds_11(image.nativeObj, diamondCorners_mat.nativeObj, diamondIds.nativeObj);
-
-
-        }
-
-        /**
-         * Draw a set of detected ChArUco Diamond markers
-         *
-         * param image input/output image. It must have 1 or 3 channels. The number of channels is not
-         * altered.
-         * param diamondCorners positions of diamond corners in the same format returned by
-         * detectCharucoDiamond(). (e.g std::vector&lt;std::vector&lt;cv::Point2f&gt; &gt; ). For N detected markers,
-         * the dimensions of this array should be Nx4. The order of the corners should be clockwise.
-         * returned by detectCharucoDiamond() (e.g. std::vector&lt;Vec4i&gt;).
-         * Optional, if not provided, ids are not painted.
-         * are calculated based on this one.
-         *
-         * Given an array of detected diamonds, this functions draws them in the image. The marker borders
-         * are painted and the markers identifiers if provided.
-         * Useful for debugging purposes.
-         */
-        public static void drawDetectedDiamonds(Mat image, List<Mat> diamondCorners)
-        {
-            if (image != null) image.ThrowIfDisposed();
-            Mat diamondCorners_mat = Converters.vector_Mat_to_Mat(diamondCorners);
-            aruco_Aruco_drawDetectedDiamonds_12(image.nativeObj, diamondCorners_mat.nativeObj);
-
-
-        }
-
-
-        //
         // C++:  void cv::aruco::drawCharucoDiamond(Ptr_Dictionary dictionary, Vec4i ids, int squareLength, int markerLength, Mat& img, int marginSize = 0, int borderBits = 1)
         //
 
         // Unknown type 'Vec4i' (I), skipping the function
-
-
-        //
-        // C++:  bool cv::aruco::testCharucoCornersCollinear(Ptr_CharucoBoard _board, Mat _charucoIds)
-        //
-
-        /**
-         * test whether the ChArUco markers are collinear
-         *
-         * param _board layout of ChArUco board.
-         * param _charucoIds list of identifiers for each corner in charucoCorners per frame.
-         * return bool value, 1 (true) if detected corners form a line, 0 (false) if they do not.
-         *       solvePnP, calibration functions will fail if the corners are collinear (true).
-         *
-         * The number of ids in charucoIDs should be &lt;= the number of chessboard corners in the board.  This functions checks whether the charuco corners are on a straight line (returns true, if so), or not (false).  Axis parallel, as well as diagonal and other straight lines detected.  Degenerate cases: for number of charucoIDs &lt;= 2, the function returns true.
-         */
-        public static bool testCharucoCornersCollinear(CharucoBoard _board, Mat _charucoIds)
-        {
-            if (_board != null) _board.ThrowIfDisposed();
-            if (_charucoIds != null) _charucoIds.ThrowIfDisposed();
-
-            return aruco_Aruco_testCharucoCornersCollinear_10(_board.getNativeObjAddr(), _charucoIds.nativeObj);
-
-
-        }
-
-
-        //
-        // C++:  Ptr_Dictionary cv::aruco::getPredefinedDictionary(int dict)
-        //
-
-        /**
-         * Returns one of the predefined dictionaries referenced by DICT_*.
-         * param dict automatically generated
-         * return automatically generated
-         */
-        public static Dictionary getPredefinedDictionary(int dict)
-        {
-
-
-            return Dictionary.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(aruco_Aruco_getPredefinedDictionary_10(dict)));
-
-
-        }
-
-
-        //
-        // C++:  Ptr_Dictionary cv::aruco::generateCustomDictionary(int nMarkers, int markerSize, int randomSeed = 0)
-        //
-
-        /**
-         * SEE: generateCustomDictionary
-         * param nMarkers automatically generated
-         * param markerSize automatically generated
-         * param randomSeed automatically generated
-         * return automatically generated
-         */
-        public static Dictionary custom_dictionary(int nMarkers, int markerSize, int randomSeed)
-        {
-
-
-            return Dictionary.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(aruco_Aruco_custom_1dictionary_10(nMarkers, markerSize, randomSeed)));
-
-
-        }
-
-        /**
-         * SEE: generateCustomDictionary
-         * param nMarkers automatically generated
-         * param markerSize automatically generated
-         * return automatically generated
-         */
-        public static Dictionary custom_dictionary(int nMarkers, int markerSize)
-        {
-
-
-            return Dictionary.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(aruco_Aruco_custom_1dictionary_11(nMarkers, markerSize)));
-
-
-        }
-
-
-        //
-        // C++:  Ptr_Dictionary cv::aruco::generateCustomDictionary(int nMarkers, int markerSize, Ptr_Dictionary baseDictionary, int randomSeed = 0)
-        //
-
-        /**
-         * Generates a new customizable marker dictionary
-         *
-         * param nMarkers number of markers in the dictionary
-         * param markerSize number of bits per dimension of each markers
-         * param baseDictionary Include the markers in this dictionary at the beginning (optional)
-         * param randomSeed a user supplied seed for theRNG()
-         *
-         * This function creates a new dictionary composed by nMarkers markers and each markers composed
-         * by markerSize x markerSize bits. If baseDictionary is provided, its markers are directly
-         * included and the rest are generated based on them. If the size of baseDictionary is higher
-         * than nMarkers, only the first nMarkers in baseDictionary are taken and no new marker is added.
-         * return automatically generated
-         */
-        public static Dictionary custom_dictionary_from(int nMarkers, int markerSize, Dictionary baseDictionary, int randomSeed)
-        {
-            if (baseDictionary != null) baseDictionary.ThrowIfDisposed();
-
-            return Dictionary.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(aruco_Aruco_custom_1dictionary_1from_10(nMarkers, markerSize, baseDictionary.getNativeObjAddr(), randomSeed)));
-
-
-        }
-
-        /**
-         * Generates a new customizable marker dictionary
-         *
-         * param nMarkers number of markers in the dictionary
-         * param markerSize number of bits per dimension of each markers
-         * param baseDictionary Include the markers in this dictionary at the beginning (optional)
-         *
-         * This function creates a new dictionary composed by nMarkers markers and each markers composed
-         * by markerSize x markerSize bits. If baseDictionary is provided, its markers are directly
-         * included and the rest are generated based on them. If the size of baseDictionary is higher
-         * than nMarkers, only the first nMarkers in baseDictionary are taken and no new marker is added.
-         * return automatically generated
-         */
-        public static Dictionary custom_dictionary_from(int nMarkers, int markerSize, Dictionary baseDictionary)
-        {
-            if (baseDictionary != null) baseDictionary.ThrowIfDisposed();
-
-            return Dictionary.__fromPtr__(DisposableObject.ThrowIfNullIntPtr(aruco_Aruco_custom_1dictionary_1from_11(nMarkers, markerSize, baseDictionary.getNativeObjAddr())));
-
-
-        }
 
 
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
@@ -2310,7 +1611,7 @@ namespace OpenCVForUnity.ArucoModule
 
 
 
-        // C++:  void cv::aruco::detectMarkers(Mat image, Ptr_Dictionary dictionary, vector_Mat& corners, Mat& ids, Ptr_DetectorParameters parameters = DetectorParameters::create(), vector_Mat& rejectedImgPoints = vector_Mat())
+        // C++:  void cv::aruco::detectMarkers(Mat image, Ptr_Dictionary dictionary, vector_Mat& corners, Mat& ids, Ptr_DetectorParameters parameters = makePtr<DetectorParameters>(), vector_Mat& rejectedImgPoints = vector_Mat())
         [DllImport(LIBNAME)]
         private static extern void aruco_Aruco_detectMarkers_10(IntPtr image_nativeObj, IntPtr dictionary_nativeObj, IntPtr corners_mat_nativeObj, IntPtr ids_nativeObj, IntPtr parameters_nativeObj, IntPtr rejectedImgPoints_mat_nativeObj);
         [DllImport(LIBNAME)]
@@ -2318,21 +1619,7 @@ namespace OpenCVForUnity.ArucoModule
         [DllImport(LIBNAME)]
         private static extern void aruco_Aruco_detectMarkers_12(IntPtr image_nativeObj, IntPtr dictionary_nativeObj, IntPtr corners_mat_nativeObj, IntPtr ids_nativeObj);
 
-        // C++:  void cv::aruco::estimatePoseSingleMarkers(vector_Mat corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat& rvecs, Mat& tvecs, Mat& _objPoints = Mat(), Ptr_EstimateParameters estimateParameters = EstimateParameters::create())
-        [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_estimatePoseSingleMarkers_10(IntPtr corners_mat_nativeObj, float markerLength, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvecs_nativeObj, IntPtr tvecs_nativeObj, IntPtr _objPoints_nativeObj, IntPtr estimateParameters_nativeObj);
-        [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_estimatePoseSingleMarkers_11(IntPtr corners_mat_nativeObj, float markerLength, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvecs_nativeObj, IntPtr tvecs_nativeObj, IntPtr _objPoints_nativeObj);
-        [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_estimatePoseSingleMarkers_12(IntPtr corners_mat_nativeObj, float markerLength, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvecs_nativeObj, IntPtr tvecs_nativeObj);
-
-        // C++:  int cv::aruco::estimatePoseBoard(vector_Mat corners, Mat ids, Ptr_Board board, Mat cameraMatrix, Mat distCoeffs, Mat& rvec, Mat& tvec, bool useExtrinsicGuess = false)
-        [DllImport(LIBNAME)]
-        private static extern int aruco_Aruco_estimatePoseBoard_10(IntPtr corners_mat_nativeObj, IntPtr ids_nativeObj, IntPtr board_nativeObj, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvec_nativeObj, IntPtr tvec_nativeObj, [MarshalAs(UnmanagedType.U1)] bool useExtrinsicGuess);
-        [DllImport(LIBNAME)]
-        private static extern int aruco_Aruco_estimatePoseBoard_11(IntPtr corners_mat_nativeObj, IntPtr ids_nativeObj, IntPtr board_nativeObj, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvec_nativeObj, IntPtr tvec_nativeObj);
-
-        // C++:  void cv::aruco::refineDetectedMarkers(Mat image, Ptr_Board board, vector_Mat& detectedCorners, Mat& detectedIds, vector_Mat& rejectedCorners, Mat cameraMatrix = Mat(), Mat distCoeffs = Mat(), float minRepDistance = 10.f, float errorCorrectionRate = 3.f, bool checkAllOrders = true, Mat& recoveredIdxs = Mat(), Ptr_DetectorParameters parameters = DetectorParameters::create())
+        // C++:  void cv::aruco::refineDetectedMarkers(Mat image, Ptr_Board board, vector_Mat& detectedCorners, Mat& detectedIds, vector_Mat& rejectedCorners, Mat cameraMatrix = Mat(), Mat distCoeffs = Mat(), float minRepDistance = 10.f, float errorCorrectionRate = 3.f, bool checkAllOrders = true, Mat& recoveredIdxs = Mat(), Ptr_DetectorParameters parameters = makePtr<DetectorParameters>())
         [DllImport(LIBNAME)]
         private static extern void aruco_Aruco_refineDetectedMarkers_10(IntPtr image_nativeObj, IntPtr board_nativeObj, IntPtr detectedCorners_mat_nativeObj, IntPtr detectedIds_nativeObj, IntPtr rejectedCorners_mat_nativeObj, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, float minRepDistance, float errorCorrectionRate, [MarshalAs(UnmanagedType.U1)] bool checkAllOrders, IntPtr recoveredIdxs_nativeObj, IntPtr parameters_nativeObj);
         [DllImport(LIBNAME)]
@@ -2350,27 +1637,40 @@ namespace OpenCVForUnity.ArucoModule
         [DllImport(LIBNAME)]
         private static extern void aruco_Aruco_refineDetectedMarkers_17(IntPtr image_nativeObj, IntPtr board_nativeObj, IntPtr detectedCorners_mat_nativeObj, IntPtr detectedIds_nativeObj, IntPtr rejectedCorners_mat_nativeObj);
 
-        // C++:  void cv::aruco::drawDetectedMarkers(Mat& image, vector_Mat corners, Mat ids = Mat(), Scalar borderColor = Scalar(0, 255, 0))
-        [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_drawDetectedMarkers_10(IntPtr image_nativeObj, IntPtr corners_mat_nativeObj, IntPtr ids_nativeObj, double borderColor_val0, double borderColor_val1, double borderColor_val2, double borderColor_val3);
-        [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_drawDetectedMarkers_11(IntPtr image_nativeObj, IntPtr corners_mat_nativeObj, IntPtr ids_nativeObj);
-        [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_drawDetectedMarkers_12(IntPtr image_nativeObj, IntPtr corners_mat_nativeObj);
-
-        // C++:  void cv::aruco::drawMarker(Ptr_Dictionary dictionary, int id, int sidePixels, Mat& img, int borderBits = 1)
-        [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_drawMarker_10(IntPtr dictionary_nativeObj, int id, int sidePixels, IntPtr img_nativeObj, int borderBits);
-        [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_drawMarker_11(IntPtr dictionary_nativeObj, int id, int sidePixels, IntPtr img_nativeObj);
-
-        // C++:  void cv::aruco::drawPlanarBoard(Ptr_Board board, Size outSize, Mat& img, int marginSize = 0, int borderBits = 1)
+        // C++:  void cv::aruco::drawPlanarBoard(Ptr_Board board, Size outSize, Mat& img, int marginSize, int borderBits)
         [DllImport(LIBNAME)]
         private static extern void aruco_Aruco_drawPlanarBoard_10(IntPtr board_nativeObj, double outSize_width, double outSize_height, IntPtr img_nativeObj, int marginSize, int borderBits);
+
+        // C++:  void cv::aruco::getBoardObjectAndImagePoints(Ptr_Board board, vector_Mat detectedCorners, Mat detectedIds, Mat& objPoints, Mat& imgPoints)
         [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_drawPlanarBoard_11(IntPtr board_nativeObj, double outSize_width, double outSize_height, IntPtr img_nativeObj, int marginSize);
+        private static extern void aruco_Aruco_getBoardObjectAndImagePoints_10(IntPtr board_nativeObj, IntPtr detectedCorners_mat_nativeObj, IntPtr detectedIds_nativeObj, IntPtr objPoints_nativeObj, IntPtr imgPoints_nativeObj);
+
+        // C++:  int cv::aruco::estimatePoseBoard(vector_Mat corners, Mat ids, Ptr_Board board, Mat cameraMatrix, Mat distCoeffs, Mat& rvec, Mat& tvec, bool useExtrinsicGuess = false)
         [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_drawPlanarBoard_12(IntPtr board_nativeObj, double outSize_width, double outSize_height, IntPtr img_nativeObj);
+        private static extern int aruco_Aruco_estimatePoseBoard_10(IntPtr corners_mat_nativeObj, IntPtr ids_nativeObj, IntPtr board_nativeObj, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvec_nativeObj, IntPtr tvec_nativeObj, [MarshalAs(UnmanagedType.U1)] bool useExtrinsicGuess);
+        [DllImport(LIBNAME)]
+        private static extern int aruco_Aruco_estimatePoseBoard_11(IntPtr corners_mat_nativeObj, IntPtr ids_nativeObj, IntPtr board_nativeObj, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvec_nativeObj, IntPtr tvec_nativeObj);
+
+        // C++:  bool cv::aruco::estimatePoseCharucoBoard(Mat charucoCorners, Mat charucoIds, Ptr_CharucoBoard board, Mat cameraMatrix, Mat distCoeffs, Mat& rvec, Mat& tvec, bool useExtrinsicGuess = false)
+        [DllImport(LIBNAME)]
+        [return: MarshalAs(UnmanagedType.U1)]
+        private static extern bool aruco_Aruco_estimatePoseCharucoBoard_10(IntPtr charucoCorners_nativeObj, IntPtr charucoIds_nativeObj, IntPtr board_nativeObj, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvec_nativeObj, IntPtr tvec_nativeObj, [MarshalAs(UnmanagedType.U1)] bool useExtrinsicGuess);
+        [DllImport(LIBNAME)]
+        [return: MarshalAs(UnmanagedType.U1)]
+        private static extern bool aruco_Aruco_estimatePoseCharucoBoard_11(IntPtr charucoCorners_nativeObj, IntPtr charucoIds_nativeObj, IntPtr board_nativeObj, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvec_nativeObj, IntPtr tvec_nativeObj);
+
+        // C++:  void cv::aruco::estimatePoseSingleMarkers(vector_Mat corners, float markerLength, Mat cameraMatrix, Mat distCoeffs, Mat& rvecs, Mat& tvecs, Mat& objPoints = Mat(), Ptr_EstimateParameters estimateParameters = makePtr<EstimateParameters>())
+        [DllImport(LIBNAME)]
+        private static extern void aruco_Aruco_estimatePoseSingleMarkers_10(IntPtr corners_mat_nativeObj, float markerLength, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvecs_nativeObj, IntPtr tvecs_nativeObj, IntPtr objPoints_nativeObj, IntPtr estimateParameters_nativeObj);
+        [DllImport(LIBNAME)]
+        private static extern void aruco_Aruco_estimatePoseSingleMarkers_11(IntPtr corners_mat_nativeObj, float markerLength, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvecs_nativeObj, IntPtr tvecs_nativeObj, IntPtr objPoints_nativeObj);
+        [DllImport(LIBNAME)]
+        private static extern void aruco_Aruco_estimatePoseSingleMarkers_12(IntPtr corners_mat_nativeObj, float markerLength, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvecs_nativeObj, IntPtr tvecs_nativeObj);
+
+        // C++:  bool cv::aruco::testCharucoCornersCollinear(Ptr_CharucoBoard board, Mat charucoIds)
+        [DllImport(LIBNAME)]
+        [return: MarshalAs(UnmanagedType.U1)]
+        private static extern bool aruco_Aruco_testCharucoCornersCollinear_10(IntPtr board_nativeObj, IntPtr charucoIds_nativeObj);
 
         // C++:  double cv::aruco::calibrateCameraAruco(vector_Mat corners, Mat ids, Mat counter, Ptr_Board board, Size imageSize, Mat& cameraMatrix, Mat& distCoeffs, vector_Mat& rvecs, vector_Mat& tvecs, Mat& stdDeviationsIntrinsics, Mat& stdDeviationsExtrinsics, Mat& perViewErrors, int flags = 0, TermCriteria criteria = TermCriteria(TermCriteria::COUNT + TermCriteria::EPS, 30, DBL_EPSILON))
         [DllImport(LIBNAME)]
@@ -2392,37 +1692,7 @@ namespace OpenCVForUnity.ArucoModule
         [DllImport(LIBNAME)]
         private static extern double aruco_Aruco_calibrateCameraAruco_14(IntPtr corners_mat_nativeObj, IntPtr ids_nativeObj, IntPtr counter_nativeObj, IntPtr board_nativeObj, double imageSize_width, double imageSize_height, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj);
 
-        // C++:  void cv::aruco::getBoardObjectAndImagePoints(Ptr_Board board, vector_Mat detectedCorners, Mat detectedIds, Mat& objPoints, Mat& imgPoints)
-        [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_getBoardObjectAndImagePoints_10(IntPtr board_nativeObj, IntPtr detectedCorners_mat_nativeObj, IntPtr detectedIds_nativeObj, IntPtr objPoints_nativeObj, IntPtr imgPoints_nativeObj);
-
-        // C++:  int cv::aruco::interpolateCornersCharuco(vector_Mat markerCorners, Mat markerIds, Mat image, Ptr_CharucoBoard board, Mat& charucoCorners, Mat& charucoIds, Mat cameraMatrix = Mat(), Mat distCoeffs = Mat(), int minMarkers = 2)
-        [DllImport(LIBNAME)]
-        private static extern int aruco_Aruco_interpolateCornersCharuco_10(IntPtr markerCorners_mat_nativeObj, IntPtr markerIds_nativeObj, IntPtr image_nativeObj, IntPtr board_nativeObj, IntPtr charucoCorners_nativeObj, IntPtr charucoIds_nativeObj, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, int minMarkers);
-        [DllImport(LIBNAME)]
-        private static extern int aruco_Aruco_interpolateCornersCharuco_11(IntPtr markerCorners_mat_nativeObj, IntPtr markerIds_nativeObj, IntPtr image_nativeObj, IntPtr board_nativeObj, IntPtr charucoCorners_nativeObj, IntPtr charucoIds_nativeObj, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj);
-        [DllImport(LIBNAME)]
-        private static extern int aruco_Aruco_interpolateCornersCharuco_12(IntPtr markerCorners_mat_nativeObj, IntPtr markerIds_nativeObj, IntPtr image_nativeObj, IntPtr board_nativeObj, IntPtr charucoCorners_nativeObj, IntPtr charucoIds_nativeObj, IntPtr cameraMatrix_nativeObj);
-        [DllImport(LIBNAME)]
-        private static extern int aruco_Aruco_interpolateCornersCharuco_13(IntPtr markerCorners_mat_nativeObj, IntPtr markerIds_nativeObj, IntPtr image_nativeObj, IntPtr board_nativeObj, IntPtr charucoCorners_nativeObj, IntPtr charucoIds_nativeObj);
-
-        // C++:  bool cv::aruco::estimatePoseCharucoBoard(Mat charucoCorners, Mat charucoIds, Ptr_CharucoBoard board, Mat cameraMatrix, Mat distCoeffs, Mat& rvec, Mat& tvec, bool useExtrinsicGuess = false)
-        [DllImport(LIBNAME)]
-        [return: MarshalAs(UnmanagedType.U1)]
-        private static extern bool aruco_Aruco_estimatePoseCharucoBoard_10(IntPtr charucoCorners_nativeObj, IntPtr charucoIds_nativeObj, IntPtr board_nativeObj, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvec_nativeObj, IntPtr tvec_nativeObj, [MarshalAs(UnmanagedType.U1)] bool useExtrinsicGuess);
-        [DllImport(LIBNAME)]
-        [return: MarshalAs(UnmanagedType.U1)]
-        private static extern bool aruco_Aruco_estimatePoseCharucoBoard_11(IntPtr charucoCorners_nativeObj, IntPtr charucoIds_nativeObj, IntPtr board_nativeObj, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvec_nativeObj, IntPtr tvec_nativeObj);
-
-        // C++:  void cv::aruco::drawDetectedCornersCharuco(Mat& image, Mat charucoCorners, Mat charucoIds = Mat(), Scalar cornerColor = Scalar(255, 0, 0))
-        [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_drawDetectedCornersCharuco_10(IntPtr image_nativeObj, IntPtr charucoCorners_nativeObj, IntPtr charucoIds_nativeObj, double cornerColor_val0, double cornerColor_val1, double cornerColor_val2, double cornerColor_val3);
-        [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_drawDetectedCornersCharuco_11(IntPtr image_nativeObj, IntPtr charucoCorners_nativeObj, IntPtr charucoIds_nativeObj);
-        [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_drawDetectedCornersCharuco_12(IntPtr image_nativeObj, IntPtr charucoCorners_nativeObj);
-
-        // C++:  double cv::aruco::calibrateCameraCharuco(vector_Mat charucoCorners, vector_Mat charucoIds, Ptr_CharucoBoard board, Size imageSize, Mat& cameraMatrix, Mat& distCoeffs, vector_Mat& rvecs, vector_Mat& tvecs, Mat& stdDeviationsIntrinsics, Mat& stdDeviationsExtrinsics, Mat& perViewErrors, int flags = 0, TermCriteria criteria = TermCriteria(TermCriteria::COUNT + TermCriteria::EPS, 30, DBL_EPSILON))
+        // C++:  double cv::aruco::calibrateCameraCharuco(vector_Mat charucoCorners, vector_Mat charucoIds, Ptr_CharucoBoard board, Size imageSize, Mat& cameraMatrix, Mat& distCoeffs, vector_Mat& rvecs, vector_Mat& tvecs, Mat& stdDeviationsIntrinsics, Mat& stdDeviationsExtrinsics, Mat& perViewErrors, int flags = 0, TermCriteria criteria = TermCriteria( TermCriteria::COUNT + TermCriteria::EPS, 30, DBL_EPSILON))
         [DllImport(LIBNAME)]
         private static extern double aruco_Aruco_calibrateCameraCharucoExtended_10(IntPtr charucoCorners_mat_nativeObj, IntPtr charucoIds_mat_nativeObj, IntPtr board_nativeObj, double imageSize_width, double imageSize_height, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr rvecs_mat_nativeObj, IntPtr tvecs_mat_nativeObj, IntPtr stdDeviationsIntrinsics_nativeObj, IntPtr stdDeviationsExtrinsics_nativeObj, IntPtr perViewErrors_nativeObj, int flags, int criteria_type, int criteria_maxCount, double criteria_epsilon);
         [DllImport(LIBNAME)]
@@ -2442,7 +1712,17 @@ namespace OpenCVForUnity.ArucoModule
         [DllImport(LIBNAME)]
         private static extern double aruco_Aruco_calibrateCameraCharuco_14(IntPtr charucoCorners_mat_nativeObj, IntPtr charucoIds_mat_nativeObj, IntPtr board_nativeObj, double imageSize_width, double imageSize_height, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj);
 
-        // C++:  void cv::aruco::detectCharucoDiamond(Mat image, vector_Mat markerCorners, Mat markerIds, float squareMarkerLengthRate, vector_Mat& diamondCorners, Mat& diamondIds, Mat cameraMatrix = Mat(), Mat distCoeffs = Mat(), Ptr_Dictionary dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::PREDEFINED_DICTIONARY_NAME::DICT_4X4_50))
+        // C++:  int cv::aruco::interpolateCornersCharuco(vector_Mat markerCorners, Mat markerIds, Mat image, Ptr_CharucoBoard board, Mat& charucoCorners, Mat& charucoIds, Mat cameraMatrix = Mat(), Mat distCoeffs = Mat(), int minMarkers = 2)
+        [DllImport(LIBNAME)]
+        private static extern int aruco_Aruco_interpolateCornersCharuco_10(IntPtr markerCorners_mat_nativeObj, IntPtr markerIds_nativeObj, IntPtr image_nativeObj, IntPtr board_nativeObj, IntPtr charucoCorners_nativeObj, IntPtr charucoIds_nativeObj, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, int minMarkers);
+        [DllImport(LIBNAME)]
+        private static extern int aruco_Aruco_interpolateCornersCharuco_11(IntPtr markerCorners_mat_nativeObj, IntPtr markerIds_nativeObj, IntPtr image_nativeObj, IntPtr board_nativeObj, IntPtr charucoCorners_nativeObj, IntPtr charucoIds_nativeObj, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj);
+        [DllImport(LIBNAME)]
+        private static extern int aruco_Aruco_interpolateCornersCharuco_12(IntPtr markerCorners_mat_nativeObj, IntPtr markerIds_nativeObj, IntPtr image_nativeObj, IntPtr board_nativeObj, IntPtr charucoCorners_nativeObj, IntPtr charucoIds_nativeObj, IntPtr cameraMatrix_nativeObj);
+        [DllImport(LIBNAME)]
+        private static extern int aruco_Aruco_interpolateCornersCharuco_13(IntPtr markerCorners_mat_nativeObj, IntPtr markerIds_nativeObj, IntPtr image_nativeObj, IntPtr board_nativeObj, IntPtr charucoCorners_nativeObj, IntPtr charucoIds_nativeObj);
+
+        // C++:  void cv::aruco::detectCharucoDiamond(Mat image, vector_Mat markerCorners, Mat markerIds, float squareMarkerLengthRate, vector_Mat& diamondCorners, Mat& diamondIds, Mat cameraMatrix = Mat(), Mat distCoeffs = Mat(), Ptr_Dictionary dictionary = makePtr<Dictionary> (getPredefinedDictionary(PredefinedDictionaryType::DICT_4X4_50)))
         [DllImport(LIBNAME)]
         private static extern void aruco_Aruco_detectCharucoDiamond_10(IntPtr image_nativeObj, IntPtr markerCorners_mat_nativeObj, IntPtr markerIds_nativeObj, float squareMarkerLengthRate, IntPtr diamondCorners_mat_nativeObj, IntPtr diamondIds_nativeObj, IntPtr cameraMatrix_nativeObj, IntPtr distCoeffs_nativeObj, IntPtr dictionary_nativeObj);
         [DllImport(LIBNAME)]
@@ -2451,35 +1731,6 @@ namespace OpenCVForUnity.ArucoModule
         private static extern void aruco_Aruco_detectCharucoDiamond_12(IntPtr image_nativeObj, IntPtr markerCorners_mat_nativeObj, IntPtr markerIds_nativeObj, float squareMarkerLengthRate, IntPtr diamondCorners_mat_nativeObj, IntPtr diamondIds_nativeObj, IntPtr cameraMatrix_nativeObj);
         [DllImport(LIBNAME)]
         private static extern void aruco_Aruco_detectCharucoDiamond_13(IntPtr image_nativeObj, IntPtr markerCorners_mat_nativeObj, IntPtr markerIds_nativeObj, float squareMarkerLengthRate, IntPtr diamondCorners_mat_nativeObj, IntPtr diamondIds_nativeObj);
-
-        // C++:  void cv::aruco::drawDetectedDiamonds(Mat& image, vector_Mat diamondCorners, Mat diamondIds = Mat(), Scalar borderColor = Scalar(0, 0, 255))
-        [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_drawDetectedDiamonds_10(IntPtr image_nativeObj, IntPtr diamondCorners_mat_nativeObj, IntPtr diamondIds_nativeObj, double borderColor_val0, double borderColor_val1, double borderColor_val2, double borderColor_val3);
-        [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_drawDetectedDiamonds_11(IntPtr image_nativeObj, IntPtr diamondCorners_mat_nativeObj, IntPtr diamondIds_nativeObj);
-        [DllImport(LIBNAME)]
-        private static extern void aruco_Aruco_drawDetectedDiamonds_12(IntPtr image_nativeObj, IntPtr diamondCorners_mat_nativeObj);
-
-        // C++:  bool cv::aruco::testCharucoCornersCollinear(Ptr_CharucoBoard _board, Mat _charucoIds)
-        [DllImport(LIBNAME)]
-        [return: MarshalAs(UnmanagedType.U1)]
-        private static extern bool aruco_Aruco_testCharucoCornersCollinear_10(IntPtr _board_nativeObj, IntPtr _charucoIds_nativeObj);
-
-        // C++:  Ptr_Dictionary cv::aruco::getPredefinedDictionary(int dict)
-        [DllImport(LIBNAME)]
-        private static extern IntPtr aruco_Aruco_getPredefinedDictionary_10(int dict);
-
-        // C++:  Ptr_Dictionary cv::aruco::generateCustomDictionary(int nMarkers, int markerSize, int randomSeed = 0)
-        [DllImport(LIBNAME)]
-        private static extern IntPtr aruco_Aruco_custom_1dictionary_10(int nMarkers, int markerSize, int randomSeed);
-        [DllImport(LIBNAME)]
-        private static extern IntPtr aruco_Aruco_custom_1dictionary_11(int nMarkers, int markerSize);
-
-        // C++:  Ptr_Dictionary cv::aruco::generateCustomDictionary(int nMarkers, int markerSize, Ptr_Dictionary baseDictionary, int randomSeed = 0)
-        [DllImport(LIBNAME)]
-        private static extern IntPtr aruco_Aruco_custom_1dictionary_1from_10(int nMarkers, int markerSize, IntPtr baseDictionary_nativeObj, int randomSeed);
-        [DllImport(LIBNAME)]
-        private static extern IntPtr aruco_Aruco_custom_1dictionary_1from_11(int nMarkers, int markerSize, IntPtr baseDictionary_nativeObj);
 
     }
 }

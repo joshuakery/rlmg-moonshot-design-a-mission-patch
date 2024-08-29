@@ -97,6 +97,26 @@ namespace OpenCVForUnity.ObjdetectModule
 
 
         //
+        // C++:  void cv::QRCodeDetector::setUseAlignmentMarkers(bool useAlignmentMarkers)
+        //
+
+        /**
+         * use markers to improve the position of the corners of the QR code
+         *
+         * alignmentMarkers using by default
+         * param useAlignmentMarkers automatically generated
+         */
+        public void setUseAlignmentMarkers(bool useAlignmentMarkers)
+        {
+            ThrowIfDisposed();
+
+            objdetect_QRCodeDetector_setUseAlignmentMarkers_10(nativeObj, useAlignmentMarkers);
+
+
+        }
+
+
+        //
         // C++:  bool cv::QRCodeDetector::detect(Mat img, Mat& points)
         //
 
@@ -478,6 +498,10 @@ namespace OpenCVForUnity.ObjdetectModule
         // C++:  void cv::QRCodeDetector::setEpsY(double epsY)
         [DllImport(LIBNAME)]
         private static extern void objdetect_QRCodeDetector_setEpsY_10(IntPtr nativeObj, double epsY);
+
+        // C++:  void cv::QRCodeDetector::setUseAlignmentMarkers(bool useAlignmentMarkers)
+        [DllImport(LIBNAME)]
+        private static extern void objdetect_QRCodeDetector_setUseAlignmentMarkers_10(IntPtr nativeObj, [MarshalAs(UnmanagedType.U1)] bool useAlignmentMarkers);
 
         // C++:  bool cv::QRCodeDetector::detect(Mat img, Mat& points)
         [DllImport(LIBNAME)]

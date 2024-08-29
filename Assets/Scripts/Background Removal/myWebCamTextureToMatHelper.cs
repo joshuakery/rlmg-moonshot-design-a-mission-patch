@@ -756,7 +756,7 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 {
                     isInitWaiting = false;
                     initCoroutine = null;
-                     
+
                     if (onErrorOccurred != null)
                         onErrorOccurred.Invoke(ErrorCode.CAMERA_DEVICE_NOT_EXIST);
 
@@ -764,8 +764,13 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 }
             }
 
+            RLMGLogger.Instance.Log("NEW webCamTexture ID: " + webCamTexture.GetInstanceID(), MESSAGETYPE.INFO);
+            RLMGLogger.Instance.Log("NEW webCamTexture width: " + webCamTexture.width, MESSAGETYPE.INFO);
+            RLMGLogger.Instance.Log("NEW webCamTexture height: " + webCamTexture.height, MESSAGETYPE.INFO);
+
             // Starts the camera
             webCamTexture.Play();
+            if (onPlay != null) { onPlay.Invoke(); }
 
             int initFrameCount = 0;
             bool isTimeout = false;
@@ -779,11 +784,11 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 }
 
                 // //use this for simulating a timeout
-                //initFrameCount++;
-                //yield return null;
-                //continue;
+/*                initFrameCount++;
+                yield return null;
+                continue;*/
 
-                else
+                /*else*/
                 if (webCamTexture.didUpdateThisFrame)
                 {
                     string deviceInfo = "WebCamTextureToMatHelper: " + "Devicename:" + webCamTexture.deviceName + " name:" + webCamTexture.name + " width:" + webCamTexture.width + " height:" + webCamTexture.height + " fps:" + webCamTexture.requestedFPS
@@ -851,6 +856,8 @@ namespace OpenCVForUnity.UnityUtils.Helper
 
                 if (onErrorOccurred != null)
                     onErrorOccurred.Invoke(ErrorCode.TIMEOUT);
+                else
+                    Debug.LogError("Timeout. Webcam did not initialize.");
             }
         }
 
@@ -1092,6 +1099,99 @@ namespace OpenCVForUnity.UnityUtils.Helper
         /// <summary>
         /// Gets the mat of the current frame.
         /// The Mat object's type is 'CV_8UC4' or 'CV_8UC3' or 'CV_8UC1' (ColorFormat is determined by the outputColorFormat setting).
+        /// This mat will not be re-used, so it should be disposed of.
+        /// </summary>
+        /// <returns>The mat of the current frame.</returns>
+        public virtual Mat GetNewMat()
+        {
+            Mat newBaseMat = new Mat(webCamTexture.height, webCamTexture.width, CvType.CV_8UC4, new Scalar(0, 0, 0, 255));
+            Mat newFrameMat;
+            if (baseColorFormat == outputColorFormat)
+            {
+                newFrameMat = newBaseMat;
+            }
+            else
+            {
+                newFrameMat = new Mat(newBaseMat.rows(), newBaseMat.cols(), CvType.CV_8UC(Channels(outputColorFormat)), new Scalar(0, 0, 0, 255));
+            }
+
+            if (!hasInitDone || !webCamTexture.isPlaying)
+            {
+                return newFrameMat;
+            }
+
+            if (baseColorFormat == outputColorFormat)
+            {
+                Utils.webCamTextureToMat(webCamTexture, newFrameMat, colors, false);
+            }
+            else
+            {
+                Utils.webCamTextureToMat(webCamTexture, newBaseMat, colors, false);
+                Imgproc.cvtColor(newBaseMat, newFrameMat, ColorConversionCodes(baseColorFormat, outputColorFormat));
+            }
+
+#if !UNITY_EDITOR && !(UNITY_STANDALONE || UNITY_WEBGL)
+        if (rotatedFrameMat != null)
+        {
+            if (screenOrientation == ScreenOrientation.Portrait || screenOrientation == ScreenOrientation.PortraitUpsideDown)
+            {
+                // (Orientation is Portrait, rotate90Degree is false)
+                if (webCamDevice.isFrontFacing)
+                {
+                    FlipMat(newMat, !flipHorizontal, !flipVertical);
+                }
+                else
+                {
+                    FlipMat(newMat, flipHorizontal, flipVertical);
+                }
+            }
+            else
+            {
+                // (Orientation is Landscape, rotate90Degrees=true)
+                FlipMat(newMat, flipVertical, flipHorizontal);
+            }
+            Core.rotate(newMat, newMat, Core.ROTATE_90_CLOCKWISE);
+            return newMat;
+        }
+        else
+        {
+            if (screenOrientation == ScreenOrientation.Portrait || screenOrientation == ScreenOrientation.PortraitUpsideDown)
+            {
+                // (Orientation is Portrait, rotate90Degree is ture)
+                if (webCamDevice.isFrontFacing)
+                {
+                    FlipMat(newMat, flipHorizontal, flipVertical);
+                }
+                else
+                {
+                    FlipMat(newMat, !flipHorizontal, !flipVertical);
+                }
+            }
+            else
+            {
+                // (Orientation is Landscape, rotate90Degree is false)
+                FlipMat(newMat, flipVertical, flipHorizontal);
+            }
+            return newMat;
+        }
+#else
+            FlipMat(newFrameMat, flipVertical, flipHorizontal);
+            if (rotatedFrameMat != null)
+            {
+                Core.rotate(newFrameMat, newFrameMat, Core.ROTATE_90_CLOCKWISE);
+                return newFrameMat;
+            }
+            else
+            {
+                return newFrameMat;
+            }
+#endif
+            
+        }
+
+        /// <summary>
+        /// Gets the mat of the current frame.
+        /// The Mat object's type is 'CV_8UC4' or 'CV_8UC3' or 'CV_8UC1' (ColorFormat is determined by the outputColorFormat setting).
         /// Please do not dispose of the returned mat as it will be reused.
         /// </summary>
         /// <returns>The mat of the current frame.</returns>
@@ -1102,15 +1202,23 @@ namespace OpenCVForUnity.UnityUtils.Helper
                 return (rotatedFrameMat != null) ? rotatedFrameMat : frameMat;
             }
 
-            if (baseColorFormat == outputColorFormat)
+            try
             {
-                Utils.webCamTextureToMat(webCamTexture, frameMat, colors, false);
+                if (baseColorFormat == outputColorFormat)
+                {
+                    Utils.webCamTextureToMat(webCamTexture, frameMat, colors, false);
+                }
+                else
+                {
+                    Utils.webCamTextureToMat(webCamTexture, baseMat, colors, false);
+                    Imgproc.cvtColor(baseMat, frameMat, ColorConversionCodes(baseColorFormat, outputColorFormat));
+                }
             }
-            else
+            catch
             {
-                Utils.webCamTextureToMat(webCamTexture, baseMat, colors, false);
-                Imgproc.cvtColor(baseMat, frameMat, ColorConversionCodes(baseColorFormat, outputColorFormat));
+                return (rotatedFrameMat != null) ? rotatedFrameMat : frameMat;
             }
+
 
 #if !UNITY_EDITOR && !(UNITY_STANDALONE || UNITY_WEBGL)
             if (rotatedFrameMat != null)
@@ -1244,7 +1352,7 @@ namespace OpenCVForUnity.UnityUtils.Helper
             }
         }
 
-        protected virtual int Channels(ColorFormat type)
+        public virtual int Channels(ColorFormat type)
         {
             switch (type)
             {

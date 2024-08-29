@@ -439,4 +439,5 @@ namespace OpenCVForUnity.DnnModule
 
     }
 }
+
 #endif

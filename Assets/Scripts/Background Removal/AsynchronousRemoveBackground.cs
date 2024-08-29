@@ -34,6 +34,7 @@ namespace ArtScan.CoreModule
     [RequireComponent(typeof(myWebCamTextureToMatHelper))]
     public class AsynchronousRemoveBackground : MonoBehaviour
     {
+        public int copiedFramesCount = 0;
 
         public RemoveBackgroundSettings settings;
         public bool doProcessImage = true;
@@ -55,17 +56,18 @@ namespace ArtScan.CoreModule
         IEnumerator getFilePath_Coroutine;
 #endif
 
-        public Mat rawImageDisplayMat;
-        public Texture2D rawImageTexture;
+        private Mat rawImageDisplayMat;
+        private Texture2D rawImageTexture;
 
-        public Scalar DEBUG_PAPER_EDGE_COLOR;
-        public Scalar PAPER_FOUND_CONSISTENTLY_EDGE_COLOR;
-        public Scalar PAPER_AREA_CONSISTENT_EDGE_COLOR;
-        public Scalar FEEDBACK_PAPER_EDGE_COLOR;
+        private Scalar DEBUG_PAPER_EDGE_COLOR;
+        private Scalar PAPER_FOUND_CONSISTENTLY_EDGE_COLOR;
+        private Scalar PAPER_AREA_CONSISTENT_EDGE_COLOR;
+        private Scalar FEEDBACK_PAPER_EDGE_COLOR;
 
-        public RawImage rawImage;
-        public RectTransform rawImageRT;
-        public Vector2 rawImageSize;
+        [SerializeField]
+        private RawImage rawImage;
+        private RectTransform rawImageRT;
+        private Vector2 rawImageSize;
 
         /// <summary>
         /// The webcam texture to mat helper.
@@ -78,19 +80,12 @@ namespace ArtScan.CoreModule
         //FpsMonitor fpsMonitor;
 
         /// <summary>
-        /// The Game State Scriptable Object.
-        /// </summary>
-        public GameState gameState;
-
-        /// <summary>
         /// GameEvent that's fired after myWebcameTextureHelper initialization
         /// </summary>
         public GameEvent WebCamTextureToMatHelperInitialized;
 
-        public GameEvent NewPreview;
-        public GameEvent ScanFailed;
-
-        public CamConfigLoader configLoader;
+        [SerializeField]
+        private CamConfigLoader configLoader;
 
         public bool paperFound;
 
@@ -202,7 +197,6 @@ namespace ArtScan.CoreModule
 
         //for new Thread
         Mat rgbaMat4Thread;
-        public Mat rgbaMat4RefinedThread;
         Mat resultMat;
 
         public float DOWNSCALE_RATIO = 2f;
@@ -272,38 +266,6 @@ namespace ArtScan.CoreModule
             }
         }
 
-        bool _shouldCopyToRefinedMat = false;
-
-        public bool shouldCopyToRefinedMat
-        {
-            get
-            {
-                lock (sync)
-                    return _shouldCopyToRefinedMat;
-            }
-            set
-            {
-                lock (sync)
-                    _shouldCopyToRefinedMat = value;
-            }
-        }
-
-        bool _refinedMatReady = false;
-
-        public bool refinedMatReady
-        {
-            get
-            {
-                lock (sync)
-                    return _refinedMatReady;
-            }
-            set
-            {
-                lock (sync)
-                    _refinedMatReady = value;
-            }
-        }
-
         private void Awake()
         {
             if (rawImage != null)
@@ -311,16 +273,14 @@ namespace ArtScan.CoreModule
                 rawImageRT = rawImage.gameObject.GetComponent<RectTransform>();
                 rawImageSize = new Vector2(rawImageRT.rect.width, rawImageRT.rect.height);
             }
+
+            if (configLoader == null)
+                configLoader = FindObjectOfType<CamConfigLoader>();
         }
 
         // Use this for initialization
         public void SetupRemoveBackground()
         {
-            //RLMGLogger.Instance.Log("Setting up remove background...", MESSAGETYPE.INFO);
-
-
-            //fpsMonitor = GetComponent<FpsMonitor>();
-
             webCamTextureToMatHelper = gameObject.GetComponent<myWebCamTextureToMatHelper>();
 
 #if UNITY_WEBGL
@@ -330,15 +290,18 @@ namespace ArtScan.CoreModule
             // sForests_model_filepath = Utils.getFilePath(SFORESTS_MODEL_FILENAME);
             // SetupStructuredForests();
 #endif
+            if (configLoader != null && configLoader.configData != null)
+            {
+                if (configLoader.configData.defaultCamera != null)
+                    webCamTextureToMatHelper.requestedDeviceName = configLoader.configData.defaultCamera;
 
-            if (configLoader.configData.defaultCamera != null)
-                webCamTextureToMatHelper.requestedDeviceName = configLoader.configData.defaultCamera;
+                webCamTextureToMatHelper.flipVertical = configLoader.configData.flipVertical;
 
-            webCamTextureToMatHelper.flipVertical = configLoader.configData.flipVertical;
+                webCamTextureToMatHelper.flipHorizontal = configLoader.configData.flipHorizontal;
 
-            webCamTextureToMatHelper.flipHorizontal = configLoader.configData.flipHorizontal;
+                webCamTextureToMatHelper.requestedFPS = configLoader.configData.requestedFPS;
+            }
 
-            webCamTextureToMatHelper.requestedFPS = configLoader.configData.requestedFPS;
 
 
 #if UNITY_ANDROID && !UNITY_EDITOR
@@ -399,6 +362,7 @@ namespace ArtScan.CoreModule
             rawImageDisplayMat = new Mat(rHeight, rWidth, webCamTextureMat.type(), new Scalar(0,0,0,0));
             
             rawImageTexture = new Texture2D(rawImageDisplayMat.cols(), rawImageDisplayMat.rows(), TextureFormat.RGBA32, false);
+            rawImageTexture.name = "AsyncRB Raw Image Texture";
             rawImage.texture = rawImageTexture;
 
             if (RLMGLogger.Instance != null)
@@ -458,9 +422,6 @@ namespace ArtScan.CoreModule
 
             if (rgbaMat4Thread != null)
                 rgbaMat4Thread.Dispose();
-
-            if (rgbaMat4RefinedThread != null)
-                rgbaMat4RefinedThread.Dispose();
 
             if (resultMat != null)
                 resultMat.Dispose();
@@ -527,19 +488,8 @@ namespace ArtScan.CoreModule
                 rgbaMat.copyTo(rgbaMat4Thread);
         }
 
-        private void CopyToRefinedThreadMat()
-        {
-            //slighly inefficient, because onBeginScan we call this twice in one frame
-            //but negligible
-            Mat rgbaMat = webCamTextureToMatHelper.GetMat();
-
-            if (rgbaMat4RefinedThread != null)
-                rgbaMat.copyTo(rgbaMat4RefinedThread);
-        }
-
         private void ToTexture2D()
         {
-
             Utils.fastMatToTexture2D(resultMat, rawImageTexture, true, 0, true);
         }
 
@@ -548,6 +498,15 @@ namespace ArtScan.CoreModule
         {
             bool webCamTextureReady = (webCamTextureToMatHelper &&
                 webCamTextureToMatHelper.IsPlaying ());
+
+            if (!doProcessImage)
+            {
+                if (!webCamTextureReady)
+                    StopThread();
+
+                rawImage.texture = webCamTextureToMatHelper.GetWebCamTexture();
+                return;
+            }
 
             //if (webCamTextureToMatHelper != null)
             //{
@@ -565,32 +524,9 @@ namespace ArtScan.CoreModule
             {
                 if (!shouldDetectInMultiThread)
                 {
-                    if (shouldCopyToRefinedMat)
-                    {
-                        DateTime before = DateTime.Now;
+                    CopyToThreadMat();
 
-                        //Copy for both threads
-                        CopyToThreadMat();
-                        CopyToRefinedThreadMat();
-
-                        refinedMatReady = true;
-                        shouldCopyToRefinedMat = false;
-
-                        DateTime after = DateTime.Now;
-
-                        TimeSpan duration = after.Subtract(before);
-
-                        if (RLMGLogger.Instance != null)
-                            RLMGLogger.Instance.Log(
-                                String.Format("Webcam texture successfuly copied for refined scan in {0} milliseconds.", duration.TotalMilliseconds),
-                                MESSAGETYPE.INFO
-                            );
-                    }
-                    else
-                    {
-                        //Copy for just the continuous feedback
-                        CopyToThreadMat();
-                    }
+                    copiedFramesCount++;
 
                     shouldDetectInMultiThread = true;
                 }
@@ -602,13 +538,10 @@ namespace ArtScan.CoreModule
 #if UNITY_WEBGL
                     Imgproc.putText (resultMat, "WebGL platform does not support multi-threading.", new Point (5, resultMat.rows () - 10), Imgproc.FONT_HERSHEY_SIMPLEX, 0.5, new Scalar (255, 255, 255, 255), 1, Imgproc.LINE_AA, false);
 #endif
+                    //if (settings.postProcessingSizeFactor != 1)
+                    //    Imgproc.resize(resultMat, resultMat, new Size(), 1.0f / settings.postProcessingSizeFactor, 1.0f / settings.postProcessingSizeFactor, Imgproc.INTER_LINEAR);
 
-                    //perhaps reduce the size of this mat first
-                    
                     ToTexture2D();
-
-                    // if (beginScanButton)
-                    //     beginScanButton.interactable = beginScanButtonInteractable;
                 }
                 
             }
@@ -622,7 +555,7 @@ namespace ArtScan.CoreModule
             StopThread();
 
             rgbaMat4Thread = new Mat();
-            rgbaMat4RefinedThread = new Mat();
+
             resultMat = rawImageDisplayMat.clone();
 
             shouldDetectInMultiThread = false;
@@ -658,14 +591,11 @@ namespace ArtScan.CoreModule
 
             while (isThreadRunning)
             {
-                //if (RLMGLogger.Instance != null)
-                //    RLMGLogger.Instance.Log("Awaiting thread stop...", MESSAGETYPE.INFO);
                 //Wait threading stop
             }
 
-
             if (RLMGLogger.Instance != null)
-                RLMGLogger.Instance.Log("...thread stopped.", MESSAGETYPE.INFO);
+                RLMGLogger.Instance.Log("Thread stopped.", MESSAGETYPE.INFO);
         }
 
 #if !UNITY_WEBGL
@@ -725,215 +655,264 @@ namespace ArtScan.CoreModule
         }
 #endif
 
+        /// <summary>
+        /// Scales the x and y values of each point in a given contour by the scaleFactor
+        /// </summary>
+        /// <param name="paperMaxAreaContour"></param>
+        /// <param name="scaleFactor"></param>
+        private void ResizeContour(MatOfPoint paperMaxAreaContour, float scaleFactor)
+        {
+            Point[] points = paperMaxAreaContour.toArray();
+            for (int i = 0; i < points.Length; i++)
+            {
+                Point p = points[i];
+                p.x = (double)Mathf.Round((float)p.x * scaleFactor);
+                p.y = (double)Mathf.Round((float)p.y * scaleFactor);
+            }
+                
+            paperMaxAreaContour.fromArray(points);
+        }
+
+        /// <summary>
+        /// MAIN FUNCTION FOR PROCESSING IMAGE TO REMOVE ITS BACKGROUND
+        /// </summary>
         private void ProcessImage()
         {
             if ( rgbaMat4Thread.empty() ) return;
 
-            //reduce size
-            if (DOWNSCALE_RATIO > 0)
-                Imgproc.resize (rgbaMat4Thread, rgbaMat4Thread, new Size (), 1.0 / DOWNSCALE_RATIO, 1.0 / DOWNSCALE_RATIO, Imgproc.INTER_LINEAR);
-            
-            PerspectiveUtils.BrightnessContrast(rgbaMat4Thread,settings.brightness,settings.contrast);
-
-            using (Mat yMat = new Mat())
+            if (!doProcessImage)
             {
-                if (!doProcessImage)
+                resultMat.setTo(new Scalar(0, 0, 0, 0));
+                PresentationUtils.ScaleUpAndDisplayMat(
+                    rgbaMat4Thread, resultMat,
+                    settings.doSizeToFit
+                );
+                return;
+            }
+
+            using (Mat resizedMat = new Mat())
+            {
+                Imgproc.resize(rgbaMat4Thread, resizedMat, new Size(), 1.0f / settings.preProcessingSizeFactor, 1.0f / settings.preProcessingSizeFactor, Imgproc.INTER_LINEAR);
+
+                PerspectiveUtils.BrightnessContrast(resizedMat, settings.brightness, settings.contrast);
+
+                using (Mat yMat = new Mat())
                 {
-                    resultMat.setTo(new Scalar(0, 0, 0, 0));
-                    PresentationUtils.ScaleUpAndDisplayMat(
-                        rgbaMat4Thread, resultMat,
-                        settings.doSizeToFit
-                    );
-                    return;
-                }
+                    EdgeFinding.GetCannyEdgeMat(resizedMat, yMat);
 
-                EdgeFinding.GetCannyEdgeMat(rgbaMat4Thread,yMat);
+                    // find potential paper contours.
+                    List<MatOfPoint> contours = new List<MatOfPoint>();
+                    PerspectiveUtils.Find4PointContours(yMat, contours);
 
-                // find potential paper contours.
-                List<MatOfPoint> contours = new List<MatOfPoint>();
-                PerspectiveUtils.Find4PointContours(yMat, contours);
+                    // pick the contour of the largest area and rearrange the points in a consistent order.
+                    MatOfPoint paperMaxAreaContour = PerspectiveUtils.GetMaxAreaContour(contours);
+                    paperMaxAreaContour = PerspectiveUtils.OrderCornerPoints(paperMaxAreaContour);
 
-                // pick the contour of the largest area and rearrange the points in a consistent order.
-                MatOfPoint paperMaxAreaContour = PerspectiveUtils.GetMaxAreaContour(contours);
-                paperMaxAreaContour = PerspectiveUtils.OrderCornerPoints(paperMaxAreaContour);
+                    paperFound = (paperMaxAreaContour.size().area() > 0);
+                    CalculateConsistentPaperFound();
 
-                paperFound = (paperMaxAreaContour.size().area() > 0);
-                DoConsistentPaperFound();
-
-                if (paperFound)
-                {
-                    currentPaperArea = Imgproc.contourArea(paperMaxAreaContour);
-                    //currentContourArea = paperMaxAreaContour.size().area()
-                    bool paperThisFrameIsConsistentArea = DoPaperAreaRunningAverage();
-
-                    if (consistentPaperFound)
+                    if (paperFound)
                     {
-                        if (consistentPaperArea)
+                        currentPaperArea = Imgproc.contourArea(paperMaxAreaContour);
+                        //currentContourArea = paperMaxAreaContour.size().area()
+                        bool paperThisFrameIsConsistentArea = CalculatePaperAreaRunningAverage();
+
+                        if (consistentPaperFound)
                         {
-                            if (displayOptions.doWarp)
+                            if (consistentPaperArea)
                             {
-                                using (Mat transformedMat = PerspectiveUtils.PerspectiveTransform(rgbaMat4Thread, paperMaxAreaContour))
+                                if (displayOptions.doWarp)
                                 {
-                                    if (transformedMat.width() > 1 && transformedMat.height() > 1)
+                                    using (Mat transformedResizedMat = PerspectiveUtils.PerspectiveTransform(resizedMat, paperMaxAreaContour))
                                     {
-                                        //crop in the edges to hide them from the find largest contour later
-                                        using (
-                                            Mat croppedMat = PerspectiveUtils.CropByPercent(
-                                                transformedMat,
-                                                0.95f
-                                            )
-                                        )
+                                        if (transformedResizedMat.width() > 1 && transformedResizedMat.height() > 1)
                                         {
-                                            if (doDownsizeToDisplay)
+                                            //crop in the edges to hide them from the find largest contour later
+                                            using (
+                                                Mat croppedMat = PerspectiveUtils.CropByPercent(
+                                                    transformedResizedMat,
+                                                    1f
+                                                )
+                                            )
                                             {
-                                                float ratio = rawImageSize.x / transformedMat.width();
-                                                if (ratio < 1)
+                                                if (doDownsizeToDisplay)
                                                 {
-                                                    Imgproc.resize(transformedMat, transformedMat, new Size(), ratio, ratio, Imgproc.INTER_LINEAR);
-                                                }
-                                            }
-
-                                            using (Mat edgeMat = new Mat())
-                                            {
-                                                EdgeFinding.SetEdgeMat(transformedMat, edgeMat, settings, edgeDetection);
-
-                                                if (displayOptions.showEdges)
-                                                    PresentationUtils.ShowEdges(edgeMat, transformedMat);
-
-                                                using (Mat removedMat = RemoveBackgroundUtils.PolyfillMaskBackground(transformedMat, edgeMat, out MatOfPoint maxAreaContour, out Mat mask))
-                                                {
-                                                    //currentContourArea = maxAreaContour.size().area();
-                                                    currentContourArea = Imgproc.contourArea(maxAreaContour);
-                                                    bool thisFrameIsConsistentWithAverageArea = DoContourSizeRunningAverage();
-
-
-
-                                                    //undo warp perspective and apply mask to input
-                                                    //if (false)
-                                                    //{
-                                                    //    using (Mat reverseTransformedMask = new Mat(rgbaMat4Thread.height(), rgbaMat4Thread.width(), rgbaMat4Thread.type(), new Scalar(0,0,0,0)))
-                                                    //    {
-                                                    //        PerspectiveUtils.ReversePerspectiveTransform(mask,paperMaxAreaContour,reverseTransformedMask);
-
-                                                    //        using (Mat outputMat = new Mat(rgbaMat4Thread.height(), rgbaMat4Thread.width(), rgbaMat4Thread.type(), new Scalar(0,0,0,255)))
-                                                    //        {
-                                                    //            Core.copyTo(rgbaMat4Thread, outputMat, reverseTransformedMask);
-
-                                                    //            Core.addWeighted(rgbaMat4Thread,0.2f,outputMat,0.8f,0,outputMat);
-
-                                                    //            PresentationUtils.ScaleUpAndDisplayMat(
-                                                    //                outputMat, resultMat,
-                                                    //                settings.doSizeToFit
-                                                    //            );
-                                                    //        }
-
-                                                    //    }
-
-                                                    //    return;
-                                                    //}
-
-                                                    if (consistentRunningAverage)
+                                                    float ratio = rawImageSize.x / transformedResizedMat.width();
+                                                    if (ratio < 1)
                                                     {
-                                                        if (!thisFrameIsConsistentWithAverageArea &&
-                                                            displayOptions.doDropInconsistentFrames)
-                                                        {
-                                                            //do nothing
-                                                        }
-                                                        else
-                                                        {
-                                                            if (displayOptions.doRemoveBackground)
-                                                            {
-                                                                PerspectiveUtils.BrightnessContrast(removedMat, settings.postProcessingSettings.brightness, settings.postProcessingSettings.contrast, true);
+                                                        Imgproc.resize(transformedResizedMat, transformedResizedMat, new Size(), ratio, ratio, Imgproc.INTER_LINEAR);
+                                                    }
+                                                }
 
-                                                                PresentationUtils.MakeReadyToPresent(
-                                                                    removedMat, resultMat,
-                                                                    maxAreaContour,
-                                                                    displayOptions, settings
-                                                                );
+                                                using (Mat edgeMat = new Mat())
+                                                {
+                                                    EdgeFinding.SetEdgeMat(transformedResizedMat, edgeMat, settings, edgeDetection);
+
+                                                    ResizeContour(paperMaxAreaContour, settings.preProcessingSizeFactor);
+                                                    using (Mat transformedRGBAMat = PerspectiveUtils.PerspectiveTransform(rgbaMat4Thread, paperMaxAreaContour))
+                                                    {
+                                                        if (displayOptions.showEdges)
+                                                            PresentationUtils.ShowEdges(edgeMat, transformedRGBAMat);
+
+                                                        using (Mat removedMat = RemoveBackgroundUtils.PolyfillMaskBackground(transformedRGBAMat, edgeMat, out MatOfPoint maxAreaContour, out Mat mask))
+                                                        {
+                                                            //currentContourArea = maxAreaContour.size().area();
+                                                            currentContourArea = Imgproc.contourArea(maxAreaContour);
+                                                            bool thisFrameIsConsistentWithAverageArea = CalculateContourSizeRunningAverage();
+
+                                                            //undo warp perspective and apply mask to input
+                                                            /*                                                      using (Mat reverseTransformedMask = new Mat(resizedMat.height(), resizedMat.width(), resizedMat.type(), new Scalar(0, 0, 0, 0)))
+                                                                                                                  {
+                                                                                                                      PerspectiveUtils.ReversePerspectiveTransform(mask, paperMaxAreaContour, reverseTransformedMask);
+
+                                                                                                                      using (Mat outputMat = new Mat(rgbaMat4Thread.height(), rgbaMat4Thread.width(), rgbaMat4Thread.type(), new Scalar(0, 0, 0, 255)))
+                                                                                                                      {
+                                                                                                                          Core.copyTo(rgbaMat4Thread, outputMat, reverseTransformedMask);
+
+                                                                                                                          Core.addWeighted(rgbaMat4Thread, 0.2f, outputMat, 0.8f, 0, outputMat);
+
+                                                                                                                          PresentationUtils.ScaleUpAndDisplayMat(
+                                                                                                                              outputMat, resultMat,
+                                                                                                                              settings.doSizeToFit
+                                                                                                                          );
+                                                                                                                      }
+
+                                                                                                                  }
+
+                                                                                                                  return;*/
+
+                                                            if (consistentRunningAverage)
+                                                            {
+                                                                if (!thisFrameIsConsistentWithAverageArea &&
+                                                                    displayOptions.doDropInconsistentFrames)
+                                                                {
+                                                                    //do nothing
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (displayOptions.doRemoveBackground)
+                                                                    {
+                                                                        PerspectiveUtils.BrightnessContrast(removedMat, settings.postProcessingSettings.brightness, settings.postProcessingSettings.contrast, true);
+
+                                                                        ResizeContour(maxAreaContour, settings.preProcessingSizeFactor);
+
+                                                                        PresentationUtils.MakeReadyToPresent(
+                                                                            removedMat, resultMat,
+                                                                            maxAreaContour,
+                                                                            displayOptions, settings
+                                                                        );
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        PerspectiveUtils.BrightnessContrast(transformedResizedMat, settings.postProcessingSettings.brightness, settings.postProcessingSettings.contrast, true);
+
+                                                                        PresentationUtils.MakeReadyToPresent(
+                                                                            transformedResizedMat, resultMat,
+                                                                            maxAreaContour,
+                                                                            displayOptions, settings
+                                                                        );
+                                                                    }
+                                                                }
+
+
                                                             }
                                                             else
                                                             {
-                                                                PerspectiveUtils.BrightnessContrast(transformedMat, settings.postProcessingSettings.brightness, settings.postProcessingSettings.contrast, true);
+                                                                resultMat.setTo(new Scalar(0, 0, 0, 0));
 
-                                                                PresentationUtils.MakeReadyToPresent(
-                                                                    transformedMat, resultMat,
-                                                                    maxAreaContour,
-                                                                    displayOptions, settings
+                                                                if (displayOptions.doDrawPaperEdge)
+                                                                {
+                                                                    //no need to resize paperMaxAreaContour here; it is resized before this
+                                                                    Imgproc.drawContours(rgbaMat4Thread, new List<MatOfPoint> { paperMaxAreaContour }, -1, FEEDBACK_PAPER_EDGE_COLOR, 10);
+                                                                }
+
+                                                                PresentationUtils.ScaleUpAndDisplayMat(
+                                                                    rgbaMat4Thread, resultMat,
+                                                                    settings.doSizeToFit
                                                                 );
+
+
                                                             }
                                                         }
-
-
                                                     }
-                                                    else
-                                                    {
-                                                        resultMat.setTo(new Scalar(0, 0, 0, 0));
 
-                                                        if (displayOptions.doDrawPaperEdge)
-                                                            Imgproc.drawContours(rgbaMat4Thread, new List<MatOfPoint> { paperMaxAreaContour }, -1, FEEDBACK_PAPER_EDGE_COLOR, 10);
-
-                                                        PresentationUtils.ScaleUpAndDisplayMat(
-                                                            rgbaMat4Thread, resultMat,
-                                                            settings.doSizeToFit
-                                                        );
-
-
-                                                    }
+                                                    
                                                 }
                                             }
                                         }
                                     }
                                 }
+                                else //don't do warp - just show the camera feed, with display options
+                                {
+                                    resultMat.setTo(new Scalar(0, 0, 0, 0));
+
+                                    if (displayOptions.showEdges) //yMat is now Canny edges, see above
+                                        Imgproc.cvtColor(yMat, rgbaMat4Thread, Imgproc.COLOR_GRAY2RGBA);
+
+                                    if (displayOptions.doDrawPaperEdge)
+                                    {
+                                        ResizeContour(paperMaxAreaContour, settings.preProcessingSizeFactor);
+                                        Imgproc.drawContours(rgbaMat4Thread, new List<MatOfPoint> { paperMaxAreaContour }, -1, PAPER_AREA_CONSISTENT_EDGE_COLOR, 4);
+                                    }
+
+                                    PresentationUtils.ScaleUpAndDisplayMat(
+                                        rgbaMat4Thread, resultMat,
+                                        settings.doSizeToFit
+                                    );
+                                }
                             }
-                            else //don't do warp - just show the camera feed, with display options
+                            else //paper found consistently but no consistent paper area - just show the camera feed, with display options
                             {
-                                resultMat.setTo(new Scalar(0, 0, 0, 0));
+                                if (!paperThisFrameIsConsistentArea && displayOptions.doDropInconsistentFrames)
+                                {
+                                    //do nothing
+                                }
+                                else
+                                {
+                                    resultMat.setTo(new Scalar(0, 0, 0, 0));
 
-                                if (displayOptions.showEdges) //yMat is now Canny edges, see above
-                                    Imgproc.cvtColor(yMat, rgbaMat4Thread, Imgproc.COLOR_GRAY2RGBA);
+                                    if (displayOptions.showEdges) //yMat is now Canny edges, see above
+                                        Imgproc.cvtColor(yMat, rgbaMat4Thread, Imgproc.COLOR_GRAY2RGBA);
 
-                                if (displayOptions.doDrawPaperEdge)
-                                    Imgproc.drawContours(rgbaMat4Thread, new List<MatOfPoint> { paperMaxAreaContour }, -1, PAPER_AREA_CONSISTENT_EDGE_COLOR, 4);
+                                    if (displayOptions.doDrawPaperEdge)
+                                    {
+                                        ResizeContour(paperMaxAreaContour, settings.preProcessingSizeFactor);
+                                        Imgproc.drawContours(rgbaMat4Thread, new List<MatOfPoint> { paperMaxAreaContour }, -1, PAPER_FOUND_CONSISTENTLY_EDGE_COLOR, 4);
+                                    }
 
-                                PresentationUtils.ScaleUpAndDisplayMat(
-                                    rgbaMat4Thread, resultMat,
-                                    settings.doSizeToFit
-                                );
+                                    PresentationUtils.ScaleUpAndDisplayMat(
+                                        rgbaMat4Thread, resultMat,
+                                        settings.doSizeToFit
+                                    );
+                                }
+
                             }
-                        }
-                        else //paper found consistently but no consistent paper area - just show the camera feed, with display options
+                        } //paperFound but not consistently - just show the camera feed, with display options
+                        else
                         {
-                            if (!paperThisFrameIsConsistentArea && displayOptions.doDropInconsistentFrames)
+                            resultMat.setTo(new Scalar(0, 0, 0, 0));
+
+                            if (displayOptions.showEdges) //yMat is now Canny edges, see above
+                                Imgproc.cvtColor(yMat, rgbaMat4Thread, Imgproc.COLOR_GRAY2RGBA);
+
+                            if (displayOptions.doDrawPaperEdge)
                             {
-                                //do nothing
-                            }
-                            else
-                            {
-                                resultMat.setTo(new Scalar(0, 0, 0, 0));
-
-                                if (displayOptions.showEdges) //yMat is now Canny edges, see above
-                                    Imgproc.cvtColor(yMat, rgbaMat4Thread, Imgproc.COLOR_GRAY2RGBA);
-
-                                if (displayOptions.doDrawPaperEdge)
-                                    Imgproc.drawContours(rgbaMat4Thread, new List<MatOfPoint> { paperMaxAreaContour }, -1, PAPER_FOUND_CONSISTENTLY_EDGE_COLOR, 4);
-
-                                PresentationUtils.ScaleUpAndDisplayMat(
-                                    rgbaMat4Thread, resultMat,
-                                    settings.doSizeToFit
-                                );
+                                ResizeContour(paperMaxAreaContour, settings.preProcessingSizeFactor);
+                                Imgproc.drawContours(rgbaMat4Thread, new List<MatOfPoint> { paperMaxAreaContour }, -1, DEBUG_PAPER_EDGE_COLOR, 4);
                             }
 
+                            PresentationUtils.ScaleUpAndDisplayMat(
+                                rgbaMat4Thread, resultMat,
+                                settings.doSizeToFit
+                            );
                         }
-                    } //paperFound but not consistently - just show the camera feed, with display options
-                    else
+                    }
+                    else //not paperFound - just show the camera feed, with edges optionally
                     {
                         resultMat.setTo(new Scalar(0, 0, 0, 0));
 
                         if (displayOptions.showEdges) //yMat is now Canny edges, see above
                             Imgproc.cvtColor(yMat, rgbaMat4Thread, Imgproc.COLOR_GRAY2RGBA);
-
-                        if (displayOptions.doDrawPaperEdge)
-                            Imgproc.drawContours(rgbaMat4Thread, new List<MatOfPoint> { paperMaxAreaContour }, -1, DEBUG_PAPER_EDGE_COLOR, 4);
 
                         PresentationUtils.ScaleUpAndDisplayMat(
                             rgbaMat4Thread, resultMat,
@@ -941,19 +920,9 @@ namespace ArtScan.CoreModule
                         );
                     }
                 }
-                else //not paperFound - just show the camera feed, with edges optionally
-                {
-                    resultMat.setTo( new Scalar(0,0,0,0) );
 
-                    if (displayOptions.showEdges) //yMat is now Canny edges, see above
-                        Imgproc.cvtColor(yMat, rgbaMat4Thread, Imgproc.COLOR_GRAY2RGBA);
-
-                    PresentationUtils.ScaleUpAndDisplayMat(
-                        rgbaMat4Thread, resultMat,
-                        settings.doSizeToFit
-                    );
-                }                 
-            }          
+            }
+                         
         }
 
         //private void ClearPaperAreaRunningAverage()
@@ -962,7 +931,7 @@ namespace ArtScan.CoreModule
         //    runningAveragePaperArea = 0.0d;
         //}
 
-        private void DoConsistentPaperFound()
+        private void CalculateConsistentPaperFound()
         {
             if (paperFound)
             {
@@ -979,7 +948,7 @@ namespace ArtScan.CoreModule
             }
         }
 
-        private bool DoPaperAreaRunningAverage()
+        private bool CalculatePaperAreaRunningAverage()
         {
             float threshold = settings != null && settings.enableBeginScanButtonSettings != null ?
                 settings.enableBeginScanButtonSettings.consistentPaperAreaThreshold :
@@ -1012,7 +981,7 @@ namespace ArtScan.CoreModule
             }
         }
 
-        private void DoPaperCenterRunningAverage()
+        private void CalculatePaperCenterRunningAverage()
         {
             if (Vector2.Distance(currentPaperCenter,runningAveragePaperCenter) > 100)
             {
@@ -1025,7 +994,7 @@ namespace ArtScan.CoreModule
                 runningAveragePaperCenter = Vector2.Lerp(runningAveragePaperCenter, currentPaperCenter, 0.5f);
             }
         }
-        private bool DoContourSizeRunningAverage()
+        private bool CalculateContourSizeRunningAverage()
         {
             float threshold = settings != null && settings.enableBeginScanButtonSettings != null ? settings.enableBeginScanButtonSettings.consistentScanAreaThreshold : 0.5f;
 
@@ -1055,6 +1024,11 @@ namespace ArtScan.CoreModule
 
                 return true;
             }
+        }
+
+        public void ChangeDoProcessImageValue(bool value)
+        {
+            doProcessImage = value;
         }
 
         /// <summary>

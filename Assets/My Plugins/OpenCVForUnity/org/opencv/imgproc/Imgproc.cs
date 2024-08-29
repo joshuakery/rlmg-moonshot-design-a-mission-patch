@@ -1545,6 +1545,37 @@ namespace OpenCVForUnity.ImgprocModule
 
 
         //
+        // C++:  void cv::stackBlur(Mat src, Mat& dst, Size ksize)
+        //
+
+        /**
+         * Blurs an image using the stackBlur.
+         *
+         * The function applies and stackBlur to an image.
+         * stackBlur can generate similar results as Gaussian blur, and the time consumption does not increase with the increase of kernel size.
+         * It creates a kind of moving stack of colors whilst scanning through the image. Thereby it just has to add one new block of color to the right side
+         * of the stack and remove the leftmost color. The remaining colors on the topmost layer of the stack are either added on or reduced by one,
+         * depending on if they are on the right or on the left side of the stack. The only supported borderType is BORDER_REPLICATE.
+         * Original paper was proposed by Mario Klingemann, which can be found http://underdestruction.com/2004/02/25/stackblur-2004.
+         *
+         * param src input image. The number of channels can be arbitrary, but the depth should be one of
+         * CV_8U, CV_16U, CV_16S or CV_32F.
+         * param dst output image of the same size and type as src.
+         * param ksize stack-blurring kernel size. The ksize.width and ksize.height can differ but they both must be
+         * positive and odd.
+         */
+        public static void stackBlur(Mat src, Mat dst, Size ksize)
+        {
+            if (src != null) src.ThrowIfDisposed();
+            if (dst != null) dst.ThrowIfDisposed();
+
+            imgproc_Imgproc_stackBlur_10(src.nativeObj, dst.nativeObj, ksize.width, ksize.height);
+
+
+        }
+
+
+        //
         // C++:  void cv::filter2D(Mat src, Mat& dst, int ddepth, Mat kernel, Point anchor = Point(-1,-1), double delta = 0, int borderType = BORDER_DEFAULT)
         //
 
@@ -2332,7 +2363,7 @@ namespace OpenCVForUnity.ImgprocModule
          *
          * param src Source image.
          * param dst Destination image of the same size and the same number of channels as src .
-         * param ddepth Desired depth of the destination image.
+         * param ddepth Desired depth of the destination image, see REF: filter_depths "combinations".
          * param ksize Aperture size used to compute the second-derivative filters. See #getDerivKernels for
          * details. The size must be positive and odd.
          * param scale Optional scale factor for the computed Laplacian values. By default, no scaling is
@@ -2366,7 +2397,7 @@ namespace OpenCVForUnity.ImgprocModule
          *
          * param src Source image.
          * param dst Destination image of the same size and the same number of channels as src .
-         * param ddepth Desired depth of the destination image.
+         * param ddepth Desired depth of the destination image, see REF: filter_depths "combinations".
          * param ksize Aperture size used to compute the second-derivative filters. See #getDerivKernels for
          * details. The size must be positive and odd.
          * param scale Optional scale factor for the computed Laplacian values. By default, no scaling is
@@ -2399,7 +2430,7 @@ namespace OpenCVForUnity.ImgprocModule
          *
          * param src Source image.
          * param dst Destination image of the same size and the same number of channels as src .
-         * param ddepth Desired depth of the destination image.
+         * param ddepth Desired depth of the destination image, see REF: filter_depths "combinations".
          * param ksize Aperture size used to compute the second-derivative filters. See #getDerivKernels for
          * details. The size must be positive and odd.
          * param scale Optional scale factor for the computed Laplacian values. By default, no scaling is
@@ -2431,7 +2462,7 @@ namespace OpenCVForUnity.ImgprocModule
          *
          * param src Source image.
          * param dst Destination image of the same size and the same number of channels as src .
-         * param ddepth Desired depth of the destination image.
+         * param ddepth Desired depth of the destination image, see REF: filter_depths "combinations".
          * param ksize Aperture size used to compute the second-derivative filters. See #getDerivKernels for
          * details. The size must be positive and odd.
          * applied. See #getDerivKernels for details.
@@ -2462,7 +2493,7 @@ namespace OpenCVForUnity.ImgprocModule
          *
          * param src Source image.
          * param dst Destination image of the same size and the same number of channels as src .
-         * param ddepth Desired depth of the destination image.
+         * param ddepth Desired depth of the destination image, see REF: filter_depths "combinations".
          * details. The size must be positive and odd.
          * applied. See #getDerivKernels for details.
          * SEE:  Sobel, Scharr
@@ -3545,23 +3576,24 @@ namespace OpenCVForUnity.ImgprocModule
          *
          * param image 8-bit, single-channel binary source image. The image may be modified by the function.
          * param lines Output vector of lines. Each line is represented by a 2 or 3 element vector
-         * \((\rho, \theta)\) or \((\rho, \theta, \textrm{votes})\) . \(\rho\) is the distance from the coordinate origin \((0,0)\) (top-left corner of
-         * the image). \(\theta\) is the line rotation angle in radians (
-         * \(0 \sim \textrm{vertical line}, \pi/2 \sim \textrm{horizontal line}\) ).
+         * \((\rho, \theta)\) or \((\rho, \theta, \textrm{votes})\), where \(\rho\) is the distance from
+         * the coordinate origin \((0,0)\) (top-left corner of the image), \(\theta\) is the line rotation
+         * angle in radians ( \(0 \sim \textrm{vertical line}, \pi/2 \sim \textrm{horizontal line}\) ), and
          * \(\textrm{votes}\) is the value of accumulator.
          * param rho Distance resolution of the accumulator in pixels.
          * param theta Angle resolution of the accumulator in radians.
-         * param threshold Accumulator threshold parameter. Only those lines are returned that get enough
+         * param threshold %Accumulator threshold parameter. Only those lines are returned that get enough
          * votes ( \(&gt;\texttt{threshold}\) ).
-         * param srn For the multi-scale Hough transform, it is a divisor for the distance resolution rho .
+         * param srn For the multi-scale Hough transform, it is a divisor for the distance resolution rho.
          * The coarse accumulator distance resolution is rho and the accurate accumulator resolution is
-         * rho/srn . If both srn=0 and stn=0 , the classical Hough transform is used. Otherwise, both these
+         * rho/srn. If both srn=0 and stn=0, the classical Hough transform is used. Otherwise, both these
          * parameters should be positive.
          * param stn For the multi-scale Hough transform, it is a divisor for the distance resolution theta.
          * param min_theta For standard and multi-scale Hough transform, minimum angle to check for lines.
          * Must fall between 0 and max_theta.
-         * param max_theta For standard and multi-scale Hough transform, maximum angle to check for lines.
-         * Must fall between min_theta and CV_PI.
+         * param max_theta For standard and multi-scale Hough transform, an upper bound for the angle.
+         * Must fall between min_theta and CV_PI. The actual maximum angle in the accumulator may be slightly
+         * less than max_theta, depending on the parameters min_theta and theta.
          */
         public static void HoughLines(Mat image, Mat lines, double rho, double theta, int threshold, double srn, double stn, double min_theta, double max_theta)
         {
@@ -3582,22 +3614,23 @@ namespace OpenCVForUnity.ImgprocModule
          *
          * param image 8-bit, single-channel binary source image. The image may be modified by the function.
          * param lines Output vector of lines. Each line is represented by a 2 or 3 element vector
-         * \((\rho, \theta)\) or \((\rho, \theta, \textrm{votes})\) . \(\rho\) is the distance from the coordinate origin \((0,0)\) (top-left corner of
-         * the image). \(\theta\) is the line rotation angle in radians (
-         * \(0 \sim \textrm{vertical line}, \pi/2 \sim \textrm{horizontal line}\) ).
+         * \((\rho, \theta)\) or \((\rho, \theta, \textrm{votes})\), where \(\rho\) is the distance from
+         * the coordinate origin \((0,0)\) (top-left corner of the image), \(\theta\) is the line rotation
+         * angle in radians ( \(0 \sim \textrm{vertical line}, \pi/2 \sim \textrm{horizontal line}\) ), and
          * \(\textrm{votes}\) is the value of accumulator.
          * param rho Distance resolution of the accumulator in pixels.
          * param theta Angle resolution of the accumulator in radians.
-         * param threshold Accumulator threshold parameter. Only those lines are returned that get enough
+         * param threshold %Accumulator threshold parameter. Only those lines are returned that get enough
          * votes ( \(&gt;\texttt{threshold}\) ).
-         * param srn For the multi-scale Hough transform, it is a divisor for the distance resolution rho .
+         * param srn For the multi-scale Hough transform, it is a divisor for the distance resolution rho.
          * The coarse accumulator distance resolution is rho and the accurate accumulator resolution is
-         * rho/srn . If both srn=0 and stn=0 , the classical Hough transform is used. Otherwise, both these
+         * rho/srn. If both srn=0 and stn=0, the classical Hough transform is used. Otherwise, both these
          * parameters should be positive.
          * param stn For the multi-scale Hough transform, it is a divisor for the distance resolution theta.
          * param min_theta For standard and multi-scale Hough transform, minimum angle to check for lines.
          * Must fall between 0 and max_theta.
-         * Must fall between min_theta and CV_PI.
+         * Must fall between min_theta and CV_PI. The actual maximum angle in the accumulator may be slightly
+         * less than max_theta, depending on the parameters min_theta and theta.
          */
         public static void HoughLines(Mat image, Mat lines, double rho, double theta, int threshold, double srn, double stn, double min_theta)
         {
@@ -3618,21 +3651,22 @@ namespace OpenCVForUnity.ImgprocModule
          *
          * param image 8-bit, single-channel binary source image. The image may be modified by the function.
          * param lines Output vector of lines. Each line is represented by a 2 or 3 element vector
-         * \((\rho, \theta)\) or \((\rho, \theta, \textrm{votes})\) . \(\rho\) is the distance from the coordinate origin \((0,0)\) (top-left corner of
-         * the image). \(\theta\) is the line rotation angle in radians (
-         * \(0 \sim \textrm{vertical line}, \pi/2 \sim \textrm{horizontal line}\) ).
+         * \((\rho, \theta)\) or \((\rho, \theta, \textrm{votes})\), where \(\rho\) is the distance from
+         * the coordinate origin \((0,0)\) (top-left corner of the image), \(\theta\) is the line rotation
+         * angle in radians ( \(0 \sim \textrm{vertical line}, \pi/2 \sim \textrm{horizontal line}\) ), and
          * \(\textrm{votes}\) is the value of accumulator.
          * param rho Distance resolution of the accumulator in pixels.
          * param theta Angle resolution of the accumulator in radians.
-         * param threshold Accumulator threshold parameter. Only those lines are returned that get enough
+         * param threshold %Accumulator threshold parameter. Only those lines are returned that get enough
          * votes ( \(&gt;\texttt{threshold}\) ).
-         * param srn For the multi-scale Hough transform, it is a divisor for the distance resolution rho .
+         * param srn For the multi-scale Hough transform, it is a divisor for the distance resolution rho.
          * The coarse accumulator distance resolution is rho and the accurate accumulator resolution is
-         * rho/srn . If both srn=0 and stn=0 , the classical Hough transform is used. Otherwise, both these
+         * rho/srn. If both srn=0 and stn=0, the classical Hough transform is used. Otherwise, both these
          * parameters should be positive.
          * param stn For the multi-scale Hough transform, it is a divisor for the distance resolution theta.
          * Must fall between 0 and max_theta.
-         * Must fall between min_theta and CV_PI.
+         * Must fall between min_theta and CV_PI. The actual maximum angle in the accumulator may be slightly
+         * less than max_theta, depending on the parameters min_theta and theta.
          */
         public static void HoughLines(Mat image, Mat lines, double rho, double theta, int threshold, double srn, double stn)
         {
@@ -3653,20 +3687,21 @@ namespace OpenCVForUnity.ImgprocModule
          *
          * param image 8-bit, single-channel binary source image. The image may be modified by the function.
          * param lines Output vector of lines. Each line is represented by a 2 or 3 element vector
-         * \((\rho, \theta)\) or \((\rho, \theta, \textrm{votes})\) . \(\rho\) is the distance from the coordinate origin \((0,0)\) (top-left corner of
-         * the image). \(\theta\) is the line rotation angle in radians (
-         * \(0 \sim \textrm{vertical line}, \pi/2 \sim \textrm{horizontal line}\) ).
+         * \((\rho, \theta)\) or \((\rho, \theta, \textrm{votes})\), where \(\rho\) is the distance from
+         * the coordinate origin \((0,0)\) (top-left corner of the image), \(\theta\) is the line rotation
+         * angle in radians ( \(0 \sim \textrm{vertical line}, \pi/2 \sim \textrm{horizontal line}\) ), and
          * \(\textrm{votes}\) is the value of accumulator.
          * param rho Distance resolution of the accumulator in pixels.
          * param theta Angle resolution of the accumulator in radians.
-         * param threshold Accumulator threshold parameter. Only those lines are returned that get enough
+         * param threshold %Accumulator threshold parameter. Only those lines are returned that get enough
          * votes ( \(&gt;\texttt{threshold}\) ).
-         * param srn For the multi-scale Hough transform, it is a divisor for the distance resolution rho .
+         * param srn For the multi-scale Hough transform, it is a divisor for the distance resolution rho.
          * The coarse accumulator distance resolution is rho and the accurate accumulator resolution is
-         * rho/srn . If both srn=0 and stn=0 , the classical Hough transform is used. Otherwise, both these
+         * rho/srn. If both srn=0 and stn=0, the classical Hough transform is used. Otherwise, both these
          * parameters should be positive.
          * Must fall between 0 and max_theta.
-         * Must fall between min_theta and CV_PI.
+         * Must fall between min_theta and CV_PI. The actual maximum angle in the accumulator may be slightly
+         * less than max_theta, depending on the parameters min_theta and theta.
          */
         public static void HoughLines(Mat image, Mat lines, double rho, double theta, int threshold, double srn)
         {
@@ -3687,19 +3722,20 @@ namespace OpenCVForUnity.ImgprocModule
          *
          * param image 8-bit, single-channel binary source image. The image may be modified by the function.
          * param lines Output vector of lines. Each line is represented by a 2 or 3 element vector
-         * \((\rho, \theta)\) or \((\rho, \theta, \textrm{votes})\) . \(\rho\) is the distance from the coordinate origin \((0,0)\) (top-left corner of
-         * the image). \(\theta\) is the line rotation angle in radians (
-         * \(0 \sim \textrm{vertical line}, \pi/2 \sim \textrm{horizontal line}\) ).
+         * \((\rho, \theta)\) or \((\rho, \theta, \textrm{votes})\), where \(\rho\) is the distance from
+         * the coordinate origin \((0,0)\) (top-left corner of the image), \(\theta\) is the line rotation
+         * angle in radians ( \(0 \sim \textrm{vertical line}, \pi/2 \sim \textrm{horizontal line}\) ), and
          * \(\textrm{votes}\) is the value of accumulator.
          * param rho Distance resolution of the accumulator in pixels.
          * param theta Angle resolution of the accumulator in radians.
-         * param threshold Accumulator threshold parameter. Only those lines are returned that get enough
+         * param threshold %Accumulator threshold parameter. Only those lines are returned that get enough
          * votes ( \(&gt;\texttt{threshold}\) ).
          * The coarse accumulator distance resolution is rho and the accurate accumulator resolution is
-         * rho/srn . If both srn=0 and stn=0 , the classical Hough transform is used. Otherwise, both these
+         * rho/srn. If both srn=0 and stn=0, the classical Hough transform is used. Otherwise, both these
          * parameters should be positive.
          * Must fall between 0 and max_theta.
-         * Must fall between min_theta and CV_PI.
+         * Must fall between min_theta and CV_PI. The actual maximum angle in the accumulator may be slightly
+         * less than max_theta, depending on the parameters min_theta and theta.
          */
         public static void HoughLines(Mat image, Mat lines, double rho, double theta, int threshold)
         {
@@ -3738,7 +3774,7 @@ namespace OpenCVForUnity.ImgprocModule
          * line segment.
          * param rho Distance resolution of the accumulator in pixels.
          * param theta Angle resolution of the accumulator in radians.
-         * param threshold Accumulator threshold parameter. Only those lines are returned that get enough
+         * param threshold %Accumulator threshold parameter. Only those lines are returned that get enough
          * votes ( \(&gt;\texttt{threshold}\) ).
          * param minLineLength Minimum line length. Line segments shorter than that are rejected.
          * param maxLineGap Maximum allowed gap between points on the same line to link them.
@@ -3777,7 +3813,7 @@ namespace OpenCVForUnity.ImgprocModule
          * line segment.
          * param rho Distance resolution of the accumulator in pixels.
          * param theta Angle resolution of the accumulator in radians.
-         * param threshold Accumulator threshold parameter. Only those lines are returned that get enough
+         * param threshold %Accumulator threshold parameter. Only those lines are returned that get enough
          * votes ( \(&gt;\texttt{threshold}\) ).
          * param minLineLength Minimum line length. Line segments shorter than that are rejected.
          *
@@ -3815,7 +3851,7 @@ namespace OpenCVForUnity.ImgprocModule
          * line segment.
          * param rho Distance resolution of the accumulator in pixels.
          * param theta Angle resolution of the accumulator in radians.
-         * param threshold Accumulator threshold parameter. Only those lines are returned that get enough
+         * param threshold %Accumulator threshold parameter. Only those lines are returned that get enough
          * votes ( \(&gt;\texttt{threshold}\) ).
          *
          * SEE: LineSegmentDetector
@@ -3844,13 +3880,14 @@ namespace OpenCVForUnity.ImgprocModule
          * param lines Output vector of found lines. Each vector is encoded as a vector&lt;Vec3d&gt; \((votes, rho, theta)\).
          * The larger the value of 'votes', the higher the reliability of the Hough line.
          * param lines_max Max count of Hough lines.
-         * param threshold Accumulator threshold parameter. Only those lines are returned that get enough
+         * param threshold %Accumulator threshold parameter. Only those lines are returned that get enough
          * votes ( \(&gt;\texttt{threshold}\) ).
          * param min_rho Minimum value for \(\rho\) for the accumulator (Note: \(\rho\) can be negative. The absolute value \(|\rho|\) is the distance of a line to the origin.).
          * param max_rho Maximum value for \(\rho\) for the accumulator.
          * param rho_step Distance resolution of the accumulator.
          * param min_theta Minimum angle value of the accumulator in radians.
-         * param max_theta Maximum angle value of the accumulator in radians.
+         * param max_theta Upper bound for the angle value of the accumulator in radians. The actual maximum
+         * angle may be slightly less than max_theta, depending on the parameters min_theta and theta_step.
          * param theta_step Angle resolution of the accumulator in radians.
          */
         public static void HoughLinesPointSet(Mat point, Mat lines, int lines_max, int threshold, double min_rho, double max_rho, double rho_step, double min_theta, double max_theta, double theta_step)
@@ -4311,7 +4348,7 @@ namespace OpenCVForUnity.ImgprocModule
          * param src input image; the number of channels can be arbitrary, but the depth should be one of
          * CV_8U, CV_16U, CV_16S, CV_32F or CV_64F.
          * param dst output image of the same size and type as src.
-         * param kernel structuring element used for dilation; if elemenat=Mat(), a 3 x 3 rectangular
+         * param kernel structuring element used for dilation; if element=Mat(), a 3 x 3 rectangular
          * structuring element is used. Kernel can be created using #getStructuringElement
          * param anchor position of the anchor within the element; default value (-1, -1) means that the
          * anchor is at the element center.
@@ -4344,7 +4381,7 @@ namespace OpenCVForUnity.ImgprocModule
          * param src input image; the number of channels can be arbitrary, but the depth should be one of
          * CV_8U, CV_16U, CV_16S, CV_32F or CV_64F.
          * param dst output image of the same size and type as src.
-         * param kernel structuring element used for dilation; if elemenat=Mat(), a 3 x 3 rectangular
+         * param kernel structuring element used for dilation; if element=Mat(), a 3 x 3 rectangular
          * structuring element is used. Kernel can be created using #getStructuringElement
          * param anchor position of the anchor within the element; default value (-1, -1) means that the
          * anchor is at the element center.
@@ -4376,7 +4413,7 @@ namespace OpenCVForUnity.ImgprocModule
          * param src input image; the number of channels can be arbitrary, but the depth should be one of
          * CV_8U, CV_16U, CV_16S, CV_32F or CV_64F.
          * param dst output image of the same size and type as src.
-         * param kernel structuring element used for dilation; if elemenat=Mat(), a 3 x 3 rectangular
+         * param kernel structuring element used for dilation; if element=Mat(), a 3 x 3 rectangular
          * structuring element is used. Kernel can be created using #getStructuringElement
          * param anchor position of the anchor within the element; default value (-1, -1) means that the
          * anchor is at the element center.
@@ -4407,7 +4444,7 @@ namespace OpenCVForUnity.ImgprocModule
          * param src input image; the number of channels can be arbitrary, but the depth should be one of
          * CV_8U, CV_16U, CV_16S, CV_32F or CV_64F.
          * param dst output image of the same size and type as src.
-         * param kernel structuring element used for dilation; if elemenat=Mat(), a 3 x 3 rectangular
+         * param kernel structuring element used for dilation; if element=Mat(), a 3 x 3 rectangular
          * structuring element is used. Kernel can be created using #getStructuringElement
          * param anchor position of the anchor within the element; default value (-1, -1) means that the
          * anchor is at the element center.
@@ -4437,7 +4474,7 @@ namespace OpenCVForUnity.ImgprocModule
          * param src input image; the number of channels can be arbitrary, but the depth should be one of
          * CV_8U, CV_16U, CV_16S, CV_32F or CV_64F.
          * param dst output image of the same size and type as src.
-         * param kernel structuring element used for dilation; if elemenat=Mat(), a 3 x 3 rectangular
+         * param kernel structuring element used for dilation; if element=Mat(), a 3 x 3 rectangular
          * structuring element is used. Kernel can be created using #getStructuringElement
          * anchor is at the element center.
          * SEE:  erode, morphologyEx, getStructuringElement
@@ -5817,7 +5854,7 @@ namespace OpenCVForUnity.ImgprocModule
          * example. In case of multi-channel images, sums for each channel are accumulated independently.
          *
          * As a practical example, the next figure shows the calculation of the integral of a straight
-         * rectangle Rect(3,3,3,2) and of a tilted rectangle Rect(5,1,2,3) . The selected pixels in the
+         * rectangle Rect(4,4,3,2) and of a tilted rectangle Rect(5,1,2,3) . The selected pixels in the
          * original image are shown, as well as the relative pixels in the integral images sum and tilted .
          *
          * ![integral calculation example](pics/integral.png)
@@ -5864,7 +5901,7 @@ namespace OpenCVForUnity.ImgprocModule
          * example. In case of multi-channel images, sums for each channel are accumulated independently.
          *
          * As a practical example, the next figure shows the calculation of the integral of a straight
-         * rectangle Rect(3,3,3,2) and of a tilted rectangle Rect(5,1,2,3) . The selected pixels in the
+         * rectangle Rect(4,4,3,2) and of a tilted rectangle Rect(5,1,2,3) . The selected pixels in the
          * original image are shown, as well as the relative pixels in the integral images sum and tilted .
          *
          * ![integral calculation example](pics/integral.png)
@@ -5910,7 +5947,7 @@ namespace OpenCVForUnity.ImgprocModule
          * example. In case of multi-channel images, sums for each channel are accumulated independently.
          *
          * As a practical example, the next figure shows the calculation of the integral of a straight
-         * rectangle Rect(3,3,3,2) and of a tilted rectangle Rect(5,1,2,3) . The selected pixels in the
+         * rectangle Rect(4,4,3,2) and of a tilted rectangle Rect(5,1,2,3) . The selected pixels in the
          * original image are shown, as well as the relative pixels in the integral images sum and tilted .
          *
          * ![integral calculation example](pics/integral.png)
@@ -6786,6 +6823,22 @@ namespace OpenCVForUnity.ImgprocModule
         // C++:  void cv::calcHist(vector_Mat images, vector_int channels, Mat mask, Mat& hist, vector_int histSize, vector_float ranges, bool accumulate = false)
         //
 
+        /**
+         *
+         *
+         * this variant supports only uniform histograms.
+         *
+         * ranges argument is either empty vector or a flattened vector of histSize.size()*2 elements
+         * (histSize.size() element pairs). The first and second elements of each pair specify the lower and
+         * upper boundaries.
+         * param images automatically generated
+         * param channels automatically generated
+         * param mask automatically generated
+         * param hist automatically generated
+         * param histSize automatically generated
+         * param ranges automatically generated
+         * param accumulate automatically generated
+         */
         public static void calcHist(List<Mat> images, MatOfInt channels, Mat mask, Mat hist, MatOfInt histSize, MatOfFloat ranges, bool accumulate)
         {
             if (channels != null) channels.ThrowIfDisposed();
@@ -6802,6 +6855,21 @@ namespace OpenCVForUnity.ImgprocModule
 
         }
 
+        /**
+         *
+         *
+         * this variant supports only uniform histograms.
+         *
+         * ranges argument is either empty vector or a flattened vector of histSize.size()*2 elements
+         * (histSize.size() element pairs). The first and second elements of each pair specify the lower and
+         * upper boundaries.
+         * param images automatically generated
+         * param channels automatically generated
+         * param mask automatically generated
+         * param hist automatically generated
+         * param histSize automatically generated
+         * param ranges automatically generated
+         */
         public static void calcHist(List<Mat> images, MatOfInt channels, Mat mask, Mat hist, MatOfInt histSize, MatOfFloat ranges)
         {
             if (channels != null) channels.ThrowIfDisposed();
@@ -11418,6 +11486,10 @@ namespace OpenCVForUnity.ImgprocModule
         private static extern void imgproc_Imgproc_blur_11(IntPtr src_nativeObj, IntPtr dst_nativeObj, double ksize_width, double ksize_height, double anchor_x, double anchor_y);
         [DllImport(LIBNAME)]
         private static extern void imgproc_Imgproc_blur_12(IntPtr src_nativeObj, IntPtr dst_nativeObj, double ksize_width, double ksize_height);
+
+        // C++:  void cv::stackBlur(Mat src, Mat& dst, Size ksize)
+        [DllImport(LIBNAME)]
+        private static extern void imgproc_Imgproc_stackBlur_10(IntPtr src_nativeObj, IntPtr dst_nativeObj, double ksize_width, double ksize_height);
 
         // C++:  void cv::filter2D(Mat src, Mat& dst, int ddepth, Mat kernel, Point anchor = Point(-1,-1), double delta = 0, int borderType = BORDER_DEFAULT)
         [DllImport(LIBNAME)]

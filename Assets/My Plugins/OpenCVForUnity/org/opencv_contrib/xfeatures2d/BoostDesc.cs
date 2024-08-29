@@ -109,6 +109,20 @@ namespace OpenCVForUnity.Xfeatures2dModule
 
 
         //
+        // C++:  String cv::xfeatures2d::BoostDesc::getDefaultName()
+        //
+
+        public override string getDefaultName()
+        {
+            ThrowIfDisposed();
+
+            string retVal = Marshal.PtrToStringAnsi(DisposableObject.ThrowIfNullIntPtr(xfeatures2d_BoostDesc_getDefaultName_10(nativeObj)));
+
+            return retVal;
+        }
+
+
+        //
         // C++:  void cv::xfeatures2d::BoostDesc::setUseScaleOrientation(bool use_scale_orientation)
         //
 
@@ -181,6 +195,10 @@ namespace OpenCVForUnity.Xfeatures2dModule
         private static extern IntPtr xfeatures2d_BoostDesc_create_12(int desc);
         [DllImport(LIBNAME)]
         private static extern IntPtr xfeatures2d_BoostDesc_create_13();
+
+        // C++:  String cv::xfeatures2d::BoostDesc::getDefaultName()
+        [DllImport(LIBNAME)]
+        private static extern IntPtr xfeatures2d_BoostDesc_getDefaultName_10(IntPtr nativeObj);
 
         // C++:  void cv::xfeatures2d::BoostDesc::setUseScaleOrientation(bool use_scale_orientation)
         [DllImport(LIBNAME)]

@@ -2740,6 +2740,101 @@ namespace OpenCVForUnity.XimgprocModule
 
 
         //
+        // C++:  void cv::ximgproc::findEllipses(Mat image, Mat& ellipses, float scoreThreshold = 0.7f, float reliabilityThreshold = 0.5f, float centerDistanceThreshold = 0.05f)
+        //
+
+        /**
+         * Finds ellipses fastly in an image using projective invariant pruning.
+         *
+         * The function detects ellipses in images using projective invariant pruning.
+         * For more details about this implementation, please see CITE: jia2017fast
+         * Jia, Qi et al, (2017).
+         * A Fast Ellipse Detector using Projective Invariant Pruning. IEEE Transactions on Image Processing.
+         *
+         * param image input image, could be gray or color.
+         * param ellipses output vector of found ellipses. each vector is encoded as five float $x, y, a, b, radius, score$.
+         * param scoreThreshold float, the threshold of ellipse score.
+         * param reliabilityThreshold float, the threshold of reliability.
+         * param centerDistanceThreshold float, the threshold of center distance.
+         */
+        public static void findEllipses(Mat image, Mat ellipses, float scoreThreshold, float reliabilityThreshold, float centerDistanceThreshold)
+        {
+            if (image != null) image.ThrowIfDisposed();
+            if (ellipses != null) ellipses.ThrowIfDisposed();
+
+            ximgproc_Ximgproc_findEllipses_10(image.nativeObj, ellipses.nativeObj, scoreThreshold, reliabilityThreshold, centerDistanceThreshold);
+
+
+        }
+
+        /**
+         * Finds ellipses fastly in an image using projective invariant pruning.
+         *
+         * The function detects ellipses in images using projective invariant pruning.
+         * For more details about this implementation, please see CITE: jia2017fast
+         * Jia, Qi et al, (2017).
+         * A Fast Ellipse Detector using Projective Invariant Pruning. IEEE Transactions on Image Processing.
+         *
+         * param image input image, could be gray or color.
+         * param ellipses output vector of found ellipses. each vector is encoded as five float $x, y, a, b, radius, score$.
+         * param scoreThreshold float, the threshold of ellipse score.
+         * param reliabilityThreshold float, the threshold of reliability.
+         */
+        public static void findEllipses(Mat image, Mat ellipses, float scoreThreshold, float reliabilityThreshold)
+        {
+            if (image != null) image.ThrowIfDisposed();
+            if (ellipses != null) ellipses.ThrowIfDisposed();
+
+            ximgproc_Ximgproc_findEllipses_11(image.nativeObj, ellipses.nativeObj, scoreThreshold, reliabilityThreshold);
+
+
+        }
+
+        /**
+         * Finds ellipses fastly in an image using projective invariant pruning.
+         *
+         * The function detects ellipses in images using projective invariant pruning.
+         * For more details about this implementation, please see CITE: jia2017fast
+         * Jia, Qi et al, (2017).
+         * A Fast Ellipse Detector using Projective Invariant Pruning. IEEE Transactions on Image Processing.
+         *
+         * param image input image, could be gray or color.
+         * param ellipses output vector of found ellipses. each vector is encoded as five float $x, y, a, b, radius, score$.
+         * param scoreThreshold float, the threshold of ellipse score.
+         */
+        public static void findEllipses(Mat image, Mat ellipses, float scoreThreshold)
+        {
+            if (image != null) image.ThrowIfDisposed();
+            if (ellipses != null) ellipses.ThrowIfDisposed();
+
+            ximgproc_Ximgproc_findEllipses_12(image.nativeObj, ellipses.nativeObj, scoreThreshold);
+
+
+        }
+
+        /**
+         * Finds ellipses fastly in an image using projective invariant pruning.
+         *
+         * The function detects ellipses in images using projective invariant pruning.
+         * For more details about this implementation, please see CITE: jia2017fast
+         * Jia, Qi et al, (2017).
+         * A Fast Ellipse Detector using Projective Invariant Pruning. IEEE Transactions on Image Processing.
+         *
+         * param image input image, could be gray or color.
+         * param ellipses output vector of found ellipses. each vector is encoded as five float $x, y, a, b, radius, score$.
+         */
+        public static void findEllipses(Mat image, Mat ellipses)
+        {
+            if (image != null) image.ThrowIfDisposed();
+            if (ellipses != null) ellipses.ThrowIfDisposed();
+
+            ximgproc_Ximgproc_findEllipses_13(image.nativeObj, ellipses.nativeObj);
+
+
+        }
+
+
+        //
         // C++:  void cv::ximgproc::fourierDescriptor(Mat src, Mat& dst, int nbElt = -1, int nbFD = -1)
         //
 
@@ -4247,6 +4342,16 @@ namespace OpenCVForUnity.XimgprocModule
         private static extern IntPtr ximgproc_Ximgproc_createFastLineDetector_15(int length_threshold);
         [DllImport(LIBNAME)]
         private static extern IntPtr ximgproc_Ximgproc_createFastLineDetector_16();
+
+        // C++:  void cv::ximgproc::findEllipses(Mat image, Mat& ellipses, float scoreThreshold = 0.7f, float reliabilityThreshold = 0.5f, float centerDistanceThreshold = 0.05f)
+        [DllImport(LIBNAME)]
+        private static extern void ximgproc_Ximgproc_findEllipses_10(IntPtr image_nativeObj, IntPtr ellipses_nativeObj, float scoreThreshold, float reliabilityThreshold, float centerDistanceThreshold);
+        [DllImport(LIBNAME)]
+        private static extern void ximgproc_Ximgproc_findEllipses_11(IntPtr image_nativeObj, IntPtr ellipses_nativeObj, float scoreThreshold, float reliabilityThreshold);
+        [DllImport(LIBNAME)]
+        private static extern void ximgproc_Ximgproc_findEllipses_12(IntPtr image_nativeObj, IntPtr ellipses_nativeObj, float scoreThreshold);
+        [DllImport(LIBNAME)]
+        private static extern void ximgproc_Ximgproc_findEllipses_13(IntPtr image_nativeObj, IntPtr ellipses_nativeObj);
 
         // C++:  void cv::ximgproc::fourierDescriptor(Mat src, Mat& dst, int nbElt = -1, int nbFD = -1)
         [DllImport(LIBNAME)]

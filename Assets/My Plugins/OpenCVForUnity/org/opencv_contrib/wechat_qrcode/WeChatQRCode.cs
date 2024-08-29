@@ -185,6 +185,47 @@ namespace OpenCVForUnity.Wechat_qrcodeModule
         }
 
 
+        //
+        // C++:  void cv::wechat_qrcode::WeChatQRCode::setScaleFactor(float _scalingFactor)
+        //
+
+        /**
+         * set scale factor
+         * QR code detector use neural network to detect QR.
+         * Before running the neural network, the input image is pre-processed by scaling.
+         * By default, the input image is scaled to an image with an area of 160000 pixels.
+         * The scale factor allows to use custom scale the input image:
+         * width = scaleFactor*width
+         * height = scaleFactor*width
+         *
+         * scaleFactor valuse must be &gt; 0 and &lt;= 1, otherwise the scaleFactor value is set to -1
+         * and use default scaled to an image with an area of 160000 pixels.
+         * param _scalingFactor automatically generated
+         */
+        public void setScaleFactor(float _scalingFactor)
+        {
+            ThrowIfDisposed();
+
+            wechat_1qrcode_WeChatQRCode_setScaleFactor_10(nativeObj, _scalingFactor);
+
+
+        }
+
+
+        //
+        // C++:  float cv::wechat_qrcode::WeChatQRCode::getScaleFactor()
+        //
+
+        public float getScaleFactor()
+        {
+            ThrowIfDisposed();
+
+            return wechat_1qrcode_WeChatQRCode_getScaleFactor_10(nativeObj);
+
+
+        }
+
+
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         const string LIBNAME = "__Internal";
 #else
@@ -211,10 +252,19 @@ namespace OpenCVForUnity.Wechat_qrcodeModule
         [DllImport(LIBNAME)]
         private static extern IntPtr wechat_1qrcode_WeChatQRCode_detectAndDecode_11(IntPtr nativeObj, IntPtr img_nativeObj);
 
+        // C++:  void cv::wechat_qrcode::WeChatQRCode::setScaleFactor(float _scalingFactor)
+        [DllImport(LIBNAME)]
+        private static extern void wechat_1qrcode_WeChatQRCode_setScaleFactor_10(IntPtr nativeObj, float _scalingFactor);
+
+        // C++:  float cv::wechat_qrcode::WeChatQRCode::getScaleFactor()
+        [DllImport(LIBNAME)]
+        private static extern float wechat_1qrcode_WeChatQRCode_getScaleFactor_10(IntPtr nativeObj);
+
         // native support for java finalize()
         [DllImport(LIBNAME)]
         private static extern void wechat_1qrcode_WeChatQRCode_delete(IntPtr nativeObj);
 
     }
 }
+
 #endif

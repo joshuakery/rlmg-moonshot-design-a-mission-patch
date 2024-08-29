@@ -402,6 +402,39 @@ namespace OpenCVForUnity.Features2dModule
         }
 
 
+        //
+        // C++:  void cv::BRISK::setPatternScale(float patternScale)
+        //
+
+        /**
+         * Set detection patternScale.
+         *     param patternScale apply this scale to the pattern used for sampling the neighbourhood of a
+         *     keypoint.
+         */
+        public void setPatternScale(float patternScale)
+        {
+            ThrowIfDisposed();
+
+            features2d_BRISK_setPatternScale_10(nativeObj, patternScale);
+
+
+        }
+
+
+        //
+        // C++:  float cv::BRISK::getPatternScale()
+        //
+
+        public float getPatternScale()
+        {
+            ThrowIfDisposed();
+
+            return features2d_BRISK_getPatternScale_10(nativeObj);
+
+
+        }
+
+
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         const string LIBNAME = "__Internal";
 #else
@@ -459,6 +492,14 @@ namespace OpenCVForUnity.Features2dModule
         // C++:  int cv::BRISK::getOctaves()
         [DllImport(LIBNAME)]
         private static extern int features2d_BRISK_getOctaves_10(IntPtr nativeObj);
+
+        // C++:  void cv::BRISK::setPatternScale(float patternScale)
+        [DllImport(LIBNAME)]
+        private static extern void features2d_BRISK_setPatternScale_10(IntPtr nativeObj, float patternScale);
+
+        // C++:  float cv::BRISK::getPatternScale()
+        [DllImport(LIBNAME)]
+        private static extern float features2d_BRISK_getPatternScale_10(IntPtr nativeObj);
 
         // native support for java finalize()
         [DllImport(LIBNAME)]

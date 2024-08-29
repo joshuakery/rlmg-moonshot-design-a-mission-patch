@@ -9,7 +9,11 @@
     "defaultCamera": "HD Pro Webcam C920",
     "flipVertical": true,
     "flipHorizontal": false,
-    "requestedFPS": 60,
+    "requestedFPS": 30,
+    "requestedWidth": 640,
+    "requestedHeight": 480,
+    "preProcessingSizeFactor": 2,
+    "postProcessingSizeFactor": 0.75,
     "brightness": 255,
     "contrast": 127,
     "edgeFindingMethod": 0,
@@ -29,14 +33,16 @@
         "minimumScanSize": 50,
         "maximumArtworkPercentageOfPaper": 0.7,
         "consistentScanAreaThreshold": 0.009999999776482582,
-        "minimumConsistentFrames": 4,
-        "minimumArtworkInconsistentFramesToFail": 3
+        "minimumConsistentFrames": 1,
+        "minimumArtworkInconsistentFramesToFail": 2
     },
     "errorDisplaySettings": {
-        "checkForDisconnectInterval": 5,
-        "doAttemptCameraRestart": true,
-        "cameraDisconnectTimeout": 11.0,
+        "checkForDisconnectInterval": 15,
+        "doAttemptCameraRestartIfMissingDevice": true,
+	    "doAttemptCameraRestartIfFrozenUpdateCount": true,
         "refinedScanTimeout": 3.0,
-	"doAttemptCameraRestartIfWrongCamera": true
+        "doAttemptCameraRestartIfWrongCamera": true,
+        "doSaveCurrentAndLastWebCamTexturesToDisk": false,
+        "doVerboseLoggingOfDisconnectHandler": true
     }
 }

@@ -93,6 +93,76 @@ namespace OpenCVForUnity.Xfeatures2dModule
         }
 
 
+        //
+        // C++:  void cv::xfeatures2d::LUCID::setLucidKernel(int lucid_kernel)
+        //
+
+        public void setLucidKernel(int lucid_kernel)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_LUCID_setLucidKernel_10(nativeObj, lucid_kernel);
+
+
+        }
+
+
+        //
+        // C++:  int cv::xfeatures2d::LUCID::getLucidKernel()
+        //
+
+        public int getLucidKernel()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_LUCID_getLucidKernel_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  void cv::xfeatures2d::LUCID::setBlurKernel(int blur_kernel)
+        //
+
+        public void setBlurKernel(int blur_kernel)
+        {
+            ThrowIfDisposed();
+
+            xfeatures2d_LUCID_setBlurKernel_10(nativeObj, blur_kernel);
+
+
+        }
+
+
+        //
+        // C++:  int cv::xfeatures2d::LUCID::getBlurKernel()
+        //
+
+        public int getBlurKernel()
+        {
+            ThrowIfDisposed();
+
+            return xfeatures2d_LUCID_getBlurKernel_10(nativeObj);
+
+
+        }
+
+
+        //
+        // C++:  String cv::xfeatures2d::LUCID::getDefaultName()
+        //
+
+        public override string getDefaultName()
+        {
+            ThrowIfDisposed();
+
+            string retVal = Marshal.PtrToStringAnsi(DisposableObject.ThrowIfNullIntPtr(xfeatures2d_LUCID_getDefaultName_10(nativeObj)));
+
+            return retVal;
+        }
+
+
 #if (UNITY_IOS || UNITY_WEBGL) && !UNITY_EDITOR
         const string LIBNAME = "__Internal";
 #else
@@ -108,6 +178,26 @@ namespace OpenCVForUnity.Xfeatures2dModule
         private static extern IntPtr xfeatures2d_LUCID_create_11(int lucid_kernel);
         [DllImport(LIBNAME)]
         private static extern IntPtr xfeatures2d_LUCID_create_12();
+
+        // C++:  void cv::xfeatures2d::LUCID::setLucidKernel(int lucid_kernel)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_LUCID_setLucidKernel_10(IntPtr nativeObj, int lucid_kernel);
+
+        // C++:  int cv::xfeatures2d::LUCID::getLucidKernel()
+        [DllImport(LIBNAME)]
+        private static extern int xfeatures2d_LUCID_getLucidKernel_10(IntPtr nativeObj);
+
+        // C++:  void cv::xfeatures2d::LUCID::setBlurKernel(int blur_kernel)
+        [DllImport(LIBNAME)]
+        private static extern void xfeatures2d_LUCID_setBlurKernel_10(IntPtr nativeObj, int blur_kernel);
+
+        // C++:  int cv::xfeatures2d::LUCID::getBlurKernel()
+        [DllImport(LIBNAME)]
+        private static extern int xfeatures2d_LUCID_getBlurKernel_10(IntPtr nativeObj);
+
+        // C++:  String cv::xfeatures2d::LUCID::getDefaultName()
+        [DllImport(LIBNAME)]
+        private static extern IntPtr xfeatures2d_LUCID_getDefaultName_10(IntPtr nativeObj);
 
         // native support for java finalize()
         [DllImport(LIBNAME)]

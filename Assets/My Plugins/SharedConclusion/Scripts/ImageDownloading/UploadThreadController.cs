@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Threading;
 using rlmg.logging;
 
 [CreateAssetMenu(menuName = "Thread Controller/Upload Thread Controller"), System.Serializable]
@@ -11,7 +12,7 @@ public class UploadThreadController : ScriptableObject
         //parameters
         public string filename;
 
-        protected override void ThreadFunction()
+        protected override void ThreadFunction(CancellationToken token)
         {
             ClientSend.SendFileToServer(filename);
         }

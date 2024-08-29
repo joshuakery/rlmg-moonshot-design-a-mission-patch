@@ -11,31 +11,52 @@ namespace ArtScan.ScanSavingModule
 {
     public class SaveScansHelper : MonoBehaviour
     {
-        public GameState gameState;
-        public RefinedScanController refinedScanController;
-        public DownloadThreadController downloadThreadController;
-        public UploadThreadController uploadThreadController;
+        [SerializeField]
+        private GameState gameState;
 
-        public GameEvent UploadCompleteEvent;
-        public GameEvent NewScanEvent;
-        public GameEvent UploadFailedEvent;
+        private RefinedScanController refinedScanController;
 
-        public GameEvent DownloadFailedEvent;
-        public GameEvent DownloadSucceededEvent;
+        [SerializeField]
+        private DownloadThreadController downloadThreadController;
+        [SerializeField]
+        private UploadThreadController uploadThreadController;
 
-        public GameEvent DeleteFailedEvent;
-        public GameEvent DeleteSucceededEvent;
+        [SerializeField]
+        private GameEvent UploadCompleteEvent;
+        [SerializeField]
+        private GameEvent NewScanEvent;
+        [SerializeField]
+        private GameEvent UploadFailedEvent;
 
-        public bool doUploadToServer;
+        [SerializeField]
+        private GameEvent DownloadFailedEvent;
+        [SerializeField]
+        private GameEvent DownloadSucceededEvent;
 
-        public bool doRaiseUploadFailed;
-        public bool doRaiseUploadSucceeded;
+        [SerializeField]
+        private GameEvent DeleteFailedEvent;
+        [SerializeField]
+        private GameEvent DeleteSucceededEvent;
 
-        public bool doRaiseDownloadFailed;
-        public bool doRaiseDownloadSucceeded;
+        [SerializeField]
+        private bool doUploadToServer;
 
-        public bool doRaiseDeleteFailed;
-        public bool doRaiseDeleteSucceeded;
+        private bool doRaiseUploadFailed;
+        private bool doRaiseUploadSucceeded;
+
+        private bool doRaiseDownloadFailed;
+        private bool doRaiseDownloadSucceeded;
+
+        private bool doRaiseDeleteFailed;
+        private bool doRaiseDeleteSucceeded;
+
+        private bool waitingToUpdateLocalDataWithPreview = false;
+
+        private void Awake()
+        {
+            if (refinedScanController == null)
+                refinedScanController = FindObjectOfType<RefinedScanController>();
+        }
 
         private void OnEnable()
         {
@@ -100,21 +121,13 @@ namespace ArtScan.ScanSavingModule
             }
             if (doRaiseUploadSucceeded)
             {
-                int index = gameState.GetNextScanIndex();
-                if (index >= 0)
+                if (waitingToUpdateLocalDataWithPreview)
                 {
-                    string filename = ScanSaving.FormatScanFilename(gameState.currentTeam.teamName, index);
-                    string dirPath = Path.Join(Application.streamingAssetsPath, gameState.settings.saveDir);
-                    string fullPath = Path.Join(dirPath, filename);
-
-                    UpdateTeamArtworks(index, fullPath);
-
-                    gameState.AddScan(gameState.preview);
-
-                    UploadCompleteEvent.Raise();
-                    NewScanEvent.Raise();
+                    UpdateLocalDataWithPreview(); 
+                    waitingToUpdateLocalDataWithPreview = false;
                 }
 
+                UploadCompleteEvent.Raise();
                 doRaiseUploadSucceeded = false;
             }
             if (doRaiseDownloadFailed)
@@ -168,7 +181,6 @@ namespace ArtScan.ScanSavingModule
 
         public void SavePreview()
         {
-            Debug.Log("saving preview");
             StartCoroutine(_UploadPreview());
         }
 
@@ -176,34 +188,48 @@ namespace ArtScan.ScanSavingModule
         {
             if (refinedScanController.previewMat != null)
             {
-                int index = gameState.GetNextScanIndex();
-                if (index >= 0)
+                int index = gameState.savedScanManager.GetNextScanIndex();
+
+                string filename = ScanSaving.FormatScanFilename(gameState.currentTeam.teamName, index);
+                string dirPath = Path.Join(Application.streamingAssetsPath, gameState.settings.saveDir);
+                string fullPath = Path.Join(dirPath, filename);
+
+                ScanSaving.SaveScan(refinedScanController.previewMat, dirPath, filename);
+
+                if (doUploadToServer)
                 {
-                    string filename = ScanSaving.FormatScanFilename(gameState.currentTeam.teamName, index);
-                    string dirPath = Path.Join(Application.streamingAssetsPath, gameState.settings.saveDir);
-                    string fullPath = Path.Join(dirPath, filename);
-
-                    ScanSaving.SaveScan(refinedScanController.previewMat, dirPath, filename);
-
-                    if (doUploadToServer)
+                    if (File.Exists(fullPath))
                     {
-                        if (File.Exists(fullPath))
-                            yield return StartCoroutine(uploadThreadController.UploadCoroutine(fullPath));
-                        else
-                            RLMGLogger.Instance.Log(System.String.Format("Trying to upload {0} but file does not exist.", fullPath));
+                        waitingToUpdateLocalDataWithPreview = true;
+                        yield return StartCoroutine(uploadThreadController.UploadCoroutine(fullPath));
                     }
                     else
-                    {
-                        UpdateTeamArtworks(index, fullPath);
-
-                        gameState.AddScan(gameState.preview);
-
-                        UploadCompleteEvent.Raise();
-                        NewScanEvent.Raise();
-                    }
-
+                        RLMGLogger.Instance.Log(System.String.Format("Trying to upload {0} but file does not exist.", fullPath));
+                }
+                else
+                {
+                    UpdateLocalDataWithPreview(index, fullPath);
+                    UploadCompleteEvent.Raise();
                 }
             }
+        }
+
+        private void UpdateLocalDataWithPreview()
+        {
+            int index = gameState.savedScanManager.GetNextScanIndex();
+
+            string filename = ScanSaving.FormatScanFilename(gameState.currentTeam.teamName, index);
+            string dirPath = Path.Join(Application.streamingAssetsPath, gameState.settings.saveDir);
+            string fullPath = Path.Join(dirPath, filename);
+
+            UpdateLocalDataWithPreview(index, fullPath);
+        }
+
+        private void UpdateLocalDataWithPreview(int index, string fullPath)
+        {
+            UpdateTeamArtworks(index, fullPath);
+            gameState.AddPreview();
+            NewScanEvent.Raise();
         }
 
         public void UpdateTeamArtworks(int index, string filepath)
@@ -238,10 +264,10 @@ namespace ArtScan.ScanSavingModule
             }
         }
 
-        public void AbortUpload()
+        public void CancelUpload()
         {
             StopAllCoroutines();
-            uploadThreadController.AbortThread();
+            uploadThreadController.CancelThread();
         }
     }
 

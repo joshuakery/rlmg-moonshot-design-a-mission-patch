@@ -43,8 +43,11 @@ namespace ArtScan.RemoveBackgroundUtilsModule
             maxAreaContour = PerspectiveUtils.GetMaxAreaContour(contours);
 
             //Create Mask
-            mask = OpenCVForUnity.CoreModule.Mat.zeros(src.height(),src.width(),CvType.CV_8UC1);
-            Imgproc.fillPoly(mask,new List<MatOfPoint> { maxAreaContour }, new Scalar(255,255,255,255));
+            mask = OpenCVForUnity.CoreModule.Mat.zeros(edgeImage.height(), edgeImage.width(), CvType.CV_8UC1);
+            Imgproc.fillPoly(mask, new List<MatOfPoint> { maxAreaContour }, new Scalar(255,255,255,255));
+
+            //Resize mask to match source
+            Imgproc.resize(mask, mask, new Size(), src.width() / edgeImage.width(), src.width() / edgeImage.width(), Imgproc.INTER_LINEAR);
 
             //Remove Background
             Mat outputMat = OpenCVForUnity.CoreModule.Mat.zeros(src.height(),src.width(),src.type());

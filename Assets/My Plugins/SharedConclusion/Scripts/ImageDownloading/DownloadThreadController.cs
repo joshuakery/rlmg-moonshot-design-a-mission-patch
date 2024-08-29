@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Threading;
 using rlmg.logging;
 
 [CreateAssetMenu(menuName = "Thread Controller/Download Thread Controller"), System.Serializable]
@@ -12,7 +13,7 @@ public class DownloadThreadController : ScriptableObject
         public string filename;
         public string dirPath;
 
-        protected override void ThreadFunction()
+        protected override void ThreadFunction(CancellationToken token)
         {
             if (!System.String.IsNullOrEmpty(filename) && !System.String.IsNullOrEmpty(dirPath))
             {
