@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scripts/Background Removal/FpsMonitor.cs.meta
+guid: cd1dd8bbec8fdb949be6df32aa373c61
+timeCreated: 1522589455
+licenseType: Store
+=======
+guid: 0ec728c02fbebf345a6aeb5144e679ac
+>>>>>>> Debug2:Assets/MemoryUsageDisplay.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

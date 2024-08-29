@@ -93,4 +93,8 @@ TextMesh Pro.meta
 OpenCVForUnity/Plugins.meta
 **/OpenCVForUnity/Examples/**
 OpenCVForUnity/Examples.meta
+**/OpenCVForUnity/StreamingAssets/**
+OpenCVForUnity/StreamingAssets.meta
+**/OpenCVForUnity/**/StreamingAssets/**
+**/OpenCVForUnity/**/StreamingAssets.meta
 *.mp4
