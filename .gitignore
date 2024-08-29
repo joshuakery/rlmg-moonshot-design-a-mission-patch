@@ -98,3 +98,13 @@ OpenCVForUnity/StreamingAssets.meta
 **/OpenCVForUnity/**/StreamingAssets/**
 **/OpenCVForUnity/**/StreamingAssets.meta
 *.mp4
+_BACKUP_142.gitignore
+_BACKUP_200.gitignore
+_BASE_142.gitignore
+_BASE_200.gitignore
+_LOCAL_142.gitignore
+_LOCAL_200.gitignore
+_REMOTE_142.gitignore
+_REMOTE_200.gitignore
+Assets/My Plugins/OpenCVForUnity/Examples.meta
+Assets/My Plugins/OpenCVForUnity/Extra.unitypackage.meta
